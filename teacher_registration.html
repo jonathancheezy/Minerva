@@ -389,18 +389,67 @@
  </div>
 
  <div class="form-group">
- <label for="location">Area in Hong Kong</label>
- <select id="location" name="location">
- <option value="">Select your area</option>
- <option value="kowloon">Kowloon</option>
- <option value="hong-kong-island">Hong Kong Island</option>
- <option value="new-territories">New Territories</option>
- <option value="flexible">Flexible / Online</option>
+ <label for="levels">Teaching Levels</label>
+ <select id="levels" name="levels" required>
+ <option value="">Select level(s)</option>
+ <option value="primary">Primary School</option>
+ <option value="secondary">Secondary School (F1-F3)</option>
+ <option value="dse">DSE / F4-F6</option>
+ <option value="university">University / Tertiary</option>
+ <option value="adult">Adult Learning</option>
  </select>
  </div>
 
  <div class="form-group">
- <label for="message">Tell us about yourself (optional)</label>
+ <label for="lessonType">Lesson Type</label>
+ <select id="lessonType" name="lessonType" required>
+ <option value="">Select lesson type</option>
+ <option value="individual">Individual (One-on-One)</option>
+ <option value="small-group">Small Group (2-4 students)</option>
+ <option value="group">Group Class (5+ students)</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label for="preferredLocation">Preferred Teaching Location</label>
+ <select id="preferredLocation" name="preferredLocation">
+ <option value="">Select location</option>
+ <option value="student-home">Student's Home</option>
+ <option value="my-home">My Home / Studio</option>
+ <option value="library">Library / Public Space</option>
+ <option value="online">Online (Video Call)</option>
+ <option value="flexible">Flexible / Will Travel</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label for="hourlyRate">Hourly Rate (HK$)</label>
+ <input type="number" id="hourlyRate" name="hourlyRate" placeholder="e.g., 350" min="0">
+ </div>
+
+ <div class="form-group">
+ <label for="languages">Languages Spoken</label>
+ <select id="languages" name="languages">
+ <option value="">Select language(s)</option>
+ <option value="cantonese">Cantonese</option>
+ <option value="english">English</option>
+ <option value="mandarin">Mandarin</option>
+ <option value="other">Other</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label for="firstLesson">First Lesson Offer</label>
+ <select id="firstLesson" name="firstLesson">
+ <option value="">Select offer</option>
+ <option value="free">Free First Lesson</option>
+ <option value="discounted">Discounted (50% off)</option>
+ <option value="standard">Standard Rate</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label for="message">Tell us about yourself</label>
  <textarea id="message" name="message" placeholder="Your qualifications, teaching style, or anything you'd like students to know..."></textarea>
  </div>
 
