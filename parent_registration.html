@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Parent/Student Registration — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --teal-light: #60a5fa;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-500: #64748b;
+ --gray-700: #334155;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--white);
+ color: var(--gray-700);
+ line-height: 1.6;
+ }
+
+ /* Nav */
+ nav {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ z-index: 100;
+ background: rgba(255,255,255,0.95);
+ backdrop-filter: blur(10px);
+ border-bottom: 1px solid var(--gray-200);
+ padding: 16px 24px;
+ }
+
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 22px;
+ color: var(--navy);
+ text-decoration: none;
+ }
+
+ .logo-icon {
+ width: 36px;
+ height: 36px;
+ }
+
+ .nav-links a {
+ color: var(--gray-500);
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: color 0.2s;
+ }
+
+ .nav-links a:hover { color: var(--navy); }
+
+ .btn-outline {
+ background: transparent;
+ color: var(--navy);
+ font-weight: 600;
+ font-size: 14px;
+ padding: 10px 22px;
+ border-radius: 50px;
+ text-decoration: none;
+ border: 2px solid var(--navy);
+ transition: all 0.2s;
+ }
+
+ .btn-outline:hover {
+ background: var(--navy);
+ color: white;
+ }
+
+ /* Hero */
+ .hero {
+ padding: 120px 24px 40px;
+ text-align: center;
+ background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+ }
+
+ .hero-badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ background: var(--navy);
+ color: white;
+ font-size: 12px;
+ font-weight: 600;
+ padding: 6px 14px;
+ border-radius: 50px;
+ margin-bottom: 24px;
+ letter-spacing: 0.5px;
+ }
+
+ .hero h1 {
+ font-size: clamp(28px, 5vw, 48px);
+ font-weight: 800;
+ color: var(--navy-dark);
+ line-height: 1.2;
+ margin-bottom: 16px;
+ }
+
+ .hero p {
+ font-size: 17px;
+ color: var(--gray-500);
+ max-width: 500px;
+ margin: 0 auto;
+ }
+
+ /* Form Section */
+ .form-section {
+ padding: 40px 24px 80px;
+ max-width: 640px;
+ margin: 0 auto;
+ }
+
+ .form-card {
+ background: var(--gray-100);
+ border-radius: 20px;
+ padding: 40px;
+ }
+
+ .form-group {
+ margin-bottom: 24px;
+ }
+
+ .form-group label {
+ display: block;
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--navy-dark);
+ margin-bottom: 8px;
+ }
+
+ .form-group input,
+ .form-group select,
+ .form-group textarea {
+ width: 100%;
+ padding: 14px 16px;
+ border-radius: 12px;
+ border: 2px solid var(--gray-200);
+ background: white;
+ font-size: 15px;
+ font-family: inherit;
+ color: var(--gray-700);
+ transition: border-color 0.2s;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus,
+ .form-group textarea:focus {
+ outline: none;
+ border-color: var(--teal);
+ }
+
+ .form-group textarea {
+ min-height: 100px;
+ resize: vertical;
+ }
+
+ .form-group small {
+ display: block;
+ font-size: 13px;
+ color: var(--gray-500);
+ margin-top: 6px;
+ }
+
+ .form-row {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 16px;
+ }
+
+ @media (max-width: 500px) {
+ .form-row { grid-template-columns: 1fr; }
+ }
+
+ .btn-primary {
+ width: 100%;
+ background: var(--gold);
+ color: var(--navy-dark);
+ font-weight: 700;
+ font-size: 16px;
+ padding: 16px 32px;
+ border-radius: 50px;
+ border: none;
+ cursor: pointer;
+ transition: all 0.2s;
+ font-family: inherit;
+ margin-top: 16px;
+ }
+
+ .btn-primary:hover {
+ background: var(--gold-light);
+ transform: translateY(-1px);
+ }
+
+ .form-success {
+ display: none;
+ text-align: center;
+ padding: 40px;
+ }
+
+ .form-success h3 {
+ font-size: 24px;
+ color: var(--navy-dark);
+ margin-bottom: 12px;
+ }
+
+ .form-success p {
+ color: var(--gray-500);
+ }
+
+ /* Benefits */
+ .benefits {
+ padding: 40px 24px;
+ background: var(--navy);
+ text-align: center;
+ }
+
+ .benefits h2 {
+ font-size: 24px;
+ font-weight: 700;
+ color: white;
+ margin-bottom: 32px;
+ }
+
+ .benefits-grid { justify-content: center;
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ text-align: center;
+ gap: 24px;
+ max-width: 800px;
+ margin: 0 auto;
+ }
+
+ .benefit {
+ color: white;
+ }
+
+ .benefit h4 {
+ font-size: 16px;
+ font-weight: 700;
+ margin-bottom: 8px;
+ color: var(--gold);
+ }
+
+ .benefit p {
+ font-size: 14px;
+ color: rgba(255,255,255,0.7);
+ }
+
+ /* Footer */
+ footer {
+ padding: 40px 24px;
+ text-align: center;
+ color: var(--gray-500);
+ font-size: 13px;
+ border-top: 1px solid var(--gray-200);
+ }
+
+ footer a { color: var(--navy); }
+
+ .lang-selector {
+ display: flex;
+ gap: 4px;
+ background: var(--gray-100);
+ padding: 4px;
+ border-radius: 8px;
+ }
+ .lang-btn {
+ padding: 6px 12px;
+ border: none;
+ background: transparent;
+ border-radius: 6px;
+ font-size: 13px;
+ font-weight: 600;
+ cursor: pointer;
+ color: var(--gray-500);
+ text-decoration: none;
+ transition: all 0.2s;
+ }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active {
+ background: white;
+ color: var(--navy);
+ box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+ }
+ </style>
+</head>
+<body>
+ <nav>
+ <div class="nav-inner">
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="nav-links">
+ <a href="minerva_landing.html" class="btn-outline">← Back to Home</a>
+ </div>
+ </div>
+ </nav>
+
+ <section class="hero">
+ <div class="hero-badge">Parent / Student Registration</div>
+ <h1>Find the perfect teacher for you</h1>
+ <p>Sign up today and get first class free when you sign up for four lessons.</p>
+ </section>
+
+ <section class="form-section">
+ <div class="form-card">
+ <form id="parentForm">
+ <div class="form-row">
+ <div class="form-group">
+ <label for="parentName">Your Name</label>
+ <input type="text" id="parentName" name="parentName" required placeholder="Parent or student name">
+ </div>
+ <div class="form-group">
+ <label for="email">Email Address</label>
+ <input type="email" id="email" name="email" required placeholder="you@example.com">
+ </div>
+ </div>
+
+ <div class="form-group">
+ <label for="phone">WhatsApp / Phone Number</label>
+ <input type="tel" id="phone" name="phone" placeholder="+852 XXXX XXXX">
+ </div>
+
+ <div class="form-group">
+ <label for="studentAge">Student's Age (optional)</label>
+ <input type="text" id="studentAge" name="studentAge" placeholder="e.g., 12 years old">
+ </div>
+
+ <div class="form-group">
+ <label for="subjects">Subject(s) Looking For</label>
+ <select id="subjects" name="subjects" required>
+ <option value="">Select a subject</option>
+ <option value="piano">Piano</option>
+ <option value="violin">Violin</option>
+ <option value="english">English</option>
+ <option value="math">Math</option>
+ <option value="physics">Physics</option>
+ <option value="chemistry">Chemistry</option>
+ <option value="biology">Biology</option>
+ <option value="chinese">Chinese (Mandarin/Cantonese)</option>
+ <option value="music">Music (General)</option>
+ <option value="arts">Arts</option>
+ <option value="sports">Sports</option>
+ <option value="other">Other</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label for="location">Preferred Location</label>
+ <select id="location" name="location">
+ <option value="">Select location preference</option>
+ <option value="kowloon">Kowloon</option>
+ <option value="hong-kong-island">Hong Kong Island</option>
+ <option value="new-territories">New Territories</option>
+ <option value="online">Online Only</option>
+ <option value="flexible">Flexible</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label for="message">Additional notes (optional)</label>
+ <textarea id="message" name="message" placeholder="Learning goals, preferred schedule, or any specific requirements..."></textarea>
+ </div>
+
+ <button type="submit" class="btn-primary">Submit Registration</button>
+ </form>
+
+ <div class="form-success" id="formSuccess">
+ <h3>✅ Thank you for registering!</h3>
+ <p>We'll match you with the perfect teacher and be in touch soon. Check your email for confirmation.</p>
+ </div>
+ </div>
+ </section>
+
+ <section class="benefits">
+ <h2>Why use Minerva?</h2>
+ <div class="benefits-grid">
+ <div class="benefit">
+ <h4>Verified Teachers</h4>
+ <p>Every teacher is ID-checked and background-verified for your peace of mind.</p>
+ </div>
+ <div class="benefit">
+ <h4>Escrow Payments</h4>
+ <p>Your payment is held safely until lessons are complete.</p>
+ </div>
+ <div class="benefit">
+ <h4>Sign Up Bonus</h4>
+ <p>First class free when you sign up for four lessons.</p>
+ </div>
+ <div class="benefit">
+ <h4>Progress Tracking</h4>
+ <p>Track learning progress with our AI-powered dashboard.</p>
+ </div>
+ </div>
+ </section>
+
+ <footer>
+ <p>© 2026 Minerva Learning Ltd. Hong Kong. <a href="minerva_landing.html">Back to home</a></p>
+ </footer>
+
+ <script>
+ // Pre-fill email from URL parameter
+ const params = new URLSearchParams(window.location.search);
+ const email = params.get('email');
+ if (email) {
+ document.getElementById('email').value = decodeURIComponent(email);
+ }
+
+ document.getElementById('parentForm').addEventListener('submit', function(e) {
+ e.preventDefault();
+ 
+ // Show success message
+ document.getElementById('parentForm').style.display = 'none';
+ document.getElementById('formSuccess').style.display = 'block';
+ 
+ // Log form data (in production, this would send to backend)
+ const formData = new FormData(this);
+ console.log('Registration:', Object.fromEntries(formData));
+ });
+ </script>
+ </body>
+</html>

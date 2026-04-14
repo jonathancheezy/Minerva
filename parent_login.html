@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Parent/Student Login — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-500: #64748b;
+ --gray-700: #334155;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--white);
+ color: var(--gray-700);
+ line-height: 1.6;
+ }
+
+ /* Nav */
+ nav {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ z-index: 100;
+ background: rgba(255,255,255,0.95);
+ backdrop-filter: blur(10px);
+ border-bottom: 1px solid var(--gray-200);
+ padding: 16px 24px;
+ }
+
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 22px;
+ color: var(--navy);
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 36px; height: 36px; }
+
+ .nav-links a {
+ color: var(--gray-500);
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: color 0.2s;
+ margin-left: 24px;
+ }
+ .nav-links a:hover { color: var(--navy); }
+
+ .btn-outline {
+ background: transparent;
+ color: var(--navy);
+ font-weight: 600;
+ font-size: 14px;
+ padding: 10px 22px;
+ border-radius: 50px;
+ text-decoration: none;
+ border: 2px solid var(--navy);
+ transition: all 0.2s;
+ }
+ .btn-outline:hover { background: var(--navy); color: white; }
+
+ /* Hero */
+ .hero {
+ padding: 120px 24px 40px;
+ text-align: center;
+ background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+ }
+
+ .hero-badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ background: var(--navy);
+ color: white;
+ font-size: 12px;
+ font-weight: 600;
+ padding: 6px 14px;
+ border-radius: 50px;
+ margin-bottom: 24px;
+ letter-spacing: 0.5px;
+ }
+
+ .hero h1 {
+ font-size: clamp(28px, 5vw, 48px);
+ font-weight: 800;
+ color: var(--navy-dark);
+ line-height: 1.2;
+ margin-bottom: 16px;
+ }
+
+ .hero p {
+ font-size: 17px;
+ color: var(--gray-500);
+ max-width: 500px;
+ margin: 0 auto;
+ }
+
+ /* Form */
+ .form-section {
+ padding: 40px 24px 80px;
+ max-width: 480px;
+ margin: 0 auto;
+ }
+
+ .form-card {
+ background: var(--gray-100);
+ border-radius: 20px;
+ padding: 40px;
+ }
+
+ .form-group {
+ margin-bottom: 20px;
+ }
+
+ .form-group label {
+ display: block;
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--navy-dark);
+ margin-bottom: 8px;
+ }
+
+ .form-group input {
+ width: 100%;
+ padding: 14px 16px;
+ border-radius: 12px;
+ border: 2px solid var(--gray-200);
+ background: white;
+ font-size: 15px;
+ font-family: inherit;
+ color: var(--gray-700);
+ transition: border-color 0.2s;
+ }
+
+ .form-group input:focus {
+ outline: none;
+ border-color: var(--teal);
+ }
+
+ .btn-primary {
+ width: 100%;
+ background: var(--gold);
+ color: var(--navy-dark);
+ font-weight: 700;
+ font-size: 16px;
+ padding: 16px 32px;
+ border-radius: 50px;
+ border: none;
+ cursor: pointer;
+ transition: all 0.2s;
+ font-family: inherit;
+ margin-top: 16px;
+ }
+ .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+ .form-footer {
+ text-align: center;
+ margin-top: 24px;
+ font-size: 14px;
+ color: var(--gray-500);
+ }
+ .form-footer a { color: var(--navy); font-weight: 600; }
+
+ .form-success {
+ display: none;
+ text-align: center;
+ padding: 40px;
+ }
+ .form-success h3 { font-size: 24px; color: var(--navy-dark); margin-bottom: 12px; }
+ .form-success p { color: var(--gray-500); }
+
+ /* Footer */
+ footer {
+ padding: 40px 24px;
+ text-align: center;
+ color: var(--gray-500);
+ font-size: 13px;
+ border-top: 1px solid var(--gray-200);
+ }
+ footer a { color: var(--navy); }
+
+ .lang-selector {
+ display: flex;
+ gap: 4px;
+ background: var(--gray-100);
+ padding: 4px;
+ border-radius: 8px;
+ }
+ .lang-btn {
+ padding: 6px 12px;
+ border: none;
+ background: transparent;
+ border-radius: 6px;
+ font-size: 13px;
+ font-weight: 600;
+ cursor: pointer;
+ color: var(--gray-500);
+ text-decoration: none;
+ transition: all 0.2s;
+ }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active {
+ background: white;
+ color: var(--navy);
+ box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+ }
+ </style>
+</head>
+<body>
+ <nav>
+ <div class="nav-inner">
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="nav-links">
+ <a href="minerva_landing.html" class="btn-outline">← Back</a>
+ </div>
+ </div>
+ </nav>
+
+ <section class="hero">
+ <div class="hero-badge">Parent / Student Login</div>
+ <h1>Welcome back!</h1>
+ <p>Login to manage your lessons and track progress.</p>
+ </section>
+
+ <section class="form-section">
+ <div class="form-card">
+ <form id="loginForm">
+ <div class="form-group">
+ <label for="email">Email Address</label>
+ <input type="email" id="email" name="email" required placeholder="you@example.com">
+ </div>
+
+ <div class="form-group">
+ <label for="password">Password</label>
+ <input type="password" id="password" name="password" required placeholder="Enter your password">
+ </div>
+
+ <button type="submit" class="btn-primary">Login</button>
+ </form>
+
+ <div class="form-footer">
+ <p>Don't have an account? <a href="parent_registration.html">Register here</a></p>
+ </div>
+
+ <div class="form-success" id="formSuccess">
+ <h3>✅ Login successful!</h3>
+ <p>Redirecting to your dashboard...<meta http-equiv="refresh" content="2;url=parent_dashboard.html"></p>
+ </div>
+ </div>
+ </section>
+
+ <footer>
+ <p>© 2026 Minerva Learning Ltd. Hong Kong. <a href="minerva_landing.html">Back to home</a></p>
+ </footer>
+
+ <script>
+ document.getElementById('loginForm').addEventListener('submit', function(e) {
+ e.preventDefault();
+ // For demo, show success
+ document.getElementById('loginForm').style.display = 'none';
+ document.getElementById('formSuccess').style.display = 'block';
+ // In production, this would authenticate via backend
+ });
+ </script>
+</body>
+</html>
