@@ -69,6 +69,16 @@
  gap: 24px;
  }
 
+ .mobile-menu-btn {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 8px;
+ color: white;
+ background: none;
+ border: none;
+ }
+
  .nav-links a {
  color: rgba(255,255,255,0.7);
  text-decoration: none;
@@ -142,6 +152,22 @@
  grid-template-columns: repeat(4, 1fr);
  gap: 20px;
  margin-bottom: 32px;
+ }
+
+ @media (max-width: 768px) {
+ .nav-links {
+ display: none;
+ position: absolute;
+ top: 60px;
+ left: 0;
+ right: 0;
+ background: var(--navy);
+ flex-direction: column;
+ padding: 20px 24px;
+ gap: 16px;
+ border-bottom: 1px solid rgba(255,255,255,0.1);
+ }
+ .nav-links.active { display: flex; }
  }
 
  @media (max-width: 900px) {
@@ -381,6 +407,7 @@
 <body>
  <nav>
  <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
