@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Our Teachers — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-500: #64748b;
+ --gray-700: #334155;
+ --success: #10b981;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body { font-family: 'Inter', sans-serif; background: var(--gray-100); color: var(--gray-700); line-height: 1.6; }
+
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ position: sticky;
+ top: 0;
+ z-index: 100;
+ }
+ nav .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+ .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: white; text-decoration: none; }
+ .logo-icon { width: 36px; height: 36px; }
+ .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
+ .back-link:hover { text-decoration: underline; }
+
+ .page-header {
+ background: white;
+ padding: 48px 24px;
+ text-align: center;
+ border-bottom: 1px solid var(--gray-200);
+ }
+ .page-header h1 { font-size: 36px; font-weight: 800; color: var(--navy-dark); margin-bottom: 12px; }
+ .page-header p { font-size: 18px; color: var(--gray-500); max-width: 600px; margin: 0 auto; }
+
+ .filters {
+ background: white;
+ padding: 20px 24px;
+ border-bottom: 1px solid var(--gray-200);
+ position: sticky;
+ top: 68px;
+ z-index: 90;
+ }
+ .filters-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+ .filter-group { display: flex; gap: 12px; flex-wrap: wrap; }
+ select, input { padding: 10px 16px; border: 1px solid var(--gray-300); border-radius: 8px; font-size: 14px; background: white; font-family: inherit; }
+ select:focus, input:focus { outline: none; border-color: var(--teal); }
+ .result-count { font-size: 14px; color: var(--gray-500); }
+
+ .teachers-grid {
+ max-width: 1100px;
+ margin: 0 auto;
+ padding: 40px 24px;
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+ gap: 28px;
+ }
+
+ .teacher-card {
+ background: white;
+ border-radius: 20px;
+ padding: 28px;
+ box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+ transition: all 0.2s;
+ border: 1px solid var(--gray-200);
+ }
+ .teacher-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+ .card-header { display: flex; gap: 16px; margin-bottom: 16px; }
+ .teacher-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 3px solid var(--gray-200); }
+ .teacher-info { flex: 1; }
+ .teacher-name { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
+ .teacher-subjects { font-size: 13px; color: var(--teal); font-weight: 600; margin-bottom: 6px; }
+ .teacher-location { font-size: 13px; color: var(--gray-500); display: flex; align-items: center; gap: 4px; }
+
+ .badge-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+ .badge { padding: 4px 10px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+ .badge-level { background: #dbeafe; color: #1e40af; }
+ .badge-first { background: #d1fae5; color: #065f46; }
+ .badge-unavailable { background: #fee2e2; color: #991b1b; }
+
+ .stats { display: flex; gap: 16px; margin-bottom: 16px; padding: 12px 0; border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); }
+ .stat { flex: 1; text-align: center; }
+ .stat-value { font-size: 18px; font-weight: 700; color: var(--navy-dark); }
+ .stat-label { font-size: 12px; color: var(--gray-500); }
+
+ .bio { font-size: 14px; color: var(--gray-700); margin-bottom: 20px; line-height: 1.6; }
+
+ .card-footer { display: flex; gap: 12px; justify-content: space-between; align-items: center; }
+ .rate { font-size: 22px; font-weight: 800; color: var(--navy-dark); }
+ .rate span { font-size: 14px; font-weight: 400; color: var(--gray-500); }
+
+ .btn { padding: 10px 20px; border-radius: 50px; font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-family: inherit; }
+ .btn-primary { background: var(--gold); color: var(--navy-dark); }
+ .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+ .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+ .btn-outline:hover { background: var(--navy); color: white; }
+ .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+ .empty-state { text-align: center; padding: 60px 24px; grid-column: 1 / -1; }
+ .empty-state h3 { font-size: 20px; color: var(--gray-500); margin-bottom: 8px; }
+
+ .loading { text-align: center; padding: 60px 24px; grid-column: 1 / -1; color: var(--gray-500); }
+
+ @media (max-width: 768px) {
+ .filters-inner { flex-direction: column; align-items: stretch; }
+ .teachers-grid { grid-template-columns: 1fr; }
+ .card-footer { flex-direction: column; }
+ .btn { text-align: center; width: 100%; }
+ }
+ </style>
+</head>
+<body>
+ <nav>
+ <div class="nav-inner">
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <a href="minerva_landing.html" class="back-link">← Back to Home</a>
+ </div>
+ </nav>
+
+ <div class="page-header">
+ <h1>Our Verified Teachers</h1>
+ <p>Every teacher is ID-checked, background-verified, and reviewed by students. Find your perfect match.</p>
+ </div>
+
+ <div class="filters">
+ <div class="filters-inner">
+ <div class="filter-group">
+ <select id="subjectFilter">
+ <option value="">All Subjects</option>
+ <option value="English">English</option>
+ <option value="Mathematics">Mathematics</option>
+ <option value="Physics">Physics</option>
+ <option value="Chemistry">Chemistry</option>
+ <option value="Biology">Biology</option>
+ <option value="Chinese">Chinese</option>
+ <option value="Piano">Piano</option>
+ <option value="Economics">Economics</option>
+ <option value="French">French</option>
+ </select>
+ <select id="locationFilter">
+ <option value="">All Locations</option>
+ <option value="Hong Kong Island">Hong Kong Island</option>
+ <option value="Kowloon">Kowloon</option>
+ <option value="New Territories">New Territories</option>
+ <option value="Online">Online</option>
+ <option value="Flexible">Flexible</option>
+ </select>
+ <select id="levelFilter">
+ <option value="">All Levels</option>
+ <option value="Primary">Primary</option>
+ <option value="Secondary">Secondary</option>
+ <option value="DSE">DSE</option>
+ <option value="University">University</option>
+ </select>
+ </div>
+ <div class="result-count"><span id="resultCount">12</span> teachers found</div>
+ </div>
+ </div>
+
+ <div class="teachers-grid" id="teachersGrid">
+ <div class="loading">Loading teachers...</div>
+ </div>
+
+ <script>
+ let teachers = [];
+
+ async function loadTeachers() {
+ try {
+ const response = await fetch('teachers.json');
+ const data = await response.json();
+ teachers = data.teachers;
+ renderTeachers(teachers);
+ } catch (error) {
+ console.error('Error loading teachers:', error);
+ document.getElementById('teachersGrid').innerHTML = '<div class="empty-state"><h3>Failed to load teachers</h3><p>Please try again later.</p></div>';
+ }
+ }
+
+ function renderTeachers(teacherList) {
+ const grid = document.getElementById('teachersGrid');
+ const subjectFilter = document.getElementById('subjectFilter').value;
+ const locationFilter = document.getElementById('locationFilter').value;
+ const levelFilter = document.getElementById('levelFilter').value;
+
+ let filtered = teacherList.filter(t => {
+ const matchSubject = !subjectFilter || t.subjects.some(s => s.toLowerCase().includes(subjectFilter.toLowerCase()));
+ const matchLocation = !locationFilter || t.location === locationFilter;
+ const matchLevel = !levelFilter || t.levels.includes(levelFilter);
+ return matchSubject && matchLocation && matchLevel;
+ });
+
+ document.getElementById('resultCount').textContent = filtered.length;
+
+ if (filtered.length === 0) {
+ grid.innerHTML = '<div class="empty-state"><h3>No teachers found</h3><p>Try adjusting your filters.</p></div>';
+ return;
+ }
+
+ grid.innerHTML = filtered.map(teacher => {
+ const firstLessonBadge = teacher.firstLesson === 'free' 
+ ? '<span class="badge badge-first">Free first lesson</span>'
+ : '<span class="badge badge-first">50% off first lesson</span>';
+
+ const unavailableBadge = !teacher.available 
+ ? '<span class="badge badge-unavailable">Currently unavailable</span>'
+ : '';
+
+ return `
+ <div class="teacher-card">
+ <div class="card-header">
+ <img src="${teacher.photo}" alt="${teacher.name}" class="teacher-photo" onerror="this.src='https://via.placeholder.com/72x72?text=${teacher.name.charAt(0)}'">
+ <div class="teacher-info">
+ <div class="teacher-name">${teacher.name}</div>
+ <div class="teacher-subjects">${teacher.subjects.join(', ')}</div>
+ <div class="teacher-location">📍 ${teacher.location}</div>
+ </div>
+ </div>
+ <div class="badge-row">
+ ${teacher.levels.map(level => `<span class="badge badge-level">${level}</span>`).join('')}
+ ${firstLessonBadge}
+ ${unavailableBadge}
+ </div>
+ <div class="stats">
+ <div class="stat">
+ <div class="stat-value">⭐ ${teacher.rating}</div>
+ <div class="stat-label">${teacher.reviews} reviews</div>
+ </div>
+ <div class="stat">
+ <div class="stat-value">${teacher.experience}</div>
+ <div class="stat-label">experience</div>
+ </div>
+ <div class="stat">
+ <div class="stat-value">${teacher.languages.slice(0,2).join(', ')}</div>
+ <div class="stat-label">languages</div>
+ </div>
+ </div>
+ <p class="bio">${teacher.bio}</p>
+ <div class="card-footer">
+ <div class="rate">HK$${teacher.rate}<span>/hour</span></div>
+ <a href="parent_registration.html?teacher=${teacher.id}" class="btn btn-primary ${!teacher.available ? 'disabled' : ''}" ${!teacher.available ? 'disabled' : ''}>
+ ${teacher.available ? 'Book Lesson' : 'Join Waitlist'}
+ </a>
+ </div>
+ </div>
+ `;
+ }).join('');
+ }
+
+ document.getElementById('subjectFilter').addEventListener('change', () => renderTeachers(teachers));
+ document.getElementById('locationFilter').addEventListener('change', () => renderTeachers(teachers));
+ document.getElementById('levelFilter').addEventListener('change', () => renderTeachers(teachers));
+
+ loadTeachers();
+ </script>
+</body>
+</html>
