@@ -534,11 +534,27 @@
 
  /* Mobile */
  @media (max-width: 768px) {
- .nav-links { display: none; }
+ .nav-links { 
+ display: none;
+ position: absolute;
+ top: 60px;
+ left: 0;
+ right: 0;
+ background: white;
+ flex-direction: column;
+ padding: 20px 24px;
+ border-bottom: 1px solid var(--gray-200);
+ box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+ }
+ .nav-links.active { display: flex; }
+ .mobile-menu-btn { display: block; }
  .stats-inner { grid-template-columns: 1fr; gap: 32px; }
  .features-grid { grid-template-columns: 1fr; }
  .problem-grid { grid-template-columns: 1fr; }
  .form-row { flex-direction: column; }
+ }
+ @media (min-width: 769px) {
+ .mobile-menu-btn { display: none; }
  }
  </style>
 </head>
@@ -559,6 +575,7 @@
  <button class="lang-btn" data-lang="zh-TW">繁</button>
  <button class="lang-btn" data-lang="zh-CN">简</button>
  </div>
+ <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')" style="display:none;font-size:24px;cursor:pointer;padding:8px;">☰</div>
  <div class="nav-links">
  <a href="#features">Features</a>
  <a href="#how-it-works">How it Works</a>
