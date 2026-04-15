@@ -43,11 +43,7 @@
  z-index: 100;
  }
 
- .nav-left {
- display: flex;
- align-items: center;
- gap: 16px;
- }
+ .nav-left { display: flex; align-items: center; gap: 16px; }
 
  .logo {
  display: flex;
@@ -82,24 +78,9 @@
  background: rgba(255,255,255,0.1);
  }
 
- .nav-right {
- display: flex;
- align-items: center;
- gap: 16px;
- }
-
- .nav-meta {
- display: flex;
- flex-direction: column;
- align-items: flex-end;
- gap: 8px;
- }
-
- .user-info {
- display: flex;
- align-items: center;
- gap: 12px;
- }
+ .nav-right { display: flex; align-items: center; gap: 16px; }
+ .nav-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+ .user-info { display: flex; align-items: center; gap: 12px; }
 
  .avatar {
  width: 36px;
@@ -114,17 +95,8 @@
  font-size: 13px;
  }
 
- .user-name {
- font-weight: 600;
- font-size: 14px;
- }
-
- .logout {
- color: rgba(255,255,255,0.7);
- text-decoration: none;
- font-size: 13px;
- }
-
+ .user-name { font-weight: 600; font-size: 14px; }
+ .logout { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; }
  .logout:hover { color: white; }
 
  .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
@@ -154,10 +126,7 @@
  color: var(--navy-dark);
  }
 
- .page-header p {
- color: var(--gray-500);
- margin-top: 4px;
- }
+ .page-header p { color: var(--gray-500); margin-top: 4px; }
 
  /* Tabs */
  .tabs {
@@ -205,72 +174,203 @@
  color: var(--navy-dark);
  }
 
- /* Weekly Grid */
- .week-grid {
- display: grid;
- grid-template-columns: repeat(7, 1fr);
+ /* Monthly Calendar */
+ .month-nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+
+ .month-nav h2 {
+ font-size: 20px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ }
+
+ .month-nav-btns {
+ display: flex;
  gap: 8px;
- margin-bottom: 24px;
  }
 
- .day-column {
- background: var(--gray-100);
- border-radius: 12px;
- padding: 12px;
- min-height: 200px;
- }
-
- .day-column.header {
- background: var(--navy);
- color: white;
- text-align: center;
+ .btn {
+ padding: 10px 20px;
+ border: none;
+ border-radius: 8px;
+ font-size: 14px;
  font-weight: 600;
- font-size: 13px;
- padding: 8px;
- }
-
- .day-column.header .date {
- font-size: 11px;
- opacity: 0.8;
- }
-
- .time-slot {
- background: var(--green);
- color: white;
- padding: 8px;
- border-radius: 6px;
- font-size: 12px;
- font-weight: 500;
- margin-bottom: 6px;
- text-align: center;
- }
-
- .time-slot.booked {
- background: var(--teal);
- }
-
- .time-slot.blocked {
- background: var(--gray-300);
- color: var(--gray-500);
- }
-
- /* Add Slot Button */
- .add-slot-btn {
- width: 100%;
- padding: 8px;
- border: 2px dashed var(--gray-300);
- background: transparent;
- border-radius: 6px;
- color: var(--gray-500);
- font-size: 12px;
  cursor: pointer;
  transition: all 0.2s;
  }
 
- .add-slot-btn:hover {
- border-color: var(--teal);
- color: var(--teal);
+ .btn-primary { background: var(--navy); color: white; }
+ .btn-primary:hover { background: var(--navy-dark); }
+ .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
+ .btn-secondary:hover { background: var(--gray-300); }
+ .btn-small { padding: 6px 12px; font-size: 12px; }
+
+ .calendar-grid {
+ display: grid;
+ grid-template-columns: repeat(7, 1fr);
+ gap: 8px;
  }
+
+ .calendar-header {
+ text-align: center;
+ font-size: 12px;
+ font-weight: 600;
+ color: var(--gray-500);
+ padding: 8px;
+ }
+
+ .calendar-day {
+ background: var(--gray-100);
+ border-radius: 8px;
+ min-height: 90px;
+ padding: 8px;
+ }
+
+ .calendar-day.other-month {
+ background: transparent;
+ }
+
+ .calendar-day.header {
+ background: var(--navy);
+ color: white;
+ border-radius: 8px 8px 0 0;
+ padding: 12px 8px;
+ text-align: center;
+ font-weight: 600;
+ font-size: 14px;
+ min-height: auto;
+ }
+
+ .calendar-day.header .date {
+ font-size: 11px;
+ opacity: 0.8;
+ margin-top: 2px;
+ }
+
+ .calendar-day .day-num {
+ font-weight: 600;
+ font-size: 14px;
+ color: var(--navy-dark);
+ margin-bottom: 6px;
+ }
+
+ .calendar-day.other-month .day-num {
+ color: var(--gray-300);
+ }
+
+ .calendar-day.today .day-num {
+ background: var(--teal);
+ color: white;
+ width: 24px;
+ height: 24px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ }
+
+ .event {
+ background: var(--green);
+ color: white;
+ padding: 4px 6px;
+ border-radius: 4px;
+ font-size: 11px;
+ font-weight: 500;
+ margin-bottom: 4px;
+ cursor: pointer;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ }
+
+ .event.booked { background: var(--teal); }
+ .event.blocked { background: var(--gray-300); color: var(--gray-500); }
+ .event:hover { opacity: 0.9; }
+
+ /* Stats Row */
+ .stats-row {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 16px;
+ margin-bottom: 32px;
+ }
+
+ .stat-card {
+ background: white;
+ border-radius: 12px;
+ padding: 20px;
+ border: 1px solid var(--gray-200);
+ text-align: center;
+ }
+
+ .stat-card .number {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy);
+ }
+
+ .stat-card .label {
+ font-size: 13px;
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Upcoming Bookings */
+ .booking-item {
+ display: flex;
+ align-items: center;
+ padding: 16px;
+ background: var(--gray-100);
+ border-radius: 12px;
+ margin-bottom: 12px;
+ }
+
+ .booking-item .date-badge {
+ background: var(--teal);
+ color: white;
+ padding: 10px 14px;
+ border-radius: 8px;
+ text-align: center;
+ margin-right: 16px;
+ min-width: 70px;
+ }
+
+ .booking-item .date-badge .day {
+ font-size: 20px;
+ font-weight: 700;
+ }
+
+ .booking-item .date-badge .month {
+ font-size: 11px;
+ opacity: 0.9;
+ }
+
+ .booking-item .details { flex: 1; }
+ .booking-item .student { font-weight: 600; color: var(--navy-dark); }
+ .booking-item .subject { font-size: 13px; color: var(--gray-500); }
+ .booking-item .time-badge {
+ background: var(--navy);
+ color: white;
+ padding: 6px 12px;
+ border-radius: 6px;
+ font-size: 13px;
+ font-weight: 500;
+ margin-right: 12px;
+ }
+
+ .booking-item .status {
+ font-size: 12px;
+ font-weight: 600;
+ padding: 4px 10px;
+ border-radius: 20px;
+ }
+
+ .booking-item .status.confirmed { background: rgba(34, 197, 94, 0.1); color: var(--green); }
+ .booking-item .status.pending { background: rgba(249, 168, 40, 0.1); color: var(--gold); }
 
  /* Modal */
  .modal-overlay {
@@ -303,9 +403,7 @@
  margin-bottom: 20px;
  }
 
- .form-group {
- margin-bottom: 16px;
- }
+ .form-group { margin-bottom: 16px; }
 
  .form-group label {
  display: block;
@@ -332,114 +430,11 @@
  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
  }
 
- .btn {
- padding: 10px 20px;
- border: none;
- border-radius: 8px;
- font-size: 14px;
- font-weight: 600;
- cursor: pointer;
- transition: all 0.2s;
- }
-
- .btn-primary {
- background: var(--navy);
- color: white;
- }
-
- .btn-primary:hover { background: var(--navy-dark); }
-
- .btn-secondary {
- background: var(--gray-200);
- color: var(--gray-700);
- }
-
- .btn-secondary:hover { background: var(--gray-300); }
-
  .modal-actions {
  display: flex;
  gap: 12px;
  justify-content: flex-end;
  margin-top: 24px;
- }
-
- /* Upcoming Bookings */
- .booking-item {
- display: flex;
- align-items: center;
- padding: 16px;
- background: var(--gray-100);
- border-radius: 12px;
- margin-bottom: 12px;
- }
-
- .booking-item .time {
- background: var(--teal);
- color: white;
- padding: 8px 12px;
- border-radius: 8px;
- font-size: 13px;
- font-weight: 600;
- margin-right: 16px;
- }
-
- .booking-item .details {
- flex: 1;
- }
-
- .booking-item .student {
- font-weight: 600;
- color: var(--navy-dark);
- }
-
- .booking-item .subject {
- font-size: 13px;
- color: var(--gray-500);
- }
-
- .booking-item .status {
- font-size: 12px;
- font-weight: 600;
- padding: 4px 10px;
- border-radius: 20px;
- }
-
- .booking-item .status.confirmed {
- background: rgba(34, 197, 94, 0.1);
- color: var(--green);
- }
-
- .booking-item .status.pending {
- background: rgba(249, 168, 40, 0.1);
- color: var(--gold);
- }
-
- /* Stats Row */
- .stats-row {
- display: grid;
- grid-template-columns: repeat(4, 1fr);
- gap: 16px;
- margin-bottom: 32px;
- }
-
- .stat-card {
- background: white;
- border-radius: 12px;
- padding: 20px;
- border: 1px solid var(--gray-200);
- text-align: center;
- }
-
- .stat-card .number {
- font-size: 28px;
- font-weight: 800;
- color: var(--navy);
- }
-
- .stat-card .label {
- font-size: 13px;
- color: var(--gray-500);
- margin-top: 4px;
  }
 
  /* Footer */
@@ -455,13 +450,13 @@
  /* Mobile */
  @media (max-width: 768px) {
  .nav-links { display: none; }
- .week-grid { grid-template-columns: repeat(3, 1fr); }
  .stats-row { grid-template-columns: repeat(2, 1fr); }
  .page-header { flex-direction: column; align-items: flex-start; }
- }
-
- @media (max-width: 480px) {
- .week-grid { grid-template-columns: repeat(2, 1fr); }
+ .calendar-day { min-height: 70px; padding: 6px; }
+ .event { font-size: 10px; padding: 3px 4px; }
+ .booking-item { flex-wrap: wrap; }
+ .booking-item .date-badge { margin-bottom: 12px; }
+ .booking-item .time-badge { margin: 8px 0; }
  }
  </style>
 </head>
@@ -504,21 +499,21 @@
  <h1>My Schedule</h1>
  <p>Manage your availability and upcoming lessons</p>
  </div>
- <button class="btn btn-primary" onclick="openModal('addSlot')">+ Add Time Slot</button>
+ <button class="btn btn-primary" onclick="openModal('addSlot')">+ Add Availability</button>
  </div>
 
  <div class="stats-row">
  <div class="stat-card">
  <div class="number">12</div>
- <div class="label">This Week</div>
+ <div class="label">Lessons This Month</div>
  </div>
  <div class="stat-card">
  <div class="number">8</div>
- <div class="label">Next Week</div>
+ <div class="label">Hours This Week</div>
  </div>
  <div class="stat-card">
  <div class="number">3</div>
- <div class="label">Pending</div>
+ <div class="label">Pending Requests</div>
  </div>
  <div class="stat-card">
  <div class="number">4.9</div>
@@ -527,82 +522,65 @@
  </div>
 
  <div class="tabs">
- <button class="tab active" onclick="showTab('weekly')">Weekly View</button>
+ <button class="tab active" onclick="showTab('calendar')">Monthly Calendar</button>
  <button class="tab" onclick="showTab('bookings')">Upcoming Bookings</button>
- <button class="tab" onclick="showTab('settings')">Availability Settings</button>
  </div>
 
- <div id="weeklyTab">
+ <div id="calendarTab">
  <div class="card">
- <div class="card-header">
- <h2>This Week (Apr 14 - Apr 20)</h2>
- <button class="btn btn-secondary">← Prev</button>
- <button class="btn btn-secondary">Next →</button>
+ <div class="month-nav">
+ <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)">← Prev</button>
+ <h2>April 2025</h2>
+ <button class="btn btn-secondary btn-small" onclick="changeMonth(1)">Next →</button>
  </div>
- <div class="week-grid">
- <div class="day-column header">
- <div>Mon</div>
- <div class="date">Apr 14</div>
- </div>
- <div class="day-column header">
- <div>Tue</div>
- <div class="date">Apr 15</div>
- </div>
- <div class="day-column header">
- <div>Wed</div>
- <div class="date">Apr 16</div>
- </div>
- <div class="day-column header">
- <div>Thu</div>
- <div class="date">Apr 17</div>
- </div>
- <div class="day-column header">
- <div>Fri</div>
- <div class="date">Apr 18</div>
- </div>
- <div class="day-column header">
- <div>Sat</div>
- <div class="date">Apr 19</div>
- </div>
- <div class="day-column header">
- <div>Sun</div>
- <div class="date">Apr 20</div>
- </div>
+ <div class="calendar-grid">
+ <div class="calendar-day header">Mon<div class="date">Apr</div></div>
+ <div class="calendar-day header">Tue<div class="date">Apr</div></div>
+ <div class="calendar-day header">Wed<div class="date">Apr</div></div>
+ <div class="calendar-day header">Thu<div class="date">Apr</div></div>
+ <div class="calendar-day header">Fri<div class="date">Apr</div></div>
+ <div class="calendar-day header">Sat<div class="date">Apr</div></div>
+ <div class="calendar-day header">Sun<div class="date">Apr</div></div>
 
- <div class="day-column">
- <div class="time-slot booked">9:00 - 10:00</div>
- <div class="time-slot">14:00 - 15:00</div>
- <div class="time-slot">16:00 - 17:00</div>
- <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
- </div>
- <div class="day-column">
- <div class="time-slot booked">10:00 - 11:00</div>
- <div class="time-slot booked">14:00 - 15:00</div>
- <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
- </div>
- <div class="day-column">
- <div class="time-slot">9:00 - 10:00</div>
- <div class="time-slot">15:00 - 16:00</div>
- <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
- </div>
- <div class="day-column">
- <div class="time-slot booked">11:00 - 12:00</div>
- <div class="time-slot">14:00 - 15:00</div>
- <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
- </div>
- <div class="day-column">
- <div class="time-slot">10:00 - 11:00</div>
- <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
- </div>
- <div class="day-column">
- <div class="time-slot booked">9:00 - 10:00</div>
- <div class="time-slot booked">11:00 - 12:00</div>
- <div class="time-slot">14:00 - 16:00</div>
- <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
- </div>
- <div class="day-column">
- <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
- </div>
+ <div class="calendar-day other-month"><div class="day-num">31</div></div>
+ <div class="calendar-day"><div class="day-num today">1</div><div class="event booked">10:00 Sarah</div><div class="event">14:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">2</div><div class="event booked">11:00 Jason</div><div class="event booked">15:00 Emily</div></div>
+ <div class="calendar-day"><div class="day-num">3</div><div class="event">09:00 Free</div><div class="event">14:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">4</div><div class="event blocked">All Day Blocked</div></div>
+ <div class="calendar-day"><div class="day-num">5</div><div class="event booked">10:00 David</div></div>
+ <div class="calendar-day"><div class="day-num">6</div></div>
+
+ <div class="calendar-day"><div class="day-num">7</div><div class="event">09:00 Free</div><div class="event">11:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">8</div><div class="event booked">10:00 Sarah</div></div>
+ <div class="calendar-day"><div class="day-num">9</div><div class="event booked">14:00 Jason</div></div>
+ <div class="calendar-day"><div class="day-num">10</div><div class="event">10:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">11</div><div class="event blocked">14:00 Doctor</div></div>
+ <div class="calendar-day"><div class="day-num">12</div></div>
+ <div class="calendar-day"><div class="day-num">13</div></div>
+
+ <div class="calendar-day"><div class="day-num">14</div><div class="event booked">09:00 Lisa</div><div class="event">15:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">15</div><div class="event booked">10:00 Tom</div><div class="event booked">14:00 Amy</div></div>
+ <div class="calendar-day"><div class="day-num">16</div><div class="event">11:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">17</div><div class="event booked">10:00 Sarah</div></div>
+ <div class="calendar-day"><div class="day-num">18</div><div class="event">09:00 Free</div><div class="event">14:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">19</div></div>
+ <div class="calendar-day"><div class="day-num">20</div></div>
+
+ <div class="calendar-day"><div class="day-num">21</div><div class="event booked">10:00 Jason</div></div>
+ <div class="calendar-day"><div class="day-num">22</div><div class="event">09:00 Free</div><div class="event">14:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">23</div><div class="event booked">11:00 Emily</div></div>
+ <div class="calendar-day"><div class="day-num">24</div><div class="event">10:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">25</div><div class="event blocked">All Day Blocked</div></div>
+ <div class="calendar-day"><div class="day-num">26</div></div>
+ <div class="calendar-day"><div class="day-num">27</div></div>
+
+ <div class="calendar-day"><div class="day-num">28</div><div class="event booked">14:00 David</div></div>
+ <div class="calendar-day"><div class="day-num">29</div><div class="event">09:00 Free</div><div class="event">11:00 Free</div></div>
+ <div class="calendar-day"><div class="day-num">30</div><div class="event booked">10:00 Sarah</div></div>
+ <div class="calendar-day other-month"><div class="day-num">1</div></div>
+ <div class="calendar-day other-month"><div class="day-num">2</div></div>
+ <div class="calendar-day other-month"><div class="day-num">3</div></div>
+ <div class="calendar-day other-month"><div class="day-num">4</div></div>
  </div>
  </div>
  </div>
@@ -613,113 +591,50 @@
  <h2>Upcoming Bookings</h2>
  </div>
  <div class="booking-item">
- <div class="time">Today 2:00 PM</div>
+ <div class="date-badge"><div class="day">15</div><div class="month">Apr</div></div>
+ <div class="time-badge">10:00 - 11:00</div>
  <div class="details">
- <div class="student">Sarah Lee</div>
+ <div class="student">Tom Wilson</div>
  <div class="subject">HKDSE Maths • Tuen Mun</div>
  </div>
  <span class="status confirmed">Confirmed</span>
  </div>
  <div class="booking-item">
- <div class="time">Tomorrow 10:00 AM</div>
+ <div class="date-badge"><div class="day">15</div><div class="month">Apr</div></div>
+ <div class="time-badge">14:00 - 15:00</div>
  <div class="details">
- <div class="student">Jason Wong</div>
+ <div class="student">Amy Chen</div>
  <div class="subject">HKDSE Maths • Sha Tin</div>
  </div>
  <span class="status confirmed">Confirmed</span>
  </div>
  <div class="booking-item">
- <div class="time">Apr 17 11:00 AM</div>
+ <div class="date-badge"><div class="day">17</div><div class="month">Apr</div></div>
+ <div class="time-badge">10:00 - 11:00</div>
  <div class="details">
- <div class="student">Emily Chan</div>
+ <div class="student">Sarah Lee</div>
  <div class="subject">HKDSE Maths • Kowloon</div>
  </div>
  <span class="status pending">Pending</span>
  </div>
  <div class="booking-item">
- <div class="time">Apr 18 2:00 PM</div>
+ <div class="date-badge"><div class="day">21</div><div class="month">Apr</div></div>
+ <div class="time-badge">10:00 - 11:00</div>
  <div class="details">
- <div class="student">David Lam</div>
+ <div class="student">Jason Wong</div>
  <div class="subject">IB Maths • Central</div>
  </div>
  <span class="status confirmed">Confirmed</span>
  </div>
+ <div class="booking-item">
+ <div class="date-badge"><div class="day">22</div><div class="month">Apr</div></div>
+ <div class="time-badge">09:00 - 10:00</div>
+ <div class="details">
+ <div class="student">Emily Lam</div>
+ <div class="subject">GCSE Maths • Wan Chai</div>
  </div>
+ <span class="status confirmed">Confirmed</span>
  </div>
-
- <div id="settingsTab" style="display: none;">
- <div class="card">
- <div class="card-header">
- <h2>Default Availability</h2>
- </div>
- <p style="color: var(--gray-500); margin-bottom: 20px;">Set your typical weekly availability. You can override specific days anytime.</p>
- 
- <div class="form-group">
- <label>Typical Working Days</label>
- <select multiple style="height: 120px;">
- <option selected>Monday</option>
- <option selected>Tuesday</option>
- <option selected>Wednesday</option>
- <option selected>Thursday</option>
- <option selected>Friday</option>
- <option>Saturday</option>
- <option>Sunday</option>
- </select>
- <small style="color: var(--gray-500);">Hold Ctrl/Cmd to select multiple days</small>
- </div>
-
- <div class="form-group">
- <label>Default Session Duration</label>
- <select>
- <option value="60">60 minutes</option>
- <option value="90" selected>90 minutes</option>
- <option value="120">120 minutes</option>
- </select>
- </div>
-
- <div class="form-group">
- <label>Buffer Time Between Sessions</label>
- <select>
- <option value="0">No buffer</option>
- <option value="15" selected>15 minutes</option>
- <option value="30">30 minutes</option>
- </select>
- </div>
-
- <button class="btn btn-primary" onclick="alert('Availability settings saved!')">Save Settings</button>
- </div>
-
- <div class="card">
- <div class="card-header">
- <h2>Booking Rules</h2>
- </div>
- 
- <div class="form-group">
- <label>Minimum Notice for Bookings</label>
- <select>
- <option value="24">24 hours in advance</option>
- <option value="48" selected>48 hours in advance</option>
- <option value="72">72 hours in advance</option>
- </select>
- </div>
-
- <div class="form-group">
- <label>Cancellation Policy</label>
- <select>
- <option value="24">Allow cancellation up to 24h before</option>
- <option value="48" selected>Allow cancellation up to 48h before</option>
- <option value="none">Allow cancellation anytime</option>
- </select>
- </div>
-
- <div class="form-group">
- <label>
- <input type="checkbox" checked style="margin-right: 8px;">
- Automatically accept bookings (no approval needed)
- </label>
- </div>
-
- <button class="btn btn-primary" onclick="alert('Booking rules saved!')">Save Rules</button>
  </div>
  </div>
  </main>
@@ -727,18 +642,10 @@
  <!-- Add Slot Modal -->
  <div class="modal-overlay" id="addSlotModal">
  <div class="modal">
- <h2>Add Available Time Slot</h2>
+ <h2>Add Availability</h2>
  <div class="form-group">
- <label>Day of Week</label>
- <select id="slotDay">
- <option value="monday">Monday</option>
- <option value="tuesday">Tuesday</option>
- <option value="wednesday">Wednesday</option>
- <option value="thursday">Thursday</option>
- <option value="friday">Friday</option>
- <option value="saturday">Saturday</option>
- <option value="sunday">Sunday</option>
- </select>
+ <label>Date</label>
+ <input type="date" id="slotDate">
  </div>
  <div class="form-group">
  <label>Start Time</label>
@@ -751,8 +658,9 @@
  <div class="form-group">
  <label>Repeat</label>
  <select id="slotRepeat">
- <option value="once">This week only</option>
- <option value="weekly" selected>Every week</option>
+ <option value="once">This date only</option>
+ <option value="weekly">Every week (recurring)</option>
+ <option value="monthly">Every month (recurring)</option>
  </select>
  </div>
  <div class="modal-actions">
@@ -776,23 +684,24 @@
  }
 
  function addSlot() {
- const day = document.getElementById('slotDay').value;
+ const date = document.getElementById('slotDate').value;
  const start = document.getElementById('slotStart').value;
  const end = document.getElementById('slotEnd').value;
- alert('Time slot added for ' + day + ' from ' + start + ' to ' + end + '!');
+ alert('Availability added for ' + date + ' from ' + start + ' to ' + end);
  closeModal('addSlot');
  }
 
  function showTab(tab) {
- document.getElementById('weeklyTab').style.display = tab === 'weekly' ? 'block' : 'none';
+ document.getElementById('calendarTab').style.display = tab === 'calendar' ? 'block' : 'none';
  document.getElementById('bookingsTab').style.display = tab === 'bookings' ? 'block' : 'none';
- document.getElementById('settingsTab').style.display = tab === 'settings' ? 'block' : 'none';
- 
  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
  event.target.classList.add('active');
  }
 
- // Close modal on outside click
+ function changeMonth(dir) {
+ alert('Month navigation - would load different calendar data');
+ }
+
  document.getElementById('addSlotModal').addEventListener('click', function(e) {
  if (e.target === this) closeModal('addSlot');
  });

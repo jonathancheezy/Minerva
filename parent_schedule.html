@@ -43,11 +43,7 @@
  z-index: 100;
  }
 
- .nav-left {
- display: flex;
- align-items: center;
- gap: 16px;
- }
+ .nav-left { display: flex; align-items: center; gap: 16px; }
 
  .logo {
  display: flex;
@@ -82,24 +78,9 @@
  background: rgba(255,255,255,0.1);
  }
 
- .nav-right {
- display: flex;
- align-items: center;
- gap: 16px;
- }
-
- .nav-meta {
- display: flex;
- flex-direction: column;
- align-items: flex-end;
- gap: 8px;
- }
-
- .user-info {
- display: flex;
- align-items: center;
- gap: 12px;
- }
+ .nav-right { display: flex; align-items: center; gap: 16px; }
+ .nav-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+ .user-info { display: flex; align-items: center; gap: 12px; }
 
  .avatar {
  width: 36px;
@@ -114,17 +95,8 @@
  font-size: 13px;
  }
 
- .user-name {
- font-weight: 600;
- font-size: 14px;
- }
-
- .logout {
- color: rgba(255,255,255,0.7);
- text-decoration: none;
- font-size: 13px;
- }
-
+ .user-name { font-weight: 600; font-size: 14px; }
+ .logout { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; }
  .logout:hover { color: white; }
 
  .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
@@ -154,10 +126,7 @@
  color: var(--navy-dark);
  }
 
- .page-header p {
- color: var(--gray-500);
- margin-top: 4px;
- }
+ .page-header p { color: var(--gray-500); margin-top: 4px; }
 
  /* Tabs */
  .tabs {
@@ -205,75 +174,24 @@
  color: var(--navy-dark);
  }
 
- /* Teacher Card */
- .teacher-row {
+ /* Monthly Calendar */
+ .month-nav {
  display: flex;
- gap: 16px;
- padding: 16px;
- background: var(--gray-100);
- border-radius: 12px;
- margin-bottom: 12px;
- cursor: pointer;
- transition: all 0.2s;
- }
-
- .teacher-row:hover {
- background: var(--gray-200);
- }
-
- .teacher-row.selected {
- border: 2px solid var(--teal);
- background: rgba(59, 130, 246, 0.05);
- }
-
- .teacher-avatar {
- width: 50px;
- height: 50px;
- border-radius: 50%;
- background: var(--navy);
- color: white;
- display: flex;
+ justify-content: space-between;
  align-items: center;
- justify-content: center;
+ margin-bottom: 20px;
+ }
+
+ .month-nav h2 {
+ font-size: 20px;
  font-weight: 700;
- font-size: 16px;
- flex-shrink: 0;
- }
-
- .teacher-info {
- flex: 1;
- }
-
- .teacher-name {
- font-weight: 600;
  color: var(--navy-dark);
  }
 
- .teacher-subject {
- font-size: 13px;
- color: var(--gray-500);
- }
-
- .teacher-meta {
- text-align: right;
- }
-
- .teacher-rate {
- font-weight: 700;
- color: var(--navy);
- }
-
- .teacher-rating {
- font-size: 13px;
- color: var(--gold);
- }
-
- /* Calendar */
  .calendar-grid {
  display: grid;
  grid-template-columns: repeat(7, 1fr);
  gap: 8px;
- margin-top: 16px;
  }
 
  .calendar-header {
@@ -287,9 +205,8 @@
  .calendar-day {
  background: var(--gray-100);
  border-radius: 8px;
+ min-height: 80px;
  padding: 8px;
- text-align: center;
- min-height: 60px;
  cursor: pointer;
  transition: all 0.2s;
  }
@@ -300,8 +217,51 @@
 
  .calendar-day.disabled {
  background: transparent;
+ cursor: default;
+ }
+
+ .calendar-day.other-month {
+ background: transparent;
+ }
+
+ .calendar-day.header {
+ background: var(--navy);
+ color: white;
+ border-radius: 8px 8px 0 0;
+ padding: 12px 8px;
+ text-align: center;
+ font-weight: 600;
+ font-size: 14px;
+ min-height: auto;
+ cursor: default;
+ }
+
+ .calendar-day.header .date {
+ font-size: 11px;
+ opacity: 0.8;
+ margin-top: 2px;
+ }
+
+ .calendar-day .day-num {
+ font-weight: 600;
+ font-size: 14px;
+ color: var(--navy-dark);
+ margin-bottom: 4px;
+ }
+
+ .calendar-day.other-month .day-num {
  color: var(--gray-300);
- cursor: not-allowed;
+ }
+
+ .calendar-day.today .day-num {
+ background: var(--teal);
+ color: white;
+ width: 24px;
+ height: 24px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
  }
 
  .calendar-day.available {
@@ -309,25 +269,65 @@
  border: 1px solid var(--green);
  }
 
- .calendar-day.selected {
- background: var(--teal);
- color: white;
+ .calendar-day.available:hover {
+ background: rgba(34, 197, 94, 0.2);
  }
 
- .calendar-day .day-num {
- font-weight: 600;
- font-size: 14px;
+ .calendar-day.selected {
+ background: var(--teal);
+ }
+
+ .calendar-day.selected .day-num {
+ background: white;
+ color: var(--teal);
  }
 
  .calendar-day .slots {
- font-size: 10px;
- color: var(--gray-500);
- margin-top: 4px;
+ font-size: 11px;
+ color: var(--green);
+ font-weight: 500;
  }
 
  .calendar-day.selected .slots {
- color: rgba(255,255,255,0.8);
+ color: rgba(255,255,255,0.9);
  }
+
+ /* Teacher Card */
+ .teacher-card {
+ display: flex;
+ gap: 16px;
+ padding: 16px;
+ background: var(--gray-100);
+ border-radius: 12px;
+ margin-bottom: 16px;
+ cursor: pointer;
+ transition: all 0.2s;
+ border: 2px solid transparent;
+ }
+
+ .teacher-card:hover { background: var(--gray-200); }
+ .teacher-card.selected { border-color: var(--teal); background: rgba(59, 130, 246, 0.05); }
+
+ .teacher-avatar {
+ width: 56px;
+ height: 56px;
+ border-radius: 50%;
+ background: var(--navy);
+ color: white;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 18px;
+ flex-shrink: 0;
+ }
+
+ .teacher-info { flex: 1; }
+ .teacher-name { font-weight: 600; color: var(--navy-dark); font-size: 16px; }
+ .teacher-subject { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
+ .teacher-meta { text-align: right; }
+ .teacher-rate { font-weight: 700; color: var(--navy); font-size: 16px; }
+ .teacher-rating { font-size: 13px; color: var(--gold); margin-top: 4px; }
 
  /* Time Slots */
  .time-slots {
@@ -338,17 +338,17 @@
  }
 
  .time-slot {
- padding: 10px;
+ padding: 12px;
  border: 1px solid var(--gray-200);
  border-radius: 8px;
  text-align: center;
- font-size: 13px;
+ font-size: 14px;
  font-weight: 500;
  cursor: pointer;
  transition: all 0.2s;
  }
 
- .time-slot:hover {
+ .time-slot:hover:not(.disabled) {
  border-color: var(--teal);
  color: var(--teal);
  }
@@ -375,45 +375,40 @@
  margin-bottom: 12px;
  }
 
- .booking-item .date-time {
+ .booking-item .date-badge {
  background: var(--navy);
  color: white;
- padding: 8px 12px;
+ padding: 10px 14px;
  border-radius: 8px;
  text-align: center;
  margin-right: 16px;
+ min-width: 70px;
  }
 
- .booking-item .date-time .date {
+ .booking-item .date-badge .day {
+ font-size: 20px;
+ font-weight: 700;
+ }
+
+ .booking-item .date-badge .month {
  font-size: 11px;
  opacity: 0.8;
  }
 
- .booking-item .date-time .time {
- font-size: 14px;
- font-weight: 600;
- }
-
- .booking-item .details {
- flex: 1;
- }
-
- .booking-item .teacher {
- font-weight: 600;
- color: var(--navy-dark);
- }
-
- .booking-item .subject {
+ .booking-item .details { flex: 1; }
+ .booking-item .teacher { font-weight: 600; color: var(--navy-dark); }
+ .booking-item .subject { font-size: 13px; color: var(--gray-500); }
+ .booking-item .time-badge {
+ background: var(--teal);
+ color: white;
+ padding: 6px 12px;
+ border-radius: 6px;
  font-size: 13px;
- color: var(--gray-500);
+ font-weight: 500;
+ margin-right: 12px;
  }
 
- .booking-item .actions {
- display: flex;
- gap: 8px;
- }
-
- .booking-item .btn-small {
+ .btn-small {
  padding: 6px 12px;
  border: none;
  border-radius: 6px;
@@ -423,17 +418,12 @@
  transition: all 0.2s;
  }
 
- .booking-item .btn-reschedule {
- background: var(--gray-200);
- color: var(--gray-700);
- }
+ .btn-reschedule { background: var(--gray-200); color: var(--gray-700); }
+ .btn-reschedule:hover { background: var(--gray-300); }
+ .btn-cancel { background: rgba(239, 68, 68, 0.1); color: var(--red); }
+ .btn-cancel:hover { background: rgba(239, 68, 68, 0.2); }
 
- .booking-item .btn-cancel {
- background: rgba(239, 68, 68, 0.1);
- color: var(--red);
- }
-
- /* Summary */
+ /* Booking Summary */
  .booking-summary {
  background: var(--navy);
  color: white;
@@ -462,6 +452,22 @@
  font-size: 18px;
  }
 
+ /* Buttons */
+ .btn {
+ padding: 10px 20px;
+ border: none;
+ border-radius: 8px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .btn-primary { background: var(--navy); color: white; }
+ .btn-primary:hover { background: var(--navy-dark); }
+ .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
+ .btn-secondary:hover { background: var(--gray-300); }
+
  /* Footer */
  footer {
  text-align: center;
@@ -475,15 +481,15 @@
  /* Mobile */
  @media (max-width: 768px) {
  .nav-links { display: none; }
- .time-slots { grid-template-columns: repeat(3, 1fr); }
  .page-header { flex-direction: column; align-items: flex-start; }
+ .calendar-day { min-height: 60px; padding: 4px; }
+ .time-slots { grid-template-columns: repeat(3, 1fr); }
+ .teacher-card { flex-direction: column; }
+ .teacher-meta { text-align: left; margin-top: 8px; }
  .booking-item { flex-direction: column; align-items: flex-start; }
- .booking-item .date-time { margin-bottom: 12px; }
- .booking-item .actions { margin-top: 12px; width: 100%; }
- }
-
- @media (max-width: 480px) {
- .time-slots { grid-template-columns: repeat(2, 1fr); }
+ .booking-item .date-badge { margin-bottom: 12px; }
+ .booking-item .time-badge { margin: 8px 0; }
+ .booking-item .btn-small { width: 100%; margin-top: 8px; }
  }
  </style>
 </head>
@@ -530,7 +536,7 @@
 
  <div class="tabs">
  <button class="tab active" onclick="showTab('book')">Book New</button>
- <button class="tab" onclick="showTab('upcoming')">Upcoming Lessons</button>
+ <button class="tab" onclick="showTab('upcoming')">Upcoming</button>
  <button class="tab" onclick="showTab('history')">History</button>
  </div>
 
@@ -539,40 +545,40 @@
  <div class="card-header">
  <h2>1. Select Teacher</h2>
  </div>
- <div class="teacher-row selected" onclick="selectTeacher(this)">
+ <div class="teacher-card selected" onclick="selectTeacher(this, 'Teacher Chan', 350)">
  <div class="teacher-avatar">TC</div>
  <div class="teacher-info">
  <div class="teacher-name">Teacher Chan</div>
- <div class="teacher-subject">HKDSE Maths • 5 years exp.</div>
+ <div class="teacher-subject">HKDSE Maths • 5 years exp. • Tuen Mun</div>
  </div>
  <div class="teacher-meta">
  <div class="teacher-rate">$350/hr</div>
  <div class="teacher-rating">⭐ 4.9 (127)</div>
  </div>
  </div>
- <div class="teacher-row" onclick="selectTeacher(this)">
+ <div class="teacher-card" onclick="selectTeacher(this, 'Miss Lily', 400)">
  <div class="teacher-avatar">ML</div>
  <div class="teacher-info">
  <div class="teacher-name">Miss Lily</div>
- <div class="teacher-subject">IB Maths • 7 years exp.</div>
+ <div class="teacher-subject">IB Maths • 7 years exp. • Sha Tin</div>
  </div>
  <div class="teacher-meta">
  <div class="teacher-rate">$400/hr</div>
  <div class="teacher-rating">⭐ 4.8 (89)</div>
  </div>
  </div>
- <div class="teacher-row" onclick="selectTeacher(this)">
+ <div class="teacher-card" onclick="selectTeacher(this, 'Mr. Kevin', 300)">
  <div class="teacher-avatar">KW</div>
  <div class="teacher-info">
  <div class="teacher-name">Mr. Kevin</div>
- <div class="teacher-subject">GCSE Maths • 3 years exp.</div>
+ <div class="teacher-subject">GCSE Maths • 3 years exp. • Central</div>
  </div>
  <div class="teacher-meta">
  <div class="teacher-rate">$300/hr</div>
  <div class="teacher-rating">⭐ 4.7 (56)</div>
  </div>
  </div>
- <p style="margin-top: 16px; color: var(--gray-500); font-size: 14px;">
+ <p style="margin-top: 12px; color: var(--gray-500); font-size: 14px;">
  <a href="teachers.html" style="color: var(--teal);">Browse all teachers →</a>
  </p>
  </div>
@@ -581,115 +587,98 @@
  <div class="card-header">
  <h2>2. Select Date</h2>
  </div>
- <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
- <button class="btn btn-secondary" style="padding: 8px 12px;" onclick="changeMonth(-1)">← Prev</button>
- <span style="font-weight: 600;">April 2025</span>
- <button class="btn btn-secondary" style="padding: 8px 12px;" onclick="changeMonth(1)">Next →</button>
+ <div class="month-nav" style="margin-bottom: 16px;">
+ <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)">← Prev</button>
+ <h2 style="font-size: 18px;">April 2025</h2>
+ <button class="btn btn-secondary btn-small" onclick="changeMonth(1)">Next →</button>
  </div>
  <div class="calendar-grid">
- <div class="calendar-header">Mon</div>
- <div class="calendar-header">Tue</div>
- <div class="calendar-header">Wed</div>
- <div class="calendar-header">Thu</div>
- <div class="calendar-header">Fri</div>
- <div class="calendar-header">Sat</div>
- <div class="calendar-header">Sun</div>
- 
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- 
- <div class="calendar-day disabled">1</div>
- <div class="calendar-day disabled">2</div>
- <div class="calendar-day disabled">3</div>
- <div class="calendar-day disabled">4</div>
- <div class="calendar-day disabled">5</div>
- <div class="calendar-day disabled">6</div>
- <div class="calendar-day disabled">7</div>
- 
- <div class="calendar-day disabled">8</div>
- <div class="calendar-day disabled">9</div>
- <div class="calendar-day disabled">10</div>
- <div class="calendar-day disabled">11</div>
- <div class="calendar-day disabled">12</div>
- <div class="calendar-day disabled">13</div>
- <div class="calendar-day disabled">14</div>
- 
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day header">Mon<div class="date">Apr</div></div>
+ <div class="calendar-day header">Tue<div class="date">Apr</div></div>
+ <div class="calendar-day header">Wed<div class="date">Apr</div></div>
+ <div class="calendar-day header">Thu<div class="date">Apr</div></div>
+ <div class="calendar-day header">Fri<div class="date">Apr</div></div>
+ <div class="calendar-day header">Sat<div class="date">Apr</div></div>
+ <div class="calendar-day header">Sun<div class="date">Apr</div></div>
+
+ <div class="calendar-day other-month disabled"><div class="day-num">31</div></div>
+ <div class="calendar-day disabled"><div class="day-num">1</div></div>
+ <div class="calendar-day disabled"><div class="day-num">2</div></div>
+ <div class="calendar-day disabled"><div class="day-num">3</div></div>
+ <div class="calendar-day disabled"><div class="day-num">4</div></div>
+ <div class="calendar-day disabled"><div class="day-num">5</div></div>
+ <div class="calendar-day disabled"><div class="day-num">6</div></div>
+
+ <div class="calendar-day disabled"><div class="day-num">7</div></div>
+ <div class="calendar-day disabled"><div class="day-num">8</div></div>
+ <div class="calendar-day disabled"><div class="day-num">9</div></div>
+ <div class="calendar-day disabled"><div class="day-num">10</div></div>
+ <div class="calendar-day disabled"><div class="day-num">11</div></div>
+ <div class="calendar-day disabled"><div class="day-num">12</div></div>
+ <div class="calendar-day disabled"><div class="day-num">13</div></div>
+
+ <div class="calendar-day available" onclick="selectDate(this, '14')">
+ <div class="day-num">14</div>
+ <div class="slots">3 slots</div>
+ </div>
+ <div class="calendar-day available selected" onclick="selectDate(this, '15')">
  <div class="day-num">15</div>
  <div class="slots">3 slots</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day available" onclick="selectDate(this, '16')">
  <div class="day-num">16</div>
  <div class="slots">2 slots</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day available" onclick="selectDate(this, '17')">
  <div class="day-num">17</div>
  <div class="slots">4 slots</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day available" onclick="selectDate(this, '18')">
  <div class="day-num">18</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this)">
- <div class="day-num">19</div>
  <div class="slots">1 slot</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
- <div class="day-num">20</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day disabled"><div class="day-num">19</div></div>
+ <div class="calendar-day disabled"><div class="day-num">20</div></div>
+
+ <div class="calendar-day available" onclick="selectDate(this, '21')">
  <div class="day-num">21</div>
  <div class="slots">3 slots</div>
  </div>
- 
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day available" onclick="selectDate(this, '22')">
  <div class="day-num">22</div>
  <div class="slots">4 slots</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day available" onclick="selectDate(this, '23')">
  <div class="day-num">23</div>
  <div class="slots">2 slots</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day available" onclick="selectDate(this, '24')">
  <div class="day-num">24</div>
  <div class="slots">3 slots</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day available" onclick="selectDate(this, '25')">
  <div class="day-num">25</div>
- <div class="slots">1 slot</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this)">
- <div class="day-num">26</div>
  <div class="slots">2 slots</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
- <div class="day-num">27</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="calendar-day disabled"><div class="day-num">26</div></div>
+ <div class="calendar-day disabled"><div class="day-num">27</div></div>
+
+ <div class="calendar-day available" onclick="selectDate(this, '28')">
  <div class="day-num">28</div>
- <div class="slots">2 slots</div>
- </div>
- 
- <div class="calendar-day available" onclick="selectDate(this)">
- <div class="day-num">29</div>
  <div class="slots">4 slots</div>
  </div>
- <div class="calendar-day available" onclick="selectDate(this)">
- <div class="day-num">30</div>
+ <div class="calendar-day available" onclick="selectDate(this, '29')">
+ <div class="day-num">29</div>
  <div class="slots">3 slots</div>
  </div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
- <div class="calendar-day disabled"></div>
+ <div class="calendar-day available" onclick="selectDate(this, '30')">
+ <div class="day-num">30</div>
+ <div class="slots">2 slots</div>
+ </div>
+ <div class="calendar-day other-month disabled"><div class="day-num">1</div></div>
+ <div class="calendar-day other-month disabled"><div class="day-num">2</div></div>
+ <div class="calendar-day other-month disabled"><div class="day-num">3</div></div>
+ <div class="calendar-day other-month disabled"><div class="day-num">4</div></div>
  </div>
  </div>
 
@@ -698,14 +687,14 @@
  <h2>3. Select Time</h2>
  </div>
  <div class="time-slots">
- <div class="time-slot" onclick="selectTime(this)">9:00 AM</div>
- <div class="time-slot" onclick="selectTime(this)">10:00 AM</div>
+ <div class="time-slot" onclick="selectTime(this, '9:00 AM', '10:00 AM')">9:00 AM</div>
+ <div class="time-slot" onclick="selectTime(this, '10:00 AM', '11:00 AM')">10:00 AM</div>
  <div class="time-slot disabled">11:00 AM</div>
  <div class="time-slot disabled">12:00 PM</div>
- <div class="time-slot" onclick="selectTime(this)">2:00 PM</div>
- <div class="time-slot disabled">3:00 PM</div>
- <div class="time-slot" onclick="selectTime(this)">4:00 PM</div>
- <div class="time-slot" onclick="selectTime(this)">5:00 PM</div>
+ <div class="time-slot" onclick="selectTime(this, '2:00 PM', '3:00 PM')">2:00 PM</div>
+ <div class="time-slot" onclick="selectTime(this, '3:00 PM', '4:00 PM')">3:00 PM</div>
+ <div class="time-slot disabled">4:00 PM</div>
+ <div class="time-slot disabled">5:00 PM</div>
  </div>
  </div>
 
@@ -721,15 +710,15 @@
  </div>
  <div class="summary-row">
  <span>Time</span>
- <span id="summaryTime">9:00 AM - 10:00 AM</span>
+ <span id="summaryTime">9:00 - 10:00 AM</span>
  </div>
  <div class="summary-row">
  <span>Rate</span>
- <span id="summaryRate">$350</span>
+ <span id="summaryRate">$350/hr</span>
  </div>
  <div class="summary-row">
  <span>Total</span>
- <span>$350</span>
+ <span id="summaryTotal">$350</span>
  </div>
  </div>
 
@@ -745,46 +734,34 @@
  <h2>Upcoming Lessons</h2>
  </div>
  <div class="booking-item">
- <div class="date-time">
- <div class="date">Apr 15</div>
- <div class="time">2:00 PM</div>
- </div>
+ <div class="date-badge"><div class="day">15</div><div class="month">Apr</div></div>
+ <div class="time-badge">2:00 PM</div>
  <div class="details">
  <div class="teacher">Teacher Chan</div>
- <div class="subject">HKDSE Maths • 90 min session</div>
+ <div class="subject">HKDSE Maths • 90 min</div>
  </div>
- <div class="actions">
  <button class="btn-small btn-reschedule">Reschedule</button>
  <button class="btn-small btn-cancel">Cancel</button>
  </div>
- </div>
  <div class="booking-item">
- <div class="date-time">
- <div class="date">Apr 18</div>
- <div class="time">10:00 AM</div>
- </div>
+ <div class="date-badge"><div class="day">18</div><div class="month">Apr</div></div>
+ <div class="time-badge">10:00 AM</div>
  <div class="details">
  <div class="teacher">Teacher Chan</div>
- <div class="subject">HKDSE Maths • 60 min session</div>
+ <div class="subject">HKDSE Maths • 60 min</div>
  </div>
- <div class="actions">
  <button class="btn-small btn-reschedule">Reschedule</button>
  <button class="btn-small btn-cancel">Cancel</button>
  </div>
- </div>
  <div class="booking-item">
- <div class="date-time">
- <div class="date">Apr 22</div>
- <div class="time">3:00 PM</div>
- </div>
+ <div class="date-badge"><div class="day">22</div><div class="month">Apr</div></div>
+ <div class="time-badge">3:00 PM</div>
  <div class="details">
  <div class="teacher">Miss Lily</div>
- <div class="subject">IB Maths • 90 min session</div>
+ <div class="subject">IB Maths • 90 min</div>
  </div>
- <div class="actions">
  <button class="btn-small btn-reschedule">Reschedule</button>
  <button class="btn-small btn-cancel">Cancel</button>
- </div>
  </div>
  </div>
  </div>
@@ -795,31 +772,22 @@
  <h2>Past Lessons</h2>
  </div>
  <div class="booking-item" style="opacity: 0.7;">
- <div class="date-time" style="background: var(--gray-500);">
- <div class="date">Apr 11</div>
- <div class="time">2:00 PM</div>
- </div>
- <div class="details">
+ <div class="date-badge" style="background: var(--gray-500);"><div class="day">11</div><div class="month">Apr</div></div>
+ <div class="details" style="margin-left: 0;">
  <div class="teacher">Teacher Chan</div>
  <div class="subject">HKDSE Maths • Completed</div>
  </div>
  </div>
  <div class="booking-item" style="opacity: 0.7;">
- <div class="date-time" style="background: var(--gray-500);">
- <div class="date">Apr 8</div>
- <div class="time">10:00 AM</div>
- </div>
- <div class="details">
+ <div class="date-badge" style="background: var(--gray-500);"><div class="day">8</div><div class="month">Apr</div></div>
+ <div class="details" style="margin-left: 0;">
  <div class="teacher">Teacher Chan</div>
  <div class="subject">HKDSE Maths • Completed</div>
  </div>
  </div>
  <div class="booking-item" style="opacity: 0.7;">
- <div class="date-time" style="background: var(--gray-500);">
- <div class="date">Apr 4</div>
- <div class="time">3:00 PM</div>
- </div>
- <div class="details">
+ <div class="date-badge" style="background: var(--gray-500);"><div class="day">4</div><div class="month">Apr</div></div>
+ <div class="details" style="margin-left: 0;">
  <div class="teacher">Miss Lily</div>
  <div class="subject">IB Maths • Completed</div>
  </div>
@@ -838,50 +806,41 @@
  <script>
  let selectedTeacher = 'Teacher Chan';
  let selectedDate = 'Apr 15, 2025';
- let selectedTime = '9:00 AM';
+ let selectedTime = '9:00 AM - 10:00 AM';
+ let selectedRate = 350;
 
- function selectTeacher(el) {
- document.querySelectorAll('.teacher-row').forEach(r => r.classList.remove('selected'));
+ function selectTeacher(el, name, rate) {
+ document.querySelectorAll('.teacher-card').forEach(c => c.classList.remove('selected'));
  el.classList.add('selected');
- selectedTeacher = el.querySelector('.teacher-name').textContent;
- document.getElementById('summaryTeacher').textContent = selectedTeacher;
+ selectedTeacher = name;
+ selectedRate = rate;
+ document.getElementById('summaryTeacher').textContent = name;
+ document.getElementById('summaryRate').textContent = '$' + rate + '/hr';
+ document.getElementById('summaryTotal').textContent = '$' + rate;
  }
 
- function selectDate(el) {
+ function selectDate(el, day) {
  document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
  el.classList.add('selected');
- const day = el.querySelector('.day-num').textContent;
  selectedDate = 'Apr ' + day + ', 2025';
  document.getElementById('summaryDate').textContent = selectedDate;
  }
 
- function selectTime(el) {
+ function selectTime(el, time, endTime) {
  document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
  el.classList.add('selected');
- selectedTime = el.textContent;
- document.getElementById('summaryTime').textContent = selectedTime + ' - ' + getEndTime(selectedTime);
- }
-
- function getEndTime(start) {
- const [time, period] = start.split(' ');
- let [hour, min] = time.split(':').map(Number);
- if (period === 'PM' && hour !== 12) hour += 12;
- if (period === 'AM' && hour === 12) hour = 0;
- hour += 1;
- const newPeriod = hour >= 12 ? 'PM' : 'AM';
- const newHour = hour > 12 ? hour - 12 : hour;
- return newHour + ':' + (min === 0 ? '00' : min) + ' ' + newPeriod;
+ selectedTime = time + ' - ' + endTime;
+ document.getElementById('summaryTime').textContent = selectedTime;
  }
 
  function confirmBooking() {
- alert('Booking confirmed! ' + selectedTeacher + ' on ' + selectedDate + ' at ' + selectedTime);
+ alert('Booking confirmed!\n\n' + selectedTeacher + '\n' + selectedDate + '\n' + selectedTime + '\n\nTotal: $' + selectedRate);
  }
 
  function showTab(tab) {
  document.getElementById('bookTab').style.display = tab === 'book' ? 'block' : 'none';
  document.getElementById('upcomingTab').style.display = tab === 'upcoming' ? 'block' : 'none';
  document.getElementById('historyTab').style.display = tab === 'history' ? 'block' : 'none';
- 
  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
  event.target.classList.add('active');
  }
