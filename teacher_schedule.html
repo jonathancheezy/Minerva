@@ -521,10 +521,10 @@
  <main class="main">
  <div class="page-header">
  <div>
- <h1>My Schedule</h1>
+ <h1 data-i18n="schedule.my_schedule">My Schedule</h1>
  <p>Manage your availability and upcoming lessons</p>
  </div>
- <button class="btn btn-primary" onclick="openModal('addSlot')">+ Add Availability</button>
+ <button class="btn btn-primary" onclick="openModal('addSlot')" data-i18n="schedule.add_availability">+ Add Availability</button>
  </div>
 
  <div class="stats-row">
@@ -547,8 +547,8 @@
  </div>
 
  <div class="tabs">
- <button class="tab active" onclick="showTab('calendar')">Monthly Calendar</button>
- <button class="tab" onclick="showTab('bookings')">Upcoming Bookings</button>
+ <button class="tab active" onclick="showTab('calendar')" data-i18n="schedule.monthly_calendar">Monthly Calendar</button>
+ <button class="tab" onclick="showTab('bookings')" data-i18n="schedule.upcoming_bookings">Upcoming Bookings</button>
  </div>
 
  <div id="calendarTab">
@@ -787,6 +787,12 @@
 
  document.getElementById('addSlotModal').addEventListener('click', function(e) {
  if (e.target === this) closeModal('addSlot');
+ });
+ </script>
+ <script src="translations.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+ applyTranslations();
  });
  </script>
 </body>
