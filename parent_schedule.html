@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Book a Lesson — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-500: #64748b;
+ --green: #22c55e;
+ --red: #ef4444;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--gray-100);
+ color: var(--gray-700);
+ line-height: 1.6;
+ }
+
+ /* Nav */
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+ z-index: 100;
+ }
+
+ .nav-left {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 32px; height: 32px; }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ margin-left: 32px;
+ }
+
+ .nav-links a {
+ color: rgba(255,255,255,0.8);
+ text-decoration: none;
+ font-weight: 500;
+ font-size: 14px;
+ padding: 8px 12px;
+ border-radius: 8px;
+ transition: all 0.2s;
+ }
+
+ .nav-links a:hover, .nav-links a.active {
+ color: white;
+ background: rgba(255,255,255,0.1);
+ }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .nav-meta {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ gap: 8px;
+ }
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ background: var(--gold);
+ color: var(--navy);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 13px;
+ }
+
+ .user-name {
+ font-weight: 600;
+ font-size: 14px;
+ }
+
+ .logout {
+ color: rgba(255,255,255,0.7);
+ text-decoration: none;
+ font-size: 13px;
+ }
+
+ .logout:hover { color: white; }
+
+ .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+ /* Main */
+ .main {
+ max-width: 1100px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ }
+
+ .page-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 32px;
+ flex-wrap: wrap;
+ gap: 16px;
+ }
+
+ .page-header h1 {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ .page-header p {
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Tabs */
+ .tabs {
+ display: flex;
+ gap: 8px;
+ margin-bottom: 24px;
+ border-bottom: 1px solid var(--gray-200);
+ padding-bottom: 16px;
+ }
+
+ .tab {
+ padding: 10px 20px;
+ border: none;
+ background: transparent;
+ border-radius: 8px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ color: var(--gray-500);
+ transition: all 0.2s;
+ }
+
+ .tab:hover { background: var(--gray-200); color: var(--navy); }
+ .tab.active { background: var(--navy); color: white; }
+
+ /* Cards */
+ .card {
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ border: 1px solid var(--gray-200);
+ margin-bottom: 24px;
+ }
+
+ .card-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+
+ .card-header h2 {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ }
+
+ /* Teacher Card */
+ .teacher-row {
+ display: flex;
+ gap: 16px;
+ padding: 16px;
+ background: var(--gray-100);
+ border-radius: 12px;
+ margin-bottom: 12px;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .teacher-row:hover {
+ background: var(--gray-200);
+ }
+
+ .teacher-row.selected {
+ border: 2px solid var(--teal);
+ background: rgba(59, 130, 246, 0.05);
+ }
+
+ .teacher-avatar {
+ width: 50px;
+ height: 50px;
+ border-radius: 50%;
+ background: var(--navy);
+ color: white;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 16px;
+ flex-shrink: 0;
+ }
+
+ .teacher-info {
+ flex: 1;
+ }
+
+ .teacher-name {
+ font-weight: 600;
+ color: var(--navy-dark);
+ }
+
+ .teacher-subject {
+ font-size: 13px;
+ color: var(--gray-500);
+ }
+
+ .teacher-meta {
+ text-align: right;
+ }
+
+ .teacher-rate {
+ font-weight: 700;
+ color: var(--navy);
+ }
+
+ .teacher-rating {
+ font-size: 13px;
+ color: var(--gold);
+ }
+
+ /* Calendar */
+ .calendar-grid {
+ display: grid;
+ grid-template-columns: repeat(7, 1fr);
+ gap: 8px;
+ margin-top: 16px;
+ }
+
+ .calendar-header {
+ text-align: center;
+ font-size: 12px;
+ font-weight: 600;
+ color: var(--gray-500);
+ padding: 8px;
+ }
+
+ .calendar-day {
+ background: var(--gray-100);
+ border-radius: 8px;
+ padding: 8px;
+ text-align: center;
+ min-height: 60px;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .calendar-day:hover:not(.disabled) {
+ background: var(--gray-200);
+ }
+
+ .calendar-day.disabled {
+ background: transparent;
+ color: var(--gray-300);
+ cursor: not-allowed;
+ }
+
+ .calendar-day.available {
+ background: rgba(34, 197, 94, 0.1);
+ border: 1px solid var(--green);
+ }
+
+ .calendar-day.selected {
+ background: var(--teal);
+ color: white;
+ }
+
+ .calendar-day .day-num {
+ font-weight: 600;
+ font-size: 14px;
+ }
+
+ .calendar-day .slots {
+ font-size: 10px;
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ .calendar-day.selected .slots {
+ color: rgba(255,255,255,0.8);
+ }
+
+ /* Time Slots */
+ .time-slots {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 8px;
+ margin-top: 16px;
+ }
+
+ .time-slot {
+ padding: 10px;
+ border: 1px solid var(--gray-200);
+ border-radius: 8px;
+ text-align: center;
+ font-size: 13px;
+ font-weight: 500;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .time-slot:hover {
+ border-color: var(--teal);
+ color: var(--teal);
+ }
+
+ .time-slot.selected {
+ background: var(--teal);
+ color: white;
+ border-color: var(--teal);
+ }
+
+ .time-slot.disabled {
+ background: var(--gray-100);
+ color: var(--gray-300);
+ cursor: not-allowed;
+ }
+
+ /* Upcoming Bookings */
+ .booking-item {
+ display: flex;
+ align-items: center;
+ padding: 16px;
+ background: var(--gray-100);
+ border-radius: 12px;
+ margin-bottom: 12px;
+ }
+
+ .booking-item .date-time {
+ background: var(--navy);
+ color: white;
+ padding: 8px 12px;
+ border-radius: 8px;
+ text-align: center;
+ margin-right: 16px;
+ }
+
+ .booking-item .date-time .date {
+ font-size: 11px;
+ opacity: 0.8;
+ }
+
+ .booking-item .date-time .time {
+ font-size: 14px;
+ font-weight: 600;
+ }
+
+ .booking-item .details {
+ flex: 1;
+ }
+
+ .booking-item .teacher {
+ font-weight: 600;
+ color: var(--navy-dark);
+ }
+
+ .booking-item .subject {
+ font-size: 13px;
+ color: var(--gray-500);
+ }
+
+ .booking-item .actions {
+ display: flex;
+ gap: 8px;
+ }
+
+ .booking-item .btn-small {
+ padding: 6px 12px;
+ border: none;
+ border-radius: 6px;
+ font-size: 12px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .booking-item .btn-reschedule {
+ background: var(--gray-200);
+ color: var(--gray-700);
+ }
+
+ .booking-item .btn-cancel {
+ background: rgba(239, 68, 68, 0.1);
+ color: var(--red);
+ }
+
+ /* Summary */
+ .booking-summary {
+ background: var(--navy);
+ color: white;
+ border-radius: 16px;
+ padding: 24px;
+ margin-top: 24px;
+ }
+
+ .booking-summary h3 {
+ font-size: 16px;
+ margin-bottom: 16px;
+ }
+
+ .summary-row {
+ display: flex;
+ justify-content: space-between;
+ padding: 8px 0;
+ border-bottom: 1px solid rgba(255,255,255,0.1);
+ }
+
+ .summary-row:last-child {
+ border-bottom: none;
+ margin-top: 8px;
+ padding-top: 16px;
+ font-weight: 700;
+ font-size: 18px;
+ }
+
+ /* Footer */
+ footer {
+ text-align: center;
+ padding: 32px 24px;
+ font-size: 14px;
+ color: var(--gray-500);
+ border-top: 1px solid var(--gray-200);
+ margin-top: 48px;
+ }
+
+ /* Mobile */
+ @media (max-width: 768px) {
+ .nav-links { display: none; }
+ .time-slots { grid-template-columns: repeat(3, 1fr); }
+ .page-header { flex-direction: column; align-items: flex-start; }
+ .booking-item { flex-direction: column; align-items: flex-start; }
+ .booking-item .date-time { margin-bottom: 12px; }
+ .booking-item .actions { margin-top: 12px; width: 100%; }
+ }
+
+ @media (max-width: 480px) {
+ .time-slots { grid-template-columns: repeat(2, 1fr); }
+ }
+ </style>
+</head>
+<body>
+ <nav>
+ <div class="nav-left">
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="nav-links">
+ <a href="parent_dashboard.html">Dashboard</a>
+ <a href="teachers.html">Teachers</a>
+ <a href="parent_schedule.html" class="active">Book Lesson</a>
+ <a href="#">Messages</a>
+ </div>
+ </div>
+ <div class="nav-right">
+ <div class="nav-meta">
+ <div class="user-info">
+ <div class="avatar">JW</div>
+ <span class="user-name">Jon Wong</span>
+ </div>
+ <div class="lang-selector">
+ <a href="minerva_landing.html?lang=en" class="lang-btn">EN</a>
+ <a href="minerva_landing.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="minerva_landing.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
+ </div>
+ </nav>
+
+ <main class="main">
+ <div class="page-header">
+ <div>
+ <h1>Book a Lesson</h1>
+ <p>Find available times and book your session</p>
+ </div>
+ </div>
+
+ <div class="tabs">
+ <button class="tab active" onclick="showTab('book')">Book New</button>
+ <button class="tab" onclick="showTab('upcoming')">Upcoming Lessons</button>
+ <button class="tab" onclick="showTab('history')">History</button>
+ </div>
+
+ <div id="bookTab">
+ <div class="card">
+ <div class="card-header">
+ <h2>1. Select Teacher</h2>
+ </div>
+ <div class="teacher-row selected" onclick="selectTeacher(this)">
+ <div class="teacher-avatar">TC</div>
+ <div class="teacher-info">
+ <div class="teacher-name">Teacher Chan</div>
+ <div class="teacher-subject">HKDSE Maths • 5 years exp.</div>
+ </div>
+ <div class="teacher-meta">
+ <div class="teacher-rate">$350/hr</div>
+ <div class="teacher-rating">⭐ 4.9 (127)</div>
+ </div>
+ </div>
+ <div class="teacher-row" onclick="selectTeacher(this)">
+ <div class="teacher-avatar">ML</div>
+ <div class="teacher-info">
+ <div class="teacher-name">Miss Lily</div>
+ <div class="teacher-subject">IB Maths • 7 years exp.</div>
+ </div>
+ <div class="teacher-meta">
+ <div class="teacher-rate">$400/hr</div>
+ <div class="teacher-rating">⭐ 4.8 (89)</div>
+ </div>
+ </div>
+ <div class="teacher-row" onclick="selectTeacher(this)">
+ <div class="teacher-avatar">KW</div>
+ <div class="teacher-info">
+ <div class="teacher-name">Mr. Kevin</div>
+ <div class="teacher-subject">GCSE Maths • 3 years exp.</div>
+ </div>
+ <div class="teacher-meta">
+ <div class="teacher-rate">$300/hr</div>
+ <div class="teacher-rating">⭐ 4.7 (56)</div>
+ </div>
+ </div>
+ <p style="margin-top: 16px; color: var(--gray-500); font-size: 14px;">
+ <a href="teachers.html" style="color: var(--teal);">Browse all teachers →</a>
+ </p>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>2. Select Date</h2>
+ </div>
+ <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+ <button class="btn btn-secondary" style="padding: 8px 12px;" onclick="changeMonth(-1)">← Prev</button>
+ <span style="font-weight: 600;">April 2025</span>
+ <button class="btn btn-secondary" style="padding: 8px 12px;" onclick="changeMonth(1)">Next →</button>
+ </div>
+ <div class="calendar-grid">
+ <div class="calendar-header">Mon</div>
+ <div class="calendar-header">Tue</div>
+ <div class="calendar-header">Wed</div>
+ <div class="calendar-header">Thu</div>
+ <div class="calendar-header">Fri</div>
+ <div class="calendar-header">Sat</div>
+ <div class="calendar-header">Sun</div>
+ 
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ 
+ <div class="calendar-day disabled">1</div>
+ <div class="calendar-day disabled">2</div>
+ <div class="calendar-day disabled">3</div>
+ <div class="calendar-day disabled">4</div>
+ <div class="calendar-day disabled">5</div>
+ <div class="calendar-day disabled">6</div>
+ <div class="calendar-day disabled">7</div>
+ 
+ <div class="calendar-day disabled">8</div>
+ <div class="calendar-day disabled">9</div>
+ <div class="calendar-day disabled">10</div>
+ <div class="calendar-day disabled">11</div>
+ <div class="calendar-day disabled">12</div>
+ <div class="calendar-day disabled">13</div>
+ <div class="calendar-day disabled">14</div>
+ 
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">15</div>
+ <div class="slots">3 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">16</div>
+ <div class="slots">2 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">17</div>
+ <div class="slots">4 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">18</div>
+ <div class="slots">3 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">19</div>
+ <div class="slots">1 slot</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">20</div>
+ <div class="slots">2 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">21</div>
+ <div class="slots">3 slots</div>
+ </div>
+ 
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">22</div>
+ <div class="slots">4 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">23</div>
+ <div class="slots">2 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">24</div>
+ <div class="slots">3 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">25</div>
+ <div class="slots">1 slot</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">26</div>
+ <div class="slots">2 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">27</div>
+ <div class="slots">3 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">28</div>
+ <div class="slots">2 slots</div>
+ </div>
+ 
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">29</div>
+ <div class="slots">4 slots</div>
+ </div>
+ <div class="calendar-day available" onclick="selectDate(this)">
+ <div class="day-num">30</div>
+ <div class="slots">3 slots</div>
+ </div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ <div class="calendar-day disabled"></div>
+ </div>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>3. Select Time</h2>
+ </div>
+ <div class="time-slots">
+ <div class="time-slot" onclick="selectTime(this)">9:00 AM</div>
+ <div class="time-slot" onclick="selectTime(this)">10:00 AM</div>
+ <div class="time-slot disabled">11:00 AM</div>
+ <div class="time-slot disabled">12:00 PM</div>
+ <div class="time-slot" onclick="selectTime(this)">2:00 PM</div>
+ <div class="time-slot disabled">3:00 PM</div>
+ <div class="time-slot" onclick="selectTime(this)">4:00 PM</div>
+ <div class="time-slot" onclick="selectTime(this)">5:00 PM</div>
+ </div>
+ </div>
+
+ <div class="booking-summary">
+ <h3>Booking Summary</h3>
+ <div class="summary-row">
+ <span>Teacher</span>
+ <span id="summaryTeacher">Teacher Chan</span>
+ </div>
+ <div class="summary-row">
+ <span>Date</span>
+ <span id="summaryDate">Apr 15, 2025</span>
+ </div>
+ <div class="summary-row">
+ <span>Time</span>
+ <span id="summaryTime">9:00 AM - 10:00 AM</span>
+ </div>
+ <div class="summary-row">
+ <span>Rate</span>
+ <span id="summaryRate">$350</span>
+ </div>
+ <div class="summary-row">
+ <span>Total</span>
+ <span>$350</span>
+ </div>
+ </div>
+
+ <div style="margin-top: 24px; display: flex; gap: 12px;">
+ <button class="btn btn-secondary" style="flex: 1; padding: 14px;">Cancel</button>
+ <button class="btn btn-primary" style="flex: 2; padding: 14px;" onclick="confirmBooking()">Confirm Booking</button>
+ </div>
+ </div>
+
+ <div id="upcomingTab" style="display: none;">
+ <div class="card">
+ <div class="card-header">
+ <h2>Upcoming Lessons</h2>
+ </div>
+ <div class="booking-item">
+ <div class="date-time">
+ <div class="date">Apr 15</div>
+ <div class="time">2:00 PM</div>
+ </div>
+ <div class="details">
+ <div class="teacher">Teacher Chan</div>
+ <div class="subject">HKDSE Maths • 90 min session</div>
+ </div>
+ <div class="actions">
+ <button class="btn-small btn-reschedule">Reschedule</button>
+ <button class="btn-small btn-cancel">Cancel</button>
+ </div>
+ </div>
+ <div class="booking-item">
+ <div class="date-time">
+ <div class="date">Apr 18</div>
+ <div class="time">10:00 AM</div>
+ </div>
+ <div class="details">
+ <div class="teacher">Teacher Chan</div>
+ <div class="subject">HKDSE Maths • 60 min session</div>
+ </div>
+ <div class="actions">
+ <button class="btn-small btn-reschedule">Reschedule</button>
+ <button class="btn-small btn-cancel">Cancel</button>
+ </div>
+ </div>
+ <div class="booking-item">
+ <div class="date-time">
+ <div class="date">Apr 22</div>
+ <div class="time">3:00 PM</div>
+ </div>
+ <div class="details">
+ <div class="teacher">Miss Lily</div>
+ <div class="subject">IB Maths • 90 min session</div>
+ </div>
+ <div class="actions">
+ <button class="btn-small btn-reschedule">Reschedule</button>
+ <button class="btn-small btn-cancel">Cancel</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div id="historyTab" style="display: none;">
+ <div class="card">
+ <div class="card-header">
+ <h2>Past Lessons</h2>
+ </div>
+ <div class="booking-item" style="opacity: 0.7;">
+ <div class="date-time" style="background: var(--gray-500);">
+ <div class="date">Apr 11</div>
+ <div class="time">2:00 PM</div>
+ </div>
+ <div class="details">
+ <div class="teacher">Teacher Chan</div>
+ <div class="subject">HKDSE Maths • Completed</div>
+ </div>
+ </div>
+ <div class="booking-item" style="opacity: 0.7;">
+ <div class="date-time" style="background: var(--gray-500);">
+ <div class="date">Apr 8</div>
+ <div class="time">10:00 AM</div>
+ </div>
+ <div class="details">
+ <div class="teacher">Teacher Chan</div>
+ <div class="subject">HKDSE Maths • Completed</div>
+ </div>
+ </div>
+ <div class="booking-item" style="opacity: 0.7;">
+ <div class="date-time" style="background: var(--gray-500);">
+ <div class="date">Apr 4</div>
+ <div class="time">3:00 PM</div>
+ </div>
+ <div class="details">
+ <div class="teacher">Miss Lily</div>
+ <div class="subject">IB Maths • Completed</div>
+ </div>
+ </div>
+ <p style="text-align: center; color: var(--gray-500); margin-top: 24px;">
+ <a href="#" style="color: var(--teal);">View all history →</a>
+ </p>
+ </div>
+ </div>
+ </main>
+
+ <footer>
+ © 2025 Minerva. All rights reserved.
+ </footer>
+
+ <script>
+ let selectedTeacher = 'Teacher Chan';
+ let selectedDate = 'Apr 15, 2025';
+ let selectedTime = '9:00 AM';
+
+ function selectTeacher(el) {
+ document.querySelectorAll('.teacher-row').forEach(r => r.classList.remove('selected'));
+ el.classList.add('selected');
+ selectedTeacher = el.querySelector('.teacher-name').textContent;
+ document.getElementById('summaryTeacher').textContent = selectedTeacher;
+ }
+
+ function selectDate(el) {
+ document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+ el.classList.add('selected');
+ const day = el.querySelector('.day-num').textContent;
+ selectedDate = 'Apr ' + day + ', 2025';
+ document.getElementById('summaryDate').textContent = selectedDate;
+ }
+
+ function selectTime(el) {
+ document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
+ el.classList.add('selected');
+ selectedTime = el.textContent;
+ document.getElementById('summaryTime').textContent = selectedTime + ' - ' + getEndTime(selectedTime);
+ }
+
+ function getEndTime(start) {
+ const [time, period] = start.split(' ');
+ let [hour, min] = time.split(':').map(Number);
+ if (period === 'PM' && hour !== 12) hour += 12;
+ if (period === 'AM' && hour === 12) hour = 0;
+ hour += 1;
+ const newPeriod = hour >= 12 ? 'PM' : 'AM';
+ const newHour = hour > 12 ? hour - 12 : hour;
+ return newHour + ':' + (min === 0 ? '00' : min) + ' ' + newPeriod;
+ }
+
+ function confirmBooking() {
+ alert('Booking confirmed! ' + selectedTeacher + ' on ' + selectedDate + ' at ' + selectedTime);
+ }
+
+ function showTab(tab) {
+ document.getElementById('bookTab').style.display = tab === 'book' ? 'block' : 'none';
+ document.getElementById('upcomingTab').style.display = tab === 'upcoming' ? 'block' : 'none';
+ document.getElementById('historyTab').style.display = tab === 'history' ? 'block' : 'none';
+ 
+ document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+ event.target.classList.add('active');
+ }
+
+ function changeMonth(dir) {
+ alert('Month navigation - would load different calendar data');
+ }
+ </script>
+</body>
+</html>

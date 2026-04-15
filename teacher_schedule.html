@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>My Schedule — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-500: #64748b;
+ --green: #22c55e;
+ --red: #ef4444;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--gray-100);
+ color: var(--gray-700);
+ line-height: 1.6;
+ }
+
+ /* Nav */
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+ z-index: 100;
+ }
+
+ .nav-left {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 32px; height: 32px; }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ margin-left: 32px;
+ }
+
+ .nav-links a {
+ color: rgba(255,255,255,0.8);
+ text-decoration: none;
+ font-weight: 500;
+ font-size: 14px;
+ padding: 8px 12px;
+ border-radius: 8px;
+ transition: all 0.2s;
+ }
+
+ .nav-links a:hover, .nav-links a.active {
+ color: white;
+ background: rgba(255,255,255,0.1);
+ }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .nav-meta {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ gap: 8px;
+ }
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ background: var(--gold);
+ color: var(--navy);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 13px;
+ }
+
+ .user-name {
+ font-weight: 600;
+ font-size: 14px;
+ }
+
+ .logout {
+ color: rgba(255,255,255,0.7);
+ text-decoration: none;
+ font-size: 13px;
+ }
+
+ .logout:hover { color: white; }
+
+ .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+ /* Main */
+ .main {
+ max-width: 1100px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ }
+
+ .page-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 32px;
+ flex-wrap: wrap;
+ gap: 16px;
+ }
+
+ .page-header h1 {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ .page-header p {
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Tabs */
+ .tabs {
+ display: flex;
+ gap: 8px;
+ margin-bottom: 24px;
+ border-bottom: 1px solid var(--gray-200);
+ padding-bottom: 16px;
+ }
+
+ .tab {
+ padding: 10px 20px;
+ border: none;
+ background: transparent;
+ border-radius: 8px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ color: var(--gray-500);
+ transition: all 0.2s;
+ }
+
+ .tab:hover { background: var(--gray-200); color: var(--navy); }
+ .tab.active { background: var(--navy); color: white; }
+
+ /* Cards */
+ .card {
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ border: 1px solid var(--gray-200);
+ margin-bottom: 24px;
+ }
+
+ .card-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+
+ .card-header h2 {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ }
+
+ /* Weekly Grid */
+ .week-grid {
+ display: grid;
+ grid-template-columns: repeat(7, 1fr);
+ gap: 8px;
+ margin-bottom: 24px;
+ }
+
+ .day-column {
+ background: var(--gray-100);
+ border-radius: 12px;
+ padding: 12px;
+ min-height: 200px;
+ }
+
+ .day-column.header {
+ background: var(--navy);
+ color: white;
+ text-align: center;
+ font-weight: 600;
+ font-size: 13px;
+ padding: 8px;
+ }
+
+ .day-column.header .date {
+ font-size: 11px;
+ opacity: 0.8;
+ }
+
+ .time-slot {
+ background: var(--green);
+ color: white;
+ padding: 8px;
+ border-radius: 6px;
+ font-size: 12px;
+ font-weight: 500;
+ margin-bottom: 6px;
+ text-align: center;
+ }
+
+ .time-slot.booked {
+ background: var(--teal);
+ }
+
+ .time-slot.blocked {
+ background: var(--gray-300);
+ color: var(--gray-500);
+ }
+
+ /* Add Slot Button */
+ .add-slot-btn {
+ width: 100%;
+ padding: 8px;
+ border: 2px dashed var(--gray-300);
+ background: transparent;
+ border-radius: 6px;
+ color: var(--gray-500);
+ font-size: 12px;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .add-slot-btn:hover {
+ border-color: var(--teal);
+ color: var(--teal);
+ }
+
+ /* Modal */
+ .modal-overlay {
+ display: none;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: rgba(0,0,0,0.5);
+ z-index: 200;
+ align-items: center;
+ justify-content: center;
+ }
+
+ .modal-overlay.active { display: flex; }
+
+ .modal {
+ background: white;
+ border-radius: 16px;
+ padding: 32px;
+ max-width: 480px;
+ width: 90%;
+ }
+
+ .modal h2 {
+ font-size: 20px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 20px;
+ }
+
+ .form-group {
+ margin-bottom: 16px;
+ }
+
+ .form-group label {
+ display: block;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-500);
+ margin-bottom: 6px;
+ }
+
+ .form-group input,
+ .form-group select {
+ width: 100%;
+ padding: 10px 12px;
+ border: 1px solid var(--gray-300);
+ border-radius: 8px;
+ font-size: 14px;
+ transition: all 0.2s;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus {
+ outline: none;
+ border-color: var(--teal);
+ box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+ }
+
+ .btn {
+ padding: 10px 20px;
+ border: none;
+ border-radius: 8px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .btn-primary {
+ background: var(--navy);
+ color: white;
+ }
+
+ .btn-primary:hover { background: var(--navy-dark); }
+
+ .btn-secondary {
+ background: var(--gray-200);
+ color: var(--gray-700);
+ }
+
+ .btn-secondary:hover { background: var(--gray-300); }
+
+ .modal-actions {
+ display: flex;
+ gap: 12px;
+ justify-content: flex-end;
+ margin-top: 24px;
+ }
+
+ /* Upcoming Bookings */
+ .booking-item {
+ display: flex;
+ align-items: center;
+ padding: 16px;
+ background: var(--gray-100);
+ border-radius: 12px;
+ margin-bottom: 12px;
+ }
+
+ .booking-item .time {
+ background: var(--teal);
+ color: white;
+ padding: 8px 12px;
+ border-radius: 8px;
+ font-size: 13px;
+ font-weight: 600;
+ margin-right: 16px;
+ }
+
+ .booking-item .details {
+ flex: 1;
+ }
+
+ .booking-item .student {
+ font-weight: 600;
+ color: var(--navy-dark);
+ }
+
+ .booking-item .subject {
+ font-size: 13px;
+ color: var(--gray-500);
+ }
+
+ .booking-item .status {
+ font-size: 12px;
+ font-weight: 600;
+ padding: 4px 10px;
+ border-radius: 20px;
+ }
+
+ .booking-item .status.confirmed {
+ background: rgba(34, 197, 94, 0.1);
+ color: var(--green);
+ }
+
+ .booking-item .status.pending {
+ background: rgba(249, 168, 40, 0.1);
+ color: var(--gold);
+ }
+
+ /* Stats Row */
+ .stats-row {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 16px;
+ margin-bottom: 32px;
+ }
+
+ .stat-card {
+ background: white;
+ border-radius: 12px;
+ padding: 20px;
+ border: 1px solid var(--gray-200);
+ text-align: center;
+ }
+
+ .stat-card .number {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy);
+ }
+
+ .stat-card .label {
+ font-size: 13px;
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Footer */
+ footer {
+ text-align: center;
+ padding: 32px 24px;
+ font-size: 14px;
+ color: var(--gray-500);
+ border-top: 1px solid var(--gray-200);
+ margin-top: 48px;
+ }
+
+ /* Mobile */
+ @media (max-width: 768px) {
+ .nav-links { display: none; }
+ .week-grid { grid-template-columns: repeat(3, 1fr); }
+ .stats-row { grid-template-columns: repeat(2, 1fr); }
+ .page-header { flex-direction: column; align-items: flex-start; }
+ }
+
+ @media (max-width: 480px) {
+ .week-grid { grid-template-columns: repeat(2, 1fr); }
+ }
+ </style>
+</head>
+<body>
+ <nav>
+ <div class="nav-left">
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="nav-links">
+ <a href="teacher_dashboard.html">Dashboard</a>
+ <a href="teachers.html">Students</a>
+ <a href="teacher_schedule.html" class="active">Schedule</a>
+ <a href="#">Messages</a>
+ </div>
+ </div>
+ <div class="nav-right">
+ <div class="nav-meta">
+ <div class="user-info">
+ <div class="avatar">TC</div>
+ <span class="user-name">Teacher Chan</span>
+ </div>
+ <div class="lang-selector">
+ <a href="minerva_landing.html?lang=en" class="lang-btn">EN</a>
+ <a href="minerva_landing.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="minerva_landing.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
+ </div>
+ </nav>
+
+ <main class="main">
+ <div class="page-header">
+ <div>
+ <h1>My Schedule</h1>
+ <p>Manage your availability and upcoming lessons</p>
+ </div>
+ <button class="btn btn-primary" onclick="openModal('addSlot')">+ Add Time Slot</button>
+ </div>
+
+ <div class="stats-row">
+ <div class="stat-card">
+ <div class="number">12</div>
+ <div class="label">This Week</div>
+ </div>
+ <div class="stat-card">
+ <div class="number">8</div>
+ <div class="label">Next Week</div>
+ </div>
+ <div class="stat-card">
+ <div class="number">3</div>
+ <div class="label">Pending</div>
+ </div>
+ <div class="stat-card">
+ <div class="number">4.9</div>
+ <div class="label">Rating</div>
+ </div>
+ </div>
+
+ <div class="tabs">
+ <button class="tab active" onclick="showTab('weekly')">Weekly View</button>
+ <button class="tab" onclick="showTab('bookings')">Upcoming Bookings</button>
+ <button class="tab" onclick="showTab('settings')">Availability Settings</button>
+ </div>
+
+ <div id="weeklyTab">
+ <div class="card">
+ <div class="card-header">
+ <h2>This Week (Apr 14 - Apr 20)</h2>
+ <button class="btn btn-secondary">← Prev</button>
+ <button class="btn btn-secondary">Next →</button>
+ </div>
+ <div class="week-grid">
+ <div class="day-column header">
+ <div>Mon</div>
+ <div class="date">Apr 14</div>
+ </div>
+ <div class="day-column header">
+ <div>Tue</div>
+ <div class="date">Apr 15</div>
+ </div>
+ <div class="day-column header">
+ <div>Wed</div>
+ <div class="date">Apr 16</div>
+ </div>
+ <div class="day-column header">
+ <div>Thu</div>
+ <div class="date">Apr 17</div>
+ </div>
+ <div class="day-column header">
+ <div>Fri</div>
+ <div class="date">Apr 18</div>
+ </div>
+ <div class="day-column header">
+ <div>Sat</div>
+ <div class="date">Apr 19</div>
+ </div>
+ <div class="day-column header">
+ <div>Sun</div>
+ <div class="date">Apr 20</div>
+ </div>
+
+ <div class="day-column">
+ <div class="time-slot booked">9:00 - 10:00</div>
+ <div class="time-slot">14:00 - 15:00</div>
+ <div class="time-slot">16:00 - 17:00</div>
+ <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
+ </div>
+ <div class="day-column">
+ <div class="time-slot booked">10:00 - 11:00</div>
+ <div class="time-slot booked">14:00 - 15:00</div>
+ <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
+ </div>
+ <div class="day-column">
+ <div class="time-slot">9:00 - 10:00</div>
+ <div class="time-slot">15:00 - 16:00</div>
+ <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
+ </div>
+ <div class="day-column">
+ <div class="time-slot booked">11:00 - 12:00</div>
+ <div class="time-slot">14:00 - 15:00</div>
+ <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
+ </div>
+ <div class="day-column">
+ <div class="time-slot">10:00 - 11:00</div>
+ <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
+ </div>
+ <div class="day-column">
+ <div class="time-slot booked">9:00 - 10:00</div>
+ <div class="time-slot booked">11:00 - 12:00</div>
+ <div class="time-slot">14:00 - 16:00</div>
+ <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
+ </div>
+ <div class="day-column">
+ <button class="add-slot-btn" onclick="openModal('addSlot')">+ Add</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div id="bookingsTab" style="display: none;">
+ <div class="card">
+ <div class="card-header">
+ <h2>Upcoming Bookings</h2>
+ </div>
+ <div class="booking-item">
+ <div class="time">Today 2:00 PM</div>
+ <div class="details">
+ <div class="student">Sarah Lee</div>
+ <div class="subject">HKDSE Maths • Tuen Mun</div>
+ </div>
+ <span class="status confirmed">Confirmed</span>
+ </div>
+ <div class="booking-item">
+ <div class="time">Tomorrow 10:00 AM</div>
+ <div class="details">
+ <div class="student">Jason Wong</div>
+ <div class="subject">HKDSE Maths • Sha Tin</div>
+ </div>
+ <span class="status confirmed">Confirmed</span>
+ </div>
+ <div class="booking-item">
+ <div class="time">Apr 17 11:00 AM</div>
+ <div class="details">
+ <div class="student">Emily Chan</div>
+ <div class="subject">HKDSE Maths • Kowloon</div>
+ </div>
+ <span class="status pending">Pending</span>
+ </div>
+ <div class="booking-item">
+ <div class="time">Apr 18 2:00 PM</div>
+ <div class="details">
+ <div class="student">David Lam</div>
+ <div class="subject">IB Maths • Central</div>
+ </div>
+ <span class="status confirmed">Confirmed</span>
+ </div>
+ </div>
+ </div>
+
+ <div id="settingsTab" style="display: none;">
+ <div class="card">
+ <div class="card-header">
+ <h2>Default Availability</h2>
+ </div>
+ <p style="color: var(--gray-500); margin-bottom: 20px;">Set your typical weekly availability. You can override specific days anytime.</p>
+ 
+ <div class="form-group">
+ <label>Typical Working Days</label>
+ <select multiple style="height: 120px;">
+ <option selected>Monday</option>
+ <option selected>Tuesday</option>
+ <option selected>Wednesday</option>
+ <option selected>Thursday</option>
+ <option selected>Friday</option>
+ <option>Saturday</option>
+ <option>Sunday</option>
+ </select>
+ <small style="color: var(--gray-500);">Hold Ctrl/Cmd to select multiple days</small>
+ </div>
+
+ <div class="form-group">
+ <label>Default Session Duration</label>
+ <select>
+ <option value="60">60 minutes</option>
+ <option value="90" selected>90 minutes</option>
+ <option value="120">120 minutes</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label>Buffer Time Between Sessions</label>
+ <select>
+ <option value="0">No buffer</option>
+ <option value="15" selected>15 minutes</option>
+ <option value="30">30 minutes</option>
+ </select>
+ </div>
+
+ <button class="btn btn-primary" onclick="alert('Availability settings saved!')">Save Settings</button>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>Booking Rules</h2>
+ </div>
+ 
+ <div class="form-group">
+ <label>Minimum Notice for Bookings</label>
+ <select>
+ <option value="24">24 hours in advance</option>
+ <option value="48" selected>48 hours in advance</option>
+ <option value="72">72 hours in advance</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label>Cancellation Policy</label>
+ <select>
+ <option value="24">Allow cancellation up to 24h before</option>
+ <option value="48" selected>Allow cancellation up to 48h before</option>
+ <option value="none">Allow cancellation anytime</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label>
+ <input type="checkbox" checked style="margin-right: 8px;">
+ Automatically accept bookings (no approval needed)
+ </label>
+ </div>
+
+ <button class="btn btn-primary" onclick="alert('Booking rules saved!')">Save Rules</button>
+ </div>
+ </div>
+ </main>
+
+ <!-- Add Slot Modal -->
+ <div class="modal-overlay" id="addSlotModal">
+ <div class="modal">
+ <h2>Add Available Time Slot</h2>
+ <div class="form-group">
+ <label>Day of Week</label>
+ <select id="slotDay">
+ <option value="monday">Monday</option>
+ <option value="tuesday">Tuesday</option>
+ <option value="wednesday">Wednesday</option>
+ <option value="thursday">Thursday</option>
+ <option value="friday">Friday</option>
+ <option value="saturday">Saturday</option>
+ <option value="sunday">Sunday</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label>Start Time</label>
+ <input type="time" id="slotStart" value="09:00">
+ </div>
+ <div class="form-group">
+ <label>End Time</label>
+ <input type="time" id="slotEnd" value="10:00">
+ </div>
+ <div class="form-group">
+ <label>Repeat</label>
+ <select id="slotRepeat">
+ <option value="once">This week only</option>
+ <option value="weekly" selected>Every week</option>
+ </select>
+ </div>
+ <div class="modal-actions">
+ <button class="btn btn-secondary" onclick="closeModal('addSlot')">Cancel</button>
+ <button class="btn btn-primary" onclick="addSlot()">Add Slot</button>
+ </div>
+ </div>
+ </div>
+
+ <footer>
+ © 2025 Minerva. All rights reserved.
+ </footer>
+
+ <script>
+ function openModal(type) {
+ document.getElementById('addSlotModal').classList.add('active');
+ }
+
+ function closeModal(type) {
+ document.getElementById('addSlotModal').classList.remove('active');
+ }
+
+ function addSlot() {
+ const day = document.getElementById('slotDay').value;
+ const start = document.getElementById('slotStart').value;
+ const end = document.getElementById('slotEnd').value;
+ alert('Time slot added for ' + day + ' from ' + start + ' to ' + end + '!');
+ closeModal('addSlot');
+ }
+
+ function showTab(tab) {
+ document.getElementById('weeklyTab').style.display = tab === 'weekly' ? 'block' : 'none';
+ document.getElementById('bookingsTab').style.display = tab === 'bookings' ? 'block' : 'none';
+ document.getElementById('settingsTab').style.display = tab === 'settings' ? 'block' : 'none';
+ 
+ document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+ event.target.classList.add('active');
+ }
+
+ // Close modal on outside click
+ document.getElementById('addSlotModal').addEventListener('click', function(e) {
+ if (e.target === this) closeModal('addSlot');
+ });
+ </script>
+</body>
+</html>
