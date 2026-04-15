@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Edit Profile — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-500: #64748b;
+ --green: #22c55e;
+ --red: #ef4444;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--gray-100);
+ color: var(--gray-700);
+ line-height: 1.6;
+ }
+
+ /* Nav */
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+ z-index: 100;
+ }
+
+ .nav-left { display: flex; align-items: center; gap: 16px; }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 32px; height: 32px; }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ margin-left: 32px;
+ }
+
+ .nav-links a {
+ color: rgba(255,255,255,0.8);
+ text-decoration: none;
+ font-weight: 500;
+ font-size: 14px;
+ padding: 8px 12px;
+ border-radius: 8px;
+ transition: all 0.2s;
+ }
+
+ .nav-links a:hover, .nav-links a.active {
+ color: white;
+ background: rgba(255,255,255,0.1);
+ }
+
+ .nav-right { display: flex; align-items: center; gap: 16px; }
+ .nav-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+ .user-info { display: flex; align-items: center; gap: 12px; }
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ background: var(--gold);
+ color: var(--navy);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 13px;
+ }
+
+ .user-name { font-weight: 600; font-size: 14px; }
+ .logout { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; }
+ .logout:hover { color: white; }
+
+ .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+ /* Main */
+ .main {
+ max-width: 800px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ }
+
+ .page-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 32px;
+ flex-wrap: wrap;
+ gap: 16px;
+ }
+
+ .page-header h1 {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ /* Profile Header */
+ .profile-header {
+ background: white;
+ border-radius: 16px;
+ padding: 32px;
+ border: 1px solid var(--gray-200);
+ margin-bottom: 24px;
+ display: flex;
+ gap: 24px;
+ align-items: center;
+ }
+
+ .profile-avatar {
+ width: 100px;
+ height: 100px;
+ border-radius: 50%;
+ background: var(--navy);
+ color: white;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 36px;
+ font-weight: 700;
+ flex-shrink: 0;
+ }
+
+ .profile-avatar img {
+ width: 100%;
+ height: 100%;
+ border-radius: 50%;
+ object-fit: cover;
+ }
+
+ .profile-info { flex: 1; }
+
+ .profile-info h2 {
+ font-size: 24px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 4px;
+ }
+
+ .profile-info p {
+ color: var(--gray-500);
+ font-size: 14px;
+ margin-bottom: 8px;
+ }
+
+ .profile-badge {
+ display: inline-block;
+ background: rgba(34, 197, 94, 0.1);
+ color: var(--green);
+ font-size: 12px;
+ font-weight: 600;
+ padding: 4px 10px;
+ border-radius: 20px;
+ }
+
+ .change-photo-btn {
+ background: var(--gray-100);
+ border: none;
+ padding: 8px 16px;
+ border-radius: 8px;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--navy);
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .change-photo-btn:hover { background: var(--gray-200); }
+
+ /* Cards */
+ .card {
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ border: 1px solid var(--gray-200);
+ margin-bottom: 24px;
+ }
+
+ .card-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+
+ .card-header h2 {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ }
+
+ .card-header p {
+ font-size: 13px;
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Form */
+ .form-grid {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 16px;
+ }
+
+ .form-group {
+ margin-bottom: 16px;
+ }
+
+ .form-group.full {
+ grid-column: span 2;
+ }
+
+ .form-group label {
+ display: block;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-500);
+ margin-bottom: 6px;
+ }
+
+ .form-group input,
+ .form-group select,
+ .form-group textarea {
+ width: 100%;
+ padding: 10px 12px;
+ border: 1px solid var(--gray-300);
+ border-radius: 8px;
+ font-size: 14px;
+ font-family: inherit;
+ transition: all 0.2s;
+ background: white;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus,
+ .form-group textarea:focus {
+ outline: none;
+ border-color: var(--teal);
+ box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+ }
+
+ .form-group textarea {
+ resize: vertical;
+ min-height: 100px;
+ }
+
+ .form-group select {
+ cursor: pointer;
+ }
+
+ .form-hint {
+ font-size: 12px;
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Tags Input */
+ .tags-input {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+ padding: 8px;
+ border: 1px solid var(--gray-300);
+ border-radius: 8px;
+ background: white;
+ min-height: 44px;
+ }
+
+ .tag {
+ display: inline-flex;
+ align-items: center;
+ gap: 4px;
+ background: var(--gray-100);
+ padding: 4px 10px;
+ border-radius: 6px;
+ font-size: 13px;
+ font-weight: 500;
+ }
+
+ .tag-remove {
+ cursor: pointer;
+ color: var(--gray-500);
+ font-size: 16px;
+ line-height: 1;
+ }
+
+ .tag-remove:hover { color: var(--red); }
+
+ .tags-input input {
+ border: none;
+ outline: none;
+ flex: 1;
+ min-width: 100px;
+ padding: 4px;
+ font-size: 14px;
+ }
+
+ /* Toggle */
+ .toggle-group {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 12px 0;
+ border-bottom: 1px solid var(--gray-200);
+ }
+
+ .toggle-group:last-child { border-bottom: none; }
+
+ .toggle-label {
+ font-weight: 500;
+ color: var(--gray-700);
+ }
+
+ .toggle-label span {
+ display: block;
+ font-size: 12px;
+ color: var(--gray-500);
+ font-weight: 400;
+ margin-top: 2px;
+ }
+
+ .toggle {
+ position: relative;
+ width: 48px;
+ height: 26px;
+ }
+
+ .toggle input {
+ opacity: 0;
+ width: 0;
+ height: 0;
+ }
+
+ .toggle-slider {
+ position: absolute;
+ cursor: pointer;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: var(--gray-300);
+ transition: 0.3s;
+ border-radius: 26px;
+ }
+
+ .toggle-slider:before {
+ position: absolute;
+ content: "";
+ height: 20px;
+ width: 20px;
+ left: 3px;
+ bottom: 3px;
+ background-color: white;
+ transition: 0.3s;
+ border-radius: 50%;
+ }
+
+ .toggle input:checked + .toggle-slider {
+ background-color: var(--green);
+ }
+
+ .toggle input:checked + .toggle-slider:before {
+ transform: translateX(22px);
+ }
+
+ /* Buttons */
+ .btn {
+ padding: 10px 20px;
+ border: none;
+ border-radius: 8px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ text-decoration: none;
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ }
+
+ .btn-primary { background: var(--navy); color: white; }
+ .btn-primary:hover { background: var(--navy-dark); }
+
+ .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
+ .btn-secondary:hover { background: var(--gray-300); }
+
+ .btn-danger { background: rgba(239, 68, 68, 0.1); color: var(--red); }
+ .btn-danger:hover { background: rgba(239, 68, 68, 0.2); }
+
+ .btn-small { padding: 6px 12px; font-size: 12px; }
+
+ /* Actions */
+ .actions {
+ display: flex;
+ gap: 12px;
+ margin-top: 24px;
+ justify-content: flex-end;
+ }
+
+ /* Success Message */
+ .success-message {
+ display: none;
+ position: fixed;
+ top: 20px;
+ right: 20px;
+ background: var(--green);
+ color: white;
+ padding: 12px 20px;
+ border-radius: 8px;
+ font-weight: 600;
+ z-index: 1000;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+ }
+
+ .success-message.show { display: flex; align-items: center; gap: 8px; }
+
+ /* Footer */
+ footer {
+ text-align: center;
+ padding: 32px 24px;
+ font-size: 14px;
+ color: var(--gray-500);
+ border-top: 1px solid var(--gray-200);
+ margin-top: 48px;
+ }
+
+ /* Mobile */
+ @media (max-width: 768px) {
+ .nav-links { display: none; }
+ .profile-header { flex-direction: column; text-align: center; }
+ .form-grid { grid-template-columns: 1fr; }
+ .form-group.full { grid-column: span 1; }
+ .page-header { flex-direction: column; align-items: flex-start; }
+ .actions { flex-direction: column; }
+ .actions .btn { width: 100%; justify-content: center; }
+ }
+ </style>
+</head>
+<body>
+ <div class="success-message" id="successMessage">
+ ✓ Profile saved successfully!
+ </div>
+
+ <nav>
+ <div class="nav-left">
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="nav-links">
+ <a href="teacher_dashboard.html">Dashboard</a>
+ <a href="teachers.html">Students</a>
+ <a href="teacher_schedule.html">Schedule</a>
+ <a href="#">Messages</a>
+ </div>
+ </div>
+ <div class="nav-right">
+ <div class="nav-meta">
+ <div class="user-info">
+ <div class="avatar">TC</div>
+ <span class="user-name">Teacher Chan</span>
+ </div>
+ <div class="lang-selector">
+ <a href="minerva_landing.html?lang=en" class="lang-btn">EN</a>
+ <a href="minerva_landing.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="minerva_landing.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
+ </div>
+ </nav>
+
+ <main class="main">
+ <div class="page-header">
+ <h1>Edit Profile</h1>
+ <a href="teacher_dashboard.html" class="btn btn-secondary">← Back to Dashboard</a>
+ </div>
+
+ <div class="profile-header">
+ <div class="profile-avatar" id="avatarPreview">TC</div>
+ <div class="profile-info">
+ <h2 id="namePreview">Teacher Chan</h2>
+ <p id="subjectPreview">HKDSE Mathematics • 5 years experience</p>
+ <span class="profile-badge">✓ Verified Teacher</span>
+ </div>
+ <button class="change-photo-btn" onclick="alert('Photo upload would open here')">Change Photo</button>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>Basic Information</h2>
+ <p>Update your personal details</p>
+ </div>
+ <div class="form-grid">
+ <div class="form-group">
+ <label>Full Name *</label>
+ <input type="text" id="fullName" value="Teacher Chan" oninput="updatePreview()">
+ </div>
+ <div class="form-group">
+ <label>Display Name</label>
+ <input type="text" value="TC">
+ <p class="form-hint">Shown on your profile and in messages</p>
+ </div>
+ <div class="form-group">
+ <label>Email *</label>
+ <input type="email" value="chan.teacher@email.com" disabled>
+ <p class="form-hint">Email cannot be changed</p>
+ </div>
+ <div class="form-group">
+ <label>Phone Number</label>
+ <input type="tel" value="+852 6123 4567">
+ </div>
+ <div class="form-group full">
+ <label>Short Bio</label>
+ <textarea id="bio" placeholder="Tell parents and students about yourself..." oninput="updatePreview()">Passionate mathematics teacher with 5 years of experience helping students achieve their academic goals. Specialize in HKDSE exam preparation and building student confidence in math.</textarea>
+ </div>
+ </div>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>Teaching Details</h2>
+ <p>Information about your teaching services</p>
+ </div>
+ <div class="form-grid">
+ <div class="form-group">
+ <label>Subjects *</label>
+ <select>
+ <option selected>HKDSE Mathematics</option>
+ <option>IB Mathematics</option>
+ <option>GCSE Mathematics</option>
+ <option>HKDSE Physics</option>
+ <option>IB Physics</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label>Teaching Levels</label>
+ <select multiple style="height: 80px;">
+ <option selected>F3 (S.3)</option>
+ <option selected>F4 (S.4)</option>
+ <option selected>F5 (S.5)</option>
+ <option selected>F6 (S.6)</option>
+ <option>University</option>
+ <option>Adult Learner</option>
+ </select>
+ <p class="form-hint">Hold Ctrl/Cmd to select multiple</p>
+ </div>
+ <div class="form-group">
+ <label>Hourly Rate (HK$) *</label>
+ <input type="number" value="350">
+ </div>
+ <div class="form-group">
+ <label>First Lesson Discount</label>
+ <select>
+ <option>No discount</option>
+ <option selected>10% off first lesson</option>
+ <option>20% off first lesson</option>
+ <option>First lesson free</option>
+ </select>
+ </div>
+ <div class="form-group full">
+ <label>Teaching Location</label>
+ <select>
+ <option value="tuenMun" selected>Tuen Mun</option>
+ <option value="shaTin">Sha Tin</option>
+ <option value="kowloon">Kowloon</option>
+ <option value="central">Central</option>
+ <option value="wanChai">Wan Chai</option>
+ <option value="online">Online Only</option>
+ <option value="both">Both Online and In-Person</option>
+ </select>
+ </div>
+ <div class="form-group full">
+ <label>Languages Spoken</label>
+ <div class="tags-input" id="languagesTags">
+ <span class="tag">English <span class="tag-remove" onclick="removeTag(this, 'languagesTags')">×</span></span>
+ <span class="tag">Cantonese <span class="tag-remove" onclick="removeTag(this, 'languagesTags')">×</span></span>
+ <span class="tag">Mandarin <span class="tag-remove" onclick="removeTag(this, 'languagesTags')">×</span></span>
+ <input type="text" placeholder="Add language..." onkeydown="addTag(event, 'languagesTags')">
+ </div>
+ </div>
+ <div class="form-group full">
+ <label>Teaching Experience</label>
+ <textarea placeholder="Describe your teaching experience...">5 years of experience teaching HKDSE Mathematics at a local secondary school. Previously tutored students from elite schools including St. Paul's College, Diocesan Girls' School, and La Salle College.</textarea>
+ </div>
+ </div>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>Profile Settings</h2>
+ <p>Control your profile visibility and availability</p>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ Profile Visibility
+ <span>Allow parents to find and view your profile</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ Accept New Students
+ <span>Allow parents to send booking requests</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ Instant Booking
+ <span>Allow students to book without approval</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox">
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ Email Notifications
+ <span>Receive email alerts for new bookings</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ SMS Notifications
+ <span>Receive SMS alerts for urgent updates</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox">
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>Payment Information</h2>
+ <p>Manage your payout settings</p>
+ </div>
+ <div class="form-grid">
+ <div class="form-group">
+ <label>Bank Name</label>
+ <input type="text" value="HSBC Hong Kong">
+ </div>
+ <div class="form-group">
+ <label>Bank Account Number</label>
+ <input type="text" value="123-456789-123">
+ </div>
+ <div class="form-group">
+ <label>Account Holder Name</label>
+ <input type="text" value="CHAN TAI MAN">
+ </div>
+ <div class="form-group">
+ <label>Payout Schedule</label>
+ <select>
+ <option>Weekly (Every Monday)</option>
+ <option selected>Bi-weekly (Every 2 weeks)</option>
+ <option>Monthly</option>
+ </select>
+ </div>
+ </div>
+ </div>
+
+ <div class="actions">
+ <button class="btn btn-secondary">Cancel</button>
+ <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+ </div>
+
+ <div style="margin-top: 32px; text-align: center;">
+ <button class="btn btn-danger btn-small">Delete Account</button>
+ <p style="font-size: 12px; color: var(--gray-500); margin-top: 8px;">Permanently delete your account and all data</p>
+ </div>
+ </main>
+
+ <footer>
+ © 2025 Minerva. All rights reserved.
+ </footer>
+
+ <script>
+ function updatePreview() {
+ const name = document.getElementById('fullName').value || 'Teacher';
+ const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+ document.getElementById('avatarPreview').textContent = initials;
+ document.getElementById('namePreview').textContent = name;
+ }
+
+ function saveProfile() {
+ // Show success message
+ const msg = document.getElementById('successMessage');
+ msg.classList.add('show');
+ setTimeout(() => msg.classList.remove('show'), 3000);
+ }
+
+ function addTag(e, containerId) {
+ if (e.key === 'Enter' || e.key === ',') {
+ e.preventDefault();
+ const input = e.target;
+ const value = input.value.trim().replace(',', '');
+ if (value) {
+ const container = document.getElementById(containerId);
+ const tag = document.createElement('span');
+ tag.className = 'tag';
+ tag.innerHTML = value + ' <span class="tag-remove" onclick="removeTag(this, \'' + containerId + '\')">×</span>';
+ container.insertBefore(tag, input);
+ input.value = '';
+ }
+ }
+ }
+
+ function removeTag(el, containerId) {
+ el.parentElement.remove();
+ }
+ </script>
+</body>
+</html>
