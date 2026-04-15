@@ -228,3 +228,23 @@ faq: {
   g5_q: { en: "What makes Minerva different from other tutoring platforms?", zhTW: "Minerva與其他補習平台有何不同？", zhCN: "Minerva与其他补习平台有何不同？" },
   g5_a: { en: "We're the first platform in Asia combining verified teachers, escrow payments, virtual scheduling, and AI-powered matching.", zhTW: "我們是亞洲首個結合已驗證導師、託管付款、虛擬預約和人工智能配對的平台。", zhCN: "我们是亚洲首个结合已验证导师、托管付款、虚拟预约和人工智能配对的平台。" }
 }
+
+// Teachers page
+teachers: {
+  title: { en: "Our Verified Teachers", zhTW: "我們的已驗證導師", zhCN: "我们的已验证导师" },
+  subtitle: { en: "Every teacher is ID-checked, background-verified, and reviewed by students. Find your perfect match.", zhTW: "每位導師均已通過身份驗證、背景審查及學生評價。為您找到最適合的導師。", zhCN: "每位导师均已通过身份验证、背景审查及学生评价。为您找到最适合的导师。" },
+  per_hour: { en: "/hour", zhTW: "/小時", zhCN: "/小时" },
+  book_lesson: { en: "Book Lesson", zhTW: "預訂課堂", zhCN: "预订课堂" },
+  join_waitlist: { en: "Join Waitlist", zhTW: "加入候補名單", zhCN: "加入候补名单" },
+  all_subjects: { en: "All Subjects", zhTW: "所有科目", zhCN: "所有科目" },
+  math: { en: "Math", zhTW: "數學", zhCN: "数学" },
+  english: { en: "English", zhTW: "英語", zhCN: "英语" },
+  chinese: { en: "Chinese", zhTW: "中文", zhCN: "中文" },
+  physics: { en: "Physics", zhTW: "物理", zhCN: "物理" },
+  chemistry: { en: "Chemistry", zhTW: "化學", zhCN: "化学" },
+  music: { en: "Music", zhTW: "音樂", zhCN: "音乐" },
+  no_found: { en: "No teachers found", zhTW: "找不到導師", zhCN: "找不到导师" },
+  try_filters: { en: "Try adjusting your filters.", zhTW: "嘗試調整篩選條件。", zhCN: "尝试调整筛选条件。" },
+  years_exp: { en: "years exp.", zhTW: "年經驗", zhCN: "年经验" },
+  verified: { en: "Verified", zhTW: "已驗證", zhCN: "已验证" }
+}

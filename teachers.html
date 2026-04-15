@@ -165,7 +165,7 @@
  <div class="filters-inner">
  <div class="filter-group">
  <select id="subjectFilter">
- <option value="">All Subjects</option>
+ <option value="" data-i18n="teachers.all_subjects">All Subjects</option>
  <option value="English">English</option>
  <option value="Mathematics">Mathematics</option>
  <option value="Physics">Physics</option>
@@ -231,7 +231,7 @@
  document.getElementById('resultCount').textContent = filtered.length;
 
  if (filtered.length === 0) {
- grid.innerHTML = '<div class="empty-state"><h3>No teachers found</h3><p>Try adjusting your filters.</p></div>';
+ grid.innerHTML = '<div class="empty-state"><h3 data-i18n="teachers.no_found">No teachers found</h3><p data-i18n="teachers.try_filters">Try adjusting your filters.</p></div>';
  return;
  }
 
