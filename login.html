@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Login — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-50: #f9fafb;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-500: #64748b;
+ --green: #22c55e;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--gray-50);
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ }
+
+ /* Nav */
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 32px; height: 32px; }
+
+ .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+ /* Main */
+ .main {
+ flex: 1;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 32px 24px;
+ }
+
+ .login-card {
+ background: white;
+ border-radius: 24px;
+ padding: 40px;
+ width: 100%;
+ max-width: 440px;
+ box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+ }
+
+ /* Role Selector */
+ .role-selector {
+ display: flex;
+ background: var(--gray-100);
+ border-radius: 12px;
+ padding: 4px;
+ margin-bottom: 32px;
+ }
+
+ .role-btn {
+ flex: 1;
+ padding: 12px;
+ border: none;
+ background: transparent;
+ border-radius: 8px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ color: var(--gray-500);
+ }
+
+ .role-btn.active {
+ background: white;
+ color: var(--navy);
+ box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+ }
+
+ .role-btn:hover:not(.active) {
+ color: var(--navy);
+ }
+
+ /* Hero */
+ .login-hero {
+ text-align: center;
+ margin-bottom: 32px;
+ }
+
+ .login-hero h1 {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ margin-bottom: 8px;
+ }
+
+ .login-hero p {
+ color: var(--gray-500);
+ font-size: 14px;
+ }
+
+ /* Form */
+ .form-group {
+ margin-bottom: 20px;
+ }
+
+ .form-group label {
+ display: block;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-500);
+ margin-bottom: 6px;
+ }
+
+ .form-group input {
+ width: 100%;
+ padding: 12px 16px;
+ border: 1px solid var(--gray-300);
+ border-radius: 10px;
+ font-size: 15px;
+ transition: all 0.2s;
+ }
+
+ .form-group input:focus {
+ outline: none;
+ border-color: var(--teal);
+ box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+ }
+
+ .forgot-link {
+ display: block;
+ text-align: right;
+ font-size: 13px;
+ color: var(--teal);
+ text-decoration: none;
+ margin-top: -12px;
+ margin-bottom: 24px;
+ }
+
+ .forgot-link:hover {
+ text-decoration: underline;
+ }
+
+ /* Submit */
+ .btn-submit {
+ width: 100%;
+ padding: 14px;
+ background: var(--navy);
+ color: white;
+ border: none;
+ border-radius: 10px;
+ font-size: 16px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .btn-submit:hover {
+ background: var(--navy-dark);
+ }
+
+ /* Divider */
+ .divider {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ margin: 24px 0;
+ color: var(--gray-500);
+ font-size: 13px;
+ }
+
+ .divider::before,
+ .divider::after {
+ content: "";
+ flex: 1;
+ height: 1px;
+ background: var(--gray-200);
+ }
+
+ /* Register link */
+ .register-link {
+ text-align: center;
+ font-size: 14px;
+ color: var(--gray-500);
+ }
+
+ .register-link a {
+ color: var(--teal);
+ font-weight: 600;
+ text-decoration: none;
+ }
+
+ .register-link a:hover {
+ text-decoration: underline;
+ }
+
+ /* Footer */
+ footer {
+ text-align: center;
+ padding: 24px;
+ font-size: 13px;
+ color: var(--gray-500);
+ }
+
+ /* Mobile */
+ @media (max-width: 480px) {
+ .login-card {
+ padding: 24px;
+ }
+ .login-hero h1 {
+ font-size: 24px;
+ }
+ }
+
+ @media (max-width: 768px) {
+ .lang-btn { padding: 3px 6px; font-size: 11px; }
+ .lang-selector { padding: 2px; gap: 1px; }
+ }
+ </style>
+</head>
+<body>
+ <nav>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="lang-selector">
+ <a href="?lang=en" class="lang-btn active">EN</a>
+ <a href="?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </nav>
+
+ <main class="main">
+ <div class="login-card">
+ <div class="role-selector">
+ <button class="role-btn active" onclick="selectRole('teacher')" id="teacherBtn">Teacher</button>
+ <button class="role-btn" onclick="selectRole('parent')" id="parentBtn">Parent / Student</button>
+ </div>
+
+ <div class="login-hero" id="heroSection">
+ <h1 id="heroTitle">Welcome back, teacher!</h1>
+ <p id="heroSubtitle">Login to manage your students and schedule.</p>
+ </div>
+
+ <form id="loginForm" onsubmit="handleLogin(event)">
+ <div class="form-group">
+ <label for="email" id="emailLabel">Email Address</label>
+ <input type="email" id="email" placeholder="your@email.com" required>
+ </div>
+
+ <div class="form-group">
+ <label for="password" id="passwordLabel">Password</label>
+ <input type="password" id="password" placeholder="••••••••" required>
+ </div>
+
+ <a href="#" class="forgot-link" id="forgotLink">Forgot Password?</a>
+
+ <button type="submit" class="btn-submit" id="submitBtn">Login</button>
+ </form>
+
+ <div class="register-link" id="registerSection">
+ <p>Don't have an account? <a href="#" id="registerLink">Register as Teacher</a></p>
+ </div>
+ </div>
+ </main>
+
+ <footer>
+ © 2025 Minerva. All rights reserved.
+ </footer>
+
+ <script>
+ let currentRole = 'teacher';
+
+ function selectRole(role) {
+ currentRole = role;
+ 
+ const teacherBtn = document.getElementById('teacherBtn');
+ const parentBtn = document.getElementById('parentBtn');
+ const heroTitle = document.getElementById('heroTitle');
+ const heroSubtitle = document.getElementById('heroSubtitle');
+ const emailLabel = document.getElementById('emailLabel');
+ const passwordLabel = document.getElementById('passwordLabel');
+ const forgotLink = document.getElementById('forgotLink');
+ const submitBtn = document.getElementById('submitBtn');
+ const registerLink = document.getElementById('registerLink');
+
+ if (role === 'teacher') {
+ teacherBtn.classList.add('active');
+ parentBtn.classList.remove('active');
+ heroTitle.textContent = 'Welcome back, teacher!';
+ heroSubtitle.textContent = 'Login to manage your students and schedule.';
+ emailLabel.textContent = 'Email Address';
+ passwordLabel.textContent = 'Password';
+ forgotLink.href = '#';
+ submitBtn.textContent = 'Login';
+ registerLink.textContent = 'Register as Teacher';
+ registerLink.parentElement.querySelector('p').innerHTML = 
+ "Don't have an account? <a href=\"#\" id=\"registerLink\">Register as Teacher</a>";
+ } else {
+ teacherBtn.classList.remove('active');
+ parentBtn.classList.add('active');
+ heroTitle.textContent = 'Welcome back!';
+ heroSubtitle.textContent = 'Login to manage your lessons and track progress.';
+ emailLabel.textContent = 'Email Address';
+ passwordLabel.textContent = 'Password';
+ forgotLink.href = '#';
+ submitBtn.textContent = 'Login';
+ registerLink.parentElement.querySelector('p').innerHTML = 
+ "Don't have an account? <a href=\"#\" id=\"registerLink\">Register as Parent/Student</a>";
+ }
+ }
+
+ function handleLogin(e) {
+ e.preventDefault();
+ const email = document.getElementById('email').value;
+ const password = document.getElementById('password').value;
+ 
+ // Demo: redirect based on role
+ if (currentRole === 'teacher') {
+ window.location.href = 'teacher_dashboard.html';
+ } else {
+ window.location.href = 'parent_dashboard.html';
+ }
+ }
+ </script>
+</body>
+</html>
