@@ -346,8 +346,8 @@
 
  <section class="hero">
  <div class="hero-badge">Parent / Student Registration</div>
- <h1>Find the perfect teacher for you</h1>
- <p>Sign up today and get first class free when you sign up for four lessons.</p>
+ <h1 data-i18n="register.find_teacher">Find the perfect teacher for you</h1>
+ <p data-i18n="register.first_class_free">Sign up today and get first class free when you sign up for four lessons.</p>
  </section>
 
  <section class="form-section">
@@ -547,6 +547,12 @@
  // Log form data (in production, this would send to backend)
  const formData = new FormData(this);
  console.log('Registration:', Object.fromEntries(formData));
+ });
+ </script>
+ <script src="translations.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+ applyTranslations();
  });
  </script>
  </body>

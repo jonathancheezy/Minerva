@@ -345,9 +345,9 @@
  </nav>
 
  <section class="hero">
- <div class="hero-badge">Teacher Registration</div>
- <h1>Join the Minerva teaching community</h1>
- <p>Sign up today and start connecting with students in Hong Kong. First 100 get 0 commission levied for first four classes.</p>
+ <div class="hero-badge" data-i18n="register.teacher_register">Teacher Registration</div>
+ <h1 data-i18n="register.join_community">Join the Minerva teaching community</h1>
+ <p data-i18n="register.first_100">Sign up today and start connecting with students in Hong Kong. First 100 get 0 commission levied for first four classes.</p>
  </section>
 
  <section class="form-section">
@@ -524,6 +524,12 @@
  // Log form data (in production, this would send to backend)
  const formData = new FormData(this);
  console.log('Registration:', Object.fromEntries(formData));
+ });
+ </script>
+ <script src="translations.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+ applyTranslations();
  });
  </script>
 </body>
