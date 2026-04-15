@@ -196,6 +196,9 @@
  }
  .nav-links.active { display: flex; }
  .mobile-menu-btn { display: block; }
+ .nav-right { width: 100%; justify-content: flex-end; }
+ .nav-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+ .user-info { display: flex; align-items: center; gap: 12px; }
  }
 
  @media (min-width: 769px) {
@@ -521,15 +524,18 @@
  </div>
  </div>
  <div class="nav-right">
+ <div class="nav-meta">
  <div class="lang-selector">
  <a href="minerva_landing.html?lang=en" class="lang-btn">EN</a>
  <a href="minerva_landing.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="minerva_landing.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
- 
+ <div class="user-info">
  <div class="avatar">JW</div>
  <span class="user-name">Jon Wong</span>
  <a href="parent_login.html" class="logout">Logout</a>
+ </div>
+ </div>
  </div>
  </nav>
 
