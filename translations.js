@@ -388,3 +388,13 @@ profile: {
   account_holder: { en: "Account Holder Name", zhTW: "帳戶持有人姓名", zhCN: "帐户持有人姓名" },
   payout_schedule: { en: "Payout Schedule", zhTW: "付款時間表", zhCN: "付款时间表" }
 }
+
+// Login page
+login: {
+  welcome_teacher: { en: "Welcome back, teacher!", zhTW: "歡迎回來，導師！", zhCN: "欢迎回来，导师！" },
+  welcome_parent: { en: "Welcome back!", zhTW: "歡迎回來！", zhCN: "欢迎回来！" },
+  subtitle_teacher: { en: "Login to manage your students and schedule.", zhTW: "登入以管理您的學生和時間表。", zhCN: "登入以管理您的学生和时间表。" },
+  subtitle_parent: { en: "Login to manage your lessons and track progress.", zhTW: "登入以管理您的課堂和追蹤進度。", zhCN: "登入以管理您的课堂和追踪进度。" },
+  no_account_teacher: { en: "Don't have an account? <a href='#'>Register as Teacher</a>", zhTW: "還沒有帳戶？<a href='#'>導師登記</a>", zhCN: "还没有帐户？<a href='#'>导师登记</a>" },
+  no_account_parent: { en: "Don't have an account? <a href='#'>Register as Parent/Student</a>", zhTW: "還沒有帳戶？<a href='#'>家長/學生登記</a>", zhCN: "还没有帐户？<a href='#'>家长/学生登记</a>" }
+}

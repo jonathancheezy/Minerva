@@ -271,8 +271,8 @@
  </div>
 
  <div class="login-hero" id="heroSection">
- <h1 id="heroTitle">Welcome back, teacher!</h1>
- <p id="heroSubtitle">Login to manage your students and schedule.</p>
+ <h1 id="heroTitle" data-i18n="login.welcome_teacher">Welcome back, teacher!</h1>
+ <p id="heroSubtitle" data-i18n="login.subtitle_teacher">Login to manage your students and schedule.</p>
  </div>
 
  <form id="loginForm" onsubmit="handleLogin(event)">
@@ -292,7 +292,7 @@
  </form>
 
  <div class="register-link" id="registerSection">
- <p>Don't have an account? <a href="#" id="registerLink">Register as Teacher</a></p>
+ <p data-i18n="login.no_account_teacher">Don't have an account? <a href="#">Register as Teacher</a></p>
  </div>
  </div>
  </main>
@@ -356,5 +356,11 @@
  }
  }
  </script>
+<script src="translations.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  applyTranslations();
+});
+</script>
 </body>
 </html>
