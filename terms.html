@@ -53,7 +53,7 @@
  </nav>
 
  <div class="container">
- <h1>Terms & Conditions</h1>
+ <h1 data-i18n="terms.title">Terms & Conditions</h1>
  <p class="last-updated">Last updated: January 2026</p>
 
  <div class="section">
@@ -277,5 +277,11 @@
 
  <p style="margin-top: 48px; font-size: 14px; color: var(--gray-500);">© 2026 Minerva Learning Ltd. All rights reserved. Registered in Hong Kong.</p>
  </div>
+ <script src="translations.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+ applyTranslations();
+ });
+ </script>
 </body>
 </html>
