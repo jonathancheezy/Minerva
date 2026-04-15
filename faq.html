@@ -51,6 +51,11 @@
  .contact-btn { display: inline-block; background: var(--gold); color: var(--navy-dark); padding: 14px 32px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
  .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(249, 168, 40, 0.4); }
 
+ .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
  footer { text-align: center; padding: 32px 24px; font-size: 14px; color: var(--gray-500); border-top: 1px solid var(--gray-200); margin-top: 48px; }
  footer a { color: var(--navy); text-decoration: none; }
 
@@ -72,6 +77,13 @@
  </svg>
  Minerva
  </a>
+ <div class="nav-right">
+ <div class="lang-selector">
+ <a href="minerva_landing.html?lang=en" class="lang-btn">EN</a>
+ <a href="minerva_landing.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="minerva_landing.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
  <a href="minerva_landing.html" class="back-link">← Back to Home</a>
  </div>
  </nav>

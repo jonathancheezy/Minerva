@@ -31,11 +31,20 @@
  ul { margin: 16px 0; padding-left: 24px; }
  li { margin-bottom: 8px; }
  .section { margin-bottom: 32px; }
+ .lang-selector { display: flex; gap: 4px; background: rgba(255,255,255,0.1); padding: 4px; border-radius: 8px; float: right; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: white; color: var(--navy); }
  </style>
 </head>
 <body>
  <nav>
  <a href="minerva_landing.html">← Back to Minerva</a>
+ <div class="lang-selector">
+ <a href="minerva_landing.html?lang=en" class="lang-btn">EN</a>
+ <a href="minerva_landing.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="minerva_landing.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
  </nav>
 
  <div class="container">
