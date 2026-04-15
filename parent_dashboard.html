@@ -527,10 +527,10 @@
  Minerva
  </a>
  <div class="nav-links">
- <a href="parent_dashboard.html" class="active">Dashboard</a>
- <a href="teachers.html">Teachers</a>
- <a href="parent_schedule.html">Schedule</a>
- <a href="#">Messages</a>
+ <a href="parent_dashboard.html" class="active" data-i18n="parent_dash.dashboard">Dashboard</a>
+ <a href="teachers.html" data-i18n="parent_dash.teachers">Teachers</a>
+ <a href="parent_schedule.html" data-i18n="parent_dash.schedule">Schedule</a>
+ <a href="#" data-i18n="parent_dash.messages">Messages</a>
  </div>
  </div>
  <div class="nav-right">
@@ -552,11 +552,11 @@
  <main class="main">
  <div class="page-header">
  <div>
- <h1>Welcome back, Jon! 👋</h1>
+ <h1 data-i18n="parent_dash.welcome">Welcome back, Jon! 👋</h1>
  <p>Here's an overview of your learning journey.</p>
  </div>
  <div class="actions">
- <a href="teachers.html" class="btn btn-primary">Book Lesson</a>
+ <a href="teachers.html" class="btn btn-primary" data-i18n="parent_dash.book_lesson">Book Lesson</a>
  </div>
  </div>
 
@@ -720,5 +720,11 @@
  </div>
  </div>
  </main>
+ <script src="translations.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+ applyTranslations();
+ });
+ </script>
 </body>
 </html>
