@@ -3,7 +3,7 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>My Schedule — Minerva</title>
+ <title>My Schedule - Minerva</title>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
  <style>
@@ -213,6 +213,24 @@
  display: grid;
  grid-template-columns: repeat(7, 1fr);
  gap: 8px;
+ }
+
+ .two-months-container {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 24px;
+ }
+
+ .month-calendar {
+ flex: 1;
+ }
+
+ .month-label {
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--navy-dark);
+ margin-bottom: 12px;
+ text-align: center;
  }
 
  .calendar-header {
@@ -452,6 +470,8 @@
  .nav-links { display: none; }
  .stats-row { grid-template-columns: repeat(2, 1fr); }
  .page-header { flex-direction: column; align-items: flex-start; }
+ .two-months-container { grid-template-columns: 1fr; gap: 16px; }
+ .month-calendar { min-width: 0; }
  .calendar-grid { overflow-x: auto; gap: 4px; padding-bottom: 8px; }
  .calendar-header { font-size: 10px; padding: 4px; }
  .calendar-day { min-height: 50px; padding: 4px; }
@@ -535,57 +555,115 @@
  <div class="card">
  <div class="month-nav">
  <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)">← Prev</button>
- <h2>April 2025</h2>
+ <h2>April - May 2025</h2>
  <button class="btn btn-secondary btn-small" onclick="changeMonth(1)">Next →</button>
  </div>
+ <div class="two-months-container">
+ <div class="month-calendar">
+ <div class="month-label">April 2025</div>
  <div class="calendar-grid">
- <div class="calendar-day header">Mon<div class="date">Apr</div></div>
- <div class="calendar-day header">Tue<div class="date">Apr</div></div>
- <div class="calendar-day header">Wed<div class="date">Apr</div></div>
- <div class="calendar-day header">Thu<div class="date">Apr</div></div>
- <div class="calendar-day header">Fri<div class="date">Apr</div></div>
- <div class="calendar-day header">Sat<div class="date">Apr</div></div>
- <div class="calendar-day header">Sun<div class="date">Apr</div></div>
-
+ <div class="calendar-day header">Mon</div>
+ <div class="calendar-day header">Tue</div>
+ <div class="calendar-day header">Wed</div>
+ <div class="calendar-day header">Thu</div>
+ <div class="calendar-day header">Fri</div>
+ <div class="calendar-day header">Sat</div>
+ <div class="calendar-day header">Sun</div>
+ 
  <div class="calendar-day other-month"><div class="day-num">31</div></div>
- <div class="calendar-day"><div class="day-num today">1</div><div class="event booked">10:00 Sarah</div><div class="event">14:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">2</div><div class="event booked">11:00 Jason</div><div class="event booked">15:00 Emily</div></div>
- <div class="calendar-day"><div class="day-num">3</div><div class="event">09:00 Free</div><div class="event">14:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">4</div><div class="event blocked">All Day Blocked</div></div>
- <div class="calendar-day"><div class="day-num">5</div><div class="event booked">10:00 David</div></div>
+ <div class="calendar-day"><div class="day-num today">1</div><div class="event booked">10:00</div></div>
+ <div class="calendar-day"><div class="day-num">2</div><div class="event booked">11:00</div></div>
+ <div class="calendar-day"><div class="day-num">3</div><div class="event">09:00</div></div>
+ <div class="calendar-day"><div class="day-num">4</div><div class="event blocked">-</div></div>
+ <div class="calendar-day"><div class="day-num">5</div><div class="event booked">10:00</div></div>
  <div class="calendar-day"><div class="day-num">6</div></div>
-
- <div class="calendar-day"><div class="day-num">7</div><div class="event">09:00 Free</div><div class="event">11:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">8</div><div class="event booked">10:00 Sarah</div></div>
- <div class="calendar-day"><div class="day-num">9</div><div class="event booked">14:00 Jason</div></div>
- <div class="calendar-day"><div class="day-num">10</div><div class="event">10:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">11</div><div class="event blocked">14:00 Doctor</div></div>
+ 
+ <div class="calendar-day"><div class="day-num">7</div></div>
+ <div class="calendar-day"><div class="day-num">8</div></div>
+ <div class="calendar-day"><div class="day-num">9</div><div class="event booked">14:00</div></div>
+ <div class="calendar-day"><div class="day-num">10</div></div>
+ <div class="calendar-day"><div class="day-num">11</div></div>
  <div class="calendar-day"><div class="day-num">12</div></div>
  <div class="calendar-day"><div class="day-num">13</div></div>
-
- <div class="calendar-day"><div class="day-num">14</div><div class="event booked">09:00 Lisa</div><div class="event">15:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">15</div><div class="event booked">10:00 Tom</div><div class="event booked">14:00 Amy</div></div>
- <div class="calendar-day"><div class="day-num">16</div><div class="event">11:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">17</div><div class="event booked">10:00 Sarah</div></div>
- <div class="calendar-day"><div class="day-num">18</div><div class="event">09:00 Free</div><div class="event">14:00 Free</div></div>
+ 
+ <div class="calendar-day"><div class="day-num">14</div><div class="event">15:00</div></div>
+ <div class="calendar-day"><div class="day-num">15</div><div class="event booked">10:00</div></div>
+ <div class="calendar-day"><div class="day-num">16</div></div>
+ <div class="calendar-day"><div class="day-num">17</div><div class="event booked">10:00</div></div>
+ <div class="calendar-day"><div class="day-num">18</div></div>
  <div class="calendar-day"><div class="day-num">19</div></div>
  <div class="calendar-day"><div class="day-num">20</div></div>
-
- <div class="calendar-day"><div class="day-num">21</div><div class="event booked">10:00 Jason</div></div>
- <div class="calendar-day"><div class="day-num">22</div><div class="event">09:00 Free</div><div class="event">14:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">23</div><div class="event booked">11:00 Emily</div></div>
- <div class="calendar-day"><div class="day-num">24</div><div class="event">10:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">25</div><div class="event blocked">All Day Blocked</div></div>
+ 
+ <div class="calendar-day"><div class="day-num">21</div></div>
+ <div class="calendar-day"><div class="day-num">22</div></div>
+ <div class="calendar-day"><div class="day-num">23</div></div>
+ <div class="calendar-day"><div class="day-num">24</div></div>
+ <div class="calendar-day"><div class="day-num">25</div></div>
  <div class="calendar-day"><div class="day-num">26</div></div>
  <div class="calendar-day"><div class="day-num">27</div></div>
-
- <div class="calendar-day"><div class="day-num">28</div><div class="event booked">14:00 David</div></div>
- <div class="calendar-day"><div class="day-num">29</div><div class="event">09:00 Free</div><div class="event">11:00 Free</div></div>
- <div class="calendar-day"><div class="day-num">30</div><div class="event booked">10:00 Sarah</div></div>
+ 
+ <div class="calendar-day"><div class="day-num">28</div><div class="event booked">14:00</div></div>
+ <div class="calendar-day"><div class="day-num">29</div></div>
+ <div class="calendar-day"><div class="day-num">30</div></div>
  <div class="calendar-day other-month"><div class="day-num">1</div></div>
  <div class="calendar-day other-month"><div class="day-num">2</div></div>
  <div class="calendar-day other-month"><div class="day-num">3</div></div>
  <div class="calendar-day other-month"><div class="day-num">4</div></div>
+ </div>
+ </div>
+ 
+ <div class="month-calendar">
+ <div class="month-label">May 2025</div>
+ <div class="calendar-grid">
+ <div class="calendar-day header">Mon</div>
+ <div class="calendar-day header">Tue</div>
+ <div class="calendar-day header">Wed</div>
+ <div class="calendar-day header">Thu</div>
+ <div class="calendar-day header">Fri</div>
+ <div class="calendar-day header">Sat</div>
+ <div class="calendar-day header">Sun</div>
+ 
+ <div class="calendar-day other-month"><div class="day-num">28</div></div>
+ <div class="calendar-day other-month"><div class="day-num">29</div></div>
+ <div class="calendar-day other-month"><div class="day-num">30</div></div>
+ <div class="calendar-day"><div class="day-num">1</div><div class="event">10:00</div></div>
+ <div class="calendar-day"><div class="day-num">2</div><div class="event booked">14:00</div></div>
+ <div class="calendar-day"><div class="day-num">3</div></div>
+ <div class="calendar-day"><div class="day-num">4</div></div>
+ 
+ <div class="calendar-day"><div class="day-num">5</div></div>
+ <div class="calendar-day"><div class="day-num">6</div><div class="event">09:00</div></div>
+ <div class="calendar-day"><div class="day-num">7</div></div>
+ <div class="calendar-day"><div class="day-num">8</div></div>
+ <div class="calendar-day"><div class="day-num">9</div></div>
+ <div class="calendar-day"><div class="day-num">10</div></div>
+ <div class="calendar-day"><div class="day-num">11</div></div>
+ 
+ <div class="calendar-day"><div class="day-num">12</div></div>
+ <div class="calendar-day"><div class="day-num">13</div><div class="event">11:00</div></div>
+ <div class="calendar-day"><div class="day-num">14</div></div>
+ <div class="calendar-day"><div class="day-num">15</div><div class="event booked">10:00</div></div>
+ <div class="calendar-day"><div class="day-num">16</div></div>
+ <div class="calendar-day"><div class="day-num">17</div></div>
+ <div class="calendar-day"><div class="day-num">18</div></div>
+ 
+ <div class="calendar-day"><div class="day-num">19</div></div>
+ <div class="calendar-day"><div class="day-num">20</div></div>
+ <div class="calendar-day"><div class="day-num">21</div></div>
+ <div class="calendar-day"><div class="day-num">22</div></div>
+ <div class="calendar-day"><div class="day-num">23</div></div>
+ <div class="calendar-day"><div class="day-num">24</div></div>
+ <div class="calendar-day"><div class="day-num">25</div></div>
+ 
+ <div class="calendar-day"><div class="day-num">26</div></div>
+ <div class="calendar-day"><div class="day-num">27</div></div>
+ <div class="calendar-day"><div class="day-num">28</div></div>
+ <div class="calendar-day"><div class="day-num">29</div></div>
+ <div class="calendar-day"><div class="day-num">30</div></div>
+ <div class="calendar-day"><div class="day-num">31</div></div>
+ <div class="calendar-day other-month"><div class="day-num">1</div></div>
+ </div>
+ </div>
  </div>
  </div>
  </div>
