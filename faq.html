@@ -89,11 +89,11 @@
  </nav>
 
  <div class="container">
- <h1>Frequently Asked Questions</h1>
+ <h1 data-i18n="faq.title">Frequently Asked Questions</h1>
  <p class="subtitle">Everything you need to know about Minerva</p>
 
  <div class="category">
- <h2 class="category-title">For Parents & Students</h2>
+ <h2 class="category-title" data-i18n="faq.for_parents">For Parents & Students</h2>
  <div class="faq-list">
  <div class="faq-item">
  <div class="faq-question">What subjects are available on Minerva?</div>
@@ -131,7 +131,7 @@
  </div>
 
  <div class="category">
- <h2 class="category-title">For Teachers</h2>
+ <h2 class="category-title" data-i18n="faq.for_teachers">For Teachers</h2>
  <div class="faq-list">
  <div class="faq-item">
  <div class="faq-question">How much can I earn as a Minerva teacher?</div>
@@ -161,7 +161,7 @@
  </div>
 
  <div class="category">
- <h2 class="category-title">General</h2>
+ <h2 class="category-title" data-i18n="faq.general">General</h2>
  <div class="faq-list">
  <div class="faq-item">
  <div class="faq-question">Is my data protected?</div>
@@ -196,5 +196,11 @@
  <footer>
  <p>© 2026 Minerva Learning Ltd. Hong Kong. <a href="terms.html">Terms & Conditions</a></p>
  </footer>
+ <script src="translations.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+ applyTranslations();
+ });
+ </script>
 </body>
 </html>
