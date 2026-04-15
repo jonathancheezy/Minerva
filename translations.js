@@ -248,3 +248,143 @@ teachers: {
   years_exp: { en: "years exp.", zhTW: "年經驗", zhCN: "年经验" },
   verified: { en: "Verified", zhTW: "已驗證", zhCN: "已验证" }
 }
+
+// Terms page
+terms: {
+  title: { en: "Terms & Conditions", zhTW: "條款及細則", zhCN: "条款及细则" },
+  s1: { en: "1. Introduction", zhTW: "1. 簡介", zhCN: "1. 简介" },
+  s2: { en: "2. Teacher Registration", zhTW: "2. 導師登記", zhCN: "2. 导师登记" },
+  s3: { en: "3. Parent/Student Registration", zhTW: "3. 家長/學生登記", zhCN: "3. 家长/学生登记" },
+  s4: { en: "4. Escrow Payment System", zhTW: "4. 託管付款系統", zhCN: "4. 托管付款系统" },
+  s5: { en: "5. Lesson Scheduling", zhTW: "5. 課堂預訂", zhCN: "5. 课堂预订" },
+  s6: { en: "6. Cancellation & Refund", zhTW: "6. 取消及退款", zhCN: "6. 取消及退款" },
+  s7: { en: "7. Dispute Resolution", zhTW: "7. 爭議解決", zhCN: "7. 争议解决" },
+  s8: { en: "8. Platform Availability", zhTW: "8. 平台可用性", zhCN: "8. 平台可用性" },
+  s9: { en: "9. Limitation of Liability", zhTW: "9. 責任限制", zhCN: "9. 责任限制" },
+  s10: { en: "10. Privacy & Data Protection", zhTW: "10. 私隱及資料保護", zhCN: "10. 隐私及资料保护" }
+}
+
+// Login pages
+login: {
+  teacher_login: { en: "Teacher Login", zhTW: "導師登入", zhCN: "导师登入" },
+  parent_login: { en: "Parent / Student Login", zhTW: "家長/學生登入", zhCN: "家长/学生登入" },
+  welcome_back: { en: "Welcome back!", zhTW: "歡迎回來！", zhCN: "欢迎回来！" },
+  welcome_back_teacher: { en: "Welcome back, teacher!", zhTW: "歡迎回來，導師！", zhCN: "欢迎回来，导师！" },
+  welcome_back_parent: { en: "Welcome back!", zhTW: "歡迎回來！", zhCN: "欢迎回来！" },
+  login_subtitle_teacher: { en: "Login to manage your students and schedule.", zhTW: "登入以管理您的學生和時間表。", zhCN: "登入以管理您的学生和时间表。" },
+  login_subtitle_parent: { en: "Login to manage your lessons and track progress.", zhTW: "登入以管理您的課堂和追蹤進度。", zhCN: "登入以管理您的课堂和追踪进度。" },
+  email: { en: "Email Address", zhTW: "電郵地址", zhCN: "电邮地址" },
+  password: { en: "Password", zhTW: "密碼", zhCN: "密码" },
+  login_btn: { en: "Login", zhTW: "登入", zhCN: "登入" },
+  forgot: { en: "Forgot Password?", zhTW: "忘記密碼？", zhCN: "忘记密码？" },
+  back_home: { en: "← Back to Home", zhTW: "← 返回主頁", zhCN: "← 返回主页" }
+}
+
+// Registration pages
+register: {
+  teacher_register: { en: "Teacher Registration", zhTW: "導師登記", zhCN: "导师登记" },
+  parent_register: { en: "Parent / Student Registration", zhTW: "家長/學生登記", zhCN: "家长/学生登记" },
+  join_community: { en: "Join the Minerva teaching community", zhTW: "加入Minerva教學社群", zhCN: "加入Minerva教学社群" },
+  first_100: { en: "First 100 get 0 commission levied for first four classes.", zhTW: "首100位導師首四堂免佣！", zhCN: "首100位导师首四堂免佣！" },
+  first_class_free: { en: "Sign up today and get first class free!", zhTW: "立即報名，首堂免費！", zhCN: "立即报名，首堂免费！" },
+  full_name: { en: "Full Name", zhTW: "全名", zhCN: "全名" },
+  email: { en: "Email", zhTW: "電郵", zhCN: "电邮" },
+  password: { en: "Password", zhTW: "密碼", zhCN: "密码" },
+  confirm_password: { en: "Confirm Password", zhTW: "確認密碼", zhCN: "确认密码" },
+  register_btn: { en: "Register", zhTW: "登記", zhCN: "登记" },
+  back_home: { en: "← Back to Home", zhTW: "← 返回主頁", zhCN: "← 返回主页" }
+}
+
+// Dashboard translations
+teacher_dash: {
+  welcome: { en: "Welcome back", zhTW: "歡迎回來", zhCN: "欢迎回来" },
+  dashboard: { en: "Dashboard", zhTW: "主頁", zhCN: "主页" },
+  students: { en: "Students", zhTW: "學生", zhCN: "学生" },
+  schedule: { en: "Schedule", zhTW: "時間表", zhCN: "时间表" },
+  messages: { en: "Messages", zhTW: "訊息", zhCN: "信息" },
+  total_students: { en: "Total Students", zhTW: "學生總數", zhCN: "学生总数" },
+  upcoming_lessons: { en: "Upcoming Lessons", zhTW: "即將來臨的課堂", zhCN: "即将来临的课堂" },
+  this_month: { en: "This Month", zhTW: "本月", zhCN: "本月" },
+  rating: { en: "Rating", zhTW: "評分", zhCN: "评分" },
+  this_month_title: { en: "This Month", zhTW: "本月", zhCN: "本月" },
+  upcoming_lessons_title: { en: "Upcoming Lessons", zhTW: "即將來臨的課堂", zhCN: "即将来临的课堂" },
+  quick_actions: { en: "Quick Actions", zhTW: "快捷操作", zhCN: "快捷操作" },
+  edit_profile: { en: "Edit Profile", zhTW: "編輯個人資料", zhCN: "编辑个人资料" },
+  view_earnings: { en: "View Earnings", zhTW: "查看收入", zhCN: "查看收入" },
+  view_all: { en: "View All", zhTW: "查看全部", zhCN: "查看全部" },
+  pending: { en: "Pending", zhTW: "待處理", zhCN: "待处理" },
+  total_earnings: { en: "Total Earnings", zhTW: "總收入", zhCN: "总收入" },
+  hours_week: { en: "Hours This Week", zhTW: "本週課時", zhCN: "本周课时" },
+  pending_requests: { en: "Pending Requests", zhTW: "待處理請求", zhCN: "待处理请求" }
+}
+
+parent_dash: {
+  welcome: { en: "Welcome back", zhTW: "歡迎回來", zhCN: "欢迎回来" },
+  dashboard: { en: "Dashboard", zhTW: "主頁", zhCN: "主页" },
+  teachers: { en: "Teachers", zhTW: "導師", zhCN: "导师" },
+  schedule: { en: "Schedule", zhTW: "時間表", zhCN: "时间表" },
+  messages: { en: "Messages", zhTW: "訊息", zhCN: "信息" },
+  active_lessons: { en: "Active Lessons", zhTW: "進行中的課堂", zhCN: "进行中的课堂" },
+  completed: { en: "Completed", zhTW: "已完成", zhCN: "已完成" },
+  upcoming: { en: "Upcoming", zhTW: "即將開始", zhCN: "即将开始" },
+  active_lessons_title: { en: "Active Lessons", zhTW: "進行中的課堂", zhCN: "进行中的课堂" },
+  quick_actions: { en: "Quick Actions", zhTW: "快捷操作", zhCN: "快捷操作" },
+  find_teachers: { en: "Find Teachers", zhTW: "尋找導師", zhCN: "寻找导师" },
+  view_schedule: { en: "View Schedule", zhTW: "查看時間表", zhCN: "查看时间表" },
+  book_lesson: { en: "Book Lesson", zhTW: "預訂課堂", zhCN: "预订课堂" },
+  view_all: { en: "View All", zhTW: "查看全部", zhCN: "查看全部" }
+}
+
+// Schedule pages
+schedule: {
+  my_schedule: { en: "My Schedule", zhTW: "我的時間表", zhCN: "我的时间表" },
+  book_lesson: { en: "Book a Lesson", zhTW: "預訂課堂", zhCN: "预订课堂" },
+  add_availability: { en: "Add Availability", zhTW: "添加可用時間", zhCN: "添加可用时间" },
+  lessons_month: { en: "Lessons This Month", zhTW: "本月課堂", zhCN: "本月课堂" },
+  hours_week: { en: "Hours This Week", zhTW: "本週課時", zhCN: "本周课时" },
+  pending_requests: { en: "Pending Requests", zhTW: "待處理請求", zhCN: "待处理请求" },
+  rating: { en: "Rating", zhTW: "評分", zhCN: "评分" },
+  monthly_calendar: { en: "Monthly Calendar", zhTW: "月曆", zhCN: "月历" },
+  upcoming_bookings: { en: "Upcoming Bookings", zhTW: "即將預訂", zhCN: "即将预订" },
+  upcoming_bookings_title: { en: "Upcoming Bookings", zhTW: "即將預訂", zhCN: "即将预订" },
+  select_teacher: { en: "Select Teacher", zhTW: "選擇導師", zhCN: "选择导师" },
+  select_date: { en: "Select Date", zhTW: "選擇日期", zhCN: "选择日期" },
+  select_time: { en: "Select Time", zhTW: "選擇時間", zhCN: "选择时间" },
+  booking_summary: { en: "Booking Summary", zhTW: "預訂摘要", zhCN: "预订摘要" },
+  confirm_booking: { en: "Confirm Booking", zhTW: "確認預訂", zhCN: "确认预订" },
+  confirmed: { en: "Confirmed", zhTW: "已確認", zhCN: "已确认" },
+  pending: { en: "Pending", zhTW: "待處理", zhCN: "待处理" },
+  book_new: { en: "Book New", zhTW: "新預訂", zhCN: "新预订" },
+  upcoming_tab: { en: "Upcoming", zhTW: "即將來臨", zhCN: "即将来临" },
+  history_tab: { en: "History", zhTW: "歷史", zhCN: "历史" },
+  upcoming_lessons_title: { en: "Upcoming Lessons", zhTW: "即將來臨的課堂", zhCN: "即将来临的课堂" },
+  past_lessons_title: { en: "Past Lessons", zhTW: "過往課堂", zhCN: "过往课堂" }
+}
+
+// Profile page
+profile: {
+  edit_profile: { en: "Edit Profile", zhTW: "編輯個人資料", zhCN: "编辑个人资料" },
+  basic_info: { en: "Basic Information", zhTW: "基本資料", zhCN: "基本资料" },
+  full_name: { en: "Full Name", zhTW: "全名", zhCN: "全名" },
+  display_name: { en: "Display Name", zhTW: "顯示名稱", zhCN: "显示名称" },
+  email: { en: "Email", zhTW: "電郵", zhCN: "电邮" },
+  phone: { en: "Phone Number", zhTW: "電話號碼", zhCN: "电话号码" },
+  short_bio: { en: "Short Bio", zhTW: "簡短介紹", zhCN: "简短介绍" },
+  teaching_details: { en: "Teaching Details", zhTW: "教學詳情", zhCN: "教学详情" },
+  subjects: { en: "Subjects", zhTW: "科目", zhCN: "科目" },
+  teaching_levels: { en: "Teaching Levels", zhTW: "教學程度", zhCN: "教学程度" },
+  hourly_rate: { en: "Hourly Rate", zhTW: "時薪", zhCN: "时薪" },
+  first_lesson_discount: { en: "First Lesson Discount", zhTW: "首課優惠", zhCN: "首课优惠" },
+  teaching_location: { en: "Teaching Location", zhTW: "教學地點", zhCN: "教学地点" },
+  languages: { en: "Languages Spoken", zhTW: "使用語言", zhCN: "使用语言" },
+  experience: { en: "Teaching Experience", zhTW: "教學經驗", zhCN: "教学经验" },
+  profile_settings: { en: "Profile Settings", zhTW: "個人設定", zhCN: "个人设定" },
+  visibility: { en: "Profile Visibility", zhTW: "個人資料可見度", zhCN: "个人资料可见度" },
+  accept_students: { en: "Accept New Students", zhTW: "接受新學生", zhCN: "接受新学生" },
+  save_changes: { en: "Save Changes", zhTW: "儲存更改", zhCN: "储存更改" },
+  verified_teacher: { en: "Verified Teacher", zhTW: "已驗證導師", zhCN: "已验证导师" },
+  bank_name: { en: "Bank Name", zhTW: "銀行名稱", zhCN: "银行名称" },
+  bank_account: { en: "Bank Account Number", zhTW: "銀行帳戶號碼", zhCN: "银行帐户号码" },
+  account_holder: { en: "Account Holder Name", zhTW: "帳戶持有人姓名", zhCN: "帐户持有人姓名" },
+  payout_schedule: { en: "Payout Schedule", zhTW: "付款時間表", zhCN: "付款时间表" }
+}
