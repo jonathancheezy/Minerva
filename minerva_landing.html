@@ -557,11 +557,20 @@
  /* Mobile */
  @media (max-width: 768px) {
  .nav-links { display: none; }
+ .nav-links.active { display: flex; }
+ .mobile-menu-btn { display: block; }
  .stats-inner { grid-template-columns: 1fr; gap: 32px; }
  .features-grid { grid-template-columns: 1fr; }
  .problem-grid { grid-template-columns: 1fr; }
  .form-row { flex-direction: column; }
  }
+ @media (min-width: 769px) {
+ .mobile-menu-btn { display: none; }
+ }
+@media (max-width: 768px) {
+.lang-btn { padding: 6px 12px; font-size: 13px; }
+.lang-selector { padding: 2px; gap: 1px; }
+}
  </style>
 </head>
 <body>
@@ -575,6 +584,7 @@
  </svg>
  Minerva
  </a>
+ <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
  <div class="nav-right">
  <div class="lang-selector">
  <button class="lang-btn active" data-lang="en">EN</button>
