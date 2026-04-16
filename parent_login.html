@@ -312,11 +312,45 @@
  // In production, this would authenticate via backend
  });
  </script>
- <script src="i18n.js"></script>
+ 
  <script>
  document.addEventListener('DOMContentLoaded', function() {
  
  });
  </script>
+<script>
+(function(){
+  const T = {
+    register:{teacher_register:{en:"Teacher Registration",zhTW:"導師登記",zhCN:"导师登记"},join_community:{en:"Join the Minerva teaching community",zhTW:"加入Minerva教學社群",zhCN:"加入Minerva教学社群"},first_100:{en:"First 100 get 0 commission for first four classes.",zhTW:"首100位導師首四堂免佣！",zhCN:"首100位导师首四堂免佣！"}}
+  };
+  let lang='en';
+  function apply(){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      let v=T;const k=el.getAttribute('data-i18n');
+      k.split('.').forEach(x=>v=v&&v[x]);
+      if(v&&v[lang])el.textContent=v[lang];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active',b.getAttribute('href')&&b.getAttribute('href').includes('lang='+lang));
+    });
+  }
+  function setLang(l){
+    lang=l.replace('-','');
+    localStorage.setItem('minerva_lang',lang);
+    const u=new URL(location.href);u.searchParams.set('lang',l);
+    history.replaceState({},'',u);apply();
+  }
+  function init(){
+    const p=new URLSearchParams(location.search);
+    const u=p.get('lang'),s=localStorage.getItem('minerva_lang');
+    if(u&&['en','zh-TW','zh-CN'].includes(u))setLang(u);
+    else if(s&&['en','zh-TW','zh-CN'].includes(s))setLang(s);
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.addEventListener('click',e=>{const h=b.getAttribute('href');if(h&&h.includes('lang=')){e.preventDefault();setLang(h.split('lang=')[1].split('&')[0]);}});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();</script>
 </body>
 </html>
