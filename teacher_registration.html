@@ -131,7 +131,7 @@ footer a{color:var(--gray-500)}
       b.classList.toggle('active',b.getAttribute('href')&&b.getAttribute('href').includes('lang='+lang));
     });
   }
-  function setLang(l){
+  function setLang(l){console.log("setLang called with:", l, "-> normalized:", l.replace("-",""));
     lang=l.replace('-','');
     localStorage.setItem('minerva_lang',lang);
     const u=new URL(location.href);u.searchParams.set('lang',l);
