@@ -213,6 +213,26 @@
  font-size: 14px;
  }
 
+ .btn-secondary {
+ background: transparent;
+ color: var(--navy);
+ font-weight: 600;
+ font-size: 14px;
+ padding: 10px 22px;
+ border-radius: 50px;
+ text-decoration: none;
+ border: 2px solid var(--navy);
+ transition: all 0.2s;
+ cursor: pointer;
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ min-width: 200px;
+ justify-content: center;
+ }
+
+ .btn-secondary:hover { background: var(--navy); color: white; }
+
  .btn-primary {
  background: var(--gold);
  color: var(--navy-dark);
@@ -227,24 +247,11 @@
  display: inline-flex;
  align-items: center;
  gap: 6px;
+ min-width: 200px;
+ justify-content: center;
  }
 
  .btn-primary:hover, .btn-primary:focus, .btn-primary:active { background: var(--gold); transform: translateY(-1px); }
-
- .btn-secondary {
- background: transparent;
- color: var(--navy);
- font-weight: 600;
- font-size: 14px;
- padding: 10px 22px;
- border-radius: 50px;
- text-decoration: none;
- border: 2px solid var(--navy);
- transition: all 0.2s;
- cursor: pointer;
- }
-
- .btn-secondary:hover { background: var(--navy); color: white; }
 
  /* Stats */
  .stats {

@@ -496,9 +496,9 @@
  <span class="user-name">Teacher Chan</span>
  </div>
  <div class="lang-selector">
- <a href="minerva_landing.html?lang=en" class="lang-btn">EN</a>
- <a href="minerva_landing.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="minerva_landing.html?lang=zh-CN" class="lang-btn">简</a>
+ <a href="teacher_profile.html?lang=en" class="lang-btn">EN</a>
+ <a href="teacher_profile.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="teacher_profile.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
  </div>
@@ -707,15 +707,42 @@
  </div>
 
  <div class="actions">
- <button class="btn btn-secondary">Cancel</button>
+ <button onclick="showCancelWarning()" class="btn btn-secondary">Cancel</button>
  <button class="btn btn-primary" onclick="saveProfile()" data-i18n="profile.save_changes">Save Changes</button>
  </div>
 
  <div style="margin-top: 32px; text-align: center;">
- <button class="btn btn-danger btn-small">Delete Account</button>
+ <button class="btn btn-danger btn-small" onclick="showDeleteWarning()">Delete Account</button>
  <p style="font-size: 12px; color: var(--gray-500); margin-top: 8px;">Permanently delete your account and all data</p>
  </div>
+ </div>
  </main>
+
+ <!-- Cancel Warning Modal -->
+ <div id="cancelModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+ <div style="background: white; border-radius: 16px; padding: 32px; max-width: 400px; width: 90%; text-align: center;">
+ <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(249,168,40,0.2); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">⚠️</div>
+ <h3 style="color: var(--navy-dark); margin-bottom: 8px;">Discard Changes?</h3>
+ <p style="color: var(--gray-500); margin-bottom: 24px;">Your changes will not be saved. Are you sure you want to leave?</p>
+ <div style="display: flex; gap: 12px;">
+ <button onclick="hideCancelWarning()" class="btn btn-secondary" style="flex: 1;">Keep Editing</button>
+ <button onclick="confirmCancel()" class="btn btn-primary" style="flex: 1;">Discard & Leave</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Delete Warning Modal -->
+ <div id="deleteModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+ <div style="background: white; border-radius: 16px; padding: 32px; max-width: 400px; width: 90%; text-align: center;">
+ <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(239,68,68,0.1); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">⚠️</div>
+ <h3 style="color: var(--navy-dark); margin-bottom: 8px;">Delete Account?</h3>
+ <p style="color: var(--gray-500); margin-bottom: 24px;">This action cannot be undone. All your profile data, lesson history, and earnings will be permanently removed.</p>
+ <div style="display: flex; gap: 12px;">
+ <button onclick="hideDeleteWarning()" class="btn btn-secondary" style="flex: 1;">Keep Account</button>
+ <button onclick="confirmDelete()" class="btn btn-danger" style="flex: 1;">Delete Forever</button>
+ </div>
+ </div>
+ </div>
 
  <footer>
  © 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.
@@ -730,6 +757,17 @@
  }
 
  function saveProfile() {
+ // Save to localStorage (simulating backend save)
+ const profile = {
+ fullName: document.getElementById('fullName').value,
+ bio: document.getElementById('bio').value,
+ email: 'chan.teacher@email.com',
+ phone: document.querySelector('input[type="tel"]').value,
+ hourlyRate: document.querySelector('input[type="number"]').value,
+ location: document.querySelector('select').value
+ };
+ localStorage.setItem('teacherProfile', JSON.stringify(profile));
+ 
  // Show success message
  const msg = document.getElementById('successMessage');
  msg.classList.add('show');
@@ -754,6 +792,30 @@
 
  function removeTag(el, containerId) {
  el.parentElement.remove();
+ }
+
+ function showCancelWarning() {
+ document.getElementById('cancelModal').style.display = 'flex';
+ }
+
+ function hideCancelWarning() {
+ document.getElementById('cancelModal').style.display = 'none';
+ }
+
+ function confirmCancel() {
+ window.location.href = 'teacher_dashboard.html';
+ }
+
+ function showDeleteWarning() {
+ document.getElementById('deleteModal').style.display = 'flex';
+ }
+
+ function hideDeleteWarning() {
+ document.getElementById('deleteModal').style.display = 'none';
+ }
+
+ function confirmDelete() {
+ window.location.href = 'minerva_landing.html';
  }
  </script>
  <script src="translations.js"></script>

@@ -255,9 +255,9 @@
  </a>
  <div class="nav-right">
  <div class="lang-selector">
- <a href="minerva_landing.html?lang=en" class="lang-btn">EN</a>
- <a href="minerva_landing.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="minerva_landing.html?lang=zh-CN" class="lang-btn">简</a>
+ <a href="teacher_login.html?lang=en" class="lang-btn">EN</a>
+ <a href="teacher_login.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="teacher_login.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
  <div class="nav-links">
@@ -294,7 +294,7 @@
 
  <div class="form-success" id="formSuccess">
  <h3>✅ Login successful!</h3>
- <p>Redirecting to your dashboard...<meta http-equiv="refresh" content="2;url=teacher_dashboard.html"></p>
+ <p>Redirecting to your dashboard...</p>
  </div>
  </div>
  </section>
@@ -306,10 +306,21 @@
  <script>
  document.getElementById('loginForm').addEventListener('submit', function(e) {
  e.preventDefault();
- // For demo, show success
+ 
+ // For demo, validate and redirect
+ const email = document.getElementById('email').value;
+ const password = document.getElementById('password').value;
+ 
+ // Simple validation
+ if (email && password) {
  document.getElementById('loginForm').style.display = 'none';
  document.getElementById('formSuccess').style.display = 'block';
- // In production, this would authenticate via backend
+ 
+ // Redirect after short delay
+ setTimeout(function() {
+ window.location.href = 'teacher_dashboard.html';
+ }, 1500);
+ }
  });
  </script>
  <script src="translations.js"></script>
