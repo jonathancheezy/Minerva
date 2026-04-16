@@ -591,44 +591,6 @@
  </div>
  </div>
  </main>
-<script>
-const T = {
-  admin_dash:{
-    title:{en:"Admin Dashboard",zhTW:"管理員儀表板",zhCN:"管理员仪表板"},
-    total_teachers:{en:"Total Teachers",zhTW:"導師總數",zhCN:"导师总数"},
-    total_students:{en:"Total Students",zhTW:"學生總數",zhCN:"学生总数"},
-    pending_review:{en:"Pending Review",zhTW:"待處理審核",zhCN:"待处理审核"},
-    tab_all_teachers:{en:"All Teachers",zhTW:"所有導師",zhCN:"所有导师"},
-    tab_pending:{en:"Pending Approval",zhTW:"待批准",zhCN:"待批准"},
-    tab_students:{en:"All Students",zhTW:"所有學生",zhCN:"所有学生"},
-    tab_lessons:{en:"Recent Lessons",zhTW:"最近的課堂",zhCN:"最近的课堂"},
-    teachers:{en:"Teachers",zhTW:"導師",zhCN:"导师"},
-    search_teachers:{en:"Search teachers...",zhTW:"搜尋導師...",zhCN:"搜寻导师..."},
-    col_name:{en:"Name",zhTW:"姓名",zhCN:"姓名"},
-    col_subject:{en:"Subject",zhTW:"科目",zhCN:"科目"},
-    col_students:{en:"Students",zhTW:"學生",zhCN:"学生"},
-    col_rating:{en:"Rating",zhTW:"評分",zhCN:"评分"},
-    col_status:{en:"Status",zhTW:"狀態",zhCN:"状态"},
-    col_actions:{en:"Actions",zhTW:"操作",zhCN:"操作"},
-    view:{en:"View",zhTW:"查看",zhCN:"查看"},
-    nav_dashboard:{en:"Dashboard",zhTW:"儀表板",zhCN:"仪表板"},
-    nav_teachers:{en:"Teachers",zhTW:"導師",zhCN:"导师"},
-    nav_students:{en:"Students",zhTW:"學生",zhCN:"学生"}
-  }
-};
-
-function applyTranslations(lang) {
-  const t = T[lang] || T['en'];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) {
-      if (el.tagName === 'INPUT') el.placeholder = t[key];
-      else el.textContent = t[key];
-    }
-  });
-}
-
-applyTranslations("en");
-</script>
+<script src="i18n.js"></script>
 </body>
 </html>
