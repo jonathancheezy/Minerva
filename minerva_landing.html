@@ -1010,7 +1010,11 @@ if (langParam && translations[langParam]) {
  if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
  el.placeholder = t[key];
  el.value = t[key];
+ } else if (el.childElementCount === 0 || !/<[a-z]/i.test(t[key])) {
+ // Plain text translation — safe to use innerHTML even with child elements
+ el.innerHTML = t[key];
  } else {
+ // Translation contains HTML tags — replace entire innerHTML to preserve structure
  el.innerHTML = t[key];
  }
  }
