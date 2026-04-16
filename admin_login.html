@@ -246,35 +246,35 @@
  <div class="form-card">
  <div class="form-header">
  <div class="badge">Admin</div>
- <h1>Admin Portal</h1>
- <p>Login to manage teachers and students</p>
+ <h1 data-i18n="admin.title">Admin Portal</h1>
+ <p data-i18n="admin.subtitle">Login to manage teachers and students</p>
  </div>
 
  <div class="form-error" id="formError">
- Incorrect email or password. Please try again.
+ <span data-i18n="admin.error_msg"><span data-i18n="admin.error_msg">Incorrect email or password. Please try again.</span></span>
  </div>
 
  <form id="loginForm">
  <div class="form-group">
- <label for="email">Email Address</label>
- <input type="email" id="email" name="email" required placeholder="admin@minerva.com">
+ <label for="email" data-i18n="admin.email">Email Address</label>
+ <input type="email" id="email" name="email" required data-i18n="admin.email_placeholder" data-i18n="admin.email_placeholder" placeholder="admin@minerva.com">
  </div>
 
  <div class="form-group">
- <label for="password">Password</label>
- <input type="password" id="password" name="password" required placeholder="Enter your password">
+ <label for="password" data-i18n="admin.password">Password</label>
+ <input type="password" id="password" name="password" required data-i18n="admin.password_placeholder" data-i18n="admin.password_placeholder" placeholder="Enter your password">
  </div>
 
- <button type="submit" class="btn-primary">Login</button>
+ <button type="submit" class="btn-primary" data-i18n="admin.login_btn">Login</button>
  </form>
 
  <div class="form-footer">
- <a href="minerva_landing.html">← Back to Home</a>
+ <a href="minerva_landing.html" data-i18n="admin.back_link">← Back to Home</a>
  </div>
 
  <div class="form-success" id="formSuccess">
- <h3>✅ Login successful!</h3>
- <p>Redirecting to admin dashboard...<meta http-equiv="refresh" content="2;url=admin_dashboard.html"></p>
+ <h3 data-i18n="admin.success_title">✅ Login successful!</h3>
+ <p data-i18n="admin.redirect_msg">Redirecting to admin dashboard...<meta http-equiv="refresh" content="2;url=admin_dashboard.html"></p>
  </div>
  </div>
  </div>
@@ -283,7 +283,33 @@
  <p>© 2026 Minerva Learning Ltd. Hong Kong.</p>
  </footer>
 
- <script>
+ <script>const T = {
+  admin:{
+    title:{en:"Admin Portal",zhTW:"管理員門戶",zhCN:"管理员门户"},
+    subtitle:{en:"Login to manage teachers and students",zhTW:"登入以管理導師和學生",zhCN:"登录以管理导师和学生"},
+    email:{en:"Email Address",zhTW:"電郵地址",zhCN:"电邮地址"},
+    email_placeholder:{en:"admin@minerva.com",zhTW:"admin@minerva.hk",zhCN:"admin@minerva.hk"},
+    password:{en:"Password",zhTW:"密碼",zhCN:"密码"},
+    password_placeholder:{en:"Enter your password",zhTW:"輸入您的密碼",zhCN:"输入您的密码"},
+    login_btn:{en:"Login",zhTW:"登入",zhCN:"登录"},
+    error_msg:{en:"Incorrect email or password. Please try again.",zhTW:"電郵地址或密碼不正確，請重試。",zhCN:"电邮地址或密码不正确，请重试。"},
+    success_title:{en:"✅ Login successful!",zhTW:"✅ 登入成功！",zhCN:"✅ 登录成功！"},
+    redirect_msg:{en:"Redirecting to admin dashboard...",zhTW:"正在跳轉至管理員儀表板...",zhCN:"正在跳转至管理员仪表板..."},
+    back_link:{en:"← Back to Home",zhTW:"← 返回主頁",zhCN:"← 返回主页"}
+  }
+};
+
+function applyTranslations(lang) {
+  const t = T[lang] || T['en'];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) {
+      if (el.tagName === 'INPUT') el.placeholder = t[key];
+      else el.textContent = t[key];
+    }
+  });
+}
+
  document.getElementById('loginForm').addEventListener('submit', function(e) {
  e.preventDefault();
  const email = document.getElementById('email').value;
@@ -299,6 +325,68 @@
  errorEl.style.display = 'block';
  }
  });
- </script>
+ 
+(function(){
+  const T = {
+    admin:{
+    title:{en:"Admin Portal",zhTW:"管理員門戶",zhCN:"管理员门户"},
+    subtitle:{en:"Login to manage teachers and students",zhTW:"登入以管理導師和學生",zhCN:"登录以管理导师和学生"},
+    email:{en:"Email Address",zhTW:"電郵地址",zhCN:"电邮地址"},
+    email_placeholder:{en:"admin@minerva.com",zhTW:"admin@minerva.hk",zhCN:"admin@minerva.hk"},
+    password:{en:"Password",zhTW:"密碼",zhCN:"密码"},
+    password_placeholder:{en:"Enter your password",zhTW:"輸入您的密碼",zhCN:"输入您的密码"},
+    login_btn:{en:"Login",zhTW:"登入",zhCN:"登录"},
+    error_msg:{en:"Incorrect email or password. Please try again.",zhTW:"電郵地址或密碼不正確，請重試。",zhCN:"电邮地址或密码不正确，请重试。"},
+    success_title:{en:"✅ Login successful!",zhTW:"✅ 登入成功！",zhCN:"✅ 登录成功！"},
+    redirect_msg:{en:"Redirecting to admin dashboard...",zhTW:"正在跳轉至管理員儀表板...",zhCN:"正在跳转至管理员仪表板..."},
+    back_link:{en:"← Back to Home",zhTW:"← 返回主頁",zhCN:"← 返回主页"}
+    }
+  };
+
+  function applyTranslations(lang) {
+    const t = T[lang] || T['en'];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key]) {
+        if (el.tagName === 'INPUT') {
+          el.placeholder = t[key];
+        } else {
+          el.textContent = t[key];
+        }
+      }
+    });
+  }
+
+  function init() { applyTranslations(lang || "en");
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    const storedLang = localStorage.getItem('minerva_lang');
+    let lang = 'en';
+    if (langParam && ['en','zhTW','zhCN'].includes(langParam)) lang = langParam;
+    else if (storedLang && ['en','zhTW','zhCN'].includes(storedLang)) lang = storedLang;
+    if (lang !== 'en') applyTranslations(lang);
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const lang = btn.getAttribute('data-lang');
+      localStorage.setItem('minerva_lang', lang);
+      applyTranslations(lang);
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
+      const url = new URL(window.location);
+      url.searchParams.set('lang', lang);
+      window.history.replaceState({}, '', url);
+    });
+  });
+
+  init();
+})();
+
+</script>
+
 </body>
 </html>
