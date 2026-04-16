@@ -77,6 +77,7 @@
  background: var(--gray-100);
  padding: 4px;
  border-radius: 8px;
+ margin-left: auto;
  }
 
  .lang-btn {
@@ -161,28 +162,6 @@
  50% { opacity: 0.4; }
  }
 
- .trust-badges {
- display: flex;
- gap: 20px;
- flex-wrap: wrap;
- justify-content: center;
- margin-top: 8px;
- }
-
- .badge {
- display: inline-flex;
- align-items: center;
- gap: 6px;
- background: var(--gray-100);
- padding: 8px 16px;
- border-radius: 50px;
- font-size: 13px;
- font-weight: 600;
- color: var(--gray-700);
- }
-
- .badge-icon { font-size: 14px; }
-
  .hero h1 {
  font-size: clamp(36px, 6vw, 64px);
  font-weight: 800;
@@ -207,7 +186,56 @@
  gap: 14px;
  justify-content: center;
  flex-wrap: wrap;
+ margin-bottom: 24px;
  }
+
+ .trust-badges {
+ display: flex;
+ gap: 20px;
+ justify-content: center;
+ flex-wrap: wrap;
+ margin-top: 8px;
+ }
+
+ .badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ background: var(--gray-100);
+ padding: 8px 16px;
+ border-radius: 50px;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-700);
+ }
+
+ .badge-icon {
+ font-size: 14px;
+ }
+
+ .btn-secondary {
+ background: transparent;
+ color: var(--navy);
+ font-weight: 600;
+ font-size: 14px;
+ padding: 10px 22px;
+ border-radius: 50px;
+ text-decoration: none;
+ border: 2px solid var(--navy);
+ transition: all 0.2s;
+ cursor: pointer;
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ min-width: 220px;
+ max-width: 220px;
+ width: 220px;
+ justify-content: center;
+ white-space: nowrap;
+ box-sizing: border-box;
+ }
+
+ .btn-secondary:hover { background: var(--navy); color: white; }
 
  .btn-primary {
  background: var(--gold);
@@ -223,24 +251,15 @@
  display: inline-flex;
  align-items: center;
  gap: 6px;
+ min-width: 220px;
+ max-width: 220px;
+ width: 220px;
+ justify-content: center;
+ white-space: nowrap;
+ box-sizing: border-box;
  }
 
- .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-
- .btn-secondary {
- background: transparent;
- color: var(--navy);
- font-weight: 600;
- font-size: 14px;
- padding: 10px 22px;
- border-radius: 50px;
- text-decoration: none;
- border: 2px solid var(--navy);
- transition: all 0.2s;
- cursor: pointer;
- }
-
- .btn-secondary:hover { background: var(--navy); color: white; }
+ .btn-primary:hover, .btn-primary:focus, .btn-primary:active { background: var(--gold); transform: translateY(-1px); }
 
  /* Stats */
  .stats {
@@ -446,6 +465,30 @@
  line-height: 1.7;
  }
 
+ /* FAQ */
+ .faq-list {
+ max-width: 680px;
+ margin: 0 auto;
+ }
+
+ .faq-item {
+ border-bottom: 1px solid var(--gray-200);
+ padding: 24px 0;
+ }
+
+ .faq-item h4 {
+ font-size: 16px;
+ font-weight: 600;
+ color: var(--navy-dark);
+ margin-bottom: 8px;
+ }
+
+ .faq-item p {
+ font-size: 14px;
+ color: var(--gray-500);
+ line-height: 1.7;
+ }
+
  /* Waitlist */
  .waitlist {
  padding: 100px 24px;
@@ -532,7 +575,18 @@
 
  /* Mobile */
  @media (max-width: 768px) {
- .nav-links { display: none; }
+ .nav-links { 
+ display: none;
+ position: absolute;
+ top: 60px;
+ left: 0;
+ right: 0;
+ background: white;
+ flex-direction: column;
+ padding: 20px 24px;
+ border-bottom: 1px solid var(--gray-200);
+ box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+ }
  .nav-links.active { display: flex; }
  .mobile-menu-btn { display: block; }
  .stats-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -543,11 +597,12 @@
  @media (min-width: 769px) {
  .mobile-menu-btn { display: none; }
  }
+ 
 @media (max-width: 768px) {
 .lang-btn { padding: 6px 12px; font-size: 13px; }
 .lang-selector { padding: 2px; gap: 1px; }
 }
- </style>
+</style>
 </head>
 <body>
  <nav>
@@ -560,20 +615,19 @@
  </svg>
  Minerva
  </a>
- <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
  <div class="nav-right">
- <div class="lang-selector">
- <button class="lang-btn active" data-lang="en">EN</button>
- <button class="lang-btn" data-lang="zh-TW">繁</button>
- <button class="lang-btn" data-lang="zh-CN">简</button>
- </div>
+ <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
  <div class="nav-links">
  <a href="#features">Features</a>
  <a href="#how-it-works">How it Works</a>
  <a href="faq.html">FAQ</a>
- <a href="#register" class="btn-outline">Register</a>
- <a href="teacher_login.html">Teacher Login</a>
- <a href="parent_login.html">Parent Login</a>
+ <a href="login.html">Login</a>
+ 
+ </div>
+ <div class="lang-selector">
+ <button class="lang-btn active" data-lang="en">EN</button>
+ <button class="lang-btn" data-lang="zh-TW">繁</button>
+ <button class="lang-btn" data-lang="zh-CN">简</button>
  </div>
  </div>
  </div>
@@ -590,8 +644,8 @@
  <p data-i18n="hero_subtitle">Minerva is the first AI-powered learning marketplace in Asia with verified teachers, escrow payments, and online scheduling — so you can focus on learning, not worrying.</p>
 
  <div class="hero-cta">
- <a href="#register" class="btn-primary" data-i18n="btn_join">Register →</a>
- <a href="#how-it-works" class="btn-secondary" data-i18n="btn_see">See How It Works</a>
+ <a href="teacher_registration.html" class="btn-primary" data-i18n="btn_register_teacher">Register as Teacher →</a>
+ <a href="parent_registration.html" class="btn-secondary" data-i18n="btn_register_parent">Register as Parent/Student →</a>
  </div>
  <div class="trust-badges">
  <span class="badge" data-i18n="trust_verified"><span class="badge-icon">🛡️</span> Background Verified</span>
@@ -748,8 +802,10 @@
  en: {
  badge: "Hong Kong Pilot — Coming Q3 2026",
  hero_title: 'Learn from the <span class="highlight">best</span>,<br>backed by trust.',
+ trust_verified: 'Background Verified',
+ trust_escrow: 'Escrow Protected',
+ trust_privacy: 'HK Data Privacy',
  hero_subtitle: "Minerva is the first AI-powered learning marketplace in Asia with verified teachers, escrow payments, and online scheduling — so you can focus on learning, not worrying.",
- trust_verified: "Background Verified", trust_escrow: "Escrow Protected", trust_privacy: "HK Data Privacy",
  btn_join: "Register →",
  btn_see: "See How It Works",
  stat1_value: "Free Trial", stat1_label: "For New Sign Ups",
@@ -786,6 +842,11 @@
  step2_title: "Book & Pay Securely", step2_desc: "Request a lesson. Pay through our secure escrow system. Your money is held until the lesson is confirmed complete.",
  step3_title: "Learn & Track Progress", step3_desc: "Meet your teacher, have a great lesson, and track your progress on your personal dashboard. Leave a review to help others.",
  faq_title: "Questions? Answers.",
+ faq_subtitle: "Find answers to common questions about Minerva's services, policies, and how we work.",
+ btn_register_teacher: "Register as Teacher →",
+ btn_register_parent: "Register as Parent/Student →",
+ faq_label: "FAQ",
+ btn_view_faq: "View all FAQs →",
  faq1_q: "Who can join as a teacher?", faq1_a: "Any qualified teacher in Hong Kong — music, academic subjects, languages, arts, sports. You need to pass our verification process (ID, qualifications, references).",
  faq2_q: "Is my payment safe?", faq2_a: "Yes. We use escrow payments via Stripe. Your payment is held until the lesson is confirmed complete. If there's a dispute, our ops team mediates within 48 hours.",
  faq3_q: "Where does Minerva operate?", faq3_a: "Hong Kong. We are expanding to other regional locations.",
@@ -800,11 +861,13 @@
  success_msg: "Thank you for registering! We'll be in touch soon.",
  email_placeholder: "Your email address"
  },
- "zh-TW": {
+ "zh-TW": { {
  badge: "香港試點 — 2026年第三季度推出",
  hero_title: '向最好的<SPAN class="highlight">老師</SPAN>學習。<br>信任背書。',
+ trust_verified: '背景驗證',
+ trust_escrow: '託管保障',
+ trust_privacy: '香港私隱條例',
  hero_subtitle: " Minerva是亞洲首個AI驅動的學習市場，擁有認證老師、託管付款和線上預約系統——讓您專注學習，無後顧之憂。",
- trust_verified: "背景驗證", trust_escrow: "託管保障", trust_privacy: "香港私隱條例",
  btn_join: "註冊 →",
  btn_see: "了解更多",
  stat1_value: "免費試課", stat1_label: "新登記用戶",
@@ -841,6 +904,11 @@
  step2_title: "預約及安全付款", step2_desc: "申請課堂，通過我們安全的託管系統付款，款項直至課堂確認完成才釋出。",
  step3_title: "學習並追蹤進度", step3_desc: "與老師會面上課，在個人儀表板追蹤學習進度，留評價助他人參考。",
  faq_title: "常見問題",
+ faq_subtitle: "了解Minerva服務、政策及運作方式的常見問題。",
+ btn_register_teacher: "導師登記 →",
+ btn_register_parent: "家長/學生登記 →",
+ faq_label: "常見問題",
+ btn_view_faq: "查看全部 FAQ →",
  faq1_q: "誰可以加入成為老師？", faq1_a: "香港任何合資格老師——音樂、學術科目、語言、藝術、體育。需通過我們的7步驟認證流程（身份、資歷、推薦、面試等）。",
  faq2_q: "付款安全嗎？", faq2_a: "安全。我們使用Stripe託管付款，款項會被持有直至課堂確認完成。如有爭議，我們的運營團隊會在48小時內調解。",
  faq3_q: "Minerva在哪裡營運？", faq3_a: "香港。我們將逐步擴展至其他地區。",
@@ -855,11 +923,13 @@
  success_msg: "感謝登記！我們將尽快與您聯繫。",
  email_placeholder: "您的電郵地址"
  },
- "zh-CN": {
+ "zh-CN": { {
  badge: "香港试点 — 2026年第三季度推出",
  hero_title: '向最好的<SPAN class="highlight">老师</SPAN>学习。<br>信任背书。',
+ trust_verified: '背景验证',
+ trust_escrow: '托管保障',
+ trust_privacy: '香港私隐条例',
  hero_subtitle: "Minerva是首个AI驱动的学习市场，拥有认证老师、托管付款和线上预约系统——让您专注学习，无后顾之忧。",
- trust_verified: "背景验证", trust_escrow: "托管保障", trust_privacy: "香港私隐条例",
  btn_join: "注册 →",
  btn_see: "了解更多",
  stat1_value: "免费试课", stat1_label: "新登记用户",
@@ -896,6 +966,11 @@
  step2_title: "预约及安全付款", step2_desc: "申请课堂，通过我们安全的托管系统付款，款项直至课堂确认完成才释出。",
  step3_title: "学习并追踪进度", step3_desc: "与老师会面上课，在个人仪表板追踪学习进度，留评价助他人参考。",
  faq_title: "常见问题",
+ faq_subtitle: "了解Minerva服务，政策及运作方式的常见问题。",
+ btn_register_teacher: "导师登记 →",
+ btn_register_parent: "家长/学生登记 →",
+ faq_label: "常见问题",
+ btn_view_faq: "查看全部 FAQ →",
  faq1_q: "谁可以加入成为老师？", faq1_a: "香港任何合资格老师——音乐、学术科目、语言、艺术、体育。需通过我们的7步骤认证流程（身份、资历、推荐、面试等）。",
  faq2_q: "付款安全吗？", faq2_a: "安全。我们使用Stripe托管付款，款项会被持有直至课堂确认完成。如有争议，我们的运营团队会在48小时内调解。",
  faq3_q: "Minerva在哪里运营？", faq3_a: "香港。我们将逐步扩展至其他地区。",
