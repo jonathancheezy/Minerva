@@ -317,9 +317,57 @@
 
 
 
-<script>(function(){
+
+<script>
+(function(){
   const T = {
-    faq:{title:{en:"Frequently Asked Questions",zhTW:"常見問題",zhCN:"常见问题"},for_parents:{en:"For Parents & Students",zhTW:"家長/學生",zhCN:"家长/学生"},for_teachers:{en:"For Teachers",zhTW:"導師",zhCN:"导师"},general:{en:"General",zhTW:"一般問題",zhCN:"一般问题"},p1_q:{en:"What subjects are available on Minerva?",zhTW:"Minerva提供哪些科目？",zhCN:"Minerva提供哪些科目？"},p1_a:{en:"We cover all major subjects: Academic (Math, English, Science, Chinese), Music, Languages, Arts, and Sports.",zhTW:"我們涵蓋所有主要科目：學術科目（數學、英語、科學、中文）、音樂、語言、藝術和體育。",zhCN:"我们涵盖所有主要科目：学术科目（数学、英语、科学、中文）、音乐、语言、艺术和体育。"},p2_q:{en:"How do I book a lesson?",zhTW:"如何預訂課堂？",zhCN:"如何预订课堂？"},p2_a:{en:"Simply browse our verified teachers, select one that matches your needs, and click Book Lesson.",zhTW:"只需瀏覽我們的已驗證導師，選擇符合您需求的導師，然後點擊預訂課堂。",zhCN:"只需浏览我们的已验证导师，选择符合您需求的导师，然后点击预订课堂。"},p3_q:{en:"How does the free first lesson work?",zhTW:"免費試堂如何運作？",zhCN:"免费试堂如何运作？"},p3_a:{en:"When you sign up for four lessons with a teacher, your first lesson is completely free.",zhTW:"當您與導師報名四堂課時，第一堂課完全免費。",zhCN:"当您与导师报名四堂课时，第一堂课完全免费。"},p4_q:{en:"What is your cancellation policy?",zhTW:"取消政策是什麼？",zhCN:"取消政策是什么？"},p4_a:{en:"Lessons cancelled 24+ hours in advance receive a full refund. Cancellations within 24 hours receive a 50% refund.",zhTW:"課堂開始前24小時以上取消可獲全額退款。24小時內取消可獲50%退款。",zhCN:"课堂开始前24小时以上取消可获全额退款。24小时内取消可获50%退款。"},p5_q:{en:"What if I'm not satisfied with the teacher?",zhTW:"如果對導師不滿意怎麼辦？",zhCN:"如果对导师不满意怎么办？"},p5_a:{en:"You can switch teachers at any time with no penalty.",zhTW:"您可以隨時更換導師，無需罰款。",zhCN:"您可以随时更换导师，无需罚款。"},p6_q:{en:"How does online tutoring work?",zhTW:"網上補習如何運作？",zhCN:"网上补习如何运作？"},p6_a:{en:"Online lessons are conducted via video call (Zoom, Google Meet). All online lessons are covered by our escrow payment protection.",zhTW:"網上課堂通過視頻通話（Zoom、Google Meet）進行。所有網上課堂均受我們的託管付款保障。",zhCN:"网上课堂通过视频通话（Zoom、Google Meet）进行。所有网上课堂均受我们的托管付款保障。"},p7_q:{en:"What age groups do you serve?",zhTW:"您們服務哪些年齡組別？",zhCN:"你们服务哪些年龄组别？"},p7_a:{en:"We serve students from Primary 1 through to adults.",zhTW:"我們服務從小一到成人的學生。",zhCN:"我们服务从小一到成人的学生。"},p8_q:{en:"Can I switch teachers if needed?",zhTW:"我可以更換導師嗎？",zhCN:"我可以更换导师吗？"},p8_a:{en:"Absolutely. You're never locked into a single teacher.",zhTW:"當然可以。您無需鎖定單一導師。",zhCN:"当然可以。您无需锁定单一导师。"},t1_q:{en:"How much can I earn as a Minerva teacher?",zhTW:"作為Minerva導師我能賺多少錢？",zhCN:"作为Minerva导师我能赚多少钱？"},t1_a:{en:"Most teachers charge HK$300-500/hour for academic subjects, and HK$280-450/hour for music and arts.",zhTW:"大多數導師收取學術科目每小時HK$300-500，音樂和藝術每小時HK$280-450。",zhCN:"大多数导师收取学术科目每小时HK$300-500，音乐和艺术每小时HK$280-450。"},t2_q:{en:"How do I get paid?",zhTW:"如何獲得報酬？",zhCN:"如何获得报酬？"},t2_a:{en:"Payments are processed through Stripe and released to your account within 3 business days after lesson completion.",zhTW:"款項通過Stripe處理，在課堂完成後3個工作日內發放到您的帳戶。",zhCN:"款项通过Stripe处理，在课堂完成后3个工作日内发放到您的帐户。"},t3_q:{en:"What if a student cancels last minute?",zhTW:"如果學生最後一刻取消怎麼辦？",zhCN:"如果学生最后一刻取消怎么办？"},t3_a:{en:"If a student cancels within 24 hours, they receive a 50% refund and you keep 50% of the lesson fee as compensation.",zhTW:"如果學生在24小時內取消，他們會獲得50%退款，您則保留50%作為補償。",zhCN:"如果学生在24小时内取消，他们会获得50%退款，您则保留50%作为补偿。"},t4_q:{en:"Do I need to bring my own materials?",zhTW:"我需要自備教材嗎？",zhCN:"我需要自备教材吗？"},t4_a:{en:"Many teachers use their own materials. We also provide access to a shared resource library.",zhTW:"許多導師使用自己的教材。我們也提供共享資源庫的訪問權限。",zhCN:"许多导师使用自己的教材。我们也提供共享资源库的访问权限。"},t5_q:{en:"How does the 0% commission for first 4 classes work?",zhTW:"首四堂0%佣金如何運作？",zhCN:"首四堂0%佣金如何运作？"},t5_a:{en:"Your first four completed lessons have zero commission. You keep 100% of what parents pay.",zhTW:"您的前四堂已完成課堂免佣金。您可保留家長支付的100%款項。",zhCN:"您的首四堂已完成课堂免佣金。您可保留家长支付的100%款项。"},t6_q:{en:"What verification process do I need to complete?",zhTW:"我需要完成哪些驗證流程？",zhCN:"我需要完成哪些验证流程？"},t6_a:{en:"All teachers must complete: ID verification, qualification checks, reference verification, and a short interview.",zhTW:"所有導師必須完成：身份驗證、資歷核實、推薦人核實和短期面試。",zhCN:"所有导师必须完成：身份验证、资历核实、推荐人核实和短期面试。"},g1_q:{en:"Is my data protected?",zhTW:"我的資料受到保護嗎？",zhCN:"我的资料受到保护吗？"},g1_a:{en:"Yes. Minerva is fully compliant with Hong Kong's Personal Data (Privacy) Ordinance (PDPO).",zhTW:"是的。Minerva完全符合香港的《個人資料（私隱）條例》（PDPO）。",zhCN:"是的。Minerva完全符合香港的《个人资料（私隐）条例》（PDPO）。"},g2_q:{en:"What's your refund policy?",zhTW:"退款政策是什麼？",zhCN:"退款政策是什么？"},g2_a:{en:"Lessons cancelled 24+ hours in advance receive full refunds. Within 24 hours, 50% refund. Refunds processed within 5 business days.",zhTW:"課堂開始前24小時以上取消可獲全額退款。24小時內取消可獲50%退款。退款在5個工作日內處理。",zhCN:"课堂开始前24小时以上取消可获全额退款。24小时内取消可获50%退款。退款在5个工作日内处理。"},g3_q:{en:"Where does Minerva operate?",zhTW:"Minerva在哪裡營運？",zhCN:"Minerva在哪里营运？"},g3_a:{en:"We currently operate in Hong Kong, covering Hong Kong Island, Kowloon, and the New Territories.",zhTW:"我們目前在香港營運，覆蓋香港島、九龍和新界。",zhCN:"我们目前在香港营运，覆盖香港岛、九龙和新界。"},g4_q:{en:"How do I contact support?",zhTW:"如何聯繫客戶支援？",zhCN:"如何联系客户支援？"},g4_a:{en:"You can reach us via email at support@minerva.hk or WhatsApp.",zhTW:"您可以通過電郵support@minerva.hk或WhatsApp聯繫我們。",zhCN:"您可以通过电邮support@minerva.hk或WhatsApp联系我们。"},g5_q:{en:"What makes Minerva different from other tutoring platforms?",zhTW:"Minerva與其他補習平台有何不同？",zhCN:"Minerva与其他补习平台有何不同？"},g5_a:{en:"We're the first platform in Asia combining verified teachers, escrow payments, virtual scheduling, and AI-powered matching.",zhTW:"我們是亞洲首個結合已驗證導師、託管付款、虛擬預約和人工智能配對的平台。",zhCN:"我们是亚洲首个结合已验证导师、托管付款、虚拟预约和人工智能配对的平台。"}},
+    faq:{
+    title:{en:"Frequently Asked Questions",zhTW:"常見問題",zhCN:"常见问题"},
+    for_parents:{en:"For Parents & Students",zhTW:"家長/學生",zhCN:"家长/学生"},
+    for_teachers:{en:"For Teachers",zhTW:"導師",zhCN:"导师"},
+    general:{en:"General",zhTW:"一般問題",zhCN:"一般问题"},
+    still_have_questions:{en:"Still have questions?",zhTW:"还有其他问题？",zhCN:"还有其他问题？"},
+    contact_email:{en:"Email us at",zhTW:"发送电邮至",zhCN:"发送电邮至"},
+    contact_support:{en:"or reach out via WhatsApp for immediate assistance.",zhTW:"或通过WhatsApp联系以获得即时帮助。",zhCN:"或通过WhatsApp联系以获得即时帮助。"},
+    p1_q:{en:"What subjects are available on Minerva?",zhTW:"Minerva提供哪些科目？",zhCN:"Minerva提供哪些科目？"},
+    p1_a:{en:"We cover all major subjects: Academic (Math, English, Science, Chinese), Music, Languages (Cantonese, Mandarin, French, Spanish), Arts, and Sports.",zhTW:"我們涵蓋所有主要科目：學術科目（數學、英語、科學、中文）、音樂、語言（粵語、普通話、法語、西班牙語）、藝術和體育。",zhCN:"我们涵盖所有主要科目：学术科目（数学、英语、科学、中文）、音乐、语言（粤语、普通话、法语、西班牙语）、艺术和体育。"},
+    p2_q:{en:"How do I book a lesson?",zhTW:"如何預訂課堂？",zhCN:"如何预订课堂？"},
+    p2_a:{en:"Simply browse our verified teachers, select one that matches your needs, and click Book Lesson.",zhTW:"只需瀏覽我們的已驗證導師，選擇符合您需求的導師，然後點擊預訂課堂。",zhCN:"只需浏览我们的已验证导师，选择符合您需求的导师，然后点击预订课堂。"},
+    p3_q:{en:"How does the free first lesson work?",zhTW:"免費試堂如何運作？",zhCN:"免费试堂如何运作？"},
+    p3_a:{en:"When you sign up for four lessons with a teacher, your first lesson is completely free.",zhTW:"當您與導師報名四堂課時，第一堂課完全免費。",zhCN:"当您与导师报名四堂课时，第一堂课完全免费。"},
+    p4_q:{en:"What is your cancellation policy?",zhTW:"取消政策是什麼？",zhCN:"取消政策是什么？"},
+    p4_a:{en:"Lessons cancelled 24+ hours in advance receive a full refund. Cancellations within 24 hours receive a 50% refund.",zhTW:"課堂開始前24小時以上取消可獲全額退款。24小時內取消可獲50%退款。",zhCN:"课堂开始前24小时以上取消可获全额退款。24小时内取消可获50%退款。"},
+    p5_q:{en:"What if I'm not satisfied with the teacher?",zhTW:"如果對導師不滿意怎麼辦？",zhCN:"如果对导师不满意怎么办？"},
+    p5_a:{en:"You can switch teachers at any time with no penalty.",zhTW:"您可以隨時更換導師，無需罰款。",zhCN:"您可以随时更换导师，无需罚款。"},
+    p6_q:{en:"How does online tutoring work?",zhTW:"網上補習如何運作？",zhCN:"网上补习如何运作？"},
+    p6_a:{en:"Online lessons are conducted via video call (Zoom, Google Meet). All online lessons are covered by our escrow payment protection.",zhTW:"網上課堂通過視頻通話（Zoom、Google Meet）進行。所有網上課堂均受我們的託管付款保障。",zhCN:"网上课堂通过视频通话（Zoom、Google Meet）进行。所有网上课堂均受我们的托管付款保障。"},
+    p7_q:{en:"What age groups do you serve?",zhTW:"您們服務哪些年齡組別？",zhCN:"你们服务哪些年龄组别？"},
+    p7_a:{en:"We serve students from Primary 1 through to adults.",zhTW:"我們服務從小一到成人的學生。",zhCN:"我们服务从小一到成人的学生。"},
+    p8_q:{en:"Can I switch teachers if needed?",zhTW:"我可以更換導師嗎？",zhCN:"我可以更换导师吗？"},
+    p8_a:{en:"Absolutely. You're never locked into a single teacher.",zhTW:"當然可以。您無需鎖定單一導師。",zhCN:"当然可以。您无需锁定单一导师。"},
+    t1_q:{en:"How much can I earn as a Minerva teacher?",zhTW:"作為Minerva導師我能賺多少錢？",zhCN:"作为Minerva导师我能赚多少钱？"},
+    t1_a:{en:"Most teachers charge HK$300-500/hour for academic subjects, and HK$280-450/hour for music and arts.",zhTW:"大多數導師收取學術科目每小時HK$300-500，音樂和藝術每小時HK$280-450。",zhCN:"大多数导师收取学术科目每小时HK$300-500，音乐和艺术每小时HK$280-450。"},
+    t2_q:{en:"How do I get paid?",zhTW:"如何獲得報酬？",zhCN:"如何获得报酬？"},
+    t2_a:{en:"Payments are processed through Stripe and released to your account within 3 business days after lesson completion.",zhTW:"款項通過Stripe處理，在課堂完成後3個工作日內發放到您的帳戶。",zhCN:"款项通过Stripe处理，在课堂完成后3个工作日内发放到您的帐户。"},
+    t3_q:{en:"What if a student cancels last minute?",zhTW:"如果學生最後一刻取消怎麼辦？",zhCN:"如果学生最后一刻取消怎么办？"},
+    t3_a:{en:"If a student cancels within 24 hours, they receive a 50% refund and you keep 50% of the lesson fee as compensation.",zhTW:"如果學生在24小時內取消，他們會獲得50%退款，您則保留50%作為補償。",zhCN:"如果学生在24小时内取消，他们会获得50%退款，您则保留50%作为补偿。"},
+    t4_q:{en:"Do I need to bring my own materials?",zhTW:"我需要自備教材嗎？",zhCN:"我需要自备教材吗？"},
+    t4_a:{en:"Many teachers use their own materials. We also provide access to a shared resource library.",zhTW:"許多導師使用自己的教材。我們也提供共享資源庫的訪問權限。",zhCN:"许多导师使用自己的教材。我们也提供共享资源库的访问权限。"},
+    t5_q:{en:"How does the 0% commission for first 4 classes work?",zhTW:"首四堂0%佣金如何運作？",zhCN:"首四堂0%佣金如何运作？"},
+    t5_a:{en:"Your first four completed lessons have zero commission. You keep 100% of what parents pay.",zhTW:"您的前四堂已完成課堂免佣金。您可保留家長支付的100%款項。",zhCN:"您的首四堂已完成课堂免佣金。您可保留家长支付的100%款项。"},
+    t6_q:{en:"What verification process do I need to complete?",zhTW:"我需要完成哪些驗證流程？",zhCN:"我需要完成哪些验证流程？"},
+    t6_a:{en:"All teachers must complete: ID verification, qualification checks, reference verification, and a short interview.",zhTW:"所有導師必須完成：身份驗證、資歷核實、推薦人核實和短期面試。",zhCN:"所有导师必须完成：身份验证、资历核实、推荐人核实和短期面试。"},
+    g1_q:{en:"Is my data protected?",zhTW:"我的資料受到保護嗎？",zhCN:"我的资料受到保护吗？"},
+    g1_a:{en:"Yes. Minerva is fully compliant with Hong Kong's Personal Data (Privacy) Ordinance (PDPO).",zhTW:"是的。Minerva完全符合香港的《個人資料（私隱）條例》（PDPO）。",zhCN:"是的。Minerva完全符合香港的《个人资料（私隐）条例》（PDPO）。"},
+    g2_q:{en:"What's your refund policy?",zhTW:"退款政策是什麼？",zhCN:"退款政策是什么？"},
+    g2_a:{en:"Lessons cancelled 24+ hours in advance receive full refunds. Within 24 hours, 50% refund. Refunds processed within 5 business days.",zhTW:"課堂開始前24小時以上取消可獲全額退款。24小時內取消可獲50%退款。退款在5個工作日內處理。",zhCN:"课堂开始前24小时以上取消可获全额退款。24小时内取消可获50%退款。退款在5个工作日内处理。"},
+    g3_q:{en:"Where does Minerva operate?",zhTW:"Minerva在哪裡營運？",zhCN:"Minerva在哪里营运？"},
+    g3_a:{en:"We currently operate in Hong Kong, covering Hong Kong Island, Kowloon, and the New Territories.",zhTW:"我們目前在香港營運，覆蓋香港島、九龍和新界。",zhCN:"我们目前在香港营运，覆盖香港岛、九龙和新界。"},
+    g4_q:{en:"How do I contact support?",zhTW:"如何聯繫客戶支援？",zhCN:"如何联系客户支援？"},
+    g4_a:{en:"You can reach us via email at support@minerva.hk or WhatsApp.",zhTW:"您可以通過電郵support@minerva.hk或WhatsApp聯繫我們。",zhCN:"您可以通过电邮support@minerva.hk或WhatsApp联系我们。"},
+    g5_q:{en:"What makes Minerva different from other tutoring platforms?",zhTW:"Minerva與其他補習平台有何不同？",zhCN:"Minerva与其他补习平台有何不同？"},
+    g5_a:{en:"We're the first platform in Asia combining verified teachers, escrow payments, virtual scheduling, and AI-powered matching.",zhTW:"我們是亞洲首個結合已驗證導師、託管付款、虛擬預約和人工智能配對的平台。",zhCN:"我们是亚洲首个结合已验证导师、托管付款、虚拟预约和人工智能配对的平台。"}
+  },
   };
   let lang='en';
   function apply(){
@@ -349,6 +397,7 @@
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
   else init();
-})();</script>
+})();
+</script>
 </body>
 </html>
