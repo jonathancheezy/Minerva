@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+
+    back_link:{en:"← Back",zhTW:"← 返回",zhCN:"← 返回"},
+    register_link:{en:"Register here",zhTW:"在此註冊",zhCN:"在此注册"},
+    success_title:{en:"✅ Login successful!",zhTW:"✅ 登入成功！",zhCN:"✅ 登录成功！"},
+    home_link:{en:"Back to home",zhTW:"返回主頁",zhCN:"返回主页"},<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -261,7 +265,7 @@
  </div>
  </div>
  <div class="nav-links">
- <a href="minerva_landing.html" class="btn-outline">← Back</a>
+ <a href="minerva_landing.html" class="btn-outline" data-i18n="login.back_link">← Back</a>
  </div>
  </div>
  </nav>
@@ -289,18 +293,18 @@
  </form>
 
  <div class="form-footer">
- <p>Don't have an account? <a href="parent_registration.html">Register here</a></p>
+ <p>Don't have an account? <a href="parent_registration.html" data-i18n="login.register_link">Register here</a></p>
  </div>
 
  <div class="form-success" id="formSuccess">
- <h3>✅ Login successful!</h3>
+ <h3 data-i18n="login.success_title">✅ Login successful!</h3>
  <p>Redirecting to your dashboard...<meta http-equiv="refresh" content="2;url=parent_dashboard.html"></p>
  </div>
  </div>
  </section>
 
  <footer>
- <p>© 2026 Minerva Learning Ltd. Hong Kong. <a href="minerva_landing.html">Back to home</a></p>
+ <p>© 2026 Minerva Learning Ltd. Hong Kong. <a href="minerva_landing.html" data-i18n="login.home_link">Back to home</a></p>
  </footer>
 
  <script>
