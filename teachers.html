@@ -363,7 +363,7 @@
       if(v&&v[lang])el.textContent=v[lang];
     });
     document.querySelectorAll('.lang-btn').forEach(b=>{
-      b.classList.toggle('active',b.getAttribute('href')&&b.getAttribute('href').includes('lang='+lang));
+      b.classList.toggle('active',b.getAttribute('href')&&b.getAttribute('href').includes('lang='+(lang.length===5?lang.replace(/^(zh)(TW|CN)$/,'$1-$2'):lang)));
     });
   }
   function setLang(l){
@@ -375,8 +375,8 @@
   function init(){
     const p=new URLSearchParams(location.search);
     const u=p.get('lang'),s=localStorage.getItem('minerva_lang');
-    if(u&&['en','zh-TW','zh-CN'].includes(u))setLang(u);
-    else if(s&&['en','zh-TW','zh-CN'].includes(s))setLang(s);
+    if(u&&['en','zhTW','zhCN'].includes(u))setLang(u);
+    else if(s&&['en','zhTW','zhCN'].includes(s))setLang(s);
     document.querySelectorAll('.lang-btn').forEach(b=>{
       b.addEventListener('click',e=>{const h=b.getAttribute('href');if(h&&h.includes('lang=')){e.preventDefault();setLang(h.split('lang=')[1].split('&')[0]);}});
     });
