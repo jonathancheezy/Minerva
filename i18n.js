@@ -468,12 +468,12 @@
   window.T = T;
 
   window.setLang = function(l) {
-    lang = l;
-    localStorage.setItem('minerva_lang', lang);
-    const url = new URL(location.href);
     // Normalize: zh-TW → zhTW, zh-CN → zhCN
     const normalized = l.replace('-','');
-    url.searchParams.set('lang', l);
+    lang = normalized;
+    localStorage.setItem('minerva_lang', lang);
+    const url = new URL(location.href);
+    url.searchParams.set('lang', normalized);
     history.replaceState({}, '', url);
     apply();
   };
