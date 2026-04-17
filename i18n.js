@@ -87,7 +87,7 @@
       success_title:{en:"✅ Login successful!",zhTW:"✅ 登入成功！",zhCN:"✅ 登录成功！"},
       redirect_msg:{en:"Redirecting to admin dashboard...",zhTW:"正在跳轉至管理員儀表板...",zhCN:"正在跳转至管理员仪表板..."},
       back_link:{en:"← Back to Home",zhTW:"← 返回主頁",zhCN:"← 返回主页"},
-      copyright:{en:"© 2026 Minerva Learning Ltd. Hong Kong.",zhTW:"© 2026 Minerva Learning Ltd. 香港。",zhCN:"© 2026 Minerva Learning Ltd. 香港。"}
+      copyright:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"}
     },
 
     // ── Admin Dashboard ──
@@ -116,6 +116,7 @@
 
     // ── Login ──
     login:{
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
       email:{en:"Email Address",zhTW:"電郵地址",zhCN:"电邮地址"},
       password:{en:"Password",zhTW:"密碼",zhCN:"密码"},
       login_btn:{en:"Login",zhTW:"登入",zhCN:"登录"},
@@ -137,6 +138,7 @@
     },
 
     // ── Register ──
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
     register:{
       email:{en:"Email Address",zhTW:"電郵地址",zhCN:"电邮地址"},
       password:{en:"Password",zhTW:"密碼",zhCN:"密码"},
@@ -155,7 +157,7 @@
       home_link:{en:"← Back to Home",zhTW:"← 返回主頁",zhCN:"← 返回主页"},
       first_class_free:{en:"First class FREE when you sign up for 4 lessons",zhTW:"報名4堂課，首堂免費",zhCN:"报名4堂课，首堂免费"},
       find_teacher:{en:"Find a Teacher",zhTW:"尋找導師",zhCN:"寻找导师"},
-      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong.",zhTW:"© 2026 Minerva Learning Ltd. 香港。",zhCN:"© 2026 Minerva Learning Ltd. 香港。"},
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
       success_title:{en:"✅ Registration successful!",zhTW:"✅ 登記成功！",zhCN:"✅ 登记成功！"},
       first_100:{en:"Join the first 100 teachers — 0% commission",zhTW:"加入首批100位導師 — 0%佣金",zhCN:"加入首批100位导师 — 0%佣金"},
       login_link:{en:"Already have an account? Login →",zhTW:"已有帳戶？登入 →",zhCN:"已有帐户？登录 →"},
@@ -174,6 +176,7 @@
       view_all:{en:"View All",zhTW:"查看全部",zhCN:"查看全部"}
     },
 
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
     // ── Parent Schedule ──
     schedule:{
       book_lesson:{en:"Book Lesson",zhTW:"預訂課堂",zhCN:"预约课堂"},
@@ -220,6 +223,7 @@
       view_all:{en:"View All",zhTW:"查看全部",zhCN:"查看全部"},
       view_earnings:{en:"View Earnings",zhTW:"查看收入",zhCN:"查看收入"}
     },
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
 
     // ── Teacher Profile ──
     profile:{
@@ -313,13 +317,14 @@
       all_subjects:{en:"All Subjects",zhTW:"所有科目",zhCN:"所有科目"},
       try_filters:{en:"Try adjusting your filters",zhTW:"嘗試調整您的篩選條件",zhCN:"尝试调整您的筛选条件"},
       no_found:{en:"No teachers found",zhTW:"找不到導師",zhCN:"找不到导师"}
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
     },
 
     // ── Terms ──
     terms:{
       title:{en:"Terms & Conditions",zhTW:"條款及細則",zhCN:"条款及细则"},
       back_link:{en:"← Back",zhTW:"← 返回",zhCN:"← 返回"},
-      copyright:{en:"© 2026 Minerva Learning Ltd. Hong Kong.",zhTW:"© 2026 Minerva Learning Ltd. 香港。",zhCN:"© 2026 Minerva Learning Ltd. 香港。"},
+      copyright:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
       p1:{en:"These Terms and Conditions ('Terms') govern your use of the Minerva platform and services operated by Minerva Learning Ltd. ('Minerva', 'we', 'us', or 'our'). By accessing or using our platform, you agree to be bound by these Terms.",zhTW:"這些條款及細則（「條款」）規管您對Minerva平台及Minerva Learning Ltd.（「Minerva」、「我們」或「我們的」）營運的服務的使用。訪問或使用我們的平台，即表示您同意受這些條款約束。",zhCN:"这些条款及细则（「条款」）规管您对Minerva平台及Minerva Learning Ltd.（「Minerva」、「我们」或「我们的」）营运的服务的使用。访问或使用我们的平台，即表示您同意受这些条款约束。"},
       p2:{en:"Minerva provides an online marketplace connecting parents and students ('Learners') with independent teachers ('Teachers'). Our platform facilitates lesson booking, scheduling, and payment processing through our escrow system.",zhTW:"Minerva提供一個連接家長和學生（「學習者」）與獨立導師（「導師」）的網上市場。我們的平台通過託管系統促進課堂預訂、預約和付款處理。",zhCN:"Minerva提供一个连接家长和学生（「学习者」）与独立导师（「导师」）的在线市场。我们的平台通过托管系统促进课堂预订、预约和付款处理。"},
       p3:{en:"To use Minerva, you must register for an account. You agree to provide accurate, current, and complete information during registration and to update such information to keep it accurate. You are responsible for maintaining the confidentiality of your account credentials.",zhTW:"要使用Minerva，您必須註冊一個帳戶。您同意在註冊期間提供準確、最新和完整的資訊，並更新這些資訊以保持其準確性。您有責任維護帳戶憑證的機密性。",zhCN:"要使用Minerva，您必须注册一个帐户。您同意在注册期间提供准确、最新和完整的信息，并更新这些信息以保持其准确性。您有责任维护帐户凭证的机密性。"},
