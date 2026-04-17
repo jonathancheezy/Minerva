@@ -180,7 +180,10 @@
  .lang-selector.active { display: flex; }
  .lang-btn { color: var(--gray-700); }
  .lang-btn.active { background: var(--navy); color: white; }
- .nav-right { display: none; }
+ .nav-right { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 16px; padding: 12px 24px; border-top: 1px solid var(--gray-200); background: white; }
+ .nav-meta { display: flex; flex-direction: row; align-items: center; gap: 16px; }
+ .logout { color: var(--gray-700); font-size: 14px; }
+ .logout:hover { color: var(--navy); }
  .stats-row { grid-template-columns: repeat(2, 1fr); }
  .page-header { flex-direction: column; align-items: flex-start; }
  }
