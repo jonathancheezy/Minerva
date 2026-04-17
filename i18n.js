@@ -306,9 +306,10 @@
       messages:{en:"Messages",zhTW:"訊息",zhCN:"讯息"},
       students:{en:"Students",zhTW:"學生",zhCN:"学生"},
       view_all:{en:"View All",zhTW:"查看全部",zhCN:"查看全部"},
-      view_earnings:{en:"View Earnings",zhTW:"查看收入",zhCN:"查看收入"}
-    },
+      view_earnings:{en:"View Earnings",zhTW:"查看收入",zhCN:"查看收入"},
       footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
+      update_availability:{en:"Update Availability",zhTW:"更新可用時間",zhCN:"更新可用时间"}
+    },
 
     // ── Teacher Profile ──
     profile:{
