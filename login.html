@@ -45,10 +45,8 @@
  background: var(--navy);
  color: white;
  padding: 16px 24px;
- display: flex;
- justify-content: space-between;
- align-items: center;
  }
+ .nav-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 
  .logo {
  display: flex;
@@ -61,6 +59,12 @@
  }
 
  .logo-icon { width: 32px; height: 32px; }
+
+ .nav-right { display: flex; align-items: center; gap: 16px; }
+ .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
+ .nav-links { display: flex; gap: 16px; align-items: center; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; opacity: 0.8; }
+ .nav-links a:hover { opacity: 1; }
 
  .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; margin-left: auto; }
  .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
@@ -251,11 +255,15 @@
  @media (max-width: 768px) {
  .lang-btn { padding: 6px 12px; font-size: 13px; }
  .lang-selector { padding: 2px; gap: 1px; }
+ .mobile-menu-btn { display: block; }
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 16px; gap: 12px; }
+ .nav-links.active { display: flex; }
  }
  </style>
 </head>
 <body>
  <nav>
+ <div class="nav-inner">
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -264,10 +272,18 @@
  </svg>
  Minerva
  </a>
+ <div class="nav-right">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <div class="nav-links">
+ <a href="minerva_landing.html">Home</a>
+ <a href="faq.html">FAQ</a>
+ </div>
  <div class="lang-selector">
  <a href="login.html?lang=en" class="lang-btn active">EN</a>
  <a href="login.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="login.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
  </div>
  </nav>
 
