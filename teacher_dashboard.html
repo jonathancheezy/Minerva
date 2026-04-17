@@ -63,7 +63,8 @@
  .nav-right {
  display: flex;
  align-items: center;
- gap: 20px;
+ gap: 16px;
+ flex-wrap: wrap;
  }
 
  .nav-links {
@@ -426,10 +427,9 @@
 
  @media (max-width: 768px) {
  .lang-btn { padding: 6px 12px; font-size: 13px; }
- .lang-selector { padding: 2px; gap: 1px; background: rgba(255,255,255,0.1); }
- .lang-btn { color: rgba(255,255,255,0.8); }
- .lang-btn:hover { color: white; }
- .lang-btn.active { background: rgba(255,255,255,0.2); color: white; }
+ .lang-selector { padding: 2px; gap: 1px; }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active { background: white; color: var(--navy); }
  }
  </style>
 </head>
@@ -455,9 +455,14 @@
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <a href="teacher_profile.html"><div class="avatar">TC</div></a>
+ <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
  <a href="teacher_login.html" class="logout" data-i18n="teacher_dash.logout">Logout</a>
+ </div>
+ <div class="lang-selector">
+ <a href="teacher_dashboard.html?lang=en" class="lang-btn">EN</a>
+ <a href="teacher_dashboard.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="teacher_dashboard.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
  </nav>
