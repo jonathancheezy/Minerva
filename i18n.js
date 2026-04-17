@@ -260,8 +260,8 @@
       for_teachers:{en:"For Teachers",zhTW:"導師",zhCN:"导师"},
       general:{en:"General",zhTW:"一般問題",zhCN:"一般问题"},
       back_link:{en:"← Back to Home",zhTW:"← 返回主頁",zhCN:"← 返回主页"},
-      footer_text:{en:"Still have questions? Email us at support@minerva.hk",zhTW:"還有其他問題？發送電郵至 support@minerva.hk",zhCN:"还有其他问题？发送电邮至 support@minerva.hk"},
-      terms_link:{en:"Read our Terms & Conditions",zhTW:"閱讀我們的條款及細則",zhCN:"阅读我们的条款及细则"},
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
+      terms_link:{en:"Terms & Conditions",zhTW:"條款及細則",zhCN:"条款及细则"},
       p1_q:{en:"What subjects are available on Minerva?",zhTW:"Minerva提供哪些科目？",zhCN:"Minerva提供哪些科目？"},
       p1_a:{en:"We cover all major subjects: Academic (Math, English, Science, Chinese), Music, Languages (Cantonese, Mandarin, French, Spanish), Arts, and Sports.",zhTW:"我們涵蓋所有主要科目：學術科目（數學、英語、科學、中文）、音樂、語言（粵語、普通話、法語、西班牙語）、藝術和體育。",zhCN:"我们涵盖所有主要科目：学术科目（数学、英语、科学、中文）、音乐、语言（粤语、普通话、法语、西班牙语）、艺术和体育。"},
       p2_q:{en:"How do I book a lesson?",zhTW:"如何預訂課堂？",zhCN:"如何预订课堂？"},
@@ -316,9 +316,10 @@
       back_link:{en:"← Back to Home",zhTW:"← 返回主頁",zhCN:"← 返回主页"},
       all_subjects:{en:"All Subjects",zhTW:"所有科目",zhCN:"所有科目"},
       try_filters:{en:"Try adjusting your filters",zhTW:"嘗試調整您的篩選條件",zhCN:"尝试调整您的筛选条件"},
-      no_found:{en:"No teachers found",zhTW:"找不到導師",zhCN:"找不到导师"}
-      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
+      no_found:{en:"No teachers found",zhTW:"找不到導師",zhCN:"找不到导师"},
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。"}
     },
+
 
     // ── Terms ──
     terms:{
