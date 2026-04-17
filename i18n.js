@@ -359,7 +359,12 @@
       reviews_count:{en:"24 reviews",zhTW:"24個評價",zhCN:"24個評價"},
       today:{en:"Today",zhTW:"今天",zhCN:"今天"},
       tomorrow:{en:"Tomorrow",zhTW:"明天",zhCN:"明天"},
-      cancelled:{en:"Cancelled",zhTW:"已取消",zhCN:"已取消"}
+      cancelled:{en:"Cancelled",zhTW:"已取消",zhCN:"已取消"},
+      subj_piano_g3:{en:"Piano (Grade 3 Prep)",zhTW:"鋼琴（三級準備）",zhCN:"钢琴（三级准备）"},
+      subj_violin_beg:{en:"Violin (Beginner)",zhTW:"小提琴（初學）",zhCN:"小提琴（初学）"},
+      subj_piano_g5:{en:"Piano (Grade 5)",zhTW:"鋼琴（五級）",zhCN:"钢琴（五级）"},
+      subj_math_f3:{en:"Math (Form 3)",zhTW:"數學（中三）",zhCN:"数学（初三）"},
+      subj_english_f4:{en:"English (Form 4)",zhTW:"英語（中四）",zhCN:"英语（高一）"}
     },
 
     // ── Teacher Profile ──
