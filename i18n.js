@@ -251,6 +251,7 @@
     // ── FAQ ──
     faq:{
       title:{en:"Frequently Asked Questions",zhTW:"常見問題",zhCN:"常见问题"},
+      subtitle:{en:"Everything you need to know about Minerva",zhTW:"您需要了解的關於Minerva的一切",zhCN:"您需要了解的关于Minerva的一切"},
       for_parents:{en:"For Parents & Students",zhTW:"家長/學生",zhCN:"家长/学生"},
       for_teachers:{en:"For Teachers",zhTW:"導師",zhCN:"导师"},
       general:{en:"General",zhTW:"一般問題",zhCN:"一般问题"},
