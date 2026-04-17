@@ -165,21 +165,18 @@
  top: 100%;
  left: 0;
  right: 0;
- background: white;
+ background: var(--navy);
  flex-direction: column;
  padding: 20px 24px;
  gap: 16px;
- border-bottom: 1px solid var(--gray-200);
- box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+ border-bottom: 1px solid rgba(255,255,255,0.1);
  z-index: 99;
  }
  .nav-links.active { display: flex; }
- .nav-links.active a { color: var(--gray-700); }
- .nav-links.active a:hover { color: var(--navy); }
- .lang-selector { display: none; justify-content: center; background: var(--gray-100); border-radius: 8px; padding: 4px; margin-top: 8px; }
- .lang-selector.active { display: flex; }
- .lang-btn { color: var(--gray-700); }
- .lang-btn.active { background: var(--navy); color: white; }
+ .nav-links.active a { color: rgba(255,255,255,0.85); }
+ .nav-links.active a:hover { color: white; }
+ .nav-links.active a.active { color: var(--gold); }
+ 
  .nav-right { display: flex; flex-direction: row; align-items: center; gap: 16px; }
  .nav-meta { display: flex; flex-direction: row; align-items: center; gap: 16px; }
  .logout { color: white; font-size: 14px; }
