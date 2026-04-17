@@ -225,6 +225,7 @@
       label_additional_notes:{en:"Additional notes",zhTW:"附加備註",zhCN:"附加备注"},
       label_parent_name_placeholder:{en:"Parent or student name",zhTW:"家長或學生姓名",zhCN:"家长或学生姓名"},
       label_email_placeholder:{en:"Email address",zhTW:"電郵地址",zhCN:"电邮地址"},
+      label_phone:{en:"WhatsApp / Phone Number",zhTW:"WhatsApp / 電話號碼",zhCN:"WhatsApp / 电话号码"},
       label_phone_placeholder:{en:"+852 XXXX XXXX",zhTW:"+852 XXXX XXXX",zhCN:"+852 XXXX XXXX"},
       label_select_level:{en:"Select level",zhTW:"選擇程度",zhCN:"选择程度"},
       label_select_lesson_type:{en:"Select preference",zhTW:"選擇形式",zhCN:"选择形式"},
