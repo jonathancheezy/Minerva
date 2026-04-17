@@ -157,28 +157,29 @@
  }
 
  @media (max-width: 768px) {
+ .nav-left { display: flex; align-items: center; gap: 0; }
+ .mobile-menu-btn { display: block; }
  .nav-links {
  display: none;
  position: absolute;
- top: 60px;
+ top: 100%;
  left: 0;
  right: 0;
- background: var(--navy);
+ background: white;
  flex-direction: column;
  padding: 20px 24px;
  gap: 16px;
- border-bottom: 1px solid rgba(255,255,255,0.1);
+ border-bottom: 1px solid var(--gray-200);
+ box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+ z-index: 99;
  }
  .nav-links.active { display: flex; }
- .mobile-menu-btn { display: block; }
- .nav-right { width: 100%; justify-content: flex-end; }
- .nav-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
- .user-info { display: flex; align-items: center; gap: 12px; }
- .user-info a { text-decoration: none; color: inherit; }
- }
-
- @media (min-width: 769px) {
- .mobile-menu-btn { display: none; }
+ .nav-right { display: none; }
+ .lang-selector { background: var(--gray-100); border-radius: 8px; }
+ .lang-btn { color: var(--gray-700); }
+ .lang-btn.active { background: var(--navy); color: white; }
+ .stats-row { grid-template-columns: repeat(2, 1fr); }
+ .page-header { flex-direction: column; align-items: flex-start; }
  }
 
  @media (max-width: 900px) {
@@ -441,6 +442,7 @@
  </svg>
  Minerva
  </a>
+ </div>
  <div class="nav-links">
  <a href="#" class="active" data-i18n="teacher_dash.dashboard">Dashboard</a>
  <a href="#" data-i18n="teacher_dash.students">Students</a>
@@ -450,7 +452,6 @@
  <a href="teacher_dashboard.html?lang=en" class="lang-btn">EN</a>
  <a href="teacher_dashboard.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="teacher_dashboard.html?lang=zh-CN" class="lang-btn">简</a>
- </div>
  </div>
  </div>
  <div class="nav-right">
