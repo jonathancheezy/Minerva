@@ -365,23 +365,23 @@
  <div class="form-row">
  <div class="form-group">
  <label for="parentName"><span data-i18n="register.label_your_name">Your Name</span></label>
- <input type="text" id="parentName" name="parentName" required placeholder="Parent or student name">
+ <input type="text" id="parentName" name="parentName" required data-i18n="register.label_parent_name_placeholder" placeholder="Parent or student name">
  </div>
  <div class="form-group">
  <label for="email"><span data-i18n="register.Email Address">Email Address</span></label>
- <input type="email" id="email" name="email" required placeholder="you@example.com">
+ <input type="email" id="email" name="email" required data-i18n="register.label_email_placeholder" placeholder="Email address">
  </div>
  </div>
 
  <div class="form-group">
  <label for="phone">WhatsApp / Phone Number</label>
- <input type="tel" id="phone" name="phone" placeholder="+852 XXXX XXXX">
+ <input type="tel" id="phone" name="phone" data-i18n="register.label_phone_placeholder" placeholder="+852 XXXX XXXX">
  </div>
 
  <div class="form-group">
  <label for="studentLevel"><span data-i18n="register.label_current_level">Student's Current Level</span></label>
  <select id="studentLevel" name="studentLevel" required>
- <option value="">Select level</option>
+ <option value="" data-i18n="register.label_select_level">Select level</option>
  <option value="p1">Primary 1-3</option>
  <option value="p4">Primary 4-6</option>
  <option value="s1">Secondary 1-3</option>
@@ -394,7 +394,7 @@
  <div class="form-group">
  <label for="lessonType"><span data-i18n="register.label_lesson_type">Preferred Lesson Type</span></label>
  <select id="lessonType" name="lessonType">
- <option value="">Select preference</option>
+ <option value="" data-i18n="register.label_select_lesson_type">Select preference</option>
  <option value="individual">Individual (One-on-One)</option>
  <option value="small-group">Small Group (2-4 students)</option>
  <option value="group">Group Class (5+ students)</option>
@@ -404,7 +404,7 @@
  <div class="form-group">
  <label for="preferredLocation"><span data-i18n="register.label_location">Preferred Teaching Location</span></label>
  <select id="preferredLocation" name="preferredLocation">
- <option value="">Select location</option>
+ <option value="" data-i18n="register.label_select_location">Select location</option>
  <option value="student-home">Student's Home</option>
  <option value="tutor-home">Tutor's Home / Studio</option>
  <option value="library">Library / Public Space</option>
@@ -415,13 +415,13 @@
 
  <div class="form-group">
  <label for="budget"><span data-i18n="register.label_budget">Budget per Hour (HK$)</span></label>
- <input type="number" id="budget" name="budget" placeholder="e.g., 300" min="0">
+ <input type="number" id="budget" name="budget" data-i18n="register.label_budget_placeholder" placeholder="e.g., 300" min="0">
  </div>
 
  <div class="form-group">
  <label for="lessonFrequency"><span data-i18n="register.label_frequency">Lesson Frequency</span></label>
  <select id="lessonFrequency" name="lessonFrequency">
- <option value="">Select frequency</option>
+ <option value="" data-i18n="register.label_select_frequency">Select frequency</option>
  <option value="once">Once a week</option>
  <option value="twice">2 times a week</option>
  <option value="thrice">3+ times a week</option>
@@ -432,7 +432,7 @@
  <div class="form-group">
  <label for="preferredLanguage"><span data-i18n="register.label_teaching_lang">Preferred Teaching Language</span></label>
  <select id="preferredLanguage" name="preferredLanguage">
- <option value="">Select language</option>
+ <option value="" data-i18n="register.label_select_language">Select language</option>
  <option value="cantonese">Cantonese</option>
  <option value="english">English</option>
  <option value="mandarin">Mandarin</option>
@@ -442,7 +442,7 @@
 
  <div class="form-group">
  <label for="studentName"><span data-i18n="register.label_student_name">Student's Name</span></label>
- <input type="text" id="studentName" name="studentName" placeholder="If different from above">
+ <input type="text" id="studentName" name="studentName" data-i18n="register.label_student_name_placeholder" placeholder="If different from above">
  </div>
 
  <div class="form-group">
@@ -456,13 +456,13 @@
 
  <div class="form-group">
  <label for="weaknesses"><span data-i18n="register.label_difficulty">Specific Areas of Difficulty</span></label>
- <textarea id="weaknesses" name="weaknesses" placeholder="e.g., Algebra, Grammar, Reading comprehension, Sight-reading..."></textarea>
+ <textarea id="weaknesses" name="weaknesses" data-i18n="register.label_difficulty_placeholder" placeholder="e.g., Algebra, Grammar, Reading comprehension, Sight-reading..."></textarea>
  </div>
 
  <div class="form-group">
  <label for="specialNeeds"><span data-i18n="register.label_special_needs">Special Learning Needs (optional)</span></label>
  <select id="specialNeeds" name="specialNeeds">
- <option value="">Select if applicable</option>
+ <option value="" data-i18n="register.label_select_applicable">Select if applicable</option>
  <option value="none">None</option>
  <option value="adhd">ADHD / ADD</option>
  <option value="dyslexia">Dyslexia</option>
@@ -475,7 +475,7 @@
  <div class="form-group">
  <label for="urgency"><span data-i18n="register.label_how_soon">How Soon Do You Need a Tutor?</span></label>
  <select id="urgency" name="urgency">
- <option value="">Select timeline</option>
+ <option value="" data-i18n="register.label_select_timeline">Select timeline</option>
  <option value="asap">As soon as possible</option>
  <option value="1-2-weeks">Within 1-2 weeks</option>
  <option value="1-month">Within 1 month</option>
@@ -486,7 +486,7 @@
  <div class="form-group">
  <label for="referral"><span data-i18n="register.label_how_hear">How did you hear about Minerva?</span></label>
  <select id="referral" name="referral">
- <option value="">Select source</option>
+ <option value="" data-i18n="register.label_select_source">Select source</option>
  <option value="google">Google Search</option>
  <option value="facebook">Facebook</option>
  <option value="instagram">Instagram</option>
@@ -499,10 +499,10 @@
 
  <div class="form-group">
  <label for="message"><span data-i18n="register.label_additional_notes">Additional notes</span></label>
- <textarea id="message" name="message" placeholder="Preferred schedule, specific requirements, or anything else we should know..."></textarea>
+ <textarea id="message" name="message" data-i18n="register.label_message_placeholder" placeholder="Preferred schedule, specific requirements, or anything else we should know..."></textarea>
  </div>
 
- <button type="submit" class="btn-primary">Submit Registration</button>
+ <button type="submit" class="btn-primary" data-i18n="register.btn_submit">Submit Registration</button>
  <p class="terms"><span data-i18n="register.agree_text">By registering, you agree to our</span> <a href="terms.html" data-i18n="register.link_terms">Terms & Conditions</a> <span data-i18n="register.and_text">and</span> <a href="privacy.html" data-i18n="register.link_privacy">Privacy Policy</a>.</p>
  </form>
 
