@@ -343,7 +343,15 @@
       view_all:{en:"View All",zhTW:"查看全部",zhCN:"查看全部"},
       view_earnings:{en:"View Earnings",zhTW:"查看收入",zhCN:"查看收入"},
       footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
-      update_availability:{en:"Update Availability",zhTW:"更新可用時間",zhCN:"更新可用时间"}
+      update_availability:{en:"Update Availability",zhTW:"更新可用時間",zhCN:"更新可用時間"},
+      logout:{en:"Logout",zhTW:"登出",zhCN:"登出"},
+      stats_today:{en:"Here's what's happening with your lessons today.",zhTW:"以下是您今天課堂的情況。",zhCN:"以下是您今天課堂的情況。"},
+      stats_new_this_month:{en:"+3 this month",zhTW:"本月+3",zhCN:"本月+3"},
+      this_week:{en:"This week",zhTW:"本週",zhCN:"本週"},
+      vs_last_month:{en:"+18% vs last month",zhTW:"相比上月+18%",zhCN:"相比上月+18%"},
+      reviews_count:{en:"24 reviews",zhTW:"24個評價",zhCN:"24個評價"},
+      today:{en:"Today",zhTW:"今天",zhCN:"今天"},
+      tomorrow:{en:"Tomorrow",zhTW:"明天",zhCN:"明天"}
     },
 
     // ── Teacher Profile ──
