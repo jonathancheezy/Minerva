@@ -174,10 +174,13 @@
  z-index: 99;
  }
  .nav-links.active { display: flex; }
- .nav-right { display: none; }
- .lang-selector { background: var(--gray-100); border-radius: 8px; justify-content: center; }
+ .nav-links.active a { color: var(--gray-700); }
+ .nav-links.active a:hover { color: var(--navy); }
+ .lang-selector { display: none; justify-content: center; background: var(--gray-100); border-radius: 8px; padding: 4px; margin-top: 8px; }
+ .lang-selector.active { display: flex; }
  .lang-btn { color: var(--gray-700); }
  .lang-btn.active { background: var(--navy); color: white; }
+ .nav-right { display: none; }
  .stats-row { grid-template-columns: repeat(2, 1fr); }
  .page-header { flex-direction: column; align-items: flex-start; }
  }
@@ -433,7 +436,7 @@
 <body>
  <nav>
  <div class="nav-left">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.lang-selector').classList.toggle('active');">☰</button>
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -448,11 +451,11 @@
  <a href="#" data-i18n="teacher_dash.students">Students</a>
  <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
  <a href="#" data-i18n="teacher_dash.messages">Messages</a>
+ </div>
  <div class="lang-selector">
  <a href="teacher_dashboard.html?lang=en" class="lang-btn">EN</a>
  <a href="teacher_dashboard.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="teacher_dashboard.html?lang=zh-CN" class="lang-btn">简</a>
- </div>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
