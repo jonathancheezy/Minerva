@@ -108,7 +108,7 @@
  background: rgba(255,255,255,0.1);
  }
 
- .nav-right { display: flex; align-items: center; gap: 16px; }
+ .nav-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
  .nav-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
  .user-info { display: flex; align-items: center; gap: 12px; }
 
@@ -129,8 +129,8 @@
  .logout { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; }
  .logout:hover { color: white; }
 
- .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
- .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
+ .lang-selector { display: flex; gap: 2px; background: var(--gray-100); padding: 3px; border-radius: 6px; }
+ .lang-btn { padding: 4px 8px; border: none; background: transparent; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
  .lang-btn:hover { color: var(--navy); }
  .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
@@ -499,8 +499,11 @@
  @media (max-width: 768px) {
  .mobile-menu-btn { display: block; }
  .nav-links { display: none; }
- .nav-links.active { display: flex; }
- .nav-right { display: none; }
+ .nav-links.active { display: flex; background: var(--navy); padding: 20px 24px; flex-direction: column; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+ .nav-links.active a { color: rgba(255,255,255,0.85); }
+ .nav-links.active a:hover { color: white; }
+ .nav-links.active a.active { color: var(--gold); }
+ .nav-right { display: flex; flex-direction: row; align-items: center; gap: 16px; justify-content: flex-end; }
  .stats-row { grid-template-columns: repeat(2, 1fr); }
  .page-header { flex-direction: column; align-items: flex-start; }
  .two-months-container { grid-template-columns: 1fr; gap: 16px; }
@@ -515,11 +518,6 @@
  .booking-item { flex-wrap: wrap; }
  .booking-item .date-badge { margin-bottom: 12px; }
  .booking-item .time-badge { margin: 8px 0; }
- .lang-btn { padding: 6px 12px; font-size: 13px; }
- .lang-selector { padding: 2px; gap: 1px; }
- .nav-links.active .lang-selector { background: var(--gray-100); border-radius: 8px; }
- .nav-links.active .lang-btn { color: var(--gray-700); }
- .nav-links.active .lang-btn.active { background: var(--navy); color: white; }
  }
  </style>
 </head>
@@ -541,19 +539,18 @@
  <a href="teachers.html">Students</a>
  <a href="teacher_schedule.html" class="active">Schedule</a>
  <a href="#">Messages</a>
- <div class="lang-selector">
- <a href="teacher_schedule.html?lang=en" class="lang-btn">EN</a>
- <a href="teacher_schedule.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="teacher_schedule.html?lang=zh-CN" class="lang-btn">简</a>
- </div>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <div class="avatar">TC</div>
- <span class="user-name">Teacher Chan</span>
+ <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
  <a href="teacher_login.html" class="logout" data-i18n="schedule.logout">Logout</a>
+ </div>
+ <div class="lang-selector">
+ <a href="teacher_schedule.html?lang=en" class="lang-btn">EN</a>
+ <a href="teacher_schedule.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="teacher_schedule.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
  </nav>
