@@ -309,6 +309,7 @@
  border-radius: 50px;
  font-size: 12px;
  font-weight: 600;
+ text-align: center;
  }
 
  .lesson-status.upcoming {
@@ -319,6 +320,11 @@
  .lesson-status.pending {
  background: rgba(245, 158, 11, 0.1);
  color: var(--gold);
+ }
+
+ .lesson-status.cancelled {
+ background: rgba(239, 68, 68, 0.1);
+ color: var(--red);
  }
 
  /* Earnings */
@@ -538,6 +544,17 @@
  <div class="subject">Math (Form 3)</div>
  </div>
  <div class="lesson-status upcoming" data-i18n="teacher_dash.confirmed">Confirmed</div>
+ </div>
+ <div class="lesson-item">
+ <div class="lesson-time">
+ <div class="time">11:00</div>
+ <div class="date">Jan 18</div>
+ </div>
+ <div class="lesson-details">
+ <div class="student">Grace Ho</div>
+ <div class="subject">English (Form 4)</div>
+ </div>
+ <div class="lesson-status cancelled" data-i18n="teacher_dash.cancelled">Cancelled</div>
  </div>
  </div>
  </div>

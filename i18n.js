@@ -358,7 +358,8 @@
       vs_last_month:{en:"+18% vs last month",zhTW:"相比上月+18%",zhCN:"相比上月+18%"},
       reviews_count:{en:"24 reviews",zhTW:"24個評價",zhCN:"24個評價"},
       today:{en:"Today",zhTW:"今天",zhCN:"今天"},
-      tomorrow:{en:"Tomorrow",zhTW:"明天",zhCN:"明天"}
+      tomorrow:{en:"Tomorrow",zhTW:"明天",zhCN:"明天"},
+      cancelled:{en:"Cancelled",zhTW:"已取消",zhCN:"已取消"}
     },
 
     // ── Teacher Profile ──
