@@ -295,9 +295,12 @@
       g4_a:{en:"You can reach us via email at support@minerva.hk or WhatsApp.",zhTW:"您可以通過電郵support@minerva.hk或WhatsApp聯繫我們。",zhCN:"您可以通过电邮support@minerva.hk或WhatsApp联系我们。"},
       g5_q:{en:"What makes Minerva different from other tutoring platforms?",zhTW:"Minerva與其他補習平台有何不同？",zhCN:"Minerva与其他补习平台有何不同？"},
       g5_a:{en:"We're the first platform in Asia combining verified teachers, escrow payments, virtual scheduling, and AI-powered matching.",zhTW:"我們是亞洲首個結合已驗證導師、託管付款、虛擬預約和人工智能配對的平台。",zhCN:"我们是亚洲首个结合已验证导师、托管付款、虚拟预约和人工智能配对的平台。"},
-      footer_question:{en:"Still have questions?",zhTW:"還有其他問題？",zhCN:"还有其他问题？"},contact_support:{en:"Contact Support",zhTW:"聯絡支援",zhCN:"联络支援"},btn_for_parents:{en:"For Parents & Students",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},btn_for_teachers:{en:"For Teachers",zhTW:"導師",zhCN:"导师"},btn_general:{en:"General",zhTW:"一般問題",zhCN:"一般问题"},link_contact:{en:"Contact Support",zhTW:"聯絡支援",zhCN:"联络支援"},
       footer_question:{en:"Still have questions?",zhTW:"還有其他問題？",zhCN:"还有其他问题？"},
       contact_support:{en:"Contact Support",zhTW:"聯絡支援",zhCN:"联络支援"},
+      btn_for_parents:{en:"For Parents & Students",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},
+      btn_for_teachers:{en:"For Teachers",zhTW:"導師",zhCN:"导师"},
+      btn_general:{en:"General",zhTW:"一般問題",zhCN:"一般问题"},
+      link_contact:{en:"Contact Support",zhTW:"聯絡支援",zhCN:"联络支援"},
     },
 
     // ── Teachers ──
