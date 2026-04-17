@@ -308,7 +308,7 @@
  }
  function saveState(state) { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
- const state = loadState();
+ const state = loadState() || {"Booking Flow0": true, "Booking Flow1": true, "Teacher Dashboard0": true, "Teacher Dashboard1": true, "Teacher Dashboard2": true, "Teacher Dashboard3": true, "Infrastructure0": true, "Infrastructure1": true};
 
  function countCat(cat) {
  let done = 0;
