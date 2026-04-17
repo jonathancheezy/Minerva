@@ -37,6 +37,7 @@
  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: white; text-decoration: none; }
  .logo-icon { width: 36px; height: 36px; }
  .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
+ .nav-right { display: flex; align-items: center; gap: 16px; }
  .back-link:hover { text-decoration: underline; }
 
  .page-header {
@@ -112,7 +113,7 @@
  .btn-outline:hover { background: var(--navy); color: white; }
  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
- .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
+ .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; margin-left: auto; }
  .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
  .lang-btn:hover { color: var(--navy); }
  .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -147,13 +148,13 @@
  Minerva
  </a>
  <div class="nav-right">
+ <a href="minerva_landing.html" class="back-link" data-i18n="teachers.back_link">← Back to Home</a>
  <div class="lang-selector">
  <a href="teachers.html?lang=en" class="lang-btn">EN</a>
  <a href="teachers.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="teachers.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
- <a href="minerva_landing.html" class="back-link" data-i18n="teachers.back_link">← Back to Home</a>
  </div>
  </nav>
 

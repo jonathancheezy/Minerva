@@ -30,6 +30,7 @@
  nav .nav-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: white; text-decoration: none; }
  .logo-icon { width: 36px; height: 36px; }
+ .nav-right { display: flex; align-items: center; gap: 16px; }
  .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
 
  .container { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
@@ -51,7 +52,7 @@
  .contact-btn { display: inline-block; background: var(--gold); color: var(--navy-dark); padding: 14px 32px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
  .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(249, 168, 40, 0.4); }
 
- .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
+ .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; margin-left: auto; }
  .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
  .lang-btn:hover { color: var(--navy); }
  .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -80,13 +81,13 @@
  Minerva
  </a>
  <div class="nav-right">
+ <a href="minerva_landing.html" class="back-link" data-i18n="faq.back_link">← Back to Home</a>
  <div class="lang-selector">
  <a href="faq.html?lang=en" class="lang-btn">EN</a>
  <a href="faq.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="faq.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
- <a href="minerva_landing.html" class="back-link" data-i18n="faq.back_link">← Back to Home</a>
  </div>
  </nav>
 
