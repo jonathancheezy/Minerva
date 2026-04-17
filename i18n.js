@@ -74,6 +74,8 @@
     opt_student:{en:"Student",zhTW:"學生",zhCN:"学生"},
     opt_teacher:{en:"Teacher",zhTW:"導師",zhCN:"导师"},
 
+    footer_copyright:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
+    footer_terms:{en:"Terms & Conditions",zhTW:"條款及細則",zhCN:"条款及细则"},
     // ── Admin ──
     admin:{
       title:{en:"Admin Portal",zhTW:"管理員門戶",zhCN:"管理员门户"},
