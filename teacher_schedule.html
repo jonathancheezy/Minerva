@@ -516,6 +516,7 @@
  <a href="teacher_schedule.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="teacher_schedule.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
+ <a href="teacher_login.html" class="logout" data-i18n="schedule.logout">Logout</a>
  </div>
  </div>
  </nav>
@@ -524,7 +525,7 @@
  <div class="page-header">
  <div>
  <h1 data-i18n="schedule.my_schedule"><span data-i18n="schedule.heading_my_schedule"> data-i18n="schedule.my_schedule"</span></h1>
- <p>Manage your availability and upcoming lessons</p>
+ <p data-i18n="schedule.manage_availability">Manage your availability and upcoming lessons</p>
  </div>
  <button class="btn btn-primary" onclick="openModal('addSlot')" data-i18n="schedule.add_availability"><span data-i18n="schedule.btn_add_slot">+ Add Availability</span></button>
  </div>
@@ -557,12 +558,12 @@
  <div class="card">
  <div class="month-nav">
  <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)"><span data-i18n="schedule.nav_prev">← Prev</span></button>
- <h2>April - May 2025</h2>
+ <h2 data-i18n="schedule.month_range">April - May 2025</h2>
  <button class="btn btn-secondary btn-small" onclick="changeMonth(1)"><span data-i18n="schedule.nav_next">Next →</span></button>
  </div>
  <div class="two-months-container">
  <div class="month-calendar">
- <div class="month-label">April 2025</div>
+ <div class="month-label" data-i18n="schedule.april_label">April 2025</div>
  <div class="calendar-grid">
  <div class="calendar-day header">Mon</div>
  <div class="calendar-day header">Tue</div>
@@ -615,7 +616,7 @@
  </div>
  
  <div class="month-calendar">
- <div class="month-label">May 2025</div>
+ <div class="month-label" data-i18n="schedule.may_label">May 2025</div>
  <div class="calendar-grid">
  <div class="calendar-day header">Mon</div>
  <div class="calendar-day header">Tue</div>
@@ -750,7 +751,7 @@
  </div>
  <div class="modal-actions">
  <button class="btn btn-secondary" onclick="closeModal('addSlot')"><span data-i18n="schedule.btn_cancel">Cancel</span></button>
- <button class="btn btn-primary" onclick="addSlot()">Add Slot</button>
+ <button class="btn btn-primary" onclick="addSlot()" data-i18n="schedule.btn_add_slot_confirm">Add Slot</button>
  </div>
  </div>
  </div>

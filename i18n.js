@@ -316,7 +316,13 @@
       label_date:{en:"Date",zhTW:"日期",zhCN:"日期"},
       label_end_time:{en:"End Time",zhTW:"結束時間",zhCN:"結束時間"},
       label_repeat:{en:"Repeat",zhTW:"重複",zhCN:"重複"},
-      label_start_time:{en:"Start Time",zhTW:"開始時間",zhCN:"開始時間"}
+      label_start_time:{en:"Start Time",zhTW:"開始時間",zhCN:"開始時間"},
+      manage_availability:{en:"Manage your availability and upcoming lessons",zhTW:"管理您的可用時間和即將到來的課堂",zhCN:"管理您的可用时间和即将到来的课堂"},
+      month_range:{en:"April - May 2025",zhTW:"2025年4月-5月",zhCN:"2025年4月-5月"},
+      april_label:{en:"April 2025",zhTW:"2025年4月",zhCN:"2025年4月"},
+      may_label:{en:"May 2025",zhTW:"2025年5月",zhCN:"2025年5月"},
+      btn_add_slot_confirm:{en:"Add Slot",zhTW:"添加時段",zhCN:"添加时段"},
+      logout:{en:"Logout",zhTW:"登出",zhCN:"登出"}
     },
 
     // ── Teacher Dashboard ──
