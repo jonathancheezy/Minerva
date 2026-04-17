@@ -440,21 +440,21 @@
  </a>
  </div>
  <div class="nav-links">
- <a href="teacher_dashboard.html" class="active">Dashboard</a>
+ <a href="teacher_dashboard.html">Dashboard</a>
  <a href="student_dashboard.html">Students</a>
- <a href="teacher_schedule.html">Schedule</a>
+ <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
  <a href="messages.html" class="active">Messages</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <div class="avatar">TC</div>
+ <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
  </div>
  <div class="lang-selector">
- <a href="messages.html?lang=en" class="lang-btn">EN</a>
- <a href="messages.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="messages.html?lang=zh-CN" class="lang-btn">简</a>
+ <a href="teacher_dashboard.html?lang=en" class="lang-btn">EN</a>
+ <a href="teacher_dashboard.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="teacher_dashboard.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
  </nav>
@@ -462,9 +462,126 @@
  <main class="main">
  <div class="page-header">
  <h1>Messages</h1>
- <p>Your conversations with teachers will appear here.</p>
  </div>
-</main>
+
+ <div class="stats-grid">
+ <div class="stat-card">
+ <div class="label" data-i18n="teacher_dash.total_students">Total Students</div>
+ <div class="value">12</div>
+ <div class="sub" data-i18n="teacher_dash.stats_new_this_month">+3 this month</div>
+ </div>
+ <div class="stat-card">
+ <div class="label" data-i18n="teacher_dash.upcoming_lessons">Upcoming Lessons</div>
+ <div class="value">8</div>
+ <div class="sub" data-i18n="teacher_dash.this_week">This week</div>
+ </div>
+ <div class="stat-card">
+ <div class="label" data-i18n="teacher_dash.this_month">This Month</div>
+ <div class="value green">US$2,450</div>
+ <div class="sub" data-i18n="teacher_dash.vs_last_month">+18% vs last month</div>
+ </div>
+ <div class="stat-card">
+ <div class="label" data-i18n="teacher_dash.rating">Rating</div>
+ <div class="value gold">4.9 ⭐</div>
+ <div class="sub" data-i18n="teacher_dash.reviews_count">24 reviews</div>
+ </div>
+ </div>
+
+ <div class="content-grid">
+ <div class="card">
+ <div class="card-header">
+ <h2 data-i18n="teacher_dash.upcoming_lessons_title">Upcoming Lessons</h2>
+ <a href="#" data-i18n="teacher_dash.view_all">View All</a>
+ </div>
+ <div class="card-body">
+ <div class="lesson-item">
+ <div class="lesson-time">
+ <div class="time">10:00</div>
+ <div class="date" data-i18n="teacher_dash.today">Today</div>
+ </div>
+ <div class="lesson-details">
+ <div class="student">Emma Wong</div>
+ <div class="subject" data-i18n="teacher_dash.subj_piano_g3">Piano (Grade 3 Prep)</div>
+ </div>
+ <div class="lesson-status upcoming" data-i18n="teacher_dash.confirmed">Confirmed</div>
+ </div>
+ <div class="lesson-item">
+ <div class="lesson-time">
+ <div class="time">14:00</div>
+ <div class="date" data-i18n="teacher_dash.today">Today</div>
+ </div>
+ <div class="lesson-details">
+ <div class="student">Lucas Lee</div>
+ <div class="subject" data-i18n="teacher_dash.subj_violin_beg">Violin (Beginner)</div>
+ </div>
+ <div class="lesson-status upcoming" data-i18n="teacher_dash.confirmed">Confirmed</div>
+ </div>
+ <div class="lesson-item">
+ <div class="lesson-time">
+ <div class="time">16:30</div>
+ <div class="date" data-i18n="teacher_dash.tomorrow">Tomorrow</div>
+ </div>
+ <div class="lesson-details">
+ <div class="student">Sophie Chen</div>
+ <div class="subject" data-i18n="teacher_dash.subj_piano_g5">Piano (Grade 5)</div>
+ </div>
+ <div class="lesson-status pending" data-i18n="teacher_dash.pending">Pending</div>
+ </div>
+ <div class="lesson-item">
+ <div class="lesson-time">
+ <div class="time">09:00</div>
+ <div class="date">Jan 16</div>
+ </div>
+ <div class="lesson-details">
+ <div class="student">Ryan Lam</div>
+ <div class="subject" data-i18n="teacher_dash.subj_math_f3">Math (Form 3)</div>
+ </div>
+ <div class="lesson-status upcoming" data-i18n="teacher_dash.confirmed">Confirmed</div>
+ </div>
+ <div class="lesson-item">
+ <div class="lesson-time">
+ <div class="time">11:00</div>
+ <div class="date">Jan 18</div>
+ </div>
+ <div class="lesson-details">
+ <div class="student">Grace Ho</div>
+ <div class="subject" data-i18n="teacher_dash.subj_english_f4">English (Form 4)</div>
+ </div>
+ <div class="lesson-status cancelled" data-i18n="teacher_dash.cancelled">Cancelled</div>
+ </div>
+ </div>
+ </div>
+
+ <div>
+
+
+ <div class="card">
+ <div class="card-header">
+ <h2 data-i18n="teacher_dash.this_month_title">This Month</h2>
+ <a href="#" data-i18n="teacher_dash.view_all">View All</a>
+ </div>
+ <div class="earnings-summary">
+ <div class="amount">US$2,450</div>
+ <div class="label" data-i18n="teacher_dash.total_earnings">Total Earnings</div>
+ </div>
+ <div class="earnings-list">
+ <div class="earnings-item">
+ <span class="date">Jan 1-15</span>
+ <span class="amount">+US$1,280</span>
+ </div>
+ <div class="earnings-item">
+ <span class="date">Dec 16-31</span>
+ <span class="amount">+US$1,170</span>
+ </div>
+ <div class="earnings-item">
+ <span class="date">Dec 1-15</span>
+ <span class="amount">+US$980</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </main>
  
  
 
