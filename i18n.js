@@ -386,7 +386,11 @@
       parents_msg:{en:"'s Parent",zhTW:"之家長",zhCN:"之家长"},
       piano_reschedule:{en:"Piano lesson reschedule request",zhTW:"鋼琴課調課請求",zhCN:"钢琴课调课请求"},
       great_progress:{en:"Great progress on piano pieces!",zhTW:"鋼琴曲目進展良好！",zhCN:"钢琴曲目进展良好！"},
-      trial_inquiry:{en:"Trial lesson booking inquiry",zhTW:"試讀課程查詢",zhCN:"试读课程查询"}
+      trial_inquiry:{en:"Trial lesson booking inquiry",zhTW:"試讀課程查詢",zhCN:"试读课程查询"},
+      emma_wong:{en:"Emma Wong",zhTW:"Emma Wong",zhCN:"Emma Wong"},
+      lucas_lee:{en:"Lucas Lee",zhTW:"Lucas Lee",zhCN:"Lucas Lee"},
+      sophie_chen:{en:"Sophie Chen",zhTW:"Sophie Chen",zhCN:"Sophie Chen"},
+      violin_label:{en:"Violin",zhTW:"小提琴",zhCN:"小提琴"}
     },
 
     // ── Teacher Profile ──
