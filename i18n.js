@@ -296,6 +296,7 @@
       g5_q:{en:"What makes Minerva different from other tutoring platforms?",zhTW:"Minerva與其他補習平台有何不同？",zhCN:"Minerva与其他补习平台有何不同？"},
       g5_a:{en:"We're the first platform in Asia combining verified teachers, escrow payments, virtual scheduling, and AI-powered matching.",zhTW:"我們是亞洲首個結合已驗證導師、託管付款、虛擬預約和人工智能配對的平台。",zhCN:"我们是亚洲首个结合已验证导师、托管付款、虚拟预约和人工智能配对的平台。"},
       footer_question:{en:"Still have questions?",zhTW:"還有其他問題？",zhCN:"还有其他问题？"},
+      contact_tagline:{en:"Our team is here to help you find the perfect learning solution.",zhTW:"我們的團隊隨時為您提供幫助，為您找到完美的學習方案。",zhCN:"我们的团队随时为您提供帮助，为您找到完美的学习方案。"},
       contact_support:{en:"Contact Support",zhTW:"聯絡支援",zhCN:"联络支援"},
       btn_for_parents:{en:"For Parents & Students",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},
       btn_for_teachers:{en:"For Teachers",zhTW:"導師",zhCN:"导师"},
