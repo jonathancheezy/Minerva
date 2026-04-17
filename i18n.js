@@ -185,7 +185,7 @@
       success_title:{en:"✅ Registration successful!",zhTW:"✅ 登記成功！",zhCN:"✅ 登记成功！"},
       first_100:{en:"Join the first 100 teachers — 0% commission",zhTW:"加入首批100位導師 — 0%佣金",zhCN:"加入首批100位导师 — 0%佣金"},
       login_link:{en:"Already have an account? Login →",zhTW:"已有帳戶？登入 →",zhCN:"已有帐户？登录 →"},
-      phone:{en:"Phone Number",zhTW:"電話號碼",zhCN:"电话号码"},
+      phone:{en:"WhatsApp / Phone Number",zhTW:"WhatsApp / 電話號碼",zhCN:"WhatsApp / 电话号码"},
       label_your_name:{en:"Your Name",zhTW:"您的姓名",zhCN:"您的姓名"},
       section_account:{en:"Account Details",zhTW:"帳戶詳情",zhCN:"帐户详情"},
       section_profile:{en:"Teaching Profile",zhTW:"教學資料",zhCN:"教学资料"},
