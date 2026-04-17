@@ -166,7 +166,21 @@
       success_title:{en:"✅ Registration successful!",zhTW:"✅ 登記成功！",zhCN:"✅ 登记成功！"},
       first_100:{en:"Join the first 100 teachers — 0% commission",zhTW:"加入首批100位導師 — 0%佣金",zhCN:"加入首批100位导师 — 0%佣金"},
       login_link:{en:"Already have an account? Login →",zhTW:"已有帳戶？登入 →",zhCN:"已有帐户？登录 →"},
-      phone:{en:"Phone Number",zhTW:"電話號碼",zhCN:"电话号码"}
+      phone:{en:"Phone Number",zhTW:"電話號碼",zhCN:"电话号码"},
+      label_your_name:{en:"Your Name",zhTW:"您的姓名",zhCN:"您的姓名"},
+      label_current_level:{en:"Student's Current Level",zhTW:"學生現時程度",zhCN:"学生现时程度"},
+      label_lesson_type:{en:"Preferred Lesson Type",zhTW:"首選課堂形式",zhCN:"首选课堂形式"},
+      label_location:{en:"Preferred Teaching Location",zhTW:"首選教學地點",zhCN:"首选教学地点"},
+      label_budget:{en:"Budget per Hour (HK$)",zhTW:"每小時預算（港幣）",zhCN:"每小时预算（港元）"},
+      label_frequency:{en:"Lesson Frequency",zhTW:"課堂頻率",zhCN:"课堂频率"},
+      label_teaching_lang:{en:"Preferred Teaching Language",zhTW:"首選教學語言",zhCN:"首选教学语言"},
+      label_student_name:{en:"Student's Name",zhTW:"學生姓名",zhCN:"学生姓名"},
+      label_tutor_gender:{en:"Preferred Tutor Gender",zhTW:"導師性別偏好",zhCN:"导师性别偏好"},
+      label_difficulty:{en:"Specific Areas of Difficulty",zhTW:"需要改善的範圍",zhCN:"需要改善的范围"},
+      label_special_needs:{en:"Special Learning Needs (optional)",zhTW:"特殊學習需求（可選）",zhCN:"特殊学习需求（可选）"},
+      label_how_soon:{en:"How Soon Do You Need a Tutor?",zhTW:"您需要導師的急切程度",zhCN:"您需要导师的急切程度"},
+      label_how_hear:{en:"How did you hear about Minerva?",zhTW:"您是如何認識Minerva的？",zhCN:"您是如何认识Minerva的？"},
+      label_additional_notes:{en:"Additional notes",zhTW:"附加備註",zhCN:"附加备注"},
     },
 
     // ── Parent Dashboard ──
