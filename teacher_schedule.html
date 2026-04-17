@@ -521,10 +521,10 @@
  <main class="main">
  <div class="page-header">
  <div>
- <h1 data-i18n="schedule.my_schedule">My Schedule</h1>
+ <h1 data-i18n="schedule.my_schedule"><span data-i18n="schedule.heading_my_schedule"> data-i18n="schedule.my_schedule"</span></h1>
  <p>Manage your availability and upcoming lessons</p>
  </div>
- <button class="btn btn-primary" onclick="openModal('addSlot')" data-i18n="schedule.add_availability">+ Add Availability</button>
+ <button class="btn btn-primary" onclick="openModal('addSlot')" data-i18n="schedule.add_availability"><span data-i18n="schedule.btn_add_slot">+ Add Availability</span></button>
  </div>
 
  <div class="stats-row">
@@ -547,16 +547,16 @@
  </div>
 
  <div class="tabs">
- <button class="tab active" onclick="showTab('calendar')" data-i18n="schedule.monthly_calendar">Monthly Calendar</button>
- <button class="tab" onclick="showTab('bookings')" data-i18n="schedule.upcoming_bookings">Upcoming Bookings</button>
+ <button class="tab active" onclick="showTab('calendar')" data-i18n="schedule.monthly_calendar"><span data-i18n="schedule.heading_monthly_calendar">Monthly Calendar</span></button>
+ <button class="tab" onclick="showTab('bookings')" data-i18n="schedule.upcoming_bookings"><span data-i18n="schedule.heading_upcoming_bookings">Upcoming Bookings</span></button>
  </div>
 
  <div id="calendarTab">
  <div class="card">
  <div class="month-nav">
- <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)">← Prev</button>
+ <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)"><span data-i18n="schedule.nav_prev">← Prev</span></button>
  <h2>April - May 2025</h2>
- <button class="btn btn-secondary btn-small" onclick="changeMonth(1)">Next →</button>
+ <button class="btn btn-secondary btn-small" onclick="changeMonth(1)"><span data-i18n="schedule.nav_next">Next →</span></button>
  </div>
  <div class="two-months-container">
  <div class="month-calendar">
@@ -725,21 +725,21 @@
  <!-- Add Slot Modal -->
  <div class="modal-overlay" id="addSlotModal">
  <div class="modal">
- <h2>Add Availability</h2>
+ <h2><span data-i18n="schedule.heading_add_availability"></span></h2>
  <div class="form-group">
- <label>Date</label>
+ <label><span data-i18n="schedule.label_date"></span></label>
  <input type="date" id="slotDate">
  </div>
  <div class="form-group">
- <label>Start Time</label>
+ <label><span data-i18n="schedule.label_start_time"></span></label>
  <input type="time" id="slotStart" value="09:00">
  </div>
  <div class="form-group">
- <label>End Time</label>
+ <label><span data-i18n="schedule.label_end_time"></span></label>
  <input type="time" id="slotEnd" value="10:00">
  </div>
  <div class="form-group">
- <label>Repeat</label>
+ <label><span data-i18n="schedule.label_repeat"></span></label>
  <select id="slotRepeat">
  <option value="once">This date only</option>
  <option value="weekly">Every week (recurring)</option>
@@ -747,7 +747,7 @@
  </select>
  </div>
  <div class="modal-actions">
- <button class="btn btn-secondary" onclick="closeModal('addSlot')">Cancel</button>
+ <button class="btn btn-secondary" onclick="closeModal('addSlot')"><span data-i18n="schedule.btn_cancel">Cancel</span></button>
  <button class="btn btn-primary" onclick="addSlot()">Add Slot</button>
  </div>
  </div>

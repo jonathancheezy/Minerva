@@ -555,21 +555,21 @@
  <main class="main">
  <div class="page-header">
  <div>
- <h1 data-i18n="schedule.book_lesson">Book a Lesson</h1>
+ <h1 data-i18n="schedule.book_lesson"><span data-i18n="schedule.book_lesson"> data-i18n="schedule.book_lesson"</span></h1>
  <p>Find available times and book your session</p>
  </div>
  </div>
 
  <div class="tabs">
- <button class="tab active" data-i18n="schedule.book_new" onclick="showTab('book')">Book New</button>
- <button class="tab" data-i18n="schedule.upcoming_tab" onclick="showTab('upcoming')">Upcoming</button>
- <button class="tab" data-i18n="schedule.upcoming_tab" onclick="showTab('history')">History</button>
+ <button class="tab active" data-i18n="schedule.book_new" onclick="showTab('book')"><span data-i18n="schedule.btn_book_new">Book New</span></button>
+ <button class="tab" data-i18n="schedule.upcoming_tab" onclick="showTab('upcoming')"><span data-i18n="schedule.tab_upcoming">Upcoming</span></button>
+ <button class="tab" data-i18n="schedule.upcoming_tab" onclick="showTab('history')"><span data-i18n="schedule.tab_history">History</span></button>
  </div>
 
  <div id="bookTab">
  <div class="card">
  <div class="card-header">
- <h2 data-i18n="schedule.select_teacher">1. Select Teacher</h2>
+ <h2 data-i18n="schedule.select_teacher"><span data-i18n="schedule.step1_select_teacher"> data-i18n="schedule.select_teacher"</span></h2>
  </div>
  <div class="teacher-card selected" onclick="selectTeacher(this, 'Teacher Chan', 350)">
  <div class="teacher-avatar">TC</div>
@@ -611,12 +611,12 @@
 
  <div class="card">
  <div class="card-header">
- <h2 data-i18n="schedule.select_date">2. Select Date</h2>
+ <h2 data-i18n="schedule.select_date"><span data-i18n="schedule.step2_select_date"> data-i18n="schedule.select_date"</span></h2>
  </div>
  <div class="month-nav" style="margin-bottom: 16px;">
- <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)">← Prev</button>
+ <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)"><span data-i18n="schedule.nav_prev">← Prev</span></button>
  <h2 style="font-size: 18px;">April - May 2025</h2>
- <button class="btn btn-secondary btn-small" onclick="changeMonth(1)">Next →</button>
+ <button class="btn btn-secondary btn-small" onclick="changeMonth(1)"><span data-i18n="schedule.nav_next">Next →</span></button>
  </div>
  <div class="two-months-container">
  <div class="month-calendar">
@@ -837,7 +837,7 @@
 
  <div class="card">
  <div class="card-header">
- <h2 data-i18n="schedule.select_time">3. Select Time</h2>
+ <h2 data-i18n="schedule.select_time"><span data-i18n="schedule.step3_select_time"> data-i18n="schedule.select_time"</span></h2>
  </div>
  <div class="time-slots">
  <div class="time-slot" onclick="selectTime(this, '9:00 AM', '10:00 AM')">9:00 AM</div>
@@ -852,7 +852,7 @@
  </div>
 
  <div class="booking-summary">
- <h3 data-i18n="schedule.booking_summary">Booking Summary</h3>
+ <h3 data-i18n="schedule.booking_summary"><span data-i18n="schedule.booking_summary"> data-i18n="schedule.booking_summary"</span></h3>
  <div class="summary-row">
  <span>Teacher</span>
  <span id="summaryTeacher">Teacher Chan</span>
@@ -876,8 +876,8 @@
  </div>
 
  <div style="margin-top: 24px; display: flex; gap: 12px;">
- <button class="btn btn-secondary" style="flex: 1; padding: 14px;">Cancel</button>
- <button class="btn btn-primary" style="flex: 2; padding: 14px;" onclick="confirmBooking()" data-i18n="schedule.confirm_booking">Confirm Booking</button>
+ <button class="btn btn-secondary" style="flex: 1; padding: 14px;"><span data-i18n="schedule.btn_cancel">Cancel</span></button>
+ <button class="btn btn-primary" style="flex: 2; padding: 14px;" onclick="confirmBooking()" data-i18n="schedule.confirm_booking"><span data-i18n="schedule.btn_confirm_booking">Confirm Booking</span></button>
  </div>
  </div>
 
@@ -894,7 +894,7 @@
  <div class="subject">HKDSE Maths • 90 min</div>
  </div>
  <button class="btn-small btn-reschedule">Reschedule</button>
- <button class="btn-small btn-cancel">Cancel</button>
+ <button class="btn-small btn-cancel"><span data-i18n="schedule.btn_cancel">Cancel</span></button>
  </div>
  <div class="booking-item">
  <div class="date-badge"><div class="day">18</div><div class="month">Apr</div></div>
@@ -904,7 +904,7 @@
  <div class="subject">HKDSE Maths • 60 min</div>
  </div>
  <button class="btn-small btn-reschedule">Reschedule</button>
- <button class="btn-small btn-cancel">Cancel</button>
+ <button class="btn-small btn-cancel"><span data-i18n="schedule.btn_cancel">Cancel</span></button>
  </div>
  <div class="booking-item">
  <div class="date-badge"><div class="day">22</div><div class="month">Apr</div></div>
@@ -914,7 +914,7 @@
  <div class="subject">IB Maths • 90 min</div>
  </div>
  <button class="btn-small btn-reschedule">Reschedule</button>
- <button class="btn-small btn-cancel">Cancel</button>
+ <button class="btn-small btn-cancel"><span data-i18n="schedule.btn_cancel">Cancel</span></button>
  </div>
  </div>
  </div>

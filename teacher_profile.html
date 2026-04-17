@@ -517,7 +517,7 @@
  <p id="subjectPreview">HKDSE Mathematics • 5 years experience</p>
  <span class="profile-badge">✓ Verified Teacher</span>
  </div>
- <button class="change-photo-btn" onclick="alert('Photo upload would open here')">Change Photo</button>
+ <button class="change-photo-btn" onclick="alert('Photo upload would open here')"><span data-i18n="profile.btn_change_photo">Change Photo</span></button>
  </div>
 
  <div class="card">
@@ -708,7 +708,7 @@
 
  <div class="actions">
  <data-i18n="profile.cancel">button onclick="showCancelWarning()" class="btn btn-secondary">Cancel</button>
- <button class="btn btn-primary" onclick="saveProfile()" data-i18n="profile.save_changes">Save Changes</button>
+ <button class="btn btn-primary" onclick="saveProfile()" data-i18n="profile.save_changes"><span data-i18n="profile.btn_save_changes">Save Changes</span></button>
  </div>
 
  <div style="margin-top: 32px; text-align: center;">
@@ -722,11 +722,11 @@
  <div id="cancelModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
  <div style="background: white; border-radius: 16px; padding: 32px; max-width: 400px; width: 90%; text-align: center;">
  <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(249,168,40,0.2); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">⚠️</div>
- <h3 style="color: var(--navy-dark); margin-bottom: 8px;">Discard Changes?</h3>
+ <h3 style="color: var(--navy-dark); margin-bottom: 8px;"><span data-i18n="profile.heading_discard_changes">Discard Changes?</span></h3>
  <p style="color: var(--gray-500); margin-bottom: 24px;">Your changes will not be saved. Are you sure you want to leave?</p>
  <div style="display: flex; gap: 12px;">
- <button onclick="hideCancelWarning()" class="btn btn-secondary" style="flex: 1;">Keep Editing</button>
- <button onclick="confirmCancel()" class="btn btn-primary" style="flex: 1;">Discard & Leave</button>
+ <button onclick="hideCancelWarning()" class="btn btn-secondary" style="flex: 1;"><span data-i18n="profile.btn_keep_editing">Keep Editing</span></button>
+ <button onclick="confirmCancel()" class="btn btn-primary" style="flex: 1;"><span data-i18n="profile.btn_discard_leave">Discard & Leave</span></button>
  </div>
  </div>
  </div>
@@ -735,11 +735,11 @@
  <div id="deleteModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
  <div style="background: white; border-radius: 16px; padding: 32px; max-width: 400px; width: 90%; text-align: center;">
  <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(239,68,68,0.1); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">⚠️</div>
- <h3 style="color: var(--navy-dark); margin-bottom: 8px;">Delete Account?</h3>
+ <h3 style="color: var(--navy-dark); margin-bottom: 8px;"><span data-i18n="profile.heading_delete_account">Delete Account?</span></h3>
  <p style="color: var(--gray-500); margin-bottom: 24px;">This action cannot be undone. All your profile data, lesson history, and earnings will be permanently removed.</p>
  <div style="display: flex; gap: 12px;">
- <button onclick="hideDeleteWarning()" class="btn btn-secondary" style="flex: 1;">Keep Account</button>
- <button onclick="confirmDelete()" class="btn btn-danger" style="flex: 1;">Delete Forever</button>
+ <button onclick="hideDeleteWarning()" class="btn btn-secondary" style="flex: 1;"><span data-i18n="profile.btn_keep_account">Keep Account</span></button>
+ <button onclick="confirmDelete()" class="btn btn-danger" style="flex: 1;"><span data-i18n="profile.btn_delete_forever">Delete Forever</span></button>
  </div>
  </div>
  </div>

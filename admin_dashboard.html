@@ -414,7 +414,7 @@
  <main class="main">
  <div class="page-header">
  <div>
- <h1 data-i18n="admin_dash.title">Admin Dashboard</h1>
+ <h1 data-i18n="admin_dash.title"><span data-i18n="admin_dash.heading_admin_dash"> data-i18n="admin_dash.title"</span>Admin Dashboard
  <p>Overview of your Minerva platform</p>
  </div>
  </div>
@@ -448,10 +448,10 @@
  </div>
 
  <div class="tabs">
- <button class="tab active" data-i18n="admin_dash.tab_all_teachers">All Teachers</button>
- <button class="tab" data-i18n="admin_dash.tab_pending">Pending Approval</button>
- <button class="tab" data-i18n="admin_dash.tab_students">All Students</button>
- <button class="tab" data-i18n="admin_dash.tab_lessons">Recent Lessons</button>
+ <button class="tab active" data-i18n="admin_dash.tab_all_teachers"><span data-i18n="admin_dash.tab_all_teachers">All Teachers</span></button>
+ <button class="tab" data-i18n="admin_dash.tab_pending"><span data-i18n="admin_dash.tab_pending">Pending Approval</span></button>
+ <button class="tab" data-i18n="admin_dash.tab_students"><span data-i18n="admin_dash.tab_students">All Students</span></button>
+ <button class="tab" data-i18n="admin_dash.tab_lessons"><span data-i18n="admin_dash.tab_lessons">Recent Lessons</span></button>
  </div>
 
  <div class="card">
@@ -476,40 +476,40 @@
  <td>Piano</td>
  <td>12</td>
  <td>4.9 ⭐</td>
- <td><span class="badge active">Active</span></td>
- <td><button class="action-btn" data-i18n="admin_dash.view">View</button></td>
+ <td><span class="badge active"><span data-i18n="admin_dash.status_active">Active</span></span></td>
+ <td><button class="action-btn" data-i18n="admin_dash.view"><span data-i18n="admin_dash.btn_view">View</span></button></td>
  </tr>
  <tr>
  <td>Mr. Chen Math</td>
  <td>Mathematics</td>
  <td>18</td>
  <td>4.8 ⭐</td>
- <td><span class="badge active">Active</span></td>
- <td><button class="action-btn" data-i18n="admin_dash.view">View</button></td>
+ <td><span class="badge active"><span data-i18n="admin_dash.status_active">Active</span></span></td>
+ <td><button class="action-btn" data-i18n="admin_dash.view"><span data-i18n="admin_dash.btn_view">View</span></button></td>
  </tr>
  <tr>
  <td>Ms. Amy English</td>
  <td>English</td>
  <td>15</td>
  <td>5.0 ⭐</td>
- <td><span class="badge active">Active</span></td>
- <td><button class="action-btn" data-i18n="admin_dash.view">View</button></td>
+ <td><span class="badge active"><span data-i18n="admin_dash.status_active">Active</span></span></td>
+ <td><button class="action-btn" data-i18n="admin_dash.view"><span data-i18n="admin_dash.btn_view">View</span></button></td>
  </tr>
  <tr>
  <td>Mr. David Violin</td>
  <td>Violin</td>
  <td>8</td>
  <td>4.7 ⭐</td>
- <td><span class="badge pending">Pending</span></td>
- <td><button class="action-btn">Review</button></td>
+ <td><span class="badge pending"><span data-i18n="admin_dash.status_pending">Pending</span></span></td>
+ <td><button class="action-btn"><span data-i18n="admin_dash.btn_review">Review</span></button></td>
  </tr>
  <tr>
  <td>Ms. Lisa Physics</td>
  <td>Physics</td>
  <td>0</td>
  <td>—</td>
- <td><span class="badge pending">Pending</span></td>
- <td><button class="action-btn">Review</button></td>
+ <td><span class="badge pending"><span data-i18n="admin_dash.status_pending">Pending</span></span></td>
+ <td><button class="action-btn"><span data-i18n="admin_dash.btn_review">Review</span></button></td>
  </tr>
  </tbody>
  </table>
@@ -520,7 +520,7 @@
  <div class="grid-2">
  <div class="card">
  <div class="card-header">
- <h2>Recent Students</h2>
+ <h2><span data-i18n="admin_dash.heading_recent_students"></span>Recent Students
  </div>
  <div style="padding: 0 24px;">
  <div class="list-item">
@@ -528,28 +528,28 @@
  <h4>Emma Wong</h4>
  <p>Parent • Piano lessons</p>
  </div>
- <span class="badge active">Active</span>
+ <span class="badge active"><span data-i18n="admin_dash.status_active">Active</span></span>
  </div>
  <div class="list-item">
  <div class="info">
  <h4>Lucas Lee</h4>
  <p>Student • Violin lessons</p>
  </div>
- <span class="badge active">Active</span>
+ <span class="badge active"><span data-i18n="admin_dash.status_active">Active</span></span>
  </div>
  <div class="list-item">
  <div class="info">
  <h4>Sophie Chen</h4>
  <p>Parent • Math lessons</p>
  </div>
- <span class="badge pending">New</span>
+ <span class="badge pending"><span data-i18n="admin_dash.status_new">New</span></span>
  </div>
  <div class="list-item">
  <div class="info">
  <h4>Ryan Lam</h4>
  <p>Student • English lessons</p>
  </div>
- <span class="badge active">Active</span>
+ <span class="badge active"><span data-i18n="admin_dash.status_active">Active</span></span>
  </div>
  </div>
  </div>
@@ -564,28 +564,28 @@
  <h4>Emma Wong + Ms. Sarah Piano</h4>
  <p>Today, 4:00 PM • Piano</p>
  </div>
- <span class="badge active">Completed</span>
+ <span class="badge active"><span data-i18n="admin_dash.status_completed">Completed</span></span>
  </div>
  <div class="list-item">
  <div class="info">
  <h4>Lucas Lee + Mr. David Violin</h4>
  <p>Tomorrow, 10:00 AM • Violin</p>
  </div>
- <span class="badge pending">Scheduled</span>
+ <span class="badge pending"><span data-i18n="admin_dash.status_scheduled">Scheduled</span></span>
  </div>
  <div class="list-item">
  <div class="info">
  <h4>Sophie Chen + Mr. Chen Math</h4>
  <p>Jan 16, 2:00 PM • Math</p>
  </div>
- <span class="badge pending">Pending</span>
+ <span class="badge pending"><span data-i18n="admin_dash.status_pending">Pending</span></span>
  </div>
  <div class="list-item">
  <div class="info">
  <h4>Ryan Lam + Ms. Amy English</h4>
  <p>Jan 16, 5:00 PM • English</p>
  </div>
- <span class="badge pending">Scheduled</span>
+ <span class="badge pending"><span data-i18n="admin_dash.status_scheduled">Scheduled</span></span>
  </div>
  </div>
  </div>
