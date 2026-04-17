@@ -322,7 +322,8 @@
       april_label:{en:"April 2025",zhTW:"2025年4月",zhCN:"2025年4月"},
       may_label:{en:"May 2025",zhTW:"2025年5月",zhCN:"2025年5月"},
       btn_add_slot_confirm:{en:"Add Slot",zhTW:"添加時段",zhCN:"添加时段"},
-      logout:{en:"Logout",zhTW:"登出",zhCN:"登出"}
+      logout:{en:"Logout",zhTW:"登出",zhCN:"登出"},
+      footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。"}
     },
 
     // ── Teacher Dashboard ──
