@@ -1,121 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teacher Registration — Minerva</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-:root{--navy:#1e3a5f;--navy-dark:#0f1f33;--teal:#3b82f6;--teal-light:#60a5fa;--gold:#F9A828;--gold-light:#FBB81C;--white:#ffffff;--gray-100:#f8fafc;--gray-200:#e2e8f0;--gray-500:#64748b;--gray-700:#334155}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--white);color:var(--gray-700);line-height:1.6}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);padding:16px 24px}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:700;font-size:20px}
-.logo-icon{width:36px;height:36px}
-.nav-right{display:flex;align-items:center;gap:16px}
-.nav-links{display:flex;gap:24px;align-items:center}
-.nav-links a{color:var(--gray-500);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
-.nav-links a:hover{color:var(--navy)}
-.lang-selector{display:flex;gap:4px;background:var(--gray-100);padding:4px;border-radius:8px}
-.lang-btn{padding:6px 12px;font-size:13px;font-weight:600;border:none;background:transparent;color:var(--gray-500);cursor:pointer;border-radius:6px;text-decoration:none;transition:all 0.2s}
-.lang-btn:hover{color:var(--navy)}
-.lang-btn.active{background:white;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-.mobile-menu-btn{display:none;font-size:20px;cursor:pointer;padding:4px}
-@media(max-width:768px){.nav-links{display:none}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:16px;border:1px solid var(--gray-200);gap:12px}.mobile-menu-btn{display:block}.lang-btn{padding:6px 12px;font-size:13px}.lang-selector{padding:2px;gap:1px}}
-.main{max-width:800px;margin:100px auto 60px;padding:0 24px}
-.hero-badge{display:inline-block;background:linear-gradient(135deg,var(--navy),var(--teal));color:white;padding:6px 16px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:16px}
-h1{font-size:40px;font-weight:800;color:var(--navy);margin-bottom:16px;line-height:1.2}
-.subtitle{font-size:18px;color:var(--gray-500);margin-bottom:40px;max-width:500px}
-.form-card{background:var(--gray-100);border-radius:16px;padding:32px;margin-bottom:24px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
-.form-group{margin-bottom:20px}
-label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
-input,select{width:100%;padding:10px 14px;border:2px solid var(--gray-200);border-radius:10px;font-size:14px;font-family:inherit;transition:border-color 0.2s}
-input:focus,select:focus{outline:none;border-color:var(--teal)}
-.full-width{grid-column:1/-1}
-.btn-primary{background:var(--gold);color:var(--navy-dark);font-weight:700;font-size:14px;padding:10px 22px;border-radius:50px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-width:200px;justify-content:center;white-space:nowrap}
-.btn-primary:hover{transform:translateY(-1px)}
-.btn-secondary{background:transparent;color:var(--navy);font-weight:600;font-size:14px;padding:10px 22px;border-radius:50px;text-decoration:none;border:2px solid var(--navy);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;min-width:200px;justify-content:center;white-space:nowrap}
-.btn-secondary:hover{background:var(--navy);color:white}
-.form-success{background:linear-gradient(135deg,var(--navy),var(--teal));color:white;padding:40px;border-radius:16px;text-align:center;display:none}
-.form-success h3{font-size:24px;margin-bottom:8px}
-.terms{margin-top:16px;font-size:12px;color:var(--gray-500);text-align:center}
-.terms a{color:var(--teal)}
-footer{padding:24px;text-align:center;font-size:13px;color:var(--gray-500);border-top:1px solid var(--gray-200)}
-footer a{color:var(--gray-500)}
-  </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Teacher Registration — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --teal-light: #60a5fa;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-500: #64748b;
+ --gray-700: #334155;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--gray-700); line-height: 1.6; }
+
+ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--gray-200); padding: 16px 24px; }
+ .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+ .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy); text-decoration: none; }
+ .logo-icon { width: 32px; height: 32px; }
+ .nav-right { display: flex; align-items: center; gap: 16px; }
+ .nav-links { display: flex; gap: 24px; align-items: center; }
+ .nav-links a { color: var(--gray-500); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+ .nav-links a:hover { color: var(--navy); }
+ .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: var(--navy); }
+ .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: var(--navy); background: none; border: none; }
+
+ .main { max-width: 800px; margin: 100px auto 60px; padding: 0 24px; }
+ .hero-badge { display: inline-block; background: linear-gradient(135deg, var(--navy), var(--teal)); color: white; padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+ h1 { font-size: 40px; font-weight: 800; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+ .subtitle { font-size: 18px; color: var(--gray-500); margin-bottom: 40px; max-width: 560px; }
+
+ .form-card { background: var(--gray-100); border-radius: 16px; padding: 32px; margin-bottom: 24px; }
+ .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+ @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+ .form-group { margin-bottom: 20px; }
+ .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+ .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 2px solid var(--gray-200); border-radius: 10px; font-size: 14px; font-family: inherit; transition: border-color 0.2s; }
+ .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--teal); }
+ .form-group textarea { min-height: 100px; resize: vertical; }
+ .form-group small { display: block; font-size: 13px; color: var(--gray-500); margin-top: 4px; }
+ .full-width { grid-column: 1 / -1; }
+ .inline-group { display: flex; gap: 12px; }
+ .inline-group .form-group { flex: 1; }
+
+ .btn-primary { background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 50px; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; justify-content: center; white-space: nowrap; width: 100%; margin-top: 8px; }
+ .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+ .form-success { background: linear-gradient(135deg, var(--navy), var(--teal)); color: white; padding: 40px; border-radius: 16px; text-align: center; display: none; }
+ .form-success h3 { font-size: 24px; margin-bottom: 8px; }
+ .terms { margin-top: 16px; font-size: 12px; color: var(--gray-500); text-align: center; }
+ .terms a { color: var(--teal); }
+ footer { padding: 24px; text-align: center; font-size: 13px; color: var(--gray-500); border-top: 1px solid var(--gray-200); }
+ footer a { color: var(--gray-500); }
+
+ .section-title { font-size: 16px; font-weight: 700; color: var(--navy); margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--gray-200); }
+ .section-title:first-of-type { margin-top: 0; }
+
+ @media (max-width: 768px) {
+ .nav-links { display: none; }
+ .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 16px; border: 1px solid var(--gray-200); gap: 12px; }
+ .mobile-menu-btn { display: block; }
+ h1 { font-size: 28px; }
+ .form-card { padding: 20px; }
+ .inline-group { flex-direction: column; gap: 0; }
+ }
+ </style>
 </head>
 <body>
 <nav>
-  <div class="nav-inner">
-    <a href="minerva_landing.html" class="logo">
-      <svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#1e3a5f"/><path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/></svg>
-      Minerva
-    </a>
-    <div class="nav-right">
-      <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
-      <div class="nav-links">
-        <a href="minerva_landing.html">Features</a>
-        <a href="minerva_landing.html#how-it-works">How it Works</a>
-        <a href="faq.html">FAQ</a>
-        <a href="login.html">Login</a>
-      </div>
-      <div class="lang-selector">
-        <a href="teacher_registration.html?lang=en" class="lang-btn">EN</a>
-        <a href="teacher_registration.html?lang=zh-TW" class="lang-btn">繁</a>
-        <a href="teacher_registration.html?lang=zh-CN" class="lang-btn">简</a>
-      </div>
-    </div>
-  </div>
+ <div class="nav-inner">
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="nav-right">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <div class="nav-links">
+ <a href="minerva_landing.html">Home</a>
+ <a href="faq.html">FAQ</a>
+ <a href="login.html">Login</a>
+ </div>
+ <div class="lang-selector">
+ <a href="teacher_registration.html?lang=en" class="lang-btn">EN</a>
+ <a href="teacher_registration.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="teacher_registration.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
+ </div>
 </nav>
 
 <main class="main">
-  <div class="hero-badge" data-i18n="register.teacher_register">Teacher Registration</div>
-  <h1 data-i18n="register.join_community">Join the Minerva teaching community</h1>
-  <p class="subtitle" data-i18n="register.first_100">Sign up today and start connecting with students in Hong Kong. First 100 get 0 commission levied for first four classes.</p>
-  
-  <form id="registrationForm" class="form-card">
-    <div class="form-grid">
-      <div class="form-group">
-        <label data-i18n="register.full_name">Full Name</label>
-        <input type="text" required placeholder="Chan Tai Man">
-      </div>
-      <div class="form-group">
-        <label data-i18n="register.email">Email Address</label>
-        <input type="email" required placeholder="chan.teacher@email.com">
-      </div>
-      <div class="form-group">
-        <label data-i18n="register.password">Password</label>
-        <input type="password" required placeholder="••••••••">
-      </div>
-      <div class="form-group">
-        <label data-i18n="register.Confirm Password">Confirm Password</label>
-        <input type="password" required placeholder="••••••••">
-      </div>
-      <div class="form-group full-width">
-        <label data-i18n="register.phone">Phone Number</label>
-        <input type="tel" placeholder="+852 6123 4567">
-      </div>
-    </div>
-    <button type="submit" class="btn-primary" style="width:100%;margin-top:20px"><span data-i18n="register.btn_register">Register →</span></button>
-    <p class="terms"><span data-i18n="register.agree_text">By registering, you agree to our</span> <a href="terms.html" data-i18n="register.link_terms">Terms & Conditions</a> <span data-i18n="register.and_text">and</span> <a href="privacy.html" data-i18n="register.link_privacy">Privacy Policy</a>.</p>
-  </form>
+ <div class="hero-badge" data-i18n="register.teacher_register">Teacher Registration</div>
+ <h1 data-i18n="register.join_community">Join the Minerva teaching community</h1>
+ <p class="subtitle" data-i18n="register.first_100">Join the first 100 teachers — 0% commission for your first four classes.</p>
 
-  <div class="form-success" id="formSuccess">
-    <h3>✅ Registration successful!</h3>
-    <p>Redirecting to your dashboard...</p>
-  </div>
+ <form id="registrationForm" class="form-card">
+ <div class="section-title" data-i18n="register.section_account">Account Details</div>
+ <div class="form-grid">
+ <div class="form-group">
+ <label data-i18n="register.full_name">Full Name</label>
+ <input type="text" id="fullName" name="fullName" required placeholder="Chan Tai Man">
+ </div>
+ <div class="form-group">
+ <label data-i18n="register.email">Email Address</label>
+ <input type="email" id="email" name="email" required placeholder="chan.teacher@email.com">
+ </div>
+ <div class="form-group">
+ <label data-i18n="register.password">Password</label>
+ <input type="password" id="password" name="password" required placeholder="••••••••" minlength="8">
+ </div>
+ <div class="form-group">
+ <label data-i18n="register.confirm_password">Confirm Password</label>
+ <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="••••••••">
+ </div>
+ <div class="form-group full-width">
+ <label data-i18n="register.phone">WhatsApp / Phone Number</label>
+ <input type="tel" id="phone" name="phone" placeholder="+852 6123 4567">
+ </div>
+ </div>
+
+ <div class="section-title" data-i18n="register.section_profile">Teaching Profile</div>
+ <div class="form-grid">
+ <div class="form-group">
+ <label data-i18n="register.label_subjects">Subjects You Teach</label>
+ <select id="subjects" name="subjects" required>
+ <option value="" data-i18n="register.label_select_subjects">Select main subject</option>
+ <option value="math">Mathematics</option>
+ <option value="english">English</option>
+ <option value="chinese">Chinese (Cantonese / Mandarin)</option>
+ <option value="physics">Physics</option>
+ <option value="chemistry">Chemistry</option>
+ <option value="biology">Biology</option>
+ <option value="economics">Economics</option>
+ <option value="music">Music</option>
+ <option value="other">Other</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label data-i18n="register.label_qualification">Highest Qualification</label>
+ <select id="qualification" name="qualification" required>
+ <option value="" data-i18n="register.label_select_qualification">Select qualification</option>
+ <option value="highschool">High School Diploma</option>
+ <option value="associate">Associate Degree</option>
+ <option value="bachelor">Bachelor's Degree</option>
+ <option value="master">Master's Degree</option>
+ <option value="phd">PhD / Doctorate</option>
+ <option value="other">Other</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label data-i18n="register.label_experience">Years of Teaching Experience</label>
+ <select id="experience" name="experience" required>
+ <option value="" data-i18n="register.label_select_experience">Select experience</option>
+ <option value="0-1">Less than 1 year</option>
+ <option value="1-3">1–3 years</option>
+ <option value="3-5">3–5 years</option>
+ <option value="5-10">5–10 years</option>
+ <option value="10+">10+ years</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label data-i18n="register.label_hourly_rate">Hourly Rate (HK$)</label>
+ <input type="number" id="hourlyRate" name="hourlyRate" placeholder="e.g., 350" min="0">
+ </div>
+ <div class="form-group full-width">
+ <label data-i18n="register.label_bio">Short Bio</label>
+ <textarea id="bio" name="bio" placeholder="Tell students about yourself, your teaching style, and what makes your lessons unique..." data-i18n="register.label_bio_placeholder"></textarea>
+ </div>
+ <div class="form-group full-width">
+ <label data-i18n="register.label_teaching_mode">Preferred Teaching Mode</label>
+ <select id="teachingMode" name="teachingMode">
+ <option value="" data-i18n="register.label_select_mode">Select mode</option>
+ <option value="online">Online Only</option>
+ <option value="inperson">In Person Only</option>
+ <option value="both">Both Online and In Person</option>
+ </select>
+ </div>
+ <div class="form-group full-width">
+ <label data-i18n="register.label_languages">Languages You Teach In</label>
+ <select id="languages" name="languages" required>
+ <option value="" data-i18n="register.label_select_language">Select language</option>
+ <option value="cantonese">Cantonese</option>
+ <option value="mandarin">Mandarin</option>
+ <option value="english">English</option>
+ <option value="multiple">Multiple Languages</option>
+ </select>
+ </div>
+ <div class="form-group full-width">
+ <label data-i18n="register.label_availability">Availability Summary</label>
+ <input type="text" id="availability" name="availability" placeholder="e.g., Weekday evenings, Saturday afternoons" data-i18n="register.label_availability_placeholder">
+ </div>
+ </div>
+
+ <button type="submit" class="btn-primary"><span data-i18n="register.btn_register">Register →</span></button>
+ <p class="terms"><span data-i18n="register.agree_text">By registering, you agree to our</span> <a href="terms.html" data-i18n="register.link_terms">Terms & Conditions</a> <span data-i18n="register.and_text">and</span> <a href="privacy.html" data-i18n="register.link_privacy">Privacy Policy</a>.</p>
+ </form>
+
+ <div class="form-success" id="formSuccess">
+ <h3>✅ Registration successful!</h3>
+ <p>Redirecting to your dashboard...</p>
+ </div>
 </main>
 
 <footer>
-  <p data-i18n="register.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
+ <p data-i18n="register.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
 </footer>
-
-
-
 
 <script src="i18n.js"></script>
 </body>
