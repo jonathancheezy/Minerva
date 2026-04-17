@@ -303,12 +303,10 @@
  ];
 
  const STORAGE_KEY = 'minerva_progress';
- function loadState() {
- try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
- }
+ function loadState() { try { const s = JSON.parse(localStorage.getItem(STORAGE_KEY)); if (s && Object.keys(s).length > 0) return s; } catch {} return {"Booking Flow0":true,"Booking Flow1":true,"Teacher Dashboard0":true,"Teacher Dashboard1":true,"Teacher Dashboard2":true,"Teacher Dashboard3":true,"Teacher Dashboard4":true,"Parent Dashboard0":true,"Parent Dashboard1":true,"Auth & Security0":true,"Infrastructure0":true,"Infrastructure1":true}; }
  function saveState(state) { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
- const state = loadState() || {"Booking Flow0": true, "Booking Flow1": true, "Teacher Dashboard0": true, "Teacher Dashboard1": true, "Teacher Dashboard2": true, "Teacher Dashboard3": true, "Infrastructure0": true, "Infrastructure1": true};
+ const state = loadState();
 
  function countCat(cat) {
  let done = 0;
