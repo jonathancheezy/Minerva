@@ -308,13 +308,13 @@
  </form>
 
  <div class="register-link" id="registerSection">
- <p id="registerText">Don't have an account? <a href="#" id="registerLink">Register as Teacher</a></p>
+ <p id="registerText"><span data-i18n="login.no_account">Don't have an account?</span> <a href="teacher_registration.html" id="registerLink" data-i18n="login.register_as_teacher">Register as Teacher</a></p>
  </div>
  </div>
  </main>
 
  <footer>
- © 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.
+ <p><span data-i18n="login.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span></p>
  </footer>
 
  <script>
@@ -343,8 +343,7 @@
  forgotLink.href = '#';
  submitBtn.textContent = 'Login';
  registerLink.textContent = 'Register as Teacher';
- registerLink.parentElement.querySelector('p').innerHTML = 
- "Don't have an account? <a href=\"#\" id=\"registerLink\">Register as Teacher</a>";
+ registerLink.href = 'teacher_registration.html';
  } else {
  teacherBtn.classList.remove('active');
  parentBtn.classList.add('active');
@@ -353,9 +352,8 @@
  emailLabel.textContent = 'Email Address';
  passwordLabel.textContent = 'Password';
  forgotLink.href = '#';
- submitBtn.textContent = 'Login';
- registerLink.parentElement.querySelector('p').innerHTML = 
- "Don't have an account? <a href=\"#\" id=\"registerLink\">Register as Parent/Student</a>";
+ registerLink.textContent = 'Register as Parent/Student';
+ registerLink.href = 'parent_registration.html';
  }
  }
 
