@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Minerva — Promo Video</title>
+ <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+  .slideshow { position: relative; width: 100vw; height: 100vh; }
+  .slide { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; }
+  .slide.active { display: flex; }
+  .slide img { width: 100%; height: 100%; object-fit: cover; }
+  .slide-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .scene-title {
+    font-family: 'Inter', sans-serif; font-size: clamp(18px, 3vw, 32px); font-weight: 800;
+    color: white; text-align: center; padding: 0 10%;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    opacity: 0; transition: opacity 0.8s;
+  }
+  .scene-subtitle {
+    font-family: 'Inter', sans-serif; font-size: clamp(12px, 2vw, 18px); font-weight: 400;
+    color: rgba(255,255,255,0.85); text-align: center; padding: 12px 15% 0;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    opacity: 0; transition: opacity 0.8s 0.3s;
+  }
+  .slide.active .scene-title { opacity: 1; }
+  .slide.active .scene-subtitle { opacity: 1; }
+  .progress-bar { position: fixed; bottom: 0; left: 0; height: 3px; background: #F9A828; transition: width 0.1s linear; z-index: 100; }
+  .controls {
+    position: fixed; bottom: 24px; right: 24px; display: flex; gap: 12px; z-index: 100;
+  }
+  .ctrl-btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.4); color: white; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px);
+    transition: all 0.2s;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.6); }
+  .scene-counter {
+    position: fixed; bottom: 28px; left: 24px; font-family: 'Inter', sans-serif;
+    font-size: 12px; color: rgba(255,255,255,0.5); z-index: 100;
+  }
+  .minerva-logo {
+    position: fixed; top: 24px; left: 24px; font-family: 'Inter', sans-serif;
+    font-weight: 800; font-size: 18px; color: white; z-index: 100;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .minerva-logo span { color: #F9A828; }
+  .narrator {
+    position: fixed; top: 28px; right: 24px; z-index: 100;
+    background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px; padding: 6px 14px; font-family: 'Inter', sans-serif;
+    font-size: 12px; color: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
+  }
+  .narrator.playing { color: #F9A828; border-color: rgba(249,168,40,0.3); }
+  .narrator.playing::before { content: '🔊 '; }
+  .narrator:not(.playing)::before { content: '🔇 '; }
+ </style>
+</head>
+<body>
+
+<div class="slideshow" id="slideshow">
+
+ <div class="slide active" data-title="" data-subtitle="">
+  <img src="scene01_title---1197a489-0a04-41d2-ae29-3149386906b0.png" alt="">
+  <div class="slide-overlay">
+   <div class="scene-title">Minerva</div>
+   <div class="scene-subtitle">Asia's AI-Powered Learning Marketplace</div>
+  </div>
+ </div>
+
+ <div class="slide" data-title="">
+  <img src="scene02_hongkong---2536ea8b-7404-4fbd-a283-4b5324054916.png" alt="">
+  <div class="slide-overlay">
+   <div class="scene-title" style="display:none"></div>
+  </div>
+ </div>
+
+ <div class="slide" data-title="Verified Expert Teachers">
+  <img src="scene03_teacher---71fb743a-c4c1-40d4-858d-5688e2592c21.png" alt="">
+  <div class="slide-overlay">
+   <div class="scene-title">Verified Expert Teachers</div>
+   <div class="scene-subtitle">Background-checked, subject-specialised educators</div>
+  </div>
+ </div>
+
+ <div class="slide" data-title="">
+  <img src="scene04_student---ac653e50-5cdb-487e-bf37-e6a8df70caa7.png" alt="">
+  <div class="slide-overlay">
+   <div class="scene-title" style="display:none"></div>
+  </div>
+ </div>
+
+ <div class="slide" data-title="Book Lessons Instantly">
+  <img src="scene05_booking---7204e965-0daf-4457-9180-1d082926cec2.png" alt="">
+  <div class="slide-overlay">
+   <div class="scene-title">Book Lessons Instantly</div>
+   <div class="scene-subtitle">Escrow-protected payments — safe &amp; seamless</div>
+  </div>
+ </div>
+
+ <div class="slide" data-title="AI Smart Matching">
+  <img src="scene06_ai---834fa62f-c76f-413a-a8c8-5bd4f82dc653.png" alt="">
+  <div class="slide-overlay">
+   <div class="scene-title">AI-Powered Matching</div>
+   <div class="scene-subtitle">Find your perfect teacher, tailored to your goals</div>
+  </div>
+ </div>
+
+ <div class="slide" data-title="">
+  <img src="scene07_cta---84e35c66-ff03-4432-b9a0-3a8b8081c27b.png" alt="">
+  <div class="slide-overlay">
+   <div class="scene-title">Start Learning Today</div>
+   <div class="scene-subtitle">Minerva — Find your perfect teacher</div>
+  </div>
+ </div>
+
+</div>
+
+<div class="progress-bar" id="progress"></div>
+
+<div class="minerva-logo">Minerva <span>.</span></div>
+<div class="narrator" id="narrator" onclick="toggleAudio()">Narration (add your own audio)</div>
+
+<div class="scene-counter" id="counter">1 / 7</div>
+
+<div class="controls">
+ <button class="ctrl-btn" onclick="prev()" title="Previous">◀</button>
+ <button class="ctrl-btn" id="playBtn" onclick="togglePlay()" title="Play/Pause">▶</button>
+ <button class="ctrl-btn" onclick="next()" title="Next">▶▶</button>
+</div>
+
+<script>
+// Scenes config: [duration in seconds]
+const scenes = [
+ { duration: 5 },
+ { duration: 2 },
+ { duration: 4 },
+ { duration: 2 },
+ { duration: 5 },
+ { duration: 5 },
+ { duration: 6 }
+];
+
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+let playing = false;
+let timer = null;
+let sceneStart = null;
+
+function show(n) {
+  slides.forEach(s => s.classList.remove('active'));
+  current = (n + scenes.length) % scenes.length;
+  slides[current].classList.add('active');
+  document.getElementById('counter').textContent = (current + 1) + ' / ' + scenes.length;
+  sceneStart = Date.now();
+  resetTimer();
+}
+
+function next() { show(current + 1); }
+function prev() { show(current - 1); }
+
+function resetTimer() {
+  clearTimeout(timer);
+  if (!playing) return;
+  const remaining = scenes[current].duration * 1000 - (Date.now() - sceneStart);
+  timer = setTimeout(next, Math.max(0, remaining));
+  updateProgress();
+}
+
+function updateProgress() {
+  if (!playing) return;
+  const elapsed = Date.now() - sceneStart;
+  const total = scenes[current].duration * 1000;
+  const pct = Math.min(100, (elapsed / total) * 100);
+  document.getElementById('progress').style.width = pct + '%';
+  requestAnimationFrame(updateProgress);
+}
+
+let audioCtx = null;
+let audioBuffer = null;
+let audioSource = null;
+let audioStartTime = 0;
+let audioPausedAt = 0;
+
+async function toggleAudio() {
+  // Placeholder — user can add their own audio file
+  const narrator = document.getElementById('narrator');
+  narrator.textContent = 'Add your narration audio URL to enable';
+}
+
+function togglePlay() {
+  playing = !playing;
+  document.getElementById('playBtn').textContent = playing ? '⏸' : '▶';
+  document.getElementById('progress').style.opacity = playing ? '1' : '0.3';
+  if (playing) {
+    sceneStart = Date.now() - (audioPausedAt % (scenes[current].duration * 1000));
+    resetTimer();
+  } else {
+    clearTimeout(timer);
+    audioPausedAt = Date.now();
+  }
+}
+
+// Auto-advance
+setInterval(() => {
+  if (!playing) return;
+  if (Date.now() - sceneStart >= scenes[current].duration * 1000) next();
+}, 200);
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); togglePlay(); }
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'ArrowRight' && !e.target.matches('input')) next();
+});
+
+// Init
+document.getElementById('progress').style.opacity = '0.3';
+show(0);
+</script>
+</body>
+</html>
