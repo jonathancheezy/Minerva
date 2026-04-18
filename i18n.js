@@ -591,6 +591,23 @@
     },
 
 
+    // ── Reviews ──
+    reviews:{
+      title:{en:"Reviews",zhTW:"評價",zhCN:"评价"},
+      overall_rating:{en:"4.9",zhTW:"4.9",zhCN:"4.9"},
+      total_reviews:{en:"Based on 24 reviews",zhTW:"基於24條評價",zhCN:"基于24条评价"},
+      breakdown:{en:"5 stars: 21 · 4 stars: 2 · 3 stars: 1 · 2 stars: 0 · 1 star: 0",zhTW:"5星：21 · 4星：2 · 3星：1 · 2星：0 · 1星：0",zhCN:"5星：21 · 4星：2 · 3星：1 · 2星：0 · 1星：0"},
+      jenny_text:{en:"Teacher Chan has been instrumental in helping my daughter improve her Piano technique. Patient, professional, and always well-prepared for every lesson. Highly recommend!",zhTW:"陳老師女兒的鋼琴技巧進步很多。有耐心、專業，每堂課都準備充足。強烈推薦！",zhCN:"陈老师女儿的钢琴技巧进步很多。有耐心、专业，每堂课都准备充足。强烈推荐！"},
+      michael_text:{en:"Excellent teacher! My Math grades improved from a D to a B in just 3 months. Teacher Chan explains concepts clearly and makes lessons enjoyable.",zhTW:"出色的老師！我的數學成績在3個月內從D進步到B。陳老師解釋概念清晰，課堂生動有趣。",zhCN:"出色的老师！我的数学成绩在3个月内从D进步到B。陈老师解释概念清晰，课堂生动有趣。"},
+      sophie_text:{en:"Very reliable and skilled teacher. My son looks forward to every Violin lesson. The online scheduling system makes managing lessons so convenient.",zhTW:"非常可靠和專業的老師。兒子期待每節小提琴課。在線預約系統使課程管理非常方便。",zhCN:"非常可靠和专业的老师。儿子期待每节小提琴课。在线预约系统使课程管理非常方便。"},
+      anson_text:{en:"Teacher Chan is patient and thorough. The escrow payment system gives me confidence that payments are handled fairly. Great experience overall!",zhTW:"陳老師有耐心且細緻。託管付款系統讓我對款項處理充满信心。整體體驗非常棒！",zhCN:"陈老师有耐心且细致。托管付款系统让我对款项处理充满信心。整体体验非常棒！"},
+      subject_piano:{en:"Piano — Grade 5 Prep",zhTW:"鋼琴 — 五級準備",zhCN:"钢琴 — 五级准备"},
+      subject_math:{en:"Math — Form 3",zhTW:"數學 — 中三",zhCN:"数学 — 初三"},
+      subject_violin:{en:"Violin — Intermediate",zhTW:"小提琴 — 中級",zhCN:"小提琴 — 中级"},
+      subject_english:{en:"English — Form 4",zhTW:"英語 — 中四",zhCN:"英语 — 高一"}
+    },
+
+
     // ── Privacy ──
     privacy:{
       title:{en:"Privacy Policy",zhTW:"隱私政策",zhCN:"隐私政策"},

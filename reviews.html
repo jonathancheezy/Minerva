@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Reviews — Minerva</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-500: #64748b;
+ --green: #22c55e;
+ --red: #ef4444;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--gray-100);
+ color: var(--gray-700);
+ line-height: 1.6;
+ }
+
+ /* Nav */
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+ z-index: 100;
+ }
+
+ .nav-left {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 32px; height: 32px; }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 8px;
+ color: white;
+ background: none;
+ border: none;
+ }
+
+ .nav-links a {
+ color: rgba(255,255,255,0.7);
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: color 0.2s;
+ }
+ .nav-links a:hover, .nav-links a.active { color: white; }
+ .nav-links a.active { color: var(--gold); }
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
+ }
+
+ .user-name {
+ font-size: 14px;
+ font-weight: 600;
+ }
+
+ /* Main Content */
+ .main {
+ max-width: 900px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ }
+
+ .page-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 32px;
+ flex-wrap: wrap;
+ gap: 16px;
+ }
+
+ .page-header h1 {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ /* Overall Rating Card */
+ .overall-rating {
+ background: white;
+ border-radius: 16px;
+ padding: 32px;
+ border: 1px solid var(--gray-200);
+ display: flex;
+ align-items: center;
+ gap: 32px;
+ margin-bottom: 32px;
+ flex-wrap: wrap;
+ }
+
+ .rating-big {
+ font-size: 64px;
+ font-weight: 800;
+ color: var(--gold);
+ line-height: 1;
+ }
+
+ .rating-stars {
+ font-size: 28px;
+ letter-spacing: 4px;
+ margin-top: 8px;
+ }
+
+ .rating-meta {
+ flex: 1;
+ }
+
+ .rating-meta p {
+ color: var(--gray-500);
+ font-size: 14px;
+ margin-top: 4px;
+ }
+
+ /* Review Cards */
+ .review-card {
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ border: 1px solid var(--gray-200);
+ margin-bottom: 16px;
+ }
+
+ .review-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+ margin-bottom: 12px;
+ gap: 12px;
+ flex-wrap: wrap;
+ }
+
+ .review-author {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .review-avatar {
+ width: 44px;
+ height: 44px;
+ border-radius: 50%;
+ background: var(--navy);
+ color: white;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 16px;
+ }
+
+ .review-name {
+ font-weight: 600;
+ color: var(--navy-dark);
+ }
+
+ .review-date {
+ font-size: 12px;
+ color: var(--gray-500);
+ }
+
+ .review-stars {
+ color: var(--gold);
+ font-size: 16px;
+ letter-spacing: 2px;
+ }
+
+ .review-text {
+ color: var(--gray-500);
+ font-size: 14px;
+ line-height: 1.7;
+ }
+
+ .review-subject {
+ display: inline-block;
+ background: var(--gray-100);
+ color: var(--navy);
+ font-size: 12px;
+ font-weight: 500;
+ padding: 4px 10px;
+ border-radius: 20px;
+ margin-top: 12px;
+ }
+
+ /* Responsive */
+ @media (max-width: 768px) {
+ .nav-left { display: flex; align-items: center; gap: 0; }
+ .mobile-menu-btn { display: block; }
+ .nav-links {
+ display: none;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ right: 0;
+ background: var(--navy);
+ flex-direction: column;
+ padding: 20px 24px;
+ gap: 16px;
+ border-bottom: 1px solid rgba(255,255,255,0.1);
+ z-index: 99;
+ }
+ .nav-links.active { display: flex; }
+ .nav-links.active a { color: rgba(255,255,255,0.85); }
+ .nav-links.active a:hover { color: white; }
+ .nav-links.active a.active { color: var(--gold); }
+
+ .nav-right { display: flex; flex-direction: row; align-items: center; gap: 16px; justify-content: flex-end; }
+ .page-header { flex-direction: column; align-items: flex-start; }
+ .overall-rating { flex-direction: column; text-align: center; gap: 16px; }
+ }
+
+ @media (max-width: 600px) {
+ .main { padding: 20px 16px; }
+ .page-header h1 { font-size: 22px; }
+ }
+
+ /* Lang Selector */
+ .lang-selector {
+ display: flex;
+ gap: 4px;
+ background: rgba(255,255,255,0.1);
+ padding: 4px;
+ border-radius: 8px;
+ margin-left: auto;
+ }
+
+ .lang-btn {
+ color: rgba(255,255,255,0.7);
+ text-decoration: none;
+ font-size: 12px;
+ font-weight: 500;
+ padding: 4px 8px;
+ border-radius: 6px;
+ transition: all 0.2s;
+ }
+
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: white; color: var(--navy); }
+
+ @media (max-width: 768px) {
+ .lang-btn { padding: 4px 8px; font-size: 12px; }
+ .lang-selector { padding: 2px; gap: 1px; }
+ }
+ </style>
+</head>
+<body>
+ <nav>
+ <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="teacher_dashboard.html" data-i18n="teacher_dash.dashboard">Dashboard</a>
+ <a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
+ <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="reviews.html" class="active" data-i18n="reviews.title">Reviews</a>
+ <a href="messages.html" data-i18n="teacher_dash.messages">Messages</a>
+ </div>
+ <div class="nav-right">
+ <div class="user-info">
+ <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
+ </div>
+ <div class="lang-selector">
+ <a href="reviews.html?lang=en" class="lang-btn">EN</a>
+ <a href="reviews.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="reviews.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
+ </nav>
+
+ <main class="main">
+ <div class="page-header">
+ <h1 data-i18n="reviews.title">Reviews</h1>
+ </div>
+
+ <div class="overall-rating">
+ <div>
+ <div class="rating-big" data-i18n="reviews.overall_rating">4.9</div>
+ <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+ </div>
+ <div class="rating-meta">
+ <div data-i18n="reviews.total_reviews">Based on 24 reviews</div>
+ <p data-i18n="reviews.breakdown">5 stars: 21 · 4 stars: 2 · 3 stars: 1 · 2 stars: 0 · 1 star: 0</p>
+ </div>
+ </div>
+
+ <div class="review-list">
+ <div class="review-card">
+ <div class="review-header">
+ <div class="review-author">
+ <div class="review-avatar">JH</div>
+ <div>
+ <div class="review-name">Jenny Ho</div>
+ <div class="review-date">March 2026</div>
+ </div>
+ </div>
+ <div class="review-stars">⭐⭐⭐⭐⭐</div>
+ </div>
+ <div class="review-text" data-i18n="reviews.jenny_text">
+ Teacher Chan has been instrumental in helping my daughter improve her Piano technique. Patient, professional, and always well-prepared for every lesson. Highly recommend!
+ </div>
+ <div class="review-subject" data-i18n="reviews.subject_piano">Piano — Grade 5 Prep</div>
+ </div>
+
+ <div class="review-card">
+ <div class="review-header">
+ <div class="review-author">
+ <div class="review-avatar">ML</div>
+ <div>
+ <div class="review-name">Michael Lau</div>
+ <div class="review-date">February 2026</div>
+ </div>
+ </div>
+ <div class="review-stars">⭐⭐⭐⭐⭐</div>
+ </div>
+ <div class="review-text" data-i18n="reviews.michael_text">
+ Excellent teacher! My Math grades improved from a D to a B in just 3 months. Teacher Chan explains concepts clearly and makes lessons enjoyable.
+ </div>
+ <div class="review-subject" data-i18n="reviews.subject_math">Math — Form 3</div>
+ </div>
+
+ <div class="review-card">
+ <div class="review-header">
+ <div class="review-author">
+ <div class="review-avatar">SW</div>
+ <div>
+ <div class="review-name">Sophie Wong</div>
+ <div class="review-date">January 2026</div>
+ </div>
+ </div>
+ <div class="review-stars">⭐⭐⭐⭐⭐</div>
+ </div>
+ <div class="review-text" data-i18n="reviews.sophie_text">
+ Very reliable and skilled teacher. My son looks forward to every Violin lesson. The online scheduling system makes managing lessons so convenient.
+ </div>
+ <div class="review-subject" data-i18n="reviews.subject_violin">Violin — Intermediate</div>
+ </div>
+
+ <div class="review-card">
+ <div class="review-header">
+ <div class="review-author">
+ <div class="review-avatar">AK</div>
+ <div>
+ <div class="review-name">Anson Kwok</div>
+ <div class="review-date">December 2025</div>
+ </div>
+ </div>
+ <div class="review-stars">⭐⭐⭐⭐⭐</div>
+ </div>
+ <div class="review-text" data-i18n="reviews.anson_text">
+ Teacher Chan is patient and thorough. The escrow payment system gives me confidence that payments are handled fairly. Great experience overall!
+ </div>
+ <div class="review-subject" data-i18n="reviews.subject_english">English — Form 4</div>
+ </div>
+ </div>
+ </main>
+
+ <script src="i18n.js"></script>
+ <script>
+ (function(){
+   function setLang(lang) {
+     sessionStorage.setItem('minerva_lang', lang);
+     applyLang(lang);
+   }
+
+   function applyLang(lang) {
+     document.querySelectorAll('[data-i18n]').forEach(function(el) {
+       var key = el.getAttribute('data-i18n');
+       var val = getVal(key, lang);
+       if (val) el.textContent = val;
+     });
+     document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+       var key = el.getAttribute('data-i18n-placeholder');
+       var val = getVal(key, lang);
+       if (val) el.placeholder = val;
+     });
+   }
+
+   function getVal(key, lang) {
+     var langMap = {'en': 'en', 'zh-TW': 'zhTW', 'zh-CN': 'zhCN'};
+     var langKey = langMap[lang] || 'en';
+     return T[key] ? T[key][langKey] : null;
+   }
+
+   function init() {
+     var saved = sessionStorage.getItem('minerva_lang') || 'en';
+     applyLang(saved);
+     document.querySelectorAll('.lang-btn').forEach(function(btn) {
+       var href = btn.getAttribute('href');
+       if (href && href.includes('lang='+saved)) btn.classList.add('active');
+       btn.addEventListener('click', function(e) {
+         var langMatch = href.match(/lang=([^&]+)/);
+         if (langMatch) { e.preventDefault(); setLang(langMatch[1]); }
+       });
+     });
+   }
+
+   if (document.readyState === 'loading') {
+     document.addEventListener('DOMContentLoaded', init);
+   } else { init(); }
+ })();
+ </script>
+</body>
+</html>
