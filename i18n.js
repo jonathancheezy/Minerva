@@ -770,8 +770,8 @@
       li_64:{en:"Generate multiple justified complaints",zhTW:"產生多個合理投訴",zhCN:"产生多个合理投诉"},
       li_65:{en:"Email: legal@minerva.hk",zhTW:"電郵：legal@minerva.hk",zhCN:"电邮：legal@minerva.hk"},
       li_66:{en:"Address: Minerva Learning Ltd., Hong Kong",zhTW:"地址：香港Minerva Learning Ltd.",zhCN:"地址：香港Minerva Learning Ltd."},
-      p_3:{en:"<strong>Teachers are independent contractors</strong> and not employees of Minerva Learning Ltd. Minerva is not responsible for the quality, conduct, or outcomes of any lessons provided. All teaching arrangements are made directly between teachers and students/parents through the platform.",zhTW:"導師是獨立承包商，不是Minerva的員工。Minerva不對任何課堂的質量、行為或結果負責。所有教學安排均由導師與學生/家長通過平台直接協商。",zhCN:"导师是独立承包商，不是Minerva的员工。Minerva不对任何课堂的质量、行为或结果负责。所有教学安排均由导师与学生/家长通过平台直接协商。"},
-      p_6:{en:"<strong>Funds are released within 3 business days</strong> of lesson completion confirmation by both parties. During peak periods, release may take up to 5 business days.",zhTW:"款項在雙方確認課堂完成後3個工作日內發放。高峰期可能需要最多5個工作日。",zhCN:"款项在双方确认课堂完成后3个工作日内发放。高峰期可能需要最多5个工作日。"},
+      p_3:{en:"Teachers are independent contractors and not employees of Minerva Learning Ltd. Minerva is not responsible for the quality, conduct, or outcomes of any lessons provided. All teaching arrangements are made directly between teachers and students/parents through the platform.",zhTW:"導師是獨立承包商，不是Minerva的員工。Minerva不對任何課堂的質量、行為或結果負責。所有教學安排均由導師與學生/家長通過平台直接協商。",zhCN:"导师是独立承包商，不是Minerva的员工。Minerva不对任何课堂的质量、行为或结果负责。所有教学安排均由导师与学生/家长通过平台直接协商。"},
+      p_6:{en:"Funds are released within 3 business days of lesson completion confirmation by both parties. During peak periods, release may take up to 5 business days.",zhTW:"款項在雙方確認課堂完成後3個工作日內發放。高峰期可能需要最多5個工作日。",zhCN:"款项在双方确认课堂完成后3个工作日内发放。高峰期可能需要最多5个工作日。"},
       p_7:{en:"Minerva acts as an intermediary platform and is not liable for the acts or omissions of teachers, students, or parents.",zhTW:"Minerva作為中間平台，不對導師、學生或家長的行為或疏忽負責。",zhCN:"Minerva作为中间平台，不对导师、学生或家长的行为或疏忽负责。"},
       p_9:{en:"Disputes may be referred to the District Court or higher courts of Hong Kong.",zhTW:"爭議可提交香港區域法院或更高級別的法院處理。",zhCN:"争议可提交香港区域法院或更高级别的法院处理。"},
     }
