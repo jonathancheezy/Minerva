@@ -363,6 +363,7 @@
       select_teacher:{en:"Select Teacher",zhTW:"選擇導師",zhCN:"选择导师"},
       upcoming_tab:{en:"Upcoming",zhTW:"即將到来",zhCN:"即将到来"},
       upcoming_lessons_title:{en:"Upcoming Lessons",zhTW:"即將到來的課堂",zhCN:"即将到来的课堂"},
+      schedule_title:{en:"Schedule",zhTW:"課表",zhCN:"课表"},
       heading_upcoming_lessons:{en:"Upcoming Lessons",zhTW:"即將到來的課堂",zhCN:"即将到来的课堂"},
       heading_quick_actions:{en:"Quick Actions",zhTW:"快速操作",zhCN:"快速操作"},
       heading_this_month:{en:"This Month",zhTW:"本月",zhCN:"本月"},
