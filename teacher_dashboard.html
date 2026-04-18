@@ -209,7 +209,15 @@
  .stat-card .value.green { color: var(--green); }
  .stat-card .value.gold { color: var(--gold); }
 
- .stat-card.clickable { cursor: pointer; text-decoration: none; color: inherit; }
+ .stat-card.clickable {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+ }
  .stat-card.clickable:hover { opacity: 0.85; }
  .stat-card .sub {
  font-size: 12px;
