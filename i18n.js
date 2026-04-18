@@ -608,6 +608,38 @@
     },
 
 
+    // ── Earnings ──
+    earnings:{
+      title:{en:"Earnings",zhTW:"收入",zhCN:"收入"},
+      this_month:{en:"This Month",zhTW:"本月",zhCN:"本月"},
+      this_month_value:{en:"HK$2,450",zhTW:"HK$2,450",zhCN:"HK$2,450"},
+      this_month_sub:{en:"+18% vs last month",zhTW:"比上月+18%",zhCN:"比上月+18%"},
+      pending_payout:{en:"Pending Payout",zhTW:"待結算款項",zhCN:"待结算款项"},
+      pending_value:{en:"HK$1,200",zhTW:"HK$1,200",zhCN:"HK$1,200"},
+      pending_sub:{en:"Next payout: April 30",zhTW:"下次結算：4月30日",zhCN:"下次结算：4月30日"},
+      total_earned:{en:"Total Earned",zhTW:"總收入",zhCN:"总收入"},
+      total_value:{en:"HK$18,600",zhTW:"HK$18,600",zhCN:"HK$18,600"},
+      total_sub:{en:"Since January 2026",zhTW:"自2026年1月起",zhCN:"自2026年1月起"},
+      recent_transactions:{en:"Recent Transactions",zhTW:"最近交易",zhCN:"最近交易"},
+      jenny_subject:{en:"Piano — 4 lessons",zhTW:"鋼琴 — 4堂課",zhCN:"钢琴 — 4堂课"},
+      jenny_amount:{en:"+HK$1,280",zhTW:"+HK$1,280",zhCN:"+HK$1,280"},
+      michael_subject:{en:"Math — 3 lessons",zhTW:"數學 — 3堂課",zhCN:"数学 — 3堂课"},
+      michael_amount:{en:"+HK$960",zhTW:"+HK$960",zhCN:"+HK$960"},
+      sophie_subject:{en:"Violin — 2 lessons",zhTW:"小提琴 — 2堂課",zhCN:"小提琴 — 2堂课"},
+      sophie_amount:{en:"+HK$640",zhTW:"+HK$640",zhCN:"+HK$640"},
+      anson_subject:{en:"English — 3 lessons",zhTW:"英語 — 3堂課",zhCN:"英语 — 3堂课"},
+      anson_amount:{en:"+HK$960",zhTW:"+HK$960",zhCN:"+HK$960"},
+      grace_subject:{en:"English — 4 lessons",zhTW:"英語 — 4堂課",zhCN:"英语 — 4堂课"},
+      grace_amount:{en:"+HK$1,280",zhTW:"+HK$1,280",zhCN:"+HK$1,280"},
+      lucas_subject:{en:"Piano — 2 lessons",zhTW:"鋼琴 — 2堂課",zhCN:"钢琴 — 2堂课"},
+      lucas_amount:{en:"+HK$640",zhTW:"+HK$640",zhCN:"+HK$640"},
+      emma_subject:{en:"Math — 3 lessons",zhTW:"數學 — 3堂課",zhCN:"数学 — 3堂课"},
+      emma_amount:{en:"+HK$960",zhTW:"+HK$960",zhCN:"+HK$960"},
+      status_completed:{en:"Completed",zhTW:"已完成",zhCN:"已完成"},
+      status_pending:{en:"Pending",zhTW:"待結算",zhCN:"待结算"}
+    },
+
+
     // ── Privacy ──
     privacy:{
       title:{en:"Privacy Policy",zhTW:"隱私政策",zhCN:"隐私政策"},
