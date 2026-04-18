@@ -642,9 +642,9 @@
       p15:{en:"This policy protects both parties and ensures Minerva can provide dispute resolution and payment protection services.",zhTW:"通過Minerva進行的所有課堂均受我們的託管付款保障。這意味著您的付款在課堂完成前安全保管。",zhCN:"通过Minerva进行的所有课堂均受我们的托管付款保障。这意味着您的付款在课堂完成前安全保管。"},
       p16:{en:"Teachers may receive reviews from students/parents after lessons. We reserve the right to remove content that:",zhTW:"家長和學生同意尊重所有導師。虐待行為可能導致帳戶終止。",zhCN:"家长和学生同意尊重所有导师。虐待行为可能导致帐户终止。"},
       p17:{en:"Disputes regarding reviews should be reported to support@minerva.hk within 14 days of posting.",zhTW:"Minerva促進所有導師的平等機會，無論種族、宗教、性別或國籍。",zhCN:"Minerva促进所有导师的平等机会，无论种族、宗教、性别或国籍。"},
-      p18:{en:"Minerva shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to: natural disasters, pandemic, war, terrorism, civil unrest, government actions, power failures, internet service provider failures, or third-party platform outages. In such cases, Minerva will use reasonable efforts to restore service as soon as practicable.",zhTW:"如對這些條款有任何疑問，請通過 support@minerva.hk 聯繫我們",zhCN:"如对这些条款有任何疑问，请通过 support@minerva.hk 联系我们"},
-      p19:{en:"Minerva strives to maintain platform availability but does not guarantee uninterrupted access. Scheduled maintenance will be announced with at least 24 hours notice where possible. Unscheduled downtime may occur due to technical issues beyond our control.",zhTW:"最後更新：2026年1月",zhCN:"最后更新：2026年1月"},
-      p20:{en:"Lessons booked through Minerva may be covered by our liability insurance policy (where applicable). Specific coverage terms are available upon request. Insurance claims are subject to investigation and approval.",zhTW:"Minerva作為中間平台，對導師或學生在平台交易之外的行為不承擔責任。",zhCN:"Minerva作为中间平台，对导师或学生在平台交易之外的行为不承担责任。"},
+      p18:{en:"Minerva shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to: natural disasters, pandemic, war, terrorism, civil unrest, government actions, power failures, internet service provider failures, or third-party platform outages. In such cases, Minerva will use reasonable efforts to restore service as soon as practicable.",zhTW:"對於任何因我們合理控制範圍外的情況（包括但不限於自然災害、疫情、戰爭、組織起來的不當行為、政府行動、電力故障、互聯網服務提供商故障或第三方平台中斷）導致的功能故障或延誤，Minerva不承担責任。在這種情況下，Minerva將盡合理努力盡快恢復服務。",zhCN:"对于任何因我们合理控制范围外的情况（包括但不限于自然灾害、疫情、战争、恐怖组织起来的不当行为、政府行动、电力故障、互联网服务提供商故障或第三方平台中断）导致的功能故障或延误，Minerva不承担责任。在这种情况下，Minerva将尽合理努力尽快恢复服务。"},
+      p19:{en:"Minerva strives to maintain platform availability but does not guarantee uninterrupted access. Scheduled maintenance will be announced with at least 24 hours notice where possible. Unscheduled downtime may occur due to technical issues beyond our control.",zhTW:"Minerva致力於保持平台可用性，但不能保證不間斷的訪問。我們將在可能的情況下提前至少24小時通知預定維護時間。因技術問題導致的計劃外停機可能會發生，這些問題超出我們的控制範圍。",zhCN:"Minerva致力于保持平台可用性，但不能保证不间断的访问。我们将在可能的情况下提前至少24小时通知预定维护时间。因技术问题导致的计划外停机可能会发生，这些问题超出我们的控制范围。"},
+      p20:{en:"Lessons booked through Minerva may be covered by our liability insurance policy (where applicable). Specific coverage terms are available upon request. Insurance claims are subject to investigation and approval.",zhTW:"通過Minerva預訂的課堂可能受我們的責任保險政策保障（適用時）。具體保障條款可應要求提供。保險索賠需經過調查和批准。",zhCN:"通过Minerva预订的课堂可能受我们的责任保险政策保障（适用时）。具体保障条款可应要求提供。保险索赔需经过调查和批准。"},
       p21:{en:"Minerva complies with the Personal Data (Privacy) Ordinance (Cap. 486) of Hong Kong (\"PDPO\").",zhTW:"Minerva遵守香港《個人資料（私隱）條例》（第486章）（「私隱條例」）。",zhCN:"Minerva遵守香港《个人资料（隐私）条例》（第486章）（「隐私条例」）。"},
       p22:{en:"Personal data is retained for the duration of account activity and for 7 years after account closure for legal compliance purposes, unless requested earlier in writing.",zhTW:"導師在Minerva上提供首四堂課的佣金為0%。",zhCN:"导师在Minerva上提供首四堂课的佣金为0%。"},
       p23:{en:"To exercise these rights, contact us at privacy@minerva.hk",zhTW:"Minerva上的所有導師都通過全面流程驗證，包括政府身份證檢查、犯罪記錄檢查和推薦人驗證。",zhCN:"Minerva上的所有导师都通过全面流程验证，包括政府身份证检查、犯罪记录检查和推荐人验证。"},
@@ -662,11 +662,11 @@
       pdpo_rights:{en:"Under the PDPO, you have the right to:",zhTW:"您的《個人資料（私隱）條例》權利",zhCN:"您的《個人資料（私隱）條例》權利"},
       questions:{en:"For questions about these Terms & Conditions:",zhTW:"有問題？",zhCN:"有問題？"},
       sec1:{en:"1. Acceptance of Terms",zhTW:"簡介",zhCN:"簡介"},
-      sec10_heading:{en:"10. Limitation of Liability",zhTW:"Minerva 平台",zhCN:"Minerva 平台"},
-      sec11:{en:"11. Force Majeure",zhTW:"11. 導師責任",zhCN:"11. 导师责任"},
-      sec12:{en:"12. Platform Availability",zhTW:"12. 平台費用及佣金",zhCN:"12. 平台费用及佣金"},
-      sec13:{en:"13. Insurance Coverage",zhTW:"13. 付款條款",zhCN:"13. 付款条款"},
-      sec14:{en:"14. Hong Kong Data Privacy",zhTW:"14. 爭議解決",zhCN:"14. 争议解决"},
+      sec10_heading:{en:"10. Limitation of Liability",zhTW:"10. 責任限制",zhCN:"10. 责任限制"},
+      sec11:{en:"11. Force Majeure",zhTW:"11. 不可抗力",zhCN:"11. 不可抗力"},
+      sec12:{en:"12. Platform Availability",zhTW:"12. 平台可用性",zhCN:"12. 平台可用性"},
+      sec13:{en:"13. Insurance Coverage",zhTW:"13. 保險保障",zhCN:"13. 保险保障"},
+      sec14:{en:"14. Hong Kong Data Privacy",zhTW:"14. 香港資料私隱",zhCN:"14. 香港资料隐私"},
       sec14_1:{en:"14.1 Data Collection",zhTW:"14.1 給家長",zhCN:"14.1 给家长"},
       sec14_2:{en:"14.2 Data We Collect",zhTW:"14.2 給導師",zhCN:"14.2 给导师"},
       sec14_3:{en:"14.3 Use of Data",zhTW:"14.3 證據",zhCN:"14.3 证据"},
@@ -767,7 +767,7 @@
       p_3:{en:"3. Services Description",zhTW:"3. 服務說明",zhCN:"3. 服务说明"},
       p_6:{en:"6. Teacher Verification",zhTW:"6. 導師驗證",zhCN:"6. 导师验证"},
       p_7:{en:"Minerva acts as an intermediary platform and is not liable for the acts or omissions of teachers, students, or parents.",zhTW:"Minerva作為中間平台，不對導師、學生或家長的行為或疏忽負責。",zhCN:"Minerva作为中间平台，不对导师、学生或家长的行为或疏忽负责。"},
-      p_9:{en:"18. Termination",zhTW:"18. 終止",zhCN:"18. 终止"}
+      p_9:{en:"18. Termination",zhTW:"18. 終止",zhCN:"18. 终止"},
     }
   };
 
