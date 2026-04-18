@@ -422,7 +422,6 @@
       this_month_title:{en:"This Month",zhTW:"本月",zhCN:"本月"},
       earnings_title:{en:"Earnings",zhTW:"收入",zhCN:"收入"},
       messages_title:{en:"Messages",zhTW:"訊息",zhCN:"讯息"},
-      messages_student_title:{en:"My Messages",zhTW:"我的訊息",zhCN:"我的讯息"},
       messages_parent_title:{en:"Messages",zhTW:"訊息",zhCN:"讯息"},
       pending:{en:"Pending",zhTW:"待處理",zhCN:"待处理"},
       confirmed:{en:"Confirmed",zhTW:"已確認",zhCN:"已确认"},

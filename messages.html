@@ -1257,11 +1257,6 @@ const roleConfig = {
     pageTitle: 'Messages'
   },
   student: {
-    title: 'messages.student_title',
-    emptyPrompt: 'Chat with your teacher',
-    pageTitle: 'My Messages'
-  },
-  parent: {
     title: 'messages.parent_title',
     emptyPrompt: "Chat with your child's teacher",
     pageTitle: 'Messages'
@@ -1271,6 +1266,7 @@ const roleConfig = {
 // ── Role-based conversation filtering ──
 function getConversationsForRole() {
   if (userType === 'student') {
+    // Parent or student — same view, same data
     // Student sees only their teacher
     return [{
       id: 1,
@@ -1289,9 +1285,7 @@ function getConversationsForRole() {
       ]
     }];
   }
-  if (userType === 'parent') {
-    // Parent sees conversations about their children
-    return [
+  // (parent/student merged into one view)
       {
         id: 1,
         name: 'Teacher Chan',
@@ -1559,7 +1553,7 @@ document.addEventListener('DOMContentLoaded', () => {
     emptyText.textContent = roleConfig[userType].emptyPrompt;
   }
 });
-</script></script>
+</script>
 <footer style="text-align: center;">
  <p data-i18n="teacher_dash.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
  </footer>
