@@ -314,7 +314,7 @@
  .lesson-time-range {
  text-align: right;
  flex-shrink: 0;
- font-size: 13px;
+ font-size: 12px;
  font-weight: 600;
  color: var(--navy-dark);
  }
@@ -330,6 +330,12 @@
  font-weight: 400;
  color: var(--gray-500);
  margin: 0 2px;
+ }
+
+ .lesson-time-range .start-time {
+ font-size: 12px;
+ font-weight: 600;
+ color: var(--navy-dark);
  }
 
  /* Earnings */
@@ -354,6 +360,40 @@
  .earning-info { flex: 1; }
  .earning-desc { font-weight: 600; font-size: 13px; color: var(--navy-dark); }
  .earning.student { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+
+ /* Messages */
+ .message-item {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 10px 16px;
+ background: white;
+ border-radius: 10px;
+ margin-bottom: 8px;
+ border: 1px solid var(--gray-200);
+ border-left: 4px solid var(--gold);
+ }
+ .message-item:last-child { border-bottom: 1px solid var(--gray-200); }
+
+ .message-avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 11px;
+ font-weight: 700;
+ color: white;
+ flex-shrink: 0;
+ }
+
+ .message-info { flex: 1; min-width: 0; }
+ .message-sender { font-weight: 600; font-size: 13px; color: var(--navy-dark); }
+ .message-preview { font-size: 12px; color: var(--gray-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+
+ .message-time { font-size: 11px; color: var(--gray-500); flex-shrink: 0; }
 
  .earning-amount {
  font-weight: 700;
@@ -580,6 +620,63 @@
  <div class="lesson-student">Grace Ho</div>
  </div>
  <div class="lesson-time-range"><span class="start-time">11:00</span><span class="dash"> – </span><span class="end-time">12:00</span></div>
+ </div>
+
+ </div>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2 data-i18n="teacher_dash.messages_title">Messages</h2>
+ <a href="messages.html" data-i18n="teacher_dash.view_all">View All</a>
+ </div>
+ <div class="card-body">
+
+ <div class="day-header" style="background:var(--navy);">Unread</div>
+
+ <div class="message-item">
+ <div class="message-avatar">EW</div>
+ <div class="message-info">
+ <div class="message-sender">Emma Wong</div>
+ <div class="message-preview">Regarding tomorrow's piano lesson...</div>
+ </div>
+ <div class="message-time">9:41</div>
+ </div>
+
+ <div class="message-item">
+ <div class="message-avatar" style="background:var(--teal);">LL</div>
+ <div class="message-info">
+ <div class="message-sender">Lucas Lee</div>
+ <div class="message-preview">Can we reschedule Thursday's lesson?</div>
+ </div>
+ <div class="message-time">Yesterday</div>
+ </div>
+
+ <div class="message-item">
+ <div class="message-avatar" style="background:var(--green);">SC</div>
+ <div class="message-info">
+ <div class="message-sender">Sophie Chen</div>
+ <div class="message-preview">Thanks for the lesson today!</div>
+ </div>
+ <div class="message-time">Yesterday</div>
+ </div>
+
+ <div class="message-item">
+ <div class="message-avatar" style="background:var(--gold);">RH</div>
+ <div class="message-info">
+ <div class="message-sender">Ryan Ho</div>
+ <div class="message-preview">Assignment submission for Math Form 3</div>
+ </div>
+ <div class="message-time">Apr 16</div>
+ </div>
+
+ <div class="message-item">
+ <div class="message-avatar">GH</div>
+ <div class="message-info">
+ <div class="message-sender">Grace Ho</div>
+ <div class="message-preview">English essay draft attached</div>
+ </div>
+ <div class="message-time">Apr 15</div>
  </div>
 
  </div>
