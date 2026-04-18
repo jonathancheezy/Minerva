@@ -636,7 +636,7 @@
       p9:{en:"Teachers agree to pay Minerva a commission on all completed lessons. Commission rates are clearly displayed and agreed upon at registration. First 100 registered teachers receive zero commission for their first four classes.",zhTW:"導師同意就所有已完成課堂向Minerva支付佣金。佣金率在註冊時於平台上明確顯示，並可提前30天通知更新。導師自行設定費用，並在平台上顯示。",zhCN:"导师同意就所有已完成课堂向Minerva支付佣金。佣金率在注册时于平台上明确显示，并可提前30天通知更新。导师自行设定费用，并在平台上显示。"},
 
       p10:{en:"Minerva performs background verification including:",zhTW:"Minerva不對因使用我們的平台或服務而引起的任何間接、偶然、特殊、後果性或懲罰性損害賠償承擔責任。",zhCN:"Minerva不对因使用我们的平台或服务而引起的任何间接、偶然、特殊、后果性或惩罚性损害赔偿承担责任。"},
-      sec10:{en:"10. Limitation of Liability",zhTW:"10. 責任限制",zhCN:"10. 责任限制"},
+      sec10:{en:"7.3 Cancellations",zhTW:"7.3 取消政策",zhCN:"7.3 取消政策"},
       p11:{en:"While we strive for thorough verification, Minerva does not guarantee the ongoing quality of teaching and shall not be held liable for any deficiency in teaching services. Users are encouraged to conduct their own due diligence.",zhTW:"這些條款受香港法律管轄。任何爭議應在香港法院解決。",zhCN:"这些条款受香港法律管辖。任何争议应在香港法院解决。"},
       p12:{en:"Lessons must be booked through the Minerva platform. Off-platform arrangements void our protection policies.",zhTW:"課堂必須通過Minerva平台預訂。平台外的安排使我們的保障政策失效。",zhCN:"课堂必须通过Minerva平台预订。平台外的安排使我们的保障政策失效。"},
       p13:{en:"Cancellation policies apply as stated in Section 5.2. Repeated no-shows may result in account suspension.",zhTW:"取消政策按第5.2節的規定適用。反复無故缺席可能導致帳戶被暫停。",zhCN:"取消政策按第5.2节的规定适用。反复无故缺席可能导致帐户被暂停。"},
