@@ -420,6 +420,7 @@
       heading_this_month:{en:"This Month",zhTW:"本月",zhCN:"本月"},
       this_month:{en:"This Month",zhTW:"本月",zhCN:"本月"},
       this_month_title:{en:"This Month",zhTW:"本月",zhCN:"本月"},
+      earnings_title:{en:"Earnings",zhTW:"收入",zhCN:"收入"},
       pending:{en:"Pending",zhTW:"待處理",zhCN:"待处理"},
       confirmed:{en:"Confirmed",zhTW:"已確認",zhCN:"已确认"},
       rating:{en:"Rating",zhTW:"評分",zhCN:"评分"},

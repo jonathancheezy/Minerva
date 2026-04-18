@@ -320,30 +320,12 @@
  }
 
  .lesson-time-range .end-time {
- font-size: 11px;
+ font-size: 12px;
  font-weight: 400;
  color: var(--gray-500);
  }
 
  /* Earnings */
- .earnings-summary {
- text-align: center;
- padding: 24px;
- }
-
- .earnings-summary .amount {
- font-size: 40px;
- font-weight: 800;
- color: var(--green);
- margin-bottom: 4px;
- }
-
- .earnings-summary .label {
- font-size: 14px;
- color: var(--gray-500);
- margin-bottom: 20px;
- }
-
  .earnings-list {
  border-top: 1px solid var(--gray-200);
  }
@@ -351,15 +333,30 @@
  .earnings-item {
  display: flex;
  justify-content: space-between;
- padding: 12px 24px;
- font-size: 13px;
+ align-items: center;
+ padding: 12px 16px;
  border-bottom: 1px solid var(--gray-200);
+ background: white;
+ border-radius: 8px;
+ margin-bottom: 6px;
+ border-left: 4px solid var(--green);
  }
+ .earnings-item:last-child { border-bottom: 1px solid var(--gray-200); }
+ .earnings-item.pending { border-left-color: var(--gold); }
 
- .earnings-item:last-child { border-bottom: none; }
+ .earning-info { flex: 1; }
+ .earning-desc { font-weight: 600; font-size: 13px; color: var(--navy-dark); }
+ .earning.student { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
 
- .earnings-item .date { color: var(--gray-500); }
- .earnings-item .amount { font-weight: 600; color: var(--green); }
+ .earning-amount {
+ font-weight: 700;
+ font-size: 14px;
+ color: var(--green);
+ }
+ .earning-amount.pending {
+ color: var(--gold);
+ font-weight: 600;
+ }
 
  /* Quick Actions */
  .quick-actions {
@@ -539,7 +536,7 @@
  <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g3">Piano (Grade 3 Prep)</div>
  <div class="lesson-student">Emma Wong</div>
  </div>
- <div class="lesson-time-range">10:00 <span class="end-time">– 11:00</span></div>
+ <div class="lesson-time-range"><span class="start-time">10:00</span> – <span class="end-time">11:00</span></div>
  </div>
 
  <div class="lesson-item">
@@ -547,7 +544,7 @@
  <div class="lesson-subject" data-i18n="teacher_dash.subj_violin_beg">Violin (Beginner)</div>
  <div class="lesson-student">Lucas Lee</div>
  </div>
- <div class="lesson-time-range">14:00 <span class="end-time">– 15:00</span></div>
+ <div class="lesson-time-range"><span class="start-time">14:00</span> – <span class="end-time">15:00</span></div>
  </div>
 
  <div class="day-header">Tomorrow — 19 Apr</div>
@@ -557,7 +554,7 @@
  <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g5">Piano (Grade 5)</div>
  <div class="lesson-student">Sophie Chen</div>
  </div>
- <div class="lesson-time-range">16:30 <span class="end-time">– 17:30</span></div>
+ <div class="lesson-time-range"><span class="start-time">16:30</span> – <span class="end-time">17:30</span></div>
  </div>
 
  <div class="day-header">Sat — 25 Apr</div>
@@ -567,7 +564,7 @@
  <div class="lesson-subject" data-i18n="teacher_dash.subj_math_f3">Math (Form 3)</div>
  <div class="lesson-student">Ryan Lam</div>
  </div>
- <div class="lesson-time-range">09:00 <span class="end-time">– 10:00</span></div>
+ <div class="lesson-time-range"><span class="start-time">09:00</span> – <span class="end-time">10:00</span></div>
  </div>
 
  <div class="lesson-item cancelled">
@@ -575,7 +572,7 @@
  <div class="lesson-subject" data-i18n="teacher_dash.subj_english_f4">English (Form 4)</div>
  <div class="lesson-student">Grace Ho</div>
  </div>
- <div class="lesson-time-range">11:00 <span class="end-time">– 12:00</span></div>
+ <div class="lesson-time-range"><span class="start-time">11:00</span> – <span class="end-time">12:00</span></div>
  </div>
 
  </div>
@@ -586,25 +583,37 @@
 
  <div class="card">
  <div class="card-header">
- <h2 data-i18n="teacher_dash.this_month_title">This Month</h2>
- <a href="#" data-i18n="teacher_dash.view_all">View All</a>
- </div>
- <div class="earnings-summary">
- <div class="amount">HK$2,450</div>
- <div class="label" data-i18n="teacher_dash.total_earnings">Total Earnings</div>
+ <h2 data-i18n="teacher_dash.earnings_title">Earnings</h2>
+ <a href="earnings.html" data-i18n="teacher_dash.view_all">View All</a>
  </div>
  <div class="earnings-list">
  <div class="earnings-item">
- <span class="date">Jan 1-15</span>
- <span class="amount">+HK$1,280</span>
+ <div class="earning-info">
+ <div class="earning-desc">April 1-15</div>
+ <div class="earning student">Emma Wong — Piano</div>
+ </div>
+ <div class="earning-amount completed">+HK$640</div>
  </div>
  <div class="earnings-item">
- <span class="date">Dec 16-31</span>
- <span class="amount">+HK$1,170</span>
+ <div class="earning-info">
+ <div class="earning-desc">April 1-15</div>
+ <div class="earning student">Lucas Lee — Violin</div>
+ </div>
+ <div class="earning-amount completed">+HK$480</div>
  </div>
  <div class="earnings-item">
- <span class="date">Dec 1-15</span>
- <span class="amount">+HK$980</span>
+ <div class="earning-info">
+ <div class="earning-desc">April 16-30</div>
+ <div class="earning student">Sophie Chen — Piano</div>
+ </div>
+ <div class="earning-amount pending">HK$320</div>
+ </div>
+ <div class="earnings-item">
+ <div class="earning-info">
+ <div class="earning-desc">April 16-30</div>
+ <div class="earning student">Ryan Lam — Math</div>
+ </div>
+ <div class="earning-amount completed">+HK$400</div>
  </div>
  </div>
  </div>
