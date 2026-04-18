@@ -235,107 +235,194 @@
  .btn-secondary:hover { background: var(--gray-300); }
  .btn-small { padding: 6px 12px; font-size: 12px; }
 
- .calendar-grid {
- display: grid;
- grid-template-columns: repeat(7, 1fr);
- gap: 8px;
- }
+/* ── Monthly Calendar ── */
+.cal-wrapper {
+ background: white;
+ border-radius: 16px;
+ border: 1px solid var(--gray-200);
+ overflow: hidden;
+}
 
- .two-months-container {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 24px;
- }
+.cal-header {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 16px 20px;
+ border-bottom: 1px solid var(--gray-200);
+}
 
- .month-calendar {
- flex: 1;
- }
+.cal-nav {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+}
 
- .month-label {
- font-size: 14px;
- font-weight: 600;
+.cal-btn {
+ width: 36px;
+ height: 36px;
+ border: 1px solid var(--gray-200);
+ border-radius: 8px;
+ background: white;
+ color: var(--navy);
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: all 0.2s;
+}
+.cal-btn:hover { background: var(--gray-100); }
+
+.cal-title { text-align: center; }
+.cal-year {
+ font-size: 12px;
+ color: var(--gray-500);
+ font-weight: 500;
+}
+.cal-month {
+ font-size: 22px;
+ font-weight: 800;
  color: var(--navy-dark);
- margin-bottom: 12px;
- text-align: center;
- }
+}
 
- .calendar-header {
- text-align: center;
+.cal-actions { display: flex; gap: 8px; }
+.cal-action-btn {
+ height: 32px;
+ padding: 0 12px;
+ border: 1px solid var(--gray-200);
+ border-radius: 8px;
+ background: white;
+ color: var(--gray-500);
  font-size: 12px;
  font-weight: 600;
- color: var(--gray-500);
- padding: 8px;
- }
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ gap: 4px;
+ transition: all 0.2s;
+}
+.cal-action-btn:hover { background: var(--gray-100); color: var(--navy); }
 
- .calendar-day {
+.cal-dow {
+ display: grid;
+ grid-template-columns: repeat(7, 1fr);
+ padding: 8px 16px;
  background: var(--gray-100);
- border-radius: 8px;
- min-height: 90px;
- padding: 8px;
- }
+ border-bottom: 1px solid var(--gray-200);
+}
+.cal-dow span {
+ text-align: center;
+ font-size: 11px;
+ font-weight: 700;
+ color: var(--gray-500);
+ letter-spacing: 0.5px;
+}
+.cal-dow span:first-child { color: var(--gray-400); }
 
- .calendar-day.other-month {
- background: transparent;
- }
+.cal-grid {
+ padding: 8px 16px 16px;
+}
 
- .calendar-day.header {
+/* Week row - each week is a flex row that expands to fit events */
+.cal-week {
+ display: flex;
+ gap: 6px;
+ margin-bottom: 6px;
+ min-height: 28px;
+}
+.cal-week:last-child { margin-bottom: 0; }
+
+/* Day cell */
+.cal-cell {
+ flex: 1;
+ min-width: 0;
+ display: flex;
+ flex-direction: column;
+}
+
+/* Day number */
+.cal-day-num {
+ font-size: 12px;
+ font-weight: 600;
+ color: var(--navy-dark);
+ padding: 4px 0 4px;
+ text-align: center;
+}
+.cal-cell.other .cal-day-num { color: var(--gray-300); }
+.cal-cell.today .cal-day-num {
  background: var(--navy);
  color: white;
- border-radius: 8px 8px 0 0;
- padding: 12px 8px;
- text-align: center;
- font-weight: 600;
- font-size: 14px;
- min-height: auto;
- }
-
- .calendar-day.header .date {
- font-size: 11px;
- opacity: 0.8;
- margin-top: 2px;
- }
-
- .calendar-day .day-num {
- font-weight: 600;
- font-size: 14px;
- color: var(--navy-dark);
- margin-bottom: 6px;
- }
-
- .calendar-day.other-month .day-num {
- color: var(--gray-300);
- }
-
- .calendar-day.today .day-num {
- background: var(--teal);
- color: white;
- width: 24px;
- height: 24px;
+ width: 22px;
+ height: 22px;
  border-radius: 50%;
  display: flex;
  align-items: center;
  justify-content: center;
- }
+ margin: 0 auto;
+}
 
- .event {
- background: var(--green);
- color: white;
- padding: 4px 6px;
+/* Event blocks stacked in cell */
+.cal-events {
+ display: flex;
+ flex-direction: column;
+ gap: 3px;
+ padding: 0 2px;
+ flex: 1;
+}
+
+.cal-event {
+ background: rgba(34, 197, 94, 0.15);
+ border-left: 3px solid var(--green);
  border-radius: 4px;
- font-size: 11px;
- font-weight: 500;
- margin-bottom: 4px;
+ padding: 3px 6px;
  cursor: pointer;
+ transition: background 0.15s;
+}
+.cal-event:hover { background: rgba(34, 197, 94, 0.25); }
+.cal-event.pending {
+ background: rgba(249, 168, 40, 0.12);
+ border-left-color: var(--gold);
+}
+.cal-event.pending:hover { background: rgba(249, 168, 40, 0.22); }
+
+.cal-event-time {
+ font-size: 10px;
+ font-weight: 700;
+ color: var(--green);
+ line-height: 1.2;
+}
+.cal-event.pending .cal-event-time { color: var(--gold); }
+
+.cal-event-name {
+ font-size: 10px;
+ font-weight: 500;
+ color: var(--navy-dark);
  white-space: nowrap;
  overflow: hidden;
  text-overflow: ellipsis;
- }
+ line-height: 1.3;
+}
 
- .event.booked { background: var(--teal); }
- .event.blocked { background: var(--gray-300); color: var(--gray-500); }
- .event:hover { opacity: 0.9; }
+/* Legend */
+.cal-legend {
+ display: flex;
+ gap: 16px;
+ padding: 10px 20px;
+ border-top: 1px solid var(--gray-200);
+ font-size: 11px;
+ color: var(--gray-500);
+ align-items: center;
+}
+.cal-legend .legend-dot {
+ width: 8px;
+ height: 8px;
+ border-radius: 50%;
+ display: inline-block;
+ margin-right: 4px;
+ vertical-align: middle;
+}
 
- /* Stats Row */
+/* Stats Row */
+/* Stats Row */
  .stats-row {
  display: grid;
  grid-template-columns: repeat(4, 1fr);
@@ -585,124 +672,50 @@
  <button class="tab" onclick="showTab('bookings')" data-i18n="schedule.upcoming_bookings"><span data-i18n="schedule.heading_upcoming_bookings">Upcoming Bookings</span></button>
  </div>
 
+ 
  <div id="calendarTab">
- <div class="card">
- <div class="month-nav">
- <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)"><span data-i18n="schedule.nav_prev">← Prev</span></button>
- <h2 data-i18n="schedule.month_range">April - May 2025</h2>
- <button class="btn btn-secondary btn-small" onclick="changeMonth(1)"><span data-i18n="schedule.nav_next">Next →</span></button>
- </div>
- <div class="two-months-container">
- <div class="month-calendar">
- <div class="month-label" data-i18n="schedule.april_label">April 2025</div>
- <div class="calendar-grid">
- <div class="calendar-day header">Mon</div>
- <div class="calendar-day header">Tue</div>
- <div class="calendar-day header">Wed</div>
- <div class="calendar-day header">Thu</div>
- <div class="calendar-day header">Fri</div>
- <div class="calendar-day header">Sat</div>
- <div class="calendar-day header">Sun</div>
- 
- <div class="calendar-day other-month"><div class="day-num">31</div></div>
- <div class="calendar-day"><div class="day-num today">1</div><div class="event booked">10:00</div></div>
- <div class="calendar-day"><div class="day-num">2</div><div class="event booked">11:00</div></div>
- <div class="calendar-day"><div class="day-num">3</div><div class="event">09:00</div></div>
- <div class="calendar-day"><div class="day-num">4</div><div class="event blocked">-</div></div>
- <div class="calendar-day"><div class="day-num">5</div><div class="event booked">10:00</div></div>
- <div class="calendar-day"><div class="day-num">6</div></div>
- 
- <div class="calendar-day"><div class="day-num">7</div></div>
- <div class="calendar-day"><div class="day-num">8</div></div>
- <div class="calendar-day"><div class="day-num">9</div><div class="event booked">14:00</div></div>
- <div class="calendar-day"><div class="day-num">10</div></div>
- <div class="calendar-day"><div class="day-num">11</div></div>
- <div class="calendar-day"><div class="day-num">12</div></div>
- <div class="calendar-day"><div class="day-num">13</div></div>
- 
- <div class="calendar-day"><div class="day-num">14</div><div class="event">15:00</div></div>
- <div class="calendar-day"><div class="day-num">15</div><div class="event booked">10:00</div></div>
- <div class="calendar-day"><div class="day-num">16</div></div>
- <div class="calendar-day"><div class="day-num">17</div><div class="event booked">10:00</div></div>
- <div class="calendar-day"><div class="day-num">18</div></div>
- <div class="calendar-day"><div class="day-num">19</div></div>
- <div class="calendar-day"><div class="day-num">20</div></div>
- 
- <div class="calendar-day"><div class="day-num">21</div></div>
- <div class="calendar-day"><div class="day-num">22</div></div>
- <div class="calendar-day"><div class="day-num">23</div></div>
- <div class="calendar-day"><div class="day-num">24</div></div>
- <div class="calendar-day"><div class="day-num">25</div></div>
- <div class="calendar-day"><div class="day-num">26</div></div>
- <div class="calendar-day"><div class="day-num">27</div></div>
- 
- <div class="calendar-day"><div class="day-num">28</div><div class="event booked">14:00</div></div>
- <div class="calendar-day"><div class="day-num">29</div></div>
- <div class="calendar-day"><div class="day-num">30</div></div>
- <div class="calendar-day other-month"><div class="day-num">1</div></div>
- <div class="calendar-day other-month"><div class="day-num">2</div></div>
- <div class="calendar-day other-month"><div class="day-num">3</div></div>
- <div class="calendar-day other-month"><div class="day-num">4</div></div>
- </div>
- </div>
- 
- <div class="month-calendar">
- <div class="month-label" data-i18n="schedule.may_label">May 2025</div>
- <div class="calendar-grid">
- <div class="calendar-day header">Mon</div>
- <div class="calendar-day header">Tue</div>
- <div class="calendar-day header">Wed</div>
- <div class="calendar-day header">Thu</div>
- <div class="calendar-day header">Fri</div>
- <div class="calendar-day header">Sat</div>
- <div class="calendar-day header">Sun</div>
- 
- <div class="calendar-day other-month"><div class="day-num">28</div></div>
- <div class="calendar-day other-month"><div class="day-num">29</div></div>
- <div class="calendar-day other-month"><div class="day-num">30</div></div>
- <div class="calendar-day"><div class="day-num">1</div><div class="event">10:00</div></div>
- <div class="calendar-day"><div class="day-num">2</div><div class="event booked">14:00</div></div>
- <div class="calendar-day"><div class="day-num">3</div></div>
- <div class="calendar-day"><div class="day-num">4</div></div>
- 
- <div class="calendar-day"><div class="day-num">5</div></div>
- <div class="calendar-day"><div class="day-num">6</div><div class="event">09:00</div></div>
- <div class="calendar-day"><div class="day-num">7</div></div>
- <div class="calendar-day"><div class="day-num">8</div></div>
- <div class="calendar-day"><div class="day-num">9</div></div>
- <div class="calendar-day"><div class="day-num">10</div></div>
- <div class="calendar-day"><div class="day-num">11</div></div>
- 
- <div class="calendar-day"><div class="day-num">12</div></div>
- <div class="calendar-day"><div class="day-num">13</div><div class="event">11:00</div></div>
- <div class="calendar-day"><div class="day-num">14</div></div>
- <div class="calendar-day"><div class="day-num">15</div><div class="event booked">10:00</div></div>
- <div class="calendar-day"><div class="day-num">16</div></div>
- <div class="calendar-day"><div class="day-num">17</div></div>
- <div class="calendar-day"><div class="day-num">18</div></div>
- 
- <div class="calendar-day"><div class="day-num">19</div></div>
- <div class="calendar-day"><div class="day-num">20</div></div>
- <div class="calendar-day"><div class="day-num">21</div></div>
- <div class="calendar-day"><div class="day-num">22</div></div>
- <div class="calendar-day"><div class="day-num">23</div></div>
- <div class="calendar-day"><div class="day-num">24</div></div>
- <div class="calendar-day"><div class="day-num">25</div></div>
- 
- <div class="calendar-day"><div class="day-num">26</div></div>
- <div class="calendar-day"><div class="day-num">27</div></div>
- <div class="calendar-day"><div class="day-num">28</div></div>
- <div class="calendar-day"><div class="day-num">29</div></div>
- <div class="calendar-day"><div class="day-num">30</div></div>
- <div class="calendar-day"><div class="day-num">31</div></div>
- <div class="calendar-day other-month"><div class="day-num">1</div></div>
- </div>
- </div>
- </div>
- </div>
- </div>
+ <div class="cal-wrapper">
 
- <div id="bookingsTab" style="display: none;">
+  <!-- Calendar Header -->
+  <div class="cal-header">
+   <div class="cal-nav">
+    <button class="cal-btn" onclick="changeMonth(-1)">
+     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="cal-title">
+     <div class="cal-year" id="calYear"></div>
+     <div class="cal-month" id="calMonth"></div>
+    </div>
+    <button class="cal-btn" onclick="changeMonth(1)">
+     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+   </div>
+   <div class="cal-actions">
+    <button class="cal-action-btn" onclick="goToToday()" title="Today">Today</button>
+    <button class="cal-action-btn" title="Add">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+   </div>
+  </div>
+
+  <!-- Day of Week Headers -->
+  <div class="cal-dow">
+   <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+  </div>
+
+  <!-- Calendar Grid -->
+  <div class="cal-grid" id="calGrid"></div>
+
+  <!-- Legend -->
+  <div class="cal-legend">
+   <span class="legend-dot" style="background:var(--green)"></span> Confirmed
+   <span class="legend-dot" style="background:var(--gold)"></span> Pending
+   <span class="legend-dot" style="background:var(--gray-300)"></span> Available
+  </div>
+
+ </div>
+ </div>
+<div id="bookingsTab" style="display: none;">
  <div class="card">
  <div class="card-header">
  <h2 data-i18n="schedule.upcoming_bookings_title">Upcoming Bookings</h2>
@@ -815,9 +828,119 @@
  event.target.classList.add('active');
  }
 
- function changeMonth(dir) {
- alert('Month navigation - would load different calendar data');
+ let currentDate = new Date(2026, 3, 1); // April 2026
+
+ function goToToday() {
+ currentDate = new Date();
+ renderCalendar();
  }
+
+ function changeMonth(dir) {
+ currentDate.setMonth(currentDate.getMonth() + dir);
+ renderCalendar();
+ }
+
+ // Calendar data — lessons for April 2026
+ const lessons = [
+ { date: '2026-04-01', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', status: 'confirmed' },
+ { date: '2026-04-02', time: '11:00', endTime: '12:00', student: 'Lucas Lee', subject: 'Violin', status: 'confirmed' },
+ { date: '2026-04-05', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', status: 'confirmed' },
+ { date: '2026-04-05', time: '14:00', endTime: '15:00', student: 'Ryan Ho', subject: 'Math', status: 'pending' },
+ { date: '2026-04-08', time: '15:00', endTime: '16:00', student: 'Sophie Chen', subject: 'Piano', status: 'confirmed' },
+ { date: '2026-04-09', time: '10:00', endTime: '11:00', student: 'Grace Ho', subject: 'English', status: 'confirmed' },
+ { date: '2026-04-12', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', status: 'confirmed' },
+ { date: '2026-04-12', time: '14:00', endTime: '15:00', student: 'Lucas Lee', subject: 'Violin', status: 'confirmed' },
+ { date: '2026-04-15', time: '16:30', endTime: '17:30', student: 'Sophie Chen', subject: 'Piano', status: 'pending' },
+ { date: '2026-04-18', time: '09:00', endTime: '10:00', student: 'Ryan Ho', subject: 'Math', status: 'confirmed' },
+ { date: '2026-04-19', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', status: 'confirmed' },
+ { date: '2026-04-19', time: '14:00', endTime: '15:00', student: 'Lucas Lee', subject: 'Violin', status: 'confirmed' },
+ { date: '2026-04-22', time: '10:00', endTime: '11:00', student: 'Grace Ho', subject: 'English', status: 'confirmed' },
+ { date: '2026-04-25', time: '09:00', endTime: '10:00', student: 'Ryan Ho', subject: 'Math', status: 'confirmed' },
+ { date: '2026-04-25', time: '11:00', endTime: '12:00', student: 'Grace Ho', subject: 'English', status: 'pending' },
+ { date: '2026-04-26', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', status: 'confirmed' },
+ ];
+
+ function getLessonsForDate(dateStr) {
+ return lessons.filter(l => l.date === dateStr);
+ }
+
+ function renderCalendar() {
+ const year = currentDate.getFullYear();
+ const month = currentDate.getMonth();
+
+ document.getElementById('calYear').textContent = year;
+ document.getElementById('calMonth').textContent = new Intl.DateTimeFormat('en', { month: 'long' }).format(currentDate);
+
+ const firstDay = new Date(year, month, 1);
+ const lastDay = new Date(year, month + 1, 0);
+
+ // Day of week for 1st (0=Sun, 1=Mon...)
+ const startDow = firstDay.getDay();
+ const daysInMonth = lastDay.getDate();
+ const today = new Date();
+ const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+
+ const grid = document.getElementById('calGrid');
+ grid.innerHTML = '';
+
+ // Build array of all cells: leading empty cells + days
+ const cells = [];
+ for (let i = 0; i < startDow; i++) {
+ const d = new Date(year, month, -startDow + i + 1);
+ cells.push({ date: null, day: d.getDate(), other: true, dateStr: '' });
+ }
+ for (let d = 1; d <= daysInMonth; d++) {
+ const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+ cells.push({ date: d, day: d, other: false, isToday: dateStr === todayStr, dateStr });
+ }
+ // Pad to complete last week
+ while (cells.length % 7 !== 0) {
+ const d = new Date(year, month + 1, cells.length - startDow - daysInMonth + 1);
+ cells.push({ date: null, day: d.getDate(), other: true, dateStr: '' });
+ }
+
+ // Split into weeks
+ const weeks = [];
+ for (let i = 0; i < cells.length; i += 7) {
+ weeks.push(cells.slice(i, i + 7));
+ }
+
+ weeks.forEach(week => {
+ const weekEl = document.createElement('div');
+ weekEl.className = 'cal-week';
+
+ week.forEach(cell => {
+ const cellEl = document.createElement('div');
+ const classes = ['cal-cell'];
+ if (cell.other) classes.push('other');
+ if (cell.isToday) classes.push('today');
+ cellEl.className = classes.join(' ');
+
+ cellEl.innerHTML = `<div class="cal-day-num">${cell.day}</div>`;
+
+ if (!cell.other && cell.dateStr) {
+ const dayLessons = getLessonsForDate(cell.dateStr);
+ if (dayLessons.length > 0) {
+ const eventsEl = document.createElement('div');
+ eventsEl.className = 'cal-events';
+ dayLessons.forEach(l => {
+ const ev = document.createElement('div');
+ ev.className = `cal-event ${l.status === 'pending' ? 'pending' : ''}`;
+ ev.innerHTML = `<div class="cal-event-time">${l.time}</div><div class="cal-event-name">${l.student}</div>`;
+ eventsEl.appendChild(ev);
+ });
+ cellEl.appendChild(eventsEl);
+ }
+ }
+
+ weekEl.appendChild(cellEl);
+ });
+
+ grid.appendChild(weekEl);
+ });
+ }
+
+ document.addEventListener('DOMContentLoaded', renderCalendar);
 
  document.getElementById('addSlotModal').addEventListener('click', function(e) {
  if (e.target === this) closeModal('addSlot');
