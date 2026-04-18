@@ -729,6 +729,8 @@
       li_28:{en:"Contains spam or promotional content",zhTW:"就違反合約採取法律行動",zhCN:"就违反合约采取法律行动"},
       li_29:{en:"Violates applicable laws",zhTW:"包含個人資訊（電話號碼、地址）",zhCN:"包含个人信息（电话号码、地址）"},
       li_30:{en:"Minerva acts as an intermediary platform and is not liable for the acts or omissions of teachers, students, or parents.",zhTW:"具誹謗、虐待或歧視性質",zhCN:"具诽谤、虐待或歧视性质"},
+      li_30b:{en:"Our total liability for any claim shall not exceed the amount of fees paid by the user to Minerva in the 3 months preceding the claim.",zhTW:"我們對任何索償的總責任不得超過用戶在索償前3個月向Minerva支付的費用。",zhCN:"我们对任何索偿的总责任不得超过用户在索偿前3个月向Minerva支付的费用。"},
+
       li_31:{en:"Minerva shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from use of the platform.",zhTW:"包含垃圾訊息或宣傳內容",zhCN:"包含垃圾讯息或宣传内容"},
       li_32:{en:"Minerva does not warrant the accuracy of teacher qualifications or student information beyond our verification process.",zhTW:"違反適用法律",zhCN:"违反适用法律"},
       li_33:{en:"Users assume full responsibility for verifying teacher credentials and making informed decisions.",zhTW:"Minerva作為中間平台，對導師、學生或家長的行為不承擔責任",zhCN:"Minerva作为中间平台，对导师、学生或家长的行为不承担责任"},
