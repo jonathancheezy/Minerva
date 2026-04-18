@@ -1199,7 +1199,7 @@ const conversations = [
       { dir: "received", text: "Thanks for the lesson today!", time: "Yesterday", status: "read" },
       { dir: "sent", text: "You're welcome! Great progress on the Chopin piece.", time: "Yesterday", status: "read" },
       { dir: "received", text: "I practiced the difficult passage for an hour!", time: "Yesterday", status: "read" },
-      { dir: "sent", text: "That's dedication! Keep it up 💪", time: "Yesterday", status: "read" }
+      { dir: "sent", text: "That's dedication! Keep it up", time: "Yesterday", status: "read" }
     ]
   },
   {
@@ -1245,26 +1245,106 @@ const conversations = [
   }
 ];
 
+// ── User type detection ──
+const urlParams = new URLSearchParams(window.location.search);
+const userType = urlParams.get('as') || 'teacher'; // teacher | student | parent
+
+// Role-specific config
+const roleConfig = {
+  teacher: {
+    title: 'messages.title',
+    emptyPrompt: 'Select a conversation to start messaging',
+    pageTitle: 'Messages'
+  },
+  student: {
+    title: 'messages.student_title',
+    emptyPrompt: 'Chat with your teacher',
+    pageTitle: 'My Messages'
+  },
+  parent: {
+    title: 'messages.parent_title',
+    emptyPrompt: "Chat with your child's teacher",
+    pageTitle: 'Messages'
+  }
+};
+
+// ── Role-based conversation filtering ──
+function getConversationsForRole() {
+  if (userType === 'student') {
+    // Student sees only their teacher
+    return [{
+      id: 1,
+      name: 'Teacher Chan',
+      initials: 'TC',
+      color: 'var(--navy)',
+      context: 'Piano — Grade 3 Prep',
+      type: 'lesson',
+      unread: false,
+      messages: [
+        { dir: 'sent', text: "Hi Emma's parent! Just confirming tomorrow's piano lesson at 10am.", time: 'Yesterday', status: 'read' },
+        { dir: 'received', text: "Yes, we'll be there. Should Emma bring anything?", time: 'Yesterday', status: 'read' },
+        { dir: 'sent', text: "Just the sheet music from last time. See you tomorrow!", time: 'Yesterday', status: 'read' },
+        { dir: 'received', text: "Perfect, thanks Teacher Chan!", time: 'Yesterday', status: 'read' },
+        { dir: 'sent', text: "You're welcome! Emma has been making great progress.", time: 'Apr 16', status: 'read' }
+      ]
+    }];
+  }
+  if (userType === 'parent') {
+    // Parent sees conversations about their children
+    return [
+      {
+        id: 1,
+        name: 'Teacher Chan',
+        initials: 'TC',
+        color: 'var(--navy)',
+        context: 'Emma — Piano',
+        type: 'lesson',
+        unread: true,
+        messages: [
+          { dir: 'received', text: "Hi! Just wanted to update you that Emma's progress has been excellent.", time: 'Today', status: 'read' },
+          { dir: 'sent', text: "That's wonderful to hear! How's she doing with the Grade 3 pieces?", time: 'Today', status: 'read' },
+          { dir: 'received', text: "Very well! She's ready for the exam. I'd recommend booking 2 lessons per week before the exam date.", time: 'Today', status: 'read' }
+        ]
+      },
+      {
+        id: 2,
+        name: 'Teacher Chan',
+        initials: 'TC',
+        color: 'var(--navy)',
+        context: 'Lucas — Violin',
+        type: 'lesson',
+        unread: false,
+        messages: [
+          { dir: 'received', text: "Lucas had a great lesson today! He's improving fast.", time: 'Apr 14', status: 'read' },
+          { dir: 'sent', text: "Wonderful! We're so happy with his progress.", time: 'Apr 14', status: 'read' }
+        ]
+      }
+    ];
+  }
+  return conversations; // teacher
+}
+
 let activeConv = null;
 
 // ── Render inbox ──
 function renderInbox(filter = 'all') {
   const list = document.getElementById('conversationList');
+  if (!list) return;
   list.innerHTML = '';
 
-  let filtered = conversations;
-  if (filter === 'unread') filtered = conversations.filter(c => c.unread);
-  else if (filter === 'lesson') filtered = conversations.filter(c => c.type === 'lesson');
+  let filtered = getConversationsForRole();
+  if (filter === 'unread') filtered = filtered.filter(c => c.unread);
+  else if (filter === 'lesson') filtered = filtered.filter(c => c.type === 'lesson');
 
-  filtered.forEach(conv => {
+  filtered.forEach((conv) => {
     const lastMsg = conv.messages[conv.messages.length - 1];
-    const unreadCount = conv.unread ? 1 : 0;
     const typeTag = conv.type === 'lesson'
       ? '<span class="lesson-tag lesson">Lesson</span>'
       : '<span class="lesson-tag general">General</span>';
+    const sentPrefix = lastMsg.dir === 'sent' ? '<span style="color:var(--teal)">✓ </span>' : '';
 
     list.innerHTML += `
-      <div class="conv-item ${conv.unread ? 'unread' : ''}" onclick="openChat(${conv.id})">
+      <div class="conv-item ${conv.unread ? 'unread' : ''}" onclick="openChat(${JSON.stringify(conv).replace(/"/g, '&quot;')})">
         <div class="conv-avatar" style="background:${conv.color}">${conv.initials}</div>
         <div class="conv-info">
           <div class="conv-top">
@@ -1272,7 +1352,7 @@ function renderInbox(filter = 'all') {
             <span class="conv-time">${lastMsg.time}</span>
           </div>
           <div class="conv-bottom">
-            <span class="conv-preview">${lastMsg.dir === 'sent' ? '✓ ' : ''}${lastMsg.text}</span>
+            <span class="conv-preview">${sentPrefix}${lastMsg.text}</span>
             <div class="conv-badge">
               ${conv.unread ? '<span class="unread-dot"></span>' : ''}
               ${typeTag}
@@ -1284,8 +1364,8 @@ function renderInbox(filter = 'all') {
 }
 
 // ── Open a conversation ──
-function openChat(id) {
-  activeConv = conversations.find(c => c.id === id);
+function openChat(conv) {
+  activeConv = conv;
   if (!activeConv) return;
 
   // Mark as read
@@ -1293,25 +1373,36 @@ function openChat(id) {
 
   // Highlight active in list
   document.querySelectorAll('.conv-item').forEach(el => el.classList.remove('active'));
-  event.currentTarget.classList.add('active');
 
   // Update chat header
-  document.getElementById('chatAvatar').textContent = activeConv.initials;
-  document.getElementById('chatAvatar').style.background = activeConv.color;
-  document.getElementById('chatName').textContent = activeConv.name;
-  document.getElementById('chatContext').textContent = activeConv.context;
+  const avatar = document.getElementById('chatAvatar');
+  if (avatar) {
+    avatar.textContent = activeConv.initials;
+    avatar.style.background = activeConv.color;
+  }
+  const chatName = document.getElementById('chatName');
+  if (chatName) chatName.textContent = activeConv.name;
+  const chatContext = document.getElementById('chatContext');
+  if (chatContext) chatContext.textContent = activeConv.context;
 
   // Show chat panel
-  document.getElementById('chatEmpty').style.display = 'none';
-  document.getElementById('chatActive').style.display = 'flex';
-  document.getElementById('typingIndicator').style.display = 'none';
+  const chatEmpty = document.getElementById('chatEmpty');
+  const chatActive = document.getElementById('chatActive');
+  if (chatEmpty) chatEmpty.style.display = 'none';
+  if (chatActive) {
+    chatActive.style.display = 'flex';
+    chatActive.style.flexDirection = 'column';
+  }
+  const typingEl = document.getElementById('typingIndicator');
+  if (typingEl) typingEl.style.display = 'none';
 
   renderMessages();
   scrollToBottom();
 
   // Mobile: show chat panel
   if (window.innerWidth <= 768) {
-    document.getElementById('chatPanel').classList.add('mobile-open');
+    const chatPanel = document.getElementById('chatPanel');
+    if (chatPanel) chatPanel.classList.add('mobile-open');
   }
 }
 
@@ -1319,11 +1410,12 @@ function openChat(id) {
 function renderMessages() {
   if (!activeConv) return;
   const area = document.getElementById('messageArea');
+  if (!area) return;
   area.innerHTML = '';
 
   let lastDate = '';
 
-  activeConv.messages.forEach((msg, i) => {
+  activeConv.messages.forEach((msg) => {
     const dateLabel = msg.time;
     if (dateLabel !== lastDate) {
       area.innerHTML += `<div class="date-sep"><span>${dateLabel}</span></div>`;
@@ -1331,13 +1423,12 @@ function renderMessages() {
     }
 
     const avatar = `<div class="msg-avatar" style="background:${activeConv.color}">${activeConv.initials}</div>`;
-    const receipt = msg.dir === 'sent'
-      ? (msg.status === 'read'
-          ? '<span class="read-receipt read">✓✓</span>'
-          : msg.status === 'delivered'
-            ? '<span class="read-receipt">✓✓</span>'
-            : '<span class="read-receipt sent">✓</span>')
-      : '';
+    let receipt = '';
+    if (msg.dir === 'sent') {
+      if (msg.status === 'read') receipt = '<span class="read-receipt read">✓✓</span>';
+      else if (msg.status === 'delivered') receipt = '<span class="read-receipt">✓✓</span>';
+      else receipt = '<span class="read-receipt sent">✓</span>';
+    }
 
     area.innerHTML += `
       <div class="msg-row ${msg.dir}">
@@ -1356,6 +1447,7 @@ function renderMessages() {
 // ── Send a message ──
 function sendMessage() {
   const input = document.getElementById('messageInput');
+  if (!input) return;
   const text = input.value.trim();
   if (!text || !activeConv) return;
 
@@ -1382,26 +1474,22 @@ function sendMessage() {
     renderMessages();
   }, 2000);
 
-  // Simulate reply
-  if (activeConv.id === 1 || activeConv.id === 2) {
-    simulateReply();
-  }
+  // Simulate reply for demo
+  simulateReply();
 }
 
 // ── Simulate typing + reply ──
 function simulateReply() {
   const typingEl = document.getElementById('typingIndicator');
   const typingName = document.getElementById('typingName');
+  if (!typingEl || !typingName) return;
   typingName.textContent = activeConv.name;
   typingEl.style.display = 'flex';
   scrollToBottom();
 
   const replies = [
-    "Got it, thanks! 👍",
-    "See you then!",
-    "Perfect, thanks Teacher!",
-    "No problem at all!",
-    "Looking forward to it!"
+    "Got it, thanks!", "See you then!", "Perfect, thanks Teacher!",
+    "No problem at all!", "Looking forward to it!", "Understood!"
   ];
   const reply = replies[Math.floor(Math.random() * replies.length)];
 
@@ -1426,9 +1514,12 @@ function handleKeyDown(e) {
 
 // ── Close chat (mobile) ──
 function closeChat() {
-  document.getElementById('chatPanel').classList.remove('mobile-open');
-  document.getElementById('chatEmpty').style.display = 'flex';
-  document.getElementById('chatActive').style.display = 'none';
+  const chatPanel = document.getElementById('chatPanel');
+  const chatEmpty = document.getElementById('chatEmpty');
+  const chatActive = document.getElementById('chatActive');
+  if (chatPanel) chatPanel.classList.remove('mobile-open');
+  if (chatEmpty) chatEmpty.style.display = 'flex';
+  if (chatActive) chatActive.style.display = 'none';
   document.querySelectorAll('.conv-item').forEach(el => el.classList.remove('active'));
   activeConv = null;
   renderInbox();
@@ -1437,15 +1528,14 @@ function closeChat() {
 // ── Filter conversations ──
 function filterMessages(type, btn) {
   document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
   renderInbox(type);
 }
 
 // ── Search ──
 function filterConversations() {
   const q = document.getElementById('searchInput').value.toLowerCase();
-  const items = document.querySelectorAll('.conv-item');
-  items.forEach(item => {
+  document.querySelectorAll('.conv-item').forEach(item => {
     const name = item.querySelector('.conv-name').textContent.toLowerCase();
     item.style.display = name.includes(q) ? 'flex' : 'none';
   });
@@ -1454,12 +1544,22 @@ function filterConversations() {
 // ── Scroll to bottom ──
 function scrollToBottom() {
   const area = document.getElementById('messageArea');
-  setTimeout(() => area.scrollTop = area.scrollHeight, 50);
+  if (area) setTimeout(() => area.scrollTop = area.scrollHeight, 50);
 }
 
 // ── Init ──
-renderInbox();
-</script>
+document.addEventListener('DOMContentLoaded', () => {
+  renderInbox();
+  const titleEl = document.querySelector('.inbox-header h1');
+  if (titleEl && roleConfig[userType]) {
+    titleEl.textContent = roleConfig[userType].pageTitle;
+  }
+  const emptyText = document.querySelector('.chat-empty p');
+  if (emptyText && roleConfig[userType]) {
+    emptyText.textContent = roleConfig[userType].emptyPrompt;
+  }
+});
+</script></script>
 <footer style="text-align: center;">
  <p data-i18n="teacher_dash.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
  </footer>
