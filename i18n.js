@@ -595,7 +595,7 @@
     privacy:{
       title:{en:"Privacy Policy",zhTW:"隱私政策",zhCN:"隐私政策"},
       back_link:{en:"← Back to Minerva",zhTW:"← 返回Minerva",zhCN:"← 返回Minerva"},
-      last_updated:{en:"Last updated: April 2026",zhTW:"最後更新：2026年4月",zhCN:"最后更新：2026年4月"},
+      last_updated:{en:"Last updated: January 2026",zhTW:"最後更新：2026年1月",zhCN:"最后更新：2026年1月"},
       copyright:{en:"© 2026 Minerva Learning Ltd. All rights reserved. Registered in Hong Kong.",zhTW:"© 2026 Minerva Learning Ltd. 保留所有權利。於香港註冊。",zhCN:"© 2026 Minerva Learning Ltd. 保留所有权利。于香港注册。"},
       sec1_title:{en:"1. Information We Collect",zhTW:"1. 我們收集的資訊",zhCN:"1. 我们收集的信息"},
       sec2_title:{en:"2. Purpose of Collection",zhTW:"2. 收集目的",zhCN:"2. 收集目的"},
@@ -621,6 +621,7 @@
 
     // ── Terms ──
     terms:{
+      last_updated:{en:"Last updated: January 2026",zhTW:"最後更新：2026年1月",zhCN:"最后更新：2026年1月"},
       title:{en:"Terms & Conditions",zhTW:"條款及細則",zhCN:"条款及细则"},
       back_link:{en:"← Back",zhTW:"← 返回",zhCN:"← 返回"},
       copyright:{en:"© 2026 Minerva Learning Ltd. All rights reserved. Registered in Hong Kong.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
@@ -661,9 +662,7 @@
       p29:{en:"Minerva may modify these terms at any time with 30 days notice. Users will be notified via email or platform notice. Continued use after changes constitutes acceptance of new terms.",zhTW:"Minerva可隨時修改這些條款，並提前30天通知用戶。用戶將通過電郵或平台公告收到通知。修改後繼續使用即表示接受新條款。",zhCN:"Minerva可随时修改这些条款，并提前30天通知用户。用户将通过电邮或平台公告收到通知。修改后继续使用即表示接受新条款。"},
       p30:{en:"These Terms & Conditions are governed by the laws of the Hong Kong Special Administrative Region. Any disputes shall be subject to the exclusive jurisdiction of Hong Kong courts.",zhTW:"這些條款及細則受香港特別行政區法律管轄。任何爭議均受香港法院的專屬管轄權約束。",zhCN:"这些条款及细则受香港特别行政区法律管辖。任何争议均受香港法院的专属管辖权约束。"},
       collect_for:{en:"We collect personal data for:",zhTW:"收集信息用于",zhCN:"收集信息用于"},
-      data_used_for:{en:"Your data is used for:",zhTW:"資料用於",zhCN:"資料用於"},
-      last_updated:{en:"Last updated: January 2026",zhTW:"最後更新",zhCN:"最後更新"},
-      lessons_conducted:{en:"Lessons may be conducted:",zhTW:"課堂可按以下方式進行",zhCN:"课堂可按以下方式进行"},
+      data_used_for:{en:"Your data is used for:",zhTW:"資料用於",zhCN:"資料用於"},      lessons_conducted:{en:"Lessons may be conducted:",zhTW:"課堂可按以下方式進行",zhCN:"课堂可按以下方式进行"},
       pdpo_rights:{en:"Under the PDPO, you have the right to:",zhTW:"您的《個人資料（私隱）條例》權利",zhCN:"您的《個人資料（私隱）條例》權利"},
       questions:{en:"For questions about these Terms & Conditions:",zhTW:"有問題？",zhCN:"有問題？"},
       sec1:{en:"1. Acceptance of Terms",zhTW:"1. 接受條款",zhCN:"1. 接受条款"},
