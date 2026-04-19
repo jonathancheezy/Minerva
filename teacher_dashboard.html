@@ -68,7 +68,7 @@ nav {
 
 .logo-icon { width: 32px; height: 32px; }
 
-.nav-links { display: flex; gap: 24px; margin-left: 32px; margin-right: auto; }
+.nav-links { display: flex; gap: 16px; margin-left: 32px; margin-right: auto; }
 
 .nav-links a {
  color: rgba(255,255,255,0.85);
@@ -151,7 +151,7 @@ nav {
 
 /* Main Content */
 .main {
- max-width: 1200px;
+ max-width: 1080px;
  margin: 0 auto;
  padding: 32px 24px;
  min-height: calc(100vh - 60px);
@@ -247,10 +247,11 @@ nav {
 /* Grid Layout */
 .content-grid {
  display: grid;
- grid-template-columns: 2fr 1fr;
- gap: 24px;
+ grid-template-columns: 1.6fr 0.9fr;
+ gap: 16px;
  width: 100%;
  max-width: 100%;
+ overflow: hidden;
  }
  .content-grid > .card { min-width: 0; }
 
@@ -268,7 +269,7 @@ nav {
 }
 
 .card-header {
- padding: 18px 24px;
+ padding: 12px 18px;
  border-bottom: 1px solid #e2e8f0;
  display: flex;
  justify-content: space-between;
@@ -289,7 +290,7 @@ nav {
 }
 
 .card-body {
- padding: 20px 24px;
+ padding: 16px 18px;
 }
 
 /* Schedule List */
