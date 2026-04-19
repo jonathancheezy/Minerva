@@ -251,9 +251,9 @@
     <div class="sub">↑ 12% vs last month</div>
    </div>
    <div class="stat-card">
-    <div class="label">Avg Rating</div>
-    <div class="value gold">4.9 ★</div>
-    <div class="sub">24 reviews</div>
+    <div class="label">Upcoming Tests</div>
+    <div class="value" id="stat-tests" style="color: var(--purple);">3</div>
+    <div class="sub">This month</div>
    </div>
    <div class="stat-card">
     <div class="label">Pending Notes</div>
@@ -750,6 +750,11 @@ document.addEventListener('DOMContentLoaded', function() {
  var pending = students.length - studentsWithNotes;
  var pendingEl = document.getElementById('stat-pending');
  if (pendingEl) { pendingEl.textContent = pending; }
+ 
+ // Count upcoming tests
+ var tests = students.filter(function(s) { return s.nextTest && s.nextTest.trim() !== ''; }).length;
+ var testsEl = document.getElementById('stat-tests');
+ if (testsEl) { testsEl.textContent = tests; }
 
  // i18n language toggle
  var params = new URLSearchParams(window.location.search);
