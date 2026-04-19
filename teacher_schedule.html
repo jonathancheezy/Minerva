@@ -1045,7 +1045,7 @@
  document.getElementById('calendarTab').style.display = tab === 'calendar' ? 'block' : 'none';
  document.getElementById('bookingsTab').style.display = tab === 'bookings' ? 'block' : 'none';
  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
- event.target.classList.add('active');
+ if(event&&event.target)event.target.classList.add('active');
  }
 
  let currentDate = new Date(2026, 3, 1); // April 2026
@@ -1280,6 +1280,15 @@ function renderCalendar() {
 document.addEventListener('DOMContentLoaded', function() {
  showTab('calendar');
  renderCalendar();
+ // Force calendar visible as backup
+ var calTab = document.getElementById('calendarTab');
+ if (calTab) calTab.style.display = 'block';
+ var calTable = document.querySelector('.cal-table');
+ if (calTable) calTable.style.display = 'table';
+ var thead = document.querySelector('.cal-dow');
+ if (thead) thead.style.display = 'table-row-group';
+ var tbody = document.getElementById('calTbody');
+ if (tbody) { tbody.style.display = 'table-row-group'; }
  document.getElementById('notesModal').addEventListener('click', function(e) {
   if (e.target === this) closeNotesModal();
  });
