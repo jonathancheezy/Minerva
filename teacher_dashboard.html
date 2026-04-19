@@ -303,6 +303,15 @@ nav {
 
 .schedule-day:last-child { border-bottom: none; }
 
+/* Schedule Sections */
+.schedule-section {
+ display: block;
+ width: 100%;
+}
+.schedule-section[style*="display: none"] {
+ display: none !important;
+}
+
 .day-header {
  padding: 10px 24px;
  background: #f8fafc;
@@ -407,6 +416,20 @@ nav {
 .filter-tab:not(.active):hover {
  background: #e2e8f0;
  color: #0f1f33;
+}
+
+/* Schedule Sections */
+.schedule-section {
+ display: block;
+}
+.schedule-section[style*="display: none"] {
+ display: none !important;
+}
+.schedule-section[data-section] {
+ display: block;
+}
+.schedule-section.hidden {
+ display: none !important;
 }
 
 /* Message Item */
@@ -859,7 +882,14 @@ document.addEventListener('DOMContentLoaded', function() {
      tab.classList.add('active');
      var target = tab.getAttribute('data-tab');
      document.querySelectorAll('.schedule-section').forEach(function(s) {
-       s.style.display = (s.getAttribute('data-section') === target) ? '' : 'none';
+       var section = s.getAttribute('data-section');
+       if (section === target) {
+         s.style.display = 'block';
+         s.removeAttribute('hidden');
+       } else {
+         s.style.display = 'none';
+         s.setAttribute('hidden', '');
+       }
      });
    });
  });
