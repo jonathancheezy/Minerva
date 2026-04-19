@@ -83,13 +83,16 @@
  .chip.english.active { background: var(--gold); border-color: var(--gold); color: var(--navy-dark); }
 
  /* Student Grid */
- .student-grid { column-count: 3; column-gap: 16px; margin-bottom: 32px; }
- .student-card { break-inside: avoid; background: white; border-radius: 14px; padding: 20px; border: 1.5px solid var(--gray-200); cursor: pointer; transition: all 0.2s; position: relative; box-sizing: border-box; height: 220px; overflow: hidden; margin-bottom: 16px; }
+ .student-grid { display: flex; flex-wrap: wrap; margin-bottom: 32px; }
+ .student-card { background: white; border-radius: 14px; padding: 20px; border: 1.5px solid var(--gray-200); cursor: pointer; transition: all 0.2s; position: relative; box-sizing: border-box; height: 220px; overflow: hidden; flex: 0 0 calc(33.333% - 12px); margin-right: 16px; margin-bottom: 16px; }
+ .student-card:nth-child(3n) { margin-right: 0; }
  @media (max-width: 900px) {
- .student-grid { column-count: 2; }
+ .student-card { flex: 0 0 calc(50% - 8px); }
+ .student-card:nth-child(3n) { margin-right: 16px; }
+ .student-card:nth-child(2n) { margin-right: 0; }
  }
  @media (max-width: 600px) {
- .student-grid { column-count: 1; }
+ .student-card { flex: 0 0 100%; margin-right: 0; }
  }
  .student-card:hover { border-color: var(--navy); box-shadow: 0 8px 24px rgba(30,58,95,0.15); }
  .card-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; min-height: 60px; }
