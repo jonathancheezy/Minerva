@@ -849,7 +849,7 @@
  </div>
 
  
- <div id="calendarTab">
+ <div id="calendarTab" style="display: block;">
  <div class="cal-wrapper">
 
   <div class="cal-header">
@@ -870,7 +870,7 @@
    </div>
   </div>
 
-  <table class="cal-table">
+  <table class="cal-table" style="display: table; width: 100%;">
    <colgroup><col><col><col><col><col><col><col></colgroup>
    <thead>
     <tr class="cal-dow">
@@ -1174,6 +1174,7 @@ function updatePendingNotesStats() {
 }
 
 function renderCalendar() {
+ try {
  var year = currentDate.getFullYear();
  var month = currentDate.getMonth();
 
@@ -1262,6 +1263,7 @@ function renderCalendar() {
  }
 
  updatePendingNotesStats();
+ } catch(e) { console.error('renderCalendar error:', e); }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1279,12 +1281,7 @@ document.addEventListener('DOMContentLoaded', function() {
  document.getElementById('addSlotModal').addEventListener('click', function(e) {
  if (e.target === this) closeModal('addSlot');
  });
- </script>
- 
- 
-
-
-
+</script>
 
 <script src="i18n.js"></script>
 </body>
