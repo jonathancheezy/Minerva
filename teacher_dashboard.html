@@ -153,11 +153,12 @@
 
  /* Stats Grid */
  .stats-grid {
- display: grid;
- grid-template-columns: repeat(4, 1fr);
+ display: flex;
  gap: 20px;
  margin-bottom: 32px;
  }
+ .stats-grid::before { content: ""; flex: 1; }
+ .stats-grid > * { flex: 1; min-width: 180px; }
 
  @media (max-width: 768px) {
  .nav-left { display: flex; align-items: center; gap: 0; }
@@ -188,7 +189,8 @@
  }
 
  @media (max-width: 900px) {
- .stats-grid { grid-template-columns: repeat(2, 1fr); }
+ .stats-grid { flex-wrap: wrap; }
+ .stats-grid > * { flex: 0 0 calc(50% - 10px); }
  }
 
  .stat-card {
@@ -969,16 +971,16 @@
  </div>
  <div class="nav-links">
  <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
- <a href="student_dashboard.html?v=4" data-i18n="teacher_dash.students">Students</a>
- <a href="teacher_schedule.html?v=4" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="messages.html?v=4" data-i18n="teacher_dash.messages">Messages</a>
- <a href="reviews.html?v=4" data-i18n="reviews.title">Reviews</a>
- <a href="earnings.html?v=4" data-i18n="earnings.title">Earnings</a>
+ <a href="student_dashboard.html?v=5" data-i18n="teacher_dash.students">Students</a>
+ <a href="teacher_schedule.html?v=5" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html?v=5" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="reviews.html?v=5" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html?v=5" data-i18n="earnings.title">Earnings</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <a href="teacher_profile.html?v=4" style="text-decoration:none"><div class="avatar">TC</div></a>
+ <a href="teacher_profile.html?v=5" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
   </div>
  <div class="lang-selector">
@@ -995,22 +997,22 @@
  </div>
 
  <div class="stats-grid">
- <a href="student_dashboard.html?v=4" class="stat-card clickable">
+ <a href="student_dashboard.html?v=5" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
  <div class="label" data-i18n="teacher_dash.total_students">Total Students</div>
  <div class="value">12</div>
  <div class="sub" data-i18n="teacher_dash.stats_new_this_month">+3 this month</div>
  </a>
- <a href="teacher_schedule.html?v=4" class="stat-card clickable">
+ <a href="teacher_schedule.html?v=5" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
  <div class="label" data-i18n="teacher_dash.upcoming_lessons">Upcoming Lessons</div>
  <div class="value">8</div>
  <div class="sub" data-i18n="teacher_dash.this_week">This week</div>
  </a>
- <a href="earnings.html?v=4" class="stat-card clickable">
+ <a href="earnings.html?v=5" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
  <div class="label" data-i18n="teacher_dash.this_month">This Month</div>
  <div class="value green">HK$2,450</div>
  <div class="sub" data-i18n="teacher_dash.vs_last_month">+18% vs last month</div>
  </a>
- <a href="reviews.html?v=4" class="stat-card clickable">
+ <a href="reviews.html?v=5" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
  <div class="label" data-i18n="teacher_dash.rating">Rating</div>
  <div class="value gold">4.9 ⭐</div>
  <div class="sub" data-i18n="teacher_dash.reviews_count">24 reviews</div>
@@ -1018,10 +1020,10 @@
  </div>
 
  <div class="content-grid">
- <div class="card">
+ <div class="card" style="background:white;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden;">
  <div class="card-header">
  <h2 data-i18n="teacher_dash.schedule_title">Schedule</h2>
- <a href="teacher_schedule.html?v=4" data-i18n="teacher_dash.view_all">View All</a>
+ <a href="teacher_schedule.html?v=5" data-i18n="teacher_dash.view_all">View All</a>
  </div>
  <div class="card-body">
 
@@ -1080,10 +1082,10 @@
  </div>
  </div>
 
- <div class="card">
+ <div class="card" style="background:white;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden;">
  <div class="card-header">
  <h2 data-i18n="teacher_dash.messages_title">Messages</h2>
- <a href="messages.html?v=4" data-i18n="teacher_dash.view_all">View All</a>
+ <a href="messages.html?v=5" data-i18n="teacher_dash.view_all">View All</a>
  </div>
  <div class="card-body">
 
