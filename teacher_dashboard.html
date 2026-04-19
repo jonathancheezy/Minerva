@@ -246,17 +246,19 @@ nav {
 
 /* Grid Layout */
 .content-grid {
- display: grid;
- grid-template-columns: 1.6fr 0.9fr;
+ display: flex;
+ flex-direction: row;
  gap: 16px;
  width: 100%;
- max-width: 100%;
- overflow: hidden;
- }
- .content-grid > .card { min-width: 0; }
+}
+.content-grid > .card {
+ flex: 1 1 0%;
+ min-width: 0;
+}
 
 @media (max-width: 900px) {
- .content-grid { grid-template-columns: 1fr; }
+ .content-grid { flex-direction: column; }
+ .content-grid > .card { flex: none; width: 100%; }
 }
 
 /* Card */
