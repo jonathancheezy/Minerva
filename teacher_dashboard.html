@@ -553,13 +553,136 @@ footer {
  <a href="teacher_schedule.html?v=100" data-i18n="teacher_dash.view_all">View All</a>
  </div>
  <div class="filter-tabs">
- <span class="filter-tab active">Confirmed</span>
- <span class="filter-tab">Pending</span>
- <span class="filter-tab">Cancelled</span>
+ <span class="filter-tab active" data-tab="confirmed">Confirmed</span>
+ <span class="filter-tab" data-tab="pending">Pending</span>
+ <span class="filter-tab" data-tab="cancelled">Cancelled</span>
  </div>
  <div class="schedule-list">
+ <!-- Confirmed Section -->
+ <div class="schedule-section" data-section="confirmed">
+ <div class="day-header">Confirmed</div>
  <div class="schedule-day">
- <div class="day-header">Today — 18 Apr</div>
+ <div class="day-header" style="background:#f0fdf4;font-size:11px;">Today — 18 Apr</div>
+ <div class="lesson-item" data-status="confirmed">
+ <div class="lesson-time">
+ <div class="time">10:00</div>
+ <div class="dash">–</div>
+ <div class="time">11:00</div>
+ </div>
+ <div class="lesson-details">
+ <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g3">Piano (Grade 3 Prep)</div>
+ <div class="student">Emma Wong</div>
+ </div>
+ <div class="lesson-status confirmed">Confirmed</div>
+ </div>
+ <div class="lesson-item" data-status="confirmed">
+ <div class="lesson-time">
+ <div class="time">14:00</div>
+ <div class="dash">–</div>
+ <div class="time">15:00</div>
+ </div>
+ <div class="lesson-details">
+ <div class="lesson-subject" data-i18n="teacher_dash.subj_violin_beg">Violin (Beginner)</div>
+ <div class="student">Lucas Lee</div>
+ </div>
+ <div class="lesson-status confirmed">Confirmed</div>
+ </div>
+ </div>
+ <div class="schedule-day">
+ <div class="day-header" style="background:#f0fdf4;font-size:11px;">Tomorrow — 19 Apr</div>
+ <div class="lesson-item" data-status="confirmed">
+ <div class="lesson-time">
+ <div class="time">16:30</div>
+ <div class="dash">–</div>
+ <div class="time">17:30</div>
+ </div>
+ <div class="lesson-details">
+ <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g5">Piano (Grade 5)</div>
+ <div class="student">Sophie Chen</div>
+ </div>
+ <div class="lesson-status confirmed">Confirmed</div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Pending Section -->
+ <div class="schedule-section" data-section="pending" style="display:none;">
+ <div class="day-header">Pending</div>
+ <div class="schedule-day">
+ <div class="day-header" style="background:#fffbeb;font-size:11px;">Sat — 25 Apr</div>
+ <div class="lesson-item" data-status="pending">
+ <div class="lesson-time">
+ <div class="time">09:00</div>
+ <div class="dash">–</div>
+ <div class="time">10:00</div>
+ </div>
+ <div class="lesson-details">
+ <div class="lesson-subject" data-i18n="teacher_dash.subj_math_f3">Math (Form 3)</div>
+ <div class="student">Ryan Lam</div>
+ </div>
+ <div class="lesson-status pending">Pending</div>
+ </div>
+ <div class="lesson-item" data-status="pending">
+ <div class="lesson-time">
+ <div class="time">11:00</div>
+ <div class="dash">–</div>
+ <div class="time">12:00</div>
+ </div>
+ <div class="lesson-details">
+ <div class="lesson-subject" data-i18n="teacher_dash.subj_english_f4">English (Form 4)</div>
+ <div class="student">Grace Ho</div>
+ </div>
+ <div class="lesson-status pending">Pending</div>
+ </div>
+ </div>
+ <div class="schedule-day">
+ <div class="day-header" style="background:#fffbeb;font-size:11px;">Mon — 27 Apr</div>
+ <div class="lesson-item" data-status="pending">
+ <div class="lesson-time">
+ <div class="time">17:00</div>
+ <div class="dash">–</div>
+ <div class="time">18:00</div>
+ </div>
+ <div class="lesson-details">
+ <div class="lesson-subject">Science (Form 2)</div>
+ <div class="student">Nathan Wu</div>
+ </div>
+ <div class="lesson-status pending">Pending</div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Cancelled Section -->
+ <div class="schedule-section" data-section="cancelled" style="display:none;">
+ <div class="day-header">Cancelled</div>
+ <div class="schedule-day">
+ <div class="day-header" style="background:#fef2f2;font-size:11px;">Yesterday — 17 Apr</div>
+ <div class="lesson-item" data-status="cancelled">
+ <div class="lesson-time">
+ <div class="time">15:00</div>
+ <div class="dash">–</div>
+ <div class="time">16:00</div>
+ </div>
+ <div class="lesson-details">
+ <div class="lesson-subject">Science (Form 2)</div>
+ <div class="student">Nathan Wu</div>
+ </div>
+ <div class="lesson-status cancelled">Cancelled</div>
+ </div>
+ <div class="lesson-item" data-status="cancelled">
+ <div class="lesson-time">
+ <div class="time">17:00</div>
+ <div class="dash">–</div>
+ <div class="time">18:00</div>
+ </div>
+ <div class="lesson-details">
+ <div class="lesson-subject">Piano (Grade 1)</div>
+ <div class="student">Lily Zhang</div>
+ </div>
+ <div class="lesson-status cancelled">Cancelled</div>
+ </div>
+ </div>
+ </div>
  <div class="lesson-item">
  <div class="lesson-time">
  <div class="time">10:00</div>
@@ -725,6 +848,18 @@ document.addEventListener('DOMContentLoaded', function() {
  var urlParams = new URLSearchParams(window.location.search);
  var lang = urlParams.get('lang') || 'en';
  if (typeof applyTranslations === 'function') applyTranslations(lang);
+
+ // Schedule filter tabs
+ document.querySelectorAll('.filter-tab').forEach(function(tab) {
+   tab.addEventListener('click', function() {
+     document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+     tab.classList.add('active');
+     var target = tab.getAttribute('data-tab');
+     document.querySelectorAll('.schedule-section').forEach(function(s) {
+       s.style.display = (s.getAttribute('data-section') === target) ? '' : 'none';
+     });
+   });
+ });
 });
 </script>
 </body>
