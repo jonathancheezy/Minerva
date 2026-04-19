@@ -220,13 +220,20 @@
  font-size: 12px;
  color: #64748b;
  margin-top: 4px;
+ text-decoration: none;
  }
+ .stat-card .sub a { color: #3b82f6; text-decoration: none; }
+ .stat-card .value a { text-decoration: none; color: inherit; }
 
  /* Grid Layout */
  .content-grid {
  display: grid;
  grid-template-columns: 2fr 1fr;
  gap: 24px;
+ grid-template-rows: auto auto;
+ }
+ @media (max-width: 900px) {
+ .content-grid { grid-template-columns: 1fr; }
  }
 
  @media (max-width: 900px) {
@@ -239,6 +246,7 @@
  border-radius: 16px;
  border: 1px solid #e2e8f0;
  overflow: hidden;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.08);
  }
 
  .card-header {
@@ -954,6 +962,86 @@
  margin-left: 6px;
  vertical-align: middle;
  }
+
+
+/**** Messages Widget CSS ****/
+.message-item {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 14px 0;
+ border-bottom: 1px solid #e2e8f0;
+ }
+ .message-item:last-child { border-bottom: none; }
+ .message-avatar {
+ width: 40px;
+ height: 40px;
+ border-radius: 8px;
+ flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 13px;
+ color: white;
+ }
+ .message-info { flex: 1; min-width: 0; }
+ .message-sender {
+ font-size: 13px;
+ font-weight: 600;
+ color: #0f1f33;
+ margin-bottom: 2px;
+ }
+ .message-preview {
+ font-size: 12px;
+ color: #64748b;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ }
+ .message-time {
+ font-size: 11px;
+ color: #94a3b8;
+ flex-shrink: 0;
+ }
+
+
+.schedule-tabs {
+ display: flex;
+ gap: 8px;
+ padding: 12px 24px;
+ border-bottom: 1px solid #e2e8f0;
+ }
+ .schedule-tab {
+ padding: 6px 14px;
+ border-radius: 20px;
+ font-size: 13px;
+ font-weight: 500;
+ cursor: pointer;
+ color: #64748b;
+ border: none;
+ background: #f8fafc;
+ }
+ .schedule-tab.active {
+ background: #1e3a5f;
+ color: white;
+ }
+
+
+.legend-item {
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ font-size: 11px;
+ color: #64748b;
+ }
+ .legend-dot {
+ width: 8px;
+ height: 8px;
+ border-radius: 50%;
+ display: inline-block;
+ }
+
  </style>
 </head>
 <body>
@@ -971,16 +1059,16 @@
  </div>
  <div class="nav-links">
  <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
- <a href="student_dashboard.html?v=5" data-i18n="teacher_dash.students">Students</a>
- <a href="teacher_schedule.html?v=5" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="messages.html?v=5" data-i18n="teacher_dash.messages">Messages</a>
- <a href="reviews.html?v=5" data-i18n="reviews.title">Reviews</a>
- <a href="earnings.html?v=5" data-i18n="earnings.title">Earnings</a>
+ <a href="student_dashboard.html?v=6" data-i18n="teacher_dash.students">Students</a>
+ <a href="teacher_schedule.html?v=6" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html?v=6" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="reviews.html?v=6" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html?v=6" data-i18n="earnings.title">Earnings</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <a href="teacher_profile.html?v=5" style="text-decoration:none"><div class="avatar">TC</div></a>
+ <a href="teacher_profile.html?v=6" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
   </div>
  <div class="lang-selector">
@@ -997,22 +1085,22 @@
  </div>
 
  <div class="stats-grid">
- <a href="student_dashboard.html?v=5" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
+ <a href="student_dashboard.html?v=6" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
  <div class="label" data-i18n="teacher_dash.total_students">Total Students</div>
  <div class="value">12</div>
  <div class="sub" data-i18n="teacher_dash.stats_new_this_month">+3 this month</div>
  </a>
- <a href="teacher_schedule.html?v=5" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
+ <a href="teacher_schedule.html?v=6" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
  <div class="label" data-i18n="teacher_dash.upcoming_lessons">Upcoming Lessons</div>
  <div class="value">8</div>
  <div class="sub" data-i18n="teacher_dash.this_week">This week</div>
  </a>
- <a href="earnings.html?v=5" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
+ <a href="earnings.html?v=6" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
  <div class="label" data-i18n="teacher_dash.this_month">This Month</div>
  <div class="value green">HK$2,450</div>
  <div class="sub" data-i18n="teacher_dash.vs_last_month">+18% vs last month</div>
  </a>
- <a href="reviews.html?v=5" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
+ <a href="reviews.html?v=6" class="stat-card clickable" style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px;flex:1;min-width:180px;">
  <div class="label" data-i18n="teacher_dash.rating">Rating</div>
  <div class="value gold">4.9 ⭐</div>
  <div class="sub" data-i18n="teacher_dash.reviews_count">24 reviews</div>
@@ -1023,7 +1111,7 @@
  <div class="card" style="background:white;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden;">
  <div class="card-header">
  <h2 data-i18n="teacher_dash.schedule_title">Schedule</h2>
- <a href="teacher_schedule.html?v=5" data-i18n="teacher_dash.view_all">View All</a>
+ <a href="teacher_schedule.html?v=6" data-i18n="teacher_dash.view_all">View All</a>
  </div>
  <div class="card-body">
 
@@ -1085,7 +1173,7 @@
  <div class="card" style="background:white;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden;">
  <div class="card-header">
  <h2 data-i18n="teacher_dash.messages_title">Messages</h2>
- <a href="messages.html?v=5" data-i18n="teacher_dash.view_all">View All</a>
+ <a href="messages.html?v=6" data-i18n="teacher_dash.view_all">View All</a>
  </div>
  <div class="card-body">
 
