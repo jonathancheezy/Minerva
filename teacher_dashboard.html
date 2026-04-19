@@ -249,7 +249,10 @@ nav {
  display: grid;
  grid-template-columns: 2fr 1fr;
  gap: 24px;
-}
+ width: 100%;
+ max-width: 100%;
+ }
+ .content-grid > .card { min-width: 0; }
 
 @media (max-width: 900px) {
  .content-grid { grid-template-columns: 1fr; }
