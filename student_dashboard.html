@@ -281,6 +281,21 @@
   <table class="student-table" id="studentGrid" cellpadding="0" cellspacing="0" border="0">
 <tbody id="studentGridBody"></tbody>
 </table>
+
+  <!-- Upcoming Tests Section -->
+  <div class="section-header" style="display:flex;justify-content:space-between;align-items:center;margin:32px 0 16px;">
+   <h2 style="font-size:18px;font-weight:700;color:var(--navy-dark);">Upcoming Tests</h2>
+   <span class="section-count" id="test-count" style="font-size:13px;color:var(--gray-500);font-weight:600;"></span>
+  </div>
+  <div id="tests-list" class="section-list" style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;"></div>
+
+  <!-- Pending Notes Section -->
+  <div class="section-header" style="display:flex;justify-content:space-between;align-items:center;margin:32px 0 16px;">
+   <h2 style="font-size:18px;font-weight:700;color:var(--navy-dark);">Pending Notes</h2>
+   <span class="section-count" id="notes-count" style="font-size:13px;color:var(--gray-500);font-weight:600;"></span>
+  </div>
+  <div id="notes-list" class="section-list" style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;"></div>
+
  </main>
 
  <footer>
@@ -755,6 +770,59 @@ document.addEventListener('DOMContentLoaded', function() {
  var tests = students.filter(function(s) { return s.nextTest && s.nextTest.trim() !== ''; }).length;
  var testsEl = document.getElementById('stat-tests');
  if (testsEl) { testsEl.textContent = tests; }
+ 
+ // Render upcoming tests list
+ var testsList = document.getElementById('tests-list');
+ var testCount = document.getElementById('test-count');
+ var pendingCount = students.length - studentsWithNotes;
+ if (testCount) testCount.textContent = tests + ' this month';
+ 
+ var testsHtml = '';
+ students.filter(function(s) { return s.nextTest && s.nextTest.trim() !== ''; }).forEach(function(s) {
+  var dateParts = s.nextTest.split('-');
+  var d = new Date(dateParts[0], dateParts[1]-1, dateParts[2]);
+  var dow = d.toLocaleDateString('en-US', {weekday:'short'});
+  var day = d.getDate();
+  var mo = d.toLocaleDateString('en-US', {month:'short'});
+  var colorMap = {piano:'purple', violin:'teal', math:'green', english:'gold'};
+  var subColor = colorMap[s.subject] || 'gray';
+  testsHtml += '<div class="section-item" style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:white;border-radius:12px;border:1px solid var(--gray-200);">' +
+   '<div style="width:44px;height:44px;background:rgba(139,92,246,0.1);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">' +
+   '<span style="font-size:11px;font-weight:600;color:#7c3aed;text-transform:uppercase;">' + dow + '</span>' +
+   '<span style="font-size:18px;font-weight:800;color:#7c3aed;line-height:1;">' + day + '</span>' +
+   '</div>' +
+   '<div style="flex:1;min-width:0;">' +
+   '<div style="font-size:14px;font-weight:700;color:var(--navy-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + s.name + '</div>' +
+   '<div style="font-size:12px;color:var(--gray-500);">' + s.subjectLabel + ' · ' + mo + '</div>' +
+   '</div>' +
+   '<span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:50px;background:rgba(139,92,246,0.1);color:#7c3aed;text-transform:uppercase;">' + s.grade + '</span>' +
+   '</div>';
+ });
+ if (testsHtml === '') {
+  testsHtml = '<div style="text-align:center;padding:24px;color:var(--gray-500);font-size:14px;">No upcoming tests this month</div>';
+ }
+ if (testsList) testsList.innerHTML = testsHtml;
+ 
+ // Render pending notes list
+ var notesList = document.getElementById('notes-list');
+ var notesCount = document.getElementById('notes-count');
+ if (notesCount) notesCount.textContent = pending + ' pending';
+ 
+ var notesHtml = '';
+ students.filter(function(s) { return !allNotesData[s.id] || allNotesData[s.id].trim() === ''; }).forEach(function(s) {
+  notesHtml += '<div class="section-item" style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:white;border-radius:12px;border:1px solid var(--gray-200);">' +
+   '<div style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:white;flex-shrink:0;background:' + getAvatarColor(s.subject) + ';">' + s.initials + '</div>' +
+   '<div style="flex:1;min-width:0;">' +
+   '<div style="font-size:14px;font-weight:700;color:var(--navy-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + s.name + '</div>' +
+   '<div style="font-size:12px;color:var(--gray-500);">' + s.subjectLabel + '</div>' +
+   '</div>' +
+   '<span style="font-size:12px;font-weight:600;color:var(--gold);">No notes yet</span>' +
+   '</div>';
+ });
+ if (notesHtml === '') {
+  notesHtml = '<div style="text-align:center;padding:24px;color:var(--gray-500);font-size:14px;">All students have notes ✨</div>';
+ }
+ if (notesList) notesList.innerHTML = notesHtml;
 
  // i18n language toggle
  var params = new URLSearchParams(window.location.search);
