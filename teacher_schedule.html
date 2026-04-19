@@ -413,6 +413,189 @@
  flex-shrink: 0;
 }
 
+
+/* Payment Warning Banner */
+.payment-banner {
+ background: linear-gradient(135deg, #fff8e1, #fff3cd);
+ border: 1.5px solid var(--gold);
+ border-radius: 12px;
+ padding: 14px 18px;
+ margin-bottom: 20px;
+ display: flex;
+ align-items: flex-start;
+ gap: 12px;
+ font-size: 13px;
+ color: #7c5e00;
+}
+.payment-banner .banner-icon { font-size: 20px; flex-shrink: 0; }
+.payment-banner .banner-title { font-weight: 700; margin-bottom: 2px; }
+.payment-banner .banner-title span { color: var(--gold); }
+.payment-banner a { color: var(--navy); font-weight: 600; }
+
+/* Notes status on calendar card */
+.pay-locked {
+ font-size: 9px;
+ font-weight: 700;
+ color: var(--gold);
+ background: rgba(249,168,40,0.15);
+ padding: 1px 5px;
+ border-radius: 3px;
+ display: inline-flex;
+ align-items: center;
+ gap: 2px;
+ cursor: pointer;
+ border: none;
+ font-family: inherit;
+ white-space: nowrap;
+}
+.pay-locked:hover { background: rgba(249,168,40,0.25); }
+.pay-released {
+ font-size: 9px;
+ font-weight: 700;
+ color: var(--green);
+ background: rgba(34,197,94,0.1);
+ padding: 1px 5px;
+ border-radius: 3px;
+ display: inline-flex;
+ align-items: center;
+ gap: 2px;
+ cursor: pointer;
+ border: none;
+ font-family: inherit;
+ white-space: nowrap;
+}
+
+/* Notes Modal */
+.notes-modal-overlay {
+ display: none;
+ position: fixed;
+ top: 0; left: 0; right: 0; bottom: 0;
+ background: rgba(0,0,0,0.55);
+ z-index: 300;
+ align-items: center;
+ justify-content: center;
+ padding: 20px;
+}
+.notes-modal-overlay.open { display: flex; }
+.notes-modal {
+ background: white;
+ border-radius: 18px;
+ width: 100%;
+ max-width: 520px;
+ overflow: hidden;
+ box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.notes-modal-header {
+ padding: 20px 24px;
+ border-bottom: 1px solid var(--gray-200);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ background: var(--gray-100);
+}
+.notes-modal-header h3 { font-size: 16px; font-weight: 700; color: var(--navy-dark); }
+.notes-modal-header .lesson-info { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+.notes-modal-close {
+ width: 32px; height: 32px;
+ border-radius: 8px; border: 1.5px solid var(--gray-200);
+ background: white; cursor: pointer; font-size: 16px;
+ display: flex; align-items: center; justify-content: center;
+ color: var(--gray-500); transition: all 0.2s;
+ flex-shrink: 0;
+}
+.notes-modal-close:hover { background: var(--gray-100); color: var(--navy); }
+.notes-modal-body { padding: 24px; }
+.payment-status-box {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ padding: 12px 14px;
+ border-radius: 10px;
+ margin-bottom: 16px;
+ font-size: 13px;
+ font-weight: 600;
+}
+.payment-status-box.locked {
+ background: rgba(249,168,40,0.12);
+ border: 1.5px solid rgba(249,168,40,0.4);
+ color: #7c5e00;
+}
+.payment-status-box.released {
+ background: rgba(34,197,94,0.1);
+ border: 1.5px solid rgba(34,197,94,0.3);
+ color: #15803d;
+}
+.notes-label { font-size: 12px; font-weight: 600; color: var(--gray-500); margin-bottom: 6px; display: block; }
+.notes-textarea {
+ width: 100%;
+ min-height: 140px;
+ padding: 12px;
+ border: 1.5px solid var(--gray-200);
+ border-radius: 10px;
+ font-family: inherit;
+ font-size: 14px;
+ resize: vertical;
+ outline: none;
+ transition: border-color 0.2s;
+ box-sizing: border-box;
+}
+.notes-textarea:focus { border-color: var(--teal); }
+.notes-hint { font-size: 11px; color: var(--gray-500); margin-top: 4px; }
+.notes-modal-footer {
+ padding: 16px 24px;
+ border-top: 1px solid var(--gray-200);
+ display: flex;
+ justify-content: flex-end;
+ gap: 10px;
+ background: var(--gray-100);
+}
+.btn-save {
+ padding: 10px 22px;
+ background: var(--navy);
+ color: white;
+ border: none;
+ border-radius: 9px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ font-family: inherit;
+ transition: background 0.2s;
+}
+.btn-save:hover { background: var(--navy-dark); }
+.btn-cancel {
+ padding: 10px 18px;
+ background: white;
+ color: var(--gray-700);
+ border: 1.5px solid var(--gray-200);
+ border-radius: 9px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ font-family: inherit;
+ transition: all 0.2s;
+}
+.btn-cancel:hover { border-color: var(--navy); color: var(--navy); }
+
+/* Parent: lesson notes indicator */
+.lesson-note-indicator {
+ display: inline-flex;
+ align-items: center;
+ gap: 3px;
+ font-size: 10px;
+ font-weight: 700;
+ padding: 2px 6px;
+ border-radius: 3px;
+ margin-top: 4px;
+}
+.lesson-note-indicator.has-notes {
+ background: rgba(59,130,246,0.1);
+ color: var(--teal);
+}
+.lesson-note-indicator.no-notes {
+ background: rgba(249,168,40,0.1);
+ color: #b45309;
+}
+
 /* Stats Row */
 /* Stats Row */
 /* Stats Row */
@@ -656,7 +839,12 @@
  <div class="label" data-i18n="schedule.pending_requests">Pending Requests</div>
  </div>
  <div class="stat-card">
- <div class="number">4.9</div>
+ <div class="number">4.9</div><div class="stat-card">
+ <div class="number" id="pendingNotesCount" style="color: var(--gold)">2</div>
+ <div class="label">Pending Notes</div>
+ <div style="font-size:11px;color:var(--gray-500);margin-top:4px">Blocking payment</div>
+</div>
+
  <div class="label" data-i18n="schedule.rating">Rating</div>
  </div>
  </div>
@@ -709,6 +897,14 @@
 
  </div>
 </div><div id="bookingsTab" style="display: none;">
+ <div class="payment-banner" id="pendingBanner">
+  <span class="banner-icon">🔒</span>
+  <div>
+   <div class="banner-title">Payment is held until you add <span>Lesson Notes</span></div>
+   <div>For each completed lesson, you must add notes before payment is released to you. Parents will see these notes too. <a href="javascript:void(0)" onclick="document.getElementById(\'notesModal\');">Learn more</a></div>
+  </div>
+ </div>
+
  <div class="card">
  <div class="card-header">
  <h2 data-i18n="schedule.upcoming_bookings_title">Upcoming Bookings</h2>
@@ -763,7 +959,33 @@
  </main>
 
  <!-- Add Slot Modal -->
- <div class="modal-overlay" id="addSlotModal">
+ <!-- Lesson Notes Modal -->
+<div class="notes-modal-overlay" id="notesModal">
+ <div class="notes-modal">
+  <div class="notes-modal-header">
+   <div>
+    <h3 id="notes-modal-title">Lesson Notes</h3>
+    <div class="lesson-info" id="notes-modal-subtitle"></div>
+   </div>
+   <button class="notes-modal-close" onclick="closeNotesModal()">✕</button>
+  </div>
+  <div class="notes-modal-body">
+   <div class="payment-status-box locked" id="paymentStatusBox">
+    <span id="paymentStatusIcon">🔒</span>
+    <span id="paymentStatusText">Payment locked — add lesson notes to release</span>
+   </div>
+   <label class="notes-label">Lesson Notes for Parent</label>
+   <textarea class="notes-textarea" id="lessonNotesTextarea" placeholder="What did the student work on today? Any areas to focus on, homework assigned, or progress observed..."></textarea>
+   <div class="notes-hint">These notes will be shared with the student's parent after you save.</div>
+  </div>
+  <div class="notes-modal-footer">
+   <button class="btn-cancel" onclick="closeNotesModal()">Cancel</button>
+   <button class="btn-save" id="saveNotesBtn" onclick="saveLessonNotes()">Save Notes</button>
+  </div>
+ </div>
+</div>
+
+<div class="modal-overlay" id="addSlotModal">
  <div class="modal">
  <h2><span data-i18n="schedule.heading_add_availability"></span></h2>
  <div class="form-group">
@@ -845,27 +1067,117 @@
 
  // Calendar data — lessons for April 2026
  const lessons = [
- { date: '2026-04-01', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed' },
- { date: '2026-04-02', time: '11:00', endTime: '12:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed' },
- { date: '2026-04-05', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed' },
- { date: '2026-04-05', time: '14:00', endTime: '15:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'pending' },
- { date: '2026-04-08', time: '15:00', endTime: '16:00', student: 'Sophie Chen', subject: 'Piano', code: 'P', status: 'confirmed' },
- { date: '2026-04-09', time: '10:00', endTime: '11:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'confirmed' },
- { date: '2026-04-12', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed' },
- { date: '2026-04-12', time: '14:00', endTime: '15:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed' },
- { date: '2026-04-15', time: '16:30', endTime: '17:30', student: 'Sophie Chen', subject: 'Piano', code: 'P', status: 'pending' },
- { date: '2026-04-18', time: '09:00', endTime: '10:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'confirmed' },
- { date: '2026-04-19', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed' },
- { date: '2026-04-19', time: '14:00', endTime: '15:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed' },
- { date: '2026-04-22', time: '10:00', endTime: '11:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'confirmed' },
- { date: '2026-04-25', time: '09:00', endTime: '10:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'confirmed' },
- { date: '2026-04-25', time: '11:00', endTime: '12:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'pending' },
- { date: '2026-04-26', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed' },
- ];
+ { id: 'l001', date: '2026-04-01', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: 'Emma worked on Grade 3 Prep pieces. Good progress on scales at 80bpm. Assigned Hanon exercises 1-3 for daily practice.', notesAddedAt: '2026-04-01T11:30:00', paid: true },
+ { id: 'l002', date: '2026-04-02', time: '11:00', endTime: '12:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed', notes: 'Practiced G major scale and simple twinkle variations. Bow hold improving. Focus on intonation next week.', notesAddedAt: '2026-04-02T12:20:00', paid: true },
+ { id: 'l003', date: '2026-04-05', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: 'Reviewed Hanon exercises. Started working on Czerny study No. 1. Good rhythm maintained throughout.', notesAddedAt: '2026-04-05T11:15:00', paid: true },
+ { id: 'l004', date: '2026-04-05', time: '14:00', endTime: '15:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'pending', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l005', date: '2026-04-08', time: '15:00', endTime: '16:00', student: 'Sophie Chen', subject: 'Piano', code: 'P', status: 'confirmed', notes: 'Excellent progress on Grade 5 repertoire. Working on Mozart Sonata K.545 first movement. Brilliant tone!', notesAddedAt: '2026-04-08T16:10:00', paid: true },
+ { id: 'l006', date: '2026-04-09', time: '10:00', endTime: '11:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'confirmed', notes: 'Covered persuasive writing techniques. Grace wrote a short essay on climate change — good vocabulary usage.', notesAddedAt: '2026-04-09T11:05:00', paid: true },
+ { id: 'l007', date: '2026-04-12', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: 'Sight-reading practice with new pieces. Hand position excellent. Keep working on dynamics (crescendo/decrescendo).', notesAddedAt: '2026-04-12T11:00:00', paid: true },
+ { id: 'l008', date: '2026-04-12', time: '14:00', endTime: '15:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed', notes: 'Worked on D major scale. Started Suzuki Book 2 Piece 1. Good bow distribution today.', notesAddedAt: '2026-04-12T15:05:00', paid: true },
+ { id: 'l009', date: '2026-04-15', time: '16:30', endTime: '17:30', student: 'Sophie Chen', subject: 'Piano', code: 'P', status: 'pending', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l010', date: '2026-04-18', time: '09:00', endTime: '10:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'confirmed', notes: 'Algebra revision completed. Ryan solved 15 quadratic equations correctly. Ready to move to word problems next.', notesAddedAt: '2026-04-18T10:05:00', paid: true },
+ { id: 'l011', date: '2026-04-19', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l012', date: '2026-04-19', time: '14:00', endTime: '15:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l013', date: '2026-04-22', time: '10:00', endTime: '11:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l014', date: '2026-04-25', time: '09:00', endTime: '10:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l015', date: '2026-04-25', time: '11:00', endTime: '12:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'pending', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l016', date: '2026-04-26', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+];
 
  function getLessonsForDate(dateStr) {
  return lessons.filter(l => l.date === dateStr);
  }
+
+var currentLessonId = null;
+
+function openNotesModal(lessonId) {
+ var lesson = lessons.find(function(l) { return l.id === lessonId; });
+ if (!lesson) return;
+ currentLessonId = lessonId;
+
+ var isFuture = lesson.date >= fmtDate(new Date());
+ document.getElementById('notes-modal-title').textContent = isFuture ? 'Lesson Details' : 'Add Lesson Notes';
+ document.getElementById('notes-modal-subtitle').textContent = lesson.student + ' · ' + lesson.subject + ' · ' + lesson.date + ' ' + lesson.time + '–' + lesson.endTime;
+
+ var notesEl = document.getElementById('lessonNotesTextarea');
+ notesEl.value = lesson.notes || '';
+ notesEl.disabled = isFuture;
+ notesEl.placeholder = isFuture ? 'Notes can be added after the lesson.' : 'What did the student work on today? Any areas to focus on, homework assigned, or progress observed...';
+
+ var statusBox = document.getElementById('paymentStatusBox');
+ var statusIcon = document.getElementById('paymentStatusIcon');
+ var statusText = document.getElementById('paymentStatusText');
+ var saveBtn = document.getElementById('saveNotesBtn');
+
+ if (isFuture) {
+  statusBox.className = 'payment-status-box locked';
+  statusBox.style.display = 'none';
+  saveBtn.style.display = 'none';
+ } else if (lesson.paid) {
+  statusBox.className = 'payment-status-box released';
+  statusBox.style.display = '';
+  statusIcon.textContent = '✅';
+  statusText.textContent = 'Payment released — notes added on ' + (lesson.notesAddedAt ? new Date(lesson.notesAddedAt).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) : '');
+  saveBtn.style.display = 'inline-flex';
+  saveBtn.textContent = 'Update Notes';
+ } else {
+  statusBox.className = 'payment-status-box locked';
+  statusBox.style.display = '';
+  statusIcon.textContent = '🔒';
+  statusText.textContent = 'Payment is LOCKED — add lesson notes to release payment';
+  saveBtn.style.display = 'inline-flex';
+  saveBtn.textContent = 'Save Notes';
+ }
+
+ document.getElementById('notesModal').classList.add('open');
+ document.body.style.overflow = 'hidden';
+}
+
+function closeNotesModal() {
+ document.getElementById('notesModal').classList.remove('open');
+ document.body.style.overflow = '';
+ currentLessonId = null;
+}
+
+function saveLessonNotes() {
+ if (!currentLessonId) return;
+ var lesson = lessons.find(function(l) { return l.id === currentLessonId; });
+ if (!lesson) return;
+
+ var notes = document.getElementById('lessonNotesTextarea').value.trim();
+ lesson.notes = notes;
+ lesson.notesAddedAt = notes ? new Date().toISOString() : '';
+ lesson.paid = !!notes;
+
+ // Visual feedback
+ var btn = document.getElementById('saveNotesBtn');
+ btn.textContent = '✓ Saved!';
+ btn.style.background = 'var(--green)';
+ setTimeout(function() {
+  btn.textContent = 'Update Notes';
+  btn.style.background = '';
+  closeNotesModal();
+  renderCalendar();
+  updatePendingNotesStats();
+ }, 1200);
+
+ // Persist to localStorage
+ localStorage.setItem('minerva_lesson_notes', JSON.stringify(
+  lessons.map(function(l) { return { id: l.id, notes: l.notes, notesAddedAt: l.notesAddedAt, paid: l.paid }; })
+ ));
+ // Also save per-student+date for parent view
+ localStorage.setItem('minerva_note_' + lesson.student.replace(/\s+/g,'_') + '_' + lesson.date, notes);
+}
+}
+
+function updatePendingNotesStats() {
+ var pending = lessons.filter(function(l) { return !l.paid && l.date < fmtDate(new Date()); });
+ var el = document.getElementById('pendingNotesCount');
+ if (el) el.textContent = pending.length;
+ var banner = document.getElementById('pendingBanner');
+ if (banner) banner.style.display = pending.length > 0 ? 'flex' : 'none';
+}
 
 function renderCalendar() {
  var year = currentDate.getFullYear();
@@ -883,6 +1195,18 @@ function renderCalendar() {
 
  var tbody = document.getElementById('calTbody');
  tbody.innerHTML = '';
+
+ // Load persisted notes
+ try {
+  var saved = JSON.parse(localStorage.getItem('minerva_lesson_notes') || '{}');
+  lessons.forEach(function(l) {
+   if (saved[l.id]) {
+    l.notes = saved[l.id].notes || '';
+    l.notesAddedAt = saved[l.id].notesAddedAt || '';
+    l.paid = saved[l.id].paid || false;
+   }
+  });
+ } catch(e) {}
 
  for (var w = 0; w < 6; w++) {
   var tr = document.createElement('tr');
@@ -914,14 +1238,25 @@ function renderCalendar() {
    var lessonsHtml = '<div class="cal-lessons">';
    for (var i = 0; i < dayLessons.length; i++) {
     var l = dayLessons[i];
-    var pendingClass = l.status === 'pending' ? ' pending' : '';
-    lessonsHtml += '<div class="cal-lesson-card' + pendingClass + '">' +
+    var isFuture = l.date > todayStr;
+    var pendingClass = l.status === 'pending' && isFuture ? ' pending' : '';
+    var payBtn = '';
+    if (!isFuture) {
+     if (l.paid) {
+      payBtn = '<button class="pay-released" onclick="openNotesModal(\'' + l.id + '\')">✓ Paid</button>';
+     } else {
+      payBtn = '<button class="pay-locked" onclick="openNotesModal(\'' + l.id + '\')">🔒 Notes</button>';
+     }
+    }
+    lessonsHtml += '<div class="cal-lesson-card' + pendingClass + '" onclick="openNotesModal(\'' + l.id + '\')">' +
      '<div class="cal-lesson-time">' + l.time + ' – ' + l.endTime + '</div>' +
      '<div class="cal-lesson-name">' + l.student + '</div>' +
      '<div class="cal-lesson-meta">' +
      '<span class="cal-lesson-code">' + l.code + ' · ' + l.subject + '</span>' +
      '<span class="cal-lesson-status ' + l.status + '">' + l.status + '</span>' +
-     '</div></div>';
+     '</div>' +
+     '<div class="cal-lesson-payment">' + payBtn + '</div>' +
+     '</div>';
    }
    lessonsHtml += '</div>';
 
@@ -931,9 +1266,19 @@ function renderCalendar() {
 
   tbody.appendChild(tr);
  }
+
+ updatePendingNotesStats();
 }
 
- document.addEventListener('DOMContentLoaded', renderCalendar);
+document.addEventListener('DOMContentLoaded', function() {
+ renderCalendar();
+ document.getElementById('notesModal').addEventListener('click', function(e) {
+  if (e.target === this) closeNotesModal();
+ });
+ document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeNotesModal();
+ });
+});document.addEventListener('DOMContentLoaded', renderCalendar);
 
 
  document.getElementById('addSlotModal').addEventListener('click', function(e) {
