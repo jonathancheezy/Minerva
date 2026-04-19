@@ -356,7 +356,7 @@
 
 .cal-lesson-time {
  font-size: 11px;
- font-weight: 800;
+ font-weight: 700;
  color: var(--navy-dark);
  margin-bottom: 2px;
 }
@@ -867,83 +867,74 @@
  return lessons.filter(l => l.date === dateStr);
  }
 
- function renderCalendar() {
- const year = currentDate.getFullYear();
- const month = currentDate.getMonth();
+function renderCalendar() {
+ var year = currentDate.getFullYear();
+ var month = currentDate.getMonth();
 
  document.getElementById('calYear').textContent = year;
  document.getElementById('calMonth').textContent = new Intl.DateTimeFormat('en', { month: 'long' }).format(currentDate);
 
- const firstDay = new Date(year, month, 1);
- const lastDay = new Date(year, month + 1, 0);
+ var firstOfMonth = new Date(year, month, 1);
+ var startOfCal = new Date(firstOfMonth);
+ startOfCal.setDate(startOfCal.getDate() - firstOfMonth.getDay());
 
- // Day of week for 1st (0=Sun, 1=Mon...)
- const startDow = firstDay.getDay();
- const daysInMonth = lastDay.getDate();
- const today = new Date();
- const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+ var today = new Date();
+ var todayStr = fmtDate(today);
 
- const grid = document.getElementById('calGrid');
- grid.innerHTML = '';
+ var tbody = document.getElementById('calTbody');
+ tbody.innerHTML = '';
 
- // Build array of all cells: leading empty cells + days
- const cells = [];
- for (let i = 0; i < startDow; i++) {
- const d = new Date(year, month, -startDow + i + 1);
- cells.push({ date: null, day: d.getDate(), other: true, dateStr: '' });
+ for (var w = 0; w < 6; w++) {
+  var tr = document.createElement('tr');
+  tr.style.height = '90px';
+
+  for (var dow = 0; dow < 7; dow++) {
+   var d = new Date(startOfCal);
+   d.setDate(d.getDate() + w * 7 + dow);
+
+   var dateStr = fmtDate(d);
+   var isToday = dateStr === todayStr;
+   var isCurrentMonth = d.getMonth() === month;
+   var dayLessons = getLessonsForDate(dateStr);
+
+   var td = document.createElement('td');
+   var tdClasses = ['cal-td'];
+   if (isToday) tdClasses.push('today');
+   if (!isCurrentMonth) tdClasses.push('other-month');
+   td.className = tdClasses.join(' ');
+
+   var numDiv = '<div class="cal-day-num">';
+   if (isToday) {
+    numDiv += '<div class="cal-day-num-num">' + d.getDate() + '</div>';
+   } else {
+    numDiv += d.getDate();
+   }
+   numDiv += '</div>';
+
+   var lessonsHtml = '<div class="cal-lessons">';
+   for (var i = 0; i < dayLessons.length; i++) {
+    var l = dayLessons[i];
+    var pendingClass = l.status === 'pending' ? ' pending' : '';
+    lessonsHtml += '<div class="cal-lesson-card' + pendingClass + '">' +
+     '<div class="cal-lesson-time">' + l.time + ' – ' + l.endTime + '</div>' +
+     '<div class="cal-lesson-name">' + l.student + '</div>' +
+     '<div class="cal-lesson-meta">' +
+     '<span class="cal-lesson-code">' + l.code + ' · ' + l.subject + '</span>' +
+     '<span class="cal-lesson-status ' + l.status + '">' + l.status + '</span>' +
+     '</div></div>';
+   }
+   lessonsHtml += '</div>';
+
+   td.innerHTML = numDiv + lessonsHtml;
+   tr.appendChild(td);
+  }
+
+  tbody.appendChild(tr);
  }
- for (let d = 1; d <= daysInMonth; d++) {
- const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
- cells.push({ date: d, day: d, other: false, isToday: dateStr === todayStr, dateStr });
- }
- // Pad to complete last week
- while (cells.length % 7 !== 0) {
- const d = new Date(year, month + 1, cells.length - startDow - daysInMonth + 1);
- cells.push({ date: null, day: d.getDate(), other: true, dateStr: '' });
- }
-
- // Split into weeks
- const weeks = [];
- for (let i = 0; i < cells.length; i += 7) {
- weeks.push(cells.slice(i, i + 7));
- }
-
- weeks.forEach(week => {
- const weekEl = document.createElement('div');
- weekEl.className = 'cal-week';
-
- week.forEach(cell => {
- const cellEl = document.createElement('div');
- const classes = ['cal-cell'];
- if (cell.other) classes.push('other');
- if (cell.isToday) classes.push('today');
- cellEl.className = classes.join(' ');
-
- cellEl.innerHTML = `<div class="cal-day-num">${cell.day}</div>`;
-
- if (!cell.other && cell.dateStr) {
- const dayLessons = getLessonsForDate(cell.dateStr);
- if (dayLessons.length > 0) {
- const eventsEl = document.createElement('div');
- eventsEl.className = 'cal-events';
- dayLessons.forEach(l => {
- const ev = document.createElement('div');
- ev.className = `cal-event ${l.status === 'pending' ? 'pending' : ''}`;
- ev.innerHTML = `<div class="cal-event-row"><span class="cal-event-time">${l.time}</span></div><div class="cal-event-name">${l.student}</div><div class="cal-event-subj">${l.code} · ${l.subject}</div>`;
- eventsEl.appendChild(ev);
- });
- cellEl.appendChild(eventsEl);
- }
- }
-
- weekEl.appendChild(cellEl);
- });
-
- grid.appendChild(weekEl);
- });
- }
+}
 
  document.addEventListener('DOMContentLoaded', renderCalendar);
+
 
  document.getElementById('addSlotModal').addEventListener('click', function(e) {
  if (e.target === this) closeModal('addSlot');
