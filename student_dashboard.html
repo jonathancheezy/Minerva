@@ -193,7 +193,6 @@
 
  /* Mobile */
  @media (max-width: 900px) {
- .student-grid { grid-template-columns: repeat(2, 1fr); }
  .stats-row { grid-template-columns: repeat(2, 1fr); }
  .metrics-row { grid-template-columns: repeat(2, 1fr); }
  }
@@ -203,7 +202,9 @@
  .nav-links.active { display: flex; }
  .nav-links a { color: rgba(255,255,255,0.85) !important; padding: 8px 0; font-size: 15px; }
  .nav-left { position: relative; }
- .student-grid { grid-template-columns: 1fr; }
+ .student-card { flex: 0 0 calc(50% - 8px); }
+ .student-card:nth-child(3n) { margin-right: 16px; }
+ .student-card:nth-child(2n) { margin-right: 0; }
  .page-header { flex-direction: column; align-items: flex-start; }
  }
  </style>
