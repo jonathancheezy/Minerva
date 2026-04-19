@@ -584,6 +584,11 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 <script src="i18n.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+ // Apply translations
+ var urlParams = new URLSearchParams(window.location.search);
+ var lang = urlParams.get('lang') || 'en';
+ if (typeof applyTranslations === 'function') applyTranslations(lang);
+
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
    tab.addEventListener('click', function() {
