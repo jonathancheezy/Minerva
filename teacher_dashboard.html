@@ -308,7 +308,7 @@ nav {
 
 /* Schedule Sections */
 .schedule-section {
- display: none;
+ display: none !important;
 }
 .schedule-section[style*="display: none"] {
  display: none;
@@ -887,7 +887,7 @@ document.addEventListener('DOMContentLoaded', function() {
        var section = s.getAttribute('data-section');
        s.removeAttribute('style'); // clear ANY inline style including display:none
        if (section === target) {
-         s.style.display = 'block';
+         s.style.display = 'block !important';
        } else {
          s.style.display = 'none';
        }
