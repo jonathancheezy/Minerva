@@ -308,10 +308,10 @@ nav {
 
 /* Schedule Sections */
 .schedule-section {
- display: none !important;
+ display: block;
 }
-.schedule-section[style*="display: none"] {
- display: none;
+.schedule-section.hidden {
+ display: none !important;
 }
 
 .day-header {
@@ -424,8 +424,8 @@ nav {
 .schedule-section {
  display: none;
 }
-.schedule-section[style*="display: none"] {
- display: none;
+.schedule-section.hidden {
+ display: none !important;
 }
 .schedule-section[data-section] {
  display: block;
@@ -885,11 +885,10 @@ document.addEventListener('DOMContentLoaded', function() {
      var target = tab.getAttribute('data-tab');
      document.querySelectorAll('.schedule-section').forEach(function(s) {
        var section = s.getAttribute('data-section');
-       s.removeAttribute('style'); // clear ANY inline style including display:none
        if (section === target) {
-         s.style.display = 'block !important';
+         s.classList.remove('hidden');
        } else {
-         s.style.display = 'none';
+         s.classList.add('hidden');
        }
      });
    });
