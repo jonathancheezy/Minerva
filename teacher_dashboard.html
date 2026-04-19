@@ -305,8 +305,7 @@ nav {
 
 /* Schedule Sections */
 .schedule-section {
- display: block;
- width: 100%;
+ display: none;
 }
 .schedule-section[style*="display: none"] {
  display: none !important;
@@ -883,12 +882,11 @@ document.addEventListener('DOMContentLoaded', function() {
      var target = tab.getAttribute('data-tab');
      document.querySelectorAll('.schedule-section').forEach(function(s) {
        var section = s.getAttribute('data-section');
+       s.removeAttribute('style'); // clear ANY inline style including display:none
        if (section === target) {
-         s.style.cssText = 'display: block !important';
-         s.removeAttribute('hidden');
+         s.style.display = 'block';
        } else {
-         s.style.cssText = 'display: none !important';
-         s.setAttribute('hidden', '');
+         s.style.display = 'none';
        }
      });
    });
