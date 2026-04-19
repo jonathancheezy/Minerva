@@ -60,7 +60,7 @@
 
  .logo-icon { width: 32px; height: 32px; }
 
- .nav-right {
+ ..nav-right {
  display: flex;
  align-items: center;
  gap: 16px;
@@ -68,9 +68,10 @@
  justify-content: flex-end;
  }
 
- .nav-links {
+ ..nav-links {
  display: flex;
  gap: 24px;
+ margin-left: 32px;
  margin-right: auto;
  }
 
@@ -325,12 +326,13 @@
  <a href="teacher_dashboard.html?v=2" data-i18n="teacher_dash.dashboard">Dashboard</a>
  <a href="student_dashboard.html?v=2" data-i18n="teacher_dash.students">Students</a>
  <a href="teacher_schedule.html?v=2" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="reviews.title">Reviews</a>
  <a href="messages.html?v=2" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="reviews.title">Reviews</a>
  <a href="earnings.html?v=2" data-i18n="earnings.title">Earnings</a>
  </div>
  <div class="nav-right">
- <div class="user-info">
+  <div class="nav-meta">
+  <div class="user-info">
  <a href="teacher_profile.html?v=2" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
  <div class="lang-selector">

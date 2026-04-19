@@ -26,16 +26,36 @@
  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--gray-100); color: var(--gray-700); line-height: 1.6; }
 
  /* Nav */
- nav { background: var(--navy); color: white; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 100; }
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+ z-index: 100;
+ }
  .nav-left { display: flex; align-items: center; gap: 16px; }
  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: white; text-decoration: none; }
  .logo-icon { width: 32px; height: 32px; }
- .nav-links { display: flex; gap: 24px; margin-right: auto; }
+ ..nav-links {
+ display: flex;
+ gap: 24px;
+ margin-left: 32px;
+ margin-right: auto;
+ }
  .mobile-menu-btn { display: none; font-size: 22px; cursor: pointer; padding: 6px; color: white; background: none; border: none; }
  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
  .nav-links a:hover, .nav-links a.active { color: white; }
  .nav-links a.active { color: #F9A828 !important; }
- .nav-right { display: flex; align-items: center; gap: 16px; }
+ ..nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
  .avatar { width: 34px; height: 34px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--navy-dark); font-size: 13px; flex-shrink: 0; }
  .nav-meta { display: flex; flex-direction: row; align-items: center; gap: 16px; }
  .user-info { display: flex; align-items: center; }
@@ -201,32 +221,36 @@
 </head>
 <body>
  <nav>
-  <div class="nav-left">
-   <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
-   <a href="minerva_landing.html" class="logo">
-    <svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#1e3a5f"/><path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/></svg>
-    Minerva
-   </a>
-   <div class="nav-links">
-    <a href="teacher_dashboard.html?v=2">Dashboard</a>
-    <a href="teacher_schedule.html?v=2">Schedule</a>
-    <a href="messages.html?v=2">Messages</a>
-    <a href="reviews.html?v=2">Reviews</a>
-    <a href="earnings.html?v=2">Earnings</a>
-   </div>
-  </div>
-  <div class="nav-right">
-   <div class="nav-meta">
-    <div class="user-info">
-     <a href="teacher_profile.html?v=2" style="text-decoration:none"><div class="avatar">TC</div></a>
-    </div>
-   </div>
-   <div class="lang-selector">
-    <a href="student_dashboard.html?lang=en&v=2" class="lang-btn">EN</a>
-    <a href="student_dashboard.html?lang=zh-TW&v=2" class="lang-btn">繁</a>
-    <a href="student_dashboard.html?lang=zh-CN&v=2" class="lang-btn">简</a>
-   </div>
-  </div>
+ <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="teacher_dashboard.html?v=2" data-i18n="teacher_dash.dashboard">Dashboard</a>
+ <a href="teacher_schedule.html?v=2" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html?v=2" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="reviews.html?v=2" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html?v=2" data-i18n="earnings.title">Earnings</a>
+ </div>
+ <div class="nav-right">
+ <div class="nav-meta">
+ <div class="user-info">
+ <a href="teacher_profile.html?v=2" style="text-decoration:none"><div class="avatar">TC</div></a>
+ </div>
+ </div>
+ <div class="lang-selector">
+ <a href="student_dashboard.html?lang=en&v=2" class="lang-btn">EN</a>
+ <a href="student_dashboard.html?lang=zh-TW&v=2" class="lang-btn">繁</a>
+ <a href="student_dashboard.html?lang=zh-CN&v=2" class="lang-btn">简</a>
+ </div>
+ </div>
  </nav>
 
  <main class="main">
