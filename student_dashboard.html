@@ -56,7 +56,7 @@
  .btn-outline:hover { border-color: var(--navy); }
 
  /* Stats Row */
- .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+ .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
  .stat-card { background: white; border-radius: 14px; padding: 20px; border: 1px solid var(--gray-200); }
  .stat-card .label { font-size: 12px; color: var(--gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px; }
  .stat-card .value { font-size: 30px; font-weight: 800; color: var(--navy-dark); line-height: 1.1; }
@@ -109,6 +109,11 @@
  .progress-fill.green { background: var(--green); }
  .progress-fill.purple { background: var(--purple); }
  .progress-fill.teal { background: var(--teal); }
+
+ /* Card progress (removed) */
+ .card-progress { display: none; }
+ .progress-bar { display: none; }
+ .progress-fill { display: none; }
 
  /* Modal */
  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
@@ -202,7 +207,7 @@
    </a>
    <div class="nav-links">
     <a href="teacher_dashboard.html">Dashboard</a>
-    <a href="student_dashboard.html" class="active">Students</a>
+    <a href="student_dashboard.html">Students</a>
     <a href="teacher_schedule.html">Schedule</a>
     <a href="messages.html">Messages</a>
     <a href="reviews.html">Reviews</a>
@@ -224,30 +229,25 @@
     <h1 data-i18n="student_crm.heading">Student CRM</h1>
     <p>Manage your students, track progress, and plan ahead</p>
    </div>
-   <button class="btn btn-primary" onclick="openAddStudent()">+ Add Student</button>
+ 
   </div>
 
   <!-- Stats Row -->
   <div class="stats-row">
    <div class="stat-card">
-    <div class="label" data-i18n="student_crm.total_students">Total Students</div>
+    <div class="label">Total Students</div>
     <div class="value" id="stat-total">8</div>
     <div class="sub">Active: <span id="stat-active">6</span> · Trial: <span id="stat-trial">2</span></div>
    </div>
    <div class="stat-card">
-    <div class="label" data-i18n="student_crm.lessons_month">Lessons This Month</div>
+    <div class="label">Lessons This Month</div>
     <div class="value green" id="stat-lessons">47</div>
     <div class="sub">↑ 12% vs last month</div>
    </div>
    <div class="stat-card">
-    <div class="label" data-i18n="student_crm.upcoming_tests">Upcoming Tests</div>
-    <div class="value purple" id="stat-tests">3</div>
-    <div class="sub" data-i18n="student_crm.tests_this_month">This month</div>
-   </div>
-   <div class="stat-card">
-    <div class="label" data-i18n="student_crm.avg_rating">Avg Rating</div>
+    <div class="label">Avg Rating</div>
     <div class="value gold">4.9 ★</div>
-    <div class="sub">Based on 24 reviews</div>
+    <div class="sub">24 reviews</div>
    </div>
   </div>
 
@@ -304,16 +304,10 @@
       <div class="mc-label">Next Lesson</div>
      </div>
      <div class="metric-card">
-      <div class="mc-value" id="m-progress">—</div>
-      <div class="mc-label">Progress</div>
+      <div class="mc-value" id="m-status">—</div>
+      <div class="mc-label">Status</div>
      </div>
     </div>
-   </div>
-
-   <!-- Progress -->
-   <div class="modal-section">
-    <div class="modal-section-title">Progress by Category</div>
-    <div id="progress-categories"></div>
    </div>
 
    <!-- Upcoming Test -->
@@ -355,15 +349,8 @@ var students = [
   totalLessons: 64,
   hoursTaught: 85.3,
   nextLesson: 'Apr 21',
-  progress: 72,
   status: 'active',
   nextTest: '2026-04-28',
-  progressCategories: [
-   { name: 'Technique', value: 78 },
-   { name: 'Music Theory', value: 65 },
-   { name: 'Sight-reading', value: 70 },
-   { name: 'Repertoire', value: 75 }
-  ],
   recentLessons: [
    { date: 'Apr 16', dow: 'Thu', time: '10:00–11:00', duration: '60 min', subject: 'piano' },
    { date: 'Apr 14', dow: 'Tue', time: '10:00–11:00', duration: '60 min', subject: 'piano' },
@@ -381,15 +368,8 @@ var students = [
   totalLessons: 28,
   hoursTaught: 32.0,
   nextLesson: 'Apr 22',
-  progress: 45,
   status: 'active',
   nextTest: '2026-05-10',
-  progressCategories: [
-   { name: 'Bow Control', value: 42 },
-   { name: 'Intonation', value: 38 },
-   { name: 'Rhythm', value: 55 },
-   { name: 'Repertoire', value: 44 }
-  ],
   recentLessons: [
    { date: 'Apr 17', dow: 'Fri', time: '11:00–12:00', duration: '60 min', subject: 'violin' },
    { date: 'Apr 15', dow: 'Tue', time: '11:00–12:00', duration: '60 min', subject: 'violin' },
@@ -407,15 +387,8 @@ var students = [
   totalLessons: 41,
   hoursTaught: 54.7,
   nextLesson: 'Apr 24',
-  progress: 83,
   status: 'active',
   nextTest: '',
-  progressCategories: [
-   { name: 'Technique', value: 88 },
-   { name: 'Music Theory', value: 80 },
-   { name: 'Sight-reading', value: 78 },
-   { name: 'Repertoire', value: 85 }
-  ],
   recentLessons: [
    { date: 'Apr 15', dow: 'Tue', time: '15:00–16:00', duration: '60 min', subject: 'piano' },
    { date: 'Apr 10', dow: 'Thu', time: '15:00–16:00', duration: '60 min', subject: 'piano' },
@@ -433,15 +406,8 @@ var students = [
   totalLessons: 19,
   hoursTaught: 22.5,
   nextLesson: 'Apr 21',
-  progress: 58,
   status: 'trial',
   nextTest: '2026-05-15',
-  progressCategories: [
-   { name: 'Algebra', value: 52 },
-   { name: 'Geometry', value: 48 },
-   { name: 'Word Problems', value: 62 },
-   { name: 'Mental Math', value: 70 }
-  ],
   recentLessons: [
    { date: 'Apr 16', dow: 'Wed', time: '14:00–15:00', duration: '60 min', subject: 'math' },
    { date: 'Apr 14', dow: 'Mon', time: '14:00–15:00', duration: '60 min', subject: 'math' },
@@ -459,15 +425,8 @@ var students = [
   totalLessons: 35,
   hoursTaught: 43.8,
   nextLesson: 'Apr 23',
-  progress: 67,
   status: 'active',
   nextTest: '2026-05-20',
-  progressCategories: [
-   { name: 'Reading', value: 72 },
-   { name: 'Writing', value: 60 },
-   { name: 'Speaking', value: 65 },
-   { name: 'Grammar', value: 70 }
-  ],
   recentLessons: [
    { date: 'Apr 16', dow: 'Wed', time: '10:00–11:00', duration: '60 min', subject: 'english' },
    { date: 'Apr 10', dow: 'Thu', time: '10:00–11:00', duration: '60 min', subject: 'english' },
@@ -485,15 +444,8 @@ var students = [
   totalLessons: 52,
   hoursTaught: 69.3,
   nextLesson: 'Apr 25',
-  progress: 61,
   status: 'active',
   nextTest: '2026-05-08',
-  progressCategories: [
-   { name: 'Bow Control', value: 58 },
-   { name: 'Intonation', value: 55 },
-   { name: 'Vibrato', value: 62 },
-   { name: 'Repertoire', value: 68 }
-  ],
   recentLessons: [
    { date: 'Apr 17', dow: 'Fri', time: '16:00–17:00', duration: '60 min', subject: 'violin' },
    { date: 'Apr 14', dow: 'Mon', time: '16:00–17:00', duration: '60 min', subject: 'violin' },
@@ -511,15 +463,8 @@ var students = [
   totalLessons: 11,
   hoursTaught: 13.8,
   nextLesson: 'Apr 26',
-  progress: 34,
   status: 'trial',
   nextTest: '',
-  progressCategories: [
-   { name: 'Technique', value: 38 },
-   { name: 'Music Theory', value: 30 },
-   { name: 'Sight-reading', value: 32 },
-   { name: 'Repertoire', value: 35 }
-  ],
   recentLessons: [
    { date: 'Apr 15', dow: 'Tue', time: '13:00–14:00', duration: '60 min', subject: 'piano' },
    { date: 'Apr 10', dow: 'Fri', time: '13:00–14:00', duration: '60 min', subject: 'piano' },
@@ -537,15 +482,8 @@ var students = [
   totalLessons: 23,
   hoursTaught: 27.5,
   nextLesson: 'Apr 22',
-  progress: 75,
   status: 'active',
   nextTest: '2026-04-30',
-  progressCategories: [
-   { name: 'Algebra', value: 78 },
-   { name: 'Geometry', value: 72 },
-   { name: 'Word Problems', value: 70 },
-   { name: 'Exam Prep', value: 80 }
-  ],
   recentLessons: [
    { date: 'Apr 16', dow: 'Thu', time: '17:00–18:00', duration: '60 min', subject: 'math' },
    { date: 'Apr 14', dow: 'Mon', time: '17:00–18:00', duration: '60 min', subject: 'math' },
@@ -571,10 +509,6 @@ var subjectColors = {
 function getAvatarColor(subj) {
  return subjectColors[subj] ? subjectColors[subj].color : '#64748b';
 }
-function getBarColor(subj) {
- return subjectColors[subj] ? subjectColors[subj].bar : '#1e3a5f';
-}
-
 // ── Render ────────────────────────────────────────────────────────────────────
 function renderGrid() {
  var grid = document.getElementById('studentGrid');
@@ -591,7 +525,6 @@ function renderGrid() {
  }
 
  grid.innerHTML = filtered.map(function(s) {
-  var progColor = getBarColor(s.subject);
   return '<div class="student-card" onclick="openStudent(\'' + s.id + '\')">' +
    '<div class="card-status ' + s.status + '">' + s.status + '</div>' +
    '<div class="card-top">' +
@@ -608,11 +541,7 @@ function renderGrid() {
     '<div class="metric"><div class="m-label">Next</div><div class="m-value" style="font-size:12px;padding-top:2px">' + s.nextLesson + '</div></div>' +
     '<div class="metric"><div class="m-label">Progress</div><div class="m-value">' + s.progress + '%</div></div>' +
    '</div>' +
-   '<div class="card-progress">' +
-    '<div class="progress-label"><span>Overall</span><span>' + s.progress + '%</span></div>' +
-    '<div class="progress-bar"><div class="progress-fill" style="width:' + s.progress + '%;background:' + progColor + '"></div></div>' +
-   '</div>' +
-  '</div>';
+   ''
  }).join('');
 }
 
@@ -643,17 +572,7 @@ function openStudent(id) {
  document.getElementById('m-total').textContent = currentStudent.totalLessons;
  document.getElementById('m-hours').textContent = currentStudent.hoursTaught.toFixed(1) + 'h';
  document.getElementById('m-next').textContent = currentStudent.nextLesson;
- document.getElementById('m-progress').textContent = currentStudent.progress + '%';
-
- // Progress categories
- var progHtml = currentStudent.progressCategories.map(function(cat) {
-  var barColor = getBarColor(currentStudent.subject);
-  return '<div class="prog-row">' +
-   '<div class="prog-row-header"><span>' + cat.name + '</span><span>' + cat.value + '%</span></div>' +
-   '<div class="prog-row-bar"><div class="prog-row-fill" style="width:' + cat.value + '%;background:' + barColor + '"></div></div>' +
-  '</div>';
- }).join('');
- document.getElementById('progress-categories').innerHTML = progHtml;
+ document.getElementById('m-status').textContent = currentStudent.status.charAt(0).toUpperCase() + currentStudent.status.slice(1);
 
  // Test date
  var testInput = document.getElementById('testDateInput');
@@ -738,10 +657,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (e.target === this) closeModal();
  });
 });
-
-function openAddStudent() {
- alert('Add student form coming soon! 🎉');
-}
 
 // Close modal on Escape key
 document.addEventListener('keydown', function(e) {
