@@ -599,7 +599,7 @@
     student_crm:{
       heading:{en:"Students",zhTW:"學生",zhCN:"学生"},
       total_students:{en:"Total Students",zhTW:"學生總數",zhCN:"学生总数"},
-      lessons_month:{en:"Lessons This Month",zhTW:"本月課堂",zhCN:"本月课堂"},
+      lessons_month:{en:"Lessons / Month",zhTW:"本月課堂",zhCN:"本月课堂"},
       upcoming_tests:{en:"Upcoming Tests",zhTW:"即將到來的測驗",zhCN:"即将到来的测验"},
       avg_rating:{en:"Avg Rating",zhTW:"平均評分",zhCN:"平均评分"},
       search_placeholder:{en:"Search students...",zhTW:"搜尋學生...",zhCN:"搜索学生..."},
