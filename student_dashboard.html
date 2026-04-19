@@ -614,22 +614,25 @@ function renderGrid() {
   for (var j = 0; j < 3; j++) {
    if (i + j < filtered.length) {
     var s = filtered[i + j];
-    rows.push('<td><div class="student-card-wrap" onclick="openStudent(\'' + s.id + '\')">');
-   '<div class="card-status ' + s.status + '">' + s.status + '</div>' +
-   '<div class="card-top">' +
-    '<div class="card-avatar" style="background:' + getAvatarColor(s.subject) + '">' + s.initials + '</div>' +
-    '<div class="card-info">' +
-     '<div class="card-name">' + s.name + '</div>' +
-     '<div class="card-grade">' + s.grade + '</div>' +
-     '<div><span class="card-subject ' + s.subject + '">' + s.subjectLabel + '</span></div>' +
-    '</div>' +
-   '</div>' +
-   '<div class="card-metrics">' +
-    '<div class="metric"><div class="m-label">Lessons</div><div class="m-value">' + s.totalLessons + '</div></div>' +
-    '<div class="metric"><div class="m-label">Hours</div><div class="m-value">' + s.hoursTaught.toFixed(1) + 'h</div></div>' +
-    '<div class="metric"><div class="m-label">Next</div><div class="m-value" style="font-size:12px;padding-top:2px">' + s.nextLesson + '</div></div>' +
-    '<div class="metric"><div class="m-label">Status</div><div class="m-value" style="font-size:12px;text-transform:capitalize">' + s.status + '</div></div>' +
-   '</div></td>');
+    rows.push(
+     '<td><div class="student-card-wrap" onclick="openStudent(\'' + s.id + '\')">' +
+     '<div class="card-status ' + s.status + '">' + s.status + '</div>' +
+     '<div class="card-top">' +
+      '<div class="card-avatar" style="background:' + getAvatarColor(s.subject) + '">' + s.initials + '</div>' +
+      '<div class="card-info">' +
+       '<div class="card-name">' + s.name + '</div>' +
+       '<div class="card-grade">' + s.grade + '</div>' +
+       '<div><span class="card-subject ' + s.subject + '">' + s.subjectLabel + '</span></div>' +
+      '</div>' +
+     '</div>' +
+     '<div class="card-metrics">' +
+      '<div class="metric"><div class="m-label">Lessons</div><div class="m-value">' + s.totalLessons + '</div></div>' +
+      '<div class="metric"><div class="m-label">Hours</div><div class="m-value">' + s.hoursTaught.toFixed(1) + 'h</div></div>' +
+      '<div class="metric"><div class="m-label">Next</div><div class="m-value" style="font-size:12px;padding-top:2px">' + s.nextLesson + '</div></div>' +
+      '<div class="metric"><div class="m-label">Status</div><div class="m-value" style="font-size:12px;text-transform:capitalize">' + s.status + '</div></div>' +
+     '</div>' +
+     '</div></td>'
+    );
    }
   }
   rows.push('</tr>');
