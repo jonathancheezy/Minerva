@@ -884,10 +884,10 @@ document.addEventListener('DOMContentLoaded', function() {
      document.querySelectorAll('.schedule-section').forEach(function(s) {
        var section = s.getAttribute('data-section');
        if (section === target) {
-         s.style.display = 'block';
+         s.style.cssText = 'display: block !important';
          s.removeAttribute('hidden');
        } else {
-         s.style.display = 'none';
+         s.style.cssText = 'display: none !important';
          s.setAttribute('hidden', '');
        }
      });
