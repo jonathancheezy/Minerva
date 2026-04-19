@@ -837,15 +837,11 @@
  <div class="label" data-i18n="schedule.pending_requests">Pending Requests</div>
  </div>
  <div class="stat-card">
- <div class="number">4.9</div><div class="stat-card">
  <div class="number" id="pendingNotesCount" style="color: var(--gold)">2</div>
  <div class="label">Pending Notes</div>
  <div style="font-size:11px;color:var(--gray-500);margin-top:4px">Blocking payment</div>
+ </div>
 </div>
-
- <div class="label" data-i18n="schedule.rating">Rating</div>
- </div>
- </div>
 
  <div class="tabs">
  <button class="tab active" onclick="showTab('calendar')" data-i18n="schedule.monthly_calendar"><span data-i18n="schedule.heading_monthly_calendar">Monthly Calendar</span></button>
@@ -1269,6 +1265,7 @@ function renderCalendar() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+ showTab('calendar');
  renderCalendar();
  document.getElementById('notesModal').addEventListener('click', function(e) {
   if (e.target === this) closeNotesModal();
@@ -1276,7 +1273,7 @@ document.addEventListener('DOMContentLoaded', function() {
  document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeNotesModal();
  });
-});document.addEventListener('DOMContentLoaded', renderCalendar);
+});
 
 
  document.getElementById('addSlotModal').addEventListener('click', function(e) {
