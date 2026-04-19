@@ -3,7 +3,7 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Student CRM — Minerva</title>
+ <title>Students — Minerva</title>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
  <style>
@@ -58,7 +58,7 @@
  .btn-outline:hover { border-color: var(--navy); }
 
  /* Stats Row */
- .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+ .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
  .stat-card { background: white; border-radius: 14px; padding: 20px; border: 1px solid var(--gray-200); }
  .stat-card .label { font-size: 12px; color: var(--gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px; }
  .stat-card .value { font-size: 30px; font-weight: 800; color: var(--navy-dark); line-height: 1.1; }
@@ -232,7 +232,7 @@
  <main class="main">
   <div class="page-header">
    <div>
-    <h1 data-i18n="student_crm.heading">Student CRM</h1>
+    <h1 data-i18n="student_crm.heading">Students</h1>
     <p>Manage your students, track progress, and plan ahead</p>
    </div>
  
@@ -254,6 +254,11 @@
     <div class="label">Avg Rating</div>
     <div class="value gold">4.9 ★</div>
     <div class="sub">24 reviews</div>
+   </div>
+   <div class="stat-card">
+    <div class="label">Pending Notes</div>
+    <div class="value" id="stat-pending" style="color: var(--gold);">—</div>
+    <div class="sub">Awaiting teacher input</div>
    </div>
   </div>
 
@@ -738,6 +743,13 @@ function saveTestDate() {
 // Auto-save notes on blur
 document.addEventListener('DOMContentLoaded', function() {
  renderGrid();
+ 
+ // Update pending notes stat
+ var allNotesData = JSON.parse(localStorage.getItem('minerva_crm_notes') || '{}');
+ var studentsWithNotes = Object.keys(allNotesData).filter(function(k) { return allNotesData[k] && allNotesData[k].trim().length > 0; }).length;
+ var pending = students.length - studentsWithNotes;
+ var pendingEl = document.getElementById('stat-pending');
+ if (pendingEl) { pendingEl.textContent = pending; }
 
  // i18n language toggle
  var params = new URLSearchParams(window.location.search);

@@ -597,7 +597,7 @@
 
     // ── Student CRM ──
     student_crm:{
-      heading:{en:"Student CRM",zhTW:"學生CRM",zhCN:"学生CRM"},
+      heading:{en:"Students",zhTW:"學生",zhCN:"学生"},
       total_students:{en:"Total Students",zhTW:"學生總數",zhCN:"学生总数"},
       lessons_month:{en:"Lessons This Month",zhTW:"本月課堂",zhCN:"本月课堂"},
       upcoming_tests:{en:"Upcoming Tests",zhTW:"即將到來的測驗",zhCN:"即将到来的测验"},
