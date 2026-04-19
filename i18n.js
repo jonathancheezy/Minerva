@@ -595,6 +595,22 @@
     },
 
 
+    // ── Student CRM ──
+    student_crm:{
+      heading:{en:"Student CRM",zhTW:"學生CRM",zhCN:"学生CRM"},
+      total_students:{en:"Total Students",zhTW:"學生總數",zhCN:"学生总数"},
+      lessons_month:{en:"Lessons This Month",zhTW:"本月課堂",zhCN:"本月课堂"},
+      upcoming_tests:{en:"Upcoming Tests",zhTW:"即將到來的測驗",zhCN:"即将到来的测验"},
+      avg_rating:{en:"Avg Rating",zhTW:"平均評分",zhCN:"平均评分"},
+      search_placeholder:{en:"Search students...",zhTW:"搜尋學生...",zhCN:"搜索学生..."},
+      filter_all:{en:"All",zhTW:"全部",zhCN:"全部"},
+      upcoming_test:{en:"Upcoming Test / Exam",zhTW:"即將到來的測驗/考試",zhCN:"即将到来的测验/考试"},
+      no_test_scheduled:{en:"No test scheduled",zhTW:"沒有安排測驗",zhCN:"没有安排测验"},
+      notes_placeholder:{en:"Add notes about this student's progress, areas to work on, parent communication...",zhTW:"添加關於這位學生進度的備註、需要加強的範疇、家長溝通情況...",zhCN:"添加关于这位学生进度的备注、需要加强的范畴、家长沟通情况..."},
+      recent_lessons:{en:"Recent Lessons",zhTW:"最近課堂",zhCN:"最近课堂"},
+      tests_this_month:{en:"This month",zhTW:"本月",zhCN:"本月"}
+    },
+
     // ── Reviews ──
     reviews:{
       title:{en:"Reviews",zhTW:"評價",zhCN:"评价"},
