@@ -235,6 +235,7 @@
 
 /* ── 4-Week Calendar ── */
 .cal-wrapper {
+ display: block;
  background: white;
  border-radius: 16px;
  border: 1px solid var(--gray-200);
@@ -861,7 +862,7 @@
 
  
  <div id="calendarTab" style="display: block;">
- <div class="cal-wrapper">
+ <div class="cal-wrapper" style="display: block;">
 
   <div class="cal-header">
    <div class="cal-nav">
@@ -881,7 +882,7 @@
    </div>
   </div>
 
-  <table class="cal-table">
+  <table class="cal-table" style="display: table; width: 100%;">
    <colgroup><col><col><col><col><col><col><col></colgroup>
    <thead>
     <tr class="cal-dow">
