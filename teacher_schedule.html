@@ -61,6 +61,7 @@
  display: flex;
  gap: 24px;
  margin-left: 32px;
+ margin-right: auto;
  }
 
  .mobile-menu-btn {
@@ -606,20 +607,30 @@
 
  .stat-card {
  background: white;
- border-radius: 12px;
- padding: 20px;
+ border-radius: 16px;
+ padding: 24px;
  border: 1px solid var(--gray-200);
- text-align: center;
- }
-
- .stat-card .number {
- font-size: 28px;
- font-weight: 800;
- color: var(--navy);
  }
 
  .stat-card .label {
  font-size: 13px;
+ color: var(--gray-500);
+ font-weight: 500;
+ margin-bottom: 8px;
+ }
+
+ .stat-card .value {
+ font-size: 32px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ .stat-card .value.green { color: var(--green); }
+ .stat-card .value.gold { color: var(--gold); }
+ .stat-card .value.purple { color: var(--purple); }
+
+ .stat-card .sub {
+ font-size: 12px;
  color: var(--gray-500);
  margin-top: 4px;
  }
@@ -870,7 +881,7 @@
    </div>
   </div>
 
-  <table class="cal-table" style="display: table; width: 100%;">
+  <table class="cal-table">
    <colgroup><col><col><col><col><col><col><col></colgroup>
    <thead>
     <tr class="cal-dow">
