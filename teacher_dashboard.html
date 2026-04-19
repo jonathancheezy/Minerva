@@ -34,6 +34,7 @@ body {
  color: #334155;
  line-height: 1.6;
  padding-top: 60px;
+ min-height: 100vh;
 }
 
 a { color: #3b82f6; text-decoration: none; }
@@ -153,6 +154,7 @@ nav {
  max-width: 1200px;
  margin: 0 auto;
  padding: 32px 24px;
+ min-height: calc(100vh - 60px);
 }
 
 .page-header {
@@ -284,7 +286,6 @@ nav {
 }
 
 .card-body {
- padding-top: 60px;
  padding: 20px 24px;
 }
 
@@ -482,7 +483,7 @@ footer {
 <nav>
  <div class="nav-left">
  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <a href="minerva_landing.html?v=99" class="logo">
+ <a href="minerva_landing.html?v=100" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
  <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -493,16 +494,16 @@ footer {
  </div>
  <div class="nav-links">
  <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
- <a href="student_dashboard.html?v=99" data-i18n="teacher_dash.students">Students</a>
- <a href="teacher_schedule.html?v=99" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="messages.html?v=99" data-i18n="teacher_dash.messages">Messages</a>
- <a href="reviews.html?v=99" data-i18n="reviews.title">Reviews</a>
- <a href="earnings.html?v=99" data-i18n="earnings.title">Earnings</a>
+ <a href="student_dashboard.html?v=100" data-i18n="teacher_dash.students">Students</a>
+ <a href="teacher_schedule.html?v=100" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html?v=100" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="reviews.html?v=100" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html?v=100" data-i18n="earnings.title">Earnings</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <a href="teacher_profile.html?v=99" style="text-decoration:none"><div class="avatar">TC</div></a>
+ <a href="teacher_profile.html?v=100" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
  </div>
  <div class="lang-selector">
@@ -520,22 +521,22 @@ footer {
 
  <!-- Stats Grid -->
  <div class="stats-grid">
- <a href="student_dashboard.html?v=99" class="stat-card clickable">
+ <a href="student_dashboard.html?v=100" class="stat-card clickable">
  <div class="label" data-i18n="teacher_dash.total_students">Total Students</div>
  <div class="value">12</div>
  <div class="sub" data-i18n="teacher_dash.stats_new_this_month">+3 this month</div>
  </a>
- <a href="teacher_schedule.html?v=99" class="stat-card clickable">
+ <a href="teacher_schedule.html?v=100" class="stat-card clickable">
  <div class="label" data-i18n="teacher_dash.upcoming_lessons">Upcoming Lessons</div>
  <div class="value">8</div>
  <div class="sub" data-i18n="teacher_dash.this_week">This week</div>
  </a>
- <a href="earnings.html?v=99" class="stat-card clickable">
+ <a href="earnings.html?v=100" class="stat-card clickable">
  <div class="label" data-i18n="teacher_dash.this_month">This Month</div>
  <div class="value green">HK$2,450</div>
  <div class="sub" data-i18n="teacher_dash.vs_last_month">+18% vs last month</div>
  </a>
- <a href="reviews.html?v=99" class="stat-card clickable">
+ <a href="reviews.html?v=100" class="stat-card clickable">
  <div class="label" data-i18n="teacher_dash.rating">Rating</div>
  <div class="value gold">4.9 ⭐</div>
  <div class="sub" data-i18n="teacher_dash.reviews_count">24 reviews</div>
@@ -549,7 +550,7 @@ footer {
  <div class="card">
  <div class="card-header">
  <h2 data-i18n="teacher_dash.schedule_title">Schedule</h2>
- <a href="teacher_schedule.html?v=99" data-i18n="teacher_dash.view_all">View All</a>
+ <a href="teacher_schedule.html?v=100" data-i18n="teacher_dash.view_all">View All</a>
  </div>
  <div class="filter-tabs">
  <span class="filter-tab active">Confirmed</span>
@@ -633,7 +634,7 @@ footer {
  <div class="card">
  <div class="card-header">
  <h2 data-i18n="teacher_dash.messages_title">Messages</h2>
- <a href="messages.html?v=99" data-i18n="teacher_dash.view_all">View All</a>
+ <a href="messages.html?v=100" data-i18n="teacher_dash.view_all">View All</a>
  </div>
  <div class="card-body" style="padding:16px 24px;">
  <div class="conv-legend">
