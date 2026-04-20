@@ -955,10 +955,73 @@
  border-radius: 50%;
  margin-left: 6px;
  vertical-align: middle;
+ 
+
+ /* Section Title */
+ .section-title {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 16px;
  }
+
+ /* Transaction Cards */
+ .transaction-card {
+ background: white;
+ border-radius: 12px;
+ padding: 20px 24px;
+ border: 1px solid var(--gray-200);
+ margin-bottom: 12px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ }
+
+ .tx-info { flex: 1; }
+
+ .tx-student {
+ font-weight: 600;
+ color: var(--navy-dark);
+ margin-bottom: 4px;
+ }
+
+ .tx-subject {
+ font-size: 13px;
+ color: var(--gray-500);
+ }
+
+ .tx-date {
+ font-size: 12px;
+ color: var(--gray-500);
+ margin-top: 2px;
+ }
+
+ .tx-amount {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--green);
+ }
+
+ .tx-amount.negative { color: var(--red); }
+
+ .tx-status {
+ font-size: 12px;
+ font-weight: 500;
+ padding: 4px 10px;
+ border-radius: 20px;
+ }
+
+ .tx-status.completed { background: rgba(34,197,94,0.1); color: var(--green); }
+ .tx-status.pending { background: rgba(245,158,11,0.1); color: var(--gold); }
+ .tx-status.failed { background: rgba(239,68,68,0.1); color: var(--red); }
+
+
+}
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=latin&display=swap" rel="stylesheet">
  
 </head>
 <body>
