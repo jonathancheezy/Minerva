@@ -59,12 +59,12 @@
  h1 { font-size: 40px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; line-height: 1.2; }
  .subtitle { font-size: 18px; color: var(--gray-500); margin-bottom: 40px; max-width: 560px; }
 
- .form-card { background: rgba(0,0,0,0.25); border-radius: 16px; padding: 32px; margin-bottom: 24px; }
+ .form-card { background: rgba(0,0,0,0.25); border-radius: 20px; padding: 40px; margin-bottom: 24px; }
  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
  @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
  .form-group { margin-bottom: 20px; }
  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--navy-dark); margin-bottom: 6px; }
- .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 2px solid var(--gray-200); border-radius: 10px; font-size: 14px; font-family: inherit; transition: border-color 0.2s; }
+ .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; border-radius: 12px; border: 2px solid var(--gray-200); background: white; font-size: 15px; font-family: inherit; color: var(--gray-700); transition: border-color 0.2s; }
  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--teal); }
  .form-group textarea { min-height: 100px; resize: vertical; }
  .form-group small { display: block; font-size: 13px; color: white; margin-top: 4px; }
@@ -72,10 +72,11 @@
  .inline-group { display: flex; gap: 12px; }
  .inline-group .form-group { flex: 1; }
 
- .btn-primary { background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 50px; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; justify-content: center; white-space: nowrap; width: 100%; margin-top: 8px; }
+ .btn-primary { width: 100%; background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 50px; border: none; cursor: pointer; transition: all 0.2s; font-family: inherit; margin-top: 16px; }
  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
  .form-success { background: linear-gradient(135deg, var(--navy), var(--teal)); color: white; padding: 40px; border-radius: 16px; text-align: center; display: none; }
- .form-success h3 { font-size: 24px; margin-bottom: 8px; }
+ .form-success h3 { font-size: 24px; color: var(--navy-dark); margin-bottom: 12px; }
+ .form-success p { color: white; }
  .terms { margin-top: 16px; font-size: 12px; color: white; text-align: center; }
  .terms a { color: var(--teal); }
  footer { padding: 24px; text-align: center; font-size: 13px; color: white; border-top: 1px solid var(--gray-200); }
