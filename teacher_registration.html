@@ -95,8 +95,6 @@
  .inline-group { flex-direction: column; gap: 0; }
  }
  </style>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <nav>
@@ -252,6 +250,15 @@
  <p data-i18n="register.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
 </footer>
 
-<script src="i18n.js"></script>
+<script>
+ document.getElementById('registrationForm').addEventListener('submit', function(e) {
+ e.preventDefault();
+ document.getElementById('registrationForm').style.display = 'none';
+ document.getElementById('formSuccess').style.display = 'block';
+ const formData = new FormData(this);
+ console.log('Registration:', Object.fromEntries(formData));
+ });
+ </script>
+ <script src="i18n.js"></script>
 </body>
 </html>
