@@ -3,9 +3,6 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>My Schedule - Minerva</title>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
  <style>
 
  :root {
@@ -34,9 +31,7 @@
  background: var(--gray-100);
  color: var(--gray-700);
  line-height: 1.6;
- padding-top: 64px;
  }
- 
 
  /* Nav */
  nav {
@@ -46,11 +41,7 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- height: 60px;
+ position: relative;
  z-index: 100;
  }
 
@@ -133,4 +124,1186 @@
  font-weight: 600;
  }
 
+ /* Main */
+ .main {
+ max-width: 1100px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ }
+
+ .page-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 32px;
+ flex-wrap: wrap;
+ gap: 16px;
+ }
+
+ .page-header h1 {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ .page-header p { color: var(--gray-500); margin-top: 4px; }
+
+ /* Tabs */
+ .tabs {
+ display: flex;
+ gap: 8px;
+ margin-bottom: 24px;
+ border-bottom: 1px solid var(--gray-200);
+ padding-bottom: 16px;
+ }
+
+ .tab {
+ padding: 10px 20px;
+ border: none;
+ background: transparent;
+ border-radius: 8px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ color: var(--gray-500);
+ transition: all 0.2s;
+ }
+
+ .tab:hover { background: var(--gray-200); color: var(--navy); }
+ .tab.active { background: var(--navy); color: white; }
+
+ /* Cards */
+ .card {
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ border: 1px solid var(--gray-200);
+ margin-bottom: 24px;
+ }
+
+ .card-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+
+ .card-header h2 {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ }
+
+ /* Monthly Calendar */
+ .month-nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+
+ .month-nav h2 {
+ font-size: 20px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ }
+
+ .month-nav-btns {
+ display: flex;
+ gap: 8px;
+ }
+
+ .btn {
+ padding: 10px 20px;
+ border: none;
+ border-radius: 8px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .btn-primary { background: var(--navy); color: white; }
+ .btn-primary:hover { background: var(--navy-dark); }
+ .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
+ .btn-secondary:hover { background: var(--gray-300); }
+ .btn-small { padding: 6px 12px; font-size: 12px; }
+
+/* ── 4-Week Calendar ── */
+.cal-wrapper {
+ display: block;
+ background: white;
+ border-radius: 16px;
+ border: 1px solid var(--gray-200);
+ overflow: hidden;
+}
+
+.cal-header {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 14px 20px;
+ border-bottom: 1px solid var(--gray-200);
+}
+
+.cal-nav { display: flex; align-items: center; gap: 10px; }
+
+.cal-btn {
+ width: 34px; height: 34px;
+ border: 1px solid var(--gray-200);
+ border-radius: 8px;
+ background: white;
+ color: var(--navy);
+ cursor: pointer;
+ display: flex; align-items: center; justify-content: center;
+ transition: all 0.2s;
+}
+.cal-btn:hover { background: var(--gray-100); }
+
+.cal-title { text-align: center; }
+.cal-year { font-size: 11px; color: var(--gray-500); font-weight: 500; }
+.cal-month { font-size: 20px; font-weight: 800; color: var(--navy-dark); }
+
+.cal-actions { display: flex; gap: 6px; }
+.cal-action-btn {
+ height: 30px; padding: 0 10px;
+ border: 1px solid var(--gray-200);
+ border-radius: 8px;
+ background: white; color: var(--gray-500);
+ font-size: 11px; font-weight: 600;
+ cursor: pointer;
+ display: flex; align-items: center; gap: 4px;
+ transition: all 0.2s;
+}
+.cal-action-btn:hover { background: var(--gray-100); color: var(--navy); }
+
+/* Table — the calendar grid */
+.cal-table {
+ width: 100%;
+ border-collapse: collapse;
+ table-layout: fixed;
+}
+
+.cal-dow {
+ background: var(--gray-100);
+ border-bottom: 1px solid var(--gray-200);
+}
+
+.cal-dow th {
+ text-align: center;
+ font-size: 11px;
+ font-weight: 700;
+ color: var(--gray-500);
+ padding: 10px 4px;
+ letter-spacing: 0.3px;
+}
+.cal-dow th:first-child { color: var(--gray-400); }
+
+/* Day cells */
+.cal-td {
+ width: calc(100% / 7);
+ border-right: 1px solid var(--gray-100);
+ border-bottom: 1px solid var(--gray-100);
+ vertical-align: top;
+ padding: 0;
+}
+.cal-td:last-child { border-right: none; }
+
+.cal-day-num {
+ text-align: center;
+ padding: 8px 4px 4px;
+ font-size: 14px;
+ font-weight: 700;
+ color: var(--navy-dark);
+}
+.cal-td.other-month .cal-day-num { color: var(--gray-300); }
+.cal-td.today .cal-day-num-num {
+ background: var(--navy);
+ color: white;
+ width: 26px; height: 26px;
+ border-radius: 50%;
+ display: flex; align-items: center; justify-content: center;
+ margin: 0 auto;
+}
+
+/* Lessons inside day cell */
+.cal-lessons {
+ padding: 4px 6px 6px;
+ display: flex;
+ flex-direction: column;
+ gap: 4px;
+}
+
+.cal-lesson-card {
+ background: rgba(34, 197, 94, 0.1);
+ border-left: 3px solid var(--green);
+ border-radius: 5px;
+ padding: 5px 7px;
+ cursor: pointer;
+ transition: all 0.15s;
+}
+.cal-lesson-card:hover { background: rgba(34, 197, 94, 0.18); transform: translateX(1px); }
+.cal-lesson-card.pending {
+ background: rgba(249, 168, 40, 0.1);
+ border-left-color: var(--gold);
+}
+.cal-lesson-card.pending:hover { background: rgba(249, 168, 40, 0.18); }
+
+.cal-lesson-time {
+ font-size: 11px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 2px;
+}
+.cal-lesson-card.pending .cal-lesson-time { color: var(--gold); font-weight: 700; }
+
+.cal-lesson-name {
+ font-size: 12px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+.cal-lesson-meta {
+ display: flex;
+ align-items: center;
+ gap: 4px;
+ margin-top: 2px;
+}
+.cal-lesson-code {
+ font-size: 10px;
+ font-weight: 700;
+ color: var(--gray-600);
+ background: var(--gray-100);
+ padding: 1px 5px;
+ border-radius: 3px;
+}
+.cal-lesson-status {
+ font-size: 9px;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.3px;
+}
+.cal-lesson-status.confirmed { color: var(--green); }
+.cal-lesson-status.pending { color: var(--gold); }
+
+/* Legend */
+.cal-legend {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 10px 18px;
+ padding: 10px 20px;
+ border-top: 1px solid var(--gray-200);
+ font-size: 11px;
+ color: var(--gray-500);
+ align-items: center;
+}
+.cal-legend .legend-item { display: flex; align-items: center; gap: 4px; }
+.cal-legend .legend-dot {
+ width: 8px; height: 8px;
+ border-radius: 50%;
+ display: inline-block;
+ flex-shrink: 0;
+}
+
+
+/* Payment Warning Banner */
+.payment-banner {
+ background: linear-gradient(135deg, #fff8e1, #fff3cd);
+ border: 1.5px solid var(--gold);
+ border-radius: 12px;
+ padding: 14px 18px;
+ margin-bottom: 20px;
+ display: flex;
+ align-items: flex-start;
+ gap: 12px;
+ font-size: 13px;
+ color: #7c5e00;
+}
+.payment-banner .banner-icon { font-size: 20px; flex-shrink: 0; }
+.payment-banner .banner-title { font-weight: 700; margin-bottom: 2px; }
+.payment-banner .banner-title span { color: var(--gold); }
+.payment-banner a { color: var(--navy); font-weight: 600; }
+
+/* Notes status on calendar card */
+.pay-locked {
+ font-size: 9px;
+ font-weight: 700;
+ color: var(--gold);
+ background: rgba(249,168,40,0.15);
+ padding: 1px 5px;
+ border-radius: 3px;
+ display: inline-flex;
+ align-items: center;
+ gap: 2px;
+ cursor: pointer;
+ border: none;
+ font-family: inherit;
+ white-space: nowrap;
+}
+.pay-locked:hover { background: rgba(249,168,40,0.25); }
+.pay-released {
+ font-size: 9px;
+ font-weight: 700;
+ color: var(--green);
+ background: rgba(34,197,94,0.1);
+ padding: 1px 5px;
+ border-radius: 3px;
+ display: inline-flex;
+ align-items: center;
+ gap: 2px;
+ cursor: pointer;
+ border: none;
+ font-family: inherit;
+ white-space: nowrap;
+}
+
+/* Notes Modal */
+.notes-modal-overlay {
+ display: none;
+ position: fixed;
+ top: 0; left: 0; right: 0; bottom: 0;
+ background: rgba(0,0,0,0.55);
+ z-index: 300;
+ align-items: center;
+ justify-content: center;
+ padding: 20px;
+}
+.notes-modal-overlay.open { display: flex; }
+.notes-modal {
+ background: white;
+ border-radius: 18px;
+ width: 100%;
+ max-width: 520px;
+ overflow: hidden;
+ box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.notes-modal-header {
+ padding: 20px 24px;
+ border-bottom: 1px solid var(--gray-200);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ background: var(--gray-100);
+}
+.notes-modal-header h3 { font-size: 16px; font-weight: 700; color: var(--navy-dark); }
+.notes-modal-header .lesson-info { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+.notes-modal-close {
+ width: 32px; height: 32px;
+ border-radius: 8px; border: 1.5px solid var(--gray-200);
+ background: white; cursor: pointer; font-size: 16px;
+ display: flex; align-items: center; justify-content: center;
+ color: var(--gray-500); transition: all 0.2s;
+ flex-shrink: 0;
+}
+.notes-modal-close:hover { background: var(--gray-100); color: var(--navy); }
+.notes-modal-body { padding: 24px; }
+.payment-status-box {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ padding: 12px 14px;
+ border-radius: 10px;
+ margin-bottom: 16px;
+ font-size: 13px;
+ font-weight: 600;
+}
+.payment-status-box.locked {
+ background: rgba(249,168,40,0.12);
+ border: 1.5px solid rgba(249,168,40,0.4);
+ color: #7c5e00;
+}
+.payment-status-box.released {
+ background: rgba(34,197,94,0.1);
+ border: 1.5px solid rgba(34,197,94,0.3);
+ color: #15803d;
+}
+.notes-label { font-size: 12px; font-weight: 600; color: var(--gray-500); margin-bottom: 6px; display: block; }
+.notes-textarea {
+ width: 100%;
+ min-height: 140px;
+ padding: 12px;
+ border: 1.5px solid var(--gray-200);
+ border-radius: 10px;
+ font-family: inherit;
+ font-size: 14px;
+ resize: vertical;
+ outline: none;
+ transition: border-color 0.2s;
+ box-sizing: border-box;
+}
+.notes-textarea:focus { border-color: var(--teal); }
+.notes-hint { font-size: 11px; color: var(--gray-500); margin-top: 4px; }
+.notes-modal-footer {
+ padding: 16px 24px;
+ border-top: 1px solid var(--gray-200);
+ display: flex;
+ justify-content: flex-end;
+ gap: 10px;
+ background: var(--gray-100);
+}
+.btn-save {
+ padding: 10px 22px;
+ background: var(--navy);
+ color: white;
+ border: none;
+ border-radius: 9px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ font-family: inherit;
+ transition: background 0.2s;
+}
+.btn-save:hover { background: var(--navy-dark); }
+.btn-cancel {
+ padding: 10px 18px;
+ background: white;
+ color: var(--gray-700);
+ border: 1.5px solid var(--gray-200);
+ border-radius: 9px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ font-family: inherit;
+ transition: all 0.2s;
+}
+.btn-cancel:hover { border-color: var(--navy); color: var(--navy); }
+
+/* Parent: lesson notes indicator */
+.lesson-note-indicator {
+ display: inline-flex;
+ align-items: center;
+ gap: 3px;
+ font-size: 10px;
+ font-weight: 700;
+ padding: 2px 6px;
+ border-radius: 3px;
+ margin-top: 4px;
+}
+.lesson-note-indicator.has-notes {
+ background: rgba(59,130,246,0.1);
+ color: var(--teal);
+}
+.lesson-note-indicator.no-notes {
+ background: rgba(249,168,40,0.1);
+ color: #b45309;
+}
+
+/* Stats Row */
+/* Stats Row */
+/* Stats Row */
+/* Stats Row */
+ .stats-row {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 16px;
+ margin-bottom: 32px;
+ }
+
+ .stat-card {
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ border: 1px solid var(--gray-200);
+ }
+
+ .stat-card .label {
+ font-size: 13px;
+ color: var(--gray-500);
+ font-weight: 500;
+ margin-bottom: 8px;
+ }
+
+ .stat-card .value {
+ font-size: 32px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ .stat-card .value.green { color: var(--green); }
+ .stat-card .value.gold { color: var(--gold); }
+ .stat-card .value.purple { color: var(--purple); }
+
+ .stat-card .sub {
+ font-size: 12px;
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Upcoming Bookings */
+ .booking-item {
+ display: flex;
+ align-items: center;
+ padding: 16px;
+ background: var(--gray-100);
+ border-radius: 12px;
+ margin-bottom: 12px;
+ }
+
+ .booking-item .date-badge {
+ background: var(--teal);
+ color: white;
+ padding: 10px 14px;
+ border-radius: 8px;
+ text-align: center;
+ margin-right: 16px;
+ min-width: 70px;
+ }
+
+ .booking-item .date-badge .day {
+ font-size: 20px;
+ font-weight: 700;
+ }
+
+ .booking-item .date-badge .month {
+ font-size: 11px;
+ opacity: 0.9;
+ }
+
+ .booking-item .details { flex: 1; }
+ .booking-item .student { font-weight: 600; color: var(--navy-dark); }
+ .booking-item .subject { font-size: 13px; color: var(--gray-500); }
+ .booking-item .time-badge {
+ background: var(--navy);
+ color: white;
+ padding: 6px 12px;
+ border-radius: 6px;
+ font-size: 13px;
+ font-weight: 500;
+ margin-right: 12px;
+ }
+
+ .booking-item .status {
+ font-size: 12px;
+ font-weight: 600;
+ padding: 4px 10px;
+ border-radius: 20px;
+ }
+
+ .booking-item .status.confirmed { background: rgba(34, 197, 94, 0.1); color: var(--green); }
+ .booking-item .status.pending { background: rgba(249, 168, 40, 0.1); color: var(--gold); }
+
+ /* Modal */
+ .modal-overlay {
+ display: none;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: rgba(0,0,0,0.5);
+ z-index: 200;
+ align-items: center;
+ justify-content: center;
+ }
+
+ .modal-overlay.active { display: flex; }
+
+ .modal {
+ background: white;
+ border-radius: 16px;
+ padding: 32px;
+ max-width: 480px;
+ width: 90%;
+ }
+
+ .modal h2 {
+ font-size: 20px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 20px;
+ }
+
+ .form-group { margin-bottom: 16px; }
+
+ .form-group label {
+ display: block;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-500);
+ margin-bottom: 6px;
+ }
+
+ .form-group input,
+ .form-group select {
+ width: 100%;
+ padding: 10px 12px;
+ border: 1px solid var(--gray-300);
+ border-radius: 8px;
+ font-size: 14px;
+ transition: all 0.2s;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus {
+ outline: none;
+ border-color: var(--teal);
+ box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+ }
+
+ .modal-actions {
+ display: flex;
+ gap: 12px;
+ justify-content: flex-end;
+ margin-top: 24px;
+ }
+
+ /* Footer */
+ footer {
+ text-align: center;
+ padding: 32px 24px;
+ font-size: 14px;
+ color: var(--gray-500);
+ border-top: 1px solid var(--gray-200);
+ margin-top: 48px;
+ }
+
+ /* Mobile */
+ @media (max-width: 768px) {
+ .mobile-menu-btn { display: block; }
+ .nav-links { display: none; }
+ .nav-links.active { display: flex; background: var(--navy); padding: 20px 24px; flex-direction: column; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+ .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
+ .nav-links.active a.active { color: #F9A828 !important; }
+ .nav-links.active a:hover { color: white; }
  
+ .nav-right { display: flex; flex-direction: row; align-items: center; gap: 16px; justify-content: flex-end; }
+ .stats-row { grid-template-columns: repeat(2, 1fr); }
+ .page-header { flex-direction: column; align-items: flex-start; }
+ .two-months-container { grid-template-columns: 1fr; gap: 16px; }
+ .month-calendar { min-width: 0; }
+ .calendar-grid { overflow-x: auto; gap: 4px; padding-bottom: 8px; }
+ .calendar-header { font-size: 10px; padding: 4px; }
+ .calendar-day { min-height: 50px; padding: 4px; }
+ .calendar-day .day-num { font-size: 11px; margin-bottom: 2px; }
+ .calendar-day.header { padding: 8px 4px; }
+ .calendar-day.header .date { display: none; }
+ .event { font-size: 9px; padding: 2px 3px; margin-bottom: 2px; }
+ .booking-item { flex-wrap: wrap; }
+ .booking-item .date-badge { margin-bottom: 12px; }
+ .booking-item .time-badge { margin: 8px 0; }
+ }
+ 
+
+ .stat-card .number {
+ font-size: 32px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ .stat-card .number.green { color: var(--green); }
+ .stat-card .number.gold { color: var(--gold); }
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=latin&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+</head>
+<body>
+ <nav>
+ <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="teacher_dashboard.html?v=2" data-i18n="teacher_dash.dashboard">Dashboard</a>
+ <a href="student_dashboard.html?v=2" data-i18n="teacher_dash.students">Students</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html?v=2" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="reviews.html?v=2" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html?v=2" data-i18n="earnings.title">Earnings</a>
+ </div>
+ <div class="nav-right">
+ <div class="nav-meta">
+ <div class="user-info">
+ <a href="teacher_profile.html?v=2" style="text-decoration:none"><div class="avatar">TC</div></a>
+ </div>
+ </div>
+ <div class="lang-selector">
+ <a href="teacher_schedule.html?lang=en&v=2" class="lang-btn">EN</a>
+ <a href="teacher_schedule.html?lang=zh-TW&v=2" class="lang-btn">繁</a>
+ <a href="teacher_schedule.html?lang=zh-CN&v=2" class="lang-btn">简</a>
+ </div>
+ </div>
+ </nav>
+
+ <main class="main">
+ <div class="page-header">
+ <div>
+ <h1 data-i18n="schedule.my_schedule">My Schedule</h1>
+ <p data-i18n="schedule.manage_availability">Manage your availability and upcoming lessons</p>
+ </div>
+ <button class="btn btn-primary" onclick="openModal('addSlot')" data-i18n="schedule.add_availability"><span data-i18n="schedule.btn_add_slot">+ Add Availability</span></button>
+ </div>
+
+ <div class="stats-row">
+ <div class="stat-card">
+ <div class="number">12</div>
+ <div class="label" data-i18n="schedule.lessons_month">Lessons This Month</div>
+ </div>
+ <div class="stat-card">
+ <div class="number">8</div>
+ <div class="label" data-i18n="schedule.hours_week">Hours This Week</div>
+ </div>
+ <div class="stat-card">
+ <div class="number">3</div>
+ <div class="label" data-i18n="schedule.pending_requests">Pending Requests</div>
+ </div>
+ <div class="stat-card">
+ <div class="number" id="pendingNotesCount" style="color: var(--gold)">2</div>
+ <div class="label">Pending Notes</div>
+ <div style="font-size:11px;color:var(--gray-500);margin-top:4px">Blocking payment</div>
+ </div>
+</div>
+
+ <div class="tabs">
+ <button class="tab active" onclick="showTab('calendar')" data-i18n="schedule.monthly_calendar"><span data-i18n="schedule.heading_monthly_calendar">Monthly Calendar</span></button>
+ <button class="tab" onclick="showTab('bookings')" data-i18n="schedule.upcoming_bookings"><span data-i18n="schedule.heading_upcoming_bookings">Upcoming Bookings</span></button>
+ </div>
+
+ 
+ <div id="calendarTab" style="display: block;">
+ <div class="cal-wrapper" style="display: block;">
+
+  <div class="cal-header">
+   <div class="cal-nav">
+    <button class="cal-btn" onclick="changeWeek(-1)">
+     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="cal-title">
+     <div class="cal-year" id="calYear"></div>
+     <div class="cal-month" id="calMonth"></div>
+    </div>
+    <button class="cal-btn" onclick="changeWeek(1)">
+     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+   </div>
+   <div class="cal-actions">
+    <button class="cal-action-btn" onclick="goToToday()">Today</button>
+   </div>
+  </div>
+
+  <table class="cal-table" style="display: table; width: 100%;">
+   <colgroup><col><col><col><col><col><col><col></colgroup>
+   <thead>
+    <tr class="cal-dow">
+     <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+    </tr>
+   </thead>
+   <tbody id="calTbody"></tbody>
+  </table>
+
+  <div class="cal-legend">
+   <span class="legend-dot" style="background:var(--green)"></span> Confirmed
+   <span class="legend-dot" style="background:var(--gold)"></span> Pending
+   <span class="legend-item"><span class="legend-dot" style="background:var(--teal)"></span> P · Piano</span>
+   <span class="legend-item"><span class="legend-dot" style="background:#8b5cf6"></span> V · Violin</span>
+   <span class="legend-item"><span class="legend-dot" style="background:var(--green)"></span> M · Math</span>
+   <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span> E · English</span>
+  </div>
+
+ </div>
+</div><div id="bookingsTab" style="display: none;">
+ <div class="payment-banner" id="pendingBanner">
+  <span class="banner-icon">🔒</span>
+  <div>
+   <div class="banner-title">Payment is held until you add <span>Lesson Notes</span></div>
+   <div>For each completed lesson, you must add notes before payment is released to you. Parents will see these notes too. <a href="javascript:void(0)?v=2" onclick="document.getElementById('notesModal');return false;">Learn more</a></div>
+  </div>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2 data-i18n="schedule.upcoming_bookings_title">Upcoming Bookings</h2>
+ </div>
+ <div class="booking-item">
+ <div class="date-badge"><div class="day">15</div><div class="month">Apr</div></div>
+ <div class="time-badge">10:00 - 11:00</div>
+ <div class="details">
+ <div class="student">Tom Wilson</div>
+ <div class="subject">HKDSE Maths • Tuen Mun</div>
+ </div>
+ <span class="status confirmed" data-i18n="schedule.confirmed">Confirmed</span>
+ </div>
+ <div class="booking-item">
+ <div class="date-badge"><div class="day">15</div><div class="month">Apr</div></div>
+ <div class="time-badge">14:00 - 15:00</div>
+ <div class="details">
+ <div class="student">Amy Chen</div>
+ <div class="subject">HKDSE Maths • Sha Tin</div>
+ </div>
+ <span class="status confirmed" data-i18n="schedule.confirmed">Confirmed</span>
+ </div>
+ <div class="booking-item">
+ <div class="date-badge"><div class="day">17</div><div class="month">Apr</div></div>
+ <div class="time-badge">10:00 - 11:00</div>
+ <div class="details">
+ <div class="student">Sarah Lee</div>
+ <div class="subject">HKDSE Maths • Kowloon</div>
+ </div>
+ <span class="status pending" data-i18n="schedule.pending">Pending</span>
+ </div>
+ <div class="booking-item">
+ <div class="date-badge"><div class="day">21</div><div class="month">Apr</div></div>
+ <div class="time-badge">10:00 - 11:00</div>
+ <div class="details">
+ <div class="student">Jason Wong</div>
+ <div class="subject">IB Maths • Central</div>
+ </div>
+ <span class="status confirmed" data-i18n="schedule.confirmed">Confirmed</span>
+ </div>
+ <div class="booking-item">
+ <div class="date-badge"><div class="day">22</div><div class="month">Apr</div></div>
+ <div class="time-badge">09:00 - 10:00</div>
+ <div class="details">
+ <div class="student">Emily Lam</div>
+ <div class="subject">GCSE Maths • Wan Chai</div>
+ </div>
+ <span class="status confirmed" data-i18n="schedule.confirmed">Confirmed</span>
+ </div>
+ </div>
+ </div>
+ </main>
+
+ <!-- Add Slot Modal -->
+ <!-- Lesson Notes Modal -->
+<div class="notes-modal-overlay" id="notesModal">
+ <div class="notes-modal">
+  <div class="notes-modal-header">
+   <div>
+    <h3 id="notes-modal-title">Lesson Notes</h3>
+    <div class="lesson-info" id="notes-modal-subtitle"></div>
+   </div>
+   <button class="notes-modal-close" onclick="closeNotesModal()">✕</button>
+  </div>
+  <div class="notes-modal-body">
+   <div class="payment-status-box locked" id="paymentStatusBox">
+    <span id="paymentStatusIcon">🔒</span>
+    <span id="paymentStatusText">Payment locked — add lesson notes to release</span>
+   </div>
+   <label class="notes-label">Lesson Notes for Parent</label>
+   <textarea class="notes-textarea" id="lessonNotesTextarea" placeholder="What did the student work on today? Any areas to focus on, homework assigned, or progress observed..."></textarea>
+   <div class="notes-hint">These notes will be shared with the student's parent after you save.</div>
+  </div>
+  <div class="notes-modal-footer">
+   <button class="btn-cancel" onclick="closeNotesModal()">Cancel</button>
+   <button class="btn-save" id="saveNotesBtn" onclick="saveLessonNotes()">Save Notes</button>
+  </div>
+ </div>
+</div>
+
+<div class="modal-overlay" id="addSlotModal">
+ <div class="modal">
+ <h2><span data-i18n="schedule.heading_add_availability"></span></h2>
+ <div class="form-group">
+ <label><span data-i18n="schedule.label_date"></span></label>
+ <input type="date" id="slotDate">
+ </div>
+ <div class="form-group">
+ <label><span data-i18n="schedule.label_start_time"></span></label>
+ <input type="time" id="slotStart" value="09:00">
+ </div>
+ <div class="form-group">
+ <label><span data-i18n="schedule.label_end_time"></span></label>
+ <input type="time" id="slotEnd" value="10:00">
+ </div>
+ <div class="form-group">
+ <label><span data-i18n="schedule.label_repeat"></span></label>
+ <select id="slotRepeat">
+ <option value="once">This date only</option>
+ <option value="weekly">Every week (recurring)</option>
+ <option value="monthly">Every month (recurring)</option>
+ </select>
+ </div>
+ <div class="modal-actions">
+ <button class="btn btn-secondary" onclick="closeModal('addSlot')"><span data-i18n="schedule.btn_cancel">Cancel</span></button>
+ <button class="btn btn-primary" onclick="addSlot()" data-i18n="schedule.btn_add_slot_confirm">Add Slot</button>
+ </div>
+ </div>
+ </div>
+
+ <footer>
+ <span data-i18n="schedule.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span>
+ </footer>
+
+ <script>
+ function openModal(type) {
+ document.getElementById('addSlotModal').classList.add('active');
+ }
+
+ function closeModal(type) {
+ document.getElementById('addSlotModal').classList.remove('active');
+ }
+
+ function addSlot() {
+ const date = document.getElementById('slotDate').value;
+ const start = document.getElementById('slotStart').value;
+ const end = document.getElementById('slotEnd').value;
+ alert('Availability added for ' + date + ' from ' + start + ' to ' + end);
+ closeModal('addSlot');
+ }
+
+ function showTab(tab) {
+ document.getElementById('calendarTab').style.display = tab === 'calendar' ? 'block' : 'none';
+ document.getElementById('bookingsTab').style.display = tab === 'bookings' ? 'block' : 'none';
+ document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+ if(event&&event.target)event.target.classList.add('active');
+ }
+
+ let currentDate = new Date(2026, 3, 1); // April 2026
+
+ function goToToday() {
+ currentDate = new Date();
+ currentDate.setDate(1);
+ renderCalendar();
+ }
+
+ function changeMonth(dir) {
+ currentDate.setMonth(currentDate.getMonth() + dir);
+ renderCalendar();
+ }
+
+ function changeWeek(dir) {
+ currentDate.setDate(currentDate.getDate() + (dir * 7));
+ renderCalendar();
+ }
+
+ function fmtDate(d) {
+ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+ }
+
+ // Calendar data — lessons for April 2026
+ const lessons = [
+ { id: 'l001', date: '2026-04-01', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: 'Emma worked on Grade 3 Prep pieces. Good progress on scales at 80bpm. Assigned Hanon exercises 1-3 for daily practice.', notesAddedAt: '2026-04-01T11:30:00', paid: true },
+ { id: 'l002', date: '2026-04-02', time: '11:00', endTime: '12:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed', notes: 'Practiced G major scale and simple twinkle variations. Bow hold improving. Focus on intonation next week.', notesAddedAt: '2026-04-02T12:20:00', paid: true },
+ { id: 'l003', date: '2026-04-05', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: 'Reviewed Hanon exercises. Started working on Czerny study No. 1. Good rhythm maintained throughout.', notesAddedAt: '2026-04-05T11:15:00', paid: true },
+ { id: 'l004', date: '2026-04-05', time: '14:00', endTime: '15:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'pending', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l005', date: '2026-04-08', time: '15:00', endTime: '16:00', student: 'Sophie Chen', subject: 'Piano', code: 'P', status: 'confirmed', notes: 'Excellent progress on Grade 5 repertoire. Working on Mozart Sonata K.545 first movement. Brilliant tone!', notesAddedAt: '2026-04-08T16:10:00', paid: true },
+ { id: 'l006', date: '2026-04-09', time: '10:00', endTime: '11:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'confirmed', notes: 'Covered persuasive writing techniques. Grace wrote a short essay on climate change — good vocabulary usage.', notesAddedAt: '2026-04-09T11:05:00', paid: true },
+ { id: 'l007', date: '2026-04-12', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: 'Sight-reading practice with new pieces. Hand position excellent. Keep working on dynamics (crescendo/decrescendo).', notesAddedAt: '2026-04-12T11:00:00', paid: true },
+ { id: 'l008', date: '2026-04-12', time: '14:00', endTime: '15:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed', notes: 'Worked on D major scale. Started Suzuki Book 2 Piece 1. Good bow distribution today.', notesAddedAt: '2026-04-12T15:05:00', paid: true },
+ { id: 'l009', date: '2026-04-15', time: '16:30', endTime: '17:30', student: 'Sophie Chen', subject: 'Piano', code: 'P', status: 'pending', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l010', date: '2026-04-18', time: '09:00', endTime: '10:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'confirmed', notes: 'Algebra revision completed. Ryan solved 15 quadratic equations correctly. Ready to move to word problems next.', notesAddedAt: '2026-04-18T10:05:00', paid: true },
+ { id: 'l011', date: '2026-04-19', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l012', date: '2026-04-19', time: '14:00', endTime: '15:00', student: 'Lucas Lee', subject: 'Violin', code: 'V', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l013', date: '2026-04-22', time: '10:00', endTime: '11:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l014', date: '2026-04-25', time: '09:00', endTime: '10:00', student: 'Ryan Ho', subject: 'Math', code: 'M', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l015', date: '2026-04-25', time: '11:00', endTime: '12:00', student: 'Grace Ho', subject: 'English', code: 'E', status: 'pending', notes: '', notesAddedAt: '', paid: false },
+ { id: 'l016', date: '2026-04-26', time: '10:00', endTime: '11:00', student: 'Emma Wong', subject: 'Piano', code: 'P', status: 'confirmed', notes: '', notesAddedAt: '', paid: false },
+];
+
+ function getLessonsForDate(dateStr) {
+ return lessons.filter(l => l.date === dateStr);
+ }
+
+var currentLessonId = null;
+
+function openNotesModal(lessonId) {
+ var lesson = lessons.find(function(l) { return l.id === lessonId; });
+ if (!lesson) return;
+ currentLessonId = lessonId;
+
+ var isFuture = lesson.date >= fmtDate(new Date());
+ document.getElementById('notes-modal-title').textContent = isFuture ? 'Lesson Details' : 'Add Lesson Notes';
+ document.getElementById('notes-modal-subtitle').textContent = lesson.student + ' · ' + lesson.subject + ' · ' + lesson.date + ' ' + lesson.time + '–' + lesson.endTime;
+
+ var notesEl = document.getElementById('lessonNotesTextarea');
+ notesEl.value = lesson.notes || '';
+ notesEl.disabled = isFuture;
+ notesEl.placeholder = isFuture ? 'Notes can be added after the lesson.' : 'What did the student work on today? Any areas to focus on, homework assigned, or progress observed...';
+
+ var statusBox = document.getElementById('paymentStatusBox');
+ var statusIcon = document.getElementById('paymentStatusIcon');
+ var statusText = document.getElementById('paymentStatusText');
+ var saveBtn = document.getElementById('saveNotesBtn');
+
+ if (isFuture) {
+  statusBox.className = 'payment-status-box locked';
+  statusBox.style.display = 'none';
+  saveBtn.style.display = 'none';
+ } else if (lesson.paid) {
+  statusBox.className = 'payment-status-box released';
+  statusBox.style.display = '';
+  statusIcon.textContent = '✅';
+  statusText.textContent = 'Payment released — notes added on ' + (lesson.notesAddedAt ? new Date(lesson.notesAddedAt).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) : '');
+  saveBtn.style.display = 'inline-flex';
+  saveBtn.textContent = 'Update Notes';
+ } else {
+  statusBox.className = 'payment-status-box locked';
+  statusBox.style.display = '';
+  statusIcon.textContent = '🔒';
+  statusText.textContent = 'Payment is LOCKED — add lesson notes to release payment';
+  saveBtn.style.display = 'inline-flex';
+  saveBtn.textContent = 'Save Notes';
+ }
+
+ document.getElementById('notesModal').classList.add('open');
+ document.body.style.overflow = 'hidden';
+}
+
+function closeNotesModal() {
+ document.getElementById('notesModal').classList.remove('open');
+ document.body.style.overflow = '';
+ currentLessonId = null;
+}
+
+function saveLessonNotes() {
+ if (!currentLessonId) return;
+ var lesson = lessons.find(function(l) { return l.id === currentLessonId; });
+ if (!lesson) return;
+
+ var notes = document.getElementById('lessonNotesTextarea').value.trim();
+ lesson.notes = notes;
+ lesson.notesAddedAt = notes ? new Date().toISOString() : '';
+ lesson.paid = !!notes;
+
+ // Visual feedback
+ var btn = document.getElementById('saveNotesBtn');
+ btn.textContent = '✓ Saved!';
+ btn.style.background = 'var(--green)';
+ setTimeout(function() {
+  btn.textContent = 'Update Notes';
+  btn.style.background = '';
+  closeNotesModal();
+  renderCalendar();
+  updatePendingNotesStats();
+ }, 1200);
+
+ // Persist to localStorage
+ localStorage.setItem('minerva_lesson_notes', JSON.stringify(
+  lessons.map(function(l) { return { id: l.id, notes: l.notes, notesAddedAt: l.notesAddedAt, paid: l.paid }; })
+ ));
+ // Also save per-student+date for parent view
+ localStorage.setItem('minerva_note_' + lesson.student.replace(/\s+/g,'_') + '_' + lesson.date, notes);
+}
+}
+
+function updatePendingNotesStats() {
+ var pending = lessons.filter(function(l) { return !l.paid && l.date < fmtDate(new Date()); });
+ var el = document.getElementById('pendingNotesCount');
+ if (el) el.textContent = pending.length;
+ var banner = document.getElementById('pendingBanner');
+ if (banner) banner.style.display = pending.length > 0 ? 'flex' : 'none';
+}
+
+function renderCalendar() {
+ try {
+ var year = currentDate.getFullYear();
+ var month = currentDate.getMonth();
+
+ document.getElementById('calYear').textContent = year;
+ document.getElementById('calMonth').textContent = new Intl.DateTimeFormat('en', { month: 'long' }).format(currentDate);
+
+ var firstOfMonth = new Date(year, month, 1);
+ var startOfCal = new Date(firstOfMonth);
+ startOfCal.setDate(startOfCal.getDate() - firstOfMonth.getDay());
+
+ var today = new Date();
+ var todayStr = fmtDate(today);
+
+ var tbody = document.getElementById('calTbody');
+ tbody.innerHTML = '';
+
+ // Load persisted notes
+ try {
+  var saved = JSON.parse(localStorage.getItem('minerva_lesson_notes') || '{}');
+  lessons.forEach(function(l) {
+   if (saved[l.id]) {
+    l.notes = saved[l.id].notes || '';
+    l.notesAddedAt = saved[l.id].notesAddedAt || '';
+    l.paid = saved[l.id].paid || false;
+   }
+  });
+ } catch(e) {}
+
+ for (var w = 0; w < 6; w++) {
+  var tr = document.createElement('tr');
+  tr.style.height = '90px';
+
+  for (var dow = 0; dow < 7; dow++) {
+   var d = new Date(startOfCal);
+   d.setDate(d.getDate() + w * 7 + dow);
+
+   var dateStr = fmtDate(d);
+   var isToday = dateStr === todayStr;
+   var isCurrentMonth = d.getMonth() === month;
+   var dayLessons = getLessonsForDate(dateStr);
+
+   var td = document.createElement('td');
+   var tdClasses = ['cal-td'];
+   if (isToday) tdClasses.push('today');
+   if (!isCurrentMonth) tdClasses.push('other-month');
+   td.className = tdClasses.join(' ');
+
+   var numDiv = '<div class="cal-day-num">';
+   if (isToday) {
+    numDiv += '<div class="cal-day-num-num">' + d.getDate() + '</div>';
+   } else {
+    numDiv += d.getDate();
+   }
+   numDiv += '</div>';
+
+   var lessonsHtml = '<div class="cal-lessons">';
+   for (var i = 0; i < dayLessons.length; i++) {
+    var l = dayLessons[i];
+    var isFuture = l.date > todayStr;
+    var pendingClass = l.status === 'pending' && isFuture ? ' pending' : '';
+    var payBtn = '';
+    if (!isFuture) {
+     if (l.paid) {
+      payBtn = '<button class="pay-released" onclick="openNotesModal(\'' + l.id + '\')">✓ Paid</button>';
+     } else {
+      payBtn = '<button class="pay-locked" onclick="openNotesModal(\'' + l.id + '\')">🔒 Notes</button>';
+     }
+    }
+    lessonsHtml += '<div class="cal-lesson-card' + pendingClass + '" onclick="openNotesModal(\'' + l.id + '\')">' +
+     '<div class="cal-lesson-time">' + l.time + ' – ' + l.endTime + '</div>' +
+     '<div class="cal-lesson-name">' + l.student + '</div>' +
+     '<div class="cal-lesson-meta">' +
+     '<span class="cal-lesson-code">' + l.code + ' · ' + l.subject + '</span>' +
+     '<span class="cal-lesson-status ' + l.status + '">' + l.status + '</span>' +
+     '</div>' +
+     '<div class="cal-lesson-payment">' + payBtn + '</div>' +
+     '</div>';
+   }
+   lessonsHtml += '</div>';
+
+   td.innerHTML = numDiv + lessonsHtml;
+   tr.appendChild(td);
+  }
+
+  tbody.appendChild(tr);
+ }
+
+ updatePendingNotesStats();
+ } catch(e) { console.error('renderCalendar error:', e); }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+ showTab('calendar');
+ renderCalendar();
+ document.getElementById('notesModal').addEventListener('click', function(e) {
+  if (e.target === this) closeNotesModal();
+ });
+ document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeNotesModal();
+ });
+});
+
+
+ document.getElementById('addSlotModal').addEventListener('click', function(e) {
+ if (e.target === this) closeModal('addSlot');
+ });
+</script>
+
+<script src="i18n.js"></script>
+</body>
+</html>
