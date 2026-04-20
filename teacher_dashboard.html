@@ -148,16 +148,12 @@ a { color: #3b82f6; text-decoration: none; }
   transition: all 0.2s;
  }
  .lang-btn:hover { color: white; }
- .lang-btn.active {
-  background: white;
-  color: var(--navy);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
- }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
  @media (max-width: 768px) {
   .lang-btn { padding: 4px 8px; font-size: 12px; }
   .lang-selector { padding: 2px; gap: 1px; }
   .lang-btn:hover { color: white; }
-  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; }
+  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
  }
 
  .user-name {
