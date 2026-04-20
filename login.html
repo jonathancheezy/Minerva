@@ -200,14 +200,15 @@
  /* Register link */
  .register-link {
  text-align: center;
- font-size: 14px;
- color: white;
+ margin-top: 20px;
  }
 
  .register-link a {
+ display: block;
+ font-size: 13px;
  color: var(--teal);
- font-weight: 600;
  text-decoration: none;
+ margin-bottom: 4px;
  }
 
  .register-link a:hover {
@@ -300,7 +301,9 @@
  </form>
 
  <div class="register-link" id="registerSection">
- <p id="registerText"><span data-i18n="login.no_account">Don't have an account?</span> <a href="teacher_registration.html" id="registerLink" data-i18n="login.register_as_teacher">Register as Teacher</a></p>
+ <p data-i18n="login.no_account">Don't have an account?</p>
+ <a href="teacher_registration.html" class="register-teacher" data-i18n="login.register_as_teacher">Register as Teacher</a>
+ <a href="parent_registration.html" class="register-parent" data-i18n="login.register_as_parent" style="display:none">Register as Parent/Student</a>
  </div>
  </div>
  </main>
@@ -334,8 +337,8 @@
  passwordLabel.textContent = 'Password';
  forgotLink.href = '#';
  submitBtn.textContent = 'Login';
- registerLink.textContent = 'Register as Teacher';
- registerLink.href = 'teacher_registration.html';
+ document.querySelector('.register-teacher').style.display = 'block';
+ document.querySelector('.register-parent').style.display = 'none';
  } else {
  teacherBtn.classList.remove('active');
  parentBtn.classList.add('active');
@@ -344,8 +347,8 @@
  emailLabel.textContent = 'Email Address';
  passwordLabel.textContent = 'Password';
  forgotLink.href = '#';
- registerLink.textContent = 'Register as Parent/Student';
- registerLink.href = 'parent_registration.html';
+ document.querySelector('.register-teacher').style.display = 'none';
+ document.querySelector('.register-parent').style.display = 'block';
  }
  }
 
