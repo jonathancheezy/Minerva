@@ -654,6 +654,10 @@ document.querySelectorAll('.message-avatar').forEach(function(el) {
   var idx = Math.abs(hash) % colours.length;
   el.style.background = colours[idx];
 });
+
+// Append teacher name to welcome message
+var welcomeEl = document.querySelector('[data-i18n="teacher_dash.welcome"]');
+if (welcomeEl) welcomeEl.textContent += ' TC';
 </script>
 </body>
 </html>
