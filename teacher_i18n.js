@@ -21,3 +21,17 @@ function applyI18n(lang) {
     b.classList.toggle('active', isActive);
   });
 }
+
+// Auto-init like i18n.js
+function initTeacherI18n() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var langParam = urlParams.get('lang');
+  var lang = langParam || 'en';
+  if (lang !== 'en' && lang !== 'zh-TW' && lang !== 'zh-CN') lang = 'en';
+  applyI18n(lang);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTeacherI18n);
+} else {
+  initTeacherI18n();
+}
