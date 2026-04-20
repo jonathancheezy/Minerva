@@ -596,36 +596,20 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <p>&copy; 2026 Minerva Learning Ltd. All rights reserved.</p>
 </footer>
 
-<script src="i18n.js"></script>
+<script src="i18n.js"></sc
 <script>
 document.addEventListener('DOMContentLoaded', function() {
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
    tab.addEventListener('click', function() {
-     document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); // DEBUG: Test i18n
- console.log('i18n test - T exists:', typeof T !== 'undefined');
- console.log('i18n test - T.teacher_dash exists:', typeof T !== 'undefined' && T.teacher_dash !== undefined);
- if (typeof T !== 'undefined' && T.teacher_dash) {
-   console.log('dashboard key:', T.teacher_dash.dashboard);
- }
-
- // Hamburger menu
- var menuBtn = document.querySelector('.mobile-menu-btn');
- var navLinks = document.querySelector('.nav-links');
- if (menuBtn && navLinks) {
-   menuBtn.addEventListener('click', function() {
-     navLinks.classList.toggle('active');
-   });
- }
-});
-     tab.classList.add('active');
-     var target = tab.getAttribute('data-tab');
-     document.querySelectorAll('.schedule-section').forEach(function(section) {
-       section.classList.remove('active');
-       if (section.getAttribute('data-section') === target) {
-         section.classList.add('active');
-       }
+     document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+     this.classList.add('active');
+     var section = this.getAttribute('data-section');
+     document.querySelectorAll('.schedule-section').forEach(function(s) {
+       s.style.display = 'none';
      });
+     var activeSection = document.querySelector('.schedule-section[data-section="' + section + '"]');
+     if (activeSection) { activeSection.style.display = 'block'; }
    });
  });
 
@@ -637,6 +621,13 @@ document.addEventListener('DOMContentLoaded', function() {
      navLinks.classList.toggle('active');
    });
  }
+
+ // Close hamburger when clicking outside
+ document.addEventListener('click', function(e) {
+   if (navLinks && menuBtn && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+     navLinks.classList.remove('active');
+   }
+ });
 });
 </script>
 </body>
