@@ -35,8 +35,15 @@
  background: var(--navy);
  padding: 16px 24px;
  }
- .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: white; text-decoration: none; }
- .logo-icon { width: 32px; height: 32px; }
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+ .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: white; text-decoration: none; }
+ .logo-icon { width: 36px; height: 36px; }
  .nav-right { display: flex; align-items: center; gap: 16px; }
  .nav-links { display: none; }
  .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
@@ -48,8 +55,8 @@
  .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
 
  .main { max-width: 800px; margin: 100px auto 60px; padding: 0 24px; }
- .hero-badge { display: inline-block; background: linear-gradient(135deg, var(--navy), var(--teal)); color: white; padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
- h1 { font-size: 40px; font-weight: 800; color: white; margin-bottom: 16px; line-height: 1.2; }
+ .hero-badge { display: inline-block; background: var(--navy); color: white; padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+ h1 { font-size: 40px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; line-height: 1.2; }
  .subtitle { font-size: 18px; color: white; margin-bottom: 40px; max-width: 560px; }
 
  .form-card { background: rgba(0,0,0,0.25); border-radius: 16px; padding: 32px; margin-bottom: 24px; }
