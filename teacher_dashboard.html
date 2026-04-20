@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', function() {
  // Apply translations
  var urlParams = new URLSearchParams(window.location.search);
  var lang = urlParams.get('lang') || 'en';
- if (typeof applyTranslations === 'function') applyTranslations(lang);
+ setLang(lang);
 
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
