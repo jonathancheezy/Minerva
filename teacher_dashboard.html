@@ -409,7 +409,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 <main class="main">
  <div class="page-header">
   <h1 data-i18n="teacher_dash.dashboard">Teacher Dashboard</h1>
-  <p data-i18n="teacher_dash.welcome">Welcome back, Teacher Chan</p>
+  <p data-i18n="teacher_dash.welcome" data-name="TC">Welcome back, Teacher Chan</p>
  </div>
 
  <div class="stats-grid">
@@ -657,7 +657,10 @@ document.querySelectorAll('.message-avatar').forEach(function(el) {
 
 // Append teacher name to welcome message
 var welcomeEl = document.querySelector('[data-i18n="teacher_dash.welcome"]');
-if (welcomeEl) welcomeEl.textContent += ' TC';
+if (welcomeEl) {
+  var name = welcomeEl.getAttribute('data-name');
+  if (name) welcomeEl.textContent += ' ' + name;
+}
 </script>
 </body>
 </html>
