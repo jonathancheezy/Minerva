@@ -653,8 +653,10 @@ document.querySelectorAll('.message-avatar').forEach(function(el) {
 // Append teacher name to welcome message
 // Append teacher name to welcome message
 var welcomeEl = document.querySelector('[data-i18n="teacher_dash.welcome"]');
+console.log('welcomeEl:', welcomeEl, 'text:', welcomeEl ? welcomeEl.textContent : 'NOT FOUND');
 if (welcomeEl) {
   var name = welcomeEl.getAttribute('data-name');
+  console.log('name:', name);
   if (name) welcomeEl.textContent += ' ' + name;
 }
 </script>
