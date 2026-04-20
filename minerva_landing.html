@@ -69,7 +69,11 @@
  display: flex;
  align-items: center;
  gap: 16px;
+ justify-content: center;
+ flex: 1;
  }
+
+ .nav-right > .mobile-menu-btn { display: none; }
 
  .lang-selector {
  display: flex;
@@ -78,6 +82,8 @@
  padding: 4px;
  border-radius: 8px;
  margin-left: auto;
+ flex-shrink: 0;
+ }
  }
 
  .lang-btn {
@@ -103,6 +109,8 @@
  display: flex;
  gap: 24px;
  align-items: center;
+ justify-content: center;
+ flex: 1;
  }
 
  .nav-links a {
