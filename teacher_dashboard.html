@@ -599,15 +599,25 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 <script src="i18n.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
- // Apply translations
- var urlParams = new URLSearchParams(window.location.search);
- var lang = urlParams.get('lang') || 'en';
- window.setLang(lang);
-
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
    tab.addEventListener('click', function() {
-     document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+     document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); // DEBUG: Test i18n
+ console.log('i18n test - T exists:', typeof T !== 'undefined');
+ console.log('i18n test - T.teacher_dash exists:', typeof T !== 'undefined' && T.teacher_dash !== undefined);
+ if (typeof T !== 'undefined' && T.teacher_dash) {
+   console.log('dashboard key:', T.teacher_dash.dashboard);
+ }
+
+ // Hamburger menu
+ var menuBtn = document.querySelector('.mobile-menu-btn');
+ var navLinks = document.querySelector('.nav-links');
+ if (menuBtn && navLinks) {
+   menuBtn.addEventListener('click', function() {
+     navLinks.classList.toggle('active');
+   });
+ }
+});
      tab.classList.add('active');
      var target = tab.getAttribute('data-tab');
      document.querySelectorAll('.schedule-section').forEach(function(section) {
