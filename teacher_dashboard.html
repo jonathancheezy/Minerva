@@ -602,18 +602,36 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 
 <script src="i18n.js?v=61bdaa7"></script>
 <script>
+function applyI18n(lang) {
+  var T = window.T;
+  if (!T) return;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var k = el.getAttribute('data-i18n');
+    if (!k) return;
+    var v = T;
+    k.split('.').forEach(function(x) { v = v && v[x]; });
+    if (v && v[lang]) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = v[lang];
+      } else {
+        el.textContent = v[lang];
+      }
+    }
+  });
+  // Update lang buttons
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    var href = b.getAttribute('href') || '';
+    var isActive = href.includes('lang=' + lang) ||
+      (lang === 'en' && (href.includes('lang=en') || href === 'teacher_dashboard.html' || href === 'teacher_dashboard.html?'));
+    b.classList.toggle('active', isActive);
+  });
+}
 document.addEventListener('DOMContentLoaded', function() {
- // Translations — use URL lang param if present
  var urlParams = new URLSearchParams(window.location.search);
  var langParam = urlParams.get('lang');
- if (langParam) {
-   var norm = langParam.replace('-','');
-   if (['en','zhTW','zhCN'].includes(norm)) {
-     setLang(norm);
-   } else if (['en','zhTW','zhCN'].includes(langParam)) {
-     setLang(langParam);
-   }
- }
+ var lang = langParam ? langParam.replace('-','') : 'en';
+ if (['en','zhTW','zhCN'].indexOf(lang) === -1) lang = 'en';
+ applyI18n(lang);
 
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
