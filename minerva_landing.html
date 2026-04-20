@@ -69,10 +69,7 @@
  display: flex;
  align-items: center;
  gap: 16px;
- justify-content: space-between;
  }
-
- .nav-right > .mobile-menu-btn { display: none; }
 
  .lang-selector {
  display: flex;
@@ -105,6 +102,7 @@
  display: flex;
  gap: 24px;
  align-items: center;
+ justify-content: center;
  }
 
  .nav-links a {
@@ -117,10 +115,9 @@
 
  .nav-links a:hover { color: var(--navy); }
 
- .nav-inner { display: flex; align-items: center; }
- .nav-inner > .logo { margin-right: auto; }
- .nav-inner > .nav-links { flex: 1; justify-content: center; }
- .nav-inner > .lang-selector { margin-left: auto; }
+ .nav-inner { display: flex; align-items: center; gap: 24px; }
+ .nav-inner > .logo { flex-shrink: 0; }
+ .nav-inner > .nav-right { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
 
  .btn-outline {
  background: transparent;
