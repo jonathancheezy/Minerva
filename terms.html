@@ -21,27 +21,55 @@
  * { margin: 0; padding: 0; box-sizing: border-box; }
  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray-700); line-height: 1.7; }
  .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
- nav { background: var(--navy); color: white; padding: 16px 24px; }
- .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; }
- .logo { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; font-size: 18px; font-weight: 700; }
- .logo-icon { width: 32px; height: 32px; }
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ }
+ nav .nav-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+ .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: white; text-decoration: none; }
+ .logo-icon { width: 36px; height: 36px; }
  .nav-right { display: flex; align-items: center; gap: 16px; }
  .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
- .nav-links { display: none; }
- .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; opacity: 0.8; }
- .nav-links a:hover { color: white; }
  .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
- .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; }
- .lang-btn { padding: 4px 10px; border: none; background: transparent; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.2s; }
+ .nav-links { display: none; }
+
+ .container { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+ h1 { font-size: 36px; font-weight: 800; color: var(--navy-dark); margin-bottom: 8px; text-align: center; }
+ .subtitle { font-size: 18px; color: white; text-align: center; margin-bottom: 48px; }
+
+ .category { margin-bottom: 48px; }
+ .category-title { font-size: 20px; font-weight: 700; color: var(--navy-dark); margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); display: inline-block; }
+
+ .faq-list { display: flex; flex-direction: column; gap: 16px; }
+ .faq-item { background: rgba(0,0,0,0.25); border-radius: 12px; padding: 24px; transition: all 0.2s; }
+ .faq-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+ .faq-question { font-size: 16px; font-weight: 600; color: var(--navy-dark); margin-bottom: 8px; }
+ .faq-answer { font-size: 14px; color: var(--gray-700); line-height: 1.7; }
+
+ .contact-box { background: var(--navy); color: white; border-radius: 16px; padding: 32px; text-align: center; margin-top: 48px; }
+ .contact-box h2 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+ .contact-box p { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
+ .contact-btn { display: inline-block; background: var(--gold); color: var(--navy-dark); padding: 14px 32px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+ .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(249, 168, 40, 0.4); }
+
+ .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; margin-left: auto; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; text-decoration: none; transition: all 0.2s; }
  .lang-btn:hover { color: white; }
  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
+ footer { text-align: center; padding: 32px 24px; font-size: 14px; color: white; border-top: 1px solid var(--gray-200); margin-top: 48px; }
+ footer a { color: var(--navy); text-decoration: none; }
  @media (max-width: 768px) {
- .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 16px; gap: 12px; }
- .nav-links.active { display: flex; }
- .mobile-menu-btn { display: block; }
- .nav-right { position: relative; }
+ h1 { font-size: 28px; }
+ .category-title { font-size: 18px; }
+ .faq-item { padding: 20px; }
+ .lang-btn { padding: 6px 12px; font-size: 13px; }
  .lang-selector { padding: 2px; gap: 1px; }
+ .mobile-menu-btn { display: block; }
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 16px; gap: 12px; }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
  }
  h1 { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 8px; }
  .last-updated { font-size: 14px; color: white; margin-bottom: 40px; }
@@ -65,12 +93,11 @@
  Minerva
  </a>
  <div class="nav-right">
- <a href="minerva_landing.html" class="back-link">← Back</a>
  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
  <div class="nav-links">
- <a href="minerva_landing.html" data-i18n="register.nav_home">Home</a>
- <a href="faq.html" data-i18n="register.nav_faq">FAQ</a>
- <a href="login.html" data-i18n="register.nav_login">Login</a>
+ <a href="minerva_landing.html" data-i18n="nav_home">Home</a>
+ <a href="login.html" data-i18n="nav_login">Login</a>
+ <a href="terms.html" data-i18n="nav_terms">Terms & Conditions</a>
  </div>
  <div class="lang-selector">
  <a href="terms.html?lang=en" class="lang-btn">EN</a>
