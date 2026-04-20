@@ -38,7 +38,7 @@
  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: white; text-decoration: none; }
  .logo-icon { width: 32px; height: 32px; }
  .nav-right { display: flex; align-items: center; gap: 16px; }
- .nav-links { display: flex; gap: 24px; align-items: center; }
+ .nav-links { display: none; }
  .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
  .nav-links a:hover { color: white; }
  .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; }
@@ -78,8 +78,9 @@
  .section-title:first-of-type { margin-top: 0; }
 
  @media (max-width: 768px) {
- .nav-links { display: none; }
- .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 16px; gap: 12px; }
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 16px; gap: 12px; }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
  .mobile-menu-btn { display: block; }
  h1 { font-size: 28px; }
  .form-card { padding: 20px; }
