@@ -21,16 +21,17 @@
  * { margin: 0; padding: 0; box-sizing: border-box; }
  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray-700); line-height: 1.7; }
  .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
- nav { background: var(--navy); padding: 0; position: sticky; top: 0; z-index: 100; }
+ nav { background: var(--navy); color: white; padding: 16px 24px; }
  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; }
  .logo { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; font-size: 18px; font-weight: 700; }
  .logo-icon { width: 32px; height: 32px; }
  .nav-right { display: flex; align-items: center; gap: 16px; }
- .nav-links { display: flex; gap: 24px; align-items: center; }
- .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+ .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
+ .nav-links { display: none; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; opacity: 0.8; }
  .nav-links a:hover { color: white; }
  .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
- .lang-selector { display: flex; gap: 4px; background: rgba(255,255,255,0.1); padding: 4px; border-radius: 8px; }
+ .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; }
  .lang-btn { padding: 4px 10px; border: none; background: transparent; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.2s; }
  .lang-btn:hover { color: white; }
  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -64,6 +65,7 @@
  Minerva
  </a>
  <div class="nav-right">
+ <a href="minerva_landing.html" class="back-link">← Back</a>
  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
  <div class="nav-links">
  <a href="minerva_landing.html" data-i18n="register.nav_home">Home</a>
