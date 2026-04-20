@@ -603,6 +603,17 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 <script src="i18n.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+ // Translations — use URL lang param if present
+ var urlParams = new URLSearchParams(window.location.search);
+ var langParam = urlParams.get('lang');
+ if (langParam) {
+   var norm = langParam.replace('-','');
+   if (['en','zhTW','zhCN'].includes(norm)) {
+     setLang(norm);
+   } else if (['en','zhTW','zhCN'].includes(langParam)) {
+     setLang(langParam);
+   }
+ }
 
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
