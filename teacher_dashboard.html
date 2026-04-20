@@ -42,15 +42,11 @@ a { color: #3b82f6; text-decoration: none; }
  nav {
  background: var(--navy);
  color: white;
- padding: 0 24px;
+ padding: 16px 24px;
  display: flex;
  justify-content: space-between;
  align-items: center;
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- height: 60px;
+ position: relative;
  z-index: 100;
  }
 
@@ -128,45 +124,12 @@ a { color: #3b82f6; text-decoration: none; }
  font-size: 14px;
  }
 
- .lang-selector {
- display: flex;
- gap: 1px;
- padding: 2px;
- }
-
- .lang-selector {
- display: flex;
- gap: 2px;
- background: var(--gray-100);
- padding: 3px;
- border-radius: 6px;
- }
- .lang-btn {
- padding: 4px 8px;
- border: none;
- background: transparent;
- border-radius: 4px;
- font-size: 12px;
- font-weight: 600;
- cursor: pointer;
- color: var(--gray-500);
- text-decoration: none;
- transition: all 0.2s;
- }
- .lang-btn:hover { color: var(--navy); }
- .lang-btn.active {
- background: white;
- color: var(--navy);
- box-shadow: 0 1px 3px rgba(0,0,0,0.1);
- }
-
  .user-name {
  font-size: 14px;
  font-weight: 600;
  }
 
- 
-/* Main Content */
+ /* Main Content */
 .main {
  max-width: 1200px;
  margin: 0 auto;
