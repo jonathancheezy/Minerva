@@ -47,9 +47,6 @@
  .nav-inner {
  max-width: 1100px;
  margin: 0 auto;
- display: flex;
- justify-content: space-between;
- align-items: center;
  }
 
  .logo {
@@ -68,7 +65,6 @@
  display: flex;
  align-items: center;
  justify-content: space-between;
- flex: 1;
  }
 
  .lang-selector {
@@ -78,7 +74,7 @@
  padding: 4px;
  border-radius: 8px;
  position: absolute;
- right: 64px;
+ right: 128px;
  top: 50%;
  transform: translateY(-50%);
  }
@@ -616,6 +612,7 @@
 <body>
  <nav>
  <div class="nav-inner">
+ <div class="nav-right">
  <a href="#" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -624,7 +621,6 @@
  </svg>
  Minerva
  </a>
- <div class="nav-right">
  <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
  <div class="nav-links">
  <a href="#features" data-i18n="nav_features">Features</a>
