@@ -131,7 +131,7 @@ a { color: #3b82f6; text-decoration: none; }
  .lang-selector {
   display: flex;
   gap: 2px;
-  background: var(--gray-100);
+  background: rgba(0,0,0,0.25);
   padding: 3px;
   border-radius: 6px;
  }
@@ -143,11 +143,11 @@ a { color: #3b82f6; text-decoration: none; }
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  color: var(--gray-500);
+  color: white;
   text-decoration: none;
   transition: all 0.2s;
  }
- .lang-btn:hover { color: var(--navy); }
+ .lang-btn:hover { color: white; }
  .lang-btn.active {
   background: white;
   color: var(--navy);
@@ -156,8 +156,8 @@ a { color: #3b82f6; text-decoration: none; }
  @media (max-width: 768px) {
   .lang-btn { padding: 4px 8px; font-size: 12px; }
   .lang-selector { padding: 2px; gap: 1px; }
-  .lang-btn:hover { color: var(--navy); }
-  .lang-btn.active { background: white; color: var(--navy); }
+  .lang-btn:hover { color: white; }
+  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; }
  }
 
  .user-name {

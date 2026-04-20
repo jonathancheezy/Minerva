@@ -26,7 +26,7 @@
 
  body {
  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  color: var(--gray-700);
  line-height: 1.6;
  }
@@ -111,10 +111,10 @@
  .user-name { font-weight: 600; font-size: 14px; }
  .logout:hover { color: white; }
 
- .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
- .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
- .lang-btn:hover { color: var(--navy); }
- .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
  /* Main */
  .main {
@@ -138,7 +138,7 @@
  color: var(--navy-dark);
  }
 
- .page-header p { color: var(--gray-500); margin-top: 4px; }
+ .page-header p { color: white; margin-top: 4px; }
 
  /* Tabs */
  .tabs {
@@ -157,7 +157,7 @@
  font-size: 14px;
  font-weight: 600;
  cursor: pointer;
- color: var(--gray-500);
+ color: white;
  transition: all 0.2s;
  }
 
@@ -228,12 +228,12 @@
  text-align: center;
  font-size: 12px;
  font-weight: 600;
- color: var(--gray-500);
+ color: white;
  padding: 8px;
  }
 
  .calendar-day {
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  border-radius: 8px;
  min-height: 80px;
  padding: 8px;
@@ -327,7 +327,7 @@
  display: flex;
  gap: 16px;
  padding: 16px;
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  border-radius: 12px;
  margin-bottom: 16px;
  cursor: pointer;
@@ -354,7 +354,7 @@
 
  .teacher-info { flex: 1; }
  .teacher-name { font-weight: 600; color: var(--navy-dark); font-size: 16px; }
- .teacher-subject { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
+ .teacher-subject { font-size: 13px; color: white; margin-top: 2px; }
  .teacher-meta { text-align: right; }
  .teacher-rate { font-weight: 700; color: var(--navy); font-size: 16px; }
  .teacher-rating { font-size: 13px; color: var(--gold); margin-top: 4px; }
@@ -390,7 +390,7 @@
  }
 
  .time-slot.disabled {
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  color: var(--gray-300);
  cursor: not-allowed;
  }
@@ -400,7 +400,7 @@
  display: flex;
  align-items: center;
  padding: 16px;
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  border-radius: 12px;
  margin-bottom: 12px;
  }
@@ -427,7 +427,7 @@
 
  .booking-item .details { flex: 1; }
  .booking-item .teacher { font-weight: 600; color: var(--navy-dark); }
- .booking-item .subject { font-size: 13px; color: var(--gray-500); }
+ .booking-item .subject { font-size: 13px; color: white; }
  .booking-item .time-badge {
  background: var(--teal);
  color: white;
@@ -503,7 +503,7 @@
  text-align: center;
  padding: 32px 24px;
  font-size: 14px;
- color: var(--gray-500);
+ color: white;
  border-top: 1px solid var(--gray-200);
  margin-top: 48px;
  }
@@ -634,7 +634,7 @@
  <div class="teacher-rating">⭐ 4.7 (56)</div>
  </div>
  </div>
- <p style="margin-top: 12px; color: var(--gray-500); font-size: 14px;">
+ <p style="margin-top: 12px; color: white; font-size: 14px;">
  <a href="teachers.html?v=2" style="color: var(--teal);">Browse all teachers →</a>
  </p>
  </div>
@@ -975,7 +975,7 @@
  <div class="subject">IB Maths • Completed</div>
  </div>
  </div>
- <p style="text-align: center; color: var(--gray-500); margin-top: 24px;">
+ <p style="text-align: center; color: white; margin-top: 24px;">
  <a href="#" style="color: var(--teal);">View all history →</a>
  </p>
  </div>

@@ -22,7 +22,7 @@
  --success: #10b981;
  }
  * { margin: 0; padding: 0; box-sizing: border-box; }
- body { font-family: 'Inter', sans-serif; background: var(--gray-100); color: var(--gray-700); line-height: 1.6; }
+ body { font-family: 'Inter', sans-serif; background: rgba(0,0,0,0.25); color: var(--gray-700); line-height: 1.6; }
 
  nav {
  background: var(--navy);
@@ -46,7 +46,7 @@
  border-bottom: 1px solid var(--gray-200);
  }
  .page-header h1 { font-size: 36px; font-weight: 800; color: var(--navy-dark); margin-bottom: 12px; }
- .page-header p { font-size: 18px; color: var(--gray-500); max-width: 600px; margin: 0 auto; }
+ .page-header p { font-size: 18px; color: white; max-width: 600px; margin: 0 auto; }
 
  .filters {
  background: white;
@@ -60,7 +60,7 @@
  .filter-group { display: flex; gap: 12px; flex-wrap: wrap; }
  select, input { padding: 10px 16px; border: 1px solid var(--gray-300); border-radius: 8px; font-size: 14px; background: white; font-family: inherit; }
  select:focus, input:focus { outline: none; border-color: var(--teal); }
- .result-count { font-size: 14px; color: var(--gray-500); }
+ .result-count { font-size: 14px; color: white; }
 
  .teachers-grid {
  max-width: 1100px;
@@ -86,7 +86,7 @@
  .teacher-info { flex: 1; }
  .teacher-name { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
  .teacher-subjects { font-size: 13px; color: var(--teal); font-weight: 600; margin-bottom: 6px; }
- .teacher-location { font-size: 13px; color: var(--gray-500); display: flex; align-items: center; gap: 4px; }
+ .teacher-location { font-size: 13px; color: white; display: flex; align-items: center; gap: 4px; }
 
  .badge-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
  .badge { padding: 4px 10px; border-radius: 50px; font-size: 12px; font-weight: 600; }
@@ -97,13 +97,13 @@
  .stats { display: flex; gap: 16px; margin-bottom: 16px; padding: 12px 0; border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); }
  .stat { flex: 1; text-align: center; }
  .stat-value { font-size: 18px; font-weight: 700; color: var(--navy-dark); }
- .stat-label { font-size: 12px; color: var(--gray-500); }
+ .stat-label { font-size: 12px; color: white; }
 
  .bio { font-size: 14px; color: var(--gray-700); margin-bottom: 20px; line-height: 1.6; }
 
  .card-footer { display: flex; gap: 12px; justify-content: space-between; align-items: center; }
  .rate { font-size: 22px; font-weight: 800; color: var(--navy-dark); }
- .rate span { font-size: 14px; font-weight: 400; color: var(--gray-500); }
+ .rate span { font-size: 14px; font-weight: 400; color: white; }
 
  .btn { padding: 10px 20px; border-radius: 50px; font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-family: inherit; }
  .btn-primary { background: var(--gold); color: var(--navy-dark); }
@@ -112,10 +112,10 @@
  .btn-outline:hover { background: var(--navy); color: white; }
  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
- .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; margin-left: auto; }
- .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
- .lang-btn:hover { color: var(--navy); }
- .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; margin-left: auto; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
  @media (max-width: 768px) {
  .lang-btn { padding: 6px 12px; font-size: 13px; }
@@ -123,9 +123,9 @@
  }
 
  .empty-state { text-align: center; padding: 60px 24px; grid-column: 1 / -1; }
- .empty-state h3 { font-size: 20px; color: var(--gray-500); margin-bottom: 8px; }
+ .empty-state h3 { font-size: 20px; color: white; margin-bottom: 8px; }
 
- .loading { text-align: center; padding: 60px 24px; grid-column: 1 / -1; color: var(--gray-500); }
+ .loading { text-align: center; padding: 60px 24px; grid-column: 1 / -1; color: white; }
 
  @media (max-width: 768px) {
  .filters-inner { flex-direction: column; align-items: stretch; }
