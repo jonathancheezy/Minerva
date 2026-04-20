@@ -650,11 +650,18 @@ document.querySelectorAll('.message-avatar').forEach(function(el) {
   el.style.background = colours[idx];
 });
 
-// Append teacher name to welcome message
-var welcomeEl = document.querySelector('[data-i18n="teacher_dash.welcome"]');
-if (welcomeEl && welcomeEl.textContent.indexOf('TC') === -1) {
-  welcomeEl.textContent += ' TC';
-}
+// Append teacher name to welcome message after i18n runs
+(function() {
+  function addName() {
+    var el = document.querySelector('[data-i18n="teacher_dash.welcome"]');
+    if (el && el.textContent.trim() !== '') {
+      el.textContent += ' TC';
+    }
+  }
+  // Run immediately (i18n already applied), plus retry on DOMContentLoaded as backup
+  addName();
+  document.addEventListener('DOMContentLoaded', addName);
+})();
 </script>
 </body>
 </html>
