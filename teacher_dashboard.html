@@ -602,7 +602,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 
 <script src="teacher_i18n.js?v=afe8eeb"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() { var urlParams = new URLSearchParams(window.location.search); var langParam = urlParams.get('lang'); var lang = langParam || 'en'; if (lang !== 'en' && lang !== 'zh-TW' && lang !== 'zh-CN') lang = 'en'; applyI18n(lang); 
+// applyI18n is auto-init'd by teacher_i18n.js 
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
    tab.addEventListener('click', function() {
