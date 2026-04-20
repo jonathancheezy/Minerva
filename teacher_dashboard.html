@@ -409,7 +409,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 <main class="main">
  <div class="page-header">
   <h1 data-i18n="teacher_dash.dashboard">Teacher Dashboard</h1>
-  <p data-i18n="teacher_dash.welcome" data-name="TC">Welcome back</p>
+  <p>Welcome back, TC!</p>
  </div>
 
  <div class="stats-grid">
@@ -650,18 +650,6 @@ document.querySelectorAll('.message-avatar').forEach(function(el) {
   el.style.background = colours[idx];
 });
 
-// Append teacher name to welcome message after i18n runs
-(function() {
-  function addName() {
-    var el = document.querySelector('[data-i18n="teacher_dash.welcome"]');
-    if (el && el.textContent.trim() !== '') {
-      el.textContent += ' TC';
-    }
-  }
-  // Run immediately (i18n already applied), plus retry on DOMContentLoaded as backup
-  addName();
-  document.addEventListener('DOMContentLoaded', addName);
-})();
 </script>
 </body>
 </html>
