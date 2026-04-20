@@ -653,7 +653,7 @@ function setLanguage(lang) {
         el.placeholder = t[key];
         el.value = t[key];
       } else {
-        el.textContent = t[key];
+        el.innerHTML = t[key];
       }
     }
   });
