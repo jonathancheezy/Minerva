@@ -28,7 +28,7 @@
  line-height: 1.6;
  padding-top: 64px;
  }
- 
+
 
  /* Nav */
  nav {
@@ -314,7 +314,7 @@
  color: white;
  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
  }
- 
+
 @media (max-width: 768px) {
 .lang-btn { padding: 6px 12px; font-size: 13px; }
 .lang-selector { padding: 2px; gap: 1px; }
@@ -326,7 +326,7 @@
 </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- 
+
 </head>
 <body>
  <nav>
@@ -531,19 +531,19 @@
 
  document.getElementById('parentForm').addEventListener('submit', function(e) {
  e.preventDefault();
- 
+
  // Show success message
  document.getElementById('parentForm').style.display = 'none';
  document.getElementById('formSuccess').style.display = 'block';
- 
+
  // Log form data (in production, this would send to backend)
  const formData = new FormData(this);
  console.log('Registration:', Object.fromEntries(formData));
  });
  </script>
- 
- 
- 
+
+
+
 
 
 
