@@ -408,77 +408,77 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  </nav>
 <main class="main">
  <div class="page-header">
-  <h1>Teacher Dashboard</h1>
-  <p>Welcome back, Teacher Chan</p>
+  <h1 data-i18n="teacher_dash.dashboard">Teacher Dashboard</h1>
+  <p data-i18n="teacher_dash.welcome">Welcome back, Teacher Chan</p>
  </div>
 
  <div class="stats-grid">
   <div class="stat-card">
-   <div class="label">Total Students</div>
+   <div class="label" data-i18n="teacher_dash.total_students">Total Students</div>
    <div class="value">12</div>
-   <div class="sub">across 5 subjects</div>
+   <div class="sub" data-i18n="teacher_dash.across_5_subjects">across 5 subjects</div>
   </div>
   <div class="stat-card">
-   <div class="label">Upcoming Lessons</div>
+   <div class="label" data-i18n="teacher_dash.upcoming_lessons">Upcoming Lessons</div>
    <div class="value">8</div>
-   <div class="sub">next 7 days</div>
+   <div class="sub" data-i18n="teacher_dash.next_7_days">next 7 days</div>
   </div>
   <div class="stat-card">
-   <div class="label">Lessons / Month</div>
+   <div class="label" data-i18n="teacher_dash.lessons_month_label">Lessons / Month</div>
    <div class="value green">24</div>
-   <div class="sub">+3 from last month</div>
+   <div class="sub" data-i18n="teacher_dash.stats_new_this_month">+3 this month</div>
   </div>
   <div class="stat-card">
-   <div class="label">Pending Notes</div>
+   <div class="label" data-i18n="teacher_dash.pending_notes">Pending Notes</div>
    <div class="value gold">3</div>
-   <div class="sub"><a href="teacher_schedule.html">Review now</a></div>
+   <div class="sub"><a href="teacher_schedule.html" data-i18n="teacher_dash.review_now">Review now</a></div>
   </div>
   <div class="stat-card">
-   <div class="label">Upcoming Tests</div>
+   <div class="label" data-i18n="teacher_dash.upcoming_tests">Upcoming Tests</div>
    <div class="value" style="color:#8b5cf6;">5</div>
-   <div class="sub">next 2 weeks</div>
+   <div class="sub" data-i18n="teacher_dash.next_2_weeks">next 2 weeks</div>
   </div>
  </div>
 
  <div class="content-grid">
   <div class="card schedule-card">
    <div class="card-header">
-    <h2>Schedule</h2>
-    <a href="teacher_schedule.html">View All</a>
+    <h2 data-i18n="teacher_dash.schedule">Schedule</h2>
+    <a href="teacher_schedule.html" data-i18n="teacher_dash.view_all">View All</a>
    </div>
    <div class="filter-tabs">
-    <button class="filter-tab active" data-tab="confirmed">Confirmed</button>
-    <button class="filter-tab" data-tab="pending">Pending</button>
-    <button class="filter-tab" data-tab="cancelled">Cancelled</button>
+    <button class="filter-tab active" data-tab="confirmed" data-i18n="teacher_dash.confirmed">Confirmed</button>
+    <button class="filter-tab" data-tab="pending" data-i18n="teacher_dash.pending">Pending</button>
+    <button class="filter-tab" data-tab="cancelled" data-i18n="teacher_dash.cancelled">Cancelled</button>
    </div>
    <div class="schedule-list">
     <div class="schedule-section active" data-section="confirmed">
-     <div class="day-header">Today &mdash; 18 Apr</div>
+     <div class="day-header" data-i18n="teacher_dash.today">Today &mdash; 18 Apr</div>
      <div class="schedule-day">
       <div class="lesson-item">
        <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
        <div class="lesson-details">
-        <div class="lesson-subject">Piano (Grade 3 Prep)</div>
-        <div class="student">Emma Wong</div>
+        <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g3">Piano (Grade 3 Prep)</div>
+        <div class="student" data-i18n="teacher_dash.emma_wong">Emma Wong</div>
        </div>
        <div class="lesson-status confirmed">Confirmed</div>
       </div>
       <div class="lesson-item">
        <div class="lesson-time"><span class="time">14:00</span><span class="dash">&ndash;</span><span class="time">15:00</span></div>
        <div class="lesson-details">
-        <div class="lesson-subject">Violin (Beginner)</div>
-        <div class="student">Lucas Lee</div>
+        <div class="lesson-subject" data-i18n="teacher_dash.subj_violin_beg">Violin (Beginner)</div>
+        <div class="student" data-i18n="teacher_dash.lucas_lee">Lucas Lee</div>
        </div>
        <div class="lesson-status confirmed">Confirmed</div>
       </div>
      </div>
-     <div class="day-header">Tomorrow &mdash; 19 Apr</div>
+     <div class="day-header" data-i18n="teacher_dash.tomorrow">Tomorrow &mdash; 19 Apr</div>
      <div class="schedule-day">
       <div class="lesson-item">
        <div class="lesson-time"><span class="time">16:30</span><span class="dash">&ndash;</span><span class="time">17:30</span></div>
        <div class="lesson-details">
-        <div class="lesson-subject">Piano (Grade 5)</div>
-        <div class="student">Sophie Chen</div>
+        <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g5">Piano (Grade 5)</div>
+        <div class="student" data-i18n="teacher_dash.sophie_chen">Sophie Chen</div>
        </div>
        <div class="lesson-status confirmed">Confirmed</div>
       </div>
@@ -491,7 +491,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
        <div class="lesson-time"><span class="time">09:00</span><span class="dash">&ndash;</span><span class="time">10:00</span></div>
        <div class="lesson-details">
         <div class="lesson-subject">Math (Form 3)</div>
-        <div class="student">Ryan Lam</div>
+        <div class="student" data-i18n="teacher_dash.ryan_lam">Ryan Lam</div>
        </div>
        <div class="lesson-status pending">Pending</div>
       </div>
@@ -499,7 +499,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
        <div class="lesson-time"><span class="time">11:00</span><span class="dash">&ndash;</span><span class="time">12:00</span></div>
        <div class="lesson-details">
         <div class="lesson-subject">English (Form 4)</div>
-        <div class="student">Grace Ho</div>
+        <div class="student" data-i18n="teacher_dash.grace_ho">Grace Ho</div>
        </div>
        <div class="lesson-status pending">Pending</div>
       </div>
@@ -510,7 +510,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
        <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
        <div class="lesson-details">
         <div class="lesson-subject">Science (Form 2)</div>
-        <div class="student">Nathan Wu</div>
+        <div class="student" data-i18n="teacher_dash.nathan_wu">Nathan Wu</div>
        </div>
        <div class="lesson-status pending">Pending</div>
       </div>
@@ -523,7 +523,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
        <div class="lesson-time"><span class="time">15:00</span><span class="dash">&ndash;</span><span class="time">16:00</span></div>
        <div class="lesson-details">
         <div class="lesson-subject">Science (Form 2)</div>
-        <div class="student">Nathan Wu</div>
+        <div class="student" data-i18n="teacher_dash.nathan_wu">Nathan Wu</div>
        </div>
        <div class="lesson-status cancelled">Cancelled</div>
       </div>
@@ -531,7 +531,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
        <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
        <div class="lesson-details">
         <div class="lesson-subject">Piano (Grade 1)</div>
-        <div class="student">Lily Zhang</div>
+        <div class="student" data-i18n="teacher_dash.lily_zhang">Lily Zhang</div>
        </div>
        <div class="lesson-status cancelled">Cancelled</div>
       </div>
@@ -542,19 +542,19 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 
   <div class="card messages-card">
    <div class="card-header">
-    <h2>Messages</h2>
-    <a href="messages.html">View All</a>
+    <h2 data-i18n="teacher_dash.messages">Messages</h2>
+    <a href="messages.html" data-i18n="teacher_dash.view_all">View All</a>
    </div>
    <div class="card-body">
     <div class="conv-legend">
-     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#F9A828;display:inline-block;"></span><span>Unread</span></span>
-     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;"></span><span>Lesson</span></span>
-     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#3b82f6;display:inline-block;"></span><span>General</span></span>
+     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#F9A828;display:inline-block;"></span><span data-i18n="teacher_dash.unread">Unread</span></span>
+     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;"></span><span data-i18n="teacher_dash.lesson_type">Lesson</span></span>
+     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#3b82f6;display:inline-block;"></span><span data-i18n="teacher_dash.general_type">General</span></span>
     </div>
     <div class="message-item">
      <div class="message-avatar" style="background:#F9A828;">EW</div>
      <div class="message-info">
-      <div class="message-sender">Emma Wong</div>
+      <div class="message-sender" data-i18n="teacher_dash.emma_wong">Emma Wong</div>
       <div class="message-preview">Regarding tomorrow's piano lesson...</div>
      </div>
      <div class="message-time">9:41</div>
@@ -562,7 +562,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
     <div class="message-item">
      <div class="message-avatar" style="background:#22c55e;">LL</div>
      <div class="message-info">
-      <div class="message-sender">Lucas Lee</div>
+      <div class="message-sender" data-i18n="teacher_dash.lucas_lee">Lucas Lee</div>
       <div class="message-preview">Can we reschedule Thursday's lesson?</div>
      </div>
      <div class="message-time">Yesterday</div>
@@ -570,7 +570,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
     <div class="message-item">
      <div class="message-avatar" style="background:#3b82f6;">SC</div>
      <div class="message-info">
-      <div class="message-sender">Sophie Chen</div>
+      <div class="message-sender" data-i18n="teacher_dash.sophie_chen">Sophie Chen</div>
       <div class="message-preview">Thanks for the lesson today!</div>
      </div>
      <div class="message-time">Yesterday</div>
@@ -578,7 +578,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
     <div class="message-item">
      <div class="message-avatar" style="background:#22c55e;">RH</div>
      <div class="message-info">
-      <div class="message-sender">Ryan Ho</div>
+      <div class="message-sender" data-i18n="teacher_dash.ryan_ho">Ryan Ho</div>
       <div class="message-preview">Assignment submission for Math Form 3</div>
      </div>
      <div class="message-time">Apr 16</div>
@@ -586,7 +586,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
     <div class="message-item">
      <div class="message-avatar" style="background:#3b82f6;">GH</div>
      <div class="message-info">
-      <div class="message-sender">Grace Ho</div>
+      <div class="message-sender" data-i18n="teacher_dash.grace_ho">Grace Ho</div>
       <div class="message-preview">English essay draft attached</div>
      </div>
      <div class="message-time">Apr 15</div>
