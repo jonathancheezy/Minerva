@@ -38,34 +38,6 @@ body {
 }
 
 a { color: #3b82f6; text-decoration: none; }
-
-
- /* Language Selector */
- .lang-selector {
- display: flex;
- gap: 2px;
- background: var(--gray-100);
- padding: 3px;
- border-radius: 6px;
- }
- .lang-btn {
- padding: 4px 8px;
- border: none;
- background: transparent;
- border-radius: 4px;
- font-size: 12px;
- font-weight: 600;
- cursor: pointer;
- color: var(--gray-500);
- text-decoration: none;
- transition: all 0.2s;
- }
- .lang-btn:hover { color: var(--navy); }
- .lang-btn.active {
- background: white;
- color: var(--navy);
- box-shadow: 0 1px 3px rgba(0,0,0,0.1);
- }
 /* Nav */
  nav {
  background: var(--navy);
@@ -392,7 +364,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <a href="teacher_profile.html?v=2" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
+ <a href="teacher_profile.html?v=2" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
   </div>
   <div class="lang-selector">
@@ -596,20 +568,26 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <p>&copy; 2026 Minerva Learning Ltd. All rights reserved.</p>
 </footer>
 
-<script src="i18n.js"></script></sc
+<script src="i18n.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+ // Apply translations
+ var urlParams = new URLSearchParams(window.location.search);
+ var lang = urlParams.get('lang') || 'en';
+ if (typeof applyTranslations === 'function') applyTranslations(lang);
+
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
    tab.addEventListener('click', function() {
      document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
-     this.classList.add('active');
-     var section = this.getAttribute('data-section');
-     document.querySelectorAll('.schedule-section').forEach(function(s) {
-       s.style.display = 'none';
+     tab.classList.add('active');
+     var target = tab.getAttribute('data-tab');
+     document.querySelectorAll('.schedule-section').forEach(function(section) {
+       section.classList.remove('active');
+       if (section.getAttribute('data-section') === target) {
+         section.classList.add('active');
+       }
      });
-     var activeSection = document.querySelector('.schedule-section[data-section="' + section + '"]');
-     if (activeSection) { activeSection.style.display = 'block'; }
    });
  });
 
@@ -621,13 +599,6 @@ document.addEventListener('DOMContentLoaded', function() {
      navLinks.classList.toggle('active');
    });
  }
-
- // Close hamburger when clicking outside
- document.addEventListener('click', function(e) {
-   if (navLinks && menuBtn && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
-     navLinks.classList.remove('active');
-   }
- });
 });
 </script>
 </body>
