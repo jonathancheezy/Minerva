@@ -409,7 +409,7 @@
 
     // ── Teacher Dashboard ──
     teacher_dash:{
-      welcome:{en:"Welcome back, Teacher Chan! 👋🏻",zhTW:"歡迎回來，陳老師！ 👋🏻",zhCN:"欢迎回来，陈老师！ 👋🏻"},
+      welcome:{en:"Welcome back! 👋🏻",zhTW:"歡迎回來！ 👋🏻",zhCN:"歡迎回來！ 👋🏻"},
       dashboard:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
       students:{en:"Students",zhTW:"學生",zhCN:"学生"},
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
