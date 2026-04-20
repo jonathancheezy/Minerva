@@ -386,12 +386,12 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  </a>
  </div>
  <div class="nav-links">
- <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
- <a href="student_dashboard.html?v=2" data-i18n="teacher_dash.students">Students</a>
- <a href="teacher_schedule.html?v=2" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="messages.html?v=2" data-i18n="teacher_dash.messages">Messages</a>
- <a href="reviews.html?v=2" data-i18n="reviews.title">Reviews</a>
- <a href="earnings.html?v=2" data-i18n="earnings.title">Earnings</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash_dashboard">Dashboard</a>
+ <a href="student_dashboard.html?v=2" data-i18n="teacher_dash_students">Students</a>
+ <a href="teacher_schedule.html?v=2" data-i18n="teacher_dash_schedule">Schedule</a>
+ <a href="messages.html?v=2" data-i18n="teacher_dash_messages">Messages</a>
+ <a href="reviews.html?v=2" data-i18n="reviews_title">Reviews</a>
+ <a href="earnings.html?v=2" data-i18n="earnings_title">Earnings</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
@@ -400,9 +400,9 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  </div>
   </div>
   <div class="lang-selector">
- <a href="teacher_dashboard.html?lang=en&v=2" class="lang-btn">EN</a>
- <a href="teacher_dashboard.html?lang=zh-TW&v=2" class="lang-btn">繁</a>
- <a href="teacher_dashboard.html?lang=zh-CN&v=2" class="lang-btn">简</a>
+ <button class="lang-btn active" data-lang="en">EN</button>
+ <button class="lang-btn" data-lang="zh-TW">繁</button>
+ <button class="lang-btn" data-lang="zh-CN">简</button>
  </div>
  </div>
  </nav>
@@ -600,32 +600,102 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <p>&copy; 2026 Minerva Learning Ltd. All rights reserved.</p>
 </footer>
 
-<script src="https://jonathancheezy.github.io/Minerva/teacher_i18n.js?v=b7d2d23" onerror="alert('teacher_i18n.js FAILED to load')"></script>
+
+
+
+
 <script>
-// applyI18n is auto-init'd by teacher_i18n.js 
- // Filter tab switching
- document.querySelectorAll('.filter-tab').forEach(function(tab) {
-   tab.addEventListener('click', function() {
-     document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
-     tab.classList.add('active');
-     var target = tab.getAttribute('data-tab');
-     document.querySelectorAll('.schedule-section').forEach(function(section) {
-       section.classList.remove('active');
-       if (section.getAttribute('data-section') === target) {
-         section.classList.add('active');
-       }
-     });
-   });
- });
- // Hamburger menu
- var menuBtn = document.querySelector('.mobile-menu-btn');
- var navLinks = document.querySelector('.nav-links');
- if (menuBtn && navLinks) {
-   menuBtn.addEventListener('click', function() {
-     navLinks.classList.toggle('active');
-   });
- }
+const translations = {
+  en: {
+    teacher_dash_dashboard: "Dashboard",
+    teacher_dash_students: "Students",
+    teacher_dash_schedule: "Schedule",
+    teacher_dash_messages: "Messages",
+    reviews_title: "Reviews",
+    earnings_title: "Earnings"
+  },
+  "zh-TW": {
+    teacher_dash_dashboard: "主頁",
+    teacher_dash_students: "學生",
+    teacher_dash_schedule: "時間表",
+    teacher_dash_messages: "訊息",
+    reviews_title: "評價",
+    earnings_title: "收入"
+  },
+  "zh-CN": {
+    teacher_dash_dashboard: "主頁",
+    teacher_dash_students: "学生",
+    teacher_dash_schedule: "时间表",
+    teacher_dash_messages: "消息",
+    reviews_title: "评价",
+    earnings_title: "收入"
+  }
+};
+
+let currentLang = 'en';
+const urlParams = new URLSearchParams(window.location.search);
+const langParam = urlParams.get('lang');
+if (langParam && translations[langParam]) {
+  currentLang = langParam;
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  const url = new URL(window.location);
+  url.searchParams.set('lang', lang);
+  window.history.replaceState({}, '', url);
+  const t = translations[lang];
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) {
+      if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
+        el.placeholder = t[key];
+        el.value = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
 });
+
+if (langParam && translations[langParam]) {
+  setLanguage(langParam);
+}
+
+// Filter tab switching
+document.querySelectorAll('.filter-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+    tab.classList.add('active');
+    var target = tab.getAttribute('data-tab');
+    document.querySelectorAll('.schedule-section').forEach(function(section) {
+      section.classList.remove('active');
+      if (section.getAttribute('data-section') === target) {
+        section.classList.add('active');
+      }
+    });
+  });
+});
+
+// Hamburger menu
+var menuBtn = document.querySelector('.mobile-menu-btn');
+var navLinks = document.querySelector('.nav-links');
+if (menuBtn && navLinks) {
+  menuBtn.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
+  });
+}
 </script>
 
 </body>
