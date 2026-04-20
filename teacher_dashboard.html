@@ -601,10 +601,10 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 </footer>
 
 <script>
-var _t={teacher_dash:{dashboard:{en:"Dashboard",zhTW:"主頁",zhCN:"主頁"},students:{en:"Students",zhTW:"學生",zhCN:"学生"},schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},messages:{en:"Messages",zhTW:"訊息",zhCN:"消息"}},reviews:{title:{en:"Reviews",zhTW:"評價",zhCN:"评价"}},earnings:{title:{en:"Earnings",zhTW:"收入",zhCN:"收入"}}};
+var _t={teacher_dash:{dashboard:{en:"Dashboard","zh-TW":"主頁","zh-CN":"主頁"},students:{en:"Students","zh-TW":"學生","zh-CN":"学生"},schedule:{en:"Schedule","zh-TW":"時間表","zh-CN":"时间表"},messages:{en:"Messages","zh-TW":"訊息","zh-CN":"消息"}},reviews:{title:{en:"Reviews","zh-TW":"評價","zh-CN":"评价"}},earnings:{title:{en:"Earnings","zh-TW":"收入","zh-CN":"收入"}}};
 function applyI18n(lang){if(!_t)return;document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(!k)return;var v=_t;k.split('.').forEach(function(x){v=v&&v[x];});if(v&&v[lang]){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=v[lang];}else{el.textContent=v[lang];}}});document.querySelectorAll('.lang-btn').forEach(function(b){var href=b.getAttribute('href')||'';var isActive=href.includes('lang='+lang)||(lang==='en'&&(href.includes('lang=en')||href==='teacher_dashboard.html'||href==='teacher_dashboard.html?'));b.classList.toggle('active',isActive);});}
 
-document.addEventListener('DOMContentLoaded', function() { var urlParams = new URLSearchParams(window.location.search); var langParam = urlParams.get('lang'); var lang = langParam ? langParam.replace('-','') : 'en'; if (['en','zhTW','zhCN'].indexOf(lang) === -1) lang = 'en'; applyI18n(lang); 
+document.addEventListener('DOMContentLoaded', function() { var urlParams = new URLSearchParams(window.location.search); var langParam = urlParams.get('lang'); var lang = langParam || 'en'; if (lang !== 'en' && lang !== 'zh-TW' && lang !== 'zh-CN') lang = 'en'; applyI18n(lang); 
  // Filter tab switching
  document.querySelectorAll('.filter-tab').forEach(function(tab) {
    tab.addEventListener('click', function() {
