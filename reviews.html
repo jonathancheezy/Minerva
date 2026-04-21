@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reviews</title>
+<title>Reviews - Minerva</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -23,10 +23,19 @@ nav{background:var(--navy);color:white;padding:16px 24px;display:flex;justify-co
 .avatar{width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--navy-dark);font-size:14px}
 .lang-selector{display:flex;gap:4px;background:rgba(0,0,0,.25);padding:4px;border-radius:8px}
 .lang-btn{padding:6px 12px;border:none;background:transparent;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;color:white;text-decoration:none}
+.stars{color:var(--gold);font-size:16px;letter-spacing:2px}
+.lang-btn:hover{color:white}
 .main{max-width:900px;margin:0 auto;padding:32px 24px}
 .page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
 .page-header h1{font-size:28px;font-weight:800;color:var(--navy-dark)}
 .card{background:white;border-radius:16px;padding:20px;border:1px solid var(--gray-200);margin-bottom:20px}
+.review-item{padding:16px 0;border-bottom:1px solid var(--gray-100)}
+.review-item:last-child{border-bottom:none}
+.review-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.review-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:white}
+.review-name{font-weight:600;color:var(--navy-dark);font-size:14px}
+.review-date{font-size:12px;color:var(--gray-400);margin-left:auto}
+.review-text{font-size:14px;color:var(--gray-600);line-height:1.5}
 footer{text-align:center;padding:24px;font-size:12px;color:var(--gray-400);margin-top:32px}
 @media(max-width:900px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;padding:12px 16px;gap:4px}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.nav-left{position:relative}}
 </style>
@@ -35,7 +44,16 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--gray-400);margi
 <nav>
 <div class="nav-left"><button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">&#9776;</button><a href="minerva_landing.html" class="logo"><svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#1e3a5f"/><path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/></svg>Minerva</a><div class="nav-links"><a href="teacher_dashboard.html">Dashboard</a><a href="student_dashboard.html">Students</a><a href="teacher_schedule.html">Schedule</a><a href="messages.html">Messages</a><a href="reviews.html">Reviews</a><a href="earnings.html">Earnings</a></div></div><div class="nav-right"><a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a></div>
 </nav>
-<main class="main"><div class="page-header"><h1>Reviews</h1></div><div class="card"><p style="color:var(--gray-500);text-align:center;padding:40px">No reviews yet</p></div></main>
+<main class="main">
+<div class="page-header"><h1>Reviews</h1></div>
+<div class="card">
+<div class="review-item"><div class="review-header"><div class="review-avatar" style="background:#22c55e">EW</div><div class="review-name">Emma Wong</div><div class="review-date">Apr 20</div></div><div class="stars">★★★★★</div><div class="review-text">Teacher Chan is patient and explains concepts clearly. My daughter has improved significantly since joining Minerva.</div></div>
+<div class="review-item"><div class="review-header"><div class="review-avatar" style="background:#3b82f6">SC</div><div class="review-name">Sophie Chen</div><div class="review-date">Apr 18</div></div><div class="stars">★★★★★</div><div class="review-text">Excellent piano teacher! Very professional and always well-prepared for lessons.</div></div>
+<div class="review-item"><div class="review-header"><div class="review-avatar" style="background:#8b5cf6">GH</div><div class="review-name">Grace Ho</div><div class="review-date">Apr 15</div></div><div class="stars">★★★★☆</div><div class="review-text">Very knowledgeable teacher. The English lessons are engaging and helpful.</div></div>
+<div class="review-item"><div class="review-header"><div class="review-avatar" style="background:#F9A828">NW</div><div class="review-name">Nathan Wu</div><div class="review-date">Apr 12</div></div><div class="stars">★★★★★</div><div class="review-text">Science lessons are fun and informative. My son loves learning with Teacher Chan.</div></div>
+<div class="review-item"><div class="review-header"><div class="review-avatar" style="background:#ef4444">LL</div><div class="review-name">Lucas Lee</div><div class="review-date">Apr 8</div></div><div class="stars">★★★★★</div><div class="review-text">Great violin teacher, very patient with beginners. Highly recommended!</div></div>
+</div>
+</main>
 <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
 <script src="i18n.js"></script><script>if(typeof init=="function")init();</script>
 </body>

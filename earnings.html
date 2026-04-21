@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Earnings</title>
+<title>Earnings - Minerva</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -26,16 +26,37 @@ nav{background:var(--navy);color:white;padding:16px 24px;display:flex;justify-co
 .main{max-width:900px;margin:0 auto;padding:32px 24px}
 .page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
 .page-header h1{font-size:28px;font-weight:800;color:var(--navy-dark)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.stat-card{background:white;border-radius:12px;padding:16px;border:1px solid var(--gray-200)}
+.stat-card .label{font-size:11px;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.stat-card .value{font-size:28px;font-weight:800;color:var(--navy-dark)}
+.stat-card .value.green{color:var(--green)}
 .card{background:white;border-radius:16px;padding:20px;border:1px solid var(--gray-200);margin-bottom:20px}
+.earnings-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100)}
+.earnings-item:last-child{border-bottom:none}
+.earnings-info{}
+.earnings-desc{font-weight:600;color:var(--navy-dark);font-size:14px}
+.earnings-date{font-size:12px;color:var(--gray-500)}
+.earnings-amount{font-weight:700;color:var(--green);font-size:16px}
 footer{text-align:center;padding:24px;font-size:12px;color:var(--gray-400);margin-top:32px}
-@media(max-width:900px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;padding:12px 16px;gap:4px}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.nav-left{position:relative}}
+@media(max-width:900px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;padding:12px 16px;gap:4px}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.nav-left{position:relative}.stats-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <nav>
 <div class="nav-left"><button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">&#9776;</button><a href="minerva_landing.html" class="logo"><svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#1e3a5f"/><path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/></svg>Minerva</a><div class="nav-links"><a href="teacher_dashboard.html">Dashboard</a><a href="student_dashboard.html">Students</a><a href="teacher_schedule.html">Schedule</a><a href="messages.html">Messages</a><a href="reviews.html">Reviews</a><a href="earnings.html">Earnings</a></div></div><div class="nav-right"><a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a></div>
 </nav>
-<main class="main"><div class="page-header"><h1>Earnings</h1></div><div class="card"><p style="color:var(--gray-500);text-align:center;padding:40px">No earnings yet</p></div></main>
+<main class="main">
+<div class="page-header"><h1>Earnings</h1></div>
+<div class="stats-grid"><div class="stat-card"><div class="label">This Month</div><div class="value green">HK,850</div></div><div class="stat-card"><div class="label">Pending</div><div class="value" style="color:#F9A828">HK,200</div></div><div class="stat-card"><div class="label">Total Earned</div><div class="value">HK2,400</div></div></div>
+<div class="card">
+<div class="earnings-item"><div class="earnings-info"><div class="earnings-desc">Piano (Grade 5) - Sophie Chen</div><div class="earnings-date">Apr 22, 2026</div></div><div class="earnings-amount">+HK00</div></div>
+<div class="earnings-item"><div class="earnings-info"><div class="earnings-desc">Piano (Grade 3) - Emma Wong</div><div class="earnings-date">Apr 20, 2026</div></div><div class="earnings-amount">+HK50</div></div>
+<div class="earnings-item"><div class="earnings-info"><div class="earnings-desc">Violin (Beginner) - Lucas Lee</div><div class="earnings-date">Apr 18, 2026</div></div><div class="earnings-amount">+HK00</div></div>
+<div class="earnings-item"><div class="earnings-info"><div class="earnings-desc">Science (Form 2) - Nathan Wu</div><div class="earnings-date">Apr 15, 2026</div></div><div class="earnings-amount">+HK50</div></div>
+<div class="earnings-item"><div class="earnings-info"><div class="earnings-desc">English - Grace Ho</div><div class="earnings-date">Apr 11, 2026</div></div><div class="earnings-amount">+HK80</div></div>
+</div>
+</main>
 <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
 <script src="i18n.js"></script><script>if(typeof init=="function")init();</script>
 </body>
