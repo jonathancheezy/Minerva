@@ -273,13 +273,13 @@ a { color: #3b82f6; text-decoration: none; }
 .cal-day.has-event { cursor: pointer; }
 .day-num { font-size: 14px; font-weight: 500; color: var(--gray-700); }
 .cal-dot { width: 6px; height: 6px; border-radius: 50%; margin: 2px auto 0; }
-.cal-dot.teal { background: var(--teal); }
+.cal-dot.green { background: var(--green); }
 .cal-dot.gold { background: #F9A828; }
 .cal-dot.red { background: var(--red); }
 .cal-legend { display: flex; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gray-200); }
 .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-500); }
 .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-.legend-dot.teal { background: var(--teal); }
+.legend-dot.green { background: var(--green); }
 .legend-dot.gold { background: #F9A828; }
 .legend-dot.red { background: var(--red); }
 
@@ -495,7 +495,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
       <div class="cal-day-name">S</div>
     </div>
     <div class="cal-legend">
-      <span class="legend-item"><span class="legend-dot teal"></span> Confirmed</span>
+      <span class="legend-item"><span class="legend-dot green"></span> Confirmed</span>
       <span class="legend-item"><span class="legend-dot gold"></span> Pending</span>
     </div>
   </div>
@@ -567,7 +567,7 @@ function renderCalendar() {
     dayEl.innerHTML = '<span class="day-num">' + d + '</span>';
     if (hasLesson) {
       const dot = document.createElement('div');
-      dot.className = 'cal-dot ' + (lessons[dateStr][0].status === 'confirmed' ? 'teal' : 'gold');
+      dot.className = 'cal-dot ' + (lessons[dateStr][0].status === 'confirmed' ? 'green' : 'gold');
       dayEl.appendChild(dot);
     }
     
