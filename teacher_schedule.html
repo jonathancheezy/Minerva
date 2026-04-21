@@ -339,6 +339,12 @@ a { color: #3b82f6; text-decoration: none; }
 }
 .lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
 .lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
+.lesson-actions { display: flex; gap: 6px; }
+.btn-accept, .btn-reject { width: 28px; height: 28px; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; font-weight: 600; }
+.btn-accept { background: #22c55e; color: white; }
+.btn-accept:hover { background: #16a34a; }
+.btn-reject { background: #ef4444; color: white; }
+.btn-reject:hover { background: #dc2626; }
 .lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
 
 /* Messages Card */
@@ -597,12 +603,24 @@ function selectDay(dateStr, dayEl) {
         '<div class="lesson-details">' +
           '<div class="lesson-subject">' + l.subject + '</div>' +
           '<div class="student">' + l.student + '</div>' +
-        '</div>' +
-        '<div class="lesson-status ' + l.status + '">' + (l.status === 'confirmed' ? 'Confirmed' : 'Pending') + '</div>' +
-      '</div>';
+        '</div>';
+      if (l.status === 'pending') {
+        lessonsHtml += '<div class="lesson-actions"><button class="btn-accept" onclick="acceptLesson(\'' + l.subject + '\')">✓</button><button class="btn-reject" onclick="rejectLesson(\'' + l.subject + '\')">✗</button></div>';
+      } else {
+        lessonsHtml += '<div class="lesson-status confirmed">Confirmed</div>';
+      }
+      lessonsHtml += '</div>';
     });
   }
   dayLessons.innerHTML = lessonsHtml;
+}
+
+function acceptLesson(subject) {
+  alert('Lesson accepted: ' + subject);
+}
+
+function rejectLesson(subject) {
+  alert('Lesson rejected: ' + subject);
 }
 
 function changeMonth(delta) {
