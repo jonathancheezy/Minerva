@@ -474,6 +474,34 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  </div>
 
  <div class="calendar-wrap">
+  <div class="day-schedule">
+    <div class="day-header">Today &mdash; 21 Apr</div>
+    <div class="lesson-item">
+     <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
+     <div class="lesson-details">
+      <div class="lesson-subject">Piano (Grade 3 Prep)</div>
+      <div class="student">Emma Wong</div>
+     </div>
+     <div class="lesson-status confirmed">Confirmed</div>
+    </div>
+    <div class="lesson-item">
+     <div class="lesson-time"><span class="time">14:00</span><span class="dash">&ndash;</span><span class="time">15:00</span></div>
+     <div class="lesson-details">
+      <div class="lesson-subject">Violin (Beginner)</div>
+      <div class="student">Lucas Lee</div>
+     </div>
+     <div class="lesson-status pending">Pending</div>
+    </div>
+    <div class="lesson-item">
+     <div class="lesson-time"><span class="time">16:30</span><span class="dash">&ndash;</span><span class="time">17:30</span></div>
+     <div class="lesson-details">
+      <div class="lesson-subject">Piano (Grade 5)</div>
+      <div class="student">Sophie Chen</div>
+     </div>
+     <div class="lesson-status confirmed">Confirmed</div>
+    </div>
+  </div>
+
   <div class="calendar">
     <div class="cal-header">
       <button class="cal-nav">←</button>
@@ -526,79 +554,12 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
       <span class="legend-item"><span class="legend-dot red"></span> Cancelled</span>
     </div>
   </div>
-
-  <div class="day-schedule">
-    <div class="day-header">Today &mdash; 21 Apr</div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Piano (Grade 3 Prep)</div>
-      <div class="student">Emma Wong</div>
-     </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-    </div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">14:00</span><span class="dash">&ndash;</span><span class="time">15:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Violin (Beginner)</div>
-      <div class="student">Lucas Lee</div>
-     </div>
-     <div class="lesson-status pending">Pending</div>
-    </div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">16:30</span><span class="dash">&ndash;</span><span class="time">17:30</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Piano (Grade 5)</div>
-      <div class="student">Sophie Chen</div>
-     </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-    </div>
-  </div>
- </div>
+</div>
 </main>
 
 <footer style="text-align: center;">
  <p data-i18n="teacher_dash.footer_text">&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
 </footer>
 
-
-
-
-
-
-<script src="i18n.js?v=50579da">
-function toggleCard(header) {
-  const card = header.parentElement;
-  const btn = header.querySelector('.collapse-btn');
-  card.classList.toggle('collapsed');
-  btn.textContent = card.classList.contains('collapsed') ? '+' : '−';
-}
-</script>
-<script>
-// Set teacher name from localStorage (from profile page)
- const teacherProfile = JSON.parse(localStorage.getItem('teacherProfile') || '{}');
- if (teacherProfile.fullName) {
- document.getElementById('teacher-name').textContent = teacherProfile.fullName;
- }
-// Avatar colour from initials
-var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
-document.querySelectorAll('.message-avatar').forEach(function(el) {
-  var initials = el.textContent.trim();
-  var hash = 0;
-  for (var i = 0; i < initials.length; i++) {
-    hash = initials.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  var idx = Math.abs(hash) % colours.length;
-  el.style.background = colours[idx];
-});
-
-
-function toggleCard(header) {
-  const card = header.parentElement;
-  const btn = header.querySelector('.collapse-btn');
-  card.classList.toggle('collapsed');
-  btn.textContent = card.classList.contains('collapsed') ? '+' : '−';
-}
-</script>
 </body>
 </html>
