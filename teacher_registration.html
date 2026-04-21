@@ -67,7 +67,8 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; back
  .inline-group { display: flex; gap: 12px; }
  .inline-group .form-group { flex: 1; }
 
- .btn-primary { width: auto; min-width: 280px; background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 50px; border: none; cursor: pointer; transition: all 0.2s; font-family: inherit; margin: 16px auto 0; display: block; }
+ .btn-primary { width: 280px; background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 50px; border: none; cursor: pointer; transition: all 0.2s; font-family: inherit; margin: 0 auto; display: block; }
+ .form-actions { text-align: center; }
  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
  .form-success { background: linear-gradient(135deg, var(--navy), var(--teal)); color: white; padding: 40px; border-radius: 16px; text-align: center; display: none; }
  .form-success h3 { font-size: 24px; color: var(--navy-dark); margin-bottom: 12px; }
@@ -231,8 +232,10 @@ h1 { font-size: 28px; }
  </div>
  </div>
 
+ <div class="form-actions">
  <button type="submit" class="btn-primary"><span data-i18n="register.btn_register">Register →</span></button>
  <p class="terms"><span data-i18n="register.agree_text">By registering, you agree to our</span> <a href="terms.html" data-i18n="register.link_terms">Terms & Conditions</a> <span data-i18n="register.and_text">and</span> <a href="privacy.html" data-i18n="register.link_privacy">Privacy Policy</a>.</p>
+ </div>
  </form>
 
  <div class="form-success" id="formSuccess">
