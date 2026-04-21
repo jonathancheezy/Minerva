@@ -348,6 +348,17 @@ a { color: #3b82f6; text-decoration: none; }
 .btn-reject:hover { background: #dc2626; }
 .btn-cancel { padding: 4px 12px; background: var(--gray-200); color: var(--gray-600); border: none; border-radius: 6px; font-size: 12px; cursor: pointer; }
 .btn-cancel:hover { background: var(--gray-300); }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center; }
+.modal-overlay.show { display: flex; }
+.modal-box { background: white; border-radius: 16px; padding: 24px; max-width: 360px; width: 90%; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.modal-title { font-size: 16px; font-weight: 700; color: var(--navy-dark); }
+.modal-close { background: none; border: none; font-size: 18px; cursor: pointer; color: var(--gray-500); }
+.modal-close:hover { color: var(--navy-dark); }
+.avail-form-group { margin-bottom: 12px; }
+.avail-form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--gray-500); margin-bottom: 4px; }
+.avail-form-group input, .avail-form-group select { width: 100%; padding: 8px 10px; border: 1px solid var(--gray-300); border-radius: 8px; font-size: 14px; }
+.avail-form-group:last-child { display: flex; gap: 8px; margin-top: 16px; }
 .lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
 
 /* Messages Card */
@@ -529,6 +540,12 @@ const lessons = {
   '2026-04-29': [{time:'15:00-16:30',subject:'Piano (Grade 5)',student:'Sophie Chen',status:'pending'}]
 };
 
+// Availability slots: { 'YYYY-MM-DD': [{start:'HH:MM', duration:60|90|120}, ...] }
+const availability = {
+  '2026-04-23': [{start:'14:00', duration:60},{start:'16:00', duration:90}],
+  '2026-04-24': [{start:'10:00', duration:60}]
+};
+
 let currentMonth = 3; // April (0-indexed)
 let currentYear = 2026;
 
@@ -561,14 +578,21 @@ function renderCalendar() {
     
     const isToday = today.getDate() === d && today.getMonth() === currentMonth && today.getFullYear() === currentYear;
     const hasLesson = lessons[dateStr];
+    const hasAvail = availability[dateStr];
     
     if (isToday) dayEl.classList.add('today');
     if (hasLesson) dayEl.classList.add('has-event');
+    if (hasAvail) dayEl.classList.add('has-avail');
     
     dayEl.innerHTML = '<span class="day-num">' + d + '</span>';
     if (hasLesson) {
       const dot = document.createElement('div');
       dot.className = 'cal-dot ' + (lessons[dateStr][0].status === 'confirmed' ? 'green' : 'gold');
+      dayEl.appendChild(dot);
+    }
+    if (hasAvail) {
+      const dot = document.createElement('div');
+      dot.className = 'cal-dot blue';
       dayEl.appendChild(dot);
     }
     
@@ -595,8 +619,26 @@ function selectDay(dateStr, dayEl) {
   dayHeader.textContent = dateStrDisplay;
   
   let lessonsHtml = '';
-  if (lessons_data.length === 0) {
-    lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>';
+  const availSlots = availability[dateStr] || [];
+  if (lessons_data.length === 0 && availSlots.length === 0) {
+    lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' +
+      '<div class="avail-actions">' +
+      '<button class="btn-add-avail" onclick="showAddAvailability('' + dateStr + '')">+ Add Availability</button>' +
+      '</div>';
+  } else if (lessons_data.length === 0 && availSlots.length > 0) {
+    lessonsHtml = '<div class="avail-header">Availability</div>';
+    availSlots.forEach(function(a, idx) {
+      var endH = parseInt(a.start.split(':')[0]) + Math.floor(a.duration/60);
+      var endM = a.duration % 60;
+      var endTime = String(endH).padStart(2,'0') + ':' + String(endM).padStart(2,'0');
+      lessonsHtml += '<div class="avail-item">' +
+        '<span class="avail-time">' + a.start + ' – ' + endTime + '</span>' +
+        '<span class="avail-dur">' + a.duration + ' min</span>' +
+        '<button class="btn-edit-avail" onclick="editAvailability('' + dateStr + '',' + idx + ')">Edit</button>' +
+        '<button class="btn-del-avail" onclick="deleteAvailability('' + dateStr + '',' + idx + ')">✗</button>' +
+        '</div>';
+    });
+    lessonsHtml += '<button class="btn-add-avail" onclick="showAddAvailability('' + dateStr + '')">+ Add Slot</button>';
   } else {
     lessons_data.forEach(function(l) {
       lessonsHtml += '<div class="lesson-item">' +
@@ -638,6 +680,59 @@ function changeMonth(delta) {
   currentMonth += delta;
   if (currentMonth > 11) { currentMonth = 0; currentYear++; }
   if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+  renderCalendar();
+}
+
+var pendingAvailDate = null;
+var pendingAvailIdx = null;
+
+function showAddAvailability(dateStr) {
+  pendingAvailDate = dateStr;
+  pendingAvailIdx = null;
+  document.getElementById('avail-modal-title').textContent = 'Add Availability — ' + dateStr;
+  document.getElementById('avail-start').value = '09:00';
+  document.getElementById('avail-dur').value = '60';
+  document.getElementById('avail-modal').classList.add('show');
+}
+
+function editAvailability(dateStr, idx) {
+  pendingAvailDate = dateStr;
+  pendingAvailIdx = idx;
+  var slot = availability[dateStr][idx];
+  document.getElementById('avail-modal-title').textContent = 'Edit Availability — ' + dateStr;
+  document.getElementById('avail-start').value = slot.start;
+  document.getElementById('avail-dur').value = String(slot.duration);
+  document.getElementById('avail-modal').classList.add('show');
+}
+
+function deleteAvailability(dateStr, idx) {
+  if (!confirm('Remove this availability slot?')) return;
+  availability[dateStr].splice(idx, 1);
+  if (availability[dateStr].length === 0) delete availability[dateStr];
+  var dayEl = document.querySelector('.cal-day.selected');
+  if (dayEl) selectDay(dateStr, dayEl);
+  renderCalendar();
+}
+
+function closeAvailModal() {
+  document.getElementById('avail-modal').classList.remove('show');
+  pendingAvailDate = null;
+  pendingAvailIdx = null;
+}
+
+function submitAvailability() {
+  var start = document.getElementById('avail-start').value;
+  var dur = parseInt(document.getElementById('avail-dur').value);
+  if (!start) { alert('Please select a time'); return; }
+  if (!availability[pendingAvailDate]) availability[pendingAvailDate] = [];
+  if (pendingAvailIdx !== null) {
+    availability[pendingAvailDate][pendingAvailIdx] = {start: start, duration: dur};
+  } else {
+    availability[pendingAvailDate].push({start: start, duration: dur});
+  }
+  closeAvailModal();
+  var dayEl = document.querySelector('.cal-day.selected');
+  if (dayEl) selectDay(pendingAvailDate, dayEl);
   renderCalendar();
 }
 
@@ -695,5 +790,32 @@ function submitAvailability() {
 }
 </script>
 
+<!-- Availability Modal -->
+<div id="avail-modal" class="modal-overlay">
+<div class="modal-box">
+<div class="modal-header">
+<div id="avail-modal-title" class="modal-title">Add Availability</div>
+<button class="modal-close" onclick="closeAvailModal()">✗</button>
+</div>
+<div class="modal-body">
+<div class="avail-form-group">
+<label>Time</label>
+<input type="time" id="avail-start" value="09:00">
+</div>
+<div class="avail-form-group">
+<label>Duration</label>
+<select id="avail-dur">
+<option value="60">60 min</option>
+<option value="90">90 min</option>
+<option value="120">120 min</option>
+</select>
+</div>
+<div class="avail-form-group">
+<button class="btn btn-primary" onclick="submitAvailability()">Save</button>
+<button class="btn btn-secondary" onclick="closeAvailModal()">Cancel</button>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>
