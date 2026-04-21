@@ -556,7 +556,10 @@ const lessons = {
 // Availability slots: { 'YYYY-MM-DD': [{start:'HH:MM', duration:60|90|120}, ...] }
 const availability = {
   '2026-04-23': [{start:'14:00', duration:60},{start:'16:00', duration:90}],
-  '2026-04-24': [{start:'10:00', duration:60}]
+  '2026-04-24': [{start:'10:00', duration:60}],
+  '2026-04-25': [{start:'09:00', duration:90}],
+  '2026-04-28': [{start:'15:00', duration:60},{start:'17:00', duration:60}],
+  '2026-05-02': [{start:'11:00', duration:90}]
 };
 
 let currentMonth = 3; // April (0-indexed)
@@ -639,7 +642,7 @@ function selectDay(dateStr, dayEl) {
   if (true) {
     lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' +
       '<div class="avail-actions">' +
-      '<button class="btn-add-avail" onclick="showAddAvailability(\'' + dateStr + '\')">+ Add Availability</button>' +
+      '<button class="btn-add-avail" onclick="showAddAvailability(\'' + dateStr + '\')">+ Slot</button>' +
       '</div>';
   } else if (avail_data.length > 0 && lessons_data.length === 0) {
     lessonsHtml = '<div class="avail-header">Availability</div>';
@@ -824,7 +827,7 @@ document.querySelectorAll('.student-avatar').forEach(function(el) {
 <div id="avail-modal" class="modal-overlay">
 <div class="modal-box">
 <div class="modal-header">
-<div id="avail-modal-title" class="modal-title">Add Availability</div>
+<div id="avail-modal-title" class="modal-title">+Slot</div>
 <button class="modal-close" onclick="closeAvailModal()">✗</button>
 </div>
 <div class="modal-body">
