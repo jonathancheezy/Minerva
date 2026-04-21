@@ -561,5 +561,29 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <p data-i18n="teacher_dash.footer_text">&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
 </footer>
 
+<script>
+// Calendar navigation
+document.querySelectorAll('.cal-nav').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+    const h3 = document.querySelector('.cal-header h3');
+    const current = h3.textContent;
+    const [month, year] = current.split(' ');
+    const monthIdx = months.indexOf(month);
+    const yearNum = parseInt(year);
+    
+    if (btn.textContent === '←') {
+      let newMonth = monthIdx === 0 ? 11 : monthIdx - 1;
+      let newYear = monthIdx === 0 ? yearNum - 1 : yearNum;
+      h3.textContent = months[newMonth] + ' ' + newYear;
+    } else {
+      let newMonth = monthIdx === 11 ? 0 : monthIdx + 1;
+      let newYear = monthIdx === 11 ? yearNum + 1 : yearNum;
+      h3.textContent = months[newMonth] + ' ' + newYear;
+    }
+  });
+});
+</script>
 </body>
 </html>
