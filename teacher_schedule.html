@@ -379,10 +379,14 @@ a { color: #3b82f6; text-decoration: none; }
 /* Footer */
 footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 
-/* Responsive - keep 3 columns on all sizes */
+/* Responsive */
 @media (max-width: 900px) {
  .content-grid { flex-direction: column; }
  .content-grid .card { flex: none; width: 100%; }
+}
+
+@media (max-width: 600px) {
+ .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 500px) {
