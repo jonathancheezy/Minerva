@@ -479,11 +479,100 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; mar
 </div>
 <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
 <script>
-function openChat(name,initials,color){document.getElementById('convList').style.display='none';document.getElementById('chatView').style.display='flex';var nm=document.getElementById('chatWithName');if(nm)nm.textContent=name;var av=document.getElementById('chatWithAvatar');if(av){av.textContent=initials;av.style.background=color;}}
-function sendMsg(){var input=document.getElementById('msgInput');if(!input)return;var t=input.value.trim();if(!t)return;var msgs=document.getElementById('chatMessages');var tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});msgs.innerHTML+='<div class="chat-bubble sent">'+t+'<span class="bubble-time">'+tm+'</span></div>';input.value='';msgs.scrollTop=msgs.scrollHeight;}
-document.getElementById('msgInput').addEventListener('keypress',function(e){if(e.key==='Enter')sendMsg();});
-function openNewChat(){document.getElementById('convList').style.display='none';var cv=document.getElementById('chatView');cv.style.display='flex';var msgs=document.getElementById('chatMessages');msgs.innerHTML='<div style="padding:20px;text-align:center;color:#64748b;font-size:14px;">Start a new conversation below</div><div id="newChatArea"></div>';msgs.scrollTop=0;var na=document.getElementById('newChatArea');na.innerHTML='<div style="display:flex;gap:8px;padding:0 16px 16px;background:white;border-bottom:1px solid #f1f5f9;"><input type="text" id="newMsgInput" placeholder="Type a message..." style="flex:1;padding:10px 14px;border:1px solid #cbd5e1;border-radius:24px;font-size:14px;outline:none;box-sizing:border-box;"><button onclick="sendNewMsg()" style="background:#3b82f6;color:white;border:none;padding:10px 18px;border-radius:24px;font-weight:600;cursor:pointer;">Send</button></div>';}
-function sendNewMsg(){var inp=document.getElementById('newMsgInput');if(!inp)return;var t=inp.value.trim();if(!t)return;var msgs=document.getElementById('chatMessages');var tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});msgs.innerHTML+='<div class="chat-bubble sent">'+t+'<span class="bubble-time">'+tm+'</span></div>';inp.value='';msgs.scrollTop=msgs.scrollHeight;}
+function openChat(name, initials, color) {
+ document.getElementById('convList').style.display = 'none';
+ document.getElementById('chatView').style.display = 'flex';
+ var msgs = document.getElementById('chatMessages');
+ // Add back button header to existing chat
+ var existingHeader = '<div style="padding:16px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;"><button onclick="showConvList()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#475569;">&#8249;</button><span style="font-weight:600;color:#0f1f33;font-size:15px;">' + name + '</span></div>';
+ if(msgs.innerHTML.indexOf('showConvList') === -1) {
+  msgs.innerHTML = existingHeader + msgs.innerHTML;
+ }
+ var nm = document.getElementById('chatWithName');
+ if(nm) nm.textContent = name;
+ var av = document.getElementById('chatWithAvatar');
+ if(av) { av.textContent = initials; av.style.background = color; }
+}
+ document.getElementById('convList').style.display = 'none';
+ document.getElementById('chatView').style.display = 'flex';
+ var nm = document.getElementById('chatWithName');
+ if(nm) nm.textContent = name;
+ var av = document.getElementById('chatWithAvatar');
+ if(av) { av.textContent = initials; av.style.background = color; }
+}
+function sendMsg() {
+ var input = document.getElementById('msgInput');
+ if(!input) return;
+ var text = input.value.trim();
+ if(!text) return;
+ var msgs = document.getElementById('chatMessages');
+ var time = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+ msgs.innerHTML += '<div class="chat-bubble sent">' + text + '<span class="bubble-time">' + time + '</span></div>';
+ input.value = '';
+ msgs.scrollTop = msgs.scrollHeight;
+}
+document.getElementById('msgInput').addEventListener('keypress', function(e) {
+ if(e.key === 'Enter') sendMsg();
+});
+function showConvList() {
+ document.getElementById('convList').style.display = 'block';
+ document.getElementById('chatView').style.display = 'none';
+ var nm = document.getElementById('chatWithName');
+ if(nm) nm.textContent = 'Messages';
+ var av = document.getElementById('chatWithAvatar');
+ if(av) { av.textContent = 'TC'; av.style.background = ''; }
+}
+function openNewChat() {
+ document.getElementById('convList').style.display = 'none';
+ var cv = document.getElementById('chatView');
+ cv.style.display = 'flex';
+ var msgs = document.getElementById('chatMessages');
+ msgs.innerHTML = '<div style="padding:16px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;"><button onclick="showConvList()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#475569;">&#8249;</button><span style="font-weight:600;color:#0f1f33;font-size:15px;">New Message</span></div>';
+ msgs.innerHTML += '<div style="padding:16px 16px 8px;font-size:12px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">Select Student</div>';
+ var students = [
+  {name:'Emma Wong', initials:'EW', color:'#22c55e'},
+  {name:'Lucas Lee', initials:'LL', color:'#3b82f6'},
+  {name:'Sophie Chen', initials:'SC', color:'#8b5cf6'},
+  {name:'Grace Ho', initials:'GH', color:'#F9A828'},
+  {name:'Nathan Wu', initials:'NW', color:'#ef4444'}
+ ];
+ var list = document.createElement('div');
+ list.style.cssText = 'padding:0 8px 8px';
+ students.forEach(function(s) {
+  var item = document.createElement('div');
+  item.style.cssText = 'display:flex;align-items:center;gap:12px;padding:12px 8px;border-radius:8px;cursor:pointer;transition:background 0.15s;';
+  item.onmouseover = function() { this.style.background = '#f8fafc'; };
+  item.onmouseout = function() { this.style.background = 'transparent'; };
+  item.onclick = function() { startChat(s.name, s.initials, s.color); };
+  item.innerHTML = '<div style="width:40px;height:40px;border-radius:50%;background:'+s.color+';display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:white;">'+s.initials+'</div><div style="font-weight:600;color:#0f1f33;font-size:14px;">'+s.name+'</div>';
+  list.appendChild(item);
+ });
+ msgs.appendChild(list);
+ msgs.innerHTML += '<div id="newChatArea"></div>';
+ msgs.scrollTop = 0;
+}
+function startChat(name, initials, color) {
+ var msgs = document.getElementById('chatMessages');
+ msgs.innerHTML = '<div style="padding:16px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;"><button onclick="showConvList()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#475569;">&#8249;</button><span style="font-weight:600;color:#0f1f33;font-size:15px;">'+name+'</span></div>';
+ msgs.innerHTML += '<div id="newChatArea"></div>';
+ var newArea = document.getElementById('newChatArea');
+ newArea.innerHTML = '<div style="display:flex;gap:8px;padding:12px 16px;background:white;border-top:1px solid #f1f5f9;"><input type="text" id="newMsgInput" placeholder="Type a message..." style="flex:1;padding:10px 14px;border:1px solid #cbd5e1;border-radius:24px;font-size:14px;outline:none;box-sizing:border-box;"><button onclick="sendNewMsg()" style="background:#3b82f6;color:white;border:none;padding:10px 18px;border-radius:24px;font-weight:600;cursor:pointer;">Send</button></div>';
+ var nm = document.getElementById('chatWithName');
+ if(nm) nm.textContent = name;
+ var av = document.getElementById('chatWithAvatar');
+ if(av) { av.textContent = initials; av.style.background = color; }
+}
+function sendNewMsg() {
+ var inp = document.getElementById('newMsgInput');
+ if(!inp) return;
+ var t = inp.value.trim();
+ if(!t) return;
+ var msgs = document.getElementById('chatMessages');
+ var tm = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+ msgs.innerHTML += '<div class="chat-bubble sent">'+t+'<span class="bubble-time">'+tm+'</span></div>';
+ inp.value = '';
+ msgs.scrollTop = msgs.scrollHeight;
+}
 </script>
 <script src="i18n.js"></script>
 <script>if(typeof init=="function")init();</script>
