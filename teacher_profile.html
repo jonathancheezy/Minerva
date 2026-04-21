@@ -47,20 +47,11 @@
  z-index: 100;
  }
 
- .nav-left { display: flex; align-items: center; gap: 16px; }
-.mobile-menu-btn {
- display: none;
- width: 36px; height: 36px;
- border: 1.5px solid rgba(255,255,255,0.25);
- border-radius: 8px;
- background: transparent;
- color: white;
- font-size: 18px;
- cursor: pointer;
+ .nav-left {
+ display: flex;
  align-items: center;
- justify-content: center;
- flex-shrink: 0;
-}
+ gap: 16px;
+ }
 
  .logo {
  display: flex;
@@ -74,51 +65,86 @@
 
  .logo-icon { width: 32px; height: 32px; }
 
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
  .nav-links {
  display: flex;
  gap: 24px;
- margin-left: 32px;
+ justify-content: center;
+ flex: 1;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 8px;
+ color: white;
+ background: none;
+ border: none;
  }
 
  .nav-links a {
- color: rgba(255,255,255,0.8);
+ color: rgba(255,255,255,0.7);
  text-decoration: none;
- font-weight: 500;
  font-size: 14px;
- padding: 8px 12px;
- border-radius: 8px;
- transition: all 0.2s;
+ font-weight: 500;
+ transition: color 0.2s;
  }
+ .nav-links a:hover { color: white; }
+ .nav-links a.active { color: #F9A828 !important; }
 
- .nav-links a:hover, .nav-links a.active {
- color: white;
- background: rgba(255,255,255,0.1);
+ 
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
  }
-
- .nav-right { display: flex; align-items: center; gap: 16px; }
- .nav-meta { display: flex; align-items: center; gap: 12px; }
- .user-info { display: flex; align-items: center; gap: 12px; }
 
  .avatar {
  width: 36px;
  height: 36px;
- border-radius: 50%;
  background: var(--gold);
- color: var(--navy);
+ border-radius: 50%;
  display: flex;
  align-items: center;
  justify-content: center;
  font-weight: 700;
- font-size: 13px;
+ color: var(--navy-dark);
+ font-size: 14px;
  }
-
- .user-name { font-weight: 600; font-size: 14px; }
- .logout:hover { color: white; }
-
- .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; }
- .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; text-decoration: none; transition: all 0.2s; }
+ .lang-selector {
+  display: flex;
+  gap: 4px;
+  background: rgba(0,0,0,0.25);
+  padding: 4px;
+  border-radius: 8px;
+ }
+ .lang-btn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+ }
  .lang-btn:hover { color: white; }
- .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ .lang-btn.active {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+ }
 
  /* Main */
  .main {
