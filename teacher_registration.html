@@ -54,7 +54,7 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; back
  h1 { font-size: 40px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; line-height: 1.2; text-align: center; }
  .subtitle { font-size: 18px; color: var(--gray-500); margin-bottom: 40px; max-width: 560px; text-align: center; }
 
- .form-card { background: rgba(0,0,0,0.25); border-radius: 20px; padding: 40px; }
+ .form-card { max-width: 640px; margin: 0 auto; background: rgba(0,0,0,0.25); border-radius: 20px; padding: 40px; }
  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
  @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
  .form-group { margin-bottom: 20px; }
@@ -67,7 +67,7 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; back
  .inline-group { display: flex; gap: 12px; }
  .inline-group .form-group { flex: 1; }
 
- .btn-primary { width: 100%; background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 50px; border: none; cursor: pointer; transition: all 0.2s; font-family: inherit; margin-top: 16px; }
+ .btn-primary { width: 280px; display: block; margin: 16px auto 0; background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 50px; border: none; cursor: pointer; transition: all 0.2s; font-family: inherit; text-align: center; }
  
  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
  .form-success { background: linear-gradient(135deg, var(--navy), var(--teal)); color: white; padding: 40px; border-radius: 16px; text-align: center; display: none; }
@@ -86,7 +86,7 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; back
  .nav-links.active { display: flex; }
  .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
 h1 { font-size: 28px; }
- .form-card { padding: 20px; }
+ .form-card { max-width: 100%; padding: 20px; }
  .inline-group { flex-direction: column; gap: 0; }
  }
  </style>
