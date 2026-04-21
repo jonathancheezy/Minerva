@@ -505,6 +505,7 @@
 
  <nav>
  <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -513,20 +514,20 @@
  </svg>
  Minerva
  </a>
- 
  <div class="nav-links">
- <a href="teacher_dashboard.html?v=ee40335">Dashboard</a>
- <a href="student_dashboard.html?v=ee40335">Students</a>
- <a href="teacher_schedule.html?v=ee40335">Schedule</a>
- <a href="teacher_profile.html?v=ee40335" class="active" style="color: #F9A828 !important;">Profile</a>
- <a href="messages.html?v=5cb643c">Messages</a>
+ <a href="teacher_dashboard.html?v=ee40335" data-i18n="teacher_dash.dashboard">Dashboard</a>
+ <a href="student_dashboard.html?v=ee40335" data-i18n="teacher_dash.students">Students</a>
+ <a href="teacher_schedule.html?v=ee40335" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html?v=ee40335" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="reviews.html?v=ee40335" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html?v=ee40335" data-i18n="earnings.title">Earnings</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="profile.edit_profile">Profile</a>
  </div>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <div class="avatar">TC</div>
- <span class="user-name">Teacher Chan</span>
+ <a href="teacher_profile.html?v=ee40335" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
  <div class="lang-selector">
  <a href="teacher_profile.html?lang=en&v=ee40335" class="lang-btn">EN</a>
