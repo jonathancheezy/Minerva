@@ -659,7 +659,7 @@ document.querySelectorAll('.student-avatar').forEach(function(el) {
 
 // Avatar colour from initials
 var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
-document.querySelectorAll('.message-avatar, .student-avatar').forEach(function(el) {
+document.querySelectorAll('.message-avatar, .student-avatar, .note-avatar').forEach(function(el) {
   var initials = el.textContent.trim();
   var hash = 0;
   for (var i = 0; i < initials.length; i++) {
