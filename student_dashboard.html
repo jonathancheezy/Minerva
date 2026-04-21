@@ -625,6 +625,19 @@ function toggleCard(header) {
   card.classList.toggle('collapsed');
   btn.textContent = card.classList.contains('collapsed') ? '+' : '−';
 }
+
+// Student avatar colors - hash based
+document.querySelectorAll('.student-avatar').forEach(function(el) {
+  var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+  var initials = el.textContent.trim();
+  var hash = 0;
+  for (var i = 0; i < initials.length; i++) {
+    hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  var idx = Math.abs(hash) % colours.length;
+  el.style.background = colours[idx];
+  el.style.color = '#fff';
+});
 </script>
 <script>
 // Set teacher name from localStorage (from profile page)
@@ -665,6 +678,19 @@ function toggleCard(header) {
   card.classList.toggle('collapsed');
   btn.textContent = card.classList.contains('collapsed') ? '+' : '−';
 }
+
+// Student avatar colors - hash based
+document.querySelectorAll('.student-avatar').forEach(function(el) {
+  var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+  var initials = el.textContent.trim();
+  var hash = 0;
+  for (var i = 0; i < initials.length; i++) {
+    hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  var idx = Math.abs(hash) % colours.length;
+  el.style.background = colours[idx];
+  el.style.color = '#fff';
+});
 </script>
 </body>
 </html>
