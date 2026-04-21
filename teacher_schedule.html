@@ -641,7 +641,7 @@ function selectDay(dateStr, dayEl) {
   
   // Build availability section (always shown)
   if (avail_data.length > 0) {
-    lessonsHtml += '<div class="avail-header">Availability</div>';
+    lessonsHtml += '<div class="avail-header"><span>Availability</span><button class="btn-add-avail-sm" onclick="showAddAvailability(\'' + dateStr + '\')">+</button></div>';
     avail_data.forEach(function(a, idx) {
       var endH = parseInt(a.start.split(':')[0]) + Math.floor(a.duration/60);
       var endM = a.duration % 60;
@@ -654,7 +654,7 @@ function selectDay(dateStr, dayEl) {
         '</div>';
     });
   }
-  lessonsHtml += '<button class="btn-add-avail" onclick="showAddAvailability(\'' + dateStr + '\')">+ Availability</button>';
+  lessonsHtml += '<button class="btn-add-avail-sm-inline" onclick="showAddAvailability(\'' + dateStr + '\')">+ Add time</button>';
   
   if (lessons_data.length === 0 && avail_data.length === 0) {
     lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' + lessonsHtml;
