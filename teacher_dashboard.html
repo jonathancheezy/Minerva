@@ -328,17 +328,19 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 
 /* Responsive */
 @media (max-width: 1200px) {
- .stats-grid { grid-template-columns: repeat(2, 1fr); }
+ .stats-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 900px) {
- .stats-grid { grid-template-columns: repeat(2, 1fr); }
  .content-grid { flex-direction: column; }
  .content-grid .card { flex: none; width: 100%; }
 }
 
+@media (max-width: 600px) {
+ .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 500px) {
- .stats-grid { grid-template-columns: 1fr; }
  .main { padding: 20px 16px; }
 }
 
