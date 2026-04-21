@@ -146,7 +146,7 @@
       tab_teacher:{en:"Teacher",zhTW:"導師",zhCN:"导师"},
       tab_parent:{en:"Parent / Student",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},
       register_as_teacher:{en:"Register as Teacher",zhTW:"註冊成為導師",zhCN:"注册成为导师"},
-      welcome_teacher:{en:"Teacher? Log in here",zhTW:"導師？在此登入",zhCN:"导师？在此登录"},
+      welcome_teacher:{en:"Welcome back, Teacher!",zhTW:"歡迎回來，導師！",zhCN:"欢迎回来，导师！"},
       subtitle_teacher:{en:"Access your teacher dashboard",zhTW:"進入您的導師儀表板",zhCN:"进入您的导师仪表板"},
       welcome_back:{en:"Welcome back!",zhTW:"歡迎回來！",zhCN:"欢迎回来！"},
       teacher_login:{en:"Teacher Login",zhTW:"導師登入",zhCN:"导师登录"},
