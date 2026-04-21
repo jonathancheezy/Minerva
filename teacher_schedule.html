@@ -253,6 +253,37 @@ a { color: #3b82f6; text-decoration: none; }
 
 /* Count Badge */
 .count-badge { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
+
+/* Calendar */
+.calendar-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.calendar { background: white; border-radius: 16px; padding: 20px; }
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.cal-header h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); }
+.cal-nav { background: var(--gray-100); border: none; border-radius: 8px; width: 36px; height: 36px; font-size: 16px; cursor: pointer; color: var(--gray-600); }
+.cal-nav:hover { background: var(--gray-200); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-day-name { text-align: center; font-size: 11px; font-weight: 600; color: var(--gray-500); padding: 8px 0; }
+.cal-day { text-align: center; padding: 8px 4px; border-radius: 8px; min-height: 44px; position: relative; }
+.cal-day.empty { }
+.cal-day:not(.empty):hover { background: var(--gray-100); cursor: pointer; }
+.cal-day.today { background: rgba(59,130,246,0.1); }
+.cal-day.today .day-num { color: var(--teal); font-weight: 700; }
+.day-num { font-size: 14px; font-weight: 500; color: var(--gray-700); }
+.cal-dot { width: 6px; height: 6px; border-radius: 50%; margin: 2px auto 0; }
+.cal-dot.teal { background: var(--teal); }
+.cal-dot.gold { background: #F9A828; }
+.cal-dot.red { background: var(--red); }
+.cal-legend { display: flex; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gray-200); }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-500); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-dot.teal { background: var(--teal); }
+.legend-dot.gold { background: #F9A828; }
+.legend-dot.red { background: var(--red); }
+
+/* Day Schedule */
+.day-schedule { background: white; border-radius: 16px; padding: 20px; }
+.day-schedule .day-header { font-size: 14px; font-weight: 600; color: var(--gray-500); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--gray-200); }
+
 .count-badge.blue { background: rgba(59,130,246,0.1); color: #3b82f6; }
 .count-badge.gold { background: rgba(249,168,40,0.1); color: #F9A828; }
 .count-badge.red { background: rgba(239,68,68,0.1); color: #ef4444; }
@@ -442,13 +473,61 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
   </div>
  </div>
 
- <div class="card">
-  <div class="card-header" onclick="toggleCard(this)">
-    <h2>Confirmed</h2>
-    <span class="count-badge blue">3</span>
-    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">−</button>
+ <div class="calendar-wrap">
+  <div class="calendar">
+    <div class="cal-header">
+      <button class="cal-nav">←</button>
+      <h3>April 2026</h3>
+      <button class="cal-nav">→</button>
+    </div>
+    <div class="cal-grid">
+      <div class="cal-day-name">Sun</div>
+      <div class="cal-day-name">Mon</div>
+      <div class="cal-day-name">Tue</div>
+      <div class="cal-day-name">Wed</div>
+      <div class="cal-day-name">Thu</div>
+      <div class="cal-day-name">Fri</div>
+      <div class="cal-day-name">Sat</div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day"><span class="day-num">1</span></div>
+      <div class="cal-day"><span class="day-num">2</span></div>
+      <div class="cal-day"><span class="day-num">3</span></div>
+      <div class="cal-day"><span class="day-num">4</span></div>
+      <div class="cal-day"><span class="day-num">5</span></div>
+      <div class="cal-day"><span class="day-num">6</span></div>
+      <div class="cal-day"><span class="day-num">7</span></div>
+      <div class="cal-day"><span class="day-num">8</span></div>
+      <div class="cal-day"><span class="day-num">9</span></div>
+      <div class="cal-day"><span class="day-num">10</span></div>
+      <div class="cal-day"><span class="day-num">11</span></div>
+      <div class="cal-day"><span class="day-num">12</span></div>
+      <div class="cal-day"><span class="day-num">13</span></div>
+      <div class="cal-day"><span class="day-num">14</span></div>
+      <div class="cal-day"><span class="day-num">15</span></div>
+      <div class="cal-day"><span class="day-num">16</span></div>
+      <div class="cal-day"><span class="day-num">17</span></div>
+      <div class="cal-day"><span class="day-num">18</span></div>
+      <div class="cal-day"><span class="day-num">19</span></div>
+      <div class="cal-day today"><span class="day-num">20</span><div class="cal-dot teal"></div></div>
+      <div class="cal-day"><span class="day-num">21</span><div class="cal-dot teal"></div><div class="cal-dot gold"></div></div>
+      <div class="cal-day"><span class="day-num">22</span><div class="cal-dot teal"></div></div>
+      <div class="cal-day"><span class="day-num">23</span></div>
+      <div class="cal-day"><span class="day-num">24</span></div>
+      <div class="cal-day"><span class="day-num">25</span><div class="cal-dot gold"></div></div>
+      <div class="cal-day"><span class="day-num">26</span></div>
+      <div class="cal-day"><span class="day-num">27</span><div class="cal-dot gold"></div></div>
+      <div class="cal-day"><span class="day-num">28</span></div>
+      <div class="cal-day"><span class="day-num">29</span><div class="cal-dot gold"></div></div>
+      <div class="cal-day"><span class="day-num">30</span></div>
+    </div>
+    <div class="cal-legend">
+      <span class="legend-item"><span class="legend-dot teal"></span> Confirmed</span>
+      <span class="legend-item"><span class="legend-dot gold"></span> Pending</span>
+      <span class="legend-item"><span class="legend-dot red"></span> Cancelled</span>
+    </div>
   </div>
-  <div class="schedule-list">
+
+  <div class="day-schedule">
     <div class="day-header">Today &mdash; 21 Apr</div>
     <div class="lesson-item">
      <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
@@ -464,9 +543,8 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
       <div class="lesson-subject">Violin (Beginner)</div>
       <div class="student">Lucas Lee</div>
      </div>
-     <div class="lesson-status confirmed">Confirmed</div>
+     <div class="lesson-status pending">Pending</div>
     </div>
-    <div class="day-header">Tomorrow &mdash; 22 Apr</div>
     <div class="lesson-item">
      <div class="lesson-time"><span class="time">16:30</span><span class="dash">&ndash;</span><span class="time">17:30</span></div>
      <div class="lesson-details">
@@ -474,69 +552,6 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
       <div class="student">Sophie Chen</div>
      </div>
      <div class="lesson-status confirmed">Confirmed</div>
-    </div>
-  </div>
- </div>
-
- <div class="card collapsed">
-  <div class="card-header" onclick="toggleCard(this)">
-    <h2>Pending</h2>
-    <span class="count-badge gold">5</span>
-    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">+</button>
-  </div>
-  <div class="schedule-list">
-    <div class="day-header">Sat &mdash; 25 Apr</div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">09:00</span><span class="dash">&ndash;</span><span class="time">10:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Math (Form 3)</div>
-      <div class="student">Ryan Lam</div>
-     </div>
-     <div class="lesson-status pending">Pending</div>
-    </div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">11:00</span><span class="dash">&ndash;</span><span class="time">12:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">English (Form 4)</div>
-      <div class="student">Grace Ho</div>
-     </div>
-     <div class="lesson-status pending">Pending</div>
-    </div>
-    <div class="day-header">Mon &mdash; 27 Apr</div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Science (Form 2)</div>
-      <div class="student">Nathan Wu</div>
-     </div>
-     <div class="lesson-status pending">Pending</div>
-    </div>
-  </div>
- </div>
-
- <div class="card collapsed">
-  <div class="card-header" onclick="toggleCard(this)">
-    <h2>Cancelled</h2>
-    <span class="count-badge red">3</span>
-    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">+</button>
-  </div>
-  <div class="schedule-list">
-    <div class="day-header">Yesterday &mdash; 20 Apr</div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">15:00</span><span class="dash">&ndash;</span><span class="time">16:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Science (Form 2)</div>
-      <div class="student">Nathan Wu</div>
-     </div>
-     <div class="lesson-status cancelled">Cancelled</div>
-    </div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Piano (Grade 1)</div>
-      <div class="student">Lily Zhang</div>
-     </div>
-     <div class="lesson-status cancelled">Cancelled</div>
     </div>
   </div>
  </div>
