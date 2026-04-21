@@ -43,7 +43,7 @@
  .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
  .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
  .nav-links { display: none; }
- .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; opacity: 0.8; }
+ .nav-links a { color: var(--teal); text-decoration: none; font-size: 14px; font-weight: 500; opacity: 0.8; }
  .nav-links a:hover { opacity: 1; }
 
  .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; margin-left: auto; }
@@ -78,18 +78,7 @@
  margin-bottom: 32px;
  }
 
- .role-btn {
- flex: 1;
- padding: 12px;
- border: none;
- background: transparent;
- border-radius: 8px;
- font-size: 14px;
- font-weight: 600;
- cursor: pointer;
- transition: all 0.2s;
- color: white;
- }
+ .role-btn { flex: 1; padding: 12px; border: none; background: white; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--navy-dark); }
 
  .role-btn.active {
  background: white;
@@ -114,23 +103,14 @@
  margin-bottom: 8px;
  }
 
- .login-hero p {
- color: white;
- font-size: 14px;
- }
+ .login-hero p { color: var(--gray-500); font-size: 14px; }
 
  /* Form */
  .form-group {
  margin-bottom: 20px;
  }
 
- .form-group label {
- display: block;
- font-size: 13px;
- font-weight: 600;
- color: white;
- margin-bottom: 6px;
- }
+ .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--navy-dark); margin-bottom: 6px; }
 
  .form-group input {
  width: 100%;
@@ -180,14 +160,7 @@
  }
 
  /* Divider */
- .divider {
- display: flex;
- align-items: center;
- gap: 16px;
- margin: 24px 0;
- color: white;
- font-size: 13px;
- }
+ .divider { display: flex; align-items: center; gap: 16px; margin: 24px 0; color: var(--gray-500); font-size: 13px; }
 
  .divider::before,
  .divider::after {
@@ -220,7 +193,7 @@
  text-align: center;
  padding: 24px;
  font-size: 13px;
- color: white;
+ color: var(--gray-500);
  }
 
  /* Mobile */
