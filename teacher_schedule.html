@@ -345,6 +345,8 @@ a { color: #3b82f6; text-decoration: none; }
 .btn-accept:hover { background: #16a34a; }
 .btn-reject { background: #ef4444; color: white; }
 .btn-reject:hover { background: #dc2626; }
+.btn-cancel { padding: 4px 12px; background: var(--gray-200); color: var(--gray-600); border: none; border-radius: 6px; font-size: 12px; cursor: pointer; }
+.btn-cancel:hover { background: var(--gray-300); }
 .lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
 
 /* Messages Card */
@@ -607,7 +609,7 @@ function selectDay(dateStr, dayEl) {
       if (l.status === 'pending') {
         lessonsHtml += '<div class="lesson-actions"><button class="btn-accept" onclick="acceptLesson(\'' + l.subject + '\')">✓</button><button class="btn-reject" onclick="rejectLesson(\'' + l.subject + '\')">✗</button></div>';
       } else {
-        lessonsHtml += '<div class="lesson-status confirmed">Confirmed</div>';
+        lessonsHtml += '<button class="btn-cancel" onclick="cancelLesson(\'' + l.subject + '\')">Cancel</button>';
       }
       lessonsHtml += '</div>';
     });
@@ -617,6 +619,10 @@ function selectDay(dateStr, dayEl) {
 
 function acceptLesson(subject) {
   alert('Lesson accepted: ' + subject);
+}
+
+function cancelLesson(subject) {
+  alert('Lesson cancelled: ' + subject);
 }
 
 function rejectLesson(subject) {
