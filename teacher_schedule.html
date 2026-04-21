@@ -654,7 +654,7 @@ function selectDay(dateStr, dayEl) {
         '</div>';
     });
   }
-  lessonsHtml += '<button class="btn-add-avail" onclick="showAddAvailability(\'' + dateStr + '\')">+ Slot</button>';
+  lessonsHtml += '<button class="btn-add-avail" onclick="showAddAvailability(\'' + dateStr + '\')">+ Availability</button>';
   
   if (lessons_data.length === 0 && avail_data.length === 0) {
     lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' + lessonsHtml;
@@ -827,7 +827,7 @@ document.querySelectorAll('.student-avatar').forEach(function(el) {
 <div id="avail-modal" class="modal-overlay">
 <div class="modal-box">
 <div class="modal-header">
-<div id="avail-modal-title" class="modal-title">+Slot</div>
+<div id="avail-modal-title" class="modal-title">Add Availability</div>
 <button class="modal-close" onclick="closeAvailModal()">✗</button>
 </div>
 <div class="modal-body">
