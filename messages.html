@@ -20,143 +20,160 @@
  --gray-700: #334155;
  --green: #22c55e;
  --red: #ef4444;
+ --whatsapp-green: #d9fdd3;
+ --whatsapp-pale: #f8fafc;
  }
 
  * { margin: 0; padding: 0; box-sizing: border-box; }
 
- body {
- font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
- background: #f8fafc;
- color: #334155;
- line-height: 1.6;
- padding-top: 60px;
- }
+ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--gray-100); color: #333; }
 
- a { color: #3b82f6; text-decoration: none; }
+ /* Nav */
+ nav { background: var(--navy); color: white; padding: 12px 16px; display: flex; align-items: center; gap: 12px; position: fixed; top: 0; left: 0; right: 0; height: 60px; z-index: 100; }
+ .nav-back { background: none; border: none; color: white; font-size: 24px; cursor: pointer; display: none; padding: 8px; }
+ .nav-title { font-size: 18px; font-weight: 600; flex: 1; }
+ .nav-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--teal); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
 
- nav { background: var(--navy); color: white; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; height: 60px; z-index: 100; }
- .nav-left { display: flex; align-items: center; gap: 16px; }
- .mobile-menu-btn { display: none; font-size: 24px; cursor: pointer; padding: 8px; color: white; background: none; border: none; }
- .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: white; text-decoration: none; }
- .logo-icon { width: 32px; height: 32px; }
- .nav-links { display: flex; gap: 24px; justify-content: center; flex: 1; }
- .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
- .nav-links a:hover { color: white; }
- .nav-links a.active { color: #F9A828 !important; }
- .nav-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
- .user-info { display: flex; align-items: center; gap: 12px; }
- .avatar { width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--navy-dark); font-size: 14px; }
- .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; }
- .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; text-decoration: none; transition: all 0.2s; }
- .lang-btn:hover { color: white; }
- .lang-btn.active { background: rgba(255,255,255,0.15); color: white; }
+ .chat-view { display: none; }
 
- .main { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
- .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
- .page-header h1 { font-size: 28px; font-weight: 800; color: var(--navy-dark); }
- .card { background: white; border-radius: 16px; padding: 20px; border: 1px solid var(--gray-200); margin-bottom: 20px; }
-
- .conv-item { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--gray-100); }
- .conv-item:last-child { border-bottom: none; }
- .message-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: white; flex-shrink: 0; }
+ /* Conversation List */
+ .conv-list { padding-top: 60px; }
+ .conv-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: white; border-bottom: 1px solid var(--gray-200); cursor: pointer; transition: background 0.15s; }
+ .conv-item:hover { background: var(--gray-100); }
+ .conv-item:active { background: var(--gray-200); }
+ .conv-avatar { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: white; flex-shrink: 0; }
  .conv-info { flex: 1; min-width: 0; }
- .conv-sender { font-weight: 600; color: var(--navy-dark); font-size: 14px; }
+ .conv-name { font-weight: 600; font-size: 15px; color: #333; margin-bottom: 2px; }
  .conv-preview { font-size: 13px; color: var(--gray-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
- .conv-time { font-size: 11px; color: var(--gray-400); flex-shrink: 0; }
+ .conv-meta { text-align: right; flex-shrink: 0; }
+ .conv-time { font-size: 11px; color: var(--gray-400); display: block; margin-bottom: 4px; }
+ .conv-unread { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); display: none; margin-left: auto; }
 
- footer { text-align: center; padding: 24px; font-size: 12px; color: var(--gray-400); margin-top: 32px; }
+ /* Chat View */
+ .chat-view { padding-top: 60px; height: 100vh; display: flex; flex-direction: column; background: var(--whatsapp-pale); }
+ .chat-messages { flex: 1; overflow-y: auto; padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+ .chat-bubble { max-width: 75%; padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.4; }
+ .chat-bubble.sent { align-self: flex-end; background: var(--teal); color: white; border-bottom-right-radius: 4px; }
+ .chat-bubble.received { align-self: flex-start; background: white; color: #333; border-bottom-left-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+ .chat-bubble .bubble-time { font-size: 10px; opacity: 0.7; display: block; text-align: right; margin-top: 4px; }
+ .chat-input { display: flex; gap: 8px; padding: 10px 16px; background: var(--gray-100); border-top: 1px solid var(--gray-200); }
+ .chat-input input { flex: 1; padding: 10px 14px; border: 1px solid var(--gray-300); border-radius: 24px; font-size: 14px; outline: none; }
+ .chat-input button { background: var(--teal); color: white; border: none; padding: 10px 18px; border-radius: 24px; font-weight: 600; cursor: pointer; }
 
- @media (max-width: 900px) {
- .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 12px 16px; gap: 4px; }
- .nav-links.active { display: flex; }
- .mobile-menu-btn { display: block; }
- .nav-left { position: relative; }
+ @media (max-width: 768px) {
+ .conv-avatar { width: 45px; height: 45px; font-size: 14px; }
+ .conv-name { font-size: 14px; }
  }
  </style>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<!-- Nav -->
 <nav>
- <div class="nav-left">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <a href="minerva_landing.html" class="logo">
- <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
- <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
- <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
- <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
- </svg>
- Minerva
- </a>
- <div class="nav-links">
- <a href="teacher_dashboard.html">Dashboard</a>
- <a href="student_dashboard.html">Students</a>
- <a href="teacher_schedule.html">Schedule</a>
- <a href="messages.html">Messages</a>
- <a href="reviews.html">Reviews</a>
- <a href="earnings.html">Earnings</a>
- </div>
- </div>
- <div class="nav-right">
- <div class="user-info">
- <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
- </div>
- <div class="lang-selector">
- <a href="messages.html?lang=en" class="lang-btn">EN</a>
- <a href="messages.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="messages.html?lang=zh-CN" class="lang-btn">简</a>
- </div>
- </div>
+ <button class="nav-back" onclick="showConvList()">&#8249;</button>
+ <div class="nav-title" id="chatWithName">Messages</div>
+ <div class="nav-avatar" id="chatWithAvatar">TC</div>
 </nav>
-<main class="main">
- <div class="page-header">
- <h1>Messages</h1>
- </div>
- <div class="card">
- <div class="conv-item">
- <div class="message-avatar" style="background:#22c55e">EW</div>
+
+<!-- Conversation List -->
+<div class="conv-list" id="convList">
+ <div class="conv-item" onclick="openChat('Emma Wong', 'EW', '#22c55e')">
+ <div class="conv-avatar" style="background:#22c55e">EW</div>
  <div class="conv-info">
- <div class="conv-sender">Emma Wong</div>
- <div class="conv-preview">Thank you for yesterday lesson! I practiced the scales you assigned...</div>
+ <div class="conv-name">Emma Wong</div>
+ <div class="conv-preview">Thank you for yesterday lesson! I practiced the scales...</div>
  </div>
- <div class="conv-time">2h ago</div>
+ <div class="conv-meta">
+ <span class="conv-time">2h ago</span>
+ <div class="conv-unread" style="display:block"></div>
  </div>
- <div class="conv-item">
- <div class="message-avatar" style="background:#3b82f6">LL</div>
+ </div>
+ <div class="conv-item" onclick="openChat('Lucas Lee', 'LL', '#3b82f6')">
+ <div class="conv-avatar" style="background:#3b82f6">LL</div>
  <div class="conv-info">
- <div class="conv-sender">Lucas Lee</div>
+ <div class="conv-name">Lucas Lee</div>
  <div class="conv-preview">Can we reschedule Thursday lesson to 4pm?</div>
  </div>
- <div class="conv-time">Yesterday</div>
+ <div class="conv-meta">
+ <span class="conv-time">Yesterday</span>
  </div>
- <div class="conv-item">
- <div class="message-avatar" style="background:#8b5cf6">SC</div>
+ </div>
+ <div class="conv-item" onclick="openChat('Sophie Chen', 'SC', '#8b5cf6')">
+ <div class="conv-avatar" style="background:#8b5cf6">SC</div>
  <div class="conv-info">
- <div class="conv-sender">Sophie Chen</div>
+ <div class="conv-name">Sophie Chen</div>
  <div class="conv-preview">Sophie loved the recital! When is the next one?</div>
  </div>
- <div class="conv-time">2 days ago</div>
+ <div class="conv-meta">
+ <span class="conv-time">2 days ago</span>
  </div>
- <div class="conv-item">
- <div class="message-avatar" style="background:#F9A828">GH</div>
+ </div>
+ <div class="conv-item" onclick="openChat('Grace Ho', 'GH', '#F9A828')">
+ <div class="conv-avatar" style="background:#F9A828">GH</div>
  <div class="conv-info">
- <div class="conv-sender">Grace Ho</div>
+ <div class="conv-name">Grace Ho</div>
  <div class="conv-preview">English essay submitted. Please review when free.</div>
  </div>
- <div class="conv-time">3 days ago</div>
+ <div class="conv-meta">
+ <span class="conv-time">3 days ago</span>
  </div>
- <div class="conv-item">
- <div class="message-avatar" style="background:#ef4444">NW</div>
+ </div>
+ <div class="conv-item" onclick="openChat('Nathan Wu', 'NW', '#ef4444')">
+ <div class="conv-avatar" style="background:#ef4444">NW</div>
  <div class="conv-info">
- <div class="conv-sender">Nathan Wu</div>
+ <div class="conv-name">Nathan Wu</div>
  <div class="conv-preview">Thanks for the science notes, very helpful!</div>
  </div>
- <div class="conv-time">5 days ago</div>
+ <div class="conv-meta">
+ <span class="conv-time">5 days ago</span>
  </div>
  </div>
-</main>
-<footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
-<script src="i18n.js"></script>
-<script>if(typeof init==="function")init();</script>
+</div>
+
+<!-- Chat View -->
+<div class="chat-view" id="chatView">
+ <div class="chat-messages" id="chatMessages">
+ <div class="chat-bubble received">Hi Teacher Chan! Just wanted to say thanks for the lesson yesterday!<span class="bubble-time">2:30 PM</span></div>
+ <div class="chat-bubble sent">You're welcome Emma! Great job on those scales!<span class="bubble-time">2:32 PM</span></div>
+ <div class="chat-bubble received">Thank you! I practiced them for an hour. My mom was so happy!<span class="bubble-time">2:35 PM</span></div>
+ <div class="chat-bubble sent">That's wonderful! See you at the next lesson on Thursday.<span class="bubble-time">2:36 PM</span></div>
+ </div>
+ <div class="chat-input">
+ <input type="text" placeholder="Type a message..." id="msgInput">
+ <button onclick="sendMsg()">Send</button>
+ </div>
+</div>
+
+<script>
+function openChat(name, initials, color) {
+ document.getElementById('convList').style.display = 'none';
+ document.getElementById('chatView').style.display = 'flex';
+ document.getElementById('chatWithName').textContent = name;
+ document.getElementById('chatWithAvatar').textContent = initials;
+ document.getElementById('chatWithAvatar').style.background = color;
+ document.querySelector('.nav-back').style.display = 'block';
+}
+
+function showConvList() {
+ document.getElementById('convList').style.display = 'block';
+ document.getElementById('chatView').style.display = 'none';
+ document.querySelector('.nav-back').style.display = 'none';
+}
+
+function sendMsg() {
+ var input = document.getElementById('msgInput');
+ var text = input.value.trim();
+ if (!text) return;
+ var msgs = document.getElementById('chatMessages');
+ var time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+ msgs.innerHTML += '<div class="chat-bubble sent">' + text + '<span class="bubble-time">' + time + '</span></div>';
+ input.value = '';
+ msgs.scrollTop = msgs.scrollHeight;
+}
+
+document.getElementById('msgInput').addEventListener('keypress', function(e) {
+ if (e.key === 'Enter') sendMsg();
+});
+</script>
 </body>
 </html>

@@ -143,6 +143,15 @@
  .review-date { font-size: 12px; color: var(--gray-400); margin-left: auto; }
  .review-text { font-size: 14px; color: var(--gray-600); line-height: 1.5; }
 
+
+ @media (max-width: 768px) {
+ .mobile-menu-btn { display: block; }
+ .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #1e3a5f; flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 99; }
+ .nav-links.active { display: flex; }
+ .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
+ .nav-links.active a.active { color: #F9A828 !important; }
+ .nav-links.active a:hover { color: white; }
+ }
  footer { text-align: center; padding: 24px; font-size: 12px; color: var(--gray-400); margin-top: 32px; }
 
  /* Responsive */

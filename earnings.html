@@ -71,12 +71,21 @@
 
  footer { text-align: center; padding: 24px; font-size: 12px; color: var(--gray-400); margin-top: 32px; }
 
- @media (max-width: 900px) {
- .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 12px 16px; gap: 4px; }
- .nav-links.active { display: flex; }
+ @media (max-width: 768px) {
  .mobile-menu-btn { display: block; }
- .nav-left { position: relative; }
- .stats-grid { grid-template-columns: 1fr; }
+ .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #1e3a5f; flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 99; }
+ .nav-links.active { display: flex; }
+ .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
+ .nav-links.active a.active { color: #F9A828 !important; }
+ .nav-links.active a:hover { color: white; }
+ }
+
+ @media (max-width: 600px) {
+ .stats-grid { grid-template-columns: repeat(2, 1fr); }
+ }
+
+ @media (max-width: 500px) {
+ .main { padding: 20px 16px; }
  }
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,33 +93,33 @@
 </head>
 <body>
 <nav>
- <div class="nav-left">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <a href="minerva_landing.html" class="logo">
- <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
- <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
- <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
- <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ <div class='nav-left'>
+ <button class='mobile-menu-btn' onclick='document.querySelector(".nav-links").classList.toggle("active");'>☰</button>
+ <a href='minerva_landing.html' class='logo'>
+ <svg class='logo-icon' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'>
+ <rect width='40' height='40' rx='12' fill='#1e3a5f'/>
+ <path d='M10 28V12L20 20L30 12V28' stroke='#F9A828' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/>
+ <path d='M20 20V32' stroke='#3b82f6' stroke-width='2' stroke-linecap='round'/>
  </svg>
  Minerva
  </a>
- <div class="nav-links">
- <a href="teacher_dashboard.html">Dashboard</a>
- <a href="student_dashboard.html">Students</a>
- <a href="teacher_schedule.html">Schedule</a>
- <a href="messages.html">Messages</a>
- <a href="reviews.html">Reviews</a>
- <a href="earnings.html">Earnings</a>
+ <div class='nav-links'>
+ <a href='teacher_dashboard.html'>Dashboard</a>
+ <a href='student_dashboard.html'>Students</a>
+ <a href='teacher_schedule.html'>Schedule</a>
+ <a href='messages.html'>Messages</a>
+ <a href='reviews.html'>Reviews</a>
+ <a href='earnings.html'>Earnings</a>
  </div>
  </div>
- <div class="nav-right">
- <div class="user-info">
- <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
+ <div class='nav-right'>
+ <div class='user-info'>
+ <a href='teacher_profile.html' style='text-decoration:none'><div class='avatar'>TC</div></a>
  </div>
- <div class="lang-selector">
- <a href="earnings.html?lang=en" class="lang-btn">EN</a>
- <a href="earnings.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="earnings.html?lang=zh-CN" class="lang-btn">简</a>
+ <div class='lang-selector'>
+ <a href='earnings.html?lang=en' class='lang-btn'>EN</a>
+ <a href='earnings.html?lang=zh-TW' class='lang-btn'>繁</a>
+ <a href='earnings.html?lang=zh-CN' class='lang-btn'>简</a>
  </div>
  </div>
 </nav>
@@ -122,58 +131,58 @@
  <div class="stats-grid">
  <div class="stat-card">
  <div class="label">This Month</div>
- <div class="value green">HK,850</div>
+ <div class="value green">HK&#36;4,850</div>
  </div>
  <div class="stat-card">
  <div class="label">Pending</div>
- <div class="value" style="color:#F9A828">HK,200</div>
+ <div class="value" style="color:#F9A828">HK&#36;1,200</div>
  </div>
  <div class="stat-card">
  <div class="label">Total Earned</div>
- <div class="value">HK2,400</div>
+ <div class="value">HK&#36;32,400</div>
  </div>
  </div>
 
  <div class="card">
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">Piano (Grade 5) — Sophie Chen</div>
+ <div class="earnings-desc">Piano (Grade 5) &#8212; Sophie Chen</div>
  <div class="earnings-date">Apr 22, 2026</div>
  </div>
- <div class="earnings-amount">+HK00</div>
+ <div class="earnings-amount">+HK&#36;600</div>
  </div>
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">Piano (Grade 3) — Emma Wong</div>
+ <div class="earnings-desc">Piano (Grade 3) &#8212; Emma Wong</div>
  <div class="earnings-date">Apr 20, 2026</div>
  </div>
- <div class="earnings-amount">+HK50</div>
+ <div class="earnings-amount">+HK&#36;550</div>
  </div>
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">Violin (Beginner) — Lucas Lee</div>
+ <div class="earnings-desc">Violin (Beginner) &#8212; Lucas Lee</div>
  <div class="earnings-date">Apr 18, 2026</div>
  </div>
- <div class="earnings-amount">+HK00</div>
+ <div class="earnings-amount">+HK&#36;500</div>
  </div>
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">Science (Form 2) — Nathan Wu</div>
+ <div class="earnings-desc">Science (Form 2) &#8212; Nathan Wu</div>
  <div class="earnings-date">Apr 15, 2026</div>
  </div>
- <div class="earnings-amount">+HK50</div>
+ <div class="earnings-amount">+HK&#36;450</div>
  </div>
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">English — Grace Ho</div>
+ <div class="earnings-desc">English &#8212; Grace Ho</div>
  <div class="earnings-date">Apr 11, 2026</div>
  </div>
- <div class="earnings-amount">+HK80</div>
+ <div class="earnings-amount">+HK&#36;480</div>
  </div>
  </div>
 </main>
 <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
 <script src="i18n.js"></script>
-<script>if(typeof init==="function")init();</script>
+<script>if(typeof init=="function")init();</script>
 </body>
 </html>
