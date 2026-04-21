@@ -500,10 +500,6 @@
  document.getElementById('registrationForm').addEventListener('submit', function(e) {
  e.preventDefault();
 
- // Store teacher name for welcome message
- const name = document.getElementById('fullName').value;
- if (name) localStorage.setItem('teacher_name', name);
-
  // Show success message
  document.getElementById('registrationForm').style.display = 'none';
  document.getElementById('formSuccess').style.display = 'block';
