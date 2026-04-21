@@ -473,39 +473,6 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  </div>
 
   <div class="calendar-wrap">
-  <div class="day-schedule">
-    <div class="day-header">Pending Requests</div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">14:00</span><span class="dash">&ndash;</span><span class="time">15:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Violin (Beginner)</div>
-      <div class="student">Lucas Lee</div>
-     </div>
-     <div class="lesson-status pending">Pending</div>
-    </div>
-  </div>
-
-  <div class="day-schedule">
-    <div class="day-header">Today &mdash; 21 Apr</div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Piano (Grade 3 Prep)</div>
-      <div class="student">Emma Wong</div>
-     </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-    </div>
-    
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">16:30</span><span class="dash">&ndash;</span><span class="time">17:30</span></div>
-     <div class="lesson-details">
-      <div class="lesson-subject">Piano (Grade 5)</div>
-      <div class="student">Sophie Chen</div>
-     </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-    </div>
-  </div>
-
   <div class="calendar">
     <div class="cal-header">
       <button class="cal-nav" onclick="changeMonth(-1)">←</button>
@@ -525,6 +492,11 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
       <span class="legend-item"><span class="legend-dot teal"></span> Confirmed</span>
       <span class="legend-item"><span class="legend-dot gold"></span> Pending</span>
     </div>
+  </div>
+
+  <div class="day-schedule" id="day-schedule">
+    <div class="day-header" id="schedule-day-header">Select a day</div>
+    <div id="schedule-lessons"></div>
   </div>
 </div>
 </main>
@@ -605,7 +577,8 @@ function selectDay(dateStr, dayEl) {
   dayEl.classList.add('selected');
   
   // Update lessons below
-  const daySchedule = document.querySelectorAll('.day-schedule')[1];
+  const dayHeader = document.getElementById('schedule-day-header');
+  const dayLessons = document.getElementById('schedule-lessons');
   const lessons_data = lessons[dateStr] || [];
   const dayDate = new Date(dateStr);
   const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -615,11 +588,12 @@ function selectDay(dateStr, dayEl) {
   
   let html = '<div class="day-header">' + dateStrDisplay + '</div>';
   
+  let lessonsHtml = '';
   if (lessons_data.length === 0) {
-    html += '<div class="no-lessons">No lessons scheduled</div>';
+    lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>';
   } else {
     lessons_data.forEach(function(l) {
-      html += '<div class="lesson-item">' +
+      lessonsHtml += '<div class="lesson-item">' +
         '<div class="lesson-time"><span class="time">' + l.time.split('-')[0] + '</span><span class="dash">–</span><span class="time">' + l.time.split('-')[1] + '</span></div>' +
         '<div class="lesson-details">' +
           '<div class="lesson-subject">' + l.subject + '</div>' +
@@ -629,8 +603,7 @@ function selectDay(dateStr, dayEl) {
       '</div>';
     });
   }
-  
-  daySchedule.innerHTML = html;
+  dayLessons.innerHTML = lessonsHtml;
 }
 
 function changeMonth(delta) {
