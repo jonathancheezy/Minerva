@@ -594,8 +594,34 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 <footer style="text-align: center;">
  <p data-i18n="teacher_dash.footer_text">&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
 </footer>
+<script src="i18n.js"></script>
 
 <script>
+var lang = 'en';
+function setLang(l){
+  lang=l.replace('-','');
+  localStorage.setItem('minerva_lang',lang);
+  const u=new URL(location.href);u.searchParams.set('lang',l);
+  history.replaceState({},'',u);apply();
+}
+function apply(){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    const k=el.getAttribute('data-i18n');
+    if(i18n[lang]&&i18n[lang][k])el.textContent=i18n[lang][k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    const k=el.getAttribute('data-i18n-placeholder');
+    if(i18n[lang]&&i18n[lang][k])el.placeholder=i18n[lang][k];
+  });
+}
+function init(){
+  const p=new URLSearchParams(location.search);
+  const u=p.get('lang'),s=localStorage.getItem('minerva_lang');
+  if(u&&['en','zhTW','zhCN'].includes(u))setLang(u);
+  else if(s&&['en','zhTW','zhCN'].includes(s))setLang(s);
+}
+init();
+
 // Calendar navigation
 document.querySelectorAll('.cal-nav').forEach(function(btn) {
   btn.addEventListener('click', function() {
@@ -669,32 +695,6 @@ function submitAvailability() {
   }
 }
 </script>
-<script src="i18n.js"></script>
-<script>
-function setLang(l){
-  lang=l.replace('-','');
-  localStorage.setItem('minerva_lang',lang);
-  const u=new URL(location.href);u.searchParams.set('lang',l);
-  history.replaceState({},'',u);apply();
-}
-function apply(){
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const k=el.getAttribute('data-i18n');
-    if(i18n[lang]&&i18n[lang][k])el.textContent=i18n[lang][k];
-  });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
-    const k=el.getAttribute('data-i18n-placeholder');
-    if(i18n[lang]&&i18n[lang][k])el.placeholder=i18n[lang][k];
-  });
-}
-function init(){
-  const p=new URLSearchParams(location.search);
-  const u=p.get('lang'),s=localStorage.getItem('minerva_lang');
-  if(u&&['en','zhTW','zhCN'].includes(u))setLang(u);
-  else if(s&&['en','zhTW','zhCN'].includes(s))setLang(s);
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
-else init();
-</script>
+
 </body>
 </html>
