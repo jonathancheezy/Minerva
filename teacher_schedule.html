@@ -639,13 +639,9 @@ function selectDay(dateStr, dayEl) {
   
   var lessonsHtml = '';
   
-  if (true) {
-    lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' +
-      '<div class="avail-actions">' +
-      '<button class="btn-add-avail" onclick="showAddAvailability(\'' + dateStr + '\')">+ Slot</button>' +
-      '</div>';
-  } else if (avail_data.length > 0 && lessons_data.length === 0) {
-    lessonsHtml = '<div class="avail-header">Availability</div>';
+  // Build availability section (always shown)
+  if (avail_data.length > 0) {
+    lessonsHtml += '<div class="avail-header">Availability</div>';
     avail_data.forEach(function(a, idx) {
       var endH = parseInt(a.start.split(':')[0]) + Math.floor(a.duration/60);
       var endM = a.duration % 60;
@@ -653,11 +649,15 @@ function selectDay(dateStr, dayEl) {
       lessonsHtml += '<div class="avail-item">' +
         '<span class="avail-time">' + a.start + ' - ' + endTime + '</span>' +
         '<span class="avail-dur">' + a.duration + ' min</span>' +
-        '<button class="btn-edit-avail" onclick="editAvailability(\'' + dateStr + '\', ' + idx + ')">Edit</button>' +
-        '<button class="btn-del-avail" onclick="deleteAvailability(\'' + dateStr + '\', ' + idx + ')">Del</button>' +
+        '<button class="btn-edit-avail" onclick="editAvailability(\'' + dateStr + '\', ' + idx + ')">Modify</button>' +
+        '<button class="btn-del-avail" onclick="deleteAvailability(\'' + dateStr + '\', ' + idx + ')">Delete</button>' +
         '</div>';
     });
-    lessonsHtml += '<button class="btn-add-avail" onclick="showAddAvailability(\'' + dateStr + '\')">+ Add Slot</button>';
+  }
+  lessonsHtml += '<button class="btn-add-avail" onclick="showAddAvailability(\'' + dateStr + '\')">+ Slot</button>';
+  
+  if (lessons_data.length === 0 && avail_data.length === 0) {
+    lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' + lessonsHtml;
   } else {
     lessons_data.forEach(function(l) {
       lessonsHtml += '<div class="lesson-item">' +
