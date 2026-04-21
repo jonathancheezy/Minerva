@@ -585,8 +585,7 @@ function selectDay(dateStr, dayEl) {
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const dayName = dayNames[dayDate.getDay()];
   const dateStrDisplay = dayName + ' — ' + months[dayDate.getMonth()] + ' ' + dayDate.getDate();
-  
-  let html = '<div class="day-header">' + dateStrDisplay + '</div>';
+  dayHeader.textContent = dateStrDisplay;
   
   let lessonsHtml = '';
   if (lessons_data.length === 0) {
