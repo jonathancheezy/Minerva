@@ -65,6 +65,7 @@
  align-items: center;
  justify-content: space-between;
  width: 100%;
+ gap: 16px;
  }
 
  .lang-selector {
@@ -574,7 +575,10 @@
 
  /* Mobile */
  @media (max-width: 768px) {
- .nav-right { flex-wrap: wrap; }
+ .nav-right { display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-end; gap: 8px; }
+ .lang-selector { background: rgba(0,0,0,0.2); padding: 2px; gap: 1px; border-radius: 6px; }
+ .lang-btn { padding: 6px 12px; font-size: 13px; }
+ .mobile-menu-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 20px; color: white; background: rgba(255,255,255,0.15); border-radius: 6px; cursor: pointer; flex-shrink: 0; }
  .nav-links { 
  display: none;
  position: absolute;
@@ -588,8 +592,6 @@
  z-index: 99;
  }
  .nav-links.active { display: flex; }
- .mobile-menu-btn { display: flex !important; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 20px; color: white; background: rgba(255,255,255,0.15); border-radius: 6px; cursor: pointer; flex-shrink: 0; margin-left: auto; }
- .lang-selector { margin-left: auto; }
  .stats-inner { grid-template-columns: 1fr; gap: 32px; }
  .features-grid { grid-template-columns: 1fr; }
  .problem-grid { grid-template-columns: 1fr; }
@@ -620,18 +622,18 @@
  </svg>
  Minerva
  </a>
+ <div class="lang-selector">
+ <button class="lang-btn active" data-lang="en">EN</button>
+ <button class="lang-btn" data-lang="zh-TW">繁</button>
+ <button class="lang-btn" data-lang="zh-CN">简</button>
+ </div>
+ <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
  <div class="nav-links">
  <a href="#features" data-i18n="nav_features">Features</a>
  <a href="#how-it-works" data-i18n="nav_how">How it Works</a>
  <a href="faq.html" data-i18n="nav_faq">FAQ</a>
  <a href="login.html" data-i18n="nav_login">Login</a>
  <a href="terms.html" data-i18n="nav_terms">Terms & Conditions</a>
- </div>
- <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
- <div class="lang-selector">
- <button class="lang-btn active" data-lang="en">EN</button>
- <button class="lang-btn" data-lang="zh-TW">繁</button>
- <button class="lang-btn" data-lang="zh-CN">简</button>
  </div>
  </div>
  </div>
