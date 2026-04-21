@@ -159,7 +159,6 @@ a { color: #3b82f6; text-decoration: none; }
  font-size: 14px;
  font-weight: 600;
  }
-
  /* Main Content */
 .main {
  max-width: 1200px;
@@ -369,13 +368,57 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 }
 
 
-</style>
- 
+
+/* Stats Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--gray-200);
+  text-align: left;
+}
+.stat-card .label {
+  font-size: 11px;
+  color: var(--gray-500);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.stat-card .value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--navy-dark);
+}
+.stat-card .value.green { color: var(--green); }
+
+/* Earnings List */
+.card { background: white; border-radius: 16px; padding: 20px; border: 1px solid var(--gray-200); margin-bottom: 20px; }
+.earnings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.earnings-item:last-child { border-bottom: none; }
+.earnings-desc { font-weight: 600; color: var(--navy-dark); font-size: 14px; }
+.earnings-date { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+.earnings-amount { font-weight: 700; color: var(--green); font-size: 16px; }
+
+ </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <nav>
+
  <div class="nav-left">
  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
  <a href="minerva_landing.html?v=0153a2c" class="logo">
@@ -388,7 +431,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  </a>
  </div>
  <div class="nav-links">
- <a href="#">Dashboard</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
  <a href="student_dashboard.html?v=0153a2c" data-i18n="teacher_dash.students">Students</a>
  <a href="teacher_schedule.html?v=bd625e9" data-i18n="teacher_dash.schedule">Schedule</a>
  <a href="messages.html?v=bd625e9" data-i18n="teacher_dash.messages">Messages</a>
@@ -407,7 +450,8 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <a href="teacher_dashboard.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
- </nav>
+ 
+</nav>
 <main class="main">
  <div class="page-header">
  <h1>Earnings</h1>
@@ -416,53 +460,53 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <div class="stats-grid">
  <div class="stat-card">
  <div class="label">This Month</div>
- <div class="value green">HK&#36;4,850</div>
+ <div class="value green">HK$4,850</div>
  </div>
  <div class="stat-card">
  <div class="label">Pending</div>
- <div class="value" style="color:#F9A828">HK&#36;1,200</div>
+ <div class="value" style="color:#F9A828">HK$1,200</div>
  </div>
  <div class="stat-card">
  <div class="label">Total Earned</div>
- <div class="value">HK&#36;32,400</div>
+ <div class="value">HK$32,400</div>
  </div>
  </div>
 
  <div class="card">
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">Piano (Grade 5) &#8212; Sophie Chen</div>
+ <div class="earnings-desc">Piano (Grade 5) — Sophie Chen</div>
  <div class="earnings-date">Apr 22, 2026</div>
  </div>
- <div class="earnings-amount">+HK&#36;600</div>
+ <div class="earnings-amount">+HK$600</div>
  </div>
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">Piano (Grade 3) &#8212; Emma Wong</div>
+ <div class="earnings-desc">Piano (Grade 3) — Emma Wong</div>
  <div class="earnings-date">Apr 20, 2026</div>
  </div>
- <div class="earnings-amount">+HK&#36;550</div>
+ <div class="earnings-amount">+HK$550</div>
  </div>
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">Violin (Beginner) &#8212; Lucas Lee</div>
+ <div class="earnings-desc">Violin (Beginner) — Lucas Lee</div>
  <div class="earnings-date">Apr 18, 2026</div>
  </div>
- <div class="earnings-amount">+HK&#36;500</div>
+ <div class="earnings-amount">+HK$500</div>
  </div>
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">Science (Form 2) &#8212; Nathan Wu</div>
+ <div class="earnings-desc">Science (Form 2) — Nathan Wu</div>
  <div class="earnings-date">Apr 15, 2026</div>
  </div>
- <div class="earnings-amount">+HK&#36;450</div>
+ <div class="earnings-amount">+HK$450</div>
  </div>
  <div class="earnings-item">
  <div>
- <div class="earnings-desc">English &#8212; Grace Ho</div>
+ <div class="earnings-desc">English — Grace Ho</div>
  <div class="earnings-date">Apr 11, 2026</div>
  </div>
- <div class="earnings-amount">+HK&#36;480</div>
+ <div class="earnings-amount">+HK$480</div>
  </div>
  </div>
 </main>

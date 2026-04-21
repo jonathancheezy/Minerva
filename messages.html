@@ -159,7 +159,6 @@ a { color: #3b82f6; text-decoration: none; }
  font-size: 14px;
  font-weight: 600;
  }
-
  /* Main Content */
 .main {
  max-width: 1200px;
@@ -369,15 +368,47 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 }
 
 
-</style>
 
+/* WhatsApp-style Messages */
+.conv-list { padding-top: 60px; }
+.conv-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: white;
+  border-bottom: 1px solid var(--gray-200);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.conv-item:hover { background: var(--gray-100); }
+.conv-item:active { background: var(--gray-200); }
+.conv-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+}
+.conv-info { flex: 1; min-width: 0; }
+.conv-name { font-weight: 600; font-size: 15px; color: #333; margin-bottom: 2px; }
+.conv-preview { font-size: 13px; color: var(--gray-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.conv-meta { text-align: right; flex-shrink: 0; }
+.conv-time { font-size: 11px; color: var(--gray-400); display: block; margin-bottom: 4px; }
+.conv-unread { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); display: none; margin-left: auto; }
+
+ </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!-- Nav -->
 <nav>
+
  <div class="nav-left">
  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
  <a href="minerva_landing.html?v=0153a2c" class="logo">
@@ -390,7 +421,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  </a>
  </div>
  <div class="nav-links">
- <a href="#">Dashboard</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
  <a href="student_dashboard.html?v=0153a2c" data-i18n="teacher_dash.students">Students</a>
  <a href="teacher_schedule.html?v=bd625e9" data-i18n="teacher_dash.schedule">Schedule</a>
  <a href="messages.html?v=bd625e9" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.messages">Messages</a>
@@ -409,11 +440,10 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <a href="teacher_dashboard.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
- </nav>
-
-<!-- Conversation List -->
+ 
+</nav>
 <div class="conv-list" id="convList">
- <div class="conv-item" onclick="openChat('Emma Wong', 'EW', '#22c55e')">
+ <div class="conv-item" onclick="openChat('Emma Wong','EW','#22c55e')">
  <div class="conv-avatar" style="background:#22c55e">EW</div>
  <div class="conv-info">
  <div class="conv-name">Emma Wong</div>
@@ -424,7 +454,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <div class="conv-unread" style="display:block"></div>
  </div>
  </div>
- <div class="conv-item" onclick="openChat('Lucas Lee', 'LL', '#3b82f6')">
+ <div class="conv-item" onclick="openChat('Lucas Lee','LL','#3b82f6')">
  <div class="conv-avatar" style="background:#3b82f6">LL</div>
  <div class="conv-info">
  <div class="conv-name">Lucas Lee</div>
@@ -434,7 +464,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <span class="conv-time">Yesterday</span>
  </div>
  </div>
- <div class="conv-item" onclick="openChat('Sophie Chen', 'SC', '#8b5cf6')">
+ <div class="conv-item" onclick="openChat('Sophie Chen','SC','#8b5cf6')">
  <div class="conv-avatar" style="background:#8b5cf6">SC</div>
  <div class="conv-info">
  <div class="conv-name">Sophie Chen</div>
@@ -444,7 +474,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <span class="conv-time">2 days ago</span>
  </div>
  </div>
- <div class="conv-item" onclick="openChat('Grace Ho', 'GH', '#F9A828')">
+ <div class="conv-item" onclick="openChat('Grace Ho','GH','#F9A828')">
  <div class="conv-avatar" style="background:#F9A828">GH</div>
  <div class="conv-info">
  <div class="conv-name">Grace Ho</div>
@@ -454,7 +484,7 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  <span class="conv-time">3 days ago</span>
  </div>
  </div>
- <div class="conv-item" onclick="openChat('Nathan Wu', 'NW', '#ef4444')">
+ <div class="conv-item" onclick="openChat('Nathan Wu','NW','#ef4444')">
  <div class="conv-avatar" style="background:#ef4444">NW</div>
  <div class="conv-info">
  <div class="conv-name">Nathan Wu</div>
@@ -466,49 +496,38 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
  </div>
 </div>
 
-<!-- Chat View -->
-<div class="chat-view" id="chatView">
- <div class="chat-messages" id="chatMessages">
- <div class="chat-bubble received">Hi Teacher Chan! Just wanted to say thanks for the lesson yesterday!<span class="bubble-time">2:30 PM</span></div>
- <div class="chat-bubble sent">You're welcome Emma! Great job on those scales!<span class="bubble-time">2:32 PM</span></div>
- <div class="chat-bubble received">Thank you! I practiced them for an hour. My mom was so happy!<span class="bubble-time">2:35 PM</span></div>
- <div class="chat-bubble sent">That's wonderful! See you at the next lesson on Thursday.<span class="bubble-time">2:36 PM</span></div>
- </div>
- <div class="chat-input">
- <input type="text" placeholder="Type a message..." id="msgInput">
- <button onclick="sendMsg()">Send</button>
- </div>
-</div>
-
 <script>
-function openChat(name, initials, color) {
- document.getElementById('convList').style.display = 'none';
- document.getElementById('chatView').style.display = 'flex';
- document.getElementById('chatWithName').textContent = name;
- document.getElementById('chatWithAvatar').textContent = initials;
- document.getElementById('chatWithAvatar').style.background = color;
- document.querySelector('.nav-back').style.display = 'block';
+function openChat(name,initials,color) {
+ document.getElementById('convList').style.display='none';
+ var v=document.getElementById('chatView');
+ if(v) v.style.display='flex';
+ var n=document.getElementById('chatWithName');
+ if(n) n.textContent=name;
+ var a=document.getElementById('chatWithAvatar');
+ if(a){ a.textContent=initials; a.style.background=color; }
+ var b=document.querySelector('.nav-back');
+ if(b) b.style.display='block';
 }
-
 function showConvList() {
- document.getElementById('convList').style.display = 'block';
- document.getElementById('chatView').style.display = 'none';
- document.querySelector('.nav-back').style.display = 'none';
+ document.getElementById('convList').style.display='block';
+ var v=document.getElementById('chatView');
+ if(v) v.style.display='none';
+ var b=document.querySelector('.nav-back');
+ if(b) b.style.display='none';
 }
-
 function sendMsg() {
- var input = document.getElementById('msgInput');
- var text = input.value.trim();
- if (!text) return;
- var msgs = document.getElementById('chatMessages');
- var time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
- msgs.innerHTML += '<div class="chat-bubble sent">' + text + '<span class="bubble-time">' + time + '</span></div>';
- input.value = '';
- msgs.scrollTop = msgs.scrollHeight;
+ var inp=document.getElementById('msgInput');
+ if(!inp) return;
+ var t=inp.value.trim();
+ if(!t) return;
+ var msgs=document.getElementById('chatMessages');
+ var tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+ msgs.innerHTML+='<div class="chat-bubble sent">'+t+'<span class="bubble-time">'+tm+'</span></div>';
+ inp.value='';
+ msgs.scrollTop=msgs.scrollHeight;
 }
-
-document.getElementById('msgInput').addEventListener('keypress', function(e) {
- if (e.key === 'Enter') sendMsg();
+document.getElementById('msgInput').addEventListener('keypress',function(e){
+ if(e.key==='Enter') sendMsg();
 });
 </script>
 </body>
