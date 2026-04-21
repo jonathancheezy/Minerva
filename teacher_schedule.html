@@ -555,10 +555,16 @@ function renderCalendar() {
   document.getElementById('cal-month').textContent = months[currentMonth] + ' ' + currentYear;
   
   const grid = document.getElementById('cal-grid');
-  // Keep day names
-  const dayNames = grid.querySelectorAll('.cal-day-name');
+  // Save day name headers before clearing
   grid.innerHTML = '';
-  dayNames.forEach(d => grid.appendChild(d));
+  // Re-add day name headers
+  const dayNamesShort = ['S','M','T','W','T','F','S'];
+  dayNamesShort.forEach(function(d) {
+    var h = document.createElement('div');
+    h.className = 'cal-day-name';
+    h.textContent = d;
+    grid.appendChild(h);
+  });
   
   const firstDay = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
