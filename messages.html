@@ -1,58 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Messages - Minerva</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{--navy:#1e3a5f;--navy-dark:#0f1f33;--teal:#3b82f6;--gold:#F9A828;--white:#fff;--gray-100:#f8fafc;--gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-400:#94a3b8;--gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--green:#22c55e;--red:#ef4444}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Inter,sans-serif;background:rgba(0,0,0,.25);color:var(--gray-700);padding-top:60px}
-nav{background:var(--navy);color:white;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;height:60px;z-index:100}
-.nav-left{display:flex;align-items:center;gap:16px}
-.mobile-menu-btn{display:none;font-size:24px;cursor:pointer;padding:8px;color:white;background:none;border:none}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:white;text-decoration:none}
-.logo-icon{width:32px;height:32px}
-.nav-links{display:flex;gap:24px;justify-content:center;flex:1}
-.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:#fff}
-.nav-links a.active{color:#F9A828!important}
-.nav-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:flex-end}
-.avatar{width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--navy-dark);font-size:14px}
-.message-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:white;flex-shrink:0}
-.lang-selector{display:flex;gap:4px;background:rgba(0,0,0,.25);padding:4px;border-radius:8px}
-.lang-btn{padding:6px 12px;border:none;background:transparent;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;color:white;text-decoration:none}
-.main{max-width:900px;margin:0 auto;padding:32px 24px}
-.page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
-.page-header h1{font-size:28px;font-weight:800;color:var(--navy-dark)}
-.card{background:white;border-radius:16px;padding:20px;border:1px solid var(--gray-200);margin-bottom:20px}
-.conv-item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--gray-100)}
-.conv-item:last-child{border-bottom:none}
-.conv-info{flex:1;min-width:0}
-.conv-sender{font-weight:600;color:var(--navy-dark);font-size:14px}
-.conv-preview{font-size:13px;color:var(--gray-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.conv-time{font-size:11px;color:var(--gray-400);flex-shrink:0}
-footer{text-align:center;padding:24px;font-size:12px;color:var(--gray-400);margin-top:32px}
-@media(max-width:900px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;padding:12px 16px;gap:4px}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.nav-left{position:relative}}
-</style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Messages — Minerva</title>
+ <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-400: #94a3b8;
+ --gray-500: #64748b;
+ --gray-600: #475569;
+ --gray-700: #334155;
+ --green: #22c55e;
+ --red: #ef4444;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: #f8fafc;
+ color: #334155;
+ line-height: 1.6;
+ padding-top: 60px;
+ }
+
+ a { color: #3b82f6; text-decoration: none; }
+
+ nav { background: var(--navy); color: white; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; height: 60px; z-index: 100; }
+ .nav-left { display: flex; align-items: center; gap: 16px; }
+ .mobile-menu-btn { display: none; font-size: 24px; cursor: pointer; padding: 8px; color: white; background: none; border: none; }
+ .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: white; text-decoration: none; }
+ .logo-icon { width: 32px; height: 32px; }
+ .nav-links { display: flex; gap: 24px; justify-content: center; flex: 1; }
+ .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+ .nav-links a:hover { color: white; }
+ .nav-links a.active { color: #F9A828 !important; }
+ .nav-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+ .user-info { display: flex; align-items: center; gap: 12px; }
+ .avatar { width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--navy-dark); font-size: 14px; }
+ .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; }
+
+ .main { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+ .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
+ .page-header h1 { font-size: 28px; font-weight: 800; color: var(--navy-dark); }
+ .card { background: white; border-radius: 16px; padding: 20px; border: 1px solid var(--gray-200); margin-bottom: 20px; }
+
+ .conv-item { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--gray-100); }
+ .conv-item:last-child { border-bottom: none; }
+ .message-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: white; flex-shrink: 0; }
+ .conv-info { flex: 1; min-width: 0; }
+ .conv-sender { font-weight: 600; color: var(--navy-dark); font-size: 14px; }
+ .conv-preview { font-size: 13px; color: var(--gray-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+ .conv-time { font-size: 11px; color: var(--gray-400); flex-shrink: 0; }
+
+ footer { text-align: center; padding: 24px; font-size: 12px; color: var(--gray-400); margin-top: 32px; }
+
+ @media (max-width: 900px) {
+ .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 12px 16px; gap: 4px; }
+ .nav-links.active { display: flex; }
+ .mobile-menu-btn { display: block; }
+ .nav-left { position: relative; }
+ }
+ </style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <nav>
-<div class="nav-left"><button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">&#9776;</button><a href="minerva_landing.html" class="logo"><svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#1e3a5f"/><path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/></svg>Minerva</a><div class="nav-links"><a href="teacher_dashboard.html">Dashboard</a><a href="student_dashboard.html">Students</a><a href="teacher_schedule.html">Schedule</a><a href="messages.html">Messages</a><a href="reviews.html">Reviews</a><a href="earnings.html">Earnings</a></div></div><div class="nav-right"><a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a></div>
+ <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="nav-links">
+ <a href="teacher_dashboard.html">Dashboard</a>
+ <a href="student_dashboard.html">Students</a>
+ <a href="teacher_schedule.html">Schedule</a>
+ <a href="messages.html">Messages</a>
+ <a href="reviews.html">Reviews</a>
+ <a href="earnings.html">Earnings</a>
+ </div>
+ </div>
+ <div class="nav-right">
+ <div class="user-info">
+ <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
+ </div>
+ <div class="lang-selector">
+ <a href="messages.html?lang=en" class="lang-btn">EN</a>
+ <a href="messages.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="messages.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
 </nav>
 <main class="main">
-<div class="page-header"><h1>Messages</h1></div>
-<div class="card">
-<div class="conv-item"><div class="message-avatar" style="background:#22c55e">EW</div><div class="conv-info"><div class="conv-sender">Emma Wong</div><div class="conv-preview">Thank you for yesterday lesson! I practiced the scales you assigned...</div></div><div class="conv-time">2h ago</div></div>
-<div class="conv-item"><div class="message-avatar" style="background:#3b82f6">LL</div><div class="conv-info"><div class="conv-sender">Lucas Lee</div><div class="conv-preview">Can we reschedule Thursday lesson to 4pm?</div></div><div class="conv-time">Yesterday</div></div>
-<div class="conv-item"><div class="message-avatar" style="background:#8b5cf6">SC</div><div class="conv-info"><div class="conv-sender">Sophie Chen</div><div class="conv-preview">Sophie loved the recital! When is the next one?</div></div><div class="conv-time">2 days ago</div></div>
-<div class="conv-item"><div class="message-avatar" style="background:#F9A828">GH</div><div class="conv-info"><div class="conv-sender">Grace Ho</div><div class="conv-preview">English essay submitted. Please review when free.</div></div><div class="conv-time">3 days ago</div></div>
-<div class="conv-item"><div class="message-avatar" style="background:#ef4444">NW</div><div class="conv-info"><div class="conv-sender">Nathan Wu</div><div class="conv-preview">Thanks for the science notes, very helpful!</div></div><div class="conv-time">5 days ago</div></div>
-</div>
+ <div class="page-header">
+ <h1>Messages</h1>
+ </div>
+ <div class="card">
+ <div class="conv-item">
+ <div class="message-avatar" style="background:#22c55e">EW</div>
+ <div class="conv-info">
+ <div class="conv-sender">Emma Wong</div>
+ <div class="conv-preview">Thank you for yesterday lesson! I practiced the scales you assigned...</div>
+ </div>
+ <div class="conv-time">2h ago</div>
+ </div>
+ <div class="conv-item">
+ <div class="message-avatar" style="background:#3b82f6">LL</div>
+ <div class="conv-info">
+ <div class="conv-sender">Lucas Lee</div>
+ <div class="conv-preview">Can we reschedule Thursday lesson to 4pm?</div>
+ </div>
+ <div class="conv-time">Yesterday</div>
+ </div>
+ <div class="conv-item">
+ <div class="message-avatar" style="background:#8b5cf6">SC</div>
+ <div class="conv-info">
+ <div class="conv-sender">Sophie Chen</div>
+ <div class="conv-preview">Sophie loved the recital! When is the next one?</div>
+ </div>
+ <div class="conv-time">2 days ago</div>
+ </div>
+ <div class="conv-item">
+ <div class="message-avatar" style="background:#F9A828">GH</div>
+ <div class="conv-info">
+ <div class="conv-sender">Grace Ho</div>
+ <div class="conv-preview">English essay submitted. Please review when free.</div>
+ </div>
+ <div class="conv-time">3 days ago</div>
+ </div>
+ <div class="conv-item">
+ <div class="message-avatar" style="background:#ef4444">NW</div>
+ <div class="conv-info">
+ <div class="conv-sender">Nathan Wu</div>
+ <div class="conv-preview">Thanks for the science notes, very helpful!</div>
+ </div>
+ <div class="conv-time">5 days ago</div>
+ </div>
+ </div>
 </main>
 <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
-<script src="i18n.js"></script><script>if(typeof init=="function")init();</script>
+<script src="i18n.js"></script>
+<script>if(typeof init==="function")init();</script>
 </body>
 </html>
