@@ -617,15 +617,21 @@ function selectDay(dateStr, dayEl) {
 }
 
 function acceptLesson(subject) {
-  alert('Lesson accepted: ' + subject);
+  if (confirm('Accept this lesson request for ' + subject + '?')) {
+    alert('Lesson accepted!');
+  }
 }
 
 function cancelLesson(subject) {
-  alert('Lesson cancelled: ' + subject);
+  if (confirm('Cancel this confirmed lesson for ' + subject + '? This cannot be undone.')) {
+    alert('Lesson cancelled.');
+  }
 }
 
 function rejectLesson(subject) {
-  alert('Lesson rejected: ' + subject);
+  if (confirm('Reject this lesson request for ' + subject + '? This cannot be undone.')) {
+    alert('Lesson rejected.');
+  }
 }
 
 function changeMonth(delta) {
