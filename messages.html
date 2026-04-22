@@ -402,6 +402,10 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; mar
  padding: 12px 16px;
  background: white;
  border-bottom: 1px solid #f1f5f9;
+ position: sticky;
+ top: 0;
+ z-index: 10;
+ gap: 12px;
 }
 
 </style>
@@ -499,9 +503,8 @@ function openChat(name, initials, color) {
  var cv = document.getElementById('chatView');
  cv.style.display = 'flex';
  var msgs = document.getElementById('chatMessages');
- msgs.innerHTML = '<div style="padding:16px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;"><button onclick="showConvList()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#475569;">&#8249;</button><span style="font-weight:600;color:#0f1f33;font-size:15px;">' + name + '</span></div>';
  var tm = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
- msgs.innerHTML += '<div class="chat-bubble received">Hey! How was the lesson yesterday?<span class="bubble-time">' + tm + '</span></div>';
+ msgs.innerHTML = '<div class="chat-bubble received">Hey! How was the lesson yesterday?<span class="bubble-time">' + tm + '</span></div>';
  var nm = document.getElementById('chatWithName');
  if(nm) nm.textContent = name;
  var av = document.getElementById('chatWithAvatar');
@@ -531,11 +534,9 @@ function showConvList() {
 }
 function openNewChat() {
  document.getElementById('convList').style.display = 'none';
- var cv = document.getElementById('chatView');
- cv.style.display = 'flex';
+ document.getElementById('chatView').style.display = 'flex';
  var msgs = document.getElementById('chatMessages');
- msgs.innerHTML = '<div style="padding:16px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;"><button onclick="showConvList()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#475569;">&#8249;</button><span style="font-weight:600;color:#0f1f33;font-size:15px;">New Message</span></div>';
- msgs.innerHTML += '<div style="padding:16px 16px 8px;font-size:12px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">Select Student</div>';
+ var hdr = '<div style="padding:16px 16px 8px;font-size:12px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">Select Student</div>';
  var students = [
   {name:'Emma Wong', initials:'EW', color:'#22c55e'},
   {name:'Lucas Lee', initials:'LL', color:'#3b82f6'},
@@ -543,19 +544,12 @@ function openNewChat() {
   {name:'Grace Ho', initials:'GH', color:'#F9A828'},
   {name:'Nathan Wu', initials:'NW', color:'#ef4444'}
  ];
- var list = document.createElement('div');
- list.style.cssText = 'padding:0 8px 8px';
+ var list = '<div style="padding:8px">';
  students.forEach(function(s) {
-  var item = document.createElement('div');
-  item.style.cssText = 'display:flex;align-items:center;gap:12px;padding:12px 8px;border-radius:8px;cursor:pointer;transition:background 0.15s;';
-  item.onmouseover = function() { this.style.background = '#f8fafc'; };
-  item.onmouseout = function() { this.style.background = 'transparent'; };
-  item.onclick = function() { openChat(s.name, s.initials, s.color); };
-  item.innerHTML = '<div style="width:40px;height:40px;border-radius:50%;background:'+s.color+';display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:white;">'+s.initials+'</div><div style="font-weight:600;color:#0f1f33;font-size:14px;">'+s.name+'</div>';
-  list.appendChild(item);
+  list += '<div onclick="openChat(\''+s.name+'\',\''+s.initials+'\',\''+s.color+'\')" style="display:flex;align-items:center;gap:16px;padding:14px 8px;border-radius:10px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background=\'#f1f5f9\'" onmouseout="this.style.background=\'transparent\'"><div style="width:44px;height:44px;border-radius:50%;background:'+s.color+';display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:white;">'+s.initials+'</div><div style="font-weight:600;color:#0f1f33;font-size:15px;">'+s.name+'</div></div>';
  });
- msgs.appendChild(list);
- msgs.innerHTML += '<div id="newChatArea"></div>';
+ list += '</div>';
+ msgs.innerHTML = hdr + list;
  msgs.scrollTop = 0;
 }
 </script>
