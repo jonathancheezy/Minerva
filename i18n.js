@@ -416,7 +416,7 @@
       dashboard:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
       students:{en:"Students",zhTW:"學生",zhCN:"学生"},
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
-      messages:{en:"Messages",zhTW:"訊息",zhCN:"消息"},
+      messages:{en:"Chats",zhTW:"訊息",zhCN:"訊息"},
       total_students:{en:"Total Students",zhTW:"學生總數",zhCN:"学生总数"},
       total_earnings:{en:"Total Earnings",zhTW:"總收入",zhCN:"总收入"},
       upcoming_lessons:{en:"Upcoming Lessons",zhTW:"即將到來的課堂",zhCN:"即将到来的课堂"},

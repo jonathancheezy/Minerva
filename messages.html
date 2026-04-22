@@ -3,7 +3,7 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Messages — Minerva</title>
+ <title>Chats — Minerva</title>
  <style>
 
 
@@ -419,7 +419,7 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; mar
  <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
  <a href="student_dashboard.html?v=0153a2c" data-i18n="teacher_dash.students">Students</a>
  <a href="teacher_schedule.html?v=bd625e9" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.messages">Chats</a>
  <a href="reviews.html?v=0153a2c" data-i18n="reviews.title">Reviews</a>
  <a href="earnings.html?v=0153a2c" data-i18n="earnings.title">Earnings</a>
  </div>
@@ -438,7 +438,8 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; mar
  
 </nav>
 <div class="conv-list" id="convList">
- <div class="card">
+ <div style="position:fixed;top:60px;left:0;right:0;padding:16px 20px;background:#f8fafc;z-index:98;"><span style="font-size:20px;font-weight:700;color:#0f1f33;">Chats</span></div>
+ <div class="card" style="margin-top:64px;">
  <div style="display: flex; justify-content: flex-end; margin-bottom: 8px;">
  <button onclick="openNewChat()" style="background: #3b82f6; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;">+</button>
  </div>
@@ -518,7 +519,7 @@ function showConvList() {
  document.getElementById('convList').style.display = 'block';
  document.getElementById('chatView').style.display = 'none';
  var nm = document.getElementById('chatWithName');
- if(nm) nm.textContent = 'Messages';
+ if(nm) nm.textContent = 'Chats';
  var av = document.getElementById('chatWithAvatar');
  if(av) { av.textContent = 'TC'; av.style.background = ''; }
 }
