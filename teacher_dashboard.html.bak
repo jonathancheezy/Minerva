@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Dashboard — Minerva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* v=clean001 - rebuilt from scratch */
+
+ :root {
+ --navy: #1e3a5f;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-400: #94a3b8;
+ --gray-500: #64748b;
+ --gray-600: #475569;
+ --gray-700: #334155;
+ --green: #22c55e;
+ --red: #ef4444;
+ --purple: #8b5cf6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: #f8fafc;
+ color: #334155;
+ line-height: 1.6;
+ padding-top: 60px;
+ min-height: 100vh;
+}
+
+a { color: #3b82f6; text-decoration: none; }
+/* Nav */
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 0 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: 60px;
+ z-index: 100;
+ }
+
+ .nav-left {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 32px; height: 32px; }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ margin-left: 32px;
+ margin-right: auto;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 8px;
+ color: white;
+ background: none;
+ border: none;
+ }
+
+ .nav-links a {
+ color: rgba(255,255,255,0.7);
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: color 0.2s;
+ }
+ .nav-links a:hover { color: white; }
+ .nav-links a.active { color: #F9A828 !important; }
+
+ 
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
+ }
+
+ .user-name {
+ font-size: 14px;
+ font-weight: 600;
+ }
+
+ /* Main Content */
+.main {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ min-height: calc(100vh - 60px);
+}
+
+.page-header { margin-bottom: 32px; }
+.page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
+.page-header p { color: #64748b; font-size: 14px; }
+
+/* Stats Grid */
+.stats-grid {
+ display: grid;
+ grid-template-columns: repeat(5, 1fr);
+ gap: 20px;
+ margin-bottom: 32px;
+}
+
+.stat-card {
+ background: white;
+ border-radius: 16px;
+ border: 1px solid #e2e8f0;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ padding: 24px;
+}
+.stat-card .label { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.stat-card .value { font-size: 32px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
+.stat-card .value.green { color: #22c55e; }
+.stat-card .value.gold { color: #F9A828; }
+.stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+.stat-card .sub a { color: #3b82f6; }
+
+/* Content Grid - Flexbox side by side */
+.content-grid {
+ display: flex;
+ flex-direction: row;
+ gap: 20px;
+ width: 100%;
+}
+
+.card {
+ background: white;
+ border-radius: 16px;
+ border: 1px solid #e2e8f0;
+ overflow: hidden;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ min-width: 0;
+}
+
+.card-header {
+ padding: 16px 24px;
+ border-bottom: 1px solid #e2e8f0;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.card-header h2 { font-size: 15px; font-weight: 700; color: #0f1f33; }
+.card-header a { color: #3b82f6; font-size: 13px; font-weight: 600; }
+
+.card-body { padding: 20px 24px; }
+
+/* Schedule Card */
+.schedule-card { flex: 1.6; min-width: 0; }
+
+/* Filter Tabs */
+.filter-tabs {
+ display: flex;
+ gap: 8px;
+ padding: 14px 24px;
+ border-bottom: 1px solid #e2e8f0;
+ background: #f8fafc;
+}
+
+.filter-tab {
+ padding: 5px 14px;
+ border-radius: 20px;
+ font-size: 12px;
+ font-weight: 600;
+ cursor: pointer;
+ color: #64748b;
+ border: none;
+ background: white;
+ transition: all 0.2s;
+}
+.filter-tab.active { background: #1e3a5f; color: white; }
+.filter-tab:not(.active):hover { background: #e2e8f0; color: #0f1f33; }
+
+/* Schedule Sections - JS controls visibility */
+.schedule-section { display: none; }
+.schedule-section.active { display: block; }
+
+/* Schedule List */
+.schedule-list { padding: 0; }
+
+.day-header {
+ padding: 10px 24px;
+ background: #f8fafc;
+ font-size: 11px;
+ font-weight: 700;
+ color: #3b82f6;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+}
+
+.schedule-day { border-bottom: 1px solid #e2e8f0; }
+.schedule-day:last-child { border-bottom: none; }
+
+.lesson-item {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ padding: 14px 24px;
+ border-bottom: 1px solid #e2e8f0;
+}
+.lesson-item:last-child { border-bottom: none; }
+
+.lesson-time { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.lesson-time .time { font-size: 13px; font-weight: 700; color: #0f1f33; }
+.lesson-time .dash { font-size: 13px; color: #94a3b8; }
+
+.lesson-details { flex: 1; }
+.lesson-subject { font-size: 13px; font-weight: 600; color: #0f1f33; margin-bottom: 2px; }
+.student { font-size: 12px; color: #64748b; }
+
+.lesson-status {
+ font-size: 11px;
+ font-weight: 600;
+ padding: 3px 10px;
+ border-radius: 20px;
+ flex-shrink: 0;
+}
+.lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
+.lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
+.lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
+
+/* Messages Card */
+.messages-card { flex: 0.9; min-width: 0; }
+
+.conv-legend { display: flex; gap: 16px; padding: 0 24px 12px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #64748b; }
+
+.message-item { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid #e2e8f0; }
+.message-item:last-child { border-bottom: none; }
+
+.message-avatar {
+ width: 40px;
+ height: 40px;
+ border-radius: 10px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 12px;
+ font-weight: 700;
+ color: white;
+ flex-shrink: 0;
+}
+
+.message-info { flex: 1; min-width: 0; }
+.message-sender { font-size: 13px; font-weight: 600; color: #0f1f33; }
+.message-preview { font-size: 12px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.message-time { font-size: 11px; color: #94a3b8; flex-shrink: 0; }
+
+/* Footer */
+footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+ .stats-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+ .stats-grid { grid-template-columns: repeat(2, 1fr); }
+ .content-grid { flex-direction: column; }
+ .content-grid .card { flex: none; width: 100%; }
+}
+
+@media (max-width: 500px) {
+ .stats-grid { grid-template-columns: 1fr; }
+ .main { padding: 20px 16px; }
+}
+
+/* Hamburger menu */
+@media (max-width: 768px) {
+ .mobile-menu-btn { display: block; }
+ .nav-links {
+ display: none;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ right: 0;
+ background: #1e3a5f;
+ flex-direction: column;
+ padding: 20px 24px;
+ gap: 16px;
+ border-bottom: 1px solid rgba(255,255,255,0.1);
+ z-index: 99;
+ }
+ .nav-links.active { display: flex; }
+ .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
+ .nav-links.active a.active { color: #F9A828 !important; }
+ .nav-links.active a:hover { color: white; }
+}
+
+</style>
+</head>
+<body>
+<nav>
+ <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
+ <a href="student_dashboard.html?v=2" data-i18n="teacher_dash.students">Students</a>
+ <a href="teacher_schedule.html?v=2" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html?v=2" data-i18n="teacher_dash.messages">Messages</a>
+ <a href="reviews.html?v=2" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html?v=2" data-i18n="earnings.title">Earnings</a>
+ </div>
+ <div class="nav-right">
+ <div class="nav-meta">
+ <div class="user-info">
+ <a href="teacher_profile.html?v=2" style="text-decoration:none"><div class="avatar">TC</div></a>
+ </div>
+  </div>
+  <div class="lang-selector">
+ <a href="teacher_dashboard.html?lang=en&v=2" class="lang-btn">EN</a>
+ <a href="teacher_dashboard.html?lang=zh-TW&v=2" class="lang-btn">繁</a>
+ <a href="teacher_dashboard.html?lang=zh-CN&v=2" class="lang-btn">简</a>
+ </div>
+ </div>
+ </nav>
+<main class="main">
+ <div class="page-header">
+  <h1>Teacher Dashboard</h1>
+  <p>Welcome back, Teacher Chan</p>
+ </div>
+
+ <div class="stats-grid">
+  <div class="stat-card">
+   <div class="label">Total Students</div>
+   <div class="value">12</div>
+   <div class="sub">across 5 subjects</div>
+  </div>
+  <div class="stat-card">
+   <div class="label">Upcoming Lessons</div>
+   <div class="value">8</div>
+   <div class="sub">next 7 days</div>
+  </div>
+  <div class="stat-card">
+   <div class="label">Lessons / Month</div>
+   <div class="value green">24</div>
+   <div class="sub">+3 from last month</div>
+  </div>
+  <div class="stat-card">
+   <div class="label">Pending Notes</div>
+   <div class="value gold">3</div>
+   <div class="sub"><a href="teacher_schedule.html">Review now</a></div>
+  </div>
+  <div class="stat-card">
+   <div class="label">Upcoming Tests</div>
+   <div class="value" style="color:#8b5cf6;">5</div>
+   <div class="sub">next 2 weeks</div>
+  </div>
+ </div>
+
+ <div class="content-grid">
+  <div class="card schedule-card">
+   <div class="card-header">
+    <h2>Schedule</h2>
+    <a href="teacher_schedule.html">View All</a>
+   </div>
+   <div class="filter-tabs">
+    <button class="filter-tab active" data-tab="confirmed">Confirmed</button>
+    <button class="filter-tab" data-tab="pending">Pending</button>
+    <button class="filter-tab" data-tab="cancelled">Cancelled</button>
+   </div>
+   <div class="schedule-list">
+    <div class="schedule-section active" data-section="confirmed">
+     <div class="day-header">Today &mdash; 18 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Piano (Grade 3 Prep)</div>
+        <div class="student">Emma Wong</div>
+       </div>
+       <div class="lesson-status confirmed">Confirmed</div>
+      </div>
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">14:00</span><span class="dash">&ndash;</span><span class="time">15:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Violin (Beginner)</div>
+        <div class="student">Lucas Lee</div>
+       </div>
+       <div class="lesson-status confirmed">Confirmed</div>
+      </div>
+     </div>
+     <div class="day-header">Tomorrow &mdash; 19 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">16:30</span><span class="dash">&ndash;</span><span class="time">17:30</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Piano (Grade 5)</div>
+        <div class="student">Sophie Chen</div>
+       </div>
+       <div class="lesson-status confirmed">Confirmed</div>
+      </div>
+     </div>
+    </div>
+    <div class="schedule-section" data-section="pending">
+     <div class="day-header">Sat &mdash; 25 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">09:00</span><span class="dash">&ndash;</span><span class="time">10:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Math (Form 3)</div>
+        <div class="student">Ryan Lam</div>
+       </div>
+       <div class="lesson-status pending">Pending</div>
+      </div>
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">11:00</span><span class="dash">&ndash;</span><span class="time">12:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">English (Form 4)</div>
+        <div class="student">Grace Ho</div>
+       </div>
+       <div class="lesson-status pending">Pending</div>
+      </div>
+     </div>
+     <div class="day-header">Mon &mdash; 27 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Science (Form 2)</div>
+        <div class="student">Nathan Wu</div>
+       </div>
+       <div class="lesson-status pending">Pending</div>
+      </div>
+     </div>
+    </div>
+    <div class="schedule-section" data-section="cancelled">
+     <div class="day-header">Yesterday &mdash; 17 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">15:00</span><span class="dash">&ndash;</span><span class="time">16:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Science (Form 2)</div>
+        <div class="student">Nathan Wu</div>
+       </div>
+       <div class="lesson-status cancelled">Cancelled</div>
+      </div>
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Piano (Grade 1)</div>
+        <div class="student">Lily Zhang</div>
+       </div>
+       <div class="lesson-status cancelled">Cancelled</div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="card messages-card">
+   <div class="card-header">
+    <h2>Messages</h2>
+    <a href="messages.html">View All</a>
+   </div>
+   <div class="card-body">
+    <div class="conv-legend">
+     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#F9A828;display:inline-block;"></span><span>Unread</span></span>
+     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;"></span><span>Lesson</span></span>
+     <span class="legend-item"><span style="width:8px;height:8px;border-radius:50%;background:#3b82f6;display:inline-block;"></span><span>General</span></span>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar" style="background:#F9A828;">EW</div>
+     <div class="message-info">
+      <div class="message-sender">Emma Wong</div>
+      <div class="message-preview">Regarding tomorrow's piano lesson...</div>
+     </div>
+     <div class="message-time">9:41</div>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar" style="background:#22c55e;">LL</div>
+     <div class="message-info">
+      <div class="message-sender">Lucas Lee</div>
+      <div class="message-preview">Can we reschedule Thursday's lesson?</div>
+     </div>
+     <div class="message-time">Yesterday</div>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar" style="background:#3b82f6;">SC</div>
+     <div class="message-info">
+      <div class="message-sender">Sophie Chen</div>
+      <div class="message-preview">Thanks for the lesson today!</div>
+     </div>
+     <div class="message-time">Yesterday</div>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar" style="background:#22c55e;">RH</div>
+     <div class="message-info">
+      <div class="message-sender">Ryan Ho</div>
+      <div class="message-preview">Assignment submission for Math Form 3</div>
+     </div>
+     <div class="message-time">Apr 16</div>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar" style="background:#3b82f6;">GH</div>
+     <div class="message-info">
+      <div class="message-sender">Grace Ho</div>
+      <div class="message-preview">English essay draft attached</div>
+     </div>
+     <div class="message-time">Apr 15</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</main>
+
+<footer>
+ <p>&copy; 2026 Minerva Learning Ltd. All rights reserved.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+ // Apply translations
+ var urlParams = new URLSearchParams(window.location.search);
+ var lang = urlParams.get('lang') || 'en';
+ if (typeof applyTranslations === 'function') applyTranslations(lang);
+
+ // Filter tab switching
+ document.querySelectorAll('.filter-tab').forEach(function(tab) {
+   tab.addEventListener('click', function() {
+     document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+     tab.classList.add('active');
+     var target = tab.getAttribute('data-tab');
+     document.querySelectorAll('.schedule-section').forEach(function(section) {
+       section.classList.remove('active');
+       if (section.getAttribute('data-section') === target) {
+         section.classList.add('active');
+       }
+     });
+   });
+ });
+
+ // Hamburger menu
+ var menuBtn = document.querySelector('.mobile-menu-btn');
+ var navLinks = document.querySelector('.nav-links');
+ if (menuBtn && navLinks) {
+   menuBtn.addEventListener('click', function() {
+     navLinks.classList.toggle('active');
+   });
+ }
+});
+</script>
+</body>
+</html>
