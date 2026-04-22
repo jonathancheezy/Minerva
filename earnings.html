@@ -4,6 +4,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Earnings — Minerva</title>
+
  <style>
 
 /* v=clean001 - rebuilt from scratch */
@@ -198,7 +199,7 @@ a { color: #3b82f6; text-decoration: none; }
  justify-content: center;
 }
 .stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-.stat-card .value { font-size: 20px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
+.stat-card .value { font-size: 28px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
 .stat-card .value.green { color: #22c55e; }
 .stat-card .value.gold { color: #F9A828; }
 .stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
@@ -338,7 +339,9 @@ a { color: #3b82f6; text-decoration: none; }
 footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 
 /* Responsive */
-
+@media (max-width: 1200px) {
+ .stats-grid { grid-template-columns: repeat(4, 1fr); }
+}
 
 @media (max-width: 900px) {
  .content-grid { flex-direction: column; }
@@ -377,98 +380,70 @@ footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
 
 
 
-/* Earnings */
-.card { background: white; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
+/* Earnings specific overrides */
+.stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.stat-card .value { font-size: 20px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
+.stat-card .value.green { color: #22c55e; }
+.stat-card .value.gold { color: #F9A828; }
+.stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+.stat-card .sub a { color: #3b82f6; }
+
+/* Content Grid */
+.content-grid { display: flex; flex-direction: row; gap: 20px; width: 100%; }
+.card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); flex: 1; min-width: 0; }
+.card-header { padding: 16px 20px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
+.card-header h2 { font-size: 15px; font-weight: 700; color: #0f1f33; margin: 0; }
+.card-header span { font-size: 12px; color: #94a3b8; }
+.card-body { padding: 16px 20px; }
 .earnings-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
 .earnings-item:last-child { border-bottom: none; }
-.earnings-desc { font-weight: 600; color: #0f1f33; font-size: 14px; }
-.earnings-date { font-size: 12px; color: #64748b; margin-top: 2px; }
-.earnings-amount { font-weight: 700; color: #22c55e; font-size: 16px; }
-footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; margin-top: 32px; }
+.earnings-desc { font-weight: 600; font-size: 14px; color: #0f1f33; }
+.earnings-date { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+.earnings-amount { font-weight: 700; font-size: 15px; color: #22c55e; white-space: nowrap; margin-left: 16px; }
 
+/* Responsive - use flex breakpoints, not grid */
+@media (max-width: 900px) { .content-grid { flex-direction: column; } .content-grid .card { flex: none; width: 100%; } }
+@media (max-width: 600px) { .stats-grid .stat-card { flex: 0 0 100%; } }
+@media (max-width: 500px) { .main { padding: 20px 16px; } }
  </style>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav>
-
- <div class="nav-left">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <a href="minerva_landing.html?v=0153a2c" class="logo">
- <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
- <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
- <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
- <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
- </svg>
- Minerva
- </a>
- </div>
- <div class="nav-links">
- <a href="#"color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
- <a href="student_dashboard.html?v=0153a2c" data-i18n="teacher_dash.students">Students</a>
- <a href="teacher_schedule.html?v=bd625e9" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="messages.html?v=bd625e9" data-i18n="teacher_dash.messages">Messages</a>
- <a href="reviews.html?v=0153a2c" data-i18n="reviews.title">Reviews</a>
- <a href="earnings.html?v=0153a2c" class="active" style="color: #F9A828 !important;" data-i18n="earnings.title">Earnings</a>
- </div>
- <div class="nav-right">
- <div class="nav-meta">
- <div class="user-info">
- <a href="teacher_profile.html?v=0153a2c" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
- </div>
+ <nav class="navbar">
+  <div class="nav-left">
+   <a href="teacher_dashboard.html" class="nav-logo">Minerva</a>
   </div>
-  <div class="lang-selector">
- <a href="earnings.html?lang=en" class="lang-btn">EN</a>
- <a href="earnings.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="earnings.html?lang=zh-CN" class="lang-btn">简</a>
- </div>
- </div>
- 
-</nav>
-<main class="main">
- <div class="page-header">
- <h1>Earnings</h1>
- </div>
- <div class="stats-grid">
- <div class="stat-card">
- <div class="label">This Month</div>
- <div class="value green">HK$4,850</div>
- </div>
- <div class="stat-card">
- <div class="label">Pending</div>
- <div class="value gold">HK$1,200</div>
- </div>
- <div class="stat-card">
- <div class="label">Total Earned</div>
- <div class="value">HK$32,400</div>
- </div>
- </div>
- <div class="card">
- <div class="earnings-item">
- <div><div class="earnings-desc">Piano (Grade 5) — Sophie Chen</div><div class="earnings-date">Apr 22, 2026</div></div>
- <div class="earnings-amount">+HK$600</div>
- </div>
- <div class="earnings-item">
- <div><div class="earnings-desc">Piano (Grade 3) — Emma Wong</div><div class="earnings-date">Apr 20, 2026</div></div>
- <div class="earnings-amount">+HK$550</div>
- </div>
- <div class="earnings-item">
- <div><div class="earnings-desc">Violin (Beginner) — Lucas Lee</div><div class="earnings-date">Apr 18, 2026</div></div>
- <div class="earnings-amount">+HK$500</div>
- </div>
- <div class="earnings-item">
- <div><div class="earnings-desc">Science (Form 2) — Nathan Wu</div><div class="earnings-date">Apr 15, 2026</div></div>
- <div class="earnings-amount">+HK$450</div>
- </div>
- <div class="earnings-item">
- <div><div class="earnings-desc">English — Grace Ho</div><div class="earnings-date">Apr 11, 2026</div></div>
- <div class="earnings-amount">+HK$480</div>
- </div>
- </div>
-</main>
-<footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
-<script src="i18n.js"></script>
-<script>if(typeof init=="function")init();</script>
+  <div class="nav-right">
+   <div class="nav-meta">
+    <div class="user-info">
+     <span class="user-name">Teacher Chan</span>
+     <span class="user-role">Piano Instructor</span>
+    </div>
+    <div class="avatar">TC</div>
+   </div>
+   <div class="lang-selector">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="zh">中文</button>
+   </div>
+  </div>
+  <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+  <div class="nav-links">
+   <a href="teacher_dashboard.html">Dashboard</a>
+   <a href="teacher_schedule.html">Schedule</a>
+   <a href="messages.html">Messages</a>
+   <a href="earnings.html" class="active" style="color: #F9A828 !important;">Earnings</a>
+   <a href="reviews.html">Reviews</a>
+   <a href="teacher_profile.html">Profile</a>
+  </div>
+ </nav>
+ <main class="main" style="padding-top: 80px;">
+  <div class="page-header">
+   <h1>Earnings</h1>
+   <p>Track your teaching income and transaction history.</p>
+  </div>
+
+ </main>
+ <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
+ <script src="i18n.js"></script>
+ <script>if(typeof init=="function")init();</script>
 </body>
 </html>
