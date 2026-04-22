@@ -174,10 +174,15 @@ a { color: #3b82f6; text-decoration: none; }
 
 /* Stats Grid - 2x2 layout */
 .stats-grid {
- display: grid;
- grid-template-columns: repeat(2, minmax(0, 1fr));
+ display: flex;
+ flex-wrap: wrap;
  gap: 16px;
  margin-bottom: 24px;
+}
+
+.stats-grid .stat-card {
+ flex: 1 1 calc(50% - 8px);
+ min-width: 0;
 }
 
 .stat-card {
@@ -185,15 +190,15 @@ a { color: #3b82f6; text-decoration: none; }
  border-radius: 12px;
  border: 1px solid #e2e8f0;
  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
- padding: 16px 20px;
+ padding: 20px;
  text-align: left;
- min-height: 80px;
+ min-height: 90px;
  display: flex;
  flex-direction: column;
  justify-content: center;
 }
 .stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-.stat-card .value { font-size: 28px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
+.stat-card .value { font-size: 20px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
 .stat-card .value.green { color: #22c55e; }
 .stat-card .value.gold { color: #F9A828; }
 .stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
