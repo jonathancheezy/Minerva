@@ -148,7 +148,9 @@ a { color: #3b82f6; text-decoration: none; }
  }
  .lang-btn:hover { color: white; }
  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
- @media (max-width: 768px) {
+ 
+footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
+@media (max-width: 768px) {
   .lang-btn { padding: 4px 8px; font-size: 12px; }
   .lang-selector { padding: 2px; gap: 1px; }
   .lang-btn:hover { color: white; }
@@ -166,8 +168,8 @@ a { color: #3b82f6; text-decoration: none; }
  .page-header { margin-bottom: 24px; }
  .page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
  .page-header p { font-size: 14px; color: #64748b; }
- .stats-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
- .stats-grid .stat-card { flex: 1 1 calc(50% - 8px); min-width: 0; }
+ .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+ .stats-grid .stat-card { min-width: 0; }
  .stat-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 20px; text-align: left; min-height: 90px; display: flex; flex-direction: column; justify-content: center; }
  .stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
  .stat-card .value { font-size: 20px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
@@ -187,7 +189,7 @@ a { color: #3b82f6; text-decoration: none; }
  .earnings-date { font-size: 12px; color: #94a3b8; margin-top: 2px; }
  .earnings-amount { font-weight: 700; font-size: 15px; color: #22c55e; white-space: nowrap; margin-left: 16px; }
  @media (max-width: 900px) { .content-grid { flex-direction: column; } .content-grid .card { flex: none; width: 100%; } }
- @media (max-width: 600px) { .stats-grid .stat-card { flex: 0 0 100%; } }
+ @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
  @media (max-width: 500px) { .main { padding: 20px 16px; } }
 
  /* Hamburger menu */
@@ -269,11 +271,6 @@ a { color: #3b82f6; text-decoration: none; }
     <div class="label">Total Earned</div>
     <div class="value">HK$ 26,800</div>
     <div class="sub">Since Jan 2026</div>
-   </div>
-   <div class="stat-card">
-    <div class="label">Avg per Lesson</div>
-    <div class="value">HK$ 531</div>
-    <div class="sub">Based on 48 lessons</div>
    </div>
   </div>
   <div class="content-grid">
