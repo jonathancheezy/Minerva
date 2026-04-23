@@ -220,23 +220,27 @@ a { color: #3b82f6; text-decoration: none; }
  <nav>
   <div class="nav-left">
    <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
-   <a href="minerva_landing.html" class="logo">
-    <svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#1e3a5f"/><path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/></svg>
-    <span>Minerva</span>
+   <a href="minerva_landing.html?v=0153a2c" class="logo">
+    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+    <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    Minerva
    </a>
   </div>
   <div class="nav-links">
-   <a href="teacher_dashboard.html">Dashboard</a>
-   <a href="teacher_schedule.html">Schedule</a>
-   <a href="messages.html">Chats</a>
-   <a href="#" class="active" style="color: #F9A828 !important;">Earnings</a>
-   <a href="reviews.html">Reviews</a>
-   <a href="teacher_profile.html">Profile</a>
-  </div>
-  <div class="nav-right">
+  <a href="teacher_dashboard.html?v=NEW001" data-i18n="teacher_dash.dashboard">Dashboard</a>
+  <a href="student_dashboard.html?v=NEW001" data-i18n="teacher_dash.students">Students</a>
+  <a href="teacher_schedule.html?v=NEW001" data-i18n="teacher_dash.schedule">Schedule</a>
+  <a href="messages.html?v=freshChats" data-i18n="teacher_dash.nav_messages">CHATS</a>
+  <a href="reviews.html?v=NEW001" data-i18n="reviews.title">Reviews</a>
+  <a href="earnings.html?v=hamburgerFix" class="active" style="color: #F9A828 !important;" data-i18n="earnings.title">Earnings</a>
+ </div>
+ <div class="nav-right">
    <div class="nav-meta">
     <div class="user-info">
-     <div class="avatar" style="background:#F9A828;color:#0f1f33;">TC</div>
+     <a href="teacher_profile.html?v=NEW001" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
     </div>
    </div>
    <div class="lang-selector">
