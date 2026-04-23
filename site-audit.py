@@ -67,6 +67,8 @@ def run():
         try:
             ns = src.find('/* Nav */')
             me = src.find('/* Main Content */')
+            if me == -1: me = src.find('/* Main */')
+            if me == -1: me = src.find('/* Hero */')
             h = hashlib.sha256(src[ns:me].encode()).hexdigest()[:8]
             ok = h == "6f9ec9a0"
             results.append(f"{'✅' if ok else '⚠️'} {page} — nav CSS hash: {h} (ref: 6f9ec9a0)")
