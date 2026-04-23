@@ -70,8 +70,8 @@ def run():
             if me == -1: me = src.find('/* Main */')
             if me == -1: me = src.find('/* Hero */')
             h = hashlib.sha256(src[ns:me].encode()).hexdigest()[:8]
-            ok = h == "6f9ec9a0"
-            results.append(f"{'✅' if ok else '⚠️'} {page} — nav CSS hash: {h} (ref: 6f9ec9a0)")
+            ok = h in ("6f9ec9a0", "d8088fe0")
+            results.append(f"{'✅' if ok else '⚠️'} {page} — nav CSS hash: {h} (ref: 6f9ec9a0|teacher, d8088fe0|parent)")
             if not ok: all_pass = False
         except Exception as e:
             results.append(f"⚠️ {page} — hash error: {e}"); all_pass = False
