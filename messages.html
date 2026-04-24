@@ -365,12 +365,9 @@ Minerva
 </div>
 </nav>
 <div id="chatListScreen">
- <div class="page-header" style="position:sticky;top:60px;z-index:40;background:var(--white);padding:20px 24px 12px;border-bottom:1px solid var(--gray-200);display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">
-  <div>
-   <h1 style="font-size:28px;font-weight:800;color:#0f1f33;margin-bottom:4px;">My Chats</h1>
-   <p class="dashboard-quote">"Good communication doesn't mean they heard you — it means they understood you."</p>
-  </div>
-  <button onclick="showNewChat()" style="width:40px;height:40px;border-radius:50%;background:var(--gold);color:white;border:none;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:4px;box-shadow:0 2px 8px rgba(249,168,40,0.35);transition:transform 0.15s,box-shadow 0.15s;">&#43;</button>
+ <div class="page-header" style="position:sticky;top:60px;z-index:40;background:var(--white);padding:20px 24px 12px;border-bottom:1px solid var(--gray-200);">
+  <h1 style="font-size:28px;font-weight:800;color:#0f1f33;margin-bottom:4px;">My Chats</h1>
+  <p class="dashboard-quote">"Good communication doesn't mean they heard you — it means they understood you."</p>
  </div>
  <div style="padding:6px 16px;display:flex;align-items:center;gap:8px;">
   <div class="search-bar" style="flex:1;">
@@ -378,6 +375,7 @@ Minerva
    <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="search_conversations" oninput="filterConvs()" autocomplete="off">
    <button class="clear-btn" id="convClearBtn" onclick="clearConvSearch()">&#10005;</button>
   </div>
+  <button onclick="showNewChat()" style="width:40px;height:40px;border-radius:50%;background:var(--gold);color:white;border:none;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(249,168,40,0.35);transition:transform 0.15s,box-shadow 0.15s;">&#43;</button>
  </div>
  <div class="conv-scroll" id="convScroll"></div>
 </div>
