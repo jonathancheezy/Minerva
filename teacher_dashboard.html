@@ -75,14 +75,7 @@ a { color: #3b82f6; text-decoration: none; }
 
  .logo-icon { width: 36px; height: 36px; }
 
- .nav-controls {
- display: flex;
- align-items: center;
- gap: 12px;
- flex-shrink: 0;
- }
-
- /* Language Selector */
+/* Language Selector */
  .lang-selector { position: relative; display: flex; align-items: center; }
 
  .globe {
@@ -180,12 +173,12 @@ a { color: #3b82f6; text-decoration: none; }
 
  @media (max-width: 768px) {
  .nav-right { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 8px; }
- .nav-controls { display: flex; align-items: center; gap: 10px; }
  .mobile-menu-btn { display: flex; order: -1; }
- .lang-selector { background: transparent; padding: 0; gap: 0; border-radius: 0; }
  .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 20px 24px; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 99; }
  .nav-links.active { display: flex; }
  .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+ .user-info { display: flex; align-items: center; }
+ .lang-selector { background: transparent; padding: 0; }
  }
  @media (min-width: 769px) {
  .mobile-menu-btn { display: none; }
@@ -413,6 +406,7 @@ footer a:hover { text-decoration: underline; }
 <nav>
  <div class="nav-inner">
  <div class="nav-right">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -421,21 +415,6 @@ footer a:hover { text-decoration: underline; }
  </svg>
  Minerva
  </a>
- <div class="nav-controls">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
- <div class="lang-selector" id="langSelector">
- <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="12" cy="12" r="10"/>
- <line x1="2" y1="12" x2="22" y2="12"/>
- <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
- </svg>
- <div class="lang-dropdown" id="langDropdown">
- <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
- <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
- <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
- </div>
- </div>
- </div>
  <div class="nav-links">
  <a href="teacher_dashboard.html" class="active" data-i18n="teacher_dash.dashboard">Dashboard</a>
  <a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
@@ -446,6 +425,17 @@ footer a:hover { text-decoration: underline; }
  </div>
  <div class="user-info">
  <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
+ </div>
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
  </div>
  </div>
  </div>
