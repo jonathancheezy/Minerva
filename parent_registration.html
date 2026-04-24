@@ -623,13 +623,13 @@
         opt.classList.add('selected');
         sel.classList.remove('open');
         var lang = opt.dataset.lang;
-        if (typeof setLanguage === 'function') setLanguage(lang);
+        if (typeof setLang === 'function') setLang(lang);
       });
     });
   }
   var params = new URLSearchParams(window.location.search);
   var lp = params.get('lang');
-  if (lp && typeof setLanguage === 'function') setLanguage(lp);
+  if (lp && typeof setLang === 'function') setLang(lp);
 })();
 </script>
 </body>

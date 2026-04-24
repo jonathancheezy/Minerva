@@ -892,16 +892,8 @@
  <p data-i18n="hero_subtitle">Minerva is the first AI-powered learning marketplace in Asia with verified teachers, escrow payments, and online scheduling — so you can focus on learning, not worrying.</p>
 
  <div class="hero-cta">
- <a href="teacher_registration.html" class="cta-card cta-card-teacher">
- <span class="cta-eyebrow" data-i18n="cta_teacher_eyebrow">Teachers</span>
- <span class="cta-title" data-i18n="btn_register_teacher">Register as Teacher →</span>
- <span class="cta-sub" data-i18n="cta_teacher_sub">First 100 — 0% commission</span>
- </a>
- <a href="parent_registration.html" class="cta-card cta-card-parent">
- <span class="cta-eyebrow" data-i18n="cta_parent_eyebrow">Parents & Students</span>
- <span class="cta-title" data-i18n="btn_register_parent">Register as Parent/Student →</span>
- <span class="cta-sub" data-i18n="cta_parent_sub">First lesson free</span>
- </a>
+ <a href="teacher_registration.html" class="btn-primary" data-i18n="btn_register_teacher">Register as Teacher →</a>
+ <a href="parent_registration.html" class="btn-secondary" data-i18n="btn_register_parent">Register as Parent/Student →</a>
  </div>
  <div class="trust-badges">
  <span class="badge" data-i18n="trust_verified"><span class="badge-icon">🛡️</span> Background Verified</span>
@@ -1269,7 +1261,7 @@ if (langParam && translations[langParam]) {
   currentLang = langParam;
 }
 
- function setLanguage(lang) {
+ function setLang(lang) {
  currentLang = lang;
  // Update URL without reload
  const url = new URL(window.location);
@@ -1324,20 +1316,20 @@ if (langParam && translations[langParam]) {
  langDropdown.querySelectorAll('.lang-option').forEach(o => o.classList.remove('selected'));
  opt.classList.add('selected');
  const lang = opt.dataset.lang;
-// lang label updated via setLanguage()
+// lang label updated via setLang()
  langSelector.classList.remove('open');
- setLanguage(lang);
+ setLang(lang);
  });
  });
 
- // Language button clicks — legacy for old setLanguage() if still used
+ // Language button clicks — legacy for old setLang() if still used
  document.querySelectorAll('.lang-btn').forEach(btn => {
- btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+ btn.addEventListener('click', () => setLang(btn.dataset.lang));
  });
 
  // Apply language from URL if present
  if (langParam && translations[langParam]) {
-   setLanguage(langParam);
+   setLang(langParam);
  }
 
  // Form submission
