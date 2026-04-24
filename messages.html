@@ -116,49 +116,19 @@ nav {
  }
  .lang-btn:hover { color: white; }
  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-.nav-left { display: flex; align-items: center; gap: 16px; }
-.logo {
- display: flex; align-items: center; gap: 10px;
- font-weight: 800; font-size: 20px; color: white; text-decoration: none;
-}
-.logo-icon { width: 32px; height: 32px; }
-.nav-links {
- display: flex; gap: 24px; justify-content: center; flex: 1;
-}
-.nav-links a {
- color: rgba(255,255,255,0.7); text-decoration: none;
- font-size: 14px; font-weight: 500; transition: color 0.2s;
-}
-.nav-links a:hover { color: white; }
-.nav-links a.active { color: #F9A828 !important; }
-.mobile-menu-btn {
- display: none; font-size: 24px; cursor: pointer;
- padding: 8px; color: white; background: none; border: none;
-}
 /* Nav overrides for chat header elements */
-nav .back-btn {
+nav .back-btn { display: none; }
+ nav .back-btn.show { display: block; }
+ nav .back-btn {
  background: none; border: none; color: white; font-size: 24px;
- cursor: pointer; padding: 8px; margin-left: -8px; display: none; flex-shrink: 0;
+ cursor: pointer; padding: 8px; margin-left: -8px; flex-shrink: 0;
 }
-nav .back-btn.visible { display: block; }
-nav .nav-avatar {
- width: 36px; height: 36px; border-radius: 50%;
- background: var(--gray-300); display: flex; align-items: center;
- justify-content: center; font-size: 14px; font-weight: 700; color: white;
- flex-shrink: 0; position: relative;
-}
-nav .nav-avatar .online-dot {
- width: 10px; height: 10px; border-radius: 50%; background: var(--green);
- border: 1.5px solid var(--navy); position: absolute; bottom: -1px; right: -1px; display: none;
+nav .back-btn.visible { display: block; } solid var(--navy); position: absolute; bottom: -1px; right: -1px; display: none;
 }
 nav .nav-avatar .online-dot.show { display: block; }
-nav .nav-title {
- flex: 1; font-size: 17px; font-weight: 600; color: white; display: none;
-}
-nav .nav-title.visible { display: block; }
-nav .nav-subtitle { font-size: 11px; color: rgba(255,255,255,0.7); display: none; }
-nav .nav-subtitle.visible { display: block; }
-nav .nav-icon { background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 8px; display: none; }
+
+
+
 
 /* Hamburger */
 @media (max-width: 768px) {
@@ -223,10 +193,8 @@ nav .back-btn {
  font-size: 24px;
  cursor: pointer;
  padding: 8px;
- margin-left: -8px;
- display: none;
+ flex-shrink: 0;
 }
-nav .back-btn.visible { display: block; }
 nav .nav-title {
  flex: 1;
  font-size: 17px;
@@ -621,7 +589,7 @@ nav .nav-subtitle {
  <a href="teacher_dashboard.html?v=NEW001">Dashboard</a>
  <a href="student_dashboard.html?v=NEW001">Students</a>
  <a href="teacher_schedule.html?v=NEW001">Schedule</a>
- <a href="#" class="active" style="color: #F9A828 !important;">CHATS</a>
+ <a href="#" class="active" style="color: #F9A828 !important;">Chats</a>
  <a href="reviews.html?v=NEW001">Reviews</a>
  <a href="earnings.html?v=hamburgerFix">Earnings</a>
  </div>
@@ -637,14 +605,15 @@ nav .nav-subtitle {
  <a href="messages.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
- <button class="back-btn" id="backBtn" onclick="showConvList()" style="display:none;">&#8249;</button>
- <div class="nav-avatar" id="navAvatar" style="margin-left:8px;display:none;">
+ <div style="display:flex;align-items:center;gap:8px;">
+ <div class="nav-avatar" id="navAvatar" style="display:none;">
   <span id="navInitials"></span>
   <div class="online-dot" id="navOnlineDot"></div>
  </div>
  <div class="nav-title" id="navTitle" style="display:none;"></div>
  <div class="nav-subtitle" id="navSubtitle" style="display:none;"></div>
- <button class="nav-icon" id="navMenu" style="display:none;">&#8942;</button>
+ </div>
+ <button class="back-btn" id="backBtn" onclick="showConvList()" style="display:none;">&#8249;</button>
 </nav>
 
 <!-- ── CHAT LIST ── -->
@@ -845,7 +814,7 @@ function openChat(convId) {
  const dot = document.getElementById('navOnlineDot');
  dot.classList.toggle('show', activeConv.isOnline);
  document.getElementById('navSubtitle').textContent = activeConv.isOnline ? 'online' : '';
- document.getElementById('backBtn').classList.add('visible');
+ document.getElementById('backBtn').classList.add('show');
 
  // Render messages
  renderMessages();
@@ -940,7 +909,7 @@ function showConvList() {
  activeConv = null;
  document.getElementById('chatListScreen').style.display = 'flex';
  document.getElementById('chatScreen').style.display = 'none';
- document.getElementById('backBtn').classList.remove('visible');
+ document.getElementById('backBtn').classList.remove('show');
  document.getElementById('navTitle').textContent = 'Messages';
  document.getElementById('navSubtitle').textContent = '';
  document.getElementById('navOnlineDot').classList.remove('show');
