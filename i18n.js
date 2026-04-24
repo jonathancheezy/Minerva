@@ -693,6 +693,15 @@
       save:{en:"Save",zhTW:"儲存",zhCN:"儲存"},
       university:{en:"University",zhTW:"大學",zhCN:"大學"},
       kowloon:{en:"Kowloon",zhTW:"九龍",zhCN:"九龍"},
+
+      april_2026:{en:"April 2026",zhTW:"2026年4月",zhCN:"2026年4月"},
+      profile_label:{en:"Profile",zhTW:"個人資料",zhCN:"个人资料"},
+      site_name:{en:"Minerva",zhTW:"Minerva",zhCN:"Minerva"},
+      due_by_label:{en:"Due by",zhTW:"到期日",zhCN:"到期日"},
+      dashboard_label:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
+      schedule_label:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
+      reviews_label:{en:"Reviews",zhTW:"評價",zhCN:"评价"},
+      chats_label:{en:"Chats",zhTW:"訊息",zhCN:"訊息"},
 },
 
 
