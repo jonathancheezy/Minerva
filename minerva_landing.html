@@ -1233,7 +1233,9 @@ if (normalizedSaved && translations[normalizedSaved]) {
  const url = new URL(window.location);
  url.searchParams.set('lang', lang);
  window.history.replaceState({}, '', url);
- localStorage.setItem('minerva_lang', lang);
+ // Normalize for localStorage: zh-TW -> zhTW, zh-CN -> zhCN
+ let normalizedLang = lang.replace('-','');
+ localStorage.setItem('minerva_lang', normalizedLang);
  const t = translations[lang];
  
  // Update all elements with data-i18n
