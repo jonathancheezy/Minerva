@@ -200,6 +200,10 @@ a { color: #3b82f6; text-decoration: none; }
  background: var(--white);
 }
 
+.page-header { margin-bottom: 32px; }
+.page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
+.dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
+
 .search-bar {
  display: flex;
  align-items: center;
@@ -362,8 +366,11 @@ Minerva
 </div>
 </nav>
 <div id="chatListScreen">
- <div style="position:sticky;top:60px;z-index:40;background:var(--white);padding:60px 16px 30px;border-bottom:1px solid var(--gray-200);">
-  <div style="font-size:13px;color:#64748b;margin-bottom:42px;font-style:italic;">"Good communication doesn't mean they heard you — it means they understood you."</div>
+ <div class="page-header" style="position:sticky;top:60px;z-index:40;background:var(--white);padding:20px 24px 12px;border-bottom:1px solid var(--gray-200);">
+  <h1 style="font-size:28px;font-weight:800;color:#0f1f33;margin-bottom:4px;">My Chats</h1>
+  <p class="dashboard-quote">"Good communication doesn't mean they heard you — it means they understood you."</p>
+ </div>
+ <div style="padding:6px 16px;">
   <div class="search-bar">
    <span class="si">&#128269;</span>
    <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="search_conversations" oninput="filterConvs()" autocomplete="off">
