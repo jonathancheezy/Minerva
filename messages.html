@@ -143,6 +143,24 @@ a { color: #3b82f6; text-decoration: none; }
  .lang-btn:hover { color: white; }
  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
  @media (max-width: 768px) {
+  .mobile-menu-btn { display: block; }
+  .nav-links {
+   display: none;
+   position: absolute;
+   top: 100%;
+   left: 0;
+   right: 0;
+   background: #1e3a5f;
+   flex-direction: column;
+   padding: 20px 24px;
+   gap: 16px;
+   border-bottom: 1px solid rgba(255,255,255,0.1);
+   z-index: 99;
+  }
+  .nav-links.active { display: flex; }
+  .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
+  .nav-links.active a.active { color: #F9A828 !important; }
+  .nav-links.active a:hover { color: white; }
   .lang-btn { padding: 4px 8px; font-size: 12px; }
   .lang-selector { padding: 2px; gap: 1px; }
   .lang-btn:hover { color: white; }
@@ -290,12 +308,12 @@ a { color: #3b82f6; text-decoration: none; }
  </a>
  </div>
  <div class="nav-links">
- <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.dashboard">Dashboard</a>
- <a href="student_dashboard.html?v=0153a2c" data-i18n="teacher_dash.students">Students</a>
- <a href="teacher_schedule.html?v=bd625e9" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="messages.html?v=freshChats" data-i18n="teacher_dash.nav_messages">CHATS</a>
- <a href="reviews.html?v=0153a2c" data-i18n="reviews.title">Reviews</a>
- <a href="earnings.html?v=0153a2c" data-i18n="earnings.title">Earnings</a>
+ <a href="teacher_dashboard.html?v=NEW001">Dashboard</a>
+ <a href="student_dashboard.html?v=NEW001">Students</a>
+ <a href="teacher_schedule.html?v=NEW001">Schedule</a>
+ <a href="#" class="active" style="color: #F9A828 !important;">Chats</a>
+ <a href="reviews.html?v=NEW001">Reviews</a>
+ <a href="earnings.html?v=hamburgerFix">Earnings</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
@@ -304,9 +322,9 @@ a { color: #3b82f6; text-decoration: none; }
  </div>
   </div>
   <div class="lang-selector">
- <a href="teacher_dashboard.html?lang=en" class="lang-btn">EN</a>
- <a href="teacher_dashboard.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="teacher_dashboard.html?lang=zh-CN" class="lang-btn">简</a>
+ <a href="messages.html?lang=en" class="lang-btn">EN</a>
+ <a href="messages.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="messages.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
  <div style="display:none;align-items:center;gap:8px;margin-left:auto;" id="chatNavInfo">
