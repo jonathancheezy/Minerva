@@ -469,7 +469,7 @@
  parentBtn.classList.remove('active');
  heroTitle.setAttribute('data-i18n', 'login.welcome_teacher');
  heroSubtitle.setAttribute('data-i18n', 'login.subtitle_teacher');
- apply();
+ window.apply();
  forgotLink.href = '#';
  document.querySelector('.register-teacher').style.display = 'block';
  document.querySelector('.register-parent').style.display = 'none';
@@ -478,7 +478,7 @@
  parentBtn.classList.add('active');
  heroTitle.setAttribute('data-i18n', 'login.welcome_parent');
  heroSubtitle.setAttribute('data-i18n', 'login.subtitle_parent');
- apply();
+ window.apply();
  forgotLink.href = '#';
  document.querySelector('.register-teacher').style.display = 'none';
  document.querySelector('.register-parent').style.display = 'block';

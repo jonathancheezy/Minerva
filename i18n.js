@@ -916,6 +916,7 @@
   };
 
   window.getLang = function() { return lang; };
+  window.apply = apply;
 
   function apply() {
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
