@@ -112,18 +112,6 @@
 
 .lang-selector.open .globe { transform: rotate(180deg); }
 
-/* Search icon */
-.search-icon {
-  width: 18px;
-  height: 18px;
-  color: var(--gold);
-  cursor: pointer;
-  transition: color 0.2s, transform 0.2s;
-  flex-shrink: 0;
-}
-
-.search-icon:hover { color: var(--gold-light); transform: scale(1.1); }
-
 /* Mobile menu hamburger */
 .mobile-menu-btn { color: var(--gold); }
 
@@ -718,127 +706,6 @@
  }
 
  /* Mobile */
- .search-icon-btn {
- background: none;
- border: none;
- cursor: pointer;
- padding: 5px;
- border-radius: 8px;
- display: flex;
- align-items: center;
- transition: background 0.2s;
- }
- .search-icon-btn:hover { background: var(--gray-100); }
- .search-icon-btn .search-icon { color: var(--gold); }
- .search-icon-btn:hover .search-icon { color: var(--gold-light); }
-
- /* Search overlay */
- .search-overlay {
- display: none;
- position: fixed;
- inset: 0;
- z-index: 999;
- background: rgba(255,255,255,0.92);
- backdrop-filter: blur(14px);
- -webkit-backdrop-filter: blur(14px);
- flex-direction: column;
- align-items: center;
- padding-top: 90px;
- }
- .search-overlay.open { display: flex; }
-
- .search-container { width: 100%; max-width: 580px; padding: 0 20px; }
-
- .search-input-wrap {
- display: flex;
- align-items: center;
- gap: 12px;
- background: #fff;
- border: 2px solid var(--gray-200);
- border-radius: 14px;
- padding: 13px 18px;
- box-shadow: 0 8px 32px rgba(0,0,0,0.09);
- }
- .search-input-wrap:focus-within { border-color: var(--teal); }
-
- .search-input {
- flex: 1;
- border: none;
- outline: none;
- font-size: 17px;
- font-family: inherit;
- background: transparent;
- color: var(--navy);
- }
- .search-input::placeholder { color: var(--gray-500); }
-
- .search-esc {
- background: none;
- border: none;
- cursor: pointer;
- color: var(--gray-500);
- font-size: 13px;
- font-weight: 700;
- padding: 3px 9px;
- border-radius: 5px;
- letter-spacing: 0.03em;
- }
- .search-esc:hover { background: var(--gray-100); color: var(--navy); }
-
- .search-results {
- margin-top: 12px;
- background: #fff;
- border-radius: 14px;
- border: 1px solid var(--gray-200);
- box-shadow: 0 6px 24px rgba(0,0,0,0.07);
- overflow: hidden;
- max-height: 400px;
- overflow-y: auto;
- }
-
- .search-group { padding: 8px 0 4px; }
- .search-group:first-child { padding-top: 0; }
- .search-group-label {
- font-size: 10.5px;
- font-weight: 700;
- text-transform: uppercase;
- letter-spacing: 0.09em;
- color: var(--gray-500);
- padding: 0 16px 5px;
- }
-
- .search-item {
- display: flex;
- align-items: center;
- gap: 11px;
- padding: 9px 16px;
- cursor: pointer;
- text-decoration: none;
- color: var(--navy);
- transition: background 0.12s;
- font-size: 14.5px;
- }
- .search-item:hover { background: var(--gray-100); }
- .search-item-icon { color: var(--teal); flex-shrink: 0; font-size: 14px; }
- .search-item-text { flex: 1; }
- .search-item-title { font-weight: 500; }
- .search-item-desc { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
- .search-item-arrow { color: var(--gray-500); font-size: 11px; }
-
- .search-empty {
- text-align: center;
- padding: 32px 20px;
- color: var(--gray-500);
- font-size: 14px;
- }
-
- .search-hint {
- text-align: center;
- margin-top: 12px;
- font-size: 12.5px;
- color: var(--gray-500);
- }
-
  @media (max-width: 768px) {
  .nav-right { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; }
  .nav-controls { display: flex; align-items: center; gap: 12px; }
@@ -890,12 +757,6 @@
  </a>
  <div class="nav-controls">
  <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
- <button class="search-icon-btn" id="searchBtn" aria-label="Search">
- <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="11" cy="11" r="8"/>
- <line x1="21" y1="21" x2="16.65" y2="16.65"/>
- </svg>
- </button>
  <div class="lang-selector" id="langSelector">
  <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
  <circle cx="12" cy="12" r="10"/>
@@ -1386,116 +1247,6 @@ if (langParam && translations[langParam]) {
  window.location.href = 'parent_registration.html?email=' + encodeURIComponent(email);
  }
  });
-
- // ─── Search ───────────────────────────────────────────────────────────────
- const pageIndex = [
- { title: 'Features', desc: 'Verified teachers, escrow payments, scheduling', href: 'minerva_landing.html#features' },
- { title: 'How It Works', desc: '3 steps from search to first lesson', href: 'minerva_landing.html#how-it-works' },
- { title: 'FAQ', desc: 'Common questions and answers', href: 'minerva_landing.html#faq' },
- { title: 'Register', desc: 'Register your interest for early access', href: 'minerva_landing.html#register' },
- { title: 'Teacher Login', desc: 'Login for teachers', href: 'teacher_login.html' },
- { title: 'Teacher Registration', desc: 'Apply to teach on Minerva', href: 'teacher_registration.html' },
- { title: 'Parent Login', desc: 'Login for parents', href: 'parent_login.html' },
- { title: 'Parent Registration', desc: 'Register as a parent', href: 'parent_registration.html' },
- { title: 'Admin Login', desc: 'Admin portal login', href: 'admin_login.html' },
- { title: 'Terms & Conditions', desc: 'Terms and conditions', href: 'terms.html' },
- ];
- const sectionIndex = [
- { title: 'Features', desc: 'Why Minerva — verified teachers, escrow, scheduling', href: '#features' },
- { title: 'How It Works', desc: '3 steps from search to first lesson', href: '#how-it-works' },
- { title: 'FAQ', desc: 'Common questions and answers', href: '#faq' },
- { title: 'Register', desc: 'Register your interest', href: '#register' },
- { title: 'For Parents', desc: 'Trust, quality, prepayment, scheduling, progress', href: '#problem' },
- { title: 'For Teachers', desc: 'Fair pay, student flow, no-show protection', href: '#problem' },
- { title: 'Verified Teachers', desc: 'ID-checked, background-verified, reference-checked', href: '#features' },
- { title: 'Escrow Payments', desc: 'Payment held until lesson confirmed complete', href: '#features' },
- { title: 'Progress Tracking', desc: 'AI-powered learning dashboard', href: '#features' },
- { title: 'Virtual Scheduling', desc: 'Book from teacher live calendar', href: '#features' },
- { title: 'Search & Match', desc: 'Step 1 — browse and find your teacher', href: '#how-it-works' },
- { title: 'Book & Pay', desc: 'Step 2 — secure escrow payment', href: '#how-it-works' },
- { title: 'Learn & Track', desc: 'Step 3 — dashboard and reviews', href: '#how-it-works' },
- ];
- const searchOverlay = document.getElementById('searchOverlay');
- const searchInput = document.getElementById('searchInput');
- const searchResults = document.getElementById('searchResults');
- const searchBtn = document.getElementById('searchBtn');
- const searchEscBtn = document.getElementById('searchEscBtn');
- function openSearch() {
- searchOverlay.classList.add('open');
- searchInput.focus();
- }
- function closeSearch() {
- searchOverlay.classList.remove('open');
- searchInput.value = '';
- searchResults.innerHTML = '';
- }
- searchBtn.addEventListener('click', openSearch);
- searchEscBtn.addEventListener('click', closeSearch);
- searchOverlay.addEventListener('click', function(e) {
- if (e.target === searchOverlay) closeSearch();
- });
- document.addEventListener('keydown', function(e) {
- if (e.key === 'Escape') closeSearch();
- if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
- e.preventDefault();
- openSearch();
- }
- });
- function renderResults(pages, sections) {
- if (!pages.length && !sections.length) {
- searchResults.innerHTML = '<div class="search-empty">No results</div>';
- return;
- }
- let html = '';
- if (pages.length) {
- html += '<div class="search-group"><div class="search-group-label">Pages</div>';
- pages.forEach(function(p) {
- html += '<a class="search-item" href="' + p.href + '">' +
- '<span class="search-item-icon">📄</span>' +
- '<span class="search-item-text"><div class="search-item-title">' + p.title + '</div><div class="search-item-desc">' + p.desc + '</div></span>' +
- '<span class="search-item-arrow">→</span></a>';
- });
- html += '</div>';
- }
- if (sections.length) {
- html += '<div class="search-group"><div class="search-group-label">On This Page</div>';
- sections.forEach(function(s) {
- html += '<a class="search-item" href="' + s.href + '">' +
- '<span class="search-item-icon">#</span>' +
- '<span class="search-item-text"><div class="search-item-title">' + s.title + '</div><div class="search-item-desc">' + s.desc + '</div></span>' +
- '<span class="search-item-arrow">→</span></a>';
- });
- html += '</div>';
- }
- searchResults.innerHTML = html;
- }
- searchInput.addEventListener('input', function() {
- var q = this.value.trim().toLowerCase();
- if (!q) { searchResults.innerHTML = ''; return; }
- var pages = pageIndex.filter(function(p) {
- return p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
- });
- var sections = sectionIndex.filter(function(s) {
- return s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q);
- });
- renderResults(pages, sections);
- });
  </script>
-
- <!-- Search overlay -->
- <div class="search-overlay" id="searchOverlay">
- <div class="search-container">
- <div class="search-input-wrap">
- <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gray-500);flex-shrink:0">
- <circle cx="11" cy="11" r="8"/>
- <line x1="21" y1="21" x2="16.65" y2="16.65"/>
- </svg>
- <input type="text" class="search-input" id="searchInput" placeholder="Search pages and sections…" autocomplete="off" />
- <button class="search-esc" id="searchEscBtn">ESC</button>
- </div>
- <div class="search-results" id="searchResults"></div>
- <p class="search-hint">Type to search · ESC to close</p>
- </div>
- </div>
 </body>
 </html>
