@@ -16,6 +16,7 @@
     nav_login:{en:"Login",zhTW:"登入",zhCN:"登入"},
     nav_terms:{en:"Terms & Conditions",zhTW:"條款及細則",zhCN:"條款及細則"},
     nav_privacy:{en:"Privacy Policy",zhTW:"隱私政策",zhCN:"隱私政策"},
+    nav_home:{en:"Home",zhTW:"主頁",zhCN:"主页"},
     how_subtitle:{en:"We made it simple. We handle the trust, verification, and payments — you focus on learning.",zhTW:"我們化繁為簡。您只需專注學習，其他交給我們處理。",zhCN:"我们化繁为简。您只需专注学习，其他交给我们处理。"},
     trust_privacy:{en:"HK Data Privacy",zhTW:"香港資料私隱",zhCN:"香港资料私隐"},
     stat1_value:{en:"Free Trial",zhTW:"免費試堂",zhCN:"免费试堂"},
