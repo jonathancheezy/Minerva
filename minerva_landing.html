@@ -73,8 +73,10 @@
 .lang-selector {
   position: relative;
   display: flex;
+  align-items: center;
 }
 
+/* Trigger button */
 .lang-btn {
   display: flex;
   align-items: center;
@@ -87,36 +89,70 @@
   font-weight: 700;
   cursor: pointer;
   color: white;
-  transition: all 0.2s;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.2s, transform 0.15s;
   white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .lang-btn:hover {
-  border-color: rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.45);
+  box-shadow: 0 0 0 1px rgba(249, 168, 40, 0.35), 0 4px 12px rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.04);
 }
+
+.lang-btn:active { transform: scale(0.97); }
 
 .lang-btn.active {
   background: transparent;
   color: white;
-  border-color: rgba(255,255,255,0.5);
+  border-color: rgba(255,255,255,0.45);
 }
 
+/* Globe icon inside trigger */
+.lang-btn .globe {
+  width: 14px;
+  height: 14px;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.lang-btn:hover .globe { transform: rotate(15deg); }
+
+/* Chevron */
+.lang-btn .chevron {
+  width: 12px;
+  height: 12px;
+  color: var(--gold);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.lang-selector.open .lang-btn .chevron {
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* Dropdown panel — frosted glass + spring */
 .lang-dropdown {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 8px);
   right: 0;
-  min-width: 0;
-  width: 100px;
-  background: var(--navy-dark);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  width: 96px;
+  background: rgba(15, 31, 51, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(249, 168, 40, 0.08);
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  transform: translateY(-10px) scale(0.96);
+  transform-origin: top right;
+  transition:
+    opacity 0.22s cubic-bezier(0.34, 1.20, 0.64, 1),
+    transform 0.22s cubic-bezier(0.34, 1.20, 0.64, 1),
+    visibility 0.22s;
   z-index: 200;
 }
 
@@ -124,73 +160,90 @@
 .lang-selector:hover .lang-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
+/* Language rows */
 .lang-option {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 14px;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 10px 14px;
   cursor: pointer;
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255,255,255,0.75);
-  transition: background 0.1s, color 0.1s;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.65);
   background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.15s, color 0.15s, padding-left 0.15s;
+  position: relative;
+  overflow: hidden;
 }
 
 .lang-option:last-child { border-bottom: none; }
 
-.lang-option:hover { background: rgba(255,255,255,0.08); color: white; }
+/* Staggered reveal — each row slides in 50ms after the previous */
+.lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 0ms both; }
+.lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 50ms both; }
+.lang-selector.open .lang-dropdown .lang-option:nth-child(3) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 100ms both; }
 
-.lang-option.selected { color: var(--gold); font-weight: 700; }
+@keyframes rowReveal {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 
-.lang-option .lang-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: transparent;
+.lang-option:hover {
+  background: rgba(255,255,255,0.06);
+  color: white;
+  padding-left: 18px;
+}
+
+.lang-option.selected { color: var(--gold); }
+
+/* Animated checkmark — stroke draws itself */
+.lang-option .check {
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
-  transition: background 0.15s;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.lang-option.selected .lang-dot { background: var(--gold); }
-
-.lang-selector .chevron {
-  width: 12px;
-  height: 12px;
-  color: var(--gold);
-  transition: transform 0.2s;
-  flex-shrink: 0;
+.lang-option.selected .check {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.lang-selector.open .lang-btn .chevron {
-  transform: rotate(180deg);
+.lang-option .check svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
 }
 
-.lang-option .lang-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: transparent;
-  flex-shrink: 0;
+.lang-option.selected .check svg {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.lang-option.selected .lang-dot { background: var(--gold); }
-
-.lang-selector .chevron {
-  width: 12px;
-  height: 12px;
-  color: var(--gold);
-  transition: transform 0.2s;
-  flex-shrink: 0;
+/* Gold shimmer on hover for selected row */
+.lang-option.selected::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(249,168,40,0.08), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.4s;
 }
 
-.lang-selector.open .lang-btn .chevron {
-  transform: rotate(180deg);
-}
+.lang-option.selected:hover::before { transform: translateX(100%); }
 
  .nav-links {
  display: flex;
@@ -724,15 +777,35 @@
  <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
  <div class="lang-selector" id="langSelector">
  <button class="lang-btn active" id="langTrigger" data-lang="en">
+ <svg class="globe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
  EN
  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
  <polyline points="6 9 12 15 18 9"/>
  </svg>
  </button>
  <div class="lang-dropdown" id="langDropdown">
- <div class="lang-option selected" data-lang="en"><span class="lang-dot"></span>EN</div>
- <div class="lang-option" data-lang="zh-TW"><span class="lang-dot"></span>繁</div>
- <div class="lang-option" data-lang="zh-CN"><span class="lang-dot"></span>简</div>
+ <div class="lang-option selected" data-lang="en">
+ EN
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
+ </div>
+ <div class="lang-option" data-lang="zh-TW">
+ 繁
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
+ </div>
+ <div class="lang-option" data-lang="zh-CN">
+ 简
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
+ </div>
  </div>
  </div>
  </div>
@@ -1153,7 +1226,7 @@ if (langParam && translations[langParam]) {
  const langSelector = document.getElementById('langSelector');
  const langTrigger = document.getElementById('langTrigger');
  const langDropdown = document.getElementById('langDropdown');
- const langTriggerText = langTrigger.childNodes[0];
+ const langTriggerText = Array.from(langTrigger.childNodes).find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
 
  langTrigger.addEventListener('click', (e) => {
  e.stopPropagation();
@@ -1171,7 +1244,8 @@ if (langParam && translations[langParam]) {
  langDropdown.querySelectorAll('.lang-option').forEach(o => o.classList.remove('selected'));
  opt.classList.add('selected');
  const lang = opt.dataset.lang;
- langTriggerText.textContent = opt.dataset.lang === 'en' ? 'EN' : opt.dataset.lang === 'zh-TW' ? '繁' : '简';
+     const langLabel = lang === 'en' ? 'EN' : lang === 'zh-TW' ? '繁' : '简';
+     if (langTriggerText) langTriggerText.textContent = ' ' + langLabel;
  langSelector.classList.remove('open');
  setLanguage(lang);
  });
