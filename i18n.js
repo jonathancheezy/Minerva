@@ -178,7 +178,13 @@
       teachers:{en:"Teachers",zhTW:"導師",zhCN:"导师"},
       messages:{en:"Messages",zhTW:"信息",zhCN:"讯息"},
       learning_progress:{en:"Learning Progress",zhTW:"學習進度",zhCN:"学习进度"},
-      view_all:{en:"View All",zhTW:"查看全部",zhCN:"查看全部"}
+      view_all:{en:"View All",zhTW:"查看全部",zhCN:"查看全部"},
+      logout:{en:"Logout",zhTW:"登出",zhCN:"登出"},
+      stats_overview:{en:"Here\'s an overview of your learning journey.",zhTW:"這是您的學習歷程概述。",zhCN:"这是您的学习历程概述。"},
+      across_subjects:{en:"Across all subjects",zhTW:"所有科目",zhCN:"所有科目"},
+      referral_bonus:{en:"Refer a friend and both get one free lesson!",zhTW:"推薦朋友，雙方各獲一堂免費課堂！",zhCN:"推荐朋友，双方各获一堂免费课堂！"},
+      today:{en:"Today",zhTW:"今天",zhCN:"今天"},
+      tomorrow:{en:"Tomorrow",zhTW:"明天",zhCN:"明天"}
     },
 
     // ── Parent Schedule ──
