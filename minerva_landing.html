@@ -70,8 +70,9 @@
  gap: 16px;
  }
 
- .lang-selector {
+.lang-selector {
   position: relative;
+  display: flex;
 }
 
 .lang-btn {
@@ -87,6 +88,7 @@
   cursor: pointer;
   color: white;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .lang-btn:hover {
@@ -102,13 +104,14 @@
 
 .lang-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   right: 0;
-  min-width: 140px;
-  background: var(--white);
-  border: 1px solid var(--gray-200);
+  min-width: 0;
+  width: 100px;
+  background: var(--navy-dark);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 8px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
@@ -127,22 +130,45 @@
 .lang-option {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 11px 16px;
+  gap: 8px;
+  padding: 9px 14px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--gray-700);
-  transition: background 0.1s;
-  border-bottom: 1px solid var(--gray-100);
-  background: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  transition: background 0.1s, color 0.1s;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
 }
 
 .lang-option:last-child { border-bottom: none; }
 
-.lang-option:hover { background: var(--gray-50); }
+.lang-option:hover { background: rgba(255,255,255,0.08); color: white; }
 
-.lang-option.selected { color: var(--navy); font-weight: 700; }
+.lang-option.selected { color: var(--gold); font-weight: 700; }
+
+.lang-option .lang-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: transparent;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.lang-option.selected .lang-dot { background: var(--gold); }
+
+.lang-selector .chevron {
+  width: 12px;
+  height: 12px;
+  color: var(--gold);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.lang-selector.open .lang-btn .chevron {
+  transform: rotate(180deg);
+}
 
 .lang-option .lang-dot {
   width: 7px;
