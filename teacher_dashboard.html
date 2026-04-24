@@ -68,7 +68,6 @@ a { color: #3b82f6; text-decoration: none; }
  font-size: 22px;
  color: white;
  text-decoration: none;
- margin-right: 32px;
  white-space: nowrap;
  flex-shrink: 0;
  }
@@ -153,6 +152,12 @@ a { color: #3b82f6; text-decoration: none; }
  }
 
  /* User Info */
+ .nav-end {
+ display: flex;
+ align-items: center;
+ gap: 0;
+ }
+
  .user-info {
  display: flex;
  align-items: center;
@@ -423,6 +428,7 @@ footer a:hover { text-decoration: underline; }
  <a href="reviews.html" data-i18n="reviews.title">Reviews</a>
  <a href="earnings.html" data-i18n="earnings.title">Earnings</a>
  </div>
+ <div class="nav-end">
  <div class="user-info">
  <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
