@@ -454,26 +454,33 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; mar
  <div class="conv-avatar" style="background:#22c55e">EW</div>
  <div class="conv-info"><div class="conv-name">Emma Wong</div><div class="conv-preview">Thank you for yesterday lesson! I practiced the scales...</div></div>
  <div class="conv-meta"><span class="conv-time">2h ago</span><div class="conv-unread" style="display:block"></div></div>
+ <button onclick="deleteConv(this, event)" style="background:none;border:none;color:#cbd5e1;font-size:18px;cursor:pointer;padding:4px;line-height:1;">&times;</button>
+ </div>
+ <button onclick="deleteConv(this, event)" style="background:none;border:none;color:#cbd5e1;font-size:18px;cursor:pointer;padding:4px;line-height:1;">&times;</button>
  </div>
  <div class="conv-item" onclick="openChat('Lucas Lee','LL','#3b82f6')">
  <div class="conv-avatar" style="background:#3b82f6">LL</div>
  <div class="conv-info"><div class="conv-name">Lucas Lee</div><div class="conv-preview">Can we reschedule Thursday lesson to 4pm?</div></div>
  <div class="conv-meta"><span class="conv-time">Yesterday</span></div>
+ <button onclick="deleteConv(this, event)" style="background:none;border:none;color:#cbd5e1;font-size:18px;cursor:pointer;padding:4px;line-height:1;">&times;</button>
  </div>
  <div class="conv-item" onclick="openChat('Sophie Chen','SC','#8b5cf6')">
  <div class="conv-avatar" style="background:#8b5cf6">SC</div>
  <div class="conv-info"><div class="conv-name">Sophie Chen</div><div class="conv-preview">Sophie loved the recital! When is the next one?</div></div>
  <div class="conv-meta"><span class="conv-time">2 days ago</span></div>
+ <button onclick="deleteConv(this, event)" style="background:none;border:none;color:#cbd5e1;font-size:18px;cursor:pointer;padding:4px;line-height:1;">&times;</button>
  </div>
  <div class="conv-item" onclick="openChat('Grace Ho','GH','#F9A828')">
  <div class="conv-avatar" style="background:#F9A828">GH</div>
  <div class="conv-info"><div class="conv-name">Grace Ho</div><div class="conv-preview">English essay submitted. Please review when free.</div></div>
  <div class="conv-meta"><span class="conv-time">3 days ago</span></div>
+ <button onclick="deleteConv(this, event)" style="background:none;border:none;color:#cbd5e1;font-size:18px;cursor:pointer;padding:4px;line-height:1;">&times;</button>
  </div>
  <div class="conv-item" onclick="openChat('Nathan Wu','NW','#ef4444')">
  <div class="conv-avatar" style="background:#ef4444">NW</div>
  <div class="conv-info"><div class="conv-name">Nathan Wu</div><div class="conv-preview">Thanks for the science notes, very helpful!</div></div>
  <div class="conv-meta"><span class="conv-time">5 days ago</span></div>
+ <button onclick="deleteConv(this, event)" style="background:none;border:none;color:#cbd5e1;font-size:18px;cursor:pointer;padding:4px;line-height:1;">&times;</button>
  </div>
  </div>
 </div>
@@ -482,9 +489,6 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; mar
  <button onclick="showConvList()" style="background:none;border:none;font-size:24px;cursor:pointer;color:#475569;margin-right:12px;">&#8249;</button>
  <div class="avatar" id="chatWithAvatar" style="background:#22c55e">TC</div>
  <div id="chatWithName" style="font-weight:600;font-size:15px;color:#0f1f33;">Emma Wong</div>
- </div>
- <div class="chat-search">
- <input type="text" id="chatSearchInput" placeholder="Search messages..." oninput="filterChatMessages()">
  </div>
  <div class="chat-messages" id="chatMessages">
  <div class="chat-bubble received">Hi Teacher Chan! Just wanted to say thanks for the lesson yesterday!<span class="bubble-time">2:30 PM</span></div>
@@ -511,20 +515,16 @@ function openChat(name, initials, color) {
  var av = document.getElementById('chatWithAvatar');
  if(av) { av.textContent = initials; av.style.background = color; }
 }
+function deleteConv(el, e) {
+ e.stopPropagation();
+ el.closest('.conv-item').remove();
+}
 function filterConvs() {
  var query = document.getElementById('convSearchInput').value.toLowerCase();
  var items = document.querySelectorAll('.conv-item');
  items.forEach(function(item) {
   var name = item.querySelector('.conv-name').textContent.toLowerCase();
   item.style.display = name.includes(query) || query === '' ? '' : 'none';
- });
-}
-function filterChatMessages() {
- var query = document.getElementById('chatSearchInput').value.toLowerCase();
- var bubbles = document.querySelectorAll('#chatMessages .chat-bubble');
- bubbles.forEach(function(bubble) {
-  var text = bubble.cloneNode(true).textContent.replace(/\d{1,2}:\d{2}\s*(AM|PM)/i, '').trim().toLowerCase();
-  bubble.style.display = text.includes(query) || query === '' ? '' : 'none';
  });
 }
 function sendMsg() {
