@@ -98,19 +98,34 @@
 
 .lang-btn.active { color: white; }
 
-/* Globe icon */
-.lang-btn .globe {
-  width: 20px;
-  height: 20px;
+/* Globe icon — standalone, no button wrapper */
+.globe {
+  width: 18px;
+  height: 18px;
   color: var(--gold);
+  cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+  flex-shrink: 0;
 }
 
-.lang-btn:hover .globe { transform: rotate(20deg); color: var(--gold-light); }
+.globe:hover { transform: rotate(20deg); color: var(--gold-light); }
 
-.lang-selector.open .lang-btn .globe {
-  transform: rotate(180deg);
+.lang-selector.open .globe { transform: rotate(180deg); }
+
+/* Search icon */
+.search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+  flex-shrink: 0;
 }
+
+.search-icon:hover { color: var(--gold-light); transform: scale(1.1); }
+
+/* Mobile menu hamburger */
+.mobile-menu-btn { color: var(--gold); }
 
 /* Dropdown panel — frosted glass + spring */
 .lang-dropdown {
@@ -705,9 +720,9 @@
  /* Mobile */
  @media (max-width: 768px) {
  .nav-right { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; }
- .nav-controls { display: flex; align-items: center; gap: 8px; }
- .mobile-menu-btn { display: flex; order: -1; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
- .lang-selector { background: rgba(0,0,0,0.2); padding: 2px; gap: 1px; border-radius: 6px; }
+ .nav-controls { display: flex; align-items: center; gap: 12px; }
+ .mobile-menu-btn { display: flex; order: -1; font-size: 20px; cursor: pointer; padding: 4px; color: var(--gold); background: none; border: none; }
+ .lang-selector { background: transparent; padding: 0; gap: 0; border-radius: 0; }
  .lang-btn { padding: 6px 12px; font-size: 13px; }
  .nav-links { 
  display: none;
@@ -754,14 +769,16 @@
  </a>
  <div class="nav-controls">
  <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
+ <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="11" cy="11" r="8"/>
+ <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+ </svg>
  <div class="lang-selector" id="langSelector">
- <button class="lang-btn" id="langTrigger" data-lang="en">
- <svg class="globe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
  <circle cx="12" cy="12" r="10"/>
  <line x1="2" y1="12" x2="22" y2="12"/>
  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
  </svg>
- </button>
  <div class="lang-dropdown" id="langDropdown">
  <div class="lang-option selected" data-lang="en">
  EN
@@ -1199,10 +1216,10 @@ if (langParam && translations[langParam]) {
 
  // Language selector — dropdown toggle
  const langSelector = document.getElementById('langSelector');
- const langTrigger = document.getElementById('langTrigger');
+ const langGlobe = document.getElementById('langGlobe');
  const langDropdown = document.getElementById('langDropdown');
 
- langTrigger.addEventListener('click', (e) => {
+ langGlobe.addEventListener('click', (e) => {
  e.stopPropagation();
  langSelector.classList.toggle('open');
  });
