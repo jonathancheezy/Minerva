@@ -448,6 +448,7 @@
       new_messages:{en:"New messages",zhTW:"新訊息",zhCN:"新消息"},
       total_conversations:{en:"Total",zhTW:"總數",zhCN:"总数"},
       conversations:{en:"Conversations",zhTW:"對話",zhCN:"对话"},
+      search_conversations:{en:"Search conversations...",zhTW:"搜尋對話...",zhCN:"搜索对话..."},
       awaiting_reply:{en:"Awaiting reply",zhTW:"待回覆",zhCN:"待回复"},
       resolved:{en:"Resolved",zhTW:"已解決",zhCN:"已解决"},
       this_month:{en:"This month",zhTW:"本月",zhCN:"本月"},
