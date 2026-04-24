@@ -323,7 +323,7 @@
     // ── Parent Dashboard ──
     parent_dash:{
       welcome:{en:"Welcome back!",zhTW:"歡迎回來！",zhCN:"欢迎回来！"},
-      dashboard:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
+      dashboard:{en:"My Dashboard",zhTW:"我的主頁",zhCN:"我的主页"},
       book_lesson:{en:"Book Lesson",zhTW:"預訂課堂",zhCN:"预约课堂"},
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
       teachers:{en:"Teachers",zhTW:"導師",zhCN:"导师"},
@@ -395,7 +395,7 @@
     // ── Teacher Dashboard ──
     teacher_dash:{
       welcome:{en:"Welcome back, Teacher! 👋🏻",zhTW:"歡迎回來，導師！ 👋🏻",zhCN:"欢迎回来，导师！ 👋🏻"},
-      dashboard:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
+      dashboard:{en:"My Dashboard",zhTW:"我的主頁",zhCN:"我的主页"},
       students:{en:"Students",zhTW:"學生",zhCN:"学生"},
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
       nav_messages:{en:"Chats",zhTW:"訊息",zhCN:"訊息"},
