@@ -1,20 +1,10 @@
-
-    forgot_password:{en:"Forgot Password?",zhTW:"忘記密碼？",zhCN:"忘记密码？"},
-    register_teacher:{en:"Register as Teacher",zhTW:"註冊成為導師",zhCN:"注册成为导师"},
-    tab_teacher:{en:"Teacher",zhTW:"導師",zhCN:"导师"},
-    tab_parent:{en:"Parent / Student",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},
-    forgot_password:{en:"Forgot Password?",zhTW:"忘記密碼？",zhCN:"忘记密码？"},
-    register_teacher:{en:"Register as Teacher",zhTW:"註冊成為導師",zhCN:"注册成为导师"},
-    tab_teacher:{en:"Teacher",zhTW:"導師",zhCN:"导师"},
-    tab_parent:{en:"Parent / Student",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Login — Minerva</title>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- <style>
+   <style>
  :root {
  --navy: #1e3a5f;
  --navy-dark: #0f1f33;
@@ -45,27 +35,21 @@
  background: var(--navy);
  color: white;
  padding: 16px 24px;
- display: flex;
- justify-content: space-between;
- align-items: center;
  }
+ nav .nav-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+ .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: white; text-decoration: none; }
+ .logo-icon { width: 36px; height: 36px; }
+ .nav-right { display: flex; align-items: center; gap: 16px; }
+ .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
+ .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
+ .nav-links { display: none; }
+ .nav-links a { color: var(--teal); text-decoration: none; font-size: 14px; font-weight: 500; opacity: 0.8; }
+ .nav-links a:hover { opacity: 1; }
 
- .logo {
- display: flex;
- align-items: center;
- gap: 10px;
- font-weight: 800;
- font-size: 20px;
- color: white;
- text-decoration: none;
- }
-
- .logo-icon { width: 32px; height: 32px; }
-
- .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
- .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
- .lang-btn:hover { color: var(--navy); }
- .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; margin-left: auto; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
  /* Main */
  .main {
@@ -88,24 +72,13 @@
  /* Role Selector */
  .role-selector {
  display: flex;
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  border-radius: 12px;
  padding: 4px;
  margin-bottom: 32px;
  }
 
- .role-btn {
- flex: 1;
- padding: 12px;
- border: none;
- background: transparent;
- border-radius: 8px;
- font-size: 14px;
- font-weight: 600;
- cursor: pointer;
- transition: all 0.2s;
- color: var(--gray-500);
- }
+ .role-btn { flex: 1; padding: 12px; border: none; background: transparent; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; color: white; }
 
  .role-btn.active {
  background: white;
@@ -130,23 +103,14 @@
  margin-bottom: 8px;
  }
 
- .login-hero p {
- color: var(--gray-500);
- font-size: 14px;
- }
+ .login-hero p { color: var(--gray-500); font-size: 14px; }
 
  /* Form */
  .form-group {
  margin-bottom: 20px;
  }
 
- .form-group label {
- display: block;
- font-size: 13px;
- font-weight: 600;
- color: var(--gray-500);
- margin-bottom: 6px;
- }
+ .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--navy-dark); margin-bottom: 6px; }
 
  .form-group input {
  width: 100%;
@@ -196,14 +160,7 @@
  }
 
  /* Divider */
- .divider {
- display: flex;
- align-items: center;
- gap: 16px;
- margin: 24px 0;
- color: var(--gray-500);
- font-size: 13px;
- }
+ .divider { display: flex; align-items: center; gap: 16px; margin: 24px 0; color: var(--gray-500); font-size: 13px; }
 
  .divider::before,
  .divider::after {
@@ -216,14 +173,15 @@
  /* Register link */
  .register-link {
  text-align: center;
- font-size: 14px;
- color: var(--gray-500);
+ margin-top: 20px;
  }
 
  .register-link a {
+ display: block;
+ font-size: 13px;
  color: var(--teal);
- font-weight: 600;
  text-decoration: none;
+ margin-bottom: 4px;
  }
 
  .register-link a:hover {
@@ -251,11 +209,17 @@
  @media (max-width: 768px) {
  .lang-btn { padding: 6px 12px; font-size: 13px; }
  .lang-selector { padding: 2px; gap: 1px; }
+  .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 16px; gap: 12px; }
+ .nav-links.active { display: flex; }
  }
  </style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ 
 </head>
 <body>
  <nav>
+ <div class="nav-inner">
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -264,10 +228,18 @@
  </svg>
  Minerva
  </a>
+ <div class="nav-right">
+ <div class="nav-links">
+ <a href="minerva_landing.html" data-i18n="nav_home">Home</a>
+ <a href="login.html" data-i18n="nav_login">Login</a>
+ <a href="terms.html" data-i18n="nav_terms">Terms & Conditions</a>
+ </div>
  <div class="lang-selector">
- <a href="login.html?lang=en" class="lang-btn active">EN</a>
+ <a href="login.html?lang=en" class="lang-btn">EN</a>
  <a href="login.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="login.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
  </div>
  </nav>
 
@@ -279,8 +251,8 @@
  </div>
 
  <div class="login-hero" id="heroSection">
- <h1 id="heroTitle" data-i18n="login.welcome_teacher">Welcome back, teacher!</h1>
- <p id="heroSubtitle" data-i18n="login.subtitle_teacher">Login to manage your students and schedule.</p>
+ <h1 id="heroTitle" data-i18n="login.welcome_teacher">Welcome back, Teacher!</h1>
+ <p id="heroSubtitle" data-i18n="login.subtitle_teacher">Access your teacher dashboard.</p>
  </div>
 
  <form id="loginForm" onsubmit="handleLogin(event)">
@@ -300,13 +272,15 @@
  </form>
 
  <div class="register-link" id="registerSection">
- <p id="registerText">Don't have an account? <a href="#" id="registerLink">Register as Teacher</a></p>
+ <p data-i18n="login.no_account">Don't have an account?</p>
+ <a href="teacher_registration.html" class="register-teacher" data-i18n="login.register_as_teacher">Register as Teacher</a>
+ <a href="parent_registration.html" class="register-parent" data-i18n="login.register_as_parent" style="display:none">Register as Parent/Student</a>
  </div>
  </div>
  </main>
 
  <footer>
- © 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.
+ <p><span data-i18n="login.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span></p>
  </footer>
 
  <script>
@@ -328,26 +302,26 @@
  if (role === 'teacher') {
  teacherBtn.classList.add('active');
  parentBtn.classList.remove('active');
- heroTitle.textContent = T['login.hero_welcome_teacher'] || 'Welcome back, teacher!';
- heroSubtitle.textContent = T['login.hero_subtitle_teacher'] || 'Login to manage your students and schedule.';
- emailLabel.textContent = T['login.email'] || 'Email Address';
- passwordLabel.textContent = T['login.password'] || 'Password';
+ heroTitle.textContent = 'Welcome back, Teacher!';
+ heroSubtitle.textContent = 'Access your teacher dashboard.';
+ emailLabel.textContent = 'Email Address';
+ passwordLabel.textContent = 'Password';
  forgotLink.href = '#';
- submitBtn.textContent = T['login.login_btn'] || 'Login';
- registerLink.textContent = T['login.register_as_teacher'] || 'Register as Teacher';
- registerLink.parentElement.querySelector('p').innerHTML = 
- (T['login.dont_have_account'] || "Don't have an account?") + ' <a href=\"#\" id=\"registerLink\">' + (T['login.register_as_teacher'] || 'Register as Teacher') + '</a>';
+ submitBtn.textContent = 'Login';
+ document.querySelector('.register-teacher').style.display = 'block';
+ document.querySelector('.register-parent').style.display = 'none';
  } else {
  teacherBtn.classList.remove('active');
  parentBtn.classList.add('active');
- heroTitle.textContent = T['login.hero_welcome_parent'] || 'Welcome back!';
- heroSubtitle.textContent = T['login.hero_subtitle_parent'] || 'Login to manage your lessons and track progress.';
- emailLabel.textContent = T['login.email'] || 'Email Address';
- passwordLabel.textContent = T['login.password'] || 'Password';
+ heroTitle.setAttribute('data-i18n', 'login.welcome_parent');
+ heroTitle.textContent = 'Welcome back!';
+ heroSubtitle.setAttribute('data-i18n', 'login.subtitle_parent');
+ heroSubtitle.textContent = 'Book your lessons and track progress.';
+ emailLabel.textContent = 'Email Address';
+ passwordLabel.textContent = 'Password';
  forgotLink.href = '#';
- submitBtn.textContent = T['login.login_btn'] || 'Login';
- registerLink.parentElement.querySelector('p').innerHTML = 
- (T['login.dont_have_account'] || "Don't have an account?") + ' <a href=\"#\" id=\"registerLink\">' + (T['login.register_as_parent'] || 'Register as Parent/Student') + '</a>';
+ document.querySelector('.register-teacher').style.display = 'none';
+ document.querySelector('.register-parent').style.display = 'block';
  }
  }
 
@@ -376,12 +350,18 @@
     login:{
     email:{en:"Email Address",zhTW:"電郵地址",zhCN:"电邮地址"},
     password:{en:"Password",zhTW:"密碼",zhCN:"密码"},
-    login_btn:{en:"Login",zhTW:"登入",zhCN:"登入"},
-    welcome_teacher:{en:"Teacher? Log in here",zhTW:"導師？在此登入",zhCN:"导师？在此登入"},
+    login_btn:{en:"Login",zhTW:"登入",zhCN:"登录"},
+    tab_teacher:{en:"Teacher",zhTW:"導師",zhCN:"导师"},
+    tab_parent:{en:"Parent / Student",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},
+    welcome_teacher:{en:"Teacher? Log in here",zhTW:"導師？在此登入",zhCN:"导师？在此登录"},
     subtitle_teacher:{en:"Access your teacher dashboard",zhTW:"進入您的導師儀表板",zhCN:"进入您的导师仪表板"},
-    // Aliases for HTML attributes with spaces/capitalization
+    no_account:{en:"Don't have an account?",zhTW:"還沒有帳戶？",zhCN:"还没有帐户？"},
+    register_as_teacher:{en:"Register as teacher",zhTW:"註冊成為導師",zhCN:"注册成为导师"},
+    forgot_password:{en:"Forgot password?",zhTW:"忘記密碼？",zhCN:"忘记密码？"},
+    footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
+    // Aliases
     "Email Address":{en:"Email Address",zhTW:"電郵地址",zhCN:"电邮地址"},
-    Login:{en:"Login",zhTW:"登入",zhCN:"登入"},
+    Login:{en:"Login",zhTW:"登入",zhCN:"登录"},
     Password:{en:"Password",zhTW:"密碼",zhCN:"密码"}
     },
     register:{
@@ -470,4 +450,5 @@
 })();
 </script>
 </body>
+<script src="i18n.js"></script>
 </html>

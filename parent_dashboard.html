@@ -4,9 +4,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Dashboard — Minerva</title>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- <style>
+   <style>
  :root {
  --navy: #1e3a5f;
  --navy-dark: #0f1f33;
@@ -25,20 +23,24 @@
 
  body {
  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  color: var(--gray-700);
  line-height: 1.6;
  }
 
  /* Nav */
  nav {
- background: var(--navy);
+ background: var(--teal);
  color: white;
  padding: 16px 24px;
  display: flex;
  justify-content: space-between;
  align-items: center;
- position: relative;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: 60px;
  z-index: 100;
  }
 
@@ -60,10 +62,19 @@
 
  .logo-icon { width: 32px; height: 32px; }
 
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
  .nav-links {
  display: flex;
  gap: 24px;
- margin-left: 32px;
+ justify-content: center;
+ flex: 1;
  }
 
  .mobile-menu-btn {
@@ -83,13 +94,15 @@
  font-weight: 500;
  transition: color 0.2s;
  }
- .nav-links a:hover, .nav-links a.active { color: white; }
- .nav-links a.active { color: var(--gold); }
+ .nav-links a:hover { color: white; }
+ .nav-links a.active { color: #F9A828 !important; }
 
- .nav-right {
+ 
+
+ .user-info {
  display: flex;
  align-items: center;
- gap: 20px;
+ gap: 12px;
  }
 
  .avatar {
@@ -104,18 +117,38 @@
  color: var(--navy-dark);
  font-size: 14px;
  }
+ .lang-selector {
+  display: flex;
+  gap: 2px;
+  background: rgba(0,0,0,0.25);
+  padding: 3px;
+  border-radius: 6px;
+ }
+ .lang-btn {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+ }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ @media (max-width: 768px) {
+  .lang-btn { padding: 4px 8px; font-size: 12px; }
+  .lang-selector { padding: 2px; gap: 1px; }
+  .lang-btn:hover { color: white; }
+  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ }
 
  .user-name {
  font-size: 14px;
  font-weight: 600;
  }
-
- .logout {
- color: rgba(255,255,255,0.7);
- font-size: 14px;
- text-decoration: none;
- }
- .logout:hover { color: white; }
 
  /* Main Content */
  .main {
@@ -141,7 +174,7 @@
  }
 
  .page-header p {
- color: var(--gray-500);
+ color: white;
  font-size: 14px;
  }
 
@@ -223,7 +256,7 @@
 
  .stat-card .label {
  font-size: 13px;
- color: var(--gray-500);
+ color: white;
  font-weight: 500;
  margin-bottom: 8px;
  }
@@ -240,7 +273,7 @@
 
  .stat-card .sub {
  font-size: 12px;
- color: var(--gray-500);
+ color: white;
  margin-top: 4px;
  }
 
@@ -309,7 +342,7 @@
 
  .lesson-time .date {
  font-size: 12px;
- color: var(--gray-500);
+ color: white;
  }
 
  .lesson-details { flex: 1; }
@@ -322,7 +355,7 @@
 
  .lesson-details .subject {
  font-size: 13px;
- color: var(--gray-500);
+ color: white;
  }
 
  .lesson-status {
@@ -378,7 +411,7 @@
 
  .teacher-info .subject {
  font-size: 13px;
- color: var(--gray-500);
+ color: white;
  }
 
  .teacher-info .rating {
@@ -406,7 +439,7 @@
  }
 
  .action-btn.secondary {
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  color: var(--navy-dark);
  }
 
@@ -432,7 +465,7 @@
 
  .progress-header .teacher {
  font-size: 12px;
- color: var(--gray-500);
+ color: white;
  }
 
  .progress-bar {
@@ -452,7 +485,7 @@
  display: flex;
  justify-content: space-between;
  font-size: 12px;
- color: var(--gray-500);
+ color: white;
  margin-top: 6px;
  }
 
@@ -485,7 +518,7 @@
  .lang-selector {
  display: flex;
  gap: 4px;
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  padding: 4px;
  border-radius: 8px;
  }
@@ -497,14 +530,14 @@
  font-size: 13px;
  font-weight: 600;
  cursor: pointer;
- color: var(--gray-500);
+ color: white;
  text-decoration: none;
  transition: all 0.2s;
  }
- .lang-btn:hover { color: var(--navy); }
+ .lang-btn:hover { color: white; }
  .lang-btn.active {
- background: white;
- color: var(--navy);
+ background: rgba(255,255,255,0.15);
+ color: white;
  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
  }
 
@@ -513,12 +546,15 @@
  .lang-selector { padding: 2px; gap: 1px; }
  }
  </style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ 
 </head>
 <body>
  <nav>
  <div class="nav-left">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
- <a href="minerva_landing.html" class="logo">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html?v=pd001" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
  <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -526,25 +562,22 @@
  </svg>
  Minerva
  </a>
- <div class="nav-links">
- <a href="parent_dashboard.html" class="active" data-i18n="parent_dash.dashboard">Dashboard</a>
- <a href="teachers.html" data-i18n="parent_dash.teachers">Teachers</a>
- <a href="parent_schedule.html" data-i18n="parent_dash.schedule">Schedule</a>
- <a href="#" data-i18n="parent_dash.messages">Messages</a>
  </div>
+ <div class="nav-links">
+ <a href="#" class="active" style="color: #F9A828 !important;">Dashboard</a>
+ <a href="parent_schedule.html?v=pd001">Schedule</a>
+ <a href="#" class="active" style="color: #F9A828 !important;">Payments</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <div class="avatar">JW</div>
- <span class="user-name">Jon Wong</span>
- <a href="parent_login.html" class="logout" data-i18n="parent_dash.logout">Logout</a>
+ <a href="teacher_profile.html?v=pd001" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
  </div>
- <div class="lang-selector">
- <a href="parent_dashboard.html?lang=en" class="lang-btn">EN</a>
- <a href="parent_dashboard.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="parent_dashboard.html?lang=zh-CN" class="lang-btn">简</a>
- </div>
+  </div>
+  <div class="lang-selector">
+ <a href="messages.html?lang=en&v=pd001" class="lang-btn">EN</a>
+ <a href="messages.html?lang=zh-TW&v=pd001" class="lang-btn">繁</a>
+ <a href="messages.html?lang=zh-CN&v=pd001" class="lang-btn">简</a>
  </div>
  </div>
  </nav>
@@ -553,10 +586,10 @@
  <div class="page-header">
  <div>
  <h1 data-i18n="parent_dash.welcome">Welcome back, Jon! 👋</h1>
- <p data-i18n="parent_dash.stats_overview">Here's an overview of your learning journey.</p>
+ <p>Here's an overview of your learning journey.</p>
  </div>
  <div class="actions">
- <a href="teachers.html" class="btn btn-primary" data-i18n="parent_dash.book_lesson">Book Lesson</a>
+ <a href="teachers.html?v=2" class="btn btn-primary" data-i18n="parent_dash.book_lesson">Book Lesson</a>
  </div>
  </div>
 
@@ -579,7 +612,7 @@
  <div class="stat-card">
  <div class="label">Overall Progress</div>
  <div class="value gold">78%</div>
- <div class="sub" data-i18n="parent_dash.across_subjects">Across all subjects</div>
+ <div class="sub">Across all subjects</div>
  </div>
  </div>
 
@@ -594,7 +627,7 @@
  <div class="lesson-item">
  <div class="lesson-time">
  <div class="time">4:00</div>
- <div class="date" data-i18n="parent_dash.today">Today</div>
+ <div class="date">Today</div>
  </div>
  <div class="lesson-details">
  <div class="teacher">Ms. Sarah Piano</div>
@@ -605,7 +638,7 @@
  <div class="lesson-item">
  <div class="lesson-time">
  <div class="time">5:30</div>
- <div class="date" data-i18n="parent_dash.tomorrow">Tomorrow</div>
+ <div class="date">Tomorrow</div>
  </div>
  <div class="lesson-details">
  <div class="teacher">Mr. Chen Math</div>
@@ -684,7 +717,7 @@
  <div class="rating">⭐ 4.9 (32 reviews)</div>
  </div>
  <div class="teacher-actions">
- <a href="#" class="action-btn primary" data-i18n="parent_dash.book_lesson">Book</a>
+ <a href="#" class="action-btn primary">Book</a>
  </div>
  </div>
  <div class="teacher-item">
@@ -695,7 +728,7 @@
  <div class="rating">⭐ 4.8 (18 reviews)</div>
  </div>
  <div class="teacher-actions">
- <a href="#" class="action-btn primary" data-i18n="parent_dash.book_lesson">Book</a>
+ <a href="#" class="action-btn primary">Book</a>
  </div>
  </div>
  <div class="teacher-item">
@@ -706,7 +739,7 @@
  <div class="rating">⭐ 5.0 (24 reviews)</div>
  </div>
  <div class="teacher-actions">
- <a href="#" class="action-btn primary" data-i18n="parent_dash.book_lesson">Book</a>
+ <a href="#" class="action-btn primary">Book</a>
  </div>
  </div>
  </div>
@@ -714,7 +747,7 @@
 
  <div class="promo-card">
  <h3><span data-i18n="parent_dash.heading_signup_bonus"></span>🎁 Sign Up Bonus
- <p data-i18n="parent_dash.referral_bonus">Refer a friend and both get one free lesson!</p>
+ <p>Refer a friend and both get one free lesson!</p>
  <a href="#" class="btn">Invite Friends</a>
  </div>
  </div>
@@ -727,5 +760,8 @@
 
 
 <script src="i18n.js"></script>
+ <footer>
+ <p data-i18n="parent_dash.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
+ </footer>
 </body>
 </html>

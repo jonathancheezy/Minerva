@@ -124,55 +124,6 @@
 
 .search-icon:hover { color: var(--gold-light); transform: scale(1.1); }
 
-/* Search overlay */
-.search-overlay {
- position: fixed; inset: 0; background: rgba(15,31,51,0.85); backdrop-filter: blur(6px);
- z-index: 999; display: none; align-items: flex-start; justify-content: center;
- padding-top: 80px;
-}
-.search-overlay.open { display: flex; }
-.search-modal {
- background: var(--white); border-radius: 16px; width: 90%; max-width: 560px;
- box-shadow: 0 24px 60px rgba(0,0,0,0.3); overflow: hidden;
-}
-.search-modal-header {
- display: flex; align-items: center; gap: 12px; padding: 16px 20px;
- border-bottom: 1px solid var(--gray-200);
-}
-.search-modal-header svg { color: var(--gray-400); flex-shrink: 0; }
-.search-modal-header input {
- flex: 1; border: none; outline: none; font-size: 16px; color: var(--gray-800);
- background: transparent;
-}
-.search-modal-header input::placeholder { color: var(--gray-400); }
-.search-close-btn {
- background: none; border: none; font-size: 20px; color: var(--gray-400); cursor: pointer;
- padding: 4px; line-height: 1;
-}
-.search-results { max-height: 380px; overflow-y: auto; }
-.search-section-label {
- padding: 10px 20px 6px; font-size: 11px; font-weight: 700; text-transform: uppercase;
- letter-spacing: 0.06em; color: var(--gray-400);
-}
-.search-result-item {
- display: flex; align-items: center; gap: 14px; padding: 12px 20px; cursor: pointer;
- transition: background 0.15s;
-}
-.search-result-item:hover { background: var(--gray-100); }
-.search-result-item .result-icon {
- width: 36px; height: 36px; border-radius: 10px; background: var(--navy);
- display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
-}
-.search-result-item .result-icon.teal { background: var(--teal); }
-.search-result-item .result-icon.gold { background: var(--gold); }
-.search-result-item .result-text { flex: 1; }
-.search-result-item .result-title { font-size: 14px; font-weight: 600; color: var(--gray-800); }
-.search-result-item .result-sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
-.search-no-results { padding: 32px 20px; text-align: center; color: var(--gray-400);
- font-size: 14px;
-}
-
-
 /* Mobile menu hamburger */
 .mobile-menu-btn { color: var(--gold); }
 
@@ -180,7 +131,8 @@
 .lang-dropdown {
   position: absolute;
   top: calc(100% + 8px);
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px) scale(0.96);
   width: 64px;
   background: rgba(15, 31, 51, 0.92);
   backdrop-filter: blur(16px);
@@ -191,19 +143,18 @@
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px) scale(0.96);
-  transform-origin: top right;
   transition:
     opacity 0.22s cubic-bezier(0.34, 1.20, 0.64, 1),
     transform 0.22s cubic-bezier(0.34, 1.20, 0.64, 1),
     visibility 0.22s;
+}
   z-index: 200;
 }
 
 .lang-selector.open .lang-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0) scale(1);
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
 /* Language rows */
@@ -1025,17 +976,6 @@
  <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
  </footer>
 
- <div class="search-overlay" id="searchOverlay">
- <div class="search-modal">
- <div class="search-modal-header">
- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
- <input type="text" id="searchInput" placeholder="Search Minerva..." autocomplete="off">
- <button class="search-close-btn" id="searchCloseBtn">&#10005;</button>
- </div>
- <div class="search-results" id="searchResults"></div>
- </div>
- </div>
- 
  <script>
  const translations = {
  en: {
@@ -1311,65 +1251,7 @@ if (langParam && translations[langParam]) {
    setLanguage(langParam);
  }
 
- // Search functionality
- const searchData = [
- {title:'Teacher Login',sub:'Sign in to your teacher dashboard',icon:'&#128100;',iconClass:'navy',url:'teacher_login.html'},
- {title:'Parent / Student Login',sub:'Sign in to manage lessons',icon:'&#128101;',iconClass:'teal',url:'parent_login.html'},
- {title:'Register as Teacher',sub:'Join as a verified teacher',icon:'&#127891;',iconClass:'gold',url:'teacher_registration.html'},
- {title:'Register as Parent/Student',sub:'Book lessons and track progress',icon:'&#128218;',iconClass:'teal',url:'parent_registration.html'},
- {title:'How It Works',sub:'Search, book, and learn in 3 steps',icon:'&#128209;',iconClass:'navy',url:'#how-it-works'},
- {title:'For Parents',sub:'Trust, quality, and progress tracking',icon:'&#128104;',iconClass:'teal',url:'#problem'},
- {title:'For Teachers',sub:'Fair pay, no-show protection, branding',icon:'&#128187;',iconClass:'gold',url:'#problem'},
- {title:'Verified Teachers',sub:'ID-checked, background-verified, reference-checked',icon:'&#128275;',iconClass:'navy',url:'#features'},
- {title:'Escrow Payments',sub:'Payment held safely until lesson is complete',icon:'&#128176;',iconClass:'gold',url:'#features'},
- {title:'Progress Tracking',sub:'AI-powered dashboard shows learning progress',icon:'&#128200;',iconClass:'teal',url:'#features'},
- {title:'Virtual Scheduling',sub:'Book from a teacher\'s live calendar',icon:'&#128197;',iconClass:'navy',url:'#features'},
- {title:'Algo Matching',sub:'AI recommends the best-fit teacher',icon:'&#129302;',iconClass:'gold',url:'#features'},
- {title:'FAQ',sub:'Common questions about Minerva',icon:'&#128169;',iconClass:'navy',url:'faq.html'},
- {title:'Terms & Conditions',sub:'Platform terms and policies',icon:'&#128203;',iconClass:'teal',url:'terms.html'},
- {title:'Privacy Policy',sub:'How we handle your data',icon:'&#128272;',iconClass:'teal',url:'terms.html'},
- ];
-
- const searchOverlay = document.getElementById('searchOverlay');
- const searchInput = document.getElementById('searchInput');
- const searchResults = document.getElementById('searchResults');
- const searchCloseBtn = document.getElementById('searchCloseBtn');
- const searchIcon = document.querySelector('.search-icon');
-
- function openSearch() { searchOverlay.classList.add('open'); searchInput.focus(); }
- function closeSearch() { searchOverlay.classList.remove('open'); searchInput.value = ''; renderResults(''); }
-
- searchIcon.addEventListener('click', openSearch);
- searchCloseBtn.addEventListener('click', closeSearch);
- searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearch(); });
- document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
-
-
- function renderResults(q) {
- if (!q) { searchResults.innerHTML = ''; return; }
- const lq = q.toLowerCase();
- const f = searchData.filter(r => r.title.toLowerCase().includes(lq) || r.sub.toLowerCase().includes(lq));
- if (!f.length) { searchResults.innerHTML = '<div class="search-no-results">No results for "'+q+'"</div>'; return; }
- const sections = {};
- f.forEach(r => {
- const cat = r.url.startsWith('#') ? 'On This Page' : 'Pages';
- if (!sections[cat]) sections[cat] = [];
- sections[cat].push(r);
- });
- let h = '';
- Object.keys(sections).forEach(cat => {
- h += '<div class="search-section-label">'+cat+'</div>';
- sections[cat].forEach(r => {
- h += '<div class="search-result-item" onclick="window.location.href=\''+r.url+'\''">'+
- '<div class="result-icon '+r.iconClass+'">'+r.icon+'</div>'+
- '<div class="result-text"><div class="result-title">'+r.title+'</div><div class="result-sub">'+r.sub+'</div></div></div>';
- });
- });
- searchResults.innerHTML = h;
- }
-
- searchInput.addEventListener('input', () => renderResults(searchInput.value));
-
+ // Form submission
  document.getElementById('waitlistForm').addEventListener('submit', function(e) {
  e.preventDefault();
  const email = document.getElementById('emailInput').value;

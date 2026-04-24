@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Earnings — Minerva</title>
+ <style>
+
+/* v=clean001 - rebuilt from scratch */
+
+ :root {
+ --navy: #1e3a5f;
+ --teal: #3b82f6;
+ --gold: #F9A828;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-400: #94a3b8;
+ --gray-500: #64748b;
+ --gray-600: #475569;
+ --gray-700: #334155;
+ --green: #22c55e;
+ --red: #ef4444;
+ --purple: #8b5cf6;
+ --navy-dark: #0f1f33;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: #f8fafc;
+ color: #334155;
+ line-height: 1.6;
+ padding-top: 60px;
+ min-height: 100vh;
+}
+
+a { color: #3b82f6; text-decoration: none; }
+/* Nav */
+ nav {
+ background: var(--navy);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: 60px;
+ z-index: 100;
+ }
+
+ .nav-left {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 32px; height: 32px; }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ justify-content: center;
+ flex: 1;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 8px;
+ color: white;
+ background: none;
+ border: none;
+ }
+
+ .nav-links a {
+ color: rgba(255,255,255,0.7);
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: color 0.2s;
+ }
+ .nav-links a:hover { color: white; }
+ .nav-links a.active { color: #F9A828 !important; }
+
+ 
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
+ }
+ .lang-selector {
+  display: flex;
+  gap: 2px;
+  background: rgba(0,0,0,0.25);
+  padding: 3px;
+  border-radius: 6px;
+ }
+ .lang-btn {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+ }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ 
+footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
+
+.pending-payout-section { background: white; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 20px; margin-bottom: 24px; }
+.pending-payout-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.pending-payout-title { font-size: 15px; font-weight: 700; color: #0f1f33; }
+.pending-payout-amount { font-size: 20px; font-weight: 800; color: #F9A828; }
+.pending-payout-details { border-top: 1px solid #f1f5f9; padding-top: 12px; margin-bottom: 16px; }
+.payout-row { display: flex; justify-content: space-between; font-size: 13px; color: #64748b; padding: 4px 0; }
+.btn-payout { background: #F9A828; color: #0f1f33; border: none; border-radius: 10px; padding: 12px 24px; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; }
+.btn-payout:hover { background: #FBB81C; }
+@media (max-width: 768px) {
+  .lang-btn { padding: 4px 8px; font-size: 12px; }
+  .lang-selector { padding: 2px; gap: 1px; }
+  .lang-btn:hover { color: white; }
+  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ }
+
+ .user-name {
+ font-size: 14px;
+ font-weight: 600;
+ }
+
+ /* Main Content */
+ body { background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; }
+ .main { padding: 32px; max-width: 1200px; margin: 0 auto; }
+ .page-header { margin-bottom: 24px; }
+ .page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
+ .page-header p { font-size: 14px; color: #64748b; }
+ .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+ .stats-grid .stat-card { min-width: 0; }
+ .stat-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 20px; text-align: left; min-height: 90px; display: flex; flex-direction: column; justify-content: center; }
+ .stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+ .stat-card .value { font-size: 20px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
+ .stat-card .value.green { color: #22c55e; }
+ .stat-card .value.gold { color: #F9A828; }
+ .stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+ .stat-card .sub a { color: #3b82f6; }
+ .content-grid { display: flex; flex-direction: row; gap: 20px; width: 100%; margin-top: 20px; }
+ .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); flex: 1; min-width: 0; }
+ .card-header { padding: 16px 20px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
+ .card-header h2 { font-size: 15px; font-weight: 700; color: #0f1f33; margin: 0; }
+ .card-header span { font-size: 12px; color: #94a3b8; }
+ .card-body { padding: 16px 20px; }
+ .earnings-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
+ .earnings-item:last-child { border-bottom: none; }
+ .earnings-desc { font-weight: 600; font-size: 14px; color: #0f1f33; }
+ .earnings-date { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+ .earnings-amount { font-weight: 700; font-size: 15px; color: #22c55e; white-space: nowrap; margin-left: 16px; }
+ @media (max-width: 900px) { .content-grid { flex-direction: column; } .content-grid .card { flex: none; width: 100%; } }
+ @media (max-width: 400px) { .stats-grid { grid-template-columns: 1fr; } }
+ @media (max-width: 500px) { .main { padding: 20px 16px; } }
+
+ /* Hamburger menu */
+ @media (max-width: 768px) {
+  .mobile-menu-btn { display: block; }
+  .nav-links {
+   display: none;
+   position: absolute;
+   top: 100%;
+   left: 0;
+   right: 0;
+   background: #1e3a5f;
+   flex-direction: column;
+   padding: 20px 24px;
+   gap: 16px;
+   border-bottom: 1px solid rgba(255,255,255,0.1);
+   z-index: 99;
+  }
+  .nav-links.active { display: flex; }
+  .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
+  .nav-links.active a.active { color: #F9A828 !important; }
+  .nav-links.active a:hover { color: white; }
+ }
+ </style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+</head>
+<body>
+ <nav>
+  <div class="nav-left">
+   <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+   <a href="minerva_landing.html?v=0153a2c" class="logo">
+    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+    <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    Minerva
+   </a>
+  </div>
+  <div class="nav-links">
+  <a href="teacher_dashboard.html?v=NEW001" data-i18n="teacher_dash.dashboard">Dashboard</a>
+  <a href="student_dashboard.html?v=NEW001" data-i18n="teacher_dash.students">Students</a>
+  <a href="teacher_schedule.html?v=NEW001" data-i18n="teacher_dash.schedule">Schedule</a>
+  <a href="messages.html?v=freshChats" data-i18n="teacher_dash.nav_messages">CHATS</a>
+  <a href="reviews.html?v=NEW001" data-i18n="reviews.title">Reviews</a>
+  <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="earnings.title">Earnings</a>
+ </div>
+ <div class="nav-right">
+   <div class="nav-meta">
+    <div class="user-info">
+     <a href="teacher_profile.html?v=NEW001" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
+    </div>
+   </div>
+   <div class="lang-selector">
+    <a href="earnings.html?lang=en" class="lang-btn">EN</a>
+    <a href="earnings.html?lang=zh-TW" class="lang-btn">繁</a>
+    <a href="earnings.html?lang=zh-CN" class="lang-btn">简</a>
+   </div>
+  </div>
+ </nav>
+ <main class="main">
+  <div class="page-header">
+   <h1>Earnings</h1>
+   <p>Track your teaching income and transaction history.</p>
+  </div>
+  <div class="stats-grid">
+   <div class="stat-card">
+    <div class="label">This Week</div>
+    <div class="value green">HK$ 1,100</div>
+    <div class="sub">3 lessons</div>
+   </div>
+   <div class="stat-card">
+    <div class="label">April 2026</div>
+    <div class="value green">HK$ 4,250</div>
+    <div class="sub">8 lessons completed</div>
+   </div>
+   <div class="stat-card">
+    <div class="label">Pending Payout</div>
+    <div class="value gold">HK$ 1,450</div>
+    <div class="sub">Due by Apr 30</div>
+   </div>
+   <div class="stat-card">
+    <div class="label">Total Earned</div>
+    <div class="value">HK$ 26,800</div>
+    <div class="sub">Since Jan 2026</div>
+   </div>
+  </div>
+  <div class="content-grid">
+  <div class="pending-payout-section">
+   <div class="pending-payout-header">
+    <span class="pending-payout-title">Pending Payout</span>
+    <span class="pending-payout-amount">HK$ 1,450</span>
+   </div>
+   <div class="pending-payout-details">
+    <div class="payout-row">
+     <span>Lessons pending confirmation</span>
+     <span>3 lessons</span>
+    </div>
+    <div class="payout-row">
+     <span>Estimated arrival</span>
+     <span>Apr 30, 2026</span>
+    </div>
+   </div>
+   <button class="btn-payout">Request Payout</button>
+  </div>
+   <div class="card">
+    <div class="card-header">
+     <h2>Recent Transactions</h2>
+     <span>Last 30 days</span>
+    </div>
+    <div class="card-body">
+     <div class="earnings-item">
+      <div><div class="earnings-desc">Emma Wong — Piano</div><div class="earnings-date">Apr 20, 2026</div></div>
+      <div class="earnings-amount">+HK$ 550</div>
+     </div>
+     <div class="earnings-item">
+      <div><div class="earnings-desc">Lucas Lee — Math</div><div class="earnings-date">Apr 18, 2026</div></div>
+      <div class="earnings-amount">+HK$ 480</div>
+     </div>
+     <div class="earnings-item">
+      <div><div class="earnings-desc">Sophie Chen — English</div><div class="earnings-date">Apr 15, 2026</div></div>
+      <div class="earnings-amount">+HK$ 520</div>
+     </div>
+     <div class="earnings-item">
+      <div><div class="earnings-desc">Grace Ho — Science</div><div class="earnings-date">Apr 12, 2026</div></div>
+      <div class="earnings-amount">+HK$ 500</div>
+     </div>
+     <div class="earnings-item">
+      <div><div class="earnings-desc">Nathan Wu — Piano</div><div class="earnings-date">Apr 10, 2026</div></div>
+      <div class="earnings-amount">+HK$ 550</div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </main>
+ <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
+ <script src="i18n.js"></script>
+ <script>if(typeof init=="function")init();</script>
+</body>
+</html>

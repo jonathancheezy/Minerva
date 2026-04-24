@@ -1,125 +1,516 @@
-
-    success_title:{en:"✅ Registration successful!",zhTW:"✅ 登記成功！",zhCN:"✅ 登记成功！"},
-    link_features:{en:"Features",zhTW:"功能特色",zhCN:"功能特色"},
-    link_how:{en:"How it Works",zhTW:"運作方式",zhCN:"运作方式"},
-    link_faq:{en:"FAQ",zhTW:"常見問題",zhCN:"常见问题"},
-    link_login:{en:"Login",zhTW:"登入",zhCN:"登入"},
-    link_terms:{en:"Terms & Conditions",zhTW:"條款及細則",zhCN:"条款及细则"},
-    back_home:{en:"← Back to Home",zhTW:"← 返回主頁",zhCN:"← 返回主页"},<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teacher Registration — Minerva</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Teacher Registration — Minerva</title>
   <style>
-:root{--navy:#1e3a5f;--navy-dark:#0f1f33;--teal:#3b82f6;--teal-light:#60a5fa;--gold:#F9A828;--gold-light:#FBB81C;--white:#ffffff;--gray-100:#f8fafc;--gray-200:#e2e8f0;--gray-500:#64748b;--gray-700:#334155}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--white);color:var(--gray-700);line-height:1.6}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);padding:16px 24px}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:700;font-size:20px}
-.logo-icon{width:36px;height:36px}
-.nav-right{display:flex;align-items:center;gap:16px}
-.nav-links{display:flex;gap:24px;align-items:center}
-.nav-links a{color:var(--gray-500);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
-.nav-links a:hover{color:var(--navy)}
-.lang-selector{display:flex;gap:4px;background:var(--gray-100);padding:4px;border-radius:8px}
-.lang-btn{padding:6px 12px;font-size:13px;font-weight:600;border:none;background:transparent;color:var(--gray-500);cursor:pointer;border-radius:6px;text-decoration:none;transition:all 0.2s}
-.lang-btn:hover{color:var(--navy)}
-.lang-btn.active{background:white;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-.mobile-menu-btn{display:none;font-size:20px;cursor:pointer;padding:4px}
-@media(max-width:768px){.nav-links{display:none}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:16px;border:1px solid var(--gray-200);gap:12px}.mobile-menu-btn{display:block}}
-.main{max-width:800px;margin:100px auto 60px;padding:0 24px}
-.hero-badge{display:inline-block;background:linear-gradient(135deg,var(--navy),var(--teal));color:white;padding:6px 16px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:16px}
-h1{font-size:40px;font-weight:800;color:var(--navy);margin-bottom:16px;line-height:1.2}
-.subtitle{font-size:18px;color:var(--gray-500);margin-bottom:40px;max-width:500px}
-.form-card{background:var(--gray-100);border-radius:16px;padding:32px;margin-bottom:24px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
-.form-group{margin-bottom:20px}
-label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
-input,select{width:100%;padding:10px 14px;border:2px solid var(--gray-200);border-radius:10px;font-size:14px;font-family:inherit;transition:border-color 0.2s}
-input:focus,select:focus{outline:none;border-color:var(--teal)}
-.full-width{grid-column:1/-1}
-.btn-primary{background:var(--gold);color:var(--navy-dark);font-weight:700;font-size:14px;padding:10px 22px;border-radius:50px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-width:200px;justify-content:center;white-space:nowrap}
-.btn-primary:hover{transform:translateY(-1px)}
-.btn-secondary{background:transparent;color:var(--navy);font-weight:600;font-size:14px;padding:10px 22px;border-radius:50px;text-decoration:none;border:2px solid var(--navy);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;min-width:200px;justify-content:center;white-space:nowrap}
-.btn-secondary:hover{background:var(--navy);color:white}
-.form-success{background:linear-gradient(135deg,var(--navy),var(--teal));color:white;padding:40px;border-radius:16px;text-align:center;display:none}
-.form-success h3{font-size:24px;margin-bottom:8px}
-.terms{margin-top:16px;font-size:12px;color:var(--gray-500);text-align:center}
-.terms a{color:var(--teal)}
-footer{padding:24px;text-align:center;font-size:13px;color:var(--gray-500);border-top:1px solid var(--gray-200)}
-footer a{color:var(--gray-500)}
-  </style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --teal-light: #60a5fa;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-500: #64748b;
+ --gray-700: #334155;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--white);
+ color: var(--gray-700);
+ line-height: 1.6;
+ padding-top: 64px;
+ }
+
+
+ /* Nav */
+ nav {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ z-index: 100;
+ background: var(--navy);
+   padding: 16px 24px;
+ }
+
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ }
+
+ .nav-links {
+ display: none;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 22px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon {
+ width: 36px;
+ height: 36px;
+ }
+
+ .nav-links a {
+ color: white;
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: color 0.2s;
+ }
+
+ .nav-links a:hover { color: white; }
+ .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
+
+ .btn-outline {
+ background: transparent;
+ color: white;
+ font-weight: 600;
+ font-size: 14px;
+ padding: 10px 22px;
+ border-radius: 50px;
+ text-decoration: none;
+ border: 2px solid var(--navy);
+ transition: all 0.2s;
+ }
+
+ .btn-outline:hover {
+ background: var(--navy);
+ color: white;
+ }
+
+ /* Hero */
+ .hero {
+ padding: 120px 24px 40px;
+ text-align: center;
+ background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+ }
+
+ .hero-badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ background: var(--navy);
+ color: white;
+ font-size: 12px;
+ font-weight: 600;
+ padding: 6px 14px;
+ border-radius: 50px;
+ margin-bottom: 24px;
+ letter-spacing: 0.5px;
+ }
+
+ .hero h1 {
+ font-size: clamp(28px, 5vw, 48px);
+ font-weight: 800;
+ color: var(--navy-dark);
+ line-height: 1.2;
+ margin-bottom: 16px;
+ }
+
+ .hero p {
+ font-size: 17px;
+ font-size: 17px;
+ color: var(--gray-500);
+ max-width: 500px;
+ margin: 0 auto;
+ }
+
+ /* Form Section */
+ .form-section {
+ padding: 40px 24px 80px;
+ max-width: 640px;
+ margin: 0 auto;
+ }
+
+ .form-card {
+ background: rgba(0,0,0,0.25);
+ border-radius: 20px;
+ padding: 40px;
+ }
+
+ .form-group {
+ margin-bottom: 24px;
+ }
+
+ .form-group label {
+ display: block;
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--navy-dark);
+ margin-bottom: 8px;
+ }
+
+ .form-group input,
+ .form-group select,
+ .form-group textarea {
+ width: 100%;
+ padding: 14px 16px;
+ border-radius: 12px;
+ border: 2px solid var(--gray-200);
+ background: white;
+ font-size: 15px;
+ font-family: inherit;
+ color: var(--gray-700);
+ transition: border-color 0.2s;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus,
+ .form-group textarea:focus {
+ outline: none;
+ border-color: var(--teal);
+ }
+
+ .form-group textarea {
+ min-height: 100px;
+ resize: vertical;
+ }
+
+ .form-group small {
+ display: block;
+ font-size: 13px;
+ color: white;
+ margin-top: 6px;
+ }
+
+ .form-row {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 16px;
+ }
+
+ @media (max-width: 500px) {
+ .form-row { grid-template-columns: 1fr; }
+ }
+
+ .btn-primary {
+ width: 100%;
+ background: var(--gold);
+ color: var(--navy-dark);
+ font-weight: 700;
+ font-size: 16px;
+ padding: 16px 32px;
+ border-radius: 50px;
+ border: none;
+ cursor: pointer;
+ transition: all 0.2s;
+ font-family: inherit;
+ margin-top: 16px;
+ }
+
+ .btn-primary:hover {
+ background: var(--gold-light);
+ transform: translateY(-1px);
+ }
+ .terms { margin-top: 16px; font-size: 12px; color: white; text-align: center; }
+ .terms a { color: var(--teal); }
+
+ .form-success {
+ display: none;
+ text-align: center;
+ padding: 40px;
+ }
+
+ .form-success h3 {
+ font-size: 24px;
+ color: var(--navy-dark);
+ margin-bottom: 12px;
+ }
+
+ .form-success p {
+ color: white;
+ }
+
+ /* Benefits */
+ .benefits {
+ padding: 40px 24px;
+ background: var(--navy);
+ text-align: center;
+ }
+
+ .benefits h2 {
+ font-size: 24px;
+ font-weight: 700;
+ color: white;
+ margin-bottom: 32px;
+ }
+
+ .benefits-grid { justify-content: center;
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ text-align: center;
+ gap: 24px;
+ max-width: 800px;
+ margin: 0 auto;
+ }
+
+ .benefit {
+ color: white;
+ }
+
+ .benefit h4 {
+ font-size: 16px;
+ font-weight: 700;
+ margin-bottom: 8px;
+ color: var(--gold);
+ }
+
+ .benefit p {
+ font-size: 14px;
+ color: rgba(255,255,255,0.7);
+ }
+
+ /* Footer */
+ footer {
+ padding: 40px 24px;
+ padding: 40px 24px;
+ text-align: center;
+ color: var(--gray-500);
+ font-size: 13px;
+ border-top: 1px solid var(--gray-200);
+ }
+
+ footer a { color: white; }
+
+ .lang-selector {
+ display: flex;
+ gap: 4px;
+ background: rgba(0,0,0,0.25);
+ padding: 4px;
+ border-radius: 8px;
+ }
+ .lang-btn {
+ padding: 6px 12px;
+ border: none;
+ background: transparent;
+ border-radius: 6px;
+ font-size: 13px;
+ font-weight: 600;
+ cursor: pointer;
+ color: white;
+ text-decoration: none;
+ transition: all 0.2s;
+ }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active {
+ background: var(--navy);
+ color: white;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+ }
+
+@media (max-width: 768px) {
+.lang-btn { padding: 6px 12px; font-size: 13px; }
+.lang-selector { padding: 2px; gap: 1px; }
+.nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 16px; gap: 12px; }
+.nav-links.active { display: flex; }
+.nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+}
+</style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a href="minerva_landing.html" class="logo">
-      <svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#1e3a5f"/><path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/></svg>
-      Minerva
-    </a>
-    <div class="nav-right">
-      <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
-      <div class="nav-links">
-        <a href="minerva_landing.html">Features</a>
-        <a href="minerva_landing.html#how-it-works">How it Works</a>
-        <a href="faq.html">FAQ</a>
-        <a href="login.html">Login</a>
-      </div>
-      <div class="lang-selector">
-        <a href="teacher_registration.html?lang=en" class="lang-btn">EN</a>
-        <a href="teacher_registration.html?lang=zh-TW" class="lang-btn">繁</a>
-        <a href="teacher_registration.html?lang=zh-CN" class="lang-btn">简</a>
-      </div>
-    </div>
-  </div>
-</nav>
+ <nav>
+ <div class="nav-inner">
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ <div class="nav-right">
+ <div class="nav-links">
+ <a href="minerva_landing.html" data-i18n="register.nav_home">Home</a>
+ <a href="faq.html" data-i18n="register.nav_faq">FAQ</a>
+ <a href="login.html" data-i18n="register.nav_login">Login</a>
+ <a href="terms.html" data-i18n="register.nav_terms">Terms & Conditions</a>
+ </div>
+ <div class="lang-selector">
+ <a href="teacher_registration.html?lang=en" class="lang-btn">EN</a>
+ <a href="teacher_registration.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="teacher_registration.html?lang=zh-CN" class="lang-btn">简</a>
+ </div>
+ </div>
+ </div>
+ </nav>
 
-<main class="main">
-  <div class="hero-badge" data-i18n="register.teacher_register">Teacher Registration</div>
-  <h1 data-i18n="register.join_community">Join the Minerva teaching community</h1>
-  <p class="subtitle" data-i18n="register.first_100">Sign up today and start connecting with students in Hong Kong. First 100 get 0 commission levied for first four classes.</p>
-  
-  <form id="registrationForm" class="form-card">
-    <div class="form-grid">
-      <div class="form-group">
-        <label data-i18n="register.full_name">Full Name</label>
-        <input type="text" required placeholder="Chan Tai Man">
-      </div>
-      <div class="form-group">
-        <label data-i18n="register.email">Email Address</label>
-        <input type="email" required placeholder="chan.teacher@email.com">
-      </div>
-      <div class="form-group">
-        <label data-i18n="register.password">Password</label>
-        <input type="password" required placeholder="••••••••">
-      </div>
-      <div class="form-group">
-        <label data-i18n="register.Confirm Password">Confirm Password</label>
-        <input type="password" required placeholder="••••••••">
-      </div>
-      <div class="form-group full-width">
-        <label data-i18n="register.phone">Phone Number</label>
-        <input type="tel" placeholder="+852 6123 4567">
-      </div>
-    </div>
-    <button type="submit" class="btn-primary" style="width:100%;margin-top:20px"><span data-i18n="register.btn_register">Register →</span></button>
-    <p class="terms">By registering, you agree to our <a href="terms.html" data-i18n="register.link_terms">Terms & Conditions</a></p>
-  </form>
+ <section class="hero">
+ <div class="hero-badge" data-i18n="register.teacher_register_hero">Teacher Registration</div>
+ <h1 data-i18n="register.join_community">Join the Minerva teaching community</h1>
+ <p data-i18n="register.teacher_commission">Join the first 100 teachers — 0% commission for your first four classes.</p>
+ </section>
 
-  <div class="form-success" id="formSuccess">
-    <h3>✅ Registration successful!</h3>
-    <p>Redirecting to your dashboard...</p>
-  </div>
-</main>
+ <section class="form-section">
+ <div class="form-card">
+ <form id="registrationForm" action="https://formspree.io/f/xqkrbzww" method="POST">
+ <div class="form-row">
+ <div class="form-group">
+ <label for="fullName">Full Name</label>
+ <input type="text" id="fullName" name="fullName" required placeholder="Chan Tai Man">
+ </div>
+ <div class="form-group">
+ <label for="email">Email Address</label>
+ <input type="email" id="email" name="email" required placeholder="chan.teacher@email.com">
+ </div>
+ </div>
 
-<footer>
-  <p>© 2026 Minerva Learning Ltd. Hong Kong. <a href="minerva_landing.html">Back to home</a></p>
-</footer>
+ <div class="form-row">
+ <div class="form-group">
+ <label for="password">Password</label>
+ <input type="password" id="password" name="password" required placeholder="••••••••" minlength="8">
+ </div>
+ <div class="form-group">
+ <label for="confirmPassword">Confirm Password</label>
+ <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="••••••••">
+ </div>
+ </div>
+
+ <div class="form-group">
+ <label for="phone">WhatsApp / Phone Number</label>
+ <input type="tel" id="phone" name="phone" placeholder="+852 6123 4567">
+ </div>
+
+ <div class="form-group">
+ <label for="subjects">Subjects You Teach</label>
+ <select id="subjects" name="subjects" required>
+ <option value="">Select main subject</option>
+ <option value="math">Mathematics</option>
+ <option value="english">English</option>
+ <option value="chinese">Chinese (Cantonese / Mandarin)</option>
+ <option value="physics">Physics</option>
+ <option value="chemistry">Chemistry</option>
+ <option value="biology">Biology</option>
+ <option value="economics">Economics</option>
+ <option value="music">Music</option>
+ <option value="other">Other</option>
+ </select>
+ </div>
+
+ <div class="form-row">
+ <div class="form-group">
+ <label for="qualification">Highest Qualification</label>
+ <select id="qualification" name="qualification" required>
+ <option value="">Select qualification</option>
+ <option value="highschool">High School Diploma</option>
+ <option value="associate">Associate Degree</option>
+ <option value="bachelor">Bachelor's Degree</option>
+ <option value="master">Master's Degree</option>
+ <option value="phd">PhD / Doctorate</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label for="experience">Years of Teaching Experience</label>
+ <select id="experience" name="experience" required>
+ <option value="">Select experience</option>
+ <option value="0-1">Less than 1 year</option>
+ <option value="1-3">1–3 years</option>
+ <option value="3-5">3–5 years</option>
+ <option value="5-10">5–10 years</option>
+ <option value="10+">10+ years</option>
+ </select>
+ </div>
+ </div>
+
+ <div class="form-group">
+ <label for="hourlyRate">Hourly Rate (HK$)</label>
+ <input type="number" id="hourlyRate" name="hourlyRate" placeholder="e.g., 350" min="0">
+ </div>
+
+ <div class="form-group">
+ <label for="bio">Short Bio</label>
+ <textarea id="bio" name="bio" placeholder="Tell students about yourself, your teaching style, and what makes your lessons unique..."></textarea>
+ </div>
+
+ <div class="form-group">
+ <label for="teachingMode">Preferred Teaching Mode</label>
+ <select id="teachingMode" name="teachingMode">
+ <option value="">Select mode</option>
+ <option value="online">Online Only</option>
+ <option value="inperson">In Person Only</option>
+ <option value="both">Both Online and In Person</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label for="languages">Languages You Teach In</label>
+ <select id="languages" name="languages" required>
+ <option value="">Select language</option>
+ <option value="cantonese">Cantonese</option>
+ <option value="mandarin">Mandarin</option>
+ <option value="english">English</option>
+ <option value="multiple">Multiple Languages</option>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label for="availability">Availability Summary</label>
+ <input type="text" id="availability" name="availability" placeholder="e.g., Weekday evenings, Saturday afternoons">
+ </div>
+
+ <button type="submit" class="btn-primary">Register →</button>
+ <p class="terms">By registering, you agree to our <a href="terms.html">Terms & Conditions</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+ </form>
+
+ <div class="form-success" id="formSuccess">
+ <h3 data-i18n="register.success_title">✅ Registration successful!</h3>
+ <p data-i18n="register.redirecting">Redirecting to your dashboard...</p>
+ </div>
+ </div>
+
+
+
+ <footer>
+ <p data-i18n="register.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
+ </footer>
+
+ <script>
+ // Pre-fill email from URL parameter
+ const params = new URLSearchParams(window.location.search);
+ const email = params.get('email');
+ if (email) {
+ document.getElementById('email').value = decodeURIComponent(email);
+ }
+
+ document.getElementById('registrationForm').addEventListener('submit', function(e) {
+ e.preventDefault();
+
+ // Show success message
+ document.getElementById('registrationForm').style.display = 'none';
+ document.getElementById('formSuccess').style.display = 'block';
+
+ // Log form data (in production, this would send to backend)
+ const formData = new FormData(this);
+ console.log('Registration:', Object.fromEntries(formData));
+ });
+ </script>
+
+
 
 
 

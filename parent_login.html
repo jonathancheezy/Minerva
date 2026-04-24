@@ -1,16 +1,10 @@
-
-    back_link:{en:"← Back",zhTW:"← 返回",zhCN:"← 返回"},
-    register_link:{en:"Register here",zhTW:"在此註冊",zhCN:"在此注册"},
-    success_title:{en:"✅ Login successful!",zhTW:"✅ 登入成功！",zhCN:"✅ 登录成功！"},
-    home_link:{en:"Back to home",zhTW:"返回主頁",zhCN:"返回主页"},<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Parent/Student Login — Minerva</title>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- <style>
+   <style>
  :root {
  --navy: #1e3a5f;
  --navy-dark: #0f1f33;
@@ -31,32 +25,30 @@
  background: var(--white);
  color: var(--gray-700);
  line-height: 1.6;
+ padding-top: 64px;
  }
+ 
 
  /* Nav */
  nav {
+ background: var(--teal);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
  position: fixed;
  top: 0;
  left: 0;
  right: 0;
+ height: 60px;
  z-index: 100;
- background: rgba(255,255,255,0.95);
- backdrop-filter: blur(10px);
- border-bottom: 1px solid var(--gray-200);
- padding: 16px 24px;
  }
 
- .nav-inner {
- max-width: 1100px;
- margin: 0 auto;
- display: flex;
- justify-content: space-between;
- align-items: center;
- }
-
- .nav-right {
+ .nav-left {
  display: flex;
  align-items: center;
+ gap: 16px;
  }
 
  .logo {
@@ -64,35 +56,100 @@
  align-items: center;
  gap: 10px;
  font-weight: 800;
- font-size: 22px;
- color: var(--navy);
+ font-size: 20px;
+ color: white;
  text-decoration: none;
  }
 
- .logo-icon { width: 36px; height: 36px; }
+ .logo-icon { width: 32px; height: 32px; }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ justify-content: center;
+ flex: 1;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 8px;
+ color: white;
+ background: none;
+ border: none;
+ }
 
  .nav-links a {
- color: var(--gray-500);
+ color: rgba(255,255,255,0.7);
  text-decoration: none;
  font-size: 14px;
  font-weight: 500;
  transition: color 0.2s;
- margin-left: 24px;
  }
- .nav-links a:hover { color: var(--navy); }
+ .nav-links a:hover { color: white; }
+ .nav-links a.active { color: #F9A828 !important; }
 
- .btn-outline {
- background: transparent;
- color: var(--navy);
- font-weight: 600;
- font-size: 14px;
- padding: 10px 22px;
- border-radius: 50px;
- text-decoration: none;
- border: 2px solid var(--navy);
- transition: all 0.2s;
+ 
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
  }
- .btn-outline:hover { background: var(--navy); color: white; }
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
+ }
+ .lang-selector {
+  display: flex;
+  gap: 2px;
+  background: rgba(0,0,0,0.25);
+  padding: 3px;
+  border-radius: 6px;
+ }
+ .lang-btn {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+ }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ @media (max-width: 768px) {
+  .lang-btn { padding: 4px 8px; font-size: 12px; }
+  .lang-selector { padding: 2px; gap: 1px; }
+  .lang-btn:hover { color: white; }
+  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ }
+
+ .user-name {
+ font-size: 14px;
+ font-weight: 600;
+ }
 
  /* Hero */
  .hero {
@@ -125,7 +182,7 @@
 
  .hero p {
  font-size: 17px;
- color: var(--gray-500);
+ color: white;
  max-width: 500px;
  margin: 0 auto;
  }
@@ -138,7 +195,7 @@
  }
 
  .form-card {
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  border-radius: 20px;
  padding: 40px;
  }
@@ -192,9 +249,9 @@
  text-align: center;
  margin-top: 24px;
  font-size: 14px;
- color: var(--gray-500);
+ color: white;
  }
- .form-footer a { color: var(--navy); font-weight: 600; }
+ .form-footer a { color: white; font-weight: 600; }
 
  .form-success {
  display: none;
@@ -202,22 +259,22 @@
  padding: 40px;
  }
  .form-success h3 { font-size: 24px; color: var(--navy-dark); margin-bottom: 12px; }
- .form-success p { color: var(--gray-500); }
+ .form-success p { color: white; }
 
  /* Footer */
  footer {
  padding: 40px 24px;
  text-align: center;
- color: var(--gray-500);
+ color: white;
  font-size: 13px;
  border-top: 1px solid var(--gray-200);
  }
- footer a { color: var(--navy); }
+ footer a { color: white; }
 
  .lang-selector {
  display: flex;
  gap: 4px;
- background: var(--gray-100);
+ background: rgba(0,0,0,0.25);
  padding: 4px;
  border-radius: 8px;
  }
@@ -229,22 +286,40 @@
  font-size: 13px;
  font-weight: 600;
  cursor: pointer;
- color: var(--gray-500);
+ color: white;
  text-decoration: none;
  transition: all 0.2s;
  }
- .lang-btn:hover { color: var(--navy); }
+ .lang-btn:hover { color: white; }
  .lang-btn.active {
- background: white;
- color: var(--navy);
+ background: var(--navy);
+ color: white;
  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
  }
  
 @media (max-width: 768px) {
+.mobile-menu-btn { display: flex !important; }
+.nav-links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  background: var(--navy);
+  flex-direction: column;
+  padding: 12px 16px;
+  gap: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 100;
+}
+.nav-links.active { display: flex; }
+.nav-links a { color: rgba(255,255,255,0.85) !important; margin-left: 0 !important; padding: 8px 0; font-size: 15px; }
 .lang-btn { padding: 6px 12px; font-size: 13px; }
 .lang-selector { padding: 2px; gap: 1px; }
 }
 </style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ 
 </head>
 <body>
  <nav>
@@ -257,6 +332,7 @@
  </svg>
  Minerva
  </a>
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
  <div class="nav-right">
  <div class="lang-selector">
  <a href="parent_login.html?lang=en" class="lang-btn">EN</a>
@@ -304,7 +380,7 @@
  </section>
 
  <footer>
- <p>© 2026 Minerva Learning Ltd. Hong Kong. <a href="minerva_landing.html" data-i18n="login.home_link">Back to home</a></p>
+ <p>© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="minerva_landing.html" data-i18n="login.home_link">Back to home</a></p>
  </footer>
 
  <script>

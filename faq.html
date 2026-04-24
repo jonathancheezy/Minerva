@@ -4,9 +4,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>FAQ — Minerva</title>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- <style>
+   <style>
  :root {
  --navy: #1e3a5f;
  --navy-dark: #0f1f33;
@@ -30,17 +28,20 @@
  nav .nav-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: white; text-decoration: none; }
  .logo-icon { width: 36px; height: 36px; }
+ .nav-right { display: flex; align-items: center; gap: 16px; }
  .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
+ .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
+ .nav-links { display: none; }
 
  .container { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
  h1 { font-size: 36px; font-weight: 800; color: var(--navy-dark); margin-bottom: 8px; text-align: center; }
- .subtitle { font-size: 18px; color: var(--gray-500); text-align: center; margin-bottom: 48px; }
+ .subtitle { font-size: 18px; color: white; text-align: center; margin-bottom: 48px; }
 
  .category { margin-bottom: 48px; }
  .category-title { font-size: 20px; font-weight: 700; color: var(--navy-dark); margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); display: inline-block; }
 
  .faq-list { display: flex; flex-direction: column; gap: 16px; }
- .faq-item { background: var(--gray-100); border-radius: 12px; padding: 24px; transition: all 0.2s; }
+ .faq-item { background: rgba(0,0,0,0.25); border-radius: 12px; padding: 24px; transition: all 0.2s; }
  .faq-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
  .faq-question { font-size: 16px; font-weight: 600; color: var(--navy-dark); margin-bottom: 8px; }
  .faq-answer { font-size: 14px; color: var(--gray-700); line-height: 1.7; }
@@ -51,20 +52,28 @@
  .contact-btn { display: inline-block; background: var(--gold); color: var(--navy-dark); padding: 14px 32px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
  .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(249, 168, 40, 0.4); }
 
- .lang-selector { display: flex; gap: 4px; background: var(--gray-100); padding: 4px; border-radius: 8px; }
- .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray-500); text-decoration: none; transition: all 0.2s; }
- .lang-btn:hover { color: var(--navy); }
- .lang-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ .lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; margin-left: auto; }
+ .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: white; text-decoration: none; transition: all 0.2s; }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
- footer { text-align: center; padding: 32px 24px; font-size: 14px; color: var(--gray-500); border-top: 1px solid var(--gray-200); margin-top: 48px; }
+ footer { text-align: center; padding: 32px 24px; font-size: 14px; color: white; border-top: 1px solid var(--gray-200); margin-top: 48px; }
  footer a { color: var(--navy); text-decoration: none; }
 
  @media (max-width: 768px) {
  h1 { font-size: 28px; }
  .category-title { font-size: 18px; }
  .faq-item { padding: 20px; }
+ .lang-btn { padding: 6px 12px; font-size: 13px; }
+ .lang-selector { padding: 2px; gap: 1px; }
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 16px; gap: 12px; }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
  }
  </style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ 
 </head>
 <body>
  <nav>
@@ -78,19 +87,23 @@
  Minerva
  </a>
  <div class="nav-right">
+ <div class="nav-links">
+ <a href="minerva_landing.html" data-i18n="nav_home">Home</a>
+ <a href="login.html" data-i18n="nav_login">Login</a>
+ <a href="terms.html" data-i18n="nav_terms">Terms & Conditions</a>
+ </div>
  <div class="lang-selector">
  <a href="faq.html?lang=en" class="lang-btn">EN</a>
  <a href="faq.html?lang=zh-TW" class="lang-btn">繁</a>
  <a href="faq.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
- <a href="minerva_landing.html" class="back-link" data-i18n="faq.back_link">← Back to Home</a>
  </div>
  </nav>
 
  <div class="container">
  <h1 data-i18n="faq.title">Frequently Asked Questions</h1>
- <p class="subtitle">Everything you need to know about Minerva</p>
+ <p class="subtitle" data-i18n="faq.subtitle">Everything you need to know about Minerva</p>
 
  <div class="category">
  <h2 class="category-title" data-i18n="faq.for_parents">For Parents & Students</h2>
@@ -139,7 +152,7 @@
  </div>
  <div class="faq-item">
  <div class="faq-question" data-i18n="faq.t2_q">How do I get paid?</div>
- <div class="faq-answer">Payments are processed through Stripe and released to your account within 3 business days after lesson completion. All payments are held securely in escrow until both you and the student confirm the lesson went ahead.</div>
+ <div class="faq-answer" data-i18n="faq.t2_a">Payments are processed through Stripe and released to your account within 3 business days after lesson completion. All payments are held securely in escrow until both you and the student confirm the lesson went ahead.</div>
  </div>
  <div class="faq-item">
  <div class="faq-question" data-i18n="faq.t3_q">What if a student cancels last minute?</div>
@@ -187,8 +200,8 @@
  </div>
 
  <div class="contact-box">
- <h2 data-i18n="faq.footer_question" data-i18n="faq.footer_question">Still have questions?</h2>
- <p>Our team is here to help you find the perfect learning solution.</p>
+ <h2 data-i18n="faq.footer_question">Still have questions?</h2>
+ <p data-i18n="faq.contact_tagline">Our team is here to help you find the perfect learning solution.</p>
  <a href="mailto:support@minerva.hk" class="contact-btn"><span data-i18n="faq.contact_support">Contact Support</span></a>
  </div>
  </div>
