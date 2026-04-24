@@ -15,11 +15,106 @@ nav {
  justify-content: space-between;
  align-items: center;
  position: fixed;
- top: 0; left: 0; right: 0;
+ top: 0;
+ left: 0;
+ right: 0;
  height: 60px;
  z-index: 200;
+ }
+
+ .nav-left {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ }
+
+ .logo-icon { width: 32px; height: 32px; }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ justify-content: center;
+ flex: 1;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 8px;
+ color: white;
+ background: none;
+ border: none;
+ }
+
+ .nav-links a {
+ color: rgba(255,255,255,0.7);
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: color 0.2s;
+ }
+ .nav-links a:hover { color: white; }
+ .nav-links a.active { color: #F9A828 !important; }
+
+ .user-info {
+ display: flex;
+ align-items: center;
  gap: 12px;
-}
+ }
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
+ }
+
+ .lang-selector {
+  display: flex;
+  gap: 2px;
+  background: rgba(0,0,0,0.25);
+  padding: 3px;
+  border-radius: 6px;
+ }
+
+ .lang-btn {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+ }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 .nav-left { display: flex; align-items: center; gap: 16px; }
 .logo {
  display: flex; align-items: center; gap: 10px;
@@ -39,7 +134,7 @@ nav {
  display: none; font-size: 24px; cursor: pointer;
  padding: 8px; color: white; background: none; border: none;
 }
-.nav-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.nav-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
 .user-info { display: flex; align-items: center; gap: 12px; }
 .avatar {
  width: 36px; height: 36px; border-radius: 50%;
@@ -88,11 +183,10 @@ nav .nav-icon { background: none; border: none; color: white; font-size: 22px; c
   background: #1e3a5f; flex-direction: column; padding: 20px 24px; gap: 16px;
   border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 199;
  }
- .nav-links.active { display: flex; }
  .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
  .nav-links.active a.active { color: #F9A828 !important; }
  .nav-links.active a:hover { color: white; }
-}
+ }
 
 /* === TOKENS === */
 :root {
@@ -529,43 +623,46 @@ nav .nav-subtitle {
 <body>
 
 <!-- ── NAV ── -->
-<nav id="mainNav">
+<nav>
  <div class="nav-left">
-  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">&#9776;</button>
-  <a href="minerva_landing.html" class="logo">
-   <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
-    <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
-   </svg>
-   Minerva
-  </a>
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html?v=6a3f0a0" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
  </div>
  <div class="nav-links">
-  <a href="teacher_dashboard.html">Dashboard</a>
-  <a href="student_dashboard.html">Students</a>
-  <a href="teacher_schedule.html">Schedule</a>
-  <a href="#" class="active" style="color:#F9A828 !important;">CHATS</a>
-  <a href="reviews.html">Reviews</a>
-  <a href="earnings.html">Earnings</a>
+ <a href="teacher_dashboard.html?v=NEW001">Dashboard</a>
+ <a href="student_dashboard.html?v=NEW001">Students</a>
+ <a href="teacher_schedule.html?v=NEW001">Schedule</a>
+ <a href="#" class="active" style="color: #F9A828 !important;">CHATS</a>
+ <a href="reviews.html?v=NEW001">Reviews</a>
+ <a href="earnings.html?v=hamburgerFix">Earnings</a>
  </div>
  <div class="nav-right">
-  <div class="user-info">
-   <div class="avatar" style="background:#F9A828;color:#0f1f33;">TC</div>
+ <div class="nav-meta">
+ <div class="user-info">
+ <a href="teacher_profile.html?v=0153a2c" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
+ </div>
   </div>
   <div class="lang-selector">
-   <a href="messages.html?lang=en" class="lang-btn">EN</a>
-   <a href="messages.html?lang=zh-TW" class="lang-btn">繁</a>
-   <a href="messages.html?lang=zh-CN" class="lang-btn">简</a>
-  </div>
+ <a href="messages.html?lang=en" class="lang-btn">EN</a>
+ <a href="messages.html?lang=zh-TW" class="lang-btn">繁</a>
+ <a href="messages.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
- <button class="back-btn" id="backBtn" onclick="showConvList()">&#8249;</button>
- <div class="nav-avatar" id="navAvatar" style="margin-left:8px;">
+ </div>
+ <button class="back-btn" id="backBtn" onclick="showConvList()" style="display:none;">&#8249;</button>
+ <div class="nav-avatar" id="navAvatar" style="margin-left:8px;display:none;">
   <span id="navInitials"></span>
   <div class="online-dot" id="navOnlineDot"></div>
  </div>
- <div class="nav-title" id="navTitle"></div>
- <button class="nav-icon" id="navMenu">&#8942;</button>
+ <div class="nav-title" id="navTitle" style="display:none;"></div>
+ <div class="nav-subtitle" id="navSubtitle" style="display:none;"></div>
+ <button class="nav-icon" id="navMenu" style="display:none;">&#8942;</button>
 </nav>
 
 <!-- ── CHAT LIST ── -->
