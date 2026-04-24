@@ -131,7 +131,8 @@
 .lang-dropdown {
   position: absolute;
   top: calc(100% + 8px);
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px) scale(0.96);
   width: 64px;
   background: rgba(15, 31, 51, 0.92);
   backdrop-filter: blur(16px);
@@ -142,19 +143,18 @@
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px) scale(0.96);
-  transform-origin: top right;
   transition:
     opacity 0.22s cubic-bezier(0.34, 1.20, 0.64, 1),
     transform 0.22s cubic-bezier(0.34, 1.20, 0.64, 1),
     visibility 0.22s;
+}
   z-index: 200;
 }
 
 .lang-selector.open .lang-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0) scale(1);
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
 /* Language rows */
