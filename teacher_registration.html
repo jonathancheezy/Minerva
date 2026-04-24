@@ -84,6 +84,118 @@
  .nav-links a:hover { color: white; }
  .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
 
+ /* Nav Controls */
+ .nav-controls { display: flex; align-items: center; gap: 12px; }
+
+ .mobile-menu-btn {
+ display: flex;
+ font-size: 20px;
+ cursor: pointer;
+ padding: 4px;
+ color: var(--gold);
+ background: none;
+ border: none;
+ }
+
+ /* Language Selector */
+ .lang-selector { position: relative; display: flex; align-items: center; }
+
+ .globe {
+ width: 18px;
+ height: 18px;
+ color: var(--gold);
+ cursor: pointer;
+ transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+ flex-shrink: 0;
+ }
+ .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
+ .lang-selector.open .globe { transform: rotate(180deg); }
+
+ .lang-dropdown {
+ position: absolute;
+ top: calc(100% + 8px);
+ left: 50%;
+ transform: translateX(-50%) translateY(-10px) scale(0.96);
+ width: 64px;
+ background: rgba(15, 31, 51, 0.92);
+ backdrop-filter: blur(16px);
+ -webkit-backdrop-filter: blur(16px);
+ border: 1px solid rgba(255,255,255,0.12);
+ border-radius: 10px;
+ box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(249, 168, 40, 0.08);
+ overflow: hidden;
+ opacity: 0;
+ visibility: hidden;
+ transition: opacity 0.22s cubic-bezier(0.34, 1.20, 0.64, 1), transform 0.22s cubic-bezier(0.34, 1.20, 0.64, 1), visibility 0.22s;
+ z-index: 200;
+ }
+ .lang-selector.open .lang-dropdown {
+ opacity: 1;
+ visibility: visible;
+ transform: translateX(-50%) translateY(0) scale(1);
+ }
+
+ .lang-option {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 6px;
+ padding: 10px 14px;
+ cursor: pointer;
+ font-size: 13px;
+ font-weight: 600;
+ color: rgba(255,255,255,0.65);
+ background: transparent;
+ border-bottom: 1px solid rgba(255,255,255,0.06);
+ transition: background 0.15s, color 0.15s, padding-left 0.15s;
+ position: relative;
+ overflow: hidden;
+ }
+ .lang-option:last-child { border-bottom: none; }
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 0ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 50ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(3) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 100ms both; }
+
+ @keyframes rowReveal {
+ from { opacity: 0; transform: translateX(-8px); }
+ to { opacity: 1; transform: translateX(0); }
+ }
+
+ .lang-option .check {
+ width: 14px;
+ height: 14px;
+ flex-shrink: 0;
+ opacity: 0;
+ transform: scale(0.5);
+ transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+ }
+ .lang-option.selected .check { opacity: 1; transform: scale(1); }
+ .lang-option .check svg {
+ width: 14px;
+ height: 14px;
+ stroke: var(--gold);
+ stroke-width: 2.5;
+ fill: none;
+ stroke-linecap: round;
+ stroke-linejoin: round;
+ stroke-dasharray: 20;
+ stroke-dashoffset: 20;
+ }
+ .lang-option.selected .check svg { stroke-dashoffset: 0; transition: stroke-dashoffset 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+ .lang-option.selected::before {
+ content: '';
+ position: absolute;
+ inset: 0;
+ background: linear-gradient(90deg, transparent, rgba(249,168,40,0.08), transparent);
+ transform: translateX(-100%);
+ transition: transform 0.4s;
+ }
+ .lang-option.selected:hover::before { transform: translateX(100%); }
+
  .btn-outline {
  background: transparent;
  color: white;
@@ -336,6 +448,7 @@
 <body>
  <nav>
  <div class="nav-inner">
+ <div class="nav-right">
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -344,17 +457,26 @@
  </svg>
  Minerva
  </a>
- <div class="nav-right">
+ <div class="nav-controls">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ </div>
+ </div>
+ </div>
  <div class="nav-links">
  <a href="minerva_landing.html" data-i18n="register.nav_home">Home</a>
  <a href="faq.html" data-i18n="register.nav_faq">FAQ</a>
  <a href="login.html" data-i18n="register.nav_login">Login</a>
  <a href="terms.html" data-i18n="register.nav_terms">Terms & Conditions</a>
- </div>
- <div class="lang-selector">
- <a href="teacher_registration.html?lang=en" class="lang-btn">EN</a>
- <a href="teacher_registration.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="teacher_registration.html?lang=zh-CN" class="lang-btn">简</a>
  </div>
  </div>
  </div>
@@ -516,5 +638,30 @@
 
 
 <script src="i18n.js"></script>
+<script src="i18n.js"></script>
+<script>
+(function(){
+  var sel = document.getElementById('langSelector');
+  var globe = document.getElementById('langGlobe');
+  var dropdown = document.getElementById('langDropdown');
+  if (sel && globe && dropdown) {
+    globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
+    document.addEventListener('click', function(){ sel.classList.remove('open'); });
+    dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+    dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        sel.classList.remove('open');
+        var lang = opt.dataset.lang;
+        if (typeof setLanguage === 'function') setLanguage(lang);
+      });
+    });
+  }
+  var params = new URLSearchParams(window.location.search);
+  var lp = params.get('lang');
+  if (lp && typeof setLanguage === 'function') setLanguage(lp);
+})();
+</script>
 </body>
 </html>

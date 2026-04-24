@@ -32,18 +32,13 @@
 
  /* Nav */
  nav {
- background: var(--teal);
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ z-index: 100;
+ background: var(--navy);
  color: white;
  padding: 16px 24px;
- display: flex;
- justify-content: space-between;
- align-items: center;
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- height: 60px;
- z-index: 100;
+ height: 64px;
  }
 
  .nav-left {
@@ -387,6 +382,7 @@
 <body>
  <nav>
  <div class="nav-inner">
+ <div class="nav-right">
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -395,22 +391,30 @@
  </svg>
  Minerva
  </a>
- <div class="nav-right">
+ <div class="nav-controls">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ </div>
+ </div>
+ </div>
  <div class="nav-links">
  <a href="minerva_landing.html" data-i18n="register.nav_home">Home</a>
  <a href="faq.html" data-i18n="register.nav_faq">FAQ</a>
  <a href="login.html" data-i18n="register.nav_login">Login</a>
  <a href="terms.html" data-i18n="register.nav_terms">Terms & Conditions</a>
  </div>
- <div class="lang-selector">
- <a href="parent_registration.html?lang=en" class="lang-btn">EN</a>
- <a href="parent_registration.html?lang=zh-TW" class="lang-btn">繁</a>
- <a href="parent_registration.html?lang=zh-CN" class="lang-btn">简</a>
- </div>
  </div>
  </div>
  </nav>
-
  <section class="hero">
  <div class="hero-badge" data-i18n="register.parent_register_hero">Join as a Parent or Student</div>
  <h1 data-i18n="register.find_teacher">Find a Teacher</h1>
@@ -603,5 +607,30 @@
 
 
 <script src="i18n.js"></script>
+<script src="i18n.js"></script>
+<script>
+(function(){
+  var sel = document.getElementById('langSelector');
+  var globe = document.getElementById('langGlobe');
+  var dropdown = document.getElementById('langDropdown');
+  if (sel && globe && dropdown) {
+    globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
+    document.addEventListener('click', function(){ sel.classList.remove('open'); });
+    dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+    dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        sel.classList.remove('open');
+        var lang = opt.dataset.lang;
+        if (typeof setLanguage === 'function') setLanguage(lang);
+      });
+    });
+  }
+  var params = new URLSearchParams(window.location.search);
+  var lp = params.get('lang');
+  if (lp && typeof setLanguage === 'function') setLanguage(lp);
+})();
+</script>
 </body>
 </html>
