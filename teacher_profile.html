@@ -25,7 +25,7 @@
 
  body {
  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
- background: rgba(0,0,0,0.25);
+ background: var(--gray-100);
  padding-top: 60px;
  color: var(--gray-700);
  line-height: 1.6;
@@ -60,7 +60,7 @@
  gap: 10px;
  font-weight: 800;
  font-size: 22px;
- color: white;
+ color: var(--navy-dark);
  text-decoration: none;
  white-space: nowrap;
  flex-shrink: 0;
@@ -116,7 +116,7 @@
  overflow: hidden;
  }
  .lang-option:last-child { border-bottom: none; }
- .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: var(--navy-dark); padding-left: 18px; }
  .lang-option.selected { color: var(--gold); }
  .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s 0ms both; }
  .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s 50ms both; }
@@ -182,7 +182,7 @@
  .mobile-menu-btn { display: flex; }
  .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; align-items: flex-start; padding: 20px 24px; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 99; }
  .nav-links.active { display: flex; }
- .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+ .nav-links a { color: var(--navy-dark); text-decoration: none; font-size: 14px; font-weight: 500; }
  .user-info { display: flex; align-items: center; }
  .lang-selector { background: transparent; padding: 0; }
  }
@@ -205,12 +205,16 @@
  margin-bottom: 32px;
  flex-wrap: wrap;
  gap: 16px;
+ padding-bottom: 20px;
+ border-bottom: 1px solid var(--gray-200);
  }
 
  .page-header h1 {
  font-size: 28px;
  font-weight: 800;
  color: var(--navy-dark);
+ padding-left: 16px;
+ border-left: 4px solid var(--gold);
  }
 
  /* Profile Header */
@@ -219,18 +223,20 @@
  border-radius: 16px;
  padding: 32px;
  border: 1px solid var(--gray-200);
+ border-left: 4px solid var(--gold);
  margin-bottom: 24px;
  display: flex;
  gap: 24px;
  align-items: center;
+ box-shadow: 0 2px 12px rgba(30,58,95,0.08);
  }
 
  .profile-avatar {
  width: 100px;
  height: 100px;
  border-radius: 50%;
- background: var(--navy);
- color: white;
+ background: var(--gold);
+ color: var(--navy-dark);
  display: flex;
  align-items: center;
  justify-content: center;
@@ -256,15 +262,15 @@
  }
 
  .profile-info p {
- color: white;
+ color: var(--gray-600);
  font-size: 14px;
  margin-bottom: 8px;
  }
 
  .profile-badge {
  display: inline-block;
- background: rgba(34, 197, 94, 0.1);
- color: var(--green);
+ background: rgba(249, 168, 40, 0.12);
+ color: var(--gold);
  font-size: 12px;
  font-weight: 600;
  padding: 4px 10px;
@@ -272,7 +278,7 @@
  }
 
  .change-photo-btn {
- background: rgba(0,0,0,0.25);
+ background: var(--gray-100);
  border: none;
  padding: 8px 16px;
  border-radius: 8px;
@@ -292,6 +298,11 @@
  padding: 24px;
  border: 1px solid var(--gray-200);
  margin-bottom: 24px;
+ transition: box-shadow 0.2s, transform 0.2s;
+ }
+ .card:hover {
+ box-shadow: 0 4px 20px rgba(30,58,95,0.1);
+ transform: translateY(-1px);
  }
 
  .card-header {
@@ -388,7 +399,7 @@
  display: inline-flex;
  align-items: center;
  gap: 4px;
- background: rgba(0,0,0,0.25);
+ background: var(--gray-100);
  padding: 4px 10px;
  border-radius: 6px;
  font-size: 13px;
@@ -397,7 +408,7 @@
 
  .tag-remove {
  cursor: pointer;
- color: white;
+ color: var(--navy-dark);
  font-size: 16px;
  line-height: 1;
  }
@@ -468,7 +479,7 @@
  width: 20px;
  left: 3px;
  bottom: 3px;
- background-color: white;
+ background-color: var(--navy-dark);
  transition: 0.3s;
  border-radius: 50%;
  }
@@ -496,7 +507,7 @@
  gap: 8px;
  }
 
- .btn-primary { background: var(--navy); color: white; }
+ .btn-primary { background: var(--navy); color: var(--navy-dark); }
  .btn-primary:hover { background: var(--navy-dark); }
 
  .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
@@ -521,8 +532,8 @@
  position: fixed;
  top: 20px;
  right: 20px;
- background: var(--green);
- color: white;
+ background: var(--gold);
+ color: var(--navy-dark);
  padding: 12px 20px;
  border-radius: 8px;
  font-weight: 600;
@@ -585,7 +596,7 @@
  <div class="nav-inner">
  <div class="nav-right">
  <div class="nav-start">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <button class="back-btn" onclick="window.location.href='teacher_dashboard.html'" style="background:none;border:none;color:var(--gold);font-size:24px;cursor:pointer;padding:4px 8px 4px 0;line-height:1;">‹</button>
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -832,7 +843,7 @@
 
  <div style="margin-top: 32px; text-align: center;">
  <button class="btn btn-danger btn-small" onclick="showDeleteWarning()"><span data-i18n="profile.delete_account">Delete Account</span></button>
- <p style="font-size: 12px; color: white; margin-top: 8px;">Permanently delete your account and all data</p>
+ <p style="font-size: 12px; color: var(--navy-dark); margin-top: 8px;">Permanently delete your account and all data</p>
  </div>
  </div>
  </main>
@@ -842,7 +853,7 @@
  <div style="background: white; border-radius: 16px; padding: 32px; max-width: 400px; width: 90%; text-align: center;">
  <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(249,168,40,0.2); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">⚠️</div>
  <h3 style="color: var(--navy-dark); margin-bottom: 8px;"><span data-i18n="profile.heading_discard_changes">Discard Changes?</span></h3>
- <p style="color: white; margin-bottom: 24px;">Your changes will not be saved. Are you sure you want to leave?</p>
+ <p style="color: var(--navy-dark); margin-bottom: 24px;">Your changes will not be saved. Are you sure you want to leave?</p>
  <div style="display: flex; gap: 12px;">
  <button onclick="hideCancelWarning()" class="btn btn-secondary" style="flex: 1;"><span data-i18n="profile.btn_keep_editing">Keep Editing</span></button>
  <button onclick="confirmCancel()" class="btn btn-primary" style="flex: 1;"><span data-i18n="profile.btn_discard_leave">Discard & Leave</span></button>
@@ -855,7 +866,7 @@
  <div style="background: white; border-radius: 16px; padding: 32px; max-width: 400px; width: 90%; text-align: center;">
  <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(239,68,68,0.1); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">⚠️</div>
  <h3 style="color: var(--navy-dark); margin-bottom: 8px;"><span data-i18n="profile.heading_delete_account">Delete Account?</span></h3>
- <p style="color: white; margin-bottom: 24px;">This action cannot be undone. All your profile data, lesson history, and earnings will be permanently removed.</p>
+ <p style="color: var(--navy-dark); margin-bottom: 24px;">This action cannot be undone. All your profile data, lesson history, and earnings will be permanently removed.</p>
  <div style="display: flex; gap: 12px;">
  <button onclick="hideDeleteWarning()" class="btn btn-secondary" style="flex: 1;"><span data-i18n="profile.btn_keep_account">Keep Account</span></button>
  <button onclick="confirmDelete()" class="btn btn-danger" style="flex: 1;"><span data-i18n="profile.btn_delete_forever">Delete Forever</span></button>
@@ -945,7 +956,6 @@
 
 <script src="i18n.js"></script>
 <script>if(typeof init==="function")init();</script>
-<script src="i18n.js"></script>
 <script>
 (function(){
   var sel = document.getElementById('langSelector');
