@@ -192,5 +192,879 @@ a { color: #3b82f6; text-decoration: none; }
  .nav-start { display: flex; align-items: center; }
  }
 
+ /* Main Content */
+.main {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ min-height: calc(100vh - 60px);
+}
+
+.page-header { margin-bottom: 32px; }
+.page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
+.page-header p { color: #64748b; font-size: 14px; }
+.dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
+
+/* Stats Grid - 2x2 layout */
+.stats-grid {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 16px;
+ margin-bottom: 24px;
+}
+
+.stat-card {
+ background: white;
+ border-radius: 12px;
+ border: 1px solid #e2e8f0;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ padding: 20px;
+ text-align: left;
+}
+.stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.stat-card .value { font-size: 28px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
+.stat-card .value.green { color: #22c55e; }
+.stat-card .value.gold { color: #F9A828; }
+.stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+.stat-card .sub a { color: #3b82f6; }
+
+/* Content Grid - Flexbox side by side */
+.content-grid {
+ display: flex;
+ flex-direction: row;
+ gap: 20px;
+ width: 100%;
+}
+
+.card {
+ background: white;
+ border-radius: 16px;
+ border: 1px solid #e2e8f0;
+ overflow: hidden;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ min-width: 0;
+}
+
+.card-header {
+ padding: 16px 24px;
+ border-bottom: 1px solid #e2e8f0;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.card-header h2 { font-size: 15px; font-weight: 700; color: #0f1f33; }
+.card-header a { color: #3b82f6; font-size: 13px; font-weight: 600; }
+
+.card-body { padding: 20px 24px; }
+
+/* Schedule Card */
+.schedule-card { flex: 1.6; min-width: 0; }
+
+/* Filter Tabs */
+.filter-tabs {
+ display: flex;
+ gap: 8px;
+ padding: 14px 24px;
+ border-bottom: 1px solid #e2e8f0;
+ background: #f8fafc;
+}
+
+.filter-tab {
+ padding: 5px 14px;
+ border-radius: 20px;
+ font-size: 12px;
+ font-weight: 600;
+ cursor: pointer;
+ color: #64748b;
+ border: none;
+ background: white;
+ transition: all 0.2s;
+}
+.filter-tab.active { background: #1e3a5f; color: white; }
+.filter-tab:not(.active):hover { background: #e2e8f0; color: #0f1f33; }
+
+/* Schedule Sections - JS controls visibility */
+.schedule-section { display: none; }
+.schedule-section.active { display: block; }
+
+/* Schedule List */
+.schedule-list { padding: 0; }
+
+.day-header {
+ padding: 10px 24px;
+ background: #f8fafc;
+ font-size: 11px;
+ font-weight: 700;
+ color: #3b82f6;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+}
+
+.schedule-day { border-bottom: 1px solid #e2e8f0; }
+.schedule-day:last-child { border-bottom: none; }
+
+.lesson-item {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ padding: 14px 24px;
+ border-bottom: 1px solid #e2e8f0;
+}
+.lesson-item:last-child { border-bottom: none; }
+
+.lesson-time { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.lesson-time .time { font-size: 13px; font-weight: 700; color: #0f1f33; }
+.lesson-time .dash { font-size: 13px; color: #94a3b8; }
+
+.lesson-details { flex: 1; }
+.lesson-subject { font-size: 13px; font-weight: 600; color: #0f1f33; margin-bottom: 2px; }
+.student { font-size: 12px; color: #64748b; }
+
+.lesson-status {
+ font-size: 11px;
+ font-weight: 600;
+ padding: 3px 10px;
+ border-radius: 20px;
+ flex-shrink: 0;
+}
+.lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
+.lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
+.lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
+
+/* Messages Card */
+.messages-card { flex: 0.9; min-width: 0; }
+
+.conv-legend { display: flex; gap: 16px; padding: 0 24px 12px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #64748b; }
+
+.message-item { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid #e2e8f0; }
+.message-item:last-child { border-bottom: none; }
+
+.message-avatar {
+ width: 48px;
+ height: 48px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 16px;
+ font-weight: 700;
+ color: white;
+ flex-shrink: 0;
+}
+
+.message-info { flex: 1; min-width: 0; }
+.message-sender { font-size: 13px; font-weight: 600; color: #0f1f33; }
+.message-preview { font-size: 12px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.message-time { font-size: 11px; color: #94a3b8; flex-shrink: 0; }
+
+/* Footer */
+footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
+
+/* Responsive */
+@media (max-width: 1200px) {
+ .stats-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 900px) {
+ .content-grid { flex-direction: column; }
+ .content-grid .card { flex: none; width: 100%; }
+}
+
+@media (max-width: 600px) {
+ .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+ .main { padding: 20px 16px; }
+}
+
+/* Hamburger menu */
+@media (max-width: 768px) {
+ .mobile-menu-btn { display: block; }
+ .nav-links {
+ display: none;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ right: 0;
+ background: #1e3a5f;
+ flex-direction: column;
+ padding: 20px 24px;
+ gap: 16px;
+ border-bottom: 1px solid rgba(255,255,255,0.1);
+ z-index: 99;
+ }
+ .nav-links.active { display: flex; }
+ .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
+ .nav-links.active a.active { color: #F9A828 !important; }
+ .nav-links.active a:hover { color: white; }
+}
+
+
+footer { padding: 40px 24px; text-align: center; color: var(--gray-500); font-size: 13px; border-top: 1px solid var(--gray-200); }
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+</style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
  
->
+</head>
+<body>
+<nav>
+ <div class="nav-inner">
+ <div class="nav-right">
+ <div class="nav-start">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="teacher_dashboard.html" class="active" data-i18n="teacher_dash.dashboard">Dashboard</a>
+ <a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
+ <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html" data-i18n="teacher_dash.nav_messages">Chats</a>
+ <a href="reviews.html" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html" data-i18n="earnings.title">Earnings</a>
+ </div>
+ <div class="nav-end">
+ <div class="user-info">
+ <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
+ </div>
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ </div>
+ </div>
+ </div>
+ </nav>
+<main class="main">
+ <div class="page-header">
+  <h1 data-i18n="teacher_dash.dashboard">My Dashboard</h1>
+ <p class="dashboard-quote">"A teacher affects eternity; they can never tell where their influence stops." — Henry Adams</p>
+ </div>
+
+ <div class="stats-grid">
+  <div class="stat-card">
+   <div class="label" data-i18n="teacher_dash.total_students">Total Students</div>
+   <div class="value" style="color:#3b82f6;">12</div>
+   <div class="sub" data-i18n="teacher_dash.across_5_subjects">across 5 subjects</div>
+  </div>
+  <div class="stat-card">
+   <div class="label" data-i18n="teacher_dash.upcoming_lessons">Upcoming Lessons</div>
+   <div class="value" style="color:#22c55e;">8</div>
+   <div class="sub" data-i18n="teacher_dash.next_7_days">next 7 days</div>
+  </div>
+  <div class="stat-card">
+   <div class="label" data-i18n="teacher_dash.pending_notes">Pending Notes</div>
+   <div class="value" style="color:#F9A828;">3</div>
+   <div class="sub"><a href="teacher_schedule.html?v=bd625e9" data-i18n="teacher_dash.review_now">Review now</a></div>
+  </div>
+  <div class="stat-card">
+   <div class="label" data-i18n="teacher_dash.upcoming_tests">Upcoming Tests</div>
+   <div class="value" style="color:#ef4444;">5</div>
+   <div class="sub" data-i18n="teacher_dash.next_2_weeks">next 2 weeks</div>
+  </div>
+ </div>
+
+ <div class="content-grid">
+  <div class="card schedule-card">
+   <div class="card-header">
+    <h2 data-i18n="teacher_dash.schedule">Schedule</h2>
+    <a href="teacher_schedule.html?v=bd625e9" data-i18n="teacher_dash.view_all">View All</a>
+   </div>
+   <div class="filter-tabs">
+    <button class="filter-tab active" data-tab="confirmed" data-i18n="teacher_dash.confirmed">Confirmed</button>
+    <button class="filter-tab" data-tab="pending" data-i18n="teacher_dash.pending">Pending</button>
+    <button class="filter-tab" data-tab="cancelled" data-i18n="teacher_dash.cancelled">Cancelled</button>
+   </div>
+   <div class="schedule-list">
+    <div class="schedule-section active" data-section="confirmed">
+     <div class="day-header" data-i18n="teacher_dash.today">Today &mdash; 18 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g3">Piano (Grade 3 Prep)</div>
+        <div class="student" data-i18n="teacher_dash.emma_wong">Emma Wong</div>
+       </div>
+       <div class="lesson-status confirmed">Confirmed</div>
+      </div>
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">14:00</span><span class="dash">&ndash;</span><span class="time">15:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject" data-i18n="teacher_dash.subj_violin_beg">Violin (Beginner)</div>
+        <div class="student" data-i18n="teacher_dash.lucas_lee">Lucas Lee</div>
+       </div>
+       <div class="lesson-status confirmed">Confirmed</div>
+      </div>
+     </div>
+     <div class="day-header" data-i18n="teacher_dash.tomorrow">Tomorrow &mdash; 19 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">16:30</span><span class="dash">&ndash;</span><span class="time">17:30</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g5">Piano (Grade 5)</div>
+        <div class="student" data-i18n="teacher_dash.sophie_chen">Sophie Chen</div>
+       </div>
+       <div class="lesson-status confirmed">Confirmed</div>
+      </div>
+     </div>
+    </div>
+    <div class="schedule-section" data-section="pending">
+     <div class="day-header">Sat &mdash; 25 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">09:00</span><span class="dash">&ndash;</span><span class="time">10:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Math (Form 3)</div>
+        <div class="student" data-i18n="teacher_dash.ryan_lam">Ryan Lam</div>
+       </div>
+       <div class="lesson-status pending">Pending</div>
+      </div>
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">11:00</span><span class="dash">&ndash;</span><span class="time">12:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">English (Form 4)</div>
+        <div class="student" data-i18n="teacher_dash.grace_ho">Grace Ho</div>
+       </div>
+       <div class="lesson-status pending">Pending</div>
+      </div>
+     </div>
+     <div class="day-header">Mon &mdash; 27 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Science (Form 2)</div>
+        <div class="student" data-i18n="teacher_dash.nathan_wu">Nathan Wu</div>
+       </div>
+       <div class="lesson-status pending">Pending</div>
+      </div>
+     </div>
+     <div class="day-header">Wed &mdash; 29 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">15:00</span><span class="dash">&ndash;</span><span class="time">16:30</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Piano (Grade 5)</div>
+        <div class="student" data-i18n="teacher_dash.sophie_chen">Sophie Chen</div>
+       </div>
+       <div class="lesson-status pending">Pending</div>
+      </div>
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">18:00</span><span class="dash">&ndash;</span><span class="time">19:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Violin (Beginner)</div>
+        <div class="student" data-i18n="teacher_dash.lucas_lee">Lucas Lee</div>
+       </div>
+       <div class="lesson-status pending">Pending</div>
+      </div>
+     </div>
+    </div>
+    <div class="schedule-section" data-section="cancelled">
+     <div class="day-header">Yesterday &mdash; 17 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">15:00</span><span class="dash">&ndash;</span><span class="time">16:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Science (Form 2)</div>
+        <div class="student" data-i18n="teacher_dash.nathan_wu">Nathan Wu</div>
+       </div>
+       <div class="lesson-status cancelled">Cancelled</div>
+      </div>
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Piano (Grade 1)</div>
+        <div class="student" data-i18n="teacher_dash.lily_zhang">Lily Zhang</div>
+       </div>
+       <div class="lesson-status cancelled">Cancelled</div>
+      </div>
+     </div>
+     <div class="day-header">Thu &mdash; 16 Apr</div>
+     <div class="schedule-day">
+      <div class="lesson-item">
+       <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
+       <div class="lesson-details">
+        <div class="lesson-subject">Math (Form 3)</div>
+        <div class="student" data-i18n="teacher_dash.emma_wong">Emma Wong</div>
+       </div>
+       <div class="lesson-status cancelled">Cancelled</div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="card messages-card">
+   <div class="card-header">
+    <h2 data-i18n="teacher_dash.nav_messages">CHATS</h2>
+    <a href="messages.html?v=freshChats" data-i18n="teacher_dash.view_all">View All</a>
+   </div>
+   <div class="card-body">
+    <div class="message-item">
+     <div class="message-avatar">EW</div>
+     <div class="message-info">
+      <div class="message-sender" data-i18n="teacher_dash.emma_wong">Emma Wong</div>
+      <div class="message-preview">Regarding tomorrow's piano lesson...</div>
+     </div>
+     <div class="message-time">9:41</div>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar">LL</div>
+     <div class="message-info">
+      <div class="message-sender" data-i18n="teacher_dash.lucas_lee">Lucas Lee</div>
+      <div class="message-preview">Can we reschedule Thursday's lesson?</div>
+     </div>
+     <div class="message-time">Yesterday</div>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar">SC</div>
+     <div class="message-info">
+      <div class="message-sender" data-i18n="teacher_dash.sophie_chen">Sophie Chen</div>
+      <div class="message-preview">Thanks for the lesson today!</div>
+     </div>
+     <div class="message-time">Yesterday</div>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar">RH</div>
+     <div class="message-info">
+      <div class="message-sender" data-i18n="teacher_dash.ryan_ho">Ryan Ho</div>
+      <div class="message-preview">Assignment submission for Math Form 3</div>
+     </div>
+     <div class="message-time">Apr 16</div>
+    </div>
+    <div class="message-item">
+     <div class="message-avatar">GH</div>
+     <div class="message-info">
+      <div class="message-sender" data-i18n="teacher_dash.grace_ho">Grace Ho</div>
+      <div class="message-preview">English essay draft attached</div>
+     </div>
+     <div class="message-time">Apr 15</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</main>
+
+<footer style="text-align: center;">
+ <p data-i18n="teacher_dash.footer_text">&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p> <a href="terms.html">Terms & Conditions</a>
+</footer>
+
+
+
+
+
+
+<script src="i18n.js?v=50579da">
+// Student avatar colors - hash based
+document.querySelectorAll('.student-avatar, .message-avatar').forEach(function(el) {
+  var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+  var initials = el.textContent.trim();
+  var hash = 0;
+  for (var i = 0; i < initials.length; i++) {
+    hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  var idx = Math.abs(hash) % colours.length;
+  el.style.background = colours[idx];
+  el.style.color = '#fff';
+});
+</script>
+<script>
+// Set teacher name from localStorage (from profile page)
+ const teacherProfile = JSON.parse(localStorage.getItem('teacherProfile') || '{}');
+ if (teacherProfile.fullName) {
+ document.getElementById('teacher-name').textContent = teacherProfile.fullName;
+ }
+
+ document.querySelectorAll('.filter-tab').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tab = btn.getAttribute('data-tab');
+    document.querySelectorAll('.filter-tab').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.schedule-section').forEach(function(s) { s.classList.remove('active'); });
+    var target = document.querySelector('.schedule-section[data-section="' + tab + '"]');
+    if (target) target.classList.add('active');
+  });
+});
+
+// Avatar colour from initials
+var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+document.querySelectorAll('.message-avatar').forEach(function(el) {
+  var initials = el.textContent.trim();
+  var hash = 0;
+  for (var i = 0; i < initials.length; i++) {
+    hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  var idx = Math.abs(hash) % colours.length;
+  el.style.background = colours[idx];
+});
+
+
+// Student avatar colors - hash based
+document.querySelectorAll('.student-avatar, .message-avatar').forEach(function(el) {
+  var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+  var initials = el.textContent.trim();
+  var hash = 0;
+  for (var i = 0; i < initials.length; i++) {
+    hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  var idx = Math.abs(hash) % colours.length;
+  el.style.background = colours[idx];
+  el.style.color = '#fff';
+});
+</script>
+<script src="i18n.js"></script>
+<script>
+(function(){
+  var sel = document.getElementById('langSelector');
+  var globe = document.getElementById('langGlobe');
+  var dropdown = document.getElementById('langDropdown');
+  if (sel && globe && dropdown) {
+    globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
+    document.addEventListener('click', function(){ sel.classList.remove('open'); });
+    dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+    dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        sel.classList.remove('open');
+        var lang = opt.dataset.lang;
+        if (typeof setLanguage === 'function') setLanguage(lang);
+      });
+    });
+  }
+  var params = new URLSearchParams(window.location.search);
+  var lp = params.get('lang');
+  if (lp && typeof setLanguage === 'function') setLanguage(lp);
+})();
+</script>
+
+</body>
+</html>
+/* === CHAT STYLES === */
+#chatListScreen {
+ display: flex;
+ flex-direction: column;
+ background: var(--white);
+}
+
+.search-bar {
+ display: flex;
+ align-items: center;
+ background: var(--gray-100);
+ border-radius: 999px;
+ padding: 0 16px;
+ height: 40px;
+ gap: 8px;
+}
+.search-bar .si { font-size: 15px; color: var(--gray-400); flex-shrink: 0; }
+.search-bar input {
+ flex: 1;
+ border: none;
+ background: transparent;
+ font-size: 15px;
+ color: var(--gray-700);
+ outline: none;
+ padding: 0;
+}
+.search-bar input::placeholder { color: var(--gray-400); }
+.search-bar .clear-btn { background: none; border: none; color: var(--gray-400); font-size: 13px; cursor: pointer; padding: 4px; display: none; }
+.search-bar .clear-btn.show { display: block; }
+.conv-scroll { flex: 1; overflow-y: auto; background: var(--white); }
+.conv-item {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 12px 16px;
+ cursor: pointer;
+ transition: background 0.1s;
+ background: var(--white);
+}
+.conv-item:active { background: var(--gray-100); }
+.avatar-wrap { position: relative; flex-shrink: 0; }
+.avatar-wrap .avatar {
+ width: 52px;
+ height: 52px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 17px;
+ color: white;
+ box-shadow: 0 0 0 2px var(--white), 0 0 0 3.5px var(--gray-200);
+}
+.avatar-wrap .online-dot {
+ width: 12px;
+ height: 12px;
+ border-radius: 50%;
+ background: var(--green);
+ border: 2px solid var(--white);
+ position: absolute;
+ bottom: 1px;
+ right: 1px;
+}
+.conv-body { flex: 1; min-width: 0; }
+.conv-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 3px; }
+.conv-name { font-size: 16px; font-weight: 600; color: var(--gray-800); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.conv-name.unread { font-weight: 700; color: var(--gray-900); }
+.conv-time { font-size: 12px; color: var(--gray-400); flex-shrink: 0; }
+.conv-time.unread { font-weight: 600; color: var(--teal); }
+.conv-bottom { display: flex; align-items: center; gap: 6px; }
+.conv-preview { font-size: 14px; color: var(--gray-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+.conv-preview.unread { font-weight: 500; color: var(--teal); }
+.unread-badge { min-width: 20px; height: 20px; border-radius: 10px; background: var(--teal); color: white; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 6px; flex-shrink: 0; }
+.conv-divider { height: 1px; background: var(--gray-200); margin-left: 80px; }
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 40px; text-align: center; }
+.empty-icon { width: 80px; height: 80px; border-radius: 50%; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 16px; }
+.empty-title { font-size: 20px; font-weight: 600; color: var(--gray-700); margin-bottom: 8px; }
+.empty-sub { font-size: 15px; color: var(--gray-500); line-height: 1.5; }
+
+#chatScreen {
+ display: none;
+ flex-direction: column;
+ height: 100vh;
+ padding-top: 60px;
+ background: #ECE5DD;
+}
+.chat-msgs { flex: 1; overflow-y: auto; padding: 0 16px 8px; display: flex; flex-direction: column; gap: 2px; }
+.date-sep { text-align: center; margin: 6px 0 0; }
+.date-sep:first-child { margin-top: 0; }
+.date-sep span { background: var(--white); color: var(--gray-500); font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 999px; }
+.bubble-row { display: flex; margin: 1px 0; }
+.bubble-row.sent { justify-content: flex-end; }
+.bubble-row.received { justify-content: flex-start; }
+.bubble { max-width: 75%; padding: 8px 12px; border-radius: 4px; font-size: 14.5px; line-height: 1.45; }
+.bubble.received { background: var(--white); color: var(--gray-800); border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; border-top-right-radius: 16px; }
+.bubble.sent { background: var(--teal); color: white; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; border-top-left-radius: 16px; }
+.bubble-meta { display: flex; align-items: center; justify-content: flex-end; gap: 3px; margin-top: 2px; padding: 0 2px; }
+.bubble-time { font-size: 11px; color: var(--gray-400); }
+.bubble.sent .bubble-time { color: rgba(255,255,255,0.65); }
+.bubble-status { font-size: 14px; line-height: 1; }
+.bubble-status.sent-ok { color: var(--gray-400); }
+.bubble-status.sent-read { color: var(--gold); }
+.bubble-status.sent-err { color: var(--red); }
+.input-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--white); border-top: 1px solid var(--gray-200); }
+.input-bar .attach-btn, .input-bar .voice-btn { width: 40px; height: 40px; border-radius: 50%; background: none; border: none; font-size: 20px; color: var(--gray-500); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+.input-bar .send-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--teal); border: none; font-size: 18px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.input-bar .send-btn.hide { display: none; }
+.msg-input-wrap { flex: 1; display: flex; align-items: center; background: var(--gray-100); border-radius: 999px; padding: 0 14px; min-height: 40px; }
+.msg-input { flex: 1; border: none; background: transparent; font-size: 15px; color: var(--gray-800); outline: none; padding: 8px 0; resize: none; max-height: 120px; }
+.msg-input::placeholder { color: var(--gray-400); }
+</style>
+<script src="i18n.js"></script>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<div class="nav-right">
+<div class="nav-start">
+<button class="mobile-menu-btn" onclick="toggleChatNav()">☰</button>
+<button class="back-btn" id="backBtn" onclick="toggleChatNav()" style="display:none;background:none;border:none;color:var(--gold);font-size:20px;cursor:pointer;padding:4px;">☰</button>
+<button class="back-btn" id="listBackBtn" onclick="showConvList()" style="background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer;padding:4px;margin-right:4px;">‹</button>
+<a href="minerva_landing.html" class="logo">
+<svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+<path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+</svg>
+Minerva
+</a>
+</div>
+<div class="nav-links">
+<a href="teacher_dashboard.html">Dashboard</a>
+<a href="student_dashboard.html">Students</a>
+<a href="teacher_schedule.html">Schedule</a>
+<a href="messages.html" class="active">Chats</a>
+<a href="reviews.html">Reviews</a>
+<a href="earnings.html">Earnings</a>
+</div>
+<div class="nav-end">
+<div class="user-info">
+<a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
+</div>
+<div class="lang-selector" id="langSelector">
+<svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+<div class="lang-dropdown" id="langDropdown">
+<div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+<div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+<div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+</div>
+</div>
+</div>
+<div id="chatNavInfo" style="display:none;align-items:center;gap:8px;margin-left:auto;">
+<div id="navAvatarWrap" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;background:#008C72;flex-shrink:0;position:relative;">
+<span id="navInitials" style="position:relative;z-index:1;"></span>
+<div id="navOnlineDot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;border:1.5px solid #1e3a5f;position:absolute;bottom:-1px;right:-1px;display:none;"></div>
+</div>
+<div style="margin-left:8px;">
+<div id="navChatName" style="font-size:15px;font-weight:600;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px;"></div>
+<div id="navChatStatus" style="font-size:11px;color:rgba(255,255,255,0.7);"></div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div id="chatListScreen">
+ <div style="position:sticky;top:60px;z-index:40;background:var(--white);padding:6px 16px;border-bottom:1px solid var(--gray-200);">
+  <div class="search-bar">
+   <span class="si">&#128269;</span>
+   <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="search_conversations" oninput="filterConvs()" autocomplete="off">
+   <button class="clear-btn" id="convClearBtn" onclick="clearConvSearch()">&#10005;</button>
+  </div>
+ </div>
+ <div class="conv-scroll" id="convScroll"></div>
+</div>
+
+<div id="chatScreen">
+ <div class="chat-msgs" id="chatMsgs"></div>
+ <div class="input-bar">
+  <button class="attach-btn">&#43;</button>
+  <div class="msg-input-wrap">
+   <textarea class="msg-input" id="msgInput" placeholder="Type a message..." rows="1" oninput="autoResize(this);toggleSendBtn()"></textarea>
+  </div>
+  <button class="send-btn" id="sendBtn" onclick="sendMsg()">&#8593;</button>
+  
+ </div>
+</div>
+
+<script>
+const CURRENT_USER="me";
+
+const CONVERSATIONS=[
+{id:"conv-1",name:"Ms. Chan",initials:"MC",color:"#008C72",lastMessage:"Thanks for the lesson today!",timestamp:new Date(Date.now()-1000*60*30),unreadCount:2,isOnline:true,msgs:[
+{id:"m1",content:"Hi! How was the lesson today?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*6),status:"read"},
+{id:"m2",content:"It was great! David really understood the algebra finally.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*6+1000*60*2),status:"read"},
+{id:"m3",content:"That's wonderful to hear! Should we book the same time next week?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*5),status:"read"},
+{id:"m4",content:"Yes please! Same time works perfectly.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*5+1000*60*3),status:"read"},
+{id:"m5",content:"Great! I'll send you the booking link in a moment.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*4),status:"read"},
+{id:"m6",content:"Thanks! By the way, David mentioned he wants to practice more fractions.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*4+1000*60*10),status:"read"},
+{id:"m7",content:"Good idea! Fractions can be tricky. I have some worksheets we can use.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*3),status:"read"},
+{id:"m8",content:"That would be perfect. Should I print them out before the next lesson?",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*3+1000*60*5),status:"read"},
+{id:"m9",content:"Yes please! Also, bring the geometry set if you have one.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*2),status:"read"},
+{id:"m10",content:"Will do! See you Thursday at 4pm.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*2+1000*60*2),status:"read"},
+{id:"m11",content:"See you then! Don't forget to practice those algebra problems.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60),status:"read"},
+{id:"m12",content:"I've been practicing every day! My test scores are improving.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*0.5),status:"read"},
+{id:"m13",content:"That's great progress! Keep it up.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*30),status:"read"},
+{id:"m14",content:"Thanks for the lesson today!",senderId:"me",timestamp:new Date(Date.now()-1000*60*15),status:"read"},
+{id:"m15",content:"Thanks for the lesson today!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*10),status:"read"},
+]},
+{id:"conv-2",name:"David (Math)",initials:"DV",color:"#3b82f6",lastMessage:"Can we reschedule to Friday?",timestamp:new Date(Date.now()-1000*60*60*24),unreadCount:0,isOnline:false,msgs:[
+{id:"m1",content:"Hi Ms. Chan, can we reschedule our Thursday lesson?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*26),status:"read"},
+{id:"m2",content:"Sure! Is Friday at 4pm okay?",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*25),status:"read"},
+{id:"m3",content:"Can we reschedule to Friday?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24),status:"read"},
+{id:"m4",content:"Friday at 4pm works perfectly for me!",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*23),status:"read"},
+{id:"m5",content:"Great! I'll bring the algebra worksheets we didn't finish.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*22),status:"read"},
+{id:"m6",content:"Looking forward to it. Should I bring my notebook?",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*20),status:"read"},
+{id:"m7",content:"Yes, and your calculator too. We're doing quadratic equations.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*18),status:"read"},
+{id:"m8",content:"Quadratic equations! Those are the ones with the parabolas right?",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*17),status:"read"},
+{id:"m9",content:"Exactly! We'll graph some parabolas and find the roots.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*16),status:"read"},
+{id:"m10",content:"Looking forward to it. See you Friday!",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24),status:"read"},
+]},
+{id:"conv-3",name:"Teacher: Li Wei",initials:"LW",color:"#8b5cf6",lastMessage:"Your booking is confirmed",timestamp:new Date(Date.now()-1000*60*60*48),unreadCount:0,isOnline:true,msgs:[
+{id:"m1",content:"Hi, I would like to book a lesson.",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*50),status:"read"},
+{id:"m2",content:"Sure! Which subject and time works for you?",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*49),status:"read"},
+{id:"m3",content:"Your booking is confirmed",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*48),status:"read"},
+]},
+{id:"conv-4",name:"Emma (English)",initials:"EM",color:"#F9A828",lastMessage:"See you tomorrow!",timestamp:new Date(Date.now()-1000*60*60*24*5),unreadCount:0,isOnline:false,msgs:[
+{id:"m1",content:"Hi Emma, ready for your lesson tomorrow?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*6),status:"read"},
+{id:"m2",content:"See you tomorrow!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*5),status:"read"},
+]},
+{id:"conv-5",name:"Ryan (Science)",initials:"RY",color:"#ef4444",lastMessage:"The science project was fun!",timestamp:new Date(Date.now()-1000*60*60*24*2),unreadCount:1,isOnline:true,msgs:[
+{id:"m1",content:"Teacher, did you get my science project?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*3),status:"read"},
+{id:"m2",content:"Yes Ryan! I loved your hypothesis section.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*3)+1000*60*30,status:"read"},
+{id:"m3",content:"The science project was fun!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*2),status:"read"},
+]},
+{id:"conv-6",name:"Ms. Wu (Piano)",initials:"MW",color:"#22c55e",lastMessage:"Recital next Saturday at 3pm",timestamp:new Date(Date.now()-1000*60*60*24*3),unreadCount:0,isOnline:false,msgs:[
+{id:"m1",content:"Reminder: recital next Saturday!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*4),status:"read"},
+{id:"m2",content:"What time should we arrive?",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*3.5),status:"read"},
+{id:"m3",content:"Recital next Saturday at 3pm",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*3),status:"read"},
+]},
+{id:"conv-7",name:"Jason (Chemistry)",initials:"JS",color:"#6366f1",lastMessage:"Can you help with balancing equations?",timestamp:new Date(Date.now()-1000*60*60*24*7),unreadCount:0,isOnline:true,msgs:[
+{id:"m1",content:"I need help with chemistry homework",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*8),status:"read"},
+{id:"m2",content:"Of course! Send me a photo of the problem.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*7.5),status:"read"},
+{id:"m3",content:"Can you help with balancing equations?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*7),status:"read"},
+]},
+{id:"conv-8",name:"Sophie (Art)",initials:"SO",color:"#ec4899",lastMessage:"I finished the landscape painting!",timestamp:new Date(Date.now()-1000*60*60*24*10),unreadCount:3,isOnline:false,msgs:[
+{id:"m1",content:"Your composition is improving so much!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*11),status:"read"},
+{id:"m2",content:"Thank you! I'm really enjoying this topic.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*10.5),status:"read"},
+{id:"m3",content:"I finished the landscape painting!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*10),status:"read"},
+]},
+{id:"conv-9",name:"Mr. Lee (History)",initials:"ML",color:"#f59e0b",lastMessage:"World War II essay due Friday",timestamp:new Date(Date.now()-1000*60*60*24*12),unreadCount:0,isOnline:false,msgs:[
+{id:"m1",content:"Don't forget the essay deadline!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*13),status:"read"},
+{id:"m2",content:"I've started the outline already",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*12.5),status:"read"},
+{id:"m3",content:"World War II essay due Friday",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*12),status:"read"},
+]},
+{id:"conv-10",name:"Lisa (French)",initials:"LS",color:"#14b8a6",lastMessage:"Merci beaucoup for the study tips!",timestamp:new Date(Date.now()-1000*60*60*24*15),unreadCount:0,isOnline:true,msgs:[
+{id:"m1",content:"Try watching French movies with subtitles!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*16),status:"read"},
+{id:"m2",content:"That's a great idea, thanks!",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*15.5),status:"read"},
+{id:"m3",content:"Merci beaucoup for the study tips!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*15),status:"read"},
+]},
+];
+
+function formatTime(d){var now=new Date(),diff=Math.floor((now-d)/(1000*60*60*24));if(diff===0)return d.toLocaleTimeString("en",{hour:"2-digit",minute:"2-digit"});if(diff===1)return"Yesterday";if(diff<7)return d.toLocaleDateString("en",{weekday:"short"});return d.toLocaleDateString("en",{month:"short",day:"numeric"});}
+function formatMsgTime(d){return d.toLocaleTimeString("en",{hour:"2-digit",minute:"2-digit"});}
+function formatDateSep(d){var now=new Date(),diff=Math.floor((now-d)/(1000*60*60*24));if(diff===0)return"Today";if(diff===1)return"Yesterday";return d.toLocaleDateString("en",{month:"long",day:"numeric"});}
+function getReceiptIcon(s){if(s==="sending")return"<span class=\"bubble-status sent-ok\">&#10003;</span>";if(s==="sent"||s==="delivered")return"<span class=\"bubble-status sent-ok\">&#10003;&#10003;</span>";if(s==="read")return"<span class=\"bubble-status sent-read\">&#10003;&#10003;</span>";if(s==="failed")return"<span class=\"bubble-status sent-err\">&#10007;</span>";return"";}
+function renderConvList(){var s=document.getElementById("convScroll"),q=document.getElementById("convSearchInput").value.toLowerCase();document.getElementById("convClearBtn").className="clear-btn"+(q.length>0?" show":"");var f=CONVERSATIONS.filter(function(c){return c.name.toLowerCase().indexOf(q)!==-1;});if(!f.length){s.innerHTML='<div class="empty-state"><div class="empty-icon">&#128172;</div><div class="empty-title" data-i18n="no_conversations_yet">No conversations yet</div><div class="empty-sub" data-i18n="start_chatting_teachers">Start chatting with your teachers</div></div>';return;}var h="";f.forEach(function(c){var u=c.unreadCount>0;h+='<div class="conv-item" onclick="openChat(\''+c.id+'\')"><div class="avatar-wrap"><div class="avatar" style="background:'+c.color+'">'+c.initials+"</div>"+(c.isOnline?'<div class="online-dot"></div>':"")+'</div><div class="conv-body"><div class="conv-top"><span class="conv-name'+(u?" unread":"")+'">'+c.name+'</span><span class="conv-time'+(u?" unread":"")+'">'+formatTime(c.timestamp)+'</span></div><div class="conv-bottom"><span class="conv-preview'+(u?" unread":"")+'">'+c.lastMessage+"</span>"+(u?'<div class="unread-badge">'+(c.unreadCount>9?"9+":c.unreadCount)+"</div>":"")+"</div></div></div><div class=\"conv-divider\"></div>";});s.innerHTML=h;}
+function filterConvs(){renderConvList();}
+function clearConvSearch(){document.getElementById("convSearchInput").value="";renderConvList();}
+var activeConv=null;
+function openChat(id){activeConv=CONVERSATIONS.find(function(c){return c.id===id;});if(!activeConv)return;document.getElementById("navInitials").textContent=activeConv.initials;document.getElementById("navChatName").textContent=activeConv.name;document.getElementById("navChatStatus").textContent=activeConv.isOnline?"online":"";document.getElementById("navOnlineDot").style.display=activeConv.isOnline?"block":"none";document.getElementById("navAvatarWrap").style.background=activeConv.color;document.querySelector(".nav-left").style.display="none";document.querySelector(".nav-right").style.display="none";document.getElementById("chatNavInfo").style.display="flex";document.getElementById("backBtn").style.display="block";document.getElementById("listBackBtn").style.display="none";renderMessages();document.getElementById("chatListScreen").style.display="none";document.getElementById("chatScreen").style.display="flex";}
+function renderMessages(){if(!activeConv)return;var c=document.getElementById("chatMsgs"),html="",lastDate="";activeConv.msgs.forEach(function(m){var ds=formatDateSep(m.timestamp);if(ds!==lastDate){html+='<div class="date-sep"><span>'+ds+"</span></div>";lastDate=ds;}var sent=m.senderId===CURRENT_USER;html+='<div class="bubble-row'+(sent?" sent":" received")+'"><div class="bubble'+(sent?" sent":" received")+'">'+m.content+'<div class="bubble-meta"><span class="bubble-time">'+formatMsgTime(m.timestamp)+"</span>"+(sent?getReceiptIcon(m.status):"")+"</div></div></div>";});c.innerHTML=html;}
+function sendMsg(){var i=document.getElementById("msgInput"),t=i.value.trim();if(!t||!activeConv)return;var m={id:"m"+Date.now(),content:t,senderId:CURRENT_USER,timestamp:new Date(),status:"sending"};activeConv.msgs.push(m);activeConv.lastMessage=t;activeConv.timestamp=new Date();renderMessages();setTimeout(function(){m.status="sent";renderMessages();},500);setTimeout(function(){m.status="delivered";renderMessages();},1200);setTimeout(function(){m.status="read";renderMessages();},2500);i.value="";autoResize(i);toggleSendBtn();document.getElementById("msgInput").focus();}
+function autoResize(e){e.style.height="auto";e.style.height=Math.min(e.scrollHeight,120)+"px";}
+function toggleSendBtn(){var i=document.getElementById("msgInput"),s=document.getElementById("sendBtn"),has=i.value.trim().length>0;s.className="send-btn"+(has?"":" hide");}
+function showConvList(){activeConv=null;document.getElementById("chatScreen").style.display="none";document.getElementById("chatListScreen").style.display="flex";document.getElementById("backBtn").style.display="none";document.getElementById("chatNavInfo").style.display="none";document.querySelector(".nav-left").style.display="flex";document.querySelector(".nav-right").style.display="flex";document.getElementById("listBackBtn").style.display="block";document.querySelector(".nav-links").classList.remove("active");renderConvList();}
+function toggleChatNav(){var n=document.querySelector(".nav-links");n.classList.toggle("active");}
+document.addEventListener("DOMContentLoaded",function(){renderConvList();toggleSendBtn();document.getElementById("msgInput").addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMsg();}});});
+</script>
+<script src="i18n.js"></script>
+<script>
+(function(){
+  var sel = document.getElementById("langSelector");
+  var globe = document.getElementById("langGlobe");
+  var dropdown = document.getElementById("langDropdown");
+  if (sel && globe && dropdown) {
+    globe.addEventListener("click", function(e){ e.stopPropagation(); sel.classList.toggle("open"); });
+    document.addEventListener("click", function(){ sel.classList.remove("open"); });
+    dropdown.addEventListener("click", function(e){ e.stopPropagation(); });
+    dropdown.querySelectorAll(".lang-option").forEach(function(opt){
+      opt.addEventListener("click", function(){
+        dropdown.querySelectorAll(".lang-option").forEach(function(o){ o.classList.remove("selected"); });
+        opt.classList.add("selected");
+        sel.classList.remove("open");
+        var lang = opt.dataset.lang;
+        if (typeof setLanguage === "function") setLanguage(lang);
+      });
+    });
+  }
+  var params = new URLSearchParams(window.location.search);
+  var lp = params.get("lang");
+  if (lp && typeof setLanguage === "function") setLanguage(lp);
+})();
+</script>
+
+</body>
+</html>
