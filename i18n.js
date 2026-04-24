@@ -702,7 +702,16 @@
       schedule_label:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
       reviews_label:{en:"Reviews",zhTW:"評價",zhCN:"评价"},
       chats_label:{en:"Chats",zhTW:"訊息",zhCN:"訊息"},
-},
+}
+    nav:{
+      dashboard_label:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
+      schedule_label:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
+      chats_label:{en:"Chats",zhTW:"訊息",zhCN:"訊息"},
+      earnings_label:{en:"Earnings",zhTW:"收入",zhCN:"收入"},
+      reviews_label:{en:"Reviews",zhTW:"評價",zhCN:"评价"},
+      profile_label:{en:"Profile",zhTW:"個人資料",zhCN:"个人资料"},
+    },
+,
 
 
     // ── Privacy ──
