@@ -328,26 +328,26 @@
  if (role === 'teacher') {
  teacherBtn.classList.add('active');
  parentBtn.classList.remove('active');
- heroTitle.textContent = 'Welcome back, teacher!';
- heroSubtitle.textContent = 'Login to manage your students and schedule.';
- emailLabel.textContent = 'Email Address';
- passwordLabel.textContent = 'Password';
+ heroTitle.textContent = T['login.hero_welcome_teacher'] || 'Welcome back, teacher!';
+ heroSubtitle.textContent = T['login.hero_subtitle_teacher'] || 'Login to manage your students and schedule.';
+ emailLabel.textContent = T['login.email'] || 'Email Address';
+ passwordLabel.textContent = T['login.password'] || 'Password';
  forgotLink.href = '#';
- submitBtn.textContent = 'Login';
- registerLink.textContent = 'Register as Teacher';
+ submitBtn.textContent = T['login.login_btn'] || 'Login';
+ registerLink.textContent = T['login.register_as_teacher'] || 'Register as Teacher';
  registerLink.parentElement.querySelector('p').innerHTML = 
- "Don't have an account? <a href=\"#\" id=\"registerLink\">Register as Teacher</a>";
+ (T['login.dont_have_account'] || "Don't have an account?") + ' <a href=\"#\" id=\"registerLink\">' + (T['login.register_as_teacher'] || 'Register as Teacher') + '</a>';
  } else {
  teacherBtn.classList.remove('active');
  parentBtn.classList.add('active');
- heroTitle.textContent = 'Welcome back!';
- heroSubtitle.textContent = 'Login to manage your lessons and track progress.';
- emailLabel.textContent = 'Email Address';
- passwordLabel.textContent = 'Password';
+ heroTitle.textContent = T['login.hero_welcome_parent'] || 'Welcome back!';
+ heroSubtitle.textContent = T['login.hero_subtitle_parent'] || 'Login to manage your lessons and track progress.';
+ emailLabel.textContent = T['login.email'] || 'Email Address';
+ passwordLabel.textContent = T['login.password'] || 'Password';
  forgotLink.href = '#';
- submitBtn.textContent = 'Login';
+ submitBtn.textContent = T['login.login_btn'] || 'Login';
  registerLink.parentElement.querySelector('p').innerHTML = 
- "Don't have an account? <a href=\"#\" id=\"registerLink\">Register as Parent/Student</a>";
+ (T['login.dont_have_account'] || "Don't have an account?") + ' <a href=\"#\" id=\"registerLink\">' + (T['login.register_as_parent'] || 'Register as Parent/Student') + '</a>';
  }
  }
 
