@@ -1213,8 +1213,12 @@
  let currentLang = 'en';
 // Check localStorage first (persistent across pages), then URL params
 const savedLang = localStorage.getItem('minerva_lang');
-if (savedLang && translations[savedLang]) {
-  currentLang = savedLang;
+// Normalize: zhTW -> zh-TW, zhCN -> zh-CN for lookup
+let normalizedSaved = savedLang;
+if (savedLang === 'zhTW') normalizedSaved = 'zh-TW';
+else if (savedLang === 'zhCN') normalizedSaved = 'zh-CN';
+if (normalizedSaved && translations[normalizedSaved]) {
+  currentLang = normalizedSaved;
 } else {
   const urlParams = new URLSearchParams(window.location.search);
   const langParam = urlParams.get('lang');
