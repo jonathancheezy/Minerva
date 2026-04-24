@@ -443,7 +443,10 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; mar
 </nav>
 <div class="conv-list" id="convList">
  <div style="position:fixed;top:60px;left:0;right:0;padding:16px 20px;background:#f8fafc;z-index:98;"><span style="font-size:28px;font-weight:800;color:#0f1f33;">Chats</span></div>
- <div class="card" style="margin-top:64px;">
+ <div style="padding:8px 16px;background:#f8fafc;position:fixed;top:108px;left:0;right:0;z-index:97;">
+  <input type="text" id="convSearchInput" placeholder="Search conversations..." oninput="filterConvs()" style="width:100%;padding:9px 14px;border:1px solid #e2e8f0;border-radius:20px;font-size:13px;outline:none;background:white;color:#334155;box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+ </div>
+ <div class="card" style="margin-top:120px;">
  <div style="display: flex; justify-content: flex-end; margin-bottom: 8px;">
  <button onclick="openNewChat()" style="background: #3b82f6; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;">+</button>
  </div>
@@ -507,6 +510,14 @@ function openChat(name, initials, color) {
  if(nm) nm.textContent = name;
  var av = document.getElementById('chatWithAvatar');
  if(av) { av.textContent = initials; av.style.background = color; }
+}
+function filterConvs() {
+ var query = document.getElementById('convSearchInput').value.toLowerCase();
+ var items = document.querySelectorAll('.conv-item');
+ items.forEach(function(item) {
+  var name = item.querySelector('.conv-name').textContent.toLowerCase();
+  item.style.display = name.includes(query) || query === '' ? '' : 'none';
+ });
 }
 function filterChatMessages() {
  var query = document.getElementById('chatSearchInput').value.toLowerCase();
