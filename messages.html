@@ -237,6 +237,9 @@ a { color: #3b82f6; text-decoration: none; }
  background: var(--white);
 }
 .conv-item:active { background: var(--gray-100); }
+.conv-wrap { position: relative; overflow: hidden; }
+.conv-delete { position: absolute; right: 0; top: 0; bottom: 0; width: 72px; background: var(--red); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; cursor: pointer; border: none; z-index: 2; transform: translateX(100%); transition: transform 0.2s; }
+.conv-delete.show { transform: translateX(0); }
 .avatar-wrap { position: relative; flex-shrink: 0; }
 .avatar-wrap .avatar {
  width: 52px;
@@ -337,21 +340,7 @@ Minerva
 <a href="earnings.html" data-i18n="earnings.title">Earnings</a>
 </div>
 <div class="nav-end">
-<div class="user-info">
-<a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
-</div>
-<div class="lang-selector" id="langSelector">
-<svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
- <circle cx="12" cy="12" r="10"/>
- <line x1="2" y1="12" x2="22" y2="12"/>
- <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
- </svg>
-<div class="lang-dropdown" id="langDropdown">
-<div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
-<div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
-<div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
-</div>
-</div>
+
 </div>
 <div id="chatNavInfo" style="display:none;align-items:center;margin-left:8px;">
 <button onclick="showConvList()" style="background:none;border:none;color:var(--gold);font-size:26px;cursor:pointer;padding:4px 8px;">&#8249;</button>
@@ -463,8 +452,12 @@ const CONVERSATIONS=[
 function formatTime(d){var now=new Date(),diff=Math.floor((now-d)/(1000*60*60*24));if(diff===0)return d.toLocaleTimeString("en",{hour:"2-digit",minute:"2-digit"});if(diff===1)return"Yesterday";if(diff<7)return d.toLocaleDateString("en",{weekday:"short"});return d.toLocaleDateString("en",{month:"short",day:"numeric"});}
 function formatMsgTime(d){return d.toLocaleTimeString("en",{hour:"2-digit",minute:"2-digit"});}
 function formatDateSep(d){var now=new Date(),diff=Math.floor((now-d)/(1000*60*60*24));if(diff===0)return"Today";if(diff===1)return"Yesterday";return d.toLocaleDateString("en",{month:"long",day:"numeric"});}
-function getReceiptIcon(s){if(s==="sending")return"<span class=\"bubble-status sent-ok\">&#10003;</span>";if(s==="sent"||s==="delivered")return"<span class=\"bubble-status sent-ok\">&#10003;&#10003;</span>";if(s==="read")return"<span class=\"bubble-status sent-read\">&#10003;&#10003;</span>";if(s==="failed")return"<span class=\"bubble-status sent-err\">&#10007;</span>";return"";}
-function renderConvList(){var s=document.getElementById("convScroll"),q=document.getElementById("convSearchInput").value.toLowerCase();document.getElementById("convClearBtn").className="clear-btn"+(q.length>0?" show":"");var f=CONVERSATIONS.filter(function(c){return c.name.toLowerCase().indexOf(q)!==-1;});if(!f.length){s.innerHTML='<div class="empty-state"><div class="empty-icon">&#128172;</div><div class="empty-title" data-i18n="no_conversations_yet">No conversations yet</div><div class="empty-sub" data-i18n="start_chatting_teachers">Start chatting with your teachers</div></div>';return;}var h="";f.forEach(function(c){var u=c.unreadCount>0;h+='<div class="conv-item" onclick="openChat(\''+c.id+'\')"><div class="avatar-wrap"><div class="avatar" style="background:'+c.color+'">'+c.initials+"</div>"+(c.isOnline?'<div class="online-dot"></div>':"")+'</div><div class="conv-body"><div class="conv-top"><span class="conv-name'+(u?" unread":"")+'">'+c.name+'</span><span class="conv-time'+(u?" unread":"")+'">'+formatTime(c.timestamp)+'</span></div><div class="conv-bottom"><span class="conv-preview'+(u?" unread":"")+'">'+c.lastMessage+"</span>"+(u?'<div class="unread-badge">'+(c.unreadCount>9?"9+":c.unreadCount)+"</div>":"")+"</div></div></div><div class=\"conv-divider\"></div>";});s.innerHTML=h;}
+function getReceiptIcon(s){if(s==="sending")return"<span class=\"bubble-status sent-ok\">&#10003;</span>";if(s==="sent")return"<span class=\"bubble-status sent-ok\">&#10003;</span>";if(s==="delivered")return"<span class=\"bubble-status sent-ok\">&#10003;&#10003;</span>";if(s==="read")return"<span class=\"bubble-status sent-read\">&#10003;&#10003;</span>";if(s==="failed")return"<span class=\"bubble-status sent-err\">&#10007;</span>";return"";}
+function renderConvList(){var s=document.getElementById("convScroll"),q=document.getElementById("convSearchInput").value.toLowerCase();document.getElementById("convClearBtn").className="clear-btn"+(q.length>0?" show":"");var f=CONVERSATIONS.filter(function(c){return c.name.toLowerCase().indexOf(q)!==-1;});if(!f.length){s.innerHTML='<div class="empty-state"><div class="empty-icon">&#128172;</div><div class="empty-title" data-i18n="no_conversations_yet">No conversations yet</div><div class="empty-sub" data-i18n="start_chatting_teachers">Start chatting with your teachers</div></div>';return;}var h="";f.forEach(function(c){var u=c.unreadCount>0;h+='<div class="conv-wrap" id="wrap-'+c.id+'"><div class="conv-item" onclick="openChat(\''+c.id+'\')" ontouchstart="swipeStart(event,\''+c.id+'\')" ontouchend="swipeEnd(event,\''+c.id+'\')"><div class="avatar-wrap"><div class="avatar" style="background:'+c.color+'">'+c.initials+"</div>"+(c.isOnline?'<div class="online-dot"></div>':"")+'</div><div class="conv-body"><div class="conv-top"><span class="conv-name'+(u?" unread":"")+'">'+c.name+'</span><span class="conv-time'+(u?" unread":"")+'">'+formatTime(c.timestamp)+'</span></div><div class="conv-bottom"><span class="conv-preview'+(u?" unread":"")+'">'+c.lastMessage+"</span>"+(u?'<div class="unread-badge">'+(c.unreadCount>9?"9+":c.unreadCount)+"</div>":"")+"</div></div></div><button class="conv-delete" id="del-'+c.id+'" onclick="deleteConv(\''+c.id+'\')">Delete</button></div><div class="conv-divider"></div>";});s.innerHTML=h;}
+var swipeX={};
+function swipeStart(e,id){swipeX[id]=e.changedTouches[0].screenX;}
+function swipeEnd(e,id){var dx=e.changedTouches[0].screenX-swipeX[id];if(dx<-60){document.getElementById('del-'+id).classList.add('show');}else{document.getElementById('del-'+id).classList.remove('show');}}
+function deleteConv(id){if(!confirm('Delete this conversation?'))return;CONVERSATIONS=CONVERSATIONS.filter(function(c){return c.id!==id;});renderConvList();}
 function filterConvs(){renderConvList();}
 function clearConvSearch(){document.getElementById("convSearchInput").value="";renderConvList();}
 var activeConv=null;
