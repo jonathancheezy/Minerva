@@ -44,18 +44,20 @@
  .nav-inner {
  max-width: 1100px;
  margin: 0 auto;
- display: flex;
- justify-content: space-between;
- align-items: center;
  }
 
  .nav-right {
  display: flex;
  align-items: center;
+ justify-content: space-between;
+ width: 100%;
+ gap: 16px;
  }
 
  .nav-links {
- display: none;
+ display: flex;
+ gap: 24px;
+ align-items: center;
  }
 
  .logo {
@@ -74,15 +76,15 @@
  }
 
  .nav-links a {
- color: white;
+ color: rgba(255,255,255,0.75);
  text-decoration: none;
  font-size: 14px;
  font-weight: 500;
  transition: color 0.2s;
  }
 
- .nav-links a:hover { color: white; }
- .mobile-menu-btn { display: none; font-size: 20px; cursor: pointer; padding: 4px; color: white; background: none; border: none; }
+ .nav-links a:hover { color: var(--gold); }
+ .mobile-menu-btn { display: none; }
 
  /* Nav Controls */
  .nav-controls { display: flex; align-items: center; gap: 12px; }
@@ -398,14 +400,13 @@
  /* Footer */
  footer {
  padding: 40px 24px;
- padding: 40px 24px;
  text-align: center;
  color: var(--gray-500);
  font-size: 13px;
  border-top: 1px solid var(--gray-200);
  }
-
- footer a { color: var(--gold); }
+ footer a { color: var(--gold); text-decoration: none; }
+ footer a:hover { text-decoration: underline; }
 
  .lang-selector {
  display: flex;
