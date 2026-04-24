@@ -291,7 +291,7 @@ a { color: #3b82f6; text-decoration: none; }
 <body>
 
 <nav>
- <button class="back-btn" id="backBtn" onclick="showConvList()" style="display:none;background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:8px;margin-right:8px;">&#8249;</button>
+ <button class="back-btn" id="backBtn" onclick="toggleChatNav()" style="display:none;background:none;border:none;color:white;font-size:22px;cursor:pointer;padding:8px;margin-right:4px;">&#9776;</button>
  <div class="nav-left">
  <button class="back-btn" id="listBackBtn" onclick="showConvList()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:8px;">&#8249;</button>
  <a href="minerva_landing.html?v=0153a2c" class="logo">
@@ -445,7 +445,8 @@ function renderMessages(){if(!activeConv)return;var c=document.getElementById("c
 function sendMsg(){var i=document.getElementById("msgInput"),t=i.value.trim();if(!t||!activeConv)return;var m={id:"m"+Date.now(),content:t,senderId:CURRENT_USER,timestamp:new Date(),status:"sending"};activeConv.msgs.push(m);activeConv.lastMessage=t;activeConv.timestamp=new Date();renderMessages();setTimeout(function(){m.status="sent";renderMessages();},500);setTimeout(function(){m.status="delivered";renderMessages();},1200);setTimeout(function(){m.status="read";renderMessages();},2500);i.value="";autoResize(i);toggleSendBtn();document.getElementById("msgInput").focus();}
 function autoResize(e){e.style.height="auto";e.style.height=Math.min(e.scrollHeight,120)+"px";}
 function toggleSendBtn(){var i=document.getElementById("msgInput"),s=document.getElementById("sendBtn"),has=i.value.trim().length>0;s.className="send-btn"+(has?"":" hide");}
-function showConvList(){activeConv=null;document.getElementById("chatScreen").style.display="none";document.getElementById("chatListScreen").style.display="flex";document.getElementById("backBtn").style.display="none";document.getElementById("chatNavInfo").style.display="none";document.querySelector(".nav-left").style.display="flex";document.querySelector(".nav-right").style.display="flex";document.getElementById("listBackBtn").style.display="block";renderConvList();}
+function showConvList(){activeConv=null;document.getElementById("chatScreen").style.display="none";document.getElementById("chatListScreen").style.display="flex";document.getElementById("backBtn").style.display="none";document.getElementById("chatNavInfo").style.display="none";document.querySelector(".nav-left").style.display="flex";document.querySelector(".nav-right").style.display="flex";document.getElementById("listBackBtn").style.display="block";document.querySelector(".nav-links").classList.remove("active");renderConvList();}
+function toggleChatNav(){var n=document.querySelector(".nav-links");n.classList.toggle("active");}
 document.addEventListener("DOMContentLoaded",function(){renderConvList();toggleSendBtn();document.getElementById("msgInput").addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMsg();}});});
 </script>
 </body>
