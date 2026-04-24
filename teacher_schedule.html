@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Schedule — Minerva</title>
+<title>My Schedule — Minerva</title>
 <style>
 /* v=clean001 - rebuilt from scratch */
 
@@ -106,7 +106,7 @@ a { color: #3b82f6; text-decoration: none; }
  .nav-links a:hover { color: white; }
  .nav-links a.active { color: #F9A828 !important; }
 
- 
+
 
  .user-info {
  display: flex;
@@ -170,6 +170,7 @@ a { color: #3b82f6; text-decoration: none; }
 .page-header { margin-bottom: 32px; }
 .page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
 .page-header p { color: #64748b; font-size: 14px; }
+.dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
 
 /* Stats Grid */
 .stats-grid {
@@ -434,7 +435,7 @@ footer a:hover { text-decoration: underline; }
 </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- 
+
 </head>
 <body>
 <nav>
@@ -452,7 +453,7 @@ footer a:hover { text-decoration: underline; }
  <div class="nav-links">
  <a href="teacher_dashboard.html?v=ee40335" data-i18n="teacher_dash.dashboard">Dashboard</a>
  <a href="student_dashboard.html?v=ee40335" data-i18n="teacher_dash.students">Students</a>
- <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="teacher_dash.my_schedule">Schedule</a>
  <a href="messages.html?v=freshChats" data-i18n="teacher_dash.nav_messages">Chats</a>
  <a href="reviews.html?v=0153a2c" data-i18n="reviews.title">Reviews</a>
  <a href="earnings.html?v=0153a2c" data-i18n="earnings.title">Earnings</a>
@@ -472,8 +473,8 @@ footer a:hover { text-decoration: underline; }
  </nav>
 <main class="main">
  <div class="page-header">
-  <h1 data-i18n="teacher_dash.schedule">Schedule</h1>
-  
+  <h1 data-i18n="teacher_dash.my_schedule">My Schedule</h1>
+ <p class="dashboard-quote">"The bad teacher explains; the good teacher demonstrates; the great teacher inspires — in the time they have."</p>
  </div>
 
  <div class="stats-grid">
@@ -572,7 +573,7 @@ let currentYear = 2026;
 function renderCalendar() {
   const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   document.getElementById('cal-month').textContent = months[currentMonth] + ' ' + currentYear;
-  
+
   const grid = document.getElementById('cal-grid');
   // Save day name headers before clearing
   grid.innerHTML = '';
@@ -584,32 +585,32 @@ function renderCalendar() {
     h.textContent = d;
     grid.appendChild(h);
   });
-  
+
   const firstDay = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const today = new Date();
-  
+
   // Empty cells before first day
   for (let i = 0; i < firstDay; i++) {
     const empty = document.createElement('div');
     empty.className = 'cal-day empty';
     grid.appendChild(empty);
   }
-  
+
   // Day cells
   for (let d = 1; d <= daysInMonth; d++) {
     const dateStr = currentYear + '-' + String(currentMonth + 1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
     const dayEl = document.createElement('div');
     dayEl.className = 'cal-day';
-    
+
     const isToday = today.getDate() === d && today.getMonth() === currentMonth && today.getFullYear() === currentYear;
     const hasLesson = lessons[dateStr];
     const hasAvail = availability[dateStr];
-    
+
     if (isToday) dayEl.classList.add('today');
     if (hasLesson) dayEl.classList.add('has-event');
     if (hasAvail) dayEl.classList.add('has-avail');
-    
+
     dayEl.innerHTML = '<span class="day-num">' + d + '</span>';
     if (hasLesson) {
       dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot ' + (lessons[dateStr][0].status === 'confirmed' ? 'green' : 'gold') + '"></div>');
@@ -617,7 +618,7 @@ function renderCalendar() {
     if (hasAvail) {
       dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot blue"></div>');
     }
-    
+
     dayEl.onclick = function() { selectDay(dateStr, dayEl); };
     grid.appendChild(dayEl);
   }
@@ -628,7 +629,7 @@ function selectDay(dateStr, dayEl) {
   document.querySelectorAll('.cal-day.selected').forEach(function(el) { el.classList.remove('selected'); });
   // Add selection
   dayEl.classList.add('selected');
-  
+
   // Update lessons below
   var dayHeader = document.getElementById('schedule-day-header');
   var dayLessons = document.getElementById('schedule-lessons');
@@ -638,11 +639,11 @@ function selectDay(dateStr, dayEl) {
   var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var dayName = dayNames[dayDate.getDay()];
-  var dateStrDisplay = dayName + ' — ' + months[dayDate.getMonth()] + ' ' + dayDate.getDate();
+  var dateStrDisplay = dayName + ' - ' + months[dayDate.getMonth()] + ' ' + dayDate.getDate();
   dayHeader.textContent = dateStrDisplay;
-  
+
   var lessonsHtml = '';
-  
+
   // Build availability section (always shown)
   if (avail_data.length > 0) {
     lessonsHtml += '<div class="avail-header"><span>Availability</span><button class="btn-add-avail-sm" onclick="showAddAvailability(\'' + dateStr + '\')">+</button></div>';
@@ -659,7 +660,7 @@ function selectDay(dateStr, dayEl) {
     });
   }
   lessonsHtml += '<button class="btn-add-avail-sm-inline" onclick="showAddAvailability(\'' + dateStr + '\')">+ Add time</button>';
-  
+
   if (lessons_data.length === 0 && avail_data.length === 0) {
     lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' + lessonsHtml;
   } else {
@@ -678,7 +679,7 @@ function selectDay(dateStr, dayEl) {
       lessonsHtml += '</div>';
     });
   }
-  
+
   dayLessons.innerHTML = lessonsHtml;
 }
 
@@ -713,7 +714,7 @@ var pendingAvailIdx = null;
 function showAddAvailability(dateStr) {
   pendingAvailDate = dateStr;
   pendingAvailIdx = null;
-  document.getElementById('avail-modal-title').textContent = 'Add Availability — ' + dateStr;
+  document.getElementById('avail-modal-title').textContent = 'Add Availability - ' + dateStr;
   document.getElementById('avail-start').value = '09:00';
   document.getElementById('avail-dur').value = '60';
   document.getElementById('avail-modal').classList.add('show');
@@ -723,7 +724,7 @@ function editAvailability(dateStr, idx) {
   pendingAvailDate = dateStr;
   pendingAvailIdx = idx;
   var slot = availability[dateStr][idx];
-  document.getElementById('avail-modal-title').textContent = 'Edit Availability — ' + dateStr;
+  document.getElementById('avail-modal-title').textContent = 'Edit Availability - ' + dateStr;
   document.getElementById('avail-start').value = slot.start;
   document.getElementById('avail-dur').value = String(slot.duration);
   document.getElementById('avail-modal').classList.add('show');

@@ -397,6 +397,7 @@
       welcome:{en:"Welcome back, Teacher! 👋🏻",zhTW:"歡迎回來，導師！ 👋🏻",zhCN:"欢迎回来，导师！ 👋🏻"},
       dashboard:{en:"My Dashboard",zhTW:"我的主頁",zhCN:"我的主页"},
       students:{en:"Students",zhTW:"學生",zhCN:"学生"},
+      my_schedule:{en:"My Schedule",zhTW:"我的時間表",zhCN:"我的时间表"},
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
       nav_messages:{en:"Chats",zhTW:"訊息",zhCN:"訊息"},
       total_students:{en:"Total Students",zhTW:"學生總數",zhCN:"学生总数"},
