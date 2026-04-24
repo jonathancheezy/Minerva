@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Students — Minerva</title>
+<title>My Students - Minerva</title>
 <style>
 /* v=clean001 - rebuilt from scratch */
 
@@ -106,7 +106,7 @@ a { color: #3b82f6; text-decoration: none; }
  .nav-links a:hover { color: white; }
  .nav-links a.active { color: #F9A828 !important; }
 
- 
+
 
  .user-info {
  display: flex;
@@ -170,6 +170,7 @@ a { color: #3b82f6; text-decoration: none; }
 .page-header { margin-bottom: 32px; }
 .page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
 .page-header p { color: #64748b; font-size: 14px; }
+.dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
 
 /* Stats Grid */
 .stats-grid {
@@ -419,7 +420,7 @@ footer a:hover { text-decoration: underline; }
 </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- 
+
 </head>
 <body>
 <nav>
@@ -458,14 +459,14 @@ footer a:hover { text-decoration: underline; }
 <main class="main">
  <div class="page-header">
   <h1 data-i18n="teacher_dash.students">My Students</h1>
-  
+ <p class="dashboard-quote">"The best teachers are those who show you where to look, but don't tell you what to see." — Alexandra K. Trenfor</p>
  </div>
 
  <div class="two-col-grid">
   <div class="card">
    <div class="card-header" onclick="toggleCard(this)">
     <h2 data-i18n="teacher_dash.pending_notes">Pending Notes</h2>
-    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">−</button>
+    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">-</button>
     </div>
    <div class="notes-list">
     <div class="note-item">
@@ -495,7 +496,7 @@ footer a:hover { text-decoration: underline; }
   <div class="card">
    <div class="card-header" onclick="toggleCard(this)">
     <h2 data-i18n="teacher_dash.upcoming_tests">Upcoming Tests</h2>
-    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">−</button>
+    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">-</button>
     </div>
    <div class="test-list">
     <div class="test-item">
@@ -540,7 +541,7 @@ footer a:hover { text-decoration: underline; }
  <div class="card">
   <div class="card-header" onclick="toggleCard(this)">
     <h2 data-i18n="teacher_dash.student_list">Student List</h2>
-    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">−</button>
+    <button type="button" class="collapse-btn" onclick="event.stopPropagation(); toggleCard(this.parentElement);">-</button>
    </div>
    <div class="student-list">
     <div class="student-card">
@@ -579,7 +580,7 @@ footer a:hover { text-decoration: underline; }
      </div>
      <div class="student-status active" data-i18n="teacher_dash.status_active">Active</div>
     </div>
-    
+
     <div class="student-card">
      <div class="student-avatar">GH</div>
      <div class="student-info">
@@ -625,7 +626,7 @@ function toggleCard(header) {
   const card = header.parentElement;
   const btn = header.querySelector('.collapse-btn');
   card.classList.toggle('collapsed');
-  btn.textContent = card.classList.contains('collapsed') ? '+' : '−';
+  btn.textContent = card.classList.contains('collapsed') ? '+' : '-';
 }
 
 // Student avatar colors - hash based
@@ -678,7 +679,7 @@ function toggleCard(header) {
   const card = header.parentElement;
   const btn = header.querySelector('.collapse-btn');
   card.classList.toggle('collapsed');
-  btn.textContent = card.classList.contains('collapsed') ? '+' : '−';
+  btn.textContent = card.classList.contains('collapsed') ? '+' : '-';
 }
 
 // Student avatar colors - hash based
