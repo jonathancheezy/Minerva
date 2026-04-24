@@ -269,7 +269,8 @@
  font-size: 13px;
  border-top: 1px solid var(--gray-200);
  }
- footer a { color: var(--gold); }
+ footer a { color: var(--gold); text-decoration: none; }
+ footer a:hover { text-decoration: underline; }
 
  .lang-selector {
  display: flex;
@@ -380,8 +381,8 @@
  </section>
 
  <footer>
- <p>© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="minerva_landing.html" data-i18n="login.home_link">Back to home</a></p>
- </footer>
+ <p>© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="minerva_landing.html" data-i18n="login.home_link">Back to home</a></p> <a href="terms.html">Terms & Conditions</a>
+</footer>
 
  <script>
  document.getElementById('loginForm').addEventListener('submit', function(e) {
