@@ -607,6 +607,8 @@
  }
  var params = new URLSearchParams(window.location.search);
  var lp = params.get('lang');
+ if (!lp) lp = localStorage.getItem('minerva_lang');
+var lp = params.get('lang');
  if (lp && typeof setLang === 'function') setLang(lp);
 })();
 </script>
