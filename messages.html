@@ -178,7 +178,6 @@ a { color: #3b82f6; text-decoration: none; }
 #chatListScreen {
  display: flex;
  flex-direction: column;
- height: 100vh;
  padding-top: 60px;
  background: var(--white);
 }
@@ -186,6 +185,9 @@ a { color: #3b82f6; text-decoration: none; }
  padding: 10px 16px;
  background: var(--white);
  border-bottom: 1px solid var(--gray-200);
+ position: sticky;
+ top: 60px;
+ z-index: 50;
 }
 .search-bar {
  display: flex;
@@ -386,6 +388,36 @@ const CONVERSATIONS=[
 {id:"conv-4",name:"Emma (English)",initials:"EM",color:"#F9A828",lastMessage:"See you tomorrow!",timestamp:new Date(Date.now()-1000*60*60*24*5),unreadCount:0,isOnline:false,msgs:[
 {id:"m1",content:"Hi Emma, ready for your lesson tomorrow?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*6),status:"read"},
 {id:"m2",content:"See you tomorrow!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*5),status:"read"},
+]},
+{id:"conv-5",name:"Ryan (Science)",initials:"RY",color:"#ef4444",lastMessage:"The science project was fun!",timestamp:new Date(Date.now()-1000*60*60*24*2),unreadCount:1,isOnline:true,msgs:[
+{id:"m1",content:"Teacher, did you get my science project?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*3),status:"read"},
+{id:"m2",content:"Yes Ryan! I loved your hypothesis section.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*3)+1000*60*30,status:"read"},
+{id:"m3",content:"The science project was fun!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*2),status:"read"},
+]},
+{id:"conv-6",name:"Ms. Wu (Piano)",initials:"MW",color:"#22c55e",lastMessage:"Recital next Saturday at 3pm",timestamp:new Date(Date.now()-1000*60*60*24*3),unreadCount:0,isOnline:false,msgs:[
+{id:"m1",content:"Reminder: recital next Saturday!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*4),status:"read"},
+{id:"m2",content:"What time should we arrive?",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*3.5),status:"read"},
+{id:"m3",content:"Recital next Saturday at 3pm",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*3),status:"read"},
+]},
+{id:"conv-7",name:"Jason (Chemistry)",initials:"JS",color:"#6366f1",lastMessage:"Can you help with balancing equations?",timestamp:new Date(Date.now()-1000*60*60*24*7),unreadCount:0,isOnline:true,msgs:[
+{id:"m1",content:"I need help with chemistry homework",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*8),status:"read"},
+{id:"m2",content:"Of course! Send me a photo of the problem.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*7.5),status:"read"},
+{id:"m3",content:"Can you help with balancing equations?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*7),status:"read"},
+]},
+{id:"conv-8",name:"Sophie (Art)",initials:"SO",color:"#ec4899",lastMessage:"I finished the landscape painting!",timestamp:new Date(Date.now()-1000*60*60*24*10),unreadCount:3,isOnline:false,msgs:[
+{id:"m1",content:"Your composition is improving so much!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*11),status:"read"},
+{id:"m2",content:"Thank you! I'm really enjoying this topic.",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*10.5),status:"read"},
+{id:"m3",content:"I finished the landscape painting!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*10),status:"read"},
+]},
+{id:"conv-9",name:"Mr. Lee (History)",initials:"ML",color:"#f59e0b",lastMessage:"World War II essay due Friday",timestamp:new Date(Date.now()-1000*60*60*24*12),unreadCount:0,isOnline:false,msgs:[
+{id:"m1",content:"Don't forget the essay deadline!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*13),status:"read"},
+{id:"m2",content:"I've started the outline already",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*12.5),status:"read"},
+{id:"m3",content:"World War II essay due Friday",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*12),status:"read"},
+]},
+{id:"conv-10",name:"Lisa (French)",initials:"LS",color:"#14b8a6",lastMessage:"Merci beaucoup for the study tips!",timestamp:new Date(Date.now()-1000*60*60*24*15),unreadCount:0,isOnline:true,msgs:[
+{id:"m1",content:"Try watching French movies with subtitles!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*16),status:"read"},
+{id:"m2",content:"That's a great idea, thanks!",senderId:"me",timestamp:new Date(Date.now()-1000*60*60*24*15.5),status:"read"},
+{id:"m3",content:"Merci beaucoup for the study tips!",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*24*15),status:"read"},
 ]},
 ];
 
