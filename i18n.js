@@ -9,6 +9,7 @@
     btn_register_parent:{en:"Register as Parent/Student →",zhTW:"註冊成為家長/學生 →",zhCN:"注册成为家长/学生 →"},
     trust_verified:{en:"Background Verified",zhTW:"身份驗證",zhCN:"身份验证"},
     trust_escrow:{en:"Escrow Protected",zhTW:"託管保障",zhCN:"托管保障"},
+    trust_ai:{en:"AI Powered",zhTW:"AI 驅動",zhCN:"AI 驱动"},
     nav_features:{en:"Features",zhTW:"功能",zhCN:"功能"},
     nav_how:{en:"How it Works",zhTW:"運作方式",zhCN:"運作方式"},
     nav_faq:{en:"FAQ",zhTW:"常見問題",zhCN:"常見問題"},
