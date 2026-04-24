@@ -367,14 +367,25 @@ Minerva
   <h1 style="font-size:28px;font-weight:800;color:#0f1f33;margin-bottom:4px;">My Chats</h1>
   <p class="dashboard-quote">"Good communication doesn't mean they heard you — it means they understood you."</p>
  </div>
- <div style="padding:6px 16px;">
-  <div class="search-bar">
+ <div style="padding:6px 16px;display:flex;align-items:center;gap:8px;">
+  <div class="search-bar" style="flex:1;">
    <span class="si">&#128269;</span>
    <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="search_conversations" oninput="filterConvs()" autocomplete="off">
    <button class="clear-btn" id="convClearBtn" onclick="clearConvSearch()">&#10005;</button>
   </div>
+  <button onclick="showNewChat()" style="background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer;padding:4px;flex-shrink:0;">&#43;</button>
  </div>
  <div class="conv-scroll" id="convScroll"></div>
+</div>
+
+<div id="newChatModal" onclick="if(event.target===this)closeNewChat()" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;">
+<div style="background:var(--white);border-radius:16px;width:320px;max-height:80vh;overflow-y:auto;padding:20px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+<h2 style="font-size:18px;font-weight:700;color:#0f1f33;">New Message</h2>
+<button onclick="closeNewChat()" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--gray-400);">&#10005;</button>
+</div>
+<div id="studentList"></div>
+</div>
 </div>
 
 <div id="chatScreen">
@@ -392,6 +403,12 @@ Minerva
 <script>
 const CURRENT_USER="me";
 
+const STUDENTS=[
+{id:"s1",name:"Ms. Chan",initials:"MC",color:"#008C72",isOnline:true},
+{id:"s2",name:"Mr. Lau",initials:"ML",color:"#3b82f6",isOnline:false},
+{id:"s3",name:"Ms. Wong",initials:"MW",color:"#8b5cf6",isOnline:true},
+{id:"s4",name:"Mr. Chen",initials:"MC",color:"#ef4444",isOnline:false},
+];
 const CONVERSATIONS=[
 {id:"conv-1",name:"Ms. Chan",initials:"MC",color:"#008C72",lastMessage:"Thanks for the lesson today!",timestamp:new Date(Date.now()-1000*60*30),unreadCount:2,isOnline:true,msgs:[
 {id:"m1",content:"Hi! How was the lesson today?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*6),status:"read"},
@@ -485,6 +502,9 @@ function sendMsg(){var i=document.getElementById("msgInput"),t=i.value.trim();if
 function autoResize(e){e.style.height="auto";e.style.height=Math.min(e.scrollHeight,120)+"px";}
 function toggleSendBtn(){var i=document.getElementById("msgInput"),s=document.getElementById("sendBtn"),has=i.value.trim().length>0;s.className="send-btn"+(has?"":" hide");}
 function showConvList(){activeConv=null;document.getElementById("chatScreen").style.display="none";document.getElementById("chatListScreen").style.display="flex";document.getElementById("leftBackBtn").style.display="none";document.querySelector(".mobile-menu-btn").style.display="flex";document.querySelector(".nav-end").style.display="flex";renderConvList();}
+function showNewChat(){var m=document.getElementById("newChatModal"),l=document.getElementById("studentList");var h="";STUDENTS.forEach(function(s){var ex=CONVERSATIONS.find(function(c){return c.name===s.name;});h+='<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray-200);cursor:'+(ex?'default':'pointer')+'" '+(ex?'':'onclick="startChatWith(\''+s.id+'\')"')+'><div style="width:40px;height:40px;border-radius:50%;background:'+s.color+';display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;flex-shrink:0;">'+s.initials+'</div><div><div style="font-size:14px;font-weight:600;color:#0f1f33;">'+s.name+'</div>'+(ex?'<div style="font-size:12px;color:var(--gray-400);">Conversation exists</div>':'<div style="font-size:12px;color:var(--gray-400);">Tap to message</div>')+'</div></div>';});l.innerHTML=h||'<div style="text-align:center;color:var(--gray-400);padding:20px;">No students available</div>';m.style.display="flex";}
+function closeNewChat(){document.getElementById("newChatModal").style.display="none";}
+function startChatWith(id){var s=STUDENTS.find(function(x){return x.id===id;});if(!s)return;var existing=CONVERSATIONS.find(function(c){return c.name===s.name;});if(existing){closeNewChat();openChat(existing.id);}else{var newId="conv-"+Date.now();var newConv={id:newId,name:s.name,initials:s.initials,color:s.color,lastMessage:"",timestamp:new Date(),unreadCount:0,isOnline:s.isOnline,msgs:[]};CONVERSATIONS.unshift(newConv);closeNewChat();renderConvList();openChat(newId);}}
 function toggleChatNav(){var n=document.querySelector(".nav-links");n.classList.toggle("active");}
 document.addEventListener("DOMContentLoaded",function(){renderConvList();toggleSendBtn();document.getElementById("msgInput").addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMsg();}});});
 </script>
