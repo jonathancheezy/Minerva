@@ -86,7 +86,7 @@ a { color: #3b82f6; text-decoration: none; }
  flex-shrink: 0;
  }
  .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
- .lang-selector.open .globe { transform: rotate(180deg); color: var(--gold); }
+ .lang-selector.open .globe { transform: rotate(180deg); color: var(--gold); stroke: var(--gold); }
 
  .lang-dropdown {
  position: absolute;
@@ -162,7 +162,7 @@ a { color: #3b82f6; text-decoration: none; }
  .nav-end {
  display: flex;
  align-items: center;
- gap: 0;
+ gap: 16px;
  }
 
  .user-info {
@@ -443,7 +443,7 @@ footer a:hover { text-decoration: underline; }
  <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
  </div>
  <div class="lang-selector" id="langSelector">
- <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
  <circle cx="12" cy="12" r="10"/>
  <line x1="2" y1="12" x2="22" y2="12"/>
  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
