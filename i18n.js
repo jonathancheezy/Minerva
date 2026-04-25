@@ -9,11 +9,14 @@
     btn_register_parent:{en:"Register as Parent/Student →",zhTW:"註冊成為家長/學生 →",zhCN:"注册成为家长/学生 →"},
     trust_verified:{en:"Background Verified",zhTW:"身份驗證",zhCN:"身份验证"},
     trust_escrow:{en:"Escrow Protected",zhTW:"託管保障",zhCN:"托管保障"},
+    trust_ai:{en:"AI Powered",zhTW:"AI 驅動",zhCN:"AI 驱动"},
     nav_features:{en:"Features",zhTW:"功能",zhCN:"功能"},
     nav_how:{en:"How it Works",zhTW:"運作方式",zhCN:"運作方式"},
     nav_faq:{en:"FAQ",zhTW:"常見問題",zhCN:"常見問題"},
     nav_login:{en:"Login",zhTW:"登入",zhCN:"登入"},
     nav_terms:{en:"Terms & Conditions",zhTW:"條款及細則",zhCN:"條款及細則"},
+    nav_privacy:{en:"Privacy Policy",zhTW:"隱私政策",zhCN:"隱私政策"},
+    nav_home:{en:"Home",zhTW:"主頁",zhCN:"主页"},
     how_subtitle:{en:"We made it simple. We handle the trust, verification, and payments — you focus on learning.",zhTW:"我們化繁為簡。您只需專注學習，其他交給我們處理。",zhCN:"我们化繁为简。您只需专注学习，其他交给我们处理。"},
     trust_privacy:{en:"HK Data Privacy",zhTW:"香港資料私隱",zhCN:"香港资料私隐"},
     stat1_value:{en:"Free Trial",zhTW:"免費試堂",zhCN:"免费试堂"},
@@ -95,6 +98,7 @@
       tab_parent:{en:"Parent / Student",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},
       no_account:{en:"Don't have an account?",zhTW:"還沒有帳戶？",zhCN:"还没有帐户？"},
       register_as_teacher:{en:"Register as Teacher",zhTW:"註冊成為導師",zhCN:"注册成为导师"},
+      register_as_parent:{en:"Register as Parent / Student",zhTW:"註冊成為家長/學生",zhCN:"注册成为家长/学生"},
       register_as_parent:{en:"Register as Parent/Student",zhTW:"註冊成為家長/學生",zhCN:"注册成为家长/学生"},
       error_msg:{en:"Incorrect email or password. Please try again.",zhTW:"電郵地址或密碼不正確，請重試。",zhCN:"电邮地址或密码不正确，请重试。"},
       success_title:{en:"✅ Login successful!",zhTW:"✅ 登入成功！",zhCN:"✅ 登录成功！"},
@@ -146,6 +150,7 @@
       tab_teacher:{en:"Teacher",zhTW:"導師",zhCN:"导师"},
       tab_parent:{en:"Parent / Student",zhTW:"家長 / 學生",zhCN:"家长 / 学生"},
       register_as_teacher:{en:"Register as Teacher",zhTW:"註冊成為導師",zhCN:"注册成为导师"},
+      register_as_parent:{en:"Register as Parent / Student",zhTW:"註冊成為家長/學生",zhCN:"注册成为家长/学生"},
       welcome_teacher:{en:"Welcome back, Teacher!",zhTW:"歡迎回來，導師！",zhCN:"欢迎回来，导师！"},
       subtitle_teacher:{en:"Access your teacher dashboard",zhTW:"進入您的導師儀表板",zhCN:"进入您的导师仪表板"},
       welcome_back:{en:"Welcome back!",zhTW:"歡迎回來！",zhCN:"欢迎回来！"},
@@ -312,6 +317,9 @@
       opt_1_month:{en:"Within 1 month",zhTW:"一個月內",zhCN:"一個月內"},
       opt_exploring:{en:"Just exploring",zhTW:"只是想了解一下",zhCN:"只是想了解一下"},
       opt_whatsapp:{en:"WhatsApp",zhTW:"WhatsApp",zhCN:"WhatsApp"},
+      opt_facebook:{en:"Facebook",zhTW:"Facebook",zhCN:"Facebook"},
+      opt_google:{en:"Google",zhTW:"Google",zhCN:"Google"},
+      opt_instagram:{en:"Instagram",zhTW:"Instagram",zhCN:"Instagram"},
       opt_friend:{en:"Friend / Family",zhTW:"朋友 / 家人推薦",zhCN:"朋友 / 家人推薦"},
       opt_school:{en:"School / Teacher",zhTW:"學校 / 老師推薦",zhCN:"學校 / 老師推薦"},
       opt_source_other:{en:"Other",zhTW:"其他",zhCN:"其他"},
@@ -323,7 +331,7 @@
     // ── Parent Dashboard ──
     parent_dash:{
       welcome:{en:"Welcome back!",zhTW:"歡迎回來！",zhCN:"欢迎回来！"},
-      dashboard:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
+      dashboard:{en:"My Dashboard",zhTW:"我的主頁",zhCN:"我的主页"},
       book_lesson:{en:"Book Lesson",zhTW:"預訂課堂",zhCN:"预约课堂"},
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
       teachers:{en:"Teachers",zhTW:"導師",zhCN:"导师"},
@@ -395,8 +403,9 @@
     // ── Teacher Dashboard ──
     teacher_dash:{
       welcome:{en:"Welcome back, Teacher! 👋🏻",zhTW:"歡迎回來，導師！ 👋🏻",zhCN:"欢迎回来，导师！ 👋🏻"},
-      dashboard:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
+      dashboard:{en:"My Dashboard",zhTW:"我的主頁",zhCN:"我的主页"},
       students:{en:"Students",zhTW:"學生",zhCN:"学生"},
+      my_schedule:{en:"My Schedule",zhTW:"我的時間表",zhCN:"我的时间表"},
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
       nav_messages:{en:"Chats",zhTW:"訊息",zhCN:"訊息"},
       total_students:{en:"Total Students",zhTW:"學生總數",zhCN:"学生总数"},
@@ -408,7 +417,8 @@
       heading_this_month:{en:"This Month",zhTW:"本月",zhCN:"本月"},
       this_month:{en:"This Month",zhTW:"本月",zhCN:"本月"},
       this_month_title:{en:"This Month",zhTW:"本月",zhCN:"本月"},
-      earnings_title:{en:"Earnings",zhTW:"收入",zhCN:"收入"},
+      earnings_title:{en:"My Earnings",zhTW:"我的收入",zhCN:"我的收入"},
+ my_reviews:{en:"My Reviews",zhTW:"我的評價",zhCN:"我的评价"},
       messages_title:{en:"Messages",zhTW:"訊息",zhCN:"讯息"},
       messages_parent_title:{en:"Messages",zhTW:"訊息",zhCN:"讯息"},
       pending:{en:"Pending",zhTW:"待處理",zhCN:"待处理"},
@@ -702,7 +712,7 @@
       schedule_label:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
       reviews_label:{en:"Reviews",zhTW:"評價",zhCN:"评价"},
       chats_label:{en:"Chats",zhTW:"訊息",zhCN:"訊息"},
-}
+},
     nav:{
       dashboard_label:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
       schedule_label:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
@@ -711,7 +721,6 @@
       reviews_label:{en:"Reviews",zhTW:"評價",zhCN:"评价"},
       profile_label:{en:"Profile",zhTW:"個人資料",zhCN:"个人资料"},
     },
-,
 
 
     // ── Privacy ──
@@ -916,6 +925,7 @@
   };
 
   window.getLang = function() { return lang; };
+  window.apply = apply;
 
   function apply() {
     document.querySelectorAll('[data-i18n]').forEach(function(el) {

@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Messages — Minerva</title>
 <style>
-
 :root {
  --navy: #1e3a5f;
  --teal: #3b82f6;
@@ -33,16 +32,177 @@ body {
  min-height: 100vh;
 }
 a { color: #3b82f6; text-decoration: none; }
+/* Nav */
+ nav {
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ z-index: 100;
+ background: var(--navy);
+ padding: 16px 24px;
+ }
 
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ width: 100%;
+ gap: 16px;
+ flex-wrap: nowrap;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 22px;
+ color: white;
+ text-decoration: none;
+ white-space: nowrap;
+ flex-shrink: 0;
+ }
+
+ .logo-icon { width: 36px; height: 36px; }
+
+/* Language Selector */
+ .lang-selector { position: relative; display: flex; align-items: center; }
+
+ .globe {
+ width: 18px;
+ height: 18px;
+ color: var(--gold);
+ cursor: pointer;
+ transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+ flex-shrink: 0;
+ }
+ .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
+ .lang-selector.open .globe { transform: rotate(180deg); color: var(--gold); stroke: var(--gold); }
+
+ .lang-dropdown {
+ position: absolute;
+ top: calc(100% + 8px); left: 50%;
+ transform: translateX(-50%) translateY(-10px) scale(0.96);
+ width: 64px;
+ background: rgba(15, 31, 51, 0.92);
+ backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+ border: 1px solid rgba(255,255,255,0.12);
+ border-radius: 10px;
+ box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(249, 168, 40, 0.08);
+ overflow: hidden;
+ opacity: 0; visibility: hidden;
+ transition: opacity 0.22s, transform 0.22s, visibility 0.22s;
+ z-index: 200;
+ }
+ .lang-selector.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0) scale(1); }
+
+ .lang-option {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 6px;
+ padding: 10px 14px;
+ cursor: pointer;
+ font-size: 13px;
+ font-weight: 600;
+ color: rgba(255,255,255,0.65);
+ background: transparent;
+ border-bottom: 1px solid rgba(255,255,255,0.06);
+ transition: background 0.15s, color 0.15s, padding-left 0.15s;
+ position: relative;
+ overflow: hidden;
+ }
+ .lang-option:last-child { border-bottom: none; }
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s 0ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s 50ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(3) { animation: rowReveal 0.25s 100ms both; }
+ @keyframes rowReveal { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+ .lang-option .check { width: 14px; height: 14px; flex-shrink: 0; opacity: 0; transform: scale(0.5); transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+ .lang-option.selected .check { opacity: 1; transform: scale(1); }
+ .lang-option .check svg { width: 14px; height: 14px; stroke: var(--gold); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; stroke-dashoffset: 20; }
+ .lang-option.selected .check svg { stroke-dashoffset: 0; transition: stroke-dashoffset 0.3s; }
+ .lang-option.selected::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(249,168,40,0.08), transparent); transform: translateX(-100%); transition: transform 0.4s; }
+ .lang-option.selected:hover::before { transform: translateX(100%); }
+
+ /* Nav Links */
+ .nav-links { display: flex; gap: 24px; align-items: center; }
+ .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+ .nav-links a:hover { color: var(--gold); }
+ .nav-links a.active { color: var(--gold) !important; }
+
+ .nav-start {
+ display: flex;
+ align-items: center;
+ gap: 0;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 20px;
+ cursor: pointer;
+ padding: 4px;
+ color: var(--gold);
+ background: none;
+ border: none;
+ margin-right: 12px;
+ }
+
+ /* User Info */
+ .nav-end {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+ .avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
+ }
+
+ @media (max-width: 768px) {
+ .nav-start { display: flex; align-items: center; }
+ .mobile-menu-btn { display: flex; }
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; align-items: flex-start; padding: 20px 24px; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 99; }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+ .user-info { display: flex; align-items: center; }
+ .lang-selector { background: transparent; padding: 0; }
+ }
+ @media (min-width: 769px) {
+ .mobile-menu-btn { display: none; }
+ .nav-start { display: flex; align-items: center; }
+ }
 
  
-
 /* === CHAT STYLES === */
 #chatListScreen {
  display: flex;
  flex-direction: column;
  background: var(--white);
 }
+
+.page-header { margin-bottom: 32px; }
+.page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
+.dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
 
 .search-bar {
  display: flex;
@@ -77,6 +237,9 @@ a { color: #3b82f6; text-decoration: none; }
  background: var(--white);
 }
 .conv-item:active { background: var(--gray-100); }
+.conv-wrap { position: relative; overflow: hidden; }
+.conv-delete { position: absolute; right: 0; top: 0; bottom: 0; width: 72px; background: var(--red); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; cursor: pointer; border: none; z-index: 2; transform: translateX(100%); transition: transform 0.2s; }
+.conv-delete.show { transform: translateX(0); }
 .avatar-wrap { position: relative; flex-shrink: 0; }
 .avatar-wrap .avatar {
  width: 52px;
@@ -120,10 +283,9 @@ a { color: #3b82f6; text-decoration: none; }
  display: none;
  flex-direction: column;
  height: 100vh;
- padding-top: 60px;
  background: #ECE5DD;
 }
-.chat-msgs { flex: 1; overflow-y: auto; padding: 0 16px 8px; display: flex; flex-direction: column; gap: 2px; }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 70px 16px 80px; display: flex; flex-direction: column; gap: 2px; }
 .date-sep { text-align: center; margin: 6px 0 0; }
 .date-sep:first-child { margin-top: 0; }
 .date-sep span { background: var(--white); color: var(--gray-500); font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 999px; }
@@ -136,11 +298,11 @@ a { color: #3b82f6; text-decoration: none; }
 .bubble-meta { display: flex; align-items: center; justify-content: flex-end; gap: 3px; margin-top: 2px; padding: 0 2px; }
 .bubble-time { font-size: 11px; color: var(--gray-400); }
 .bubble.sent .bubble-time { color: rgba(255,255,255,0.65); }
-.bubble-status { font-size: 14px; line-height: 1; }
-.bubble-status.sent-ok { color: var(--gray-400); }
-.bubble-status.sent-read { color: var(--gold); }
-.bubble-status.sent-err { color: var(--red); }
-.input-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--white); border-top: 1px solid var(--gray-200); }
+.bubble-status { display: flex; align-items: center; line-height: 1; }
+.bubble-status.sent-ok { }
+.bubble-status.sent-read { }
+.bubble-status.sent-err { }
+.input-bar { position: sticky; bottom: 0; z-index: 100; display: flex; align-items: center; gap: 8px; padding: 8px 12px; padding-bottom: max(8px, env(safe-area-inset-bottom)); background: var(--white); border-top: 1px solid var(--gray-200); }
 .input-bar .attach-btn, .input-bar .voice-btn { width: 40px; height: 40px; border-radius: 50%; background: none; border: none; font-size: 20px; color: var(--gray-500); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
 .input-bar .send-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--teal); border: none; font-size: 18px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -148,193 +310,88 @@ a { color: #3b82f6; text-decoration: none; }
 .msg-input-wrap { flex: 1; display: flex; align-items: center; background: var(--gray-100); border-radius: 999px; padding: 0 14px; min-height: 40px; }
 .msg-input { flex: 1; border: none; background: transparent; font-size: 15px; color: var(--gray-800); outline: none; padding: 8px 0; resize: none; max-height: 120px; }
 .msg-input::placeholder { color: var(--gray-400); }
-/* ── Nav (frosted glass) ── */
- nav {
- position: fixed;
- top: 0; left: 0; right: 0; z-index: 100;
- background: var(--navy);
- padding: 0 24px;
- height: 64px;
- display: flex;
- align-items: center;
- }
- .nav-inner {
- display: flex;
- align-items: center;
- width: 100%;
- max-width: 1100px;
- margin: 0 auto;
- gap: 24px;
- }
- .logo {
- display: flex;
- align-items: center;
- gap: 10px;
- font-weight: 800;
- font-size: 20px;
- color: white;
- text-decoration: none;
- flex-shrink: 0;
- }
- .logo-icon { width: 32px; height: 32px; }
- .nav-links {
- display: flex;
- gap: 20px;
- align-items: center;
- flex: 1;
- }
- .nav-links a {
- color: rgba(255,255,255,0.7);
- text-decoration: none;
- font-size: 14px;
- font-weight: 500;
- transition: color 0.2s;
- }
- .nav-links a:hover { color: white; }
- .nav-links a.active, .nav-links a[data-i18n="reviews.title"] { color: #F9A828 !important; }
- .nav-right {
- display: flex;
- align-items: center;
- gap: 12px;
- flex-shrink: 0;
- }
- .mobile-menu-btn {
- display: none;
- font-size: 20px;
- cursor: pointer;
- padding: 4px;
- color: #F9A828;
- background: none;
- border: none;
- }
- /* Language Selector */
- .lang-selector { position: relative; display: flex; align-items: center; }
- .globe {
- width: 18px; height: 18px;
- color: #F9A828;
- cursor: pointer;
- transition: transform 0.3s, color 0.2s;
- flex-shrink: 0;
- }
- .globe:hover { transform: rotate(20deg); color: #FBB81C; }
- .lang-selector.open .globe { transform: rotate(180deg); }
- .lang-dropdown {
- position: absolute;
- top: calc(100% + 8px);
- left: 50%;
- transform: translateX(-50%) translateY(-10px) scale(0.96);
- width: 64px;
- background: var(--navy);
- border: 1px solid rgba(255,255,255,0.12);
- border-radius: 10px;
- box-shadow: 0 12px 32px rgba(0,0,0,0.4);
- overflow: hidden;
- opacity: 0;
- visibility: hidden;
- transition: opacity 0.22s, transform 0.22s, visibility 0.22s;
- z-index: 200;
- }
- .lang-selector.open .lang-dropdown {
- opacity: 1;
- visibility: visible;
- transform: translateX(-50%) translateY(0) scale(1);
- }
- .lang-option {
- display: flex;
- align-items: center;
- justify-content: center;
- padding: 10px 14px;
- cursor: pointer;
- font-size: 13px;
- font-weight: 600;
- color: rgba(255,255,255,0.65);
- transition: background 0.15s, color 0.15s;
- }
- .lang-option:hover { background: rgba(255,255,255,0.06); color: white; }
- .lang-option.selected { color: #F9A828; }
- .lang-option .check {
- width: 14px; height: 14px;
- margin-left: 6px;
- opacity: 0;
- transform: scale(0.5);
- transition: opacity 0.2s, transform 0.2s;
- }
- .lang-option.selected .check { opacity: 1; transform: scale(1); }
- @media (max-width: 768px) {
- .mobile-menu-btn { display: block; }
- .nav-links {
- display: none;
- position: absolute;
- top: 64px; left: 0; right: 0;
- background: var(--navy);
- flex-direction: column;
- padding: 20px 24px;
- gap: 16px;
- z-index: 99;
- }
- .nav-links.active { display: flex; }
- .nav-links a.active { color: #F9A828 !important; }
- }
+
+
 </style>
 <script src="i18n.js"></script>
 </head>
 <body>
 
 <nav>
- <div class="nav-inner">
- <a href="minerva_landing.html?v=0f5b4d5" class="logo">
- <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
- <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
- <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
- <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+<div class="nav-inner">
+<div class="nav-right">
+<div class="nav-start">
+<button class="back-btn" id="leftBackBtn" onclick="showConvList()" style="display:none;background:none;border:none;color:var(--gold);font-size:26px;cursor:pointer;padding:4px 6px;">&#8249;</button>
+<button class="mobile-menu-btn" onclick="toggleChatNav()">☰</button>
+<a href="minerva_landing.html" class="logo">
+<svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+<path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+</svg>
+Minerva
+</a>
+</div>
+<div class="nav-links">
+<a href="teacher_dashboard.html">Dashboard</a>
+<a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
+<a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
+<a href="messages.html" class="active" data-i18n="teacher_dash.nav_messages">Chats</a>
+<a href="reviews.html" data-i18n="reviews.title">Reviews</a>
+<a href="earnings.html" data-i18n="earnings.title">Earnings</a>
+</div>
+<div class="nav-end">
+<div class="user-info">
+<a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
+</div>
+<div class="lang-selector" id="langSelector">
+<svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
  </svg>
- Minerva
- </a>
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <div class="nav-links">
- <div class="nav-links">
- <a href="teacher_dashboard.html?v=0f5b4d5">Dashboard</a>
- <a href="student_dashboard.html?v=0f5b4d5">Students</a>
- <a href="teacher_schedule.html?v=0f5b4d5">Schedule</a>
- <a href="#" class="active" style="color: #F9A828 !important;">Chats</a>
- <a href="reviews.html?v=0f5b4d5">Reviews</a>
- <a href="earnings.html?v=0f5b4d5">Earnings</a>
- </div>
- </div>
- <div class="nav-right">
- <div class="user-info">
- <a href="teacher_profile.html?v=0f5b4d5" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div>
- <div class="lang-selector" id="langSelector">
- <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="12" cy="12" r="10"></circle>
- <path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"></path>
- <path d="M2 12h20"></path>
- </svg>
- <div class="lang-dropdown">
- <div class="lang-option" data-lang="en">EN<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-TW">繁<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-CN">简<span class="check">✓</span></div>
- </div>
- </div>
- </div>
- </div>
+<div class="lang-dropdown" id="langDropdown">
+<div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+<div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+<div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+</div>
+</div>
+</div>
+<div id="chatNavInfo" style="display:none;align-items:center;margin-left:8px;">
+<button onclick="showConvList()" style="background:none;border:none;color:var(--gold);font-size:26px;cursor:pointer;padding:4px 8px;">&#8249;</button>
+</div>
+</div>
+</div>
 </nav>
-
 <div id="chatListScreen">
- <div style="position:sticky;top:60px;z-index:40;background:var(--white);padding:6px 16px;border-bottom:1px solid var(--gray-200);">
-  <div class="search-bar">
+ <div class="page-header" style="position:sticky;top:60px;z-index:40;background:var(--white);padding:20px 24px 0px;border-bottom:1px solid var(--gray-200);">
+  <h1 style="font-size:28px;font-weight:800;color:#0f1f33;margin-bottom:4px;">My Chats</h1>
+  <p class="dashboard-quote" style="margin-bottom:4px;">"Good communication doesn't mean they heard you — it means they understood you."</p>
+ </div>
+ <div style="padding:6px 16px 0px;display:flex;align-items:center;gap:8px;">
+  <div class="search-bar" style="flex:1;">
    <span class="si">&#128269;</span>
    <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="search_conversations" oninput="filterConvs()" autocomplete="off">
    <button class="clear-btn" id="convClearBtn" onclick="clearConvSearch()">&#10005;</button>
   </div>
+  <button onclick="showNewChat()" style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:white;border:none;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(249,168,40,0.35);flex-shrink:0;">&#43;</button>
  </div>
  <div class="conv-scroll" id="convScroll"></div>
+</div>
+
+<div id="newChatModal" onclick="if(event.target===this)closeNewChat()" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;">
+<div style="background:var(--white);border-radius:16px;width:320px;max-height:80vh;overflow-y:auto;padding:20px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+<h2 style="font-size:18px;font-weight:700;color:#0f1f33;">New Message</h2>
+<button onclick="closeNewChat()" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--gray-400);">&#10005;</button>
+</div>
+<div id="studentList"></div>
+</div>
 </div>
 
 <div id="chatScreen">
  <div class="chat-msgs" id="chatMsgs"></div>
  <div class="input-bar">
-  <button class="attach-btn">&#43;</button>
   <div class="msg-input-wrap">
    <textarea class="msg-input" id="msgInput" placeholder="Type a message..." rows="1" oninput="autoResize(this);toggleSendBtn()"></textarea>
   </div>
@@ -346,6 +403,12 @@ a { color: #3b82f6; text-decoration: none; }
 <script>
 const CURRENT_USER="me";
 
+const STUDENTS=[
+{id:"s1",name:"Ms. Chan",initials:"MC",color:"#008C72",isOnline:true},
+{id:"s2",name:"Mr. Lau",initials:"ML",color:"#3b82f6",isOnline:false},
+{id:"s3",name:"Ms. Wong",initials:"MW",color:"#8b5cf6",isOnline:true},
+{id:"s4",name:"Mr. Chen",initials:"MC",color:"#ef4444",isOnline:false},
+];
 const CONVERSATIONS=[
 {id:"conv-1",name:"Ms. Chan",initials:"MC",color:"#008C72",lastMessage:"Thanks for the lesson today!",timestamp:new Date(Date.now()-1000*60*30),unreadCount:2,isOnline:true,msgs:[
 {id:"m1",content:"Hi! How was the lesson today?",senderId:"teacher-1",timestamp:new Date(Date.now()-1000*60*60*6),status:"read"},
@@ -420,38 +483,61 @@ const CONVERSATIONS=[
 function formatTime(d){var now=new Date(),diff=Math.floor((now-d)/(1000*60*60*24));if(diff===0)return d.toLocaleTimeString("en",{hour:"2-digit",minute:"2-digit"});if(diff===1)return"Yesterday";if(diff<7)return d.toLocaleDateString("en",{weekday:"short"});return d.toLocaleDateString("en",{month:"short",day:"numeric"});}
 function formatMsgTime(d){return d.toLocaleTimeString("en",{hour:"2-digit",minute:"2-digit"});}
 function formatDateSep(d){var now=new Date(),diff=Math.floor((now-d)/(1000*60*60*24));if(diff===0)return"Today";if(diff===1)return"Yesterday";return d.toLocaleDateString("en",{month:"long",day:"numeric"});}
-function getReceiptIcon(s){if(s==="sending")return"<span class=\"bubble-status sent-ok\">&#10003;</span>";if(s==="sent"||s==="delivered")return"<span class=\"bubble-status sent-ok\">&#10003;&#10003;</span>";if(s==="read")return"<span class=\"bubble-status sent-read\">&#10003;&#10003;</span>";if(s==="failed")return"<span class=\"bubble-status sent-err\">&#10007;</span>";return"";}
-function renderConvList(){var s=document.getElementById("convScroll"),q=document.getElementById("convSearchInput").value.toLowerCase();document.getElementById("convClearBtn").className="clear-btn"+(q.length>0?" show":"");var f=CONVERSATIONS.filter(function(c){return c.name.toLowerCase().indexOf(q)!==-1;});if(!f.length){s.innerHTML='<div class="empty-state"><div class="empty-icon">&#128172;</div><div class="empty-title" data-i18n="no_conversations_yet">No conversations yet</div><div class="empty-sub" data-i18n="start_chatting_teachers">Start chatting with your teachers</div></div>';return;}var h="";f.forEach(function(c){var u=c.unreadCount>0;h+='<div class="conv-item" onclick="openChat(\''+c.id+'\')"><div class="avatar-wrap"><div class="avatar" style="background:'+c.color+'">'+c.initials+"</div>"+(c.isOnline?'<div class="online-dot"></div>':"")+'</div><div class="conv-body"><div class="conv-top"><span class="conv-name'+(u?" unread":"")+'">'+c.name+'</span><span class="conv-time'+(u?" unread":"")+'">'+formatTime(c.timestamp)+'</span></div><div class="conv-bottom"><span class="conv-preview'+(u?" unread":"")+'">'+c.lastMessage+"</span>"+(u?'<div class="unread-badge">'+(c.unreadCount>9?"9+":c.unreadCount)+"</div>":"")+"</div></div></div><div class=\"conv-divider\"></div>";});s.innerHTML=h;}
+function getReceiptIcon(s){if(s==="sending")return'<span class="bubble-status sent-ok"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.5 10.5L3 7L2 8L6.5 12.5L14 4.5L13 3.5L6.5 10.5Z" fill="rgba(255,255,255,0.55)"/></svg></span>';if(s==="sent")return'<span class="bubble-status sent-ok"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.5 10.5L3 7L2 8L6.5 12.5L14 4.5L13 3.5L6.5 10.5Z" fill="rgba(255,255,255,0.55)"/></svg></span>';if(s==="delivered")return'<span class="bubble-status sent-ok"><svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M1 6L5 10L11 3" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 6L11 10L19 2" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';if(s==="read")return'<span class="bubble-status sent-read"><svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M1 6L5 10L11 3" stroke="#53bdeb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 6L11 10L19 2" stroke="#53bdeb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';if(s==="failed")return'<span class="bubble-status sent-err"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 3L11 11M11 3L3 11" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/></svg></span>';return"";}
+function renderConvList(){var s=document.getElementById("convScroll"),q=document.getElementById("convSearchInput").value.toLowerCase();document.getElementById("convClearBtn").className="clear-btn"+(q.length>0?" show":"");var f=CONVERSATIONS.filter(function(c){return c.name.toLowerCase().indexOf(q)!==-1;});if(!f.length){s.innerHTML='<div class="empty-state"><div class="empty-icon">&#128172;</div><div class="empty-title" data-i18n="no_conversations_yet">No conversations yet</div><div class="empty-sub" data-i18n="start_chatting_teachers">Start chatting with your teachers</div></div>';return;}var h="";f.forEach(function(c){var u=c.unreadCount>0;h+=`<div class="conv-wrap" id="wrap-${c.id}"><div class="conv-item" onclick="openChat('${c.id}')" ontouchstart="swipeStart(event,'${c.id}')" ontouchend="swipeEnd(event,'${c.id}')"><div class="avatar-wrap"><div class="avatar" style="background:${c.color}">${c.initials}</div>${c.isOnline?'<div class="online-dot"></div>':""}</div><div class="conv-body"><div class="conv-top"><span class="conv-name${u?" unread":""}">${c.name}</span><span class="conv-time${u?" unread":""}">${formatTime(c.timestamp)}</span></div><div class="conv-bottom"><span class="conv-preview${u?" unread":""}">${c.lastMessage}</span>${u?`<div class="unread-badge">${c.unreadCount>9?"9+":c.unreadCount}</div>`:""}</div></div></div><button class="conv-delete" id="del-${c.id}" onclick="deleteConv('${c.id}')">Delete</button></div><div class="conv-divider"></div>`;});s.innerHTML=h;}
+var swipeX={};
+function swipeStart(e,id){swipeX[id]=e.changedTouches[0].screenX;}
+function swipeEnd(e,id){var dx=e.changedTouches[0].screenX-swipeX[id];if(dx<-60){document.getElementById('del-'+id).classList.add('show');}else{document.getElementById('del-'+id).classList.remove('show');}}
+function deleteConv(id){if(!confirm('Delete this conversation?'))return;CONVERSATIONS=CONVERSATIONS.filter(function(c){return c.id!==id;});renderConvList();}
+var swipeX={};
+function swipeStart(e,id){swipeX[id]=e.changedTouches[0].screenX;}
+function swipeEnd(e,id){var dx=e.changedTouches[0].screenX-swipeX[id];if(dx<-60){document.getElementById('del-'+id).classList.add('show');}else{document.getElementById('del-'+id).classList.remove('show');}}
+function deleteConv(id){if(!confirm('Delete this conversation?'))return;CONVERSATIONS=CONVERSATIONS.filter(function(c){return c.id!==id;});renderConvList();}
 function filterConvs(){renderConvList();}
 function clearConvSearch(){document.getElementById("convSearchInput").value="";renderConvList();}
 var activeConv=null;
-function openChat(id){activeConv=CONVERSATIONS.find(function(c){return c.id===id;});if(!activeConv)return;document.getElementById("navInitials").textContent=activeConv.initials;document.getElementById("navChatName").textContent=activeConv.name;document.getElementById("navChatStatus").textContent=activeConv.isOnline?"online":"";document.getElementById("navOnlineDot").style.display=activeConv.isOnline?"block":"none";document.getElementById("navAvatarWrap").style.background=activeConv.color;document.querySelector(".nav-left").style.display="none";document.querySelector(".nav-right").style.display="none";document.getElementById("chatNavInfo").style.display="flex";document.getElementById("backBtn").style.display="block";document.getElementById("listBackBtn").style.display="none";renderMessages();document.getElementById("chatListScreen").style.display="none";document.getElementById("chatScreen").style.display="flex";}
-function renderMessages(){if(!activeConv)return;var c=document.getElementById("chatMsgs"),html="",lastDate="";activeConv.msgs.forEach(function(m){var ds=formatDateSep(m.timestamp);if(ds!==lastDate){html+='<div class="date-sep"><span>'+ds+"</span></div>";lastDate=ds;}var sent=m.senderId===CURRENT_USER;html+='<div class="bubble-row'+(sent?" sent":" received")+'"><div class="bubble'+(sent?" sent":" received")+'">'+m.content+'<div class="bubble-meta"><span class="bubble-time">'+formatMsgTime(m.timestamp)+"</span>"+(sent?getReceiptIcon(m.status):"")+"</div></div></div>";});c.innerHTML=html;}
+function openChat(id){activeConv=CONVERSATIONS.find(function(c){return c.id===id;});if(!activeConv)return;sessionStorage.setItem("minerva_conv",id);document.getElementById("leftBackBtn").style.display="block";document.querySelector(".mobile-menu-btn").style.display="none";document.querySelector(".nav-end").style.display="none";document.getElementById("chatNavInfo").style.display="none";renderMessages();document.getElementById("chatListScreen").style.display="none";document.getElementById("chatScreen").style.display="flex";document.querySelector(".nav-links").classList.remove("active");}
+function renderMessages(){if(!activeConv)return;var c=document.getElementById("chatMsgs"),html="",lastDate="";activeConv.msgs.forEach(function(m){var ds=formatDateSep(m.timestamp);if(ds!==lastDate){html+='<div class="date-sep"><span>'+ds+"</span></div>";lastDate=ds;}var sent=m.senderId===CURRENT_USER;html+='<div class="bubble-row'+(sent?" sent":" received")+'"><div class="bubble'+(sent?" sent":" received")+'">'+m.content+'<div class="bubble-meta"><span class="bubble-time">'+formatMsgTime(m.timestamp)+"</span>"+(sent?getReceiptIcon(m.status):"")+"</div></div></div>";});c.innerHTML=html;requestAnimationFrame(function(){c.scrollTop=c.scrollHeight-c.getBoundingClientRect().height;});}
 function sendMsg(){var i=document.getElementById("msgInput"),t=i.value.trim();if(!t||!activeConv)return;var m={id:"m"+Date.now(),content:t,senderId:CURRENT_USER,timestamp:new Date(),status:"sending"};activeConv.msgs.push(m);activeConv.lastMessage=t;activeConv.timestamp=new Date();renderMessages();setTimeout(function(){m.status="sent";renderMessages();},500);setTimeout(function(){m.status="delivered";renderMessages();},1200);setTimeout(function(){m.status="read";renderMessages();},2500);i.value="";autoResize(i);toggleSendBtn();document.getElementById("msgInput").focus();}
 function autoResize(e){e.style.height="auto";e.style.height=Math.min(e.scrollHeight,120)+"px";}
 function toggleSendBtn(){var i=document.getElementById("msgInput"),s=document.getElementById("sendBtn"),has=i.value.trim().length>0;s.className="send-btn"+(has?"":" hide");}
-function showConvList(){activeConv=null;document.getElementById("chatScreen").style.display="none";document.getElementById("chatListScreen").style.display="flex";document.getElementById("backBtn").style.display="none";document.getElementById("chatNavInfo").style.display="none";document.querySelector(".nav-left").style.display="flex";document.querySelector(".nav-right").style.display="flex";document.getElementById("listBackBtn").style.display="block";document.querySelector(".nav-links").classList.remove("active");renderConvList();}
+function showConvList(){activeConv=null;sessionStorage.removeItem("minerva_conv");document.getElementById("chatScreen").style.display="none";document.getElementById("chatListScreen").style.display="flex";document.getElementById("leftBackBtn").style.display="none";document.querySelector(".mobile-menu-btn").style.display="flex";document.querySelector(".nav-end").style.display="flex";renderConvList();}
+function showNewChat(){var m=document.getElementById("newChatModal"),l=document.getElementById("studentList");var h="";STUDENTS.forEach(function(s){var ex=CONVERSATIONS.find(function(c){return c.name===s.name;});h+='<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray-200);cursor:'+(ex?'default':'pointer')+'" '+(ex?'':'onclick="startChatWith(\''+s.id+'\')"')+'><div style="width:40px;height:40px;border-radius:50%;background:'+s.color+';display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;flex-shrink:0;">'+s.initials+'</div><div><div style="font-size:14px;font-weight:600;color:#0f1f33;">'+s.name+'</div>'+(ex?'<div style="font-size:12px;color:var(--gray-400);">Conversation exists</div>':'<div style="font-size:12px;color:var(--gray-400);">Tap to message</div>')+'</div></div>';});l.innerHTML=h||'<div style="text-align:center;color:var(--gray-400);padding:20px;">No students available</div>';m.style.display="flex";}
+function closeNewChat(){document.getElementById("newChatModal").style.display="none";}
+function startChatWith(id){var s=STUDENTS.find(function(x){return x.id===id;});if(!s)return;var existing=CONVERSATIONS.find(function(c){return c.name===s.name;});if(existing){closeNewChat();openChat(existing.id);}else{var newId="conv-"+Date.now();var newConv={id:newId,name:s.name,initials:s.initials,color:s.color,lastMessage:"",timestamp:new Date(),unreadCount:0,isOnline:s.isOnline,msgs:[]};CONVERSATIONS.unshift(newConv);closeNewChat();renderConvList();openChat(newId);}}
 function toggleChatNav(){var n=document.querySelector(".nav-links");n.classList.toggle("active");}
-document.addEventListener("DOMContentLoaded",function(){renderConvList();toggleSendBtn();document.getElementById("msgInput").addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMsg();}});});
+document.addEventListener("DOMContentLoaded",function(){renderConvList();toggleSendBtn();document.getElementById("msgInput").addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMsg();}});var saved=sessionStorage.getItem("minerva_conv");if(saved){openChat(saved);}});
+</script>
+<script src="i18n.js"></script>
+<script>
+(function(){
+  var sel = document.getElementById("langSelector");
+  var globe = document.getElementById("langGlobe");
+  var dropdown = document.getElementById("langDropdown");
+  if (sel && globe && dropdown) {
+    globe.addEventListener("click", function(e){ e.stopPropagation(); sel.classList.toggle("open"); });
+    document.addEventListener("click", function(){ sel.classList.remove("open"); });
+    dropdown.addEventListener("click", function(e){ e.stopPropagation(); });
+    dropdown.querySelectorAll(".lang-option").forEach(function(opt){
+      opt.addEventListener("click", function(){
+        dropdown.querySelectorAll(".lang-option").forEach(function(o){ o.classList.remove("selected"); });
+        opt.classList.add("selected");
+        sel.classList.remove("open");
+        var lang = opt.dataset.lang;
+        if (typeof setLanguage === "function") setLanguage(lang);
+      });
+    });
+  }
+  var params = new URLSearchParams(window.location.search);
+  var lp = params.get("lang");
+  if (lp && typeof setLanguage === "function") setLanguage(lp);
+})();
 </script>
 
- // ── Language selector ──
- const langSelector = document.getElementById('langSelector');
- if (langSelector) {
- document.querySelector('.globe').addEventListener('click', e => {
- e.stopPropagation();
- langSelector.classList.toggle('open');
- });
- document.addEventListener('click', () => langSelector.classList.remove('open'));
- document.querySelectorAll('.lang-option').forEach(opt => {
- opt.addEventListener('click', () => {
- document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('selected'));
- opt.classList.add('selected');
- langSelector.classList.remove('open');
- });
- });
- }
 
-<footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
+
+
+
+
 </body>
 </html>

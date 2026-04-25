@@ -5,7 +5,6 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Dashboard — Minerva</title>
    <style>
-
  :root {
  --navy: #1e3a5f;
  --navy-dark: #0f1f33;
@@ -28,24 +27,29 @@
  color: var(--gray-700);
  line-height: 1.6;
  }
-/* ── Nav (frosted glass) ── */
+
+ /* Nav */
  nav {
+ background: var(--teal);
+ color: white;
+ padding: 16px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
  position: fixed;
- top: 0; left: 0; right: 0; z-index: 100;
- background: var(--navy);
- padding: 0 24px;
- height: 64px;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: 60px;
+ z-index: 100;
+ }
+
+ .nav-left {
  display: flex;
  align-items: center;
+ gap: 16px;
  }
- .nav-inner {
- display: flex;
- align-items: center;
- width: 100%;
- max-width: 1100px;
- margin: 0 auto;
- gap: 24px;
- }
+
  .logo {
  display: flex;
  align-items: center;
@@ -54,15 +58,35 @@
  font-size: 20px;
  color: white;
  text-decoration: none;
- flex-shrink: 0;
  }
+
  .logo-icon { width: 32px; height: 32px; }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
  .nav-links {
  display: flex;
- gap: 20px;
- align-items: center;
+ gap: 24px;
+ justify-content: center;
  flex: 1;
  }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 8px;
+ color: var(--gold);
+ background: none;
+ border: none;
+ }
+
  .nav-links a {
  color: rgba(255,255,255,0.7);
  text-decoration: none;
@@ -71,93 +95,60 @@
  transition: color 0.2s;
  }
  .nav-links a:hover { color: white; }
- .nav-links a.active, .nav-links a[data-i18n="reviews.title"] { color: #F9A828 !important; }
- .nav-right {
+ .nav-links a.active { color: #F9A828 !important; }
+
+ 
+
+ .user-info {
  display: flex;
  align-items: center;
  gap: 12px;
- flex-shrink: 0;
  }
- .mobile-menu-btn {
- display: none;
- font-size: 20px;
- cursor: pointer;
- padding: 4px;
- color: #F9A828;
- background: none;
- border: none;
- }
- /* Language Selector */
- .lang-selector { position: relative; display: flex; align-items: center; }
- .globe {
- width: 18px; height: 18px;
- color: #F9A828;
- cursor: pointer;
- transition: transform 0.3s, color 0.2s;
- flex-shrink: 0;
- }
- .globe:hover { transform: rotate(20deg); color: #FBB81C; }
- .lang-selector.open .globe { transform: rotate(180deg); }
- .lang-dropdown {
- position: absolute;
- top: calc(100% + 8px);
- left: 50%;
- transform: translateX(-50%) translateY(-10px) scale(0.96);
- width: 64px;
- background: var(--navy);
- border: 1px solid rgba(255,255,255,0.12);
- border-radius: 10px;
- box-shadow: 0 12px 32px rgba(0,0,0,0.4);
- overflow: hidden;
- opacity: 0;
- visibility: hidden;
- transition: opacity 0.22s, transform 0.22s, visibility 0.22s;
- z-index: 200;
- }
- .lang-selector.open .lang-dropdown {
- opacity: 1;
- visibility: visible;
- transform: translateX(-50%) translateY(0) scale(1);
- }
- .lang-option {
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
  display: flex;
  align-items: center;
  justify-content: center;
- padding: 10px 14px;
- cursor: pointer;
- font-size: 13px;
- font-weight: 600;
- color: rgba(255,255,255,0.65);
- transition: background 0.15s, color 0.15s;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
  }
- .lang-option:hover { background: rgba(255,255,255,0.06); color: white; }
- .lang-option.selected { color: #F9A828; }
- .lang-option .check {
- width: 14px; height: 14px;
- margin-left: 6px;
- opacity: 0;
- transform: scale(0.5);
- transition: opacity 0.2s, transform 0.2s;
+ .lang-selector {
+  display: flex;
+  gap: 2px;
+  background: rgba(0,0,0,0.25);
+  padding: 3px;
+  border-radius: 6px;
  }
- .lang-option.selected .check { opacity: 1; transform: scale(1); }
+ .lang-btn {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+ }
+ .lang-btn:hover { color: white; }
+ .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
  @media (max-width: 768px) {
- .mobile-menu-btn { display: block; }
- .nav-links {
- display: none;
- position: absolute;
- top: 64px; left: 0; right: 0;
- background: var(--navy);
- flex-direction: column;
- padding: 20px 24px;
- gap: 16px;
- z-index: 99;
- }
- .nav-links.active { display: flex; }
- .nav-links a.active { color: #F9A828 !important; }
+  .lang-btn { padding: 4px 8px; font-size: 12px; }
+  .lang-selector { padding: 2px; gap: 1px; }
+  .lang-btn:hover { color: white; }
+  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
  }
 
-
- 
+ .user-name {
+ font-size: 14px;
+ font-weight: 600;
+ }
 
  /* Main Content */
  .main {
@@ -223,21 +214,33 @@
  }
 
  @media (max-width: 768px) {
- 
+ .nav-links {
+ display: none;
+ position: absolute;
+ top: 60px;
+ left: 0;
+ right: 0;
+ background: var(--navy);
+ flex-direction: column;
+ padding: 20px 24px;
+ margin-left: 0;
+ gap: 16px;
+ border-bottom: 1px solid rgba(255,255,255,0.1);
+ }
  .nav-links.active { display: flex; }
- 
- 
- 
- 
+ .mobile-menu-btn { display: block; }
+ .nav-right { width: 100%; justify-content: flex-end; }
+ .nav-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+ .user-info { display: flex; align-items: center; gap: 12px; }
  }
 
  @media (max-width: 768px) {
- 
- 
+ .user-info { order: 1; }
+ .lang-selector { order: 2; }
  }
 
  @media (min-width: 769px) {
- 
+ .mobile-menu-btn { display: none; }
  }
 
  @media (max-width: 900px) {
@@ -485,7 +488,8 @@
  color: white;
  margin-top: 6px;
  }
-
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; } 
  /* Promo */
  .promo-card {
  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
@@ -512,7 +516,13 @@
  color: var(--navy-dark);
  }
 
- 
+ .lang-selector {
+ display: flex;
+ gap: 4px;
+ background: rgba(0,0,0,0.25);
+ padding: 4px;
+ border-radius: 8px;
+ }
  .lang-btn {
  padding: 6px 12px;
  border: none;
@@ -534,9 +544,12 @@
 
  @media (max-width: 768px) {
  .lang-btn { padding: 6px 12px; font-size: 13px; }
- 
+ .lang-selector { padding: 2px; gap: 1px; }
  }
  
+footer { padding: 40px 24px; text-align: center; color: var(--gray-500); font-size: 13px; border-top: 1px solid var(--gray-200); }
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
 </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -544,8 +557,9 @@
 </head>
 <body>
  <nav>
- <div class="nav-inner">
- <a href="minerva_landing.html?v=0f5b4d5" class="logo">
+ <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html?v=pd001" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
  <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -553,33 +567,25 @@
  </svg>
  Minerva
  </a>
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <div class="nav-links">
- <div class="nav-links">
- <div class="nav-links">
- <a href="#" class="active" style="color: #F9A828 !important;">Dashboard</a>
- <a href="parent_schedule.html?v=0f5b4d5">Schedule</a>
- <a href="#" class="active" style="color: #F9A828 !important;">Payments</a>
  </div>
+ <div class="nav-links">
+ <a href="parent_dashboard.html?v=pd001" class="active" data-i18n="parent_dash.dashboard" style="color: #F9A828 !important;">Dashboard</a>
+ <a href="parent_schedule.html?v=pd001" data-i18n="parent_dash.schedule">Schedule</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="parent_dash.payments">Payments</a>
  </div>
  <div class="nav-right">
+ <div class="nav-meta">
  <div class="user-info">
- <a href="teacher_profile.html?v=0f5b4d5" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div>
- <div class="lang-selector" id="langSelector">
- <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="12" cy="12" r="10"></circle>
- <path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"></path>
- <path d="M2 12h20"></path>
- </svg>
- <div class="lang-dropdown">
- <div class="lang-option" data-lang="en">EN<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-TW">繁<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-CN">简<span class="check">✓</span></div>
+ <a href="teacher_profile.html?v=pd001" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
+ </div>
+  </div>
+  <div class="lang-selector">
+ <a href="messages.html?lang=en&v=pd001" class="lang-btn">EN</a>
+ <a href="messages.html?lang=zh-TW&v=pd001" class="lang-btn">繁</a>
+ <a href="messages.html?lang=zh-CN&v=pd001" class="lang-btn">简</a>
  </div>
  </div>
- </div>
- </div>
-</nav>
+ </nav>
 
  <main class="main">
  <div class="page-header">
@@ -588,7 +594,7 @@
  <p>Here's an overview of your learning journey.</p>
  </div>
  <div class="actions">
- <a href="teachers.html?v=0f5b4d5" class="btn btn-primary" data-i18n="parent_dash.book_lesson">Book Lesson</a>
+ <a href="teachers.html?v=2" class="btn btn-primary" data-i18n="parent_dash.book_lesson">Book Lesson</a>
  </div>
  </div>
 
@@ -761,6 +767,7 @@
 <script src="i18n.js"></script>
  <footer>
  <p data-i18n="parent_dash.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p>
+ <a href="terms.html">Terms & Conditions</a>
  </footer>
 </body>
 </html>

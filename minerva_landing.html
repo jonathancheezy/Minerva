@@ -42,10 +42,7 @@
  z-index: 100;
  background: var(--navy);
  padding: 16px 24px;
- 
- background: var(--navy);
- padding: 0 24px;
- height: 64px;
+ }
 
  .nav-inner {
  max-width: 1100px;
@@ -123,27 +120,23 @@
   position: absolute;
   top: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%) translateY(-10px) scale(0.96);
-  width: 45px;
-  background: var(--navy);
-  border: 1px solid rgba(255,255,255,0.12);
+  transform: translateX(-50%) translateY(-8px);
+  width: 64px;
+  background: #0f1f33;
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 10px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(249, 168, 40, 0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 0.22s cubic-bezier(0.34, 1.20, 0.64, 1),
-    transform 0.22s cubic-bezier(0.34, 1.20, 0.64, 1),
-    visibility 0.22s;
-}
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
   z-index: 200;
 }
 
 .lang-selector.open .lang-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0) scale(1);
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Language rows */
@@ -151,10 +144,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4px;
-  padding: 7px 10px;
+  gap: 6px;
+  padding: 10px 14px;
   cursor: pointer;
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 600;
   color: rgba(255,255,255,0.65);
   background: transparent;
@@ -261,9 +254,11 @@
 
  /* Hero */
  .hero {
- padding: 70px 24px 80px;
+ position: relative;
+ padding: 100px 24px 80px;
  text-align: center;
  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+ overflow: hidden;
  }
 
  .hero-badge {
@@ -312,36 +307,46 @@
  line-height: 1.7;
  }
 
+ /* Organic wave decorations */
+ .hero-waves {
+ position: absolute;
+ top: 0; left: 0; right: 0;
+ pointer-events: none;
+ overflow: hidden;
+ height: 200px;
+ }
+
+ .wave {
+ position: absolute;
+ border-radius: 50%;
+ opacity: 0.06;
+ }
+
+ .wave-1 {
+ width: 400px; height: 200px;
+ background: var(--gold);
+ top: -60px; left: -80px;
+ }
+
+ .wave-2 {
+ width: 300px; height: 150px;
+ background: var(--teal);
+ top: -30px; right: -60px;
+ }
+
+ .wave-3 {
+ width: 200px; height: 100px;
+ background: var(--gold);
+ bottom: -20px; left: 60%;
+ }
+
+ /* Hero CTA */
  .hero-cta {
  display: flex;
  gap: 14px;
  justify-content: center;
  flex-wrap: wrap;
  margin-bottom: 24px;
- }
-
- .trust-badges {
- display: flex;
- gap: 20px;
- justify-content: center;
- flex-wrap: wrap;
- margin-top: 8px;
- }
-
- .badge {
- display: inline-flex;
- align-items: center;
- gap: 6px;
- background: var(--gray-100);
- padding: 8px 16px;
- border-radius: 50px;
- font-size: 13px;
- font-weight: 600;
- color: var(--gray-700);
- }
-
- .badge-icon {
- font-size: 14px;
  }
 
  .btn-secondary {
@@ -391,6 +396,33 @@
  }
 
  .btn-primary:hover, .btn-primary:focus, .btn-primary:active { background: var(--gold); transform: translateY(-1px); }
+
+ /* Trust badges */
+ .trust-badges {
+ display: flex;
+ gap: 20px;
+ justify-content: center;
+ flex-wrap: wrap;
+ margin-top: 8px;
+ }
+
+ .badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ background: var(--gray-100);
+ padding: 8px 16px;
+ border-radius: 50px;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-700);
+ }
+
+ .badge-icon {
+ font-size: 14px;
+ }
+
+ 
 
  /* Stats */
  .stats {
@@ -454,14 +486,14 @@
  margin: 0 auto;
  display: grid;
  grid-template-columns: repeat(3, 1fr);
- gap: 16px;
+ gap: 28px;
  }
 
  .feature-card {
  background: var(--gray-100);
  border: 1.5px solid var(--gray-200);
  border-radius: 20px;
- padding: 24px;
+ padding: 22px;
  transition: all 0.2s;
  }
 
@@ -479,7 +511,7 @@
  display: flex;
  align-items: center;
  justify-content: center;
- margin-bottom: 20px;
+ margin-bottom: 12px;
  font-size: 24px;
  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
  }
@@ -488,13 +520,14 @@
  font-size: 17px;
  font-weight: 700;
  color: var(--navy-dark);
- margin-bottom: 10px;
+ margin-bottom: 6px;
  }
 
  .feature-card p {
  font-size: 14px;
  color: var(--gray-500);
  line-height: 1.6;
+ padding-top: 0;
  }
 
  /* Problem */
@@ -508,7 +541,7 @@
  margin: 0 auto;
  display: grid;
  grid-template-columns: 1fr 1fr;
- gap: 24px;
+ gap: 48px;
  }
 
  .problem-col h3 {
@@ -526,8 +559,8 @@
  .problem-list li {
  color: rgba(255,255,255,0.75);
  font-size: 14px;
- padding: 10px 0;
-  line-height: 1.6;
+ padding: 12px 0;
+ line-height: 1.85;
  }
 
  .problem-list li strong {
@@ -703,6 +736,8 @@
  font-size: 13px;
  border-top: 1px solid var(--gray-200);
  }
+ footer a { color: var(--gold); text-decoration: none; }
+ footer a:hover { text-decoration: underline; }
 
  /* Mobile */
  @media (max-width: 768px) {
@@ -756,7 +791,6 @@
  </a>
  <div class="nav-controls">
  <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
-
  <div class="lang-selector" id="langSelector">
  <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
  <circle cx="12" cy="12" r="10"/>
@@ -789,8 +823,8 @@
  <a href="#features" data-i18n="nav_features">Features</a>
  <a href="#how-it-works" data-i18n="nav_how">How it Works</a>
  <a href="faq.html" data-i18n="nav_faq">FAQ</a>
- <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
  <a href="login.html" data-i18n="nav_login">Login</a>
+ <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
  <a href="terms.html" data-i18n="nav_terms">Terms & Conditions</a>
  </div>
  </div>
@@ -798,6 +832,11 @@
  </nav>
 
  <section class="hero">
+ <div class="hero-waves">
+ <div class="wave wave-1"></div>
+ <div class="wave wave-2"></div>
+ <div class="wave wave-3"></div>
+ </div>
  <div class="hero-badge">
  <span class="dot"></span>
  <span data-i18n="badge">Hong Kong Pilot — Coming Q3 2026</span>
@@ -814,7 +853,7 @@
  <div class="trust-badges">
  <span class="badge" data-i18n="trust_verified"><span class="badge-icon">🛡️</span> Background Verified</span>
  <span class="badge" data-i18n="trust_escrow"><span class="badge-icon">🔐</span> Escrow Protected</span>
- <span class="badge" data-i18n="trust_privacy"><span class="badge-icon">🧠</span> AI Powered</span>
+ <span class="badge" data-i18n="trust_ai"><span class="badge-icon">🧠</span> AI Powered</span>
  </div>
  </section>
 
@@ -964,11 +1003,11 @@
  <script>
  const translations = {
  en: {
- badge: "Hong Kong Pilot — Coming Q3 2026", nav_features: "Features", nav_how: "How it Works", nav_faq: "FAQ", nav_privacy: "Privacy Policy", nav_login: "Login", nav_terms: "Terms & Conditions",
+ badge: "Hong Kong Pilot — Coming Q3 2026", nav_features: "Features", nav_how: "How it Works", nav_faq: "FAQ", nav_login: "Login", nav_terms: "Terms & Conditions", nav_privacy: "Privacy Policy",
  hero_title: 'Learn from the <span class="highlight">best</span>,<br>backed by trust.',
  trust_verified: '<span class="badge-icon">🛡️</span> Background Verified',
  trust_escrow: '<span class="badge-icon">🔐</span> Escrow Protected',
- trust_privacy: '<span class="badge-icon">🧠</span> AI Powered',
+ trust_ai: '<span class="badge-icon">🧠</span> AI Powered',
  hero_subtitle: "Minerva is the first AI-powered learning marketplace in Asia with verified teachers, escrow payments, and online scheduling — so you can focus on learning, not worrying.",
  btn_join: "Register →",
  btn_see: "See How It Works",
@@ -1009,6 +1048,10 @@
  faq_subtitle: "Find answers to common questions about Minerva's services, policies, and how we work.",
  btn_register_teacher: "Register as Teacher →",
  btn_register_parent: "Register as Parent/Student →",
+ cta_teacher_eyebrow: "Teachers",
+ cta_teacher_sub: "First 100 — 0% commission",
+ cta_parent_eyebrow: "Parents & Students",
+ cta_parent_sub: "First lesson free",
  faq_label: "FAQ",
  btn_view_faq: "View all FAQs →",
  faq1_q: "Who can join as a teacher?", faq1_a: "Any qualified teacher in Hong Kong — music, academic subjects, languages, arts, sports. You need to pass our verification process (ID, qualifications, references).",
@@ -1028,11 +1071,12 @@
  footer_terms: "Terms & Conditions"
  },
  "zh-TW": {
- badge: "香港試點 — 2026年第三季度推出", nav_features: "功能", nav_how: "運作方式", nav_faq: "常見問題", nav_privacy: "私隱政策", nav_login: "登入", nav_terms: "條款及細則",
+ nav_privacy: "隱私政策",
+ badge: "香港試點 — 2026年第三季度推出", nav_features: "功能", nav_how: "運作方式", nav_faq: "常見問題", nav_login: "登入", nav_terms: "條款及細則",
  hero_title: '向最好的<SPAN class="highlight">老師</SPAN>學習。<br>信任背書。',
  trust_verified: '<span class="badge-icon">🛡️</span> 背景驗證',
  trust_escrow: '<span class="badge-icon">🔐</span> 託管保障',
- trust_privacy: '<span class="badge-icon">🧠</span> AI 智能支援',
+ trust_ai: '<span class="badge-icon">🧠</span> AI 驅動',
  hero_subtitle: " Minerva是亞洲首個AI驅動的學習市場，擁有認證老師、託管付款和線上預約系統——讓您專注學習，無後顧之憂。",
  btn_join: "註冊 →",
  btn_see: "了解更多",
@@ -1073,6 +1117,10 @@
  faq_subtitle: "了解Minerva服務、政策及運作方式的常見問題。",
  btn_register_teacher: "導師登記 →",
  btn_register_parent: "家長/學生登記 →",
+ cta_teacher_eyebrow: "導師",
+ cta_teacher_sub: "首100位 — 0% 佣金",
+ cta_parent_eyebrow: "家長及學生",
+ cta_parent_sub: "首堂免費",
  faq_label: "常見問題",
  btn_view_faq: "查看全部 FAQ →",
  faq1_q: "誰可以加入成為老師？", faq1_a: "香港任何合資格老師——音樂、學術科目、語言、藝術、體育。需通過我們的7步驟認證流程（身份、資歷、推薦、面試等）。",
@@ -1092,11 +1140,12 @@
  footer_terms: "條款及細則"
  },
  "zh-CN": {
- badge: "香港试点 — 2026年第三季度推出", nav_features: "功能", nav_how: "运作方式", nav_faq: "常见问题", nav_privacy: "隐私政策", nav_login: "登录", nav_terms: "条款及细则",
+ nav_privacy: "隐私政策",
+ badge: "香港试点 — 2026年第三季度推出", nav_features: "功能", nav_how: "运作方式", nav_faq: "常见问题", nav_login: "登录", nav_terms: "条款及细则",
  hero_title: '向最好的<SPAN class="highlight">老师</SPAN>学习。<br>信任背书。',
  trust_verified: '<span class="badge-icon">🛡️</span> 背景验证',
  trust_escrow: '<span class="badge-icon">🔐</span> 托管保障',
- trust_privacy: '<span class="badge-icon">🧠</span> AI 智能驱动',
+ trust_ai: '<span class="badge-icon">🧠</span> AI 驱动',
  hero_subtitle: "Minerva是首个AI驱动的学习市场，拥有认证老师、托管付款和线上预约系统——让您专注学习，无后顾之忧。",
  btn_join: "注册 →",
  btn_see: "了解更多",
@@ -1137,6 +1186,10 @@
  faq_subtitle: "了解Minerva服务，政策及运作方式的常见问题。",
  btn_register_teacher: "导师登记 →",
  btn_register_parent: "家长/学生登记 →",
+ cta_teacher_eyebrow: "导师",
+ cta_teacher_sub: "首100位 — 0% 佣金",
+ cta_parent_eyebrow: "家长及学生",
+ cta_parent_sub: "首堂免费",
  faq_label: "常见问题",
  btn_view_faq: "查看全部 FAQ →",
  faq1_q: "谁可以加入成为老师？", faq1_a: "香港任何合资格老师——音乐、学术科目、语言、艺术、体育。需通过我们的7步骤认证流程（身份、资历、推荐、面试等）。",
@@ -1158,19 +1211,33 @@
  };
 
  let currentLang = 'en';
-// Check URL params for language
-const urlParams = new URLSearchParams(window.location.search);
-const langParam = urlParams.get('lang');
-if (langParam && translations[langParam]) {
-  currentLang = langParam;
+// Check localStorage first (persistent across pages), then URL params
+const savedLang = localStorage.getItem('minerva_lang');
+// Normalize: zhTW -> zh-TW, zhCN -> zh-CN for lookup
+let normalizedSaved = savedLang;
+if (savedLang === 'zhTW') normalizedSaved = 'zh-TW';
+else if (savedLang === 'zhCN') normalizedSaved = 'zh-CN';
+if (normalizedSaved && translations[normalizedSaved]) {
+  currentLang = normalizedSaved;
+  setLang(currentLang); // Apply saved language on page load
+} else {
+  const urlParams = new URLSearchParams(window.location.search);
+  const langParam = urlParams.get('lang');
+  if (langParam && translations[langParam]) {
+    currentLang = langParam;
+    setLang(currentLang); // Apply URL language
+  }
 }
 
- function setLanguage(lang) {
+ function setLang(lang) {
  currentLang = lang;
  // Update URL without reload
  const url = new URL(window.location);
  url.searchParams.set('lang', lang);
  window.history.replaceState({}, '', url);
+ // Normalize for localStorage: zh-TW -> zhTW, zh-CN -> zhCN
+ let normalizedLang = lang.replace('-','');
+ localStorage.setItem('minerva_lang', normalizedLang);
  const t = translations[lang];
  
  // Update all elements with data-i18n
@@ -1220,20 +1287,20 @@ if (langParam && translations[langParam]) {
  langDropdown.querySelectorAll('.lang-option').forEach(o => o.classList.remove('selected'));
  opt.classList.add('selected');
  const lang = opt.dataset.lang;
-// lang label updated via setLanguage()
+// lang label updated via setLang()
  langSelector.classList.remove('open');
- setLanguage(lang);
+ setLang(lang);
  });
  });
 
- // Language button clicks — legacy for old setLanguage() if still used
+ // Language button clicks — legacy for old setLang() if still used
  document.querySelectorAll('.lang-btn').forEach(btn => {
- btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+ btn.addEventListener('click', () => setLang(btn.dataset.lang));
  });
 
  // Apply language from URL if present
  if (langParam && translations[langParam]) {
-   setLanguage(langParam);
+   setLang(langParam);
  }
 
  // Form submission

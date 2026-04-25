@@ -3,9 +3,8 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Earnings — Minerva</title>
+ <title>My Earnings — Minerva</title>
  <style>
-
 
 /* v=clean001 - rebuilt from scratch */
 
@@ -39,7 +38,165 @@ body {
 }
 
 a { color: #3b82f6; text-decoration: none; }
+/* Nav */
+ nav {
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ z-index: 100;
+ background: var(--navy);
+ padding: 16px 24px;
+ }
 
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ width: 100%;
+ gap: 16px;
+ flex-wrap: nowrap;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 22px;
+ color: white;
+ text-decoration: none;
+ white-space: nowrap;
+ flex-shrink: 0;
+ }
+
+ .logo-icon { width: 36px; height: 36px; }
+
+/* Language Selector */
+ .lang-selector { position: relative; display: flex; align-items: center; }
+
+ .globe {
+ width: 18px;
+ height: 18px;
+ color: var(--gold);
+ cursor: pointer;
+ transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+ flex-shrink: 0;
+ }
+ .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
+ .lang-selector.open .globe { transform: rotate(180deg); color: var(--gold); stroke: var(--gold); }
+
+ .lang-dropdown {
+ position: absolute;
+ top: calc(100% + 8px); left: 50%;
+ transform: translateX(-50%) translateY(-10px) scale(0.96);
+ width: 64px;
+ background: rgba(15, 31, 51, 0.92);
+ backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+ border: 1px solid rgba(255,255,255,0.12);
+ border-radius: 10px;
+ box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(249, 168, 40, 0.08);
+ overflow: hidden;
+ opacity: 0; visibility: hidden;
+ transition: opacity 0.22s, transform 0.22s, visibility 0.22s;
+ z-index: 200;
+ }
+ .lang-selector.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0) scale(1); }
+
+ .lang-option {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 6px;
+ padding: 10px 14px;
+ cursor: pointer;
+ font-size: 13px;
+ font-weight: 600;
+ color: rgba(255,255,255,0.65);
+ background: transparent;
+ border-bottom: 1px solid rgba(255,255,255,0.06);
+ transition: background 0.15s, color 0.15s, padding-left 0.15s;
+ position: relative;
+ overflow: hidden;
+ }
+ .lang-option:last-child { border-bottom: none; }
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s 0ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s 50ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(3) { animation: rowReveal 0.25s 100ms both; }
+ @keyframes rowReveal { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+ .lang-option .check { width: 14px; height: 14px; flex-shrink: 0; opacity: 0; transform: scale(0.5); transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+ .lang-option.selected .check { opacity: 1; transform: scale(1); }
+ .lang-option .check svg { width: 14px; height: 14px; stroke: var(--gold); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; stroke-dashoffset: 20; }
+ .lang-option.selected .check svg { stroke-dashoffset: 0; transition: stroke-dashoffset 0.3s; }
+ .lang-option.selected::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(249,168,40,0.08), transparent); transform: translateX(-100%); transition: transform 0.4s; }
+ .lang-option.selected:hover::before { transform: translateX(100%); }
+
+ /* Nav Links */
+ .nav-links { display: flex; gap: 24px; align-items: center; }
+ .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+ .nav-links a:hover { color: var(--gold); }
+ .nav-links a.active { color: var(--gold) !important; }
+
+ .nav-start {
+ display: flex;
+ align-items: center;
+ gap: 0;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ font-size: 20px;
+ cursor: pointer;
+ padding: 4px;
+ color: var(--gold);
+ background: none;
+ border: none;
+ margin-right: 12px;
+ }
+
+ /* User Info */
+ .nav-end {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+ .avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
+ }
+
+ @media (max-width: 768px) {
+ .nav-start { display: flex; align-items: center; }
+ .mobile-menu-btn { display: flex; }
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; align-items: flex-start; padding: 20px 24px; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 99; }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+ .user-info { display: flex; align-items: center; }
+ .lang-selector { background: transparent; padding: 0; }
+ }
+ @media (min-width: 769px) {
+ .mobile-menu-btn { display: none; }
+ .nav-start { display: flex; align-items: center; }
+ }
 
  /* Main Content */
  body { background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; }
@@ -47,6 +204,7 @@ a { color: #3b82f6; text-decoration: none; }
  .page-header { margin-bottom: 24px; }
  .page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
  .page-header p { font-size: 14px; color: #64748b; }
+.dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
  .stats-grid .stat-card { min-width: 0; }
  .stat-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 20px; text-align: left; min-height: 90px; display: flex; flex-direction: column; justify-content: center; }
@@ -73,189 +231,75 @@ a { color: #3b82f6; text-decoration: none; }
 
  /* Hamburger menu */
  @media (max-width: 768px) {
-  
-  
+  .mobile-menu-btn { display: block; }
+  .nav-links {
+   display: none;
+   position: absolute;
+   top: 100%;
+   left: 0;
+   right: 0;
+   background: #1e3a5f;
+   flex-direction: column;
+   padding: 20px 24px;
+   gap: 16px;
+   border-bottom: 1px solid rgba(255,255,255,0.1);
+   z-index: 99;
+  }
   .nav-links.active { display: flex; }
   .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
   .nav-links.active a.active { color: #F9A828 !important; }
   .nav-links.active a:hover { color: white; }
  }
- /* ── Nav (frosted glass) ── */
- nav {
- position: fixed;
- top: 0; left: 0; right: 0; z-index: 100;
- background: var(--navy);
- padding: 0 24px;
- height: 64px;
- display: flex;
- align-items: center;
- }
- .nav-inner {
- display: flex;
- align-items: center;
- width: 100%;
- max-width: 1100px;
- margin: 0 auto;
- gap: 24px;
- }
- .logo {
- display: flex;
- align-items: center;
- gap: 10px;
- font-weight: 800;
- font-size: 20px;
- color: white;
- text-decoration: none;
- flex-shrink: 0;
- }
- .logo-icon { width: 32px; height: 32px; }
- .nav-links {
- display: flex;
- gap: 20px;
- align-items: center;
- flex: 1;
- }
- .nav-links a {
- color: rgba(255,255,255,0.7);
- text-decoration: none;
- font-size: 14px;
- font-weight: 500;
- transition: color 0.2s;
- }
- .nav-links a:hover { color: white; }
- .nav-links a.active, .nav-links a[data-i18n="reviews.title"] { color: #F9A828 !important; }
- .nav-right {
- display: flex;
- align-items: center;
- gap: 12px;
- flex-shrink: 0;
- }
- .mobile-menu-btn {
- display: none;
- font-size: 20px;
- cursor: pointer;
- padding: 4px;
- color: #F9A828;
- background: none;
- border: none;
- }
- /* Language Selector */
- .lang-selector { position: relative; display: flex; align-items: center; }
- .globe {
- width: 18px; height: 18px;
- color: #F9A828;
- cursor: pointer;
- transition: transform 0.3s, color 0.2s;
- flex-shrink: 0;
- }
- .globe:hover { transform: rotate(20deg); color: #FBB81C; }
- .lang-selector.open .globe { transform: rotate(180deg); }
- .lang-dropdown {
- position: absolute;
- top: calc(100% + 8px);
- left: 50%;
- transform: translateX(-50%) translateY(-10px) scale(0.96);
- width: 64px;
- background: var(--navy);
- border: 1px solid rgba(255,255,255,0.12);
- border-radius: 10px;
- box-shadow: 0 12px 32px rgba(0,0,0,0.4);
- overflow: hidden;
- opacity: 0;
- visibility: hidden;
- transition: opacity 0.22s, transform 0.22s, visibility 0.22s;
- z-index: 200;
- }
- .lang-selector.open .lang-dropdown {
- opacity: 1;
- visibility: visible;
- transform: translateX(-50%) translateY(0) scale(1);
- }
- .lang-option {
- display: flex;
- align-items: center;
- justify-content: center;
- padding: 10px 14px;
- cursor: pointer;
- font-size: 13px;
- font-weight: 600;
- color: rgba(255,255,255,0.65);
- transition: background 0.15s, color 0.15s;
- }
- .lang-option:hover { background: rgba(255,255,255,0.06); color: white; }
- .lang-option.selected { color: #F9A828; }
- .lang-option .check {
- width: 14px; height: 14px;
- margin-left: 6px;
- opacity: 0;
- transform: scale(0.5);
- transition: opacity 0.2s, transform 0.2s;
- }
- .lang-option.selected .check { opacity: 1; transform: scale(1); }
- @media (max-width: 768px) {
- .mobile-menu-btn { display: block; }
- .nav-links {
- display: none;
- position: absolute;
- top: 64px; left: 0; right: 0;
- background: var(--navy);
- flex-direction: column;
- padding: 20px 24px;
- gap: 16px;
- z-index: 99;
- }
- .nav-links.active { display: flex; }
- .nav-links a.active { color: #F9A828 !important; }
- }
-</style>
+ </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 </head>
 <body>
  <nav>
  <div class="nav-inner">
- <a href="minerva_landing.html?v=0f5b4d5" class="logo">
-    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
-    <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    Minerva
-   </a>
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <div class="nav-links">
- <div class="nav-links">
- <div class="nav-links">
-  <a href="teacher_dashboard.html?v=0f5b4d5" data-i18n="teacher_dash.dashboard">Dashboard</a>
-  <a href="student_dashboard.html?v=0f5b4d5" data-i18n="teacher_dash.students">Students</a>
-  <a href="teacher_schedule.html?v=0f5b4d5" data-i18n="teacher_dash.schedule">Schedule</a>
-  <a href="messages.html?v=0f5b4d5" data-i18n="teacher_dash.nav_messages">CHATS</a>
-  <a href="reviews.html?v=0f5b4d5" data-i18n="reviews.title">Reviews</a>
-  <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="earnings.title">Earnings</a>
- </div>
- </div>
  <div class="nav-right">
- <div class="user-info">
-     <a href="teacher_profile.html?v=0f5b4d5" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div>
- <div class="lang-selector" id="langSelector">
- <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="12" cy="12" r="10"></circle>
- <path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"></path>
- <path d="M2 12h20"></path>
+ <div class="nav-start">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
  </svg>
- <div class="lang-dropdown">
- <div class="lang-option" data-lang="en">EN<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-TW">繁<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-CN">简<span class="check">✓</span></div>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="teacher_dashboard.html">Dashboard</a>
+ <a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
+ <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
+ <a href="messages.html" data-i18n="teacher_dash.nav_messages">Chats</a>
+ <a href="reviews.html" data-i18n="reviews.title">Reviews</a>
+ <a href="earnings.html" class="active" data-i18n="earnings.title">Earnings</a>
+ </div>
+ <div class="nav-end">
+ <div class="user-info">
+ <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
+ </div>
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
  </div>
  </div>
  </div>
- </div>
-</nav>
+ </nav>
  <main class="main">
   <div class="page-header">
-   <h1>Earnings</h1>
-   <p>Track your teaching earnings and history.</p>
+   <h1>My Earnings</h1>
+   <p class="dashboard-quote">"A good teacher makes earning look easy — but it comes from years of dedication."</p>
+
   </div>
   <div class="stats-grid">
    <div class="stat-card">
@@ -327,8 +371,34 @@ a { color: #3b82f6; text-decoration: none; }
    </div>
   </div>
  </main>
- <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
+ <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="terms.html">Terms & Conditions</a>
+</footer>
  <script src="i18n.js"></script>
  <script>if(typeof init=="function")init();</script>
+<script src="i18n.js"></script>
+<script>
+(function(){
+  var sel = document.getElementById('langSelector');
+  var globe = document.getElementById('langGlobe');
+  var dropdown = document.getElementById('langDropdown');
+  if (sel && globe && dropdown) {
+    globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
+    document.addEventListener('click', function(){ sel.classList.remove('open'); });
+    dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+    dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        sel.classList.remove('open');
+        var lang = opt.dataset.lang;
+        if (typeof setLanguage === 'function') setLanguage(lang);
+      });
+    });
+  }
+  var params = new URLSearchParams(window.location.search);
+  var lp = params.get('lang');
+  if (lp && typeof setLanguage === 'function') setLanguage(lp);
+})();
+</script>
 </body>
 </html>
