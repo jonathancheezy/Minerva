@@ -127,6 +127,7 @@
       col_actions:{en:"Actions",zhTW:"操作",zhCN:"操作"},
       view:{en:"View",zhTW:"查看",zhCN:"查看"},
       nav_dashboard:{en:"Dashboard",zhTW:"儀表板",zhCN:"仪表板"},
+      teacher_nav_dashboard:{en:"Dashboard",zhTW:"儀表板",zhCN:"仪表板"},
       nav_teachers:{en:"Teachers",zhTW:"導師",zhCN:"导师"},
       nav_students:{en:"Students",zhTW:"學生",zhCN:"学生"},
       btn_review:{en:"Review",zhTW:"審核",zhCN:"审核"},
