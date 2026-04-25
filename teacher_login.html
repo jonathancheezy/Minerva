@@ -2,7 +2,6 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Teacher Login — Minerva</title>
    <style>
-
  :root {
  --navy: #1e3a5f;
  --navy-dark: #0f1f33;
@@ -25,137 +24,105 @@
  line-height: 1.6;
  padding-top: 64px;
  }
-/* ── Nav (frosted glass) ── */
+ 
+
+ /* Nav */
  nav {
  position: fixed;
  top: 0; left: 0; right: 0; z-index: 100;
  background: var(--navy);
- padding: 0 24px;
- height: 64px;
- display: flex;
- align-items: center;
+ padding: 16px 24px;
  }
+
  .nav-inner {
- display: flex;
- align-items: center;
- width: 100%;
  max-width: 1100px;
  margin: 0 auto;
- gap: 24px;
  }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ width: 100%;
+ gap: 16px;
+ }
+
+ .nav-controls { display: flex; align-items: center; gap: 12px; }
+
  .logo {
  display: flex;
  align-items: center;
  gap: 10px;
  font-weight: 800;
- font-size: 20px;
+ font-size: 22px;
  color: white;
  text-decoration: none;
- flex-shrink: 0;
+ margin-right: 32px;
  }
- .logo-icon { width: 32px; height: 32px; }
- .nav-links {
- display: flex;
- gap: 20px;
- align-items: center;
- flex: 1;
- }
- .nav-links a {
- color: rgba(255,255,255,0.7);
- text-decoration: none;
- font-size: 14px;
- font-weight: 500;
- transition: color 0.2s;
- }
- .nav-links a:hover { color: white; }
- .nav-links a.active, .nav-links a[data-i18n="reviews.title"] { color: #F9A828 !important; }
- .nav-right {
- display: flex;
- align-items: center;
- gap: 12px;
- flex-shrink: 0;
- }
- .mobile-menu-btn {
- display: none;
- font-size: 20px;
- cursor: pointer;
- padding: 4px;
- color: #F9A828;
- background: none;
- border: none;
- }
- /* Language Selector */
+
+ .logo-icon { width: 36px; height: 36px; }
+
+ .mobile-menu-btn { display: flex; order: -1; font-size: 20px; cursor: pointer; padding: 4px; color: var(--gold); background: none; border: none; }
+
  .lang-selector { position: relative; display: flex; align-items: center; }
- .globe {
- width: 18px; height: 18px;
- color: #F9A828;
- cursor: pointer;
- transition: transform 0.3s, color 0.2s;
- flex-shrink: 0;
- }
- .globe:hover { transform: rotate(20deg); color: #FBB81C; }
+ .globe { width: 18px; height: 18px; color: var(--gold); cursor: pointer; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); flex-shrink: 0; }
+ .globe:hover { transform: rotate(20deg); }
  .lang-selector.open .globe { transform: rotate(180deg); }
  .lang-dropdown {
  position: absolute;
- top: calc(100% + 8px);
- left: 50%;
- transform: translateX(-50%) translateY(-10px) scale(0.96);
+ top: calc(100% + 8px); left: 50%;
+ transform: translateX(-50%);
  width: 64px;
- background: var(--navy);
+ background: rgba(15, 31, 51, 0.92);
+ backdrop-filter: blur(16px);
  border: 1px solid rgba(255,255,255,0.12);
  border-radius: 10px;
  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
  overflow: hidden;
- opacity: 0;
- visibility: hidden;
+ opacity: 0; visibility: hidden;
  transition: opacity 0.22s, transform 0.22s, visibility 0.22s;
  z-index: 200;
  }
- .lang-selector.open .lang-dropdown {
- opacity: 1;
- visibility: visible;
- transform: translateX(-50%) translateY(0) scale(1);
+ .lang-selector.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) scale(1); }
+ .lang-option { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 10px 14px; cursor: pointer; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.65); background: transparent; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.15s, color 0.15s, padding-left 0.15s; }
+ .lang-option:last-child { border-bottom: none; }
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+ .lang-option .check { width: 14px; height: 14px; flex-shrink: 0; opacity: 0; transform: scale(0.5); transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+ .lang-option.selected .check { opacity: 1; transform: scale(1); }
+ .lang-option .check svg { width: 14px; height: 14px; stroke: var(--gold); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+ .nav-links { display: flex; gap: 20px; align-items: center; }
+ .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+ .nav-links a:hover { color: var(--gold); }
+
+
+
+ 
+
+ .user-info {
+ display: flex;
+ align-items: center;
+ gap: 12px;
  }
- .lang-option {
+
+ .avatar {
+ width: 36px;
+ height: 36px;
+ background: var(--gold);
+ border-radius: 50%;
  display: flex;
  align-items: center;
  justify-content: center;
- padding: 10px 14px;
- cursor: pointer;
- font-size: 13px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ font-size: 14px;
+ }
+
+ .user-name {
+ font-size: 14px;
  font-weight: 600;
- color: rgba(255,255,255,0.65);
- transition: background 0.15s, color 0.15s;
  }
- .lang-option:hover { background: rgba(255,255,255,0.06); color: white; }
- .lang-option.selected { color: #F9A828; }
- .lang-option .check {
- width: 14px; height: 14px;
- margin-left: 6px;
- opacity: 0;
- transform: scale(0.5);
- transition: opacity 0.2s, transform 0.2s;
- }
- .lang-option.selected .check { opacity: 1; transform: scale(1); }
- @media (max-width: 768px) {
- .mobile-menu-btn { display: block; }
- .nav-links {
- display: none;
- position: absolute;
- top: 64px; left: 0; right: 0;
- background: var(--navy);
- flex-direction: column;
- padding: 20px 24px;
- gap: 16px;
- z-index: 99;
- }
- .nav-links.active { display: flex; }
- .nav-links a.active { color: #F9A828 !important; }
- }
-
- 
-
- 
 
  /* Hero */
  .hero {
@@ -276,37 +243,31 @@
  font-size: 13px;
  border-top: 1px solid var(--gray-200);
  }
- footer a { color: white; }
-
- 
- .lang-btn {
- padding: 6px 12px;
- border: none;
- background: transparent;
- border-radius: 6px;
- font-size: 13px;
- font-weight: 600;
- cursor: pointer;
- color: white;
- text-decoration: none;
- transition: all 0.2s;
- }
- .lang-btn:hover { color: white; }
- .lang-btn.active {
- background: var(--navy);
- color: white;
- box-shadow: 0 1px 3px rgba(0,0,0,0.1);
- }
+ footer a { color: var(--gold); text-decoration: none; }
+ footer a:hover { text-decoration: underline; }
  
 @media (max-width: 768px) {
-
-
-.nav-links.active { display: flex; }
-.nav-links a { color: rgba(255,255,255,0.85) !important; margin-left: 0 !important; padding: 8px 0; font-size: 15px; }
-.lang-btn { padding: 6px 12px; font-size: 13px; }
-
+ .mobile-menu-btn { display: flex; order: -1; }
+ .lang-selector { background: transparent; padding: 0; gap: 0; border-radius: 0; }
+ .lang-btn { padding: 6px 12px; font-size: 13px; }
+ .nav-links {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0; right: 0;
+  background: var(--navy);
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 99;
+ }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
 }
-
+@media (min-width: 769px) {
+ .mobile-menu-btn { display: none; }
+}
 </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -315,7 +276,8 @@
 <body>
  <nav>
  <div class="nav-inner">
- <a href="minerva_landing.html?v=ee40335" class="logo">
+ <div class="nav-right">
+ <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
  <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -323,29 +285,41 @@
  </svg>
  Minerva
  </a>
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <div class="nav-links">
- <div class="nav-links">
- <a href="minerva_landing.html" class="btn-outline" data-i18n="login.back_link">← Back</a>
- </div>
- </div>
- <div class="nav-right">
- 
+ <div class="nav-controls">
+ <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
  <div class="lang-selector" id="langSelector">
- <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="12" cy="12" r="10"></circle>
- <path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"></path>
- <path d="M2 12h20"></path>
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
  </svg>
- <div class="lang-dropdown">
- <div class="lang-option" data-lang="en">EN<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-TW">繁<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-CN">简<span class="check">✓</span></div>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">
+ EN
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
+ </div>
+ <div class="lang-option" data-lang="zh-TW">
+ 繁
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
+ </div>
+ <div class="lang-option" data-lang="zh-CN">
+ 简
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
  </div>
  </div>
  </div>
  </div>
-</nav>
+ <div class="nav-links">
+ <a href="minerva_landing.html" data-i18n="login.back_link">← Back</a>
+ </div>
+ </div>
+ </nav>
 
  <section class="hero">
  <div class="hero-badge" data-i18n="login.teacher_login">Teacher Login</div>
@@ -382,8 +356,8 @@
  </section>
 
  <footer>
- <p><span data-i18n="login.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="minerva_landing.html" data-i18n="login.home_link">Back to home</a></p>
- </footer>
+ <p><span data-i18n="login.footer_text">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="minerva_landing.html" data-i18n="login.home_link">Back to home</a></p> <a href="terms.html">Terms & Conditions</a>
+</footer>
 
  <script>
  document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -412,23 +386,5 @@
 
 
 <script src="i18n.js"></script>
-
- // ── Language selector ──
- const langSelector = document.getElementById('langSelector');
- if (langSelector) {
- document.querySelector('.globe').addEventListener('click', e => {
- e.stopPropagation();
- langSelector.classList.toggle('open');
- });
- document.addEventListener('click', () => langSelector.classList.remove('open'));
- document.querySelectorAll('.lang-option').forEach(opt => {
- opt.addEventListener('click', () => {
- document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('selected'));
- opt.classList.add('selected');
- langSelector.classList.remove('open');
- });
- });
- }
-
 </body>
 </html>
