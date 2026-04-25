@@ -216,23 +216,24 @@
 
  /* Footer */
  footer { text-align: center; padding: 32px 24px; color: var(--gray-500); font-size: 13px; border-top: 1px solid var(--gray-200); }
-footer a { color: var(--gold); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
 
  /* Responsive */
  @media (max-width: 600px) {
  .cat-grid { grid-template-columns: 1fr; }
  .page-title h1 { font-size: 28px; }
  }
- 
- @media (max-width: 768px) {
- 
- 
- .nav-links.active { display: flex; }
- .nav-links a.active { color: #F9A828 !important; }
- }
- 
-</style>
+
+/* Footer */
+footer {
+ padding: 40px 24px;
+ text-align: center;
+ color: var(--gray-500);
+ font-size: 13px;
+ border-top: 1px solid var(--gray-200);
+}
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+ </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
  
@@ -316,8 +317,8 @@ footer a:hover { text-decoration: underline; }
  </div>
 
  <footer>
- <p>© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="terms.html">Terms & Conditions</a></p>
- </footer>
+ <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
+</footer>
 
  <script src="i18n.js"></script>
  <script>
