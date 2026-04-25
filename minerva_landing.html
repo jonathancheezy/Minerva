@@ -115,18 +115,6 @@
 
 .lang-selector.open .globe { transform: rotate(180deg); }
 
-/* Search icon */
-.search-icon {
-  width: 18px;
-  height: 18px;
-  color: var(--gold);
-  cursor: pointer;
-  transition: color 0.2s, transform 0.2s;
-  flex-shrink: 0;
-}
-
-.search-icon:hover { color: var(--gold-light); transform: scale(1.1); }
-
 /* Mobile menu hamburger */
 .mobile-menu-btn { color: var(--gold); }
 
@@ -273,7 +261,7 @@
 
  /* Hero */
  .hero {
- padding: 140px 24px 80px;
+ padding: 70px 24px 80px;
  text-align: center;
  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
  }
@@ -466,14 +454,14 @@
  margin: 0 auto;
  display: grid;
  grid-template-columns: repeat(3, 1fr);
- gap: 28px;
+ gap: 16px;
  }
 
  .feature-card {
  background: var(--gray-100);
  border: 1.5px solid var(--gray-200);
  border-radius: 20px;
- padding: 32px;
+ padding: 24px;
  transition: all 0.2s;
  }
 
@@ -507,7 +495,6 @@
  font-size: 14px;
  color: var(--gray-500);
  line-height: 1.6;
- padding-top: 64px;
  }
 
  /* Problem */
@@ -521,7 +508,7 @@
  margin: 0 auto;
  display: grid;
  grid-template-columns: 1fr 1fr;
- gap: 48px;
+ gap: 24px;
  }
 
  .problem-col h3 {
@@ -541,7 +528,6 @@
  font-size: 14px;
  padding: 10px 0;
   line-height: 1.6;
- padding-top: 64px;
  }
 
  .problem-list li strong {
@@ -770,10 +756,7 @@
  </a>
  <div class="nav-controls">
  <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
- <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="11" cy="11" r="8"/>
- <line x1="21" y1="21" x2="16.65" y2="16.65"/>
- </svg>
+
  <div class="lang-selector" id="langSelector">
  <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
  <circle cx="12" cy="12" r="10"/>
@@ -830,7 +813,7 @@
  <div class="trust-badges">
  <span class="badge" data-i18n="trust_verified"><span class="badge-icon">🛡️</span> Background Verified</span>
  <span class="badge" data-i18n="trust_escrow"><span class="badge-icon">🔐</span> Escrow Protected</span>
- <span class="badge" data-i18n="trust_privacy"><span class="badge-icon">📋</span> HK Data Privacy</span>
+ <span class="badge" data-i18n="trust_privacy"><span class="badge-icon">🧠</span> AI Powered</span>
  </div>
  </section>
 
@@ -984,7 +967,7 @@
  hero_title: 'Learn from the <span class="highlight">best</span>,<br>backed by trust.',
  trust_verified: '<span class="badge-icon">🛡️</span> Background Verified',
  trust_escrow: '<span class="badge-icon">🔐</span> Escrow Protected',
- trust_privacy: '<span class="badge-icon">📋</span> HK Data Privacy',
+ trust_privacy: '<span class="badge-icon">🧠</span> AI Powered',
  hero_subtitle: "Minerva is the first AI-powered learning marketplace in Asia with verified teachers, escrow payments, and online scheduling — so you can focus on learning, not worrying.",
  btn_join: "Register →",
  btn_see: "See How It Works",
@@ -1048,7 +1031,7 @@
  hero_title: '向最好的<SPAN class="highlight">老師</SPAN>學習。<br>信任背書。',
  trust_verified: '<span class="badge-icon">🛡️</span> 背景驗證',
  trust_escrow: '<span class="badge-icon">🔐</span> 託管保障',
- trust_privacy: '<span class="badge-icon">📋</span> 香港私隱條例',
+ trust_privacy: '<span class="badge-icon">🧠</span> AI 智能支援',
  hero_subtitle: " Minerva是亞洲首個AI驅動的學習市場，擁有認證老師、託管付款和線上預約系統——讓您專注學習，無後顧之憂。",
  btn_join: "註冊 →",
  btn_see: "了解更多",
@@ -1112,7 +1095,7 @@
  hero_title: '向最好的<SPAN class="highlight">老师</SPAN>学习。<br>信任背书。',
  trust_verified: '<span class="badge-icon">🛡️</span> 背景验证',
  trust_escrow: '<span class="badge-icon">🔐</span> 托管保障',
- trust_privacy: '<span class="badge-icon">📋</span> 香港私隐条例',
+ trust_privacy: '<span class="badge-icon">🧠</span> AI 智能驱动',
  hero_subtitle: "Minerva是首个AI驱动的学习市场，拥有认证老师、托管付款和线上预约系统——让您专注学习，无后顾之忧。",
  btn_join: "注册 →",
  btn_see: "了解更多",
