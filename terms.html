@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Terms & Conditions — Minerva</title>
-   <style>
+ <style>
  :root {
  --navy: #1e3a5f;
  --navy-dark: #0f1f33;
@@ -15,29 +15,46 @@
  --white: #ffffff;
  --gray-100: #f8fafc;
  --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
  --gray-500: #64748b;
  --gray-700: #334155;
  }
  * { margin: 0; padding: 0; box-sizing: border-box; }
  body {
- font-family: 'Inter', sans-serif;
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
  background: var(--white);
  color: var(--gray-700);
- line-height: 1.7;
+ line-height: 1.6;
  padding-top: 64px;
  }
 
  nav {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ z-index: 100;
  background: var(--navy);
- padding: 0 24px;
- height: 64px;
+ padding: 16px 24px;
+ }
+
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+
+ .logo {
  display: flex;
  align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 22px;
+ color: white;
+ text-decoration: none;
+ margin-right: 32px;
  }
- .nav-inner { max-width: 900px; margin: 0 auto; }
- .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: white; text-decoration: none; margin-right: 32px; }
+
  .logo-icon { width: 36px; height: 36px; }
- .back-link { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
 
  .nav-right {
  display: flex;
@@ -47,20 +64,11 @@
  gap: 16px;
  }
 
- .nav-controls { display: flex; align-items: center; gap: 12px; }
-
- .mobile-menu-btn {
+ .lang-selector {
+ position: relative;
  display: flex;
- font-size: 20px;
- cursor: pointer;
- padding: 4px;
- color: var(--gold);
- background: none;
- border: none;
+ align-items: center;
  }
-
-  /* ── Language Selector ── */
- .lang-selector { position: relative; display: flex; align-items: center; }
 
  .globe {
  width: 18px;
@@ -70,29 +78,33 @@
  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
  flex-shrink: 0;
  }
+
  .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
  .lang-selector.open .globe { transform: rotate(180deg); }
+
+ .mobile-menu-btn { color: var(--gold); }
 
  .lang-dropdown {
  position: absolute;
  top: calc(100% + 8px);
  left: 50%;
- transform: translateX(-50%) translateY(-10px) scale(0.96);
+ transform: translateX(-50%) translateY(-8px);
  width: 64px;
- background: var(--navy);
- border: 1px solid rgba(255,255,255,0.12);
+ background: #0f1f33;
+ border: 1px solid rgba(255,255,255,0.15);
  border-radius: 10px;
- box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(249, 168, 40, 0.08);
+ box-shadow: 0 8px 24px rgba(0,0,0,0.5);
  overflow: hidden;
  opacity: 0;
  visibility: hidden;
- transition: opacity 0.22s cubic-bezier(0.34, 1.20, 0.64, 1), transform 0.22s cubic-bezier(0.34, 1.20, 0.64, 1), visibility 0.22s;
+ transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
  z-index: 200;
  }
+
  .lang-selector.open .lang-dropdown {
  opacity: 1;
  visibility: visible;
- transform: translateX(-50%) translateY(0) scale(1);
+ transform: translateX(-50%) translateY(0);
  }
 
  .lang-option {
@@ -111,9 +123,8 @@
  position: relative;
  overflow: hidden;
  }
+
  .lang-option:last-child { border-bottom: none; }
- .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
- .lang-option.selected { color: var(--gold); }
 
  .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 0ms both; }
  .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 50ms both; }
@@ -124,6 +135,14 @@
  to { opacity: 1; transform: translateX(0); }
  }
 
+ .lang-option:hover {
+ background: rgba(255,255,255,0.06);
+ color: white;
+ padding-left: 18px;
+ }
+
+ .lang-option.selected { color: var(--gold); }
+
  .lang-option .check {
  width: 14px;
  height: 14px;
@@ -132,7 +151,12 @@
  transform: scale(0.5);
  transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
  }
- .lang-option.selected .check { opacity: 1; transform: scale(1); }
+
+ .lang-option.selected .check {
+ opacity: 1;
+ transform: scale(1);
+ }
+
  .lang-option .check svg {
  width: 14px;
  height: 14px;
@@ -144,7 +168,11 @@
  stroke-dasharray: 20;
  stroke-dashoffset: 20;
  }
- .lang-option.selected .check svg { stroke-dashoffset: 0; transition: stroke-dashoffset 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+ .lang-option.selected .check svg {
+ stroke-dashoffset: 0;
+ transition: stroke-dashoffset 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+ }
 
  .lang-option.selected::before {
  content: '';
@@ -154,14 +182,15 @@
  transform: translateX(-100%);
  transition: transform 0.4s;
  }
+
  .lang-option.selected:hover::before { transform: translateX(100%); }
 
- /* ── Nav Links ── */
  .nav-links {
  display: flex;
  gap: 24px;
  align-items: center;
  }
+
  .nav-links a {
  color: rgba(255,255,255,0.75);
  text-decoration: none;
@@ -169,24 +198,83 @@
  font-weight: 500;
  transition: color 0.2s;
  }
+
  .nav-links a:hover { color: var(--gold); }
 
- footer { text-align: center; padding: 32px 24px; font-size: 14px; color: white; border-top: 1px solid var(--gray-200); margin-top: 48px; }
- footer a { color: var(--navy); text-decoration: none; }
+ /* Terms page content */
+ .container {
+ max-width: 800px;
+ margin: 0 auto;
+ padding: 48px 24px 80px;
+ }
 
- .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
- h1 { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 8px; }
- .last-updated { font-size: 14px; color: white; margin-bottom: 40px; }
- h2 { font-size: 20px; font-weight: 700; color: var(--navy-dark); margin: 40px 0 16px; }
- h3 { font-size: 16px; font-weight: 600; color: var(--navy-dark); margin: 24px 0 12px; }
- p { margin-bottom: 16px; }
- ul { margin: 16px 0; padding-left: 24px; }
- li { margin-bottom: 8px; }
+ .container h1 {
+ font-size: 36px;
+ font-weight: 800;
+ color: var(--navy);
+ margin-bottom: 12px;
+ text-align: center;
+ }
+
+ .last-updated {
+ text-align: center;
+ color: var(--gray-500);
+ font-size: 14px;
+ margin-bottom: 48px;
+ }
+
  .section { margin-bottom: 32px; }
+ .section p { color: var(--gray-700); font-size: 15px; }
 
+ .container h2 {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--navy);
+ margin: 32px 0 12px;
+ }
+
+ .container h3 {
+ font-size: 15px;
+ font-weight: 600;
+ color: var(--navy);
+ margin: 24px 0 8px;
+ }
+
+ .container p {
+ color: var(--gray-700);
+ font-size: 14px;
+ line-height: 1.8;
+ margin-bottom: 12px;
+ }
+
+ .container ul {
+ margin: 12px 0 16px 20px;
+ }
+
+ .container li {
+ color: var(--gray-700);
+ font-size: 14px;
+ line-height: 1.8;
+ margin-bottom: 6px;
+ }
+
+ /* Footer */
+ footer {
+ padding: 40px 24px;
+ text-align: center;
+ color: var(--gray-500);
+ font-size: 13px;
+ border-top: 1px solid var(--gray-200);
+ }
+
+ footer a { color: var(--gold); text-decoration: none; }
+ footer a:hover { text-decoration: underline; }
+
+ /* Responsive */
  @media (max-width: 768px) {
  .nav-right { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; }
- .mobile-menu-btn { display: flex; order: -1; }
+ .nav-controls { display: flex; align-items: center; gap: 12px; }
+ .mobile-menu-btn { display: flex; order: -1; font-size: 20px; cursor: pointer; padding: 4px; color: var(--gold); background: none; border: none; }
  .lang-selector { background: transparent; padding: 0; gap: 0; border-radius: 0; }
  .nav-links {
  display: none;
@@ -197,22 +285,18 @@
  background: var(--navy);
  flex-direction: column;
  padding: 20px 24px;
- gap: 12px;
  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
  z-index: 99;
  }
  .nav-links.active { display: flex; }
- .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
- h1 { font-size: 28px; }
- .category-title { font-size: 18px; }
+ .container h1 { font-size: 28px; }
  }
  @media (min-width: 769px) {
  .mobile-menu-btn { display: none; }
  }
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
- 
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
  <nav>
@@ -227,8 +311,7 @@
  Minerva
  </a>
  <div class="nav-controls">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
-
+ <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
  <div class="lang-selector" id="langSelector">
  <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
  <circle cx="12" cy="12" r="10"/>
@@ -238,15 +321,21 @@
  <div class="lang-dropdown" id="langDropdown">
  <div class="lang-option selected" data-lang="en">
  EN
- <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
  </div>
  <div class="lang-option" data-lang="zh-TW">
  繁
- <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
  </div>
  <div class="lang-option" data-lang="zh-CN">
  简
- <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="check">
+ <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+ </span>
  </div>
  </div>
  </div>
@@ -255,6 +344,8 @@
  <a href="minerva_landing.html" data-i18n="nav_home">Home</a>
  <a href="faq.html" data-i18n="nav_faq">FAQ</a>
  <a href="login.html" data-i18n="nav_login">Login</a>
+ <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+ <a href="terms.html" data-i18n="nav_terms">Terms & Conditions</a>
  </div>
  </div>
  </div>
@@ -485,41 +576,41 @@
 
  <p style="margin-top: 48px; font-size: 14px; color: white;" data-i18n="terms.copyright">© 2026 Minerva Learning Ltd. All rights reserved. Registered in Hong Kong.</p>
  </div>
- 
- 
 
-
-
+ <footer>
+ <p>© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+ <a href="terms.html" data-i18n="nav_terms">Terms & Conditions</a></p>
+ </footer>
 
 <script src="i18n.js"></script>
 <script>
-// ── Lang Selector ──
 (function(){
-  var sel = document.getElementById('langSelector');
-  var globe = document.getElementById('langGlobe');
-  var dropdown = document.getElementById('langDropdown');
-  if (sel && globe && dropdown) {
-    globe.addEventListener('click', function(e){
-      e.stopPropagation();
-      sel.classList.toggle('open');
-    });
-    document.addEventListener('click', function(){ sel.classList.remove('open'); });
-    dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
-    dropdown.querySelectorAll('.lang-option').forEach(function(opt){
-      opt.addEventListener('click', function(){
-        dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
-        opt.classList.add('selected');
-        sel.classList.remove('open');
-        var lang = opt.dataset.lang;
-        if (typeof setLanguage === 'function') setLanguage(lang);
-      });
-    });
-  }
-  var params = new URLSearchParams(window.location.search);
-  var lp = params.get('lang');
-  if (lp && typeof setLanguage === 'function') setLanguage(lp);
+ var sel = document.getElementById('langSelector');
+ var globe = document.getElementById('langGlobe');
+ var dropdown = document.getElementById('langDropdown');
+ if (sel && globe && dropdown) {
+ globe.addEventListener('click', function(e){
+ e.stopPropagation();
+ sel.classList.toggle('open');
+ });
+ document.addEventListener('click', function(){ sel.classList.remove('open'); });
+ dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+ dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+ opt.addEventListener('click', function(){
+ dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+ opt.classList.add('selected');
+ sel.classList.remove('open');
+ var lang = opt.dataset.lang;
+ if (typeof setLang === 'function') setLang(lang);
+ });
+ });
+ }
+ var params = new URLSearchParams(window.location.search);
+ var lp = params.get('lang');
+ if (!lp) lp = localStorage.getItem('minerva_lang');
+var lp = params.get('lang');
+ if (lp && typeof setLang === 'function') setLang(lp);
 })();
 </script>
-<footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
 </body>
 </html>
