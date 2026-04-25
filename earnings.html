@@ -5,320 +5,630 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>My Earnings — Minerva</title>
  <style>
-
-/* v=clean001 - rebuilt from scratch */
-
  :root {
- --navy: #1e3a5f;
- --teal: #3b82f6;
- --teal-light: #60a5fa;
- --gold: #F9A828;
- --white: #ffffff;
- --gray-100: #f8fafc;
- --gray-200: #e2e8f0;
- --gray-300: #cbd5e1;
- --gray-400: #94a3b8;
- --gray-500: #64748b;
- --gray-600: #475569;
- --gray-700: #334155;
- --green: #22c55e;
- --red: #ef4444;
- --purple: #8b5cf6;
- --navy-dark: #0f1f33;
-}
+   --navy:        #1e3a5f;
+   --navy-dark:   #0f1f33;
+   --navy-mid:    #2d4a6f;
+   --teal:        #008C72;
+   --teal-light:  #00b394;
+   --gold:        #F9A828;
+   --gold-light:  #FBB81C;
+   --gray-50:     #f8fafc;
+   --gray-100:    #f1f5f9;
+   --gray-200:    #e2e8f0;
+   --gray-300:    #cbd5e1;
+   --gray-400:    #94a3b8;
+   --gray-500:    #64748b;
+   --gray-600:    #475569;
+   --gray-700:    #334155;
+   --gray-800:    #1e293b;
+   --green:       #22c55e;
+   --green-light: #dcfce7;
+   --red:         #ef4444;
+   --red-light:   #fee2e2;
+   --gold-muted:  #fef3c7;
+   --gradient-hero:  linear-gradient(135deg, #0f1f33 0%, #1e3a5f 40%, #008C72 100%);
+   --gradient-card:   linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 100%);
+   --gradient-gold:   linear-gradient(135deg, #F9A828 0%, #FBB81C 100%);
+   --gradient-teal:   linear-gradient(135deg, #008C72 0%, #00b394 100%);
+ }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
- font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
- background: #f8fafc;
- color: #334155;
- line-height: 1.6;
- padding-top: 60px;
- min-height: 100vh;
-}
+ body {
+   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+   background: var(--gray-50);
+   color: var(--gray-700);
+   line-height: 1.6;
+   min-height: 100vh;
+ }
 
-a { color: #3b82f6; text-decoration: none; }
-/* Nav */
+ /* ─── NAV ─── */
  nav {
- position: fixed;
- top: 0; left: 0; right: 0;
- z-index: 100;
- background: var(--navy);
- padding: 16px 24px;
+   position: fixed;
+   top: 0; left: 0; right: 0;
+   z-index: 100;
+   background: rgba(15, 31, 51, 0.85);
+   backdrop-filter: blur(24px);
+   -webkit-backdrop-filter: blur(24px);
+   border-bottom: 1px solid rgba(255,255,255,0.08);
+   height: 64px;
+   display: flex;
+   align-items: center;
+   padding: 0 24px;
  }
 
  .nav-inner {
- max-width: 1100px;
- margin: 0 auto;
+   max-width: 1100px;
+   width: 100%;
+   margin: 0 auto;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 16px;
  }
 
- .nav-right {
- display: flex;
- align-items: center;
- justify-content: space-between;
- width: 100%;
- gap: 16px;
- flex-wrap: nowrap;
+ .nav-start {
+   display: flex;
+   align-items: center;
+   gap: 0;
  }
 
  .logo {
- display: flex;
- align-items: center;
- gap: 10px;
- font-weight: 800;
- font-size: 22px;
- color: white;
- text-decoration: none;
- white-space: nowrap;
- flex-shrink: 0;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-weight: 800;
+   font-size: 22px;
+   color: white;
+   text-decoration: none;
+   white-space: nowrap;
  }
 
  .logo-icon { width: 36px; height: 36px; }
 
-/* Language Selector */
- .lang-selector { position: relative; display: flex; align-items: center; }
-
- .globe {
- width: 18px;
- height: 18px;
- color: var(--gold);
- cursor: pointer;
- transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
- flex-shrink: 0;
+ .mobile-menu-btn {
+   display: none;
+   font-size: 20px;
+   cursor: pointer;
+   padding: 4px;
+   color: var(--gold);
+   background: none;
+   border: none;
+   margin-right: 12px;
  }
- .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
- .lang-selector.open .globe { transform: rotate(180deg); color: var(--gold); stroke: var(--gold); }
 
- .lang-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  width: 64px;
-  background: var(--navy);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-  z-index: 200;
-}
- .lang-selector.open .lang-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
- .lang-option {
- display: flex;
- align-items: center;
- justify-content: space-between;
- gap: 6px;
- padding: 10px 14px;
- cursor: pointer;
- font-size: 13px;
- font-weight: 600;
- color: rgba(255,255,255,0.65);
- background: transparent;
- border-bottom: 1px solid rgba(255,255,255,0.06);
- transition: background 0.15s, color 0.15s, padding-left 0.15s;
- position: relative;
- overflow: hidden;
- }
- .lang-option:last-child { border-bottom: none; }
- .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
- .lang-option.selected { color: var(--gold); }
- .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s 0ms both; }
- .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s 50ms both; }
- .lang-selector.open .lang-dropdown .lang-option:nth-child(3) { animation: rowReveal 0.25s 100ms both; }
- @keyframes rowReveal { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
- .lang-option .check { width: 14px; height: 14px; flex-shrink: 0; opacity: 0; transform: scale(0.5); transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
- .lang-option.selected .check { opacity: 1; transform: scale(1); }
- .lang-option .check svg { width: 14px; height: 14px; stroke: var(--gold); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; stroke-dashoffset: 20; }
- .lang-option.selected .check svg { stroke-dashoffset: 0; transition: stroke-dashoffset 0.3s; }
- .lang-option.selected::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(249,168,40,0.08), transparent); transform: translateX(-100%); transition: transform 0.4s; }
- .lang-option.selected:hover::before { transform: translateX(100%); }
-
- /* Nav Links */
  .nav-links { display: flex; gap: 24px; align-items: center; }
  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
  .nav-links a:hover { color: var(--gold); }
  .nav-links a.active { color: var(--gold) !important; }
 
- .nav-start {
- display: flex;
- align-items: center;
- gap: 0;
- }
-
- .mobile-menu-btn {
- display: none;
- font-size: 20px;
- cursor: pointer;
- padding: 4px;
- color: var(--gold);
- background: none;
- border: none;
- margin-right: 12px;
- }
-
- /* User Info */
  .nav-end {
- display: flex;
- align-items: center;
- gap: 16px;
- }
-
- .user-info {
- display: flex;
- align-items: center;
- gap: 12px;
- }
- .avatar {
- width: 36px;
- height: 36px;
- background: var(--gold);
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-weight: 700;
- color: var(--navy-dark);
- font-size: 14px;
- }
-
- @media (max-width: 768px) {
- .nav-start { display: flex; align-items: center; }
- .mobile-menu-btn { display: flex; }
- .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; align-items: flex-start; padding: 20px 24px; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 99; }
- .nav-links.active { display: flex; }
- .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
- .user-info { display: flex; align-items: center; }
- .lang-selector { background: transparent; padding: 0; }
- }
- @media (min-width: 769px) {
- .mobile-menu-btn { display: none; }
- .nav-start { display: flex; align-items: center; }
- }
-
- /* Main Content */
- body { background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; }
- .main { padding: 32px; max-width: 1200px; margin: 0 auto; }
- .page-header { margin-bottom: 32px; }
- .page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
- .page-header p { color: #64748b; font-size: 14px; }
- .dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
- .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
- .stats-grid .stat-card { min-width: 0; }
- .stat-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 20px; text-align: left; min-height: 90px; display: flex; flex-direction: column; justify-content: center; }
- .stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
- .stat-card .value { font-size: 20px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
- .stat-card .value.green { color: #22c55e; }
- .stat-card .value.gold { color: #F9A828; }
- .stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
- .stat-card .sub a { color: #3b82f6; }
- .content-grid { display: flex; flex-direction: row; gap: 20px; width: 100%; margin-top: 20px; }
- .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); flex: 1; min-width: 0; }
- .card-header { padding: 16px 20px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
- .card-header h2 { font-size: 15px; font-weight: 700; color: #0f1f33; margin: 0; }
- .card-header span { font-size: 12px; color: #94a3b8; }
- .card-body { padding: 16px 20px; }
- .earnings-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
- .earnings-item:last-child { border-bottom: none; }
- .earnings-desc { font-weight: 600; font-size: 14px; color: #0f1f33; }
- .earnings-date { font-size: 12px; color: #94a3b8; margin-top: 2px; }
- .earnings-amount { font-weight: 700; font-size: 15px; color: #22c55e; white-space: nowrap; margin-left: 16px; }
- @media (max-width: 900px) { .content-grid { flex-direction: column; } .content-grid .card { flex: none; width: 100%; } }
- @media (max-width: 400px) { .stats-grid { grid-template-columns: 1fr; } }
- @media (max-width: 500px) { .main { padding: 20px 16px; } }
-
- /* Hamburger menu */
- @media (max-width: 768px) {
-  .mobile-menu-btn { display: block; }
-  .nav-links {
-   display: none;
-   position: absolute;
-   top: 100%;
-   left: 0;
-   right: 0;
-   background: #1e3a5f;
-   flex-direction: column;
-   padding: 20px 24px;
+   display: flex;
+   align-items: center;
    gap: 16px;
-   border-bottom: 1px solid rgba(255,255,255,0.1);
-   z-index: 99;
-  }
-  .nav-links.active { display: flex; }
-  .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
-  .nav-links.active a.active { color: #F9A828 !important; }
-  .nav-links.active a:hover { color: white; }
+ }
+
+ .lang-selector { position: relative; display: flex; align-items: center; }
+
+ .globe {
+   width: 18px;
+   height: 18px;
+   color: var(--gold);
+   cursor: pointer;
+   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+   flex-shrink: 0;
+ }
+ .globe:hover { transform: rotate(20deg); }
+ .lang-selector.open .globe { transform: rotate(180deg); }
+
+ .lang-dropdown {
+   position: absolute;
+   top: calc(100% + 8px);
+   left: 50%;
+   transform: translateX(-50%) translateY(-8px);
+   width: 64px;
+   background: var(--navy);
+   border: 1px solid rgba(255,255,255,0.15);
+   border-radius: 10px;
+   box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+   overflow: hidden;
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+   z-index: 200;
+ }
+ .lang-selector.open .lang-dropdown {
+   opacity: 1;
+   visibility: visible;
+   transform: translateX(-50%) translateY(0);
+ }
+
+ .lang-option {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 6px;
+   padding: 10px 14px;
+   cursor: pointer;
+   font-size: 13px;
+   font-weight: 600;
+   color: rgba(255,255,255,0.65);
+   background: transparent;
+   border-bottom: 1px solid rgba(255,255,255,0.06);
+   transition: background 0.15s, color 0.15s, padding-left 0.15s;
+ }
+ .lang-option:last-child { border-bottom: none; }
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+ .lang-option .check { width: 14px; height: 14px; flex-shrink: 0; opacity: 0; }
+ .lang-option.selected .check { opacity: 1; }
+
+ .avatar {
+   width: 36px;
+   height: 36px;
+   background: var(--gold);
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: 700;
+   color: var(--navy-dark);
+   font-size: 14px;
+   cursor: pointer;
+ }
+
+ /* ─── HERO SECTION ─── */
+ .hero-earnings {
+   background: var(--gradient-hero);
+   padding: 80px 24px 60px;
+   position: relative;
+   overflow: hidden;
+ }
+
+ .hero-earnings::before {
+   content: '';
+   position: absolute;
+   top: -80px;
+   right: -60px;
+   width: 400px;
+   height: 400px;
+   background: radial-gradient(circle, rgba(0,140,114,0.3) 0%, transparent 70%);
+   pointer-events: none;
+ }
+
+ .hero-earnings::after {
+   content: '';
+   position: absolute;
+   bottom: -40px;
+   left: -40px;
+   width: 300px;
+   height: 300px;
+   background: radial-gradient(circle, rgba(249,168,40,0.15) 0%, transparent 70%);
+   pointer-events: none;
+ }
+
+ .hero-content {
+   max-width: 1100px;
+   margin: 0 auto;
+   position: relative;
+   z-index: 1;
+ }
+
+ .hero-badge {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   background: rgba(255,255,255,0.1);
+   border: 1px solid rgba(255,255,255,0.15);
+   border-radius: 50px;
+   padding: 6px 14px;
+   font-size: 12px;
+   font-weight: 600;
+   color: rgba(255,255,255,0.8);
+   letter-spacing: 0.05em;
+   text-transform: uppercase;
+   margin-bottom: 20px;
+ }
+
+ .hero-badge .pulse {
+   width: 8px;
+   height: 8px;
+   background: var(--green);
+   border-radius: 50%;
+   animation: pulse 2s infinite;
+ }
+
+ @keyframes pulse {
+   0%, 100% { opacity: 1; transform: scale(1); }
+   50% { opacity: 0.6; transform: scale(0.85); }
+ }
+
+ .hero-title {
+   font-size: clamp(32px, 5vw, 52px);
+   font-weight: 800;
+   color: white;
+   letter-spacing: -0.02em;
+   margin-bottom: 8px;
+ }
+
+ .hero-title .gold { color: var(--gold); }
+
+ .hero-subtitle {
+   font-size: 16px;
+   color: rgba(255,255,255,0.6);
+   font-weight: 400;
+   font-style: italic;
+ }
+
+ /* ─── MAIN ─── */
+ .main {
+   max-width: 1100px;
+   margin: 0 auto;
+   padding: 40px 24px 60px;
+ }
+
+ /* ─── STAT CARDS ─── */
+ .stats-grid {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 16px;
+   margin-bottom: 24px;
+   margin-top: -40px;
+   position: relative;
+   z-index: 2;
+ }
+
+ .stat-card {
+   background: rgba(255, 255, 255, 0.92);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   border: 1px solid rgba(255,255,255,0.6);
+   border-radius: 12px;
+   padding: 22px 20px;
+   box-shadow:
+     0 1px 2px rgba(0,0,0,0.04),
+     0 4px 16px rgba(0,0,0,0.06),
+     0 16px 32px rgba(0,0,0,0.04);
+   transition: box-shadow 0.2s, transform 0.15s;
+ }
+
+ .stat-card:hover {
+   box-shadow:
+     0 4px 8px rgba(0,0,0,0.06),
+     0 12px 24px rgba(0,0,0,0.08),
+     0 24px 48px rgba(0,0,0,0.06);
+   transform: translateY(-2px);
+ }
+
+ .stat-card .label {
+   font-size: 11px;
+   color: var(--gray-500);
+   font-weight: 600;
+   text-transform: uppercase;
+   letter-spacing: 0.08em;
+   margin-bottom: 8px;
+ }
+
+ .stat-card .value {
+   font-size: 24px;
+   font-weight: 800;
+   color: var(--navy-dark);
+   line-height: 1.1;
+   letter-spacing: -0.01em;
+ }
+
+ .stat-card .value.green { color: var(--green); }
+ .stat-card .value.gold  { color: var(--gold); }
+
+ .stat-card .sub {
+   font-size: 12px;
+   color: var(--gray-400);
+   margin-top: 6px;
+ }
+
+ /* ─── CONTENT GRID ─── */
+ .content-grid {
+   display: grid;
+   grid-template-columns: 1fr 1.5fr;
+   gap: 20px;
+   align-items: start;
+ }
+
+ /* ─── PAYOUT CARD ─── */
+ .payout-card {
+   background: var(--navy-dark);
+   border-radius: 12px;
+   padding: 28px 24px;
+   position: relative;
+   overflow: hidden;
+   border: 1px solid rgba(255,255,255,0.06);
+ }
+
+ .payout-card::before {
+   content: '';
+   position: absolute;
+   top: 0; right: 0;
+   width: 200px;
+   height: 200px;
+   background: radial-gradient(circle, rgba(249,168,40,0.1) 0%, transparent 70%);
+   pointer-events: none;
+ }
+
+ .payout-eyebrow {
+   font-size: 11px;
+   font-weight: 600;
+   text-transform: uppercase;
+   letter-spacing: 0.08em;
+   color: var(--gold);
+   margin-bottom: 12px;
+ }
+
+ .payout-amount {
+   font-size: 42px;
+   font-weight: 800;
+   color: white;
+   letter-spacing: -0.02em;
+   line-height: 1;
+   margin-bottom: 4px;
+ }
+
+ .payout-amount .currency {
+   font-size: 20px;
+   font-weight: 600;
+   color: rgba(255,255,255,0.5);
+   vertical-align: top;
+   margin-right: 4px;
+ }
+
+ .payout-arrival {
+   font-size: 13px;
+   color: rgba(255,255,255,0.45);
+   margin-bottom: 24px;
+ }
+
+ .payout-divider {
+   height: 1px;
+   background: rgba(255,255,255,0.08);
+   margin-bottom: 20px;
+ }
+
+ .payout-row {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-size: 13px;
+   color: rgba(255,255,255,0.55);
+   margin-bottom: 10px;
+ }
+
+ .payout-row .right {
+   font-weight: 600;
+   color: rgba(255,255,255,0.8);
+ }
+
+ .btn-payout {
+   width: 100%;
+   margin-top: 20px;
+   background: var(--gradient-gold);
+   color: var(--navy-dark);
+   font-weight: 700;
+   font-size: 15px;
+   padding: 14px 28px;
+   border-radius: 8px;
+   border: none;
+   cursor: pointer;
+   transition: all 0.15s ease;
+   box-shadow: 0 4px 12px rgba(249, 168, 40, 0.3);
+   letter-spacing: -0.01em;
+ }
+
+ .btn-payout:hover {
+   transform: translateY(-1px);
+   box-shadow: 0 6px 20px rgba(249, 168, 40, 0.4);
+ }
+
+ .btn-payout:active { transform: translateY(0); }
+
+ /* ─── TRANSACTIONS CARD ─── */
+ .card {
+   background: rgba(255, 255, 255, 0.92);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   border: 1px solid rgba(255,255,255,0.6);
+   border-radius: 12px;
+   overflow: hidden;
+   box-shadow:
+     0 1px 2px rgba(0,0,0,0.04),
+     0 4px 16px rgba(0,0,0,0.06),
+     0 16px 32px rgba(0,0,0,0.04);
+   transition: box-shadow 0.2s, transform 0.15s;
+ }
+
+ .card-header {
+   padding: 18px 22px;
+   border-bottom: 1px solid var(--gray-200);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: rgba(255,255,255,0.5);
+ }
+
+ .card-header h2 {
+   font-size: 15px;
+   font-weight: 700;
+   color: var(--navy-dark);
+ }
+
+ .card-header .badge {
+   font-size: 11px;
+   font-weight: 600;
+   background: var(--gold-muted);
+   color: var(--gold);
+   padding: 3px 10px;
+   border-radius: 50px;
+ }
+
+ .card-body { padding: 8px 0; }
+
+ .earning-item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 14px 22px;
+   border-bottom: 1px solid var(--gray-100);
+   transition: background 0.15s;
+   cursor: default;
+ }
+
+ .earning-item:last-child { border-bottom: none; }
+ .earning-item:hover { background: rgba(249,168,40,0.04); }
+
+ .earning-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+
+ .earning-avatar {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   background: var(--navy);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: 700;
+   font-size: 13px;
+   color: white;
+   flex-shrink: 0;
+ }
+
+ .earning-info { min-width: 0; }
+ .earning-info .name { font-weight: 600; font-size: 14px; color: var(--navy-dark); }
+ .earning-info .meta { font-size: 12px; color: var(--gray-400); margin-top: 2px; display: flex; align-items: center; gap: 6px; }
+
+ .earning-dot {
+   width: 4px;
+   height: 4px;
+   border-radius: 50%;
+   background: var(--gray-300);
+   display: inline-block;
+ }
+
+ .earning-amount {
+   font-weight: 700;
+   font-size: 15px;
+   color: var(--green);
+   white-space: nowrap;
+   margin-left: 16px;
+ }
+
+ /* ─── FOOTER ─── */
+ footer {
+   padding: 40px 24px;
+   text-align: center;
+   color: var(--gray-500);
+   font-size: 13px;
+   border-top: 1px solid var(--gray-200);
+   margin-top: 40px;
+ }
+ footer a { color: var(--gold); text-decoration: none; }
+ footer a:hover { text-decoration: underline; }
+
+ /* ─── RESPONSIVE ─── */
+ @media (max-width: 900px) {
+   .content-grid { grid-template-columns: 1fr; }
+ }
+
+ @media (max-width: 768px) {
+   .mobile-menu-btn { display: block; }
+   .nav-links {
+     display: none;
+     position: absolute;
+     top: 64px;
+     left: 0;
+     right: 0;
+     background: rgba(15, 31, 51, 0.97);
+     backdrop-filter: blur(24px);
+     flex-direction: column;
+     padding: 20px 24px;
+     gap: 16px;
+     border-bottom: 1px solid rgba(255,255,255,0.08);
+     z-index: 99;
+   }
+   .nav-links.active { display: flex; }
+
+   .stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+   .hero-earnings { padding: 72px 24px 48px; }
+   .payout-amount { font-size: 36px; }
+ }
+
+ @media (max-width: 480px) {
+   .stats-grid { grid-template-columns: 1fr; }
+   .main { padding: 28px 16px 48px; }
+   .hero-title { font-size: 28px; }
+ }
+
+ @media (prefers-reduced-motion: reduce) {
+   .stat-card, .card, .btn-payout, .pulse { transition: none; }
+   .pulse { animation: none; }
  }
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-
-/* Footer */
-footer {
- padding: 40px 24px;
- text-align: center;
- color: var(--gray-500);
- font-size: 13px;
- border-top: 1px solid var(--gray-200);
-}
-footer a { color: var(--gold); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
 </head>
 <body>
  <nav>
- <div class="nav-inner">
- <div class="nav-right">
- <div class="nav-start">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
- <a href="minerva_landing.html" class="logo">
- <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
- <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
- <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
- <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
- </svg>
- Minerva
- </a>
- </div>
- <div class="nav-links">
- <a href="teacher_dashboard.html">Dashboard</a>
- <a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
- <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="messages.html" data-i18n="teacher_dash.nav_messages">Chats</a>
- <a href="reviews.html" data-i18n="reviews.title">Reviews</a>
- <a href="earnings.html" data-i18n="earnings.title">Earnings</a>
- </div>
- <div class="nav-end">
- <div class="user-info">
- <a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
- </div>
- <div class="lang-selector" id="langSelector">
- <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
- <circle cx="12" cy="12" r="10"/>
- <line x1="2" y1="12" x2="22" y2="12"/>
- <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
- </svg>
- <div class="lang-dropdown" id="langDropdown">
- <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
- <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
- <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
- </div>
- </div>
- </div>
- </nav>
- <main class="main">
-  <div class="page-header">
-   <h1>My Earnings</h1>
-   <p class="dashboard-quote">"A good teacher makes earning look easy — but it comes from years of dedication."</p>
-
+  <div class="nav-inner">
+   <div class="nav-start">
+    <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+    <a href="minerva_landing.html" class="logo">
+     <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+      <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20 20V32" stroke="#008C72" stroke-width="2" stroke-linecap="round"/>
+     </svg>
+     Minerva
+    </a>
+    <div class="nav-links">
+     <a href="teacher_dashboard.html">Dashboard</a>
+     <a href="student_dashboard.html">Students</a>
+     <a href="teacher_schedule.html">Schedule</a>
+     <a href="messages.html">Chats</a>
+     <a href="reviews.html">Reviews</a>
+     <a href="earnings.html" class="active">Earnings</a>
+    </div>
+   </div>
+   <div class="nav-end">
+    <div class="avatar">TC</div>
+    <div class="lang-selector" id="langSelector">
+     <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="2" y1="12" x2="22" y2="12"/>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+     </svg>
+     <div class="lang-dropdown" id="langDropdown">
+      <div class="lang-option selected" data-lang="en">EN <span class="check">✓</span></div>
+      <div class="lang-option" data-lang="zh-TW">繁 <span class="check">✓</span></div>
+      <div class="lang-option" data-lang="zh-CN">简 <span class="check">✓</span></div>
+     </div>
+    </div>
+   </div>
   </div>
+ </nav>
+
+ <!-- Hero -->
+ <section class="hero-earnings">
+  <div class="hero-content">
+   <div class="hero-badge">
+    <span class="pulse"></span>
+    Teacher Earnings
+   </div>
+   <h1 class="hero-title">My <span class="gold">Earnings</span></h1>
+   <p class="hero-subtitle">"A good teacher makes earning look easy — but it comes from years of dedication."</p>
+  </div>
+ </section>
+
+ <!-- Stats -->
+ <div class="main">
   <div class="stats-grid">
    <div class="stat-card">
     <div class="label">This Week</div>
@@ -341,83 +651,115 @@ footer a:hover { text-decoration: underline; }
     <div class="sub">Since Jan 2026</div>
    </div>
   </div>
+
   <div class="content-grid">
-  <div class="pending-payout-section">
-   <div class="pending-payout-header">
-    <span class="pending-payout-title">Pending Payout</span>
-    <span class="pending-payout-amount">HK$ 1,450</span>
-   </div>
-   <div class="pending-payout-details">
+   <!-- Payout Card -->
+   <div class="payout-card">
+    <div class="payout-eyebrow">Pending Payout</div>
+    <div class="payout-amount"><span class="currency">HK$</span>1,450</div>
+    <div class="payout-arrival">Estimated arrival · Apr 30, 2026</div>
+    <div class="payout-divider"></div>
     <div class="payout-row">
      <span>Lessons pending confirmation</span>
-     <span>3 lessons</span>
+     <span class="right">3 lessons</span>
     </div>
     <div class="payout-row">
-     <span>Estimated arrival</span>
-     <span>Apr 30, 2026</span>
+     <span>Platform fee</span>
+     <span class="right">—</span>
     </div>
+    <button class="btn-payout">Request Payout</button>
    </div>
-   <button class="btn-payout">Request Payout</button>
-  </div>
+
+   <!-- Transactions -->
    <div class="card">
     <div class="card-header">
      <h2>Recent Transactions</h2>
-     <span>Last 30 days</span>
+     <span class="badge">Last 30 days</span>
     </div>
     <div class="card-body">
-     <div class="earnings-item">
-      <div><div class="earnings-desc">Emma Wong — Piano</div><div class="earnings-date">Apr 20, 2026</div></div>
-      <div class="earnings-amount">+HK$ 550</div>
+     <div class="earning-item">
+      <div class="earning-left">
+       <div class="earning-avatar">EW</div>
+       <div class="earning-info">
+        <div class="name">Emma Wong — Piano</div>
+        <div class="meta">Apr 20, 2026 <span class="earning-dot"></span> 1 lesson</div>
+       </div>
+      </div>
+      <div class="earning-amount">+HK$ 550</div>
      </div>
-     <div class="earnings-item">
-      <div><div class="earnings-desc">Lucas Lee — Math</div><div class="earnings-date">Apr 18, 2026</div></div>
-      <div class="earnings-amount">+HK$ 480</div>
+     <div class="earning-item">
+      <div class="earning-left">
+       <div class="earning-avatar">LL</div>
+       <div class="earning-info">
+        <div class="name">Lucas Lee — Math</div>
+        <div class="meta">Apr 18, 2026 <span class="earning-dot"></span> 1 lesson</div>
+       </div>
+      </div>
+      <div class="earning-amount">+HK$ 480</div>
      </div>
-     <div class="earnings-item">
-      <div><div class="earnings-desc">Sophie Chen — English</div><div class="earnings-date">Apr 15, 2026</div></div>
-      <div class="earnings-amount">+HK$ 520</div>
+     <div class="earning-item">
+      <div class="earning-left">
+       <div class="earning-avatar">SC</div>
+       <div class="earning-info">
+        <div class="name">Sophie Chen — English</div>
+        <div class="meta">Apr 15, 2026 <span class="earning-dot"></span> 1 lesson</div>
+       </div>
+      </div>
+      <div class="earning-amount">+HK$ 520</div>
      </div>
-     <div class="earnings-item">
-      <div><div class="earnings-desc">Grace Ho — Science</div><div class="earnings-date">Apr 12, 2026</div></div>
-      <div class="earnings-amount">+HK$ 500</div>
+     <div class="earning-item">
+      <div class="earning-left">
+       <div class="earning-avatar">GH</div>
+       <div class="earning-info">
+        <div class="name">Grace Ho — Science</div>
+        <div class="meta">Apr 12, 2026 <span class="earning-dot"></span> 1 lesson</div>
+       </div>
+      </div>
+      <div class="earning-amount">+HK$ 500</div>
      </div>
-     <div class="earnings-item">
-      <div><div class="earnings-desc">Nathan Wu — Piano</div><div class="earnings-date">Apr 10, 2026</div></div>
-      <div class="earnings-amount">+HK$ 550</div>
+     <div class="earning-item">
+      <div class="earning-left">
+       <div class="earning-avatar">NW</div>
+       <div class="earning-info">
+        <div class="name">Nathan Wu — Piano</div>
+        <div class="meta">Apr 10, 2026 <span class="earning-dot"></span> 1 lesson</div>
+       </div>
+      </div>
+      <div class="earning-amount">+HK$ 550</div>
      </div>
     </div>
    </div>
   </div>
- </main>
+ </div>
+
  <footer>
- <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
-</footer>
+  <p>© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="terms.html">Terms & Conditions</a></p>
+ </footer>
+
  <script src="i18n.js"></script>
- <script>if(typeof init=="function")init();</script>
-<script src="i18n.js"></script>
-<script>
-(function(){
-  var sel = document.getElementById('langSelector');
-  var globe = document.getElementById('langGlobe');
-  var dropdown = document.getElementById('langDropdown');
-  if (sel && globe && dropdown) {
-    globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
-    document.addEventListener('click', function(){ sel.classList.remove('open'); });
-    dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
-    dropdown.querySelectorAll('.lang-option').forEach(function(opt){
-      opt.addEventListener('click', function(){
-        dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
-        opt.classList.add('selected');
-        sel.classList.remove('open');
-        var lang = opt.dataset.lang;
-        if (typeof setLanguage === 'function') setLanguage(lang);
-      });
-    });
-  }
-  var params = new URLSearchParams(window.location.search);
-  var lp = params.get('lang');
-  if (lp && typeof setLanguage === 'function') setLanguage(lp);
-})();
-</script>
+ <script>
+ (function(){
+   var sel = document.getElementById('langSelector');
+   var globe = document.getElementById('langGlobe');
+   var dropdown = document.getElementById('langDropdown');
+   if (sel && globe && dropdown) {
+     globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
+     document.addEventListener('click', function(){ sel.classList.remove('open'); });
+     dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+     dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+       opt.addEventListener('click', function(){
+         dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+         opt.classList.add('selected');
+         sel.classList.remove('open');
+         var lang = opt.dataset.lang;
+         if (typeof setLanguage === 'function') setLanguage(lang);
+       });
+     });
+   }
+   var params = new URLSearchParams(window.location.search);
+   var lp = params.get('lang');
+   if (lp && typeof setLanguage === 'function') setLanguage(lp);
+ })();
+ </script>
 </body>
 </html>
