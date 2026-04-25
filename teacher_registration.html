@@ -435,11 +435,15 @@
  }
 
 @media (max-width: 768px) {
-.lang-btn { padding: 6px 12px; font-size: 13px; }
-.lang-selector { padding: 2px; gap: 1px; }
-.nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 16px; gap: 12px; }
-.nav-links.active { display: flex; }
-.nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+ .mobile-menu-btn { display: flex; order: -1; }
+ .lang-selector { background: transparent; padding: 0; gap: 0; border-radius: 0; }
+ .lang-btn { padding: 6px 12px; font-size: 13px; }
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 20px 24px; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 99; }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+}
+@media (min-width: 769px) {
+ .mobile-menu-btn { display: none; }
 }
 </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
