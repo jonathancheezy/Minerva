@@ -6,13 +6,14 @@
  <title>My Reviews — Minerva</title>
  <style>
 
-/* v=clean001 - rebuilt from scratch */
+/* v=reviews-redesign */
 
  :root {
  --navy: #1e3a5f;
  --teal: #3b82f6;
  --teal-light: #60a5fa;
  --gold: #F9A828;
+ --gold-light: #FCD663;
  --white: #ffffff;
  --gray-100: #f8fafc;
  --gray-200: #e2e8f0;
@@ -31,14 +32,16 @@
 
 body {
  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
- background: #f8fafc;
+ background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 50%, #fff8f0 100%);
+ background-attachment: fixed;
  color: #334155;
  line-height: 1.6;
  padding-top: 60px;
  min-height: 100vh;
 }
 
-a { color: #3b82f6; text-decoration: none; }
+a { color: var(--teal); text-decoration: none; }
+
 /* Nav */
  nav {
  position: fixed;
@@ -204,171 +207,177 @@ a { color: #3b82f6; text-decoration: none; }
  .nav-start { display: flex; align-items: center; }
  }
 
- /* Main Content */
+/* Main Content */
 .main {
- max-width: 1200px;
+ max-width: 860px;
  margin: 0 auto;
- padding: 32px 24px;
+ padding: 40px 24px 80px;
  min-height: calc(100vh - 60px);
 }
 
+/* Page Header */
 .page-header { margin-bottom: 32px; }
-.page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
-.page-header p { color: #64748b; font-size: 14px; }
-.dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
+.page-header h1 { font-size: 30px; font-weight: 800; color: var(--navy-dark); margin-bottom: 4px; letter-spacing: -0.5px; }
+.page-header p { color: var(--gray-500); font-size: 14px; }
 
-/* Stats Grid - 2x2 layout */
-.stats-grid {
+/* Stats Summary Bar */
+.stats-bar {
  display: grid;
- grid-template-columns: repeat(2, 1fr);
- gap: 16px;
- margin-bottom: 24px;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 12px;
+ margin-bottom: 28px;
 }
 
-.stat-card {
- background: white;
- border-radius: 12px;
- border: 1px solid #e2e8f0;
- box-shadow: 0 1px 3px rgba(0,0,0,0.06);
- padding: 20px;
- text-align: left;
-}
-.stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-.stat-card .value { font-size: 28px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
-.stat-card .value.green { color: #22c55e; }
-.stat-card .value.gold { color: #F9A828; }
-.stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
-.stat-card .sub a { color: #3b82f6; }
-
-/* Content Grid - Flexbox side by side */
-.content-grid {
+.stat-pill {
+ background: rgba(255,255,255,0.75);
+ backdrop-filter: blur(16px);
+ -webkit-backdrop-filter: blur(16px);
+ border: 1px solid rgba(255,255,255,0.5);
+ border-radius: 14px;
+ padding: 14px 16px;
  display: flex;
- flex-direction: row;
- gap: 20px;
- width: 100%;
-}
-
-.card {
- background: white;
- border-radius: 16px;
- border: 1px solid #e2e8f0;
- overflow: hidden;
- box-shadow: 0 1px 3px rgba(0,0,0,0.06);
- min-width: 0;
-}
-
-.card-header {
- padding: 16px 24px;
- border-bottom: 1px solid #e2e8f0;
- display: flex;
- justify-content: space-between;
+ flex-direction: column;
  align-items: center;
+ gap: 4px;
+ box-shadow: 0 2px 12px rgba(30,58,95,0.06);
 }
-.card-header h2 { font-size: 15px; font-weight: 700; color: #0f1f33; }
-.card-header a { color: #3b82f6; font-size: 13px; font-weight: 600; }
 
-.card-body { padding: 20px 24px; }
-
-/* Schedule Card */
-.schedule-card { flex: 1.6; min-width: 0; }
+.stat-pill .pill-value {
+ font-size: 22px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ line-height: 1;
+}
+.stat-pill .pill-value.gold { color: var(--gold); }
+.stat-pill .pill-value.green { color: var(--green); }
+.stat-pill .pill-label {
+ font-size: 11px;
+ color: var(--gray-500);
+ font-weight: 500;
+ text-transform: uppercase;
+ letter-spacing: 0.04em;
+}
+.stat-pill .pill-stars {
+ display: flex;
+ gap: 2px;
+ margin-top: 2px;
+}
+.pill-stars svg { width: 12px; height: 12px; }
 
 /* Filter Tabs */
-.filter-tabs {
+.filter-bar {
  display: flex;
  gap: 8px;
- padding: 14px 24px;
- border-bottom: 1px solid #e2e8f0;
- background: #f8fafc;
+ margin-bottom: 20px;
+ flex-wrap: wrap;
 }
 
-.filter-tab {
- padding: 5px 14px;
- border-radius: 20px;
- font-size: 12px;
+.filter-btn {
+ padding: 8px 18px;
+ border-radius: 24px;
+ font-size: 13px;
  font-weight: 600;
  cursor: pointer;
- color: #64748b;
- border: none;
- background: white;
+ color: var(--gray-500);
+ border: 1.5px solid var(--gray-200);
+ background: rgba(255,255,255,0.7);
+ backdrop-filter: blur(8px);
  transition: all 0.2s;
 }
-.filter-tab.active { background: #1e3a5f; color: white; }
-.filter-tab:not(.active):hover { background: #e2e8f0; color: #0f1f33; }
-
-/* Schedule Sections - JS controls visibility */
-.schedule-section { display: none; }
-.schedule-section.active { display: block; }
-
-/* Schedule List */
-.schedule-list { padding: 0; }
-
-.day-header {
- padding: 10px 24px;
- background: #f8fafc;
- font-size: 11px;
- font-weight: 700;
- color: #3b82f6;
- text-transform: uppercase;
- letter-spacing: 0.05em;
-}
-
-.schedule-day { border-bottom: 1px solid #e2e8f0; }
-.schedule-day:last-child { border-bottom: none; }
-
-.lesson-item {
- display: flex;
+.filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+.filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); box-shadow: 0 2px 10px rgba(30,58,95,0.25); }
+.filter-btn .count {
+ display: inline-flex;
  align-items: center;
- gap: 16px;
- padding: 14px 24px;
- border-bottom: 1px solid #e2e8f0;
-}
-.lesson-item:last-child { border-bottom: none; }
-
-.lesson-time { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
-.lesson-time .time { font-size: 13px; font-weight: 700; color: #0f1f33; }
-.lesson-time .dash { font-size: 13px; color: #94a3b8; }
-
-.lesson-details { flex: 1; }
-.lesson-subject { font-size: 13px; font-weight: 600; color: #0f1f33; margin-bottom: 2px; }
-.student { font-size: 12px; color: #64748b; }
-
-.lesson-status {
+ justify-content: center;
+ background: rgba(100,116,139,0.15);
+ color: inherit;
+ border-radius: 10px;
+ padding: 1px 7px;
  font-size: 11px;
- font-weight: 600;
- padding: 3px 10px;
- border-radius: 20px;
- flex-shrink: 0;
+ margin-left: 6px;
+ font-weight: 700;
 }
-.lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
-.lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
-.lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
+.filter-btn.active .count { background: rgba(255,255,255,0.2); }
 
-/* Messages Card */
-.messages-card { flex: 0.9; min-width: 0; }
+/* Review Cards */
+.reviews-list {
+ display: flex;
+ flex-direction: column;
+ gap: 14px;
+}
 
-.conv-legend { display: flex; gap: 16px; padding: 0 24px 12px; }
-.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #64748b; }
+.review-card {
+ background: rgba(255,255,255,0.8);
+ backdrop-filter: blur(20px);
+ -webkit-backdrop-filter: blur(20px);
+ border: 1px solid rgba(255,255,255,0.6);
+ border-radius: 18px;
+ padding: 22px 24px;
+ box-shadow: 0 4px 24px rgba(30,58,95,0.07);
+ transition: transform 0.2s, box-shadow 0.2s;
+}
+.review-card:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 8px 32px rgba(30,58,95,0.12);
+}
 
-.message-item { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid #e2e8f0; }
-.message-item:last-child { border-bottom: none; }
+.review-top {
+ display: flex;
+ align-items: flex-start;
+ gap: 14px;
+ margin-bottom: 14px;
+}
 
-.message-avatar {
- width: 48px;
- height: 48px;
+.review-avatar {
+ width: 46px;
+ height: 46px;
  border-radius: 50%;
  display: flex;
  align-items: center;
  justify-content: center;
- font-size: 16px;
+ font-size: 15px;
  font-weight: 700;
  color: white;
  flex-shrink: 0;
+ box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.message-info { flex: 1; min-width: 0; }
-.message-sender { font-size: 13px; font-weight: 600; color: #0f1f33; }
-.message-preview { font-size: 12px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.message-time { font-size: 11px; color: #94a3b8; flex-shrink: 0; }
+.review-meta { flex: 1; min-width: 0; }
+.review-name {
+ font-size: 14px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 2px;
+}
+.review-date {
+ font-size: 12px;
+ color: var(--gray-400);
+}
+
+.review-stars { display: flex; gap: 3px; flex-shrink: 0; margin-top: 2px; }
+.review-stars svg { width: 16px; height: 16px; }
+
+.review-text {
+ font-size: 14px;
+ color: var(--gray-600);
+ line-height: 1.65;
+ padding-left: 60px;
+}
+
+.review-tag {
+ display: inline-flex;
+ align-items: center;
+ gap: 4px;
+ margin-top: 12px;
+ padding: 5px 12px;
+ background: rgba(59,130,246,0.08);
+ border-radius: 20px;
+ font-size: 11px;
+ font-weight: 600;
+ color: var(--teal);
+}
+.review-tag svg { width: 12px; height: 12px; }
 
 /* Footer */
 footer {
@@ -381,6 +390,14 @@ footer {
 footer a { color: var(--gold); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
+@media (max-width: 600px) {
+ .stats-bar { grid-template-columns: repeat(2, 1fr); }
+ .review-text { padding-left: 0; }
+ .review-top { flex-wrap: wrap; }
+}
+@media (max-width: 400px) {
+ .stats-bar { grid-template-columns: 1fr 1fr; }
+}
 
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -403,11 +420,11 @@ footer a:hover { text-decoration: underline; }
  </div>
  <div class="nav-links">
  <a href="teacher_dashboard.html">Dashboard</a>
- <a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
- <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="messages.html" data-i18n="teacher_dash.nav_messages">Chats</a>
- <a href="reviews.html" class="active" data-i18n="reviews.title">Reviews</a>
- <a href="earnings.html" data-i18n="earnings.title">Earnings</a>
+ <a href="student_dashboard.html">Students</a>
+ <a href="teacher_schedule.html">Schedule</a>
+ <a href="messages.html">Chats</a>
+ <a href="reviews.html" class="active">Reviews</a>
+ <a href="earnings.html">Earnings</a>
  </div>
  <div class="nav-end">
  <div class="user-info">
@@ -430,54 +447,150 @@ footer a:hover { text-decoration: underline; }
 <main class="main">
  <div class="page-header">
  <h1 data-i18n="my_reviews">My Reviews</h1>
- <p class="dashboard-quote">"Every piece of feedback is a gift; every criticism is two gifts in disguise."</p>
+ <p>Feedback from students and parents</p>
  </div>
- <div class="card">
- <div class="review-item">
- <div class="review-header">
+
+ <!-- Stats Summary Bar -->
+ <div class="stats-bar">
+ <div class="stat-pill">
+ <span class="pill-value">5</span>
+ <span class="pill-label">Total Reviews</span>
+ </div>
+ <div class="stat-pill">
+ <span class="pill-value gold">4.8</span>
+ <span class="pill-label">Avg Rating</span>
+ </div>
+ <div class="stat-pill">
+ <span class="pill-value green">4</span>
+ <span class="pill-label">5-Star Reviews</span>
+ </div>
+ <div class="stat-pill">
+ <span class="pill-value" style="font-size:16px;padding-top:4px;">★★★★★</span>
+ <span class="pill-label">Top Rating</span>
+ </div>
+ </div>
+
+ <!-- Filter Bar -->
+ <div class="filter-bar">
+ <button class="filter-btn active" data-filter="all">All <span class="count">5</span></button>
+ <button class="filter-btn" data-filter="5">5 Star <span class="count">4</span></button>
+ <button class="filter-btn" data-filter="4">4 Star <span class="count">1</span></button>
+ <button class="filter-btn" data-filter="3">3 Star <span class="count">0</span></button>
+ </div>
+
+ <!-- Reviews List -->
+ <div class="reviews-list">
+
+ <div class="review-card" data-rating="5">
+ <div class="review-top">
  <div class="review-avatar" style="background:#22c55e">EW</div>
+ <div class="review-meta">
  <div class="review-name">Emma Wong</div>
- <div class="review-date">Apr 20</div>
+ <div class="review-date">April 20, 2026</div>
  </div>
- <div class="stars">★★★★★</div>
+ <div class="review-stars">
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ </div>
+ </div>
  <div class="review-text">Teacher Chan is patient and explains concepts clearly. My daughter has improved significantly since joining Minerva.</div>
+ <div class="review-tag">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+ Top Student
  </div>
- <div class="review-item">
- <div class="review-header">
+ </div>
+
+ <div class="review-card" data-rating="5">
+ <div class="review-top">
  <div class="review-avatar" style="background:#3b82f6">SC</div>
+ <div class="review-meta">
  <div class="review-name">Sophie Chen</div>
- <div class="review-date">Apr 18</div>
+ <div class="review-date">April 18, 2026</div>
  </div>
- <div class="stars">★★★★★</div>
+ <div class="review-stars">
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ </div>
+ </div>
  <div class="review-text">Excellent piano teacher! Very professional and always well-prepared for lessons.</div>
+ <div class="review-tag">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+ Piano
  </div>
- <div class="review-item">
- <div class="review-header">
+ </div>
+
+ <div class="review-card" data-rating="4">
+ <div class="review-top">
  <div class="review-avatar" style="background:#8b5cf6">GH</div>
+ <div class="review-meta">
  <div class="review-name">Grace Ho</div>
- <div class="review-date">Apr 15</div>
+ <div class="review-date">April 15, 2026</div>
  </div>
- <div class="stars">★★★★☆</div>
+ <div class="review-stars">
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#cbd5e1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ </div>
+ </div>
  <div class="review-text">Very knowledgeable teacher. The English lessons are engaging and helpful.</div>
+ <div class="review-tag">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+ English
  </div>
- <div class="review-item">
- <div class="review-header">
+ </div>
+
+ <div class="review-card" data-rating="5">
+ <div class="review-top">
  <div class="review-avatar" style="background:#F9A828">NW</div>
+ <div class="review-meta">
  <div class="review-name">Nathan Wu</div>
- <div class="review-date">Apr 12</div>
+ <div class="review-date">April 12, 2026</div>
  </div>
- <div class="stars">★★★★★</div>
+ <div class="review-stars">
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ </div>
+ </div>
  <div class="review-text">Science lessons are fun and informative. My son loves learning with Teacher Chan.</div>
+ <div class="review-tag">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+ Science
  </div>
- <div class="review-item">
- <div class="review-header">
+ </div>
+
+ <div class="review-card" data-rating="5">
+ <div class="review-top">
  <div class="review-avatar" style="background:#ef4444">LL</div>
+ <div class="review-meta">
  <div class="review-name">Lucas Lee</div>
- <div class="review-date">Apr 8</div>
+ <div class="review-date">April 8, 2026</div>
  </div>
- <div class="stars">★★★★★</div>
+ <div class="review-stars">
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <svg viewBox="0 0 24 24" fill="#F9A828"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ </div>
+ </div>
  <div class="review-text">Great violin teacher, very patient with beginners. Highly recommended!</div>
+ <div class="review-tag">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+ Violin
  </div>
+ </div>
+
  </div>
 </main>
 <footer>
@@ -485,7 +598,6 @@ footer a:hover { text-decoration: underline; }
 </footer>
 <script src="i18n.js"></script>
 <script>if(typeof init=="function")init();</script>
-<script src="i18n.js"></script>
 <script>
 (function(){
   var sel = document.getElementById('langSelector');
@@ -508,6 +620,25 @@ footer a:hover { text-decoration: underline; }
   var params = new URLSearchParams(window.location.search);
   var lp = params.get('lang');
   if (lp && typeof setLanguage === 'function') setLanguage(lp);
+
+  // Filter functionality
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var reviewCards = document.querySelectorAll('.review-card');
+
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var filter = btn.dataset.filter;
+      filterBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      reviewCards.forEach(function(card){
+        if (filter === 'all' || card.dataset.rating === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
 })();
 </script>
 </body>
