@@ -371,65 +371,16 @@ a { color: #3b82f6; text-decoration: none; }
 .message-time { font-size: 11px; color: #94a3b8; flex-shrink: 0; }
 
 /* Footer */
-footer { padding: 40px 24px; text-align: center; color: var(--gray-500); font-size: 13px; border-top: 1px solid var(--gray-200); }
+footer {
+ padding: 40px 24px;
+ text-align: center;
+ color: var(--gray-500);
+ font-size: 13px;
+ border-top: 1px solid var(--gray-200);
+}
 footer a { color: var(--gold); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
-/* Responsive */
-@media (max-width: 1200px) {
- .stats-grid { grid-template-columns: repeat(4, 1fr); }
-}
-
-@media (max-width: 900px) {
- .content-grid { flex-direction: column; }
- .content-grid .card { flex: none; width: 100%; }
-}
-
-@media (max-width: 600px) {
- .stats-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 500px) {
- .main { padding: 20px 16px; }
-}
-
-/* Hamburger menu */
-@media (max-width: 768px) {
- .mobile-menu-btn { display: block; }
- .nav-links {
- display: none;
- position: absolute;
- top: 100%;
- left: 0;
- right: 0;
- background: #1e3a5f;
- flex-direction: column;
- padding: 20px 24px;
- gap: 16px;
- border-bottom: 1px solid rgba(255,255,255,0.1);
- z-index: 99;
- }
- .nav-links.active { display: flex; }
- .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
- .nav-links.active a.active { color: #F9A828 !important; }
- .nav-links.active a:hover { color: white; }
-}
-
-
-
-/* Reviews */
-.card { background: white; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
-.stars { color: #F9A828; font-size: 16px; letter-spacing: 2px; }
-.review-item { padding: 16px 0; border-bottom: 1px solid #f1f5f9; }
-.review-item:last-child { border-bottom: none; }
-.review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.review-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: white; }
-.review-name { font-weight: 600; color: #0f1f33; font-size: 14px; }
-.review-date { font-size: 12px; color: #94a3b8; margin-left: auto; }
-.review-text { font-size: 14px; color: #475569; line-height: 1.5; }
-footer { padding: 40px 24px; text-align: center; color: var(--gray-500); font-size: 13px; border-top: 1px solid var(--gray-200); }
-footer a { color: var(--gold); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
 
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -529,7 +480,8 @@ footer a:hover { text-decoration: underline; }
  </div>
  </div>
 </main>
-<footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="terms.html">Terms & Conditions</a>
+<footer>
+ <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
 </footer>
 <script src="i18n.js"></script>
 <script>if(typeof init=="function")init();</script>

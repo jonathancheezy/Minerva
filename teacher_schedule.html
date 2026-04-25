@@ -434,49 +434,6 @@ a { color: #3b82f6; text-decoration: none; }
 .message-time { font-size: 11px; color: #94a3b8; flex-shrink: 0; }
 
 /* Footer */
-footer { padding: 24px; text-align: center; font-size: 12px; color: #94a3b8; }
-
-/* Responsive */
-@media (max-width: 900px) {
- .content-grid { flex-direction: column; }
- .content-grid .card { flex: none; width: 100%; }
-}
-
-@media (max-width: 600px) {
- .stats-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 500px) {
- .main { padding: 20px 16px; }
-}
-
-/* Hamburger menu */
-@media (max-width: 768px) {
- .mobile-menu-btn { display: block; }
- .nav-links {
- display: none;
- position: absolute;
- top: 100%;
- left: 0;
- right: 0;
- background: #1e3a5f;
- flex-direction: column;
- padding: 20px 24px;
- gap: 16px;
- border-bottom: 1px solid rgba(255,255,255,0.1);
- z-index: 99;
- }
- .nav-links.active { display: flex; }
- .nav-links.active a:not(.active) { color: rgba(255,255,255,0.85); }
- .nav-links.active a.active { color: #F9A828 !important; }
- .nav-links.active a:hover { color: white; }
-}
-
-
-footer { padding: 40px 24px; text-align: center; color: var(--gray-500); font-size: 13px; border-top: 1px solid var(--gray-200); }
-footer a { color: var(--gold); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
 footer {
  padding: 40px 24px;
  text-align: center;
@@ -486,6 +443,7 @@ footer {
 }
 footer a { color: var(--gold); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
+
 
 </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -586,8 +544,8 @@ footer a:hover { text-decoration: underline; }
 </div>
 </main>
 
-<footer style="text-align: center;">
- <p data-i18n="teacher_dash.footer_text">&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</p> <a href="terms.html">Terms & Conditions</a>
+<footer>
+ <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
 </footer>
 <script src="i18n.js">
 // Student avatar colors - hash based
@@ -943,10 +901,6 @@ document.querySelectorAll('.student-avatar').forEach(function(el) {
 })();
 </script>
 
-
-<footer>
- <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
-</footer>
 
 </body>
 </html>
