@@ -222,35 +222,28 @@ a { color: #3b82f6; text-decoration: none; }
     </svg>
     Minerva
    </a>
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <div class="nav-links">
- <div class="nav-links">
- <div class="nav-links">
-  <a href="teacher_dashboard.html?v=0f5b4d5" data-i18n="teacher_dash.dashboard">Dashboard</a>
-  <a href="student_dashboard.html?v=0f5b4d5" data-i18n="teacher_dash.students">Students</a>
-  <a href="teacher_schedule.html?v=0f5b4d5" data-i18n="teacher_dash.schedule">Schedule</a>
-  <a href="messages.html?v=0f5b4d5" data-i18n="teacher_dash.nav_messages">CHATS</a>
-  <a href="reviews.html?v=0f5b4d5" data-i18n="reviews.title">Reviews</a>
-  <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="earnings.title">Earnings</a>
- </div>
- </div>
- <div class="nav-right">
- <div class="user-info">
-     <a href="teacher_profile.html?v=0f5b4d5" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div>
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+<div class="nav-links">
+ <a href="teacher_dashboard.html" data-i18n="nav.dashboard_label">Dashboard</a>
+ <a href="teacher_schedule.html" data-i18n="nav.schedule_label">Schedule</a>
+ <a href="messages.html" data-i18n="nav.chats_label">Chats</a>
+ <a href="#" class="active" style="color: #F9A828 !important;" data-i18n="nav.earnings_label">Earnings</a>
+ <a href="reviews.html" data-i18n="nav.reviews_label">Reviews</a>
+ <a href="teacher_profile.html" data-i18n="nav.profile_label">Profile</a>
+</div>
+<div class="nav-right">
+ <div class="avatar" style="color:#fff;background:#3b82f6;">TC</div>
  <div class="lang-selector" id="langSelector">
- <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="12" cy="12" r="10"></circle>
- <path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"></path>
- <path d="M2 12h20"></path>
- </svg>
- <div class="lang-dropdown">
- <div class="lang-option" data-lang="en">EN<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-TW">繁<span class="check">✓</span></div>
- <div class="lang-option" data-lang="zh-CN">简<span class="check">✓</span></div>
+  <svg class="globe" id="langGlobe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+  <div class="lang-dropdown" id="langDropdown">
+   <div class="lang-option selected" data-lang="en">EN<span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+   <div class="lang-option" data-lang="zh-TW">繁<span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+   <div class="lang-option" data-lang="zh-CN">简<span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+  </div>
  </div>
- </div>
- </div>
- </div>
+</div>
 </nav>
  <main class="main">
   <div class="page-header">
@@ -259,24 +252,19 @@ a { color: #3b82f6; text-decoration: none; }
   </div>
   <div class="stats-grid">
    <div class="stat-card">
-    <div class="label">This Week</div>
-    <div class="value green">HK$ 1,100</div>
-    <div class="sub">3 lessons</div>
-   </div>
-   <div class="stat-card">
-    <div class="label">April 2026</div>
+    <div class="label" data-i18n="earnings.april_2026">April 2026</div>
     <div class="value green">HK$ 4,250</div>
-    <div class="sub">8 lessons completed</div>
+    <div class="sub" data-i18n="earnings.lessons_completed">8 lessons completed</div>
    </div>
    <div class="stat-card">
-    <div class="label">Pending Payout</div>
+    <div class="label" data-i18n="earnings.pending_payout">Pending Payout</div>
     <div class="value gold">HK$ 1,450</div>
-    <div class="sub">Due by Apr 30</div>
+    <div class="sub" data-i18n="earnings.pending_sub">Due by Apr 30</div>
    </div>
    <div class="stat-card">
-    <div class="label">Total Earned</div>
+    <div class="label" data-i18n="earnings.total_earned">Total Earned</div>
     <div class="value">HK$ 26,800</div>
-    <div class="sub">Since Jan 2026</div>
+    <div class="sub" data-i18n="earnings.since_jan_2026">Since Jan 2026</div>
    </div>
   </div>
   <div class="content-grid">
@@ -330,5 +318,32 @@ a { color: #3b82f6; text-decoration: none; }
  <footer>&copy; 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</footer>
  <script src="i18n.js"></script>
  <script>if(typeof init=="function")init();</script>
+ <script>
+ (function(){
+   var sel = document.getElementById('langSelector');
+   var globe = document.getElementById('langGlobe');
+   var dropdown = document.getElementById('langDropdown');
+   if (sel && globe && dropdown) {
+     globe.addEventListener('click', function(e){
+       e.stopPropagation();
+       sel.classList.toggle('open');
+     });
+     document.addEventListener('click', function(){ sel.classList.remove('open'); });
+     dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+     dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+       opt.addEventListener('click', function(){
+         dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+         opt.classList.add('selected');
+         sel.classList.remove('open');
+         var lang = opt.dataset.lang;
+         if (typeof setLanguage === 'function') setLanguage(lang);
+       });
+     });
+   }
+   var params = new URLSearchParams(window.location.search);
+   var lp = params.get('lang');
+   if (lp && typeof setLanguage === 'function') setLanguage(lp);
+ })();
+ </script>
 </body>
 </html>
