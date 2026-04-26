@@ -222,9 +222,8 @@ a { color: var(--teal); text-decoration: none; }
 
 /* Stats Summary Bar */
 .stats-bar {
- display: grid;
- grid-template-columns: repeat(3, 1fr);
- gap: 12px;
+ display: flex;
+ gap: 16px;
  margin-bottom: 28px;
 }
 
@@ -236,6 +235,7 @@ a { color: var(--teal); text-decoration: none; }
  border-radius: 14px;
  padding: 14px 16px;
  display: flex;
+ flex: 1;
  flex-direction: column;
  align-items: center;
  gap: 4px;
@@ -380,12 +380,12 @@ a { color: var(--teal); text-decoration: none; }
 .review-tag svg { width: 12px; height: 12px; }
 
 @media (max-width: 600px) {
- .stats-bar { grid-template-columns: repeat(2, 1fr); }
+ .stats-bar { flex-wrap: wrap; }
  .review-text { padding-left: 0; }
  .review-top { flex-wrap: wrap; }
 }
 @media (max-width: 400px) {
- .stats-bar { grid-template-columns: 1fr 1fr; }
+ .stats-bar { gap: 12px; }
 }
 
  </style>
