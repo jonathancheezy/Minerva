@@ -553,18 +553,6 @@
 
  .success-message.show { display: flex; align-items: center; gap: 8px; }
 
- /* Footer */
- footer {
- text-align: center;
- padding: 32px 24px;
- font-size: 14px;
- color: var(--gray-500);
- border-top: 1px solid var(--gray-200);
- margin-top: 48px;
- }
- footer a { color: var(--gold); text-decoration: none; }
- footer a:hover { text-decoration: underline; }
-
  /* Mobile */
  @media (max-width: 768px) {
  .mobile-menu-btn { display: flex !important; }
@@ -595,19 +583,6 @@
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- 
-
-/* Footer */
-footer {
- padding: 40px 24px;
- text-align: center;
- color: var(--gray-500);
- font-size: 13px;
- border-top: 1px solid var(--gray-200);
-}
-footer a { color: var(--gold); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
 </head>
 <body>
  <div class="success-message" id="successMessage">
@@ -629,7 +604,7 @@ footer a:hover { text-decoration: underline; }
  </a>
  </div>
  <div class="nav-links">
- <a href="teacher_dashboard.html" data-i18n="teacher_nav_dashboard">Dashboard</a>
+ <a href="teacher_dashboard.html" data-i18n="admin_dash.teacher_nav_dashboard">Dashboard</a>
  <a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
  <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
  <a href="messages.html" data-i18n="teacher_dash.nav_messages">Chats</a>
@@ -895,10 +870,6 @@ footer a:hover { text-decoration: underline; }
  </div>
  </div>
  </div>
-
- <footer>
- <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
-</footer>
 
  <script>
  function updatePreview() {

@@ -319,18 +319,6 @@ a { color: #3b82f6; text-decoration: none; }
 .msg-input { flex: 1; border: none; background: transparent; font-size: 15px; color: var(--gray-800); outline: none; padding: 8px 0; resize: none; max-height: 120px; }
 .msg-input::placeholder { color: var(--gray-400); }
 
-
-
-footer {
- padding: 40px 24px;
- text-align: center;
- color: var(--gray-500);
- font-size: 13px;
- border-top: 1px solid var(--gray-200);
-}
-footer a { color: var(--gold); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
 </style>
 <script src="i18n.js"></script>
 </head>
@@ -390,7 +378,7 @@ Minerva
  <div style="padding:6px 16px 0px;display:flex;align-items:center;gap:8px;">
   <div class="search-bar" style="flex:1;">
    <span class="si">&#128269;</span>
-   <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="search_conversations" oninput="filterConvs()" autocomplete="off">
+   <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="teacher_dash.search_conversations" oninput="filterConvs()" autocomplete="off">
    <button class="clear-btn" id="convClearBtn" onclick="clearConvSearch()">&#10005;</button>
   </div>
   <button onclick="showNewChat()" style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:white;border:none;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(249,168,40,0.35);flex-shrink:0;">&#43;</button>
@@ -503,7 +491,7 @@ function formatTime(d){var now=new Date(),diff=Math.floor((now-d)/(1000*60*60*24
 function formatMsgTime(d){return d.toLocaleTimeString("en",{hour:"2-digit",minute:"2-digit"});}
 function formatDateSep(d){var now=new Date(),diff=Math.floor((now-d)/(1000*60*60*24));if(diff===0)return"Today";if(diff===1)return"Yesterday";return d.toLocaleDateString("en",{month:"long",day:"numeric"});}
 function getReceiptIcon(s){if(s==="sending")return'<span class="bubble-status sent-ok"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.5 10.5L3 7L2 8L6.5 12.5L14 4.5L13 3.5L6.5 10.5Z" fill="rgba(255,255,255,0.55)"/></svg></span>';if(s==="sent")return'<span class="bubble-status sent-ok"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.5 10.5L3 7L2 8L6.5 12.5L14 4.5L13 3.5L6.5 10.5Z" fill="rgba(255,255,255,0.55)"/></svg></span>';if(s==="delivered")return'<span class="bubble-status sent-ok"><svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M1 6L5 10L11 3" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 6L11 10L19 2" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';if(s==="read")return'<span class="bubble-status sent-read"><svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M1 6L5 10L11 3" stroke="#53bdeb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 6L11 10L19 2" stroke="#53bdeb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';if(s==="failed")return'<span class="bubble-status sent-err"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 3L11 11M11 3L3 11" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/></svg></span>';return"";}
-function renderConvList(){var s=document.getElementById("convScroll"),q=document.getElementById("convSearchInput").value.toLowerCase();document.getElementById("convClearBtn").className="clear-btn"+(q.length>0?" show":"");var f=CONVERSATIONS.filter(function(c){return c.name.toLowerCase().indexOf(q)!==-1;});if(!f.length){s.innerHTML='<div class="empty-state"><div class="empty-icon">&#128172;</div><div class="empty-title" data-i18n="no_conversations_yet">No conversations yet</div><div class="empty-sub" data-i18n="start_chatting_teachers">Start chatting with your teachers</div></div>';return;}var h="";f.forEach(function(c){var u=c.unreadCount>0;h+=`<div class="conv-wrap" id="wrap-${c.id}"><div class="conv-item" onclick="openChat('${c.id}')" ontouchstart="swipeStart(event,'${c.id}')" ontouchend="swipeEnd(event,'${c.id}')"><div class="avatar-wrap"><div class="avatar" style="background:${c.color}">${c.initials}</div>${c.isOnline?'<div class="online-dot"></div>':""}</div><div class="conv-body"><div class="conv-top"><span class="conv-name${u?" unread":""}">${c.name}</span><span class="conv-time${u?" unread":""}">${formatTime(c.timestamp)}</span></div><div class="conv-bottom"><span class="conv-preview${u?" unread":""}">${c.lastMessage}</span>${u?`<div class="unread-badge">${c.unreadCount>9?"9+":c.unreadCount}</div>`:""}</div></div></div><button class="conv-delete" id="del-${c.id}" onclick="deleteConv('${c.id}')">Delete</button></div><div class="conv-divider"></div>`;});s.innerHTML=h;}
+function renderConvList(){var s=document.getElementById("convScroll"),q=document.getElementById("convSearchInput").value.toLowerCase();document.getElementById("convClearBtn").className="clear-btn"+(q.length>0?" show":"");var f=CONVERSATIONS.filter(function(c){return c.name.toLowerCase().indexOf(q)!==-1;});if(!f.length){s.innerHTML='<div class="empty-state"><div class="empty-icon">&#128172;</div><div class="empty-title" data-i18n="teacher_dash.no_conversations_yet">No conversations yet</div><div class="empty-sub" data-i18n="teacher_dash.start_chatting_teachers">Start chatting with your teachers</div></div>';return;}var h="";f.forEach(function(c){var u=c.unreadCount>0;h+=`<div class="conv-wrap" id="wrap-${c.id}"><div class="conv-item" onclick="openChat('${c.id}')" ontouchstart="swipeStart(event,'${c.id}')" ontouchend="swipeEnd(event,'${c.id}')"><div class="avatar-wrap"><div class="avatar" style="background:${c.color}">${c.initials}</div>${c.isOnline?'<div class="online-dot"></div>':""}</div><div class="conv-body"><div class="conv-top"><span class="conv-name${u?" unread":""}">${c.name}</span><span class="conv-time${u?" unread":""}">${formatTime(c.timestamp)}</span></div><div class="conv-bottom"><span class="conv-preview${u?" unread":""}">${c.lastMessage}</span>${u?`<div class="unread-badge">${c.unreadCount>9?"9+":c.unreadCount}</div>`:""}</div></div></div><button class="conv-delete" id="del-${c.id}" onclick="deleteConv('${c.id}')">Delete</button></div><div class="conv-divider"></div>`;});s.innerHTML=h;}
 var swipeX={};
 function swipeStart(e,id){swipeX[id]=e.changedTouches[0].screenX;}
 function swipeEnd(e,id){var dx=e.changedTouches[0].screenX-swipeX[id];if(dx<-60){document.getElementById('del-'+id).classList.add('show');}else{document.getElementById('del-'+id).classList.remove('show');}}
@@ -567,10 +555,6 @@ document.addEventListener("DOMContentLoaded",function(){renderConvList();toggleS
 
 
 
-
-<footer>
- <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
-</footer>
 
 </body>
 </html>

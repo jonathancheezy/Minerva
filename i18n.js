@@ -512,6 +512,7 @@
       lily_zhang:{en:"Lily Zhang",zhTW:"Lily Zhang",zhCN:"Lily Zhang"},
       piano_g1:{en:"Piano (Grade 1)",zhTW:"鋼琴（一級）",zhCN:"钢琴（一级）"},
       science_f2:{en:"Science (Form 2)",zhTW:"科學（中二）",zhCN:"科学（初二）"},
+      profile:{en:"Profile",zhTW:"個人資料",zhCN:"个人资料"},
     },
 
     // ── Teacher Profile ──
@@ -912,7 +913,11 @@
       p_6:{en:"Funds are released within 3 business days of lesson completion confirmation by both parties. During peak periods, release may take up to 5 business days.",zhTW:"款項在雙方確認課堂完成後3個工作日內發放。高峰期可能需要最多5個工作日。",zhCN:"款项在双方确认课堂完成后3个工作日内发放。高峰期可能需要最多5个工作日。"},
       p_7:{en:"Minerva acts as an intermediary platform and is not liable for the acts or omissions of teachers, students, or parents.",zhTW:"Minerva作為中間平台，不對導師、學生或家長的行為或疏忽負責。",zhCN:"Minerva作为中间平台，不对导师、学生或家长的行为或疏忽负责。"},
       p_9:{en:"Disputes may be referred to the District Court or higher courts of Hong Kong.",zhTW:"爭議可提交香港區域法院或更高級別的法院處理。",zhCN:"争议可提交香港区域法院或更高级别的法院处理。"},
-    }
+    },
+    my_reviews:{en:"My Reviews",zhTW:"我的評價",zhCN:"我的评价"},
+    search_conversations:{en:"Search conversations...",zhTW:"搜尋對話...",zhCN:"搜索对话..."},
+    no_conversations_yet:{en:"No conversations yet",zhTW:"尚無對話",zhCN:"尚无对话"},
+    start_chatting_teachers:{en:"Start chatting with your teachers",zhTW:"開始與導師對話",zhCN:"开始与导师对话"},
   };
 
   let lang = 'en';
