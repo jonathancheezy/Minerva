@@ -201,11 +201,19 @@ a { color: #3b82f6; text-decoration: none; }
  }
 
  
-/* === CHAT STYLES === */
 #chatListScreen {
  display: flex;
  flex-direction: column;
+}
+
+#chatListScreen > .page-header {
+ padding: 0;
+}
+
+.chat-list-wrap {
  background: var(--white);
+ border-radius: 16px;
+ overflow: hidden;
 }
 
 /* Main Content */
@@ -384,15 +392,17 @@ Minerva
   <h1>My Chats</h1>
   <p class="dashboard-quote">"Good communication doesn't mean they heard you — it means they understood you."</p>
  </div>
- <div style="padding:0 16px;display:flex;align-items:center;gap:8px;">
-  <div class="search-bar" style="flex:1;">
-   <span class="si">&#128269;</span>
-   <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="teacher_dash.search_conversations" oninput="filterConvs()" autocomplete="off">
-   <button class="clear-btn" id="convClearBtn" onclick="clearConvSearch()">&#10005;</button>
+ <div class="chat-list-wrap">
+  <div style="padding:0 16px;display:flex;align-items:center;gap:8px;">
+   <div class="search-bar" style="flex:1;">
+    <span class="si">&#128269;</span>
+    <input type="text" id="convSearchInput" placeholder="Search conversations..." data-i18n="teacher_dash.search_conversations" oninput="filterConvs()" autocomplete="off">
+    <button class="clear-btn" id="convClearBtn" onclick="clearConvSearch()">&#10005;</button>
+   </div>
+   <button onclick="showNewChat()" style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:white;border:none;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(249,168,40,0.35);flex-shrink:0;">&#43;</button>
   </div>
-  <button onclick="showNewChat()" style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:white;border:none;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(249,168,40,0.35);flex-shrink:0;">&#43;</button>
+  <div class="conv-scroll" id="convScroll"></div>
  </div>
- <div class="conv-scroll" id="convScroll"></div>
 </div>
 
 <div id="newChatModal" onclick="if(event.target===this)closeNewChat()" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;">
