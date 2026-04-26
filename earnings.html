@@ -242,9 +242,9 @@
  }
 
  .hero-title {
-   font-size: clamp(32px, 5vw, 52px);
+   font-size: clamp(28px, 4vw, 36px);
    font-weight: 800;
-   color: white;
+   color: var(--navy-dark);
    letter-spacing: -0.02em;
    margin-bottom: 8px;
  }
@@ -252,8 +252,8 @@
  .hero-title .gold { color: var(--gold); }
 
  .hero-subtitle {
-   font-size: 16px;
-   color: rgba(255,255,255,0.6);
+   font-size: 13px;
+   color: rgba(255,255,255,0.55);
    font-weight: 400;
    font-style: italic;
  }
@@ -544,6 +544,7 @@
      right: 0;
      background: var(--navy);
      flex-direction: column;
+     align-items: flex-start;
      padding: 20px 24px;
      gap: 12px;
      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
@@ -617,10 +618,7 @@
  <!-- Hero -->
  <section class="hero-earnings">
   <div class="hero-content">
-   <div class="hero-badge">
-    <span class="pulse"></span>
-    Teacher Earnings
-   </div>
+
    <h1 class="hero-title">My <span class="gold">Earnings</span></h1>
    <p class="hero-subtitle">"A good teacher makes earning look easy — but it comes from years of dedication."</p>
   </div>
