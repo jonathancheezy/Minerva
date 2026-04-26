@@ -27,7 +27,7 @@
    --red:         #ef4444;
    --red-light:   #fee2e2;
    --gold-muted:  #fef3c7;
-   --gradient-hero:  linear-gradient(135deg, #0f1f33 0%, #1e3a5f 40%, #008C72 100%);
+   --gradient-hero:  linear-gradient(135deg, rgba(15,31,51,0.7) 0%, rgba(30,58,95,0.7) 40%, rgba(0,140,114,0.7) 100%);
    --gradient-card:   linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 100%);
    --gradient-gold:   linear-gradient(135deg, #F9A828 0%, #FBB81C 100%);
    --gradient-teal:   linear-gradient(135deg, #008C72 0%, #00b394 100%);
@@ -186,22 +186,19 @@
  .hero-earnings::before {
    content: '';
    position: absolute;
-   top: -80px;
-   right: -60px;
-   width: 400px;
-   height: 400px;
-   background: radial-gradient(circle, rgba(0,140,114,0.3) 0%, transparent 70%);
+   inset: 0;
+   background: rgba(255, 255, 255, 0.08);
    pointer-events: none;
  }
 
  .hero-earnings::after {
    content: '';
    position: absolute;
-   bottom: -40px;
-   left: -40px;
-   width: 300px;
-   height: 300px;
-   background: radial-gradient(circle, rgba(249,168,40,0.15) 0%, transparent 70%);
+   top: -80px;
+   right: -60px;
+   width: 400px;
+   height: 400px;
+   background: radial-gradient(circle, rgba(0,140,114,0.2) 0%, transparent 70%);
    pointer-events: none;
  }
 
