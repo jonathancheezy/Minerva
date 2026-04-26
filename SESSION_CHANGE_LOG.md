@@ -1,125 +1,88 @@
+# SESSION_CHANGE_LOG.md
 
-## 2026-04-27 — Muses — sub-agent (design audit)
-### Timestamp: 02:16 HKT
+## 2026-04-27 — Muses — sub-agent (full page formatting audit)
+### Timestamp: 03:45 HKT
 ### Status: ready for review
 
-#### Changes Made
-- Audit of teacher and parent pages for format/design inconsistencies (no files modified — this is a handoff note)
+#### Audit Basis
+- Branch: feat/formatting-audit (just created from origin/master 01da6ae)
+- All pages audited against live origin/master after git pull origin master
+- Poseidon has been fixing parent pages this session — those excluded
 
-#### Pages Audited
-teacher_dashboard.html, teacher_login.html, teacher_profile.html, teacher_schedule.html, teacher_registration.html, parent_dashboard.html, parent_login.html, parent_schedule.html, faq.html, terms.html
+#### Pages Audited (20 files)
+teacher_login, teacher_dashboard, teacher_schedule, teacher_profile, teacher_registration, parent_login, parent_registration, parent_dashboard, parent_schedule, admin_login, admin_dashboard, reviews, earnings, messages, teachers, login, student_dashboard, progress, privacy, terms, faq
 
-#### Issues Found (Priority Order)
+---
 
-**🚨 Critical — Nav Bar Dead Code**
-- `parent_login.html` line 38: `nav { background: var(--teal) }` is defined but never used — the actual `<nav>` renders with `--navy`. This teal variant is dead code and conflicts with the navy used everywhere else.
+## 🚨 CRITICAL
 
-**🔶 High — Missing @keyframes rowReveal in faq.html & terms.html**
-- Both files reference `rowReveal` animation in their CSS but the `@keyframes rowReveal` declaration appears to be missing from both. Language dropdown animations won't fire.
-- Quick check: `grep -c "@keyframes" faq.html terms.html` returns 0.
+### 1. admin_dashboard.html — Broken body background
+body { background: rgba(0,0,0,0.25); } /* padding-top: MISSING */
+rgba(0,0,0,0.25) = 25% opacity black on white page. Content barely readable. No padding-top, content hides behind fixed nav.
 
-**🔶 High — Missing Frosted Glass on Dashboard Pages**
-- faq.html and terms.html: lang dropdown has `backdrop-filter: blur()` but no `position: fixed` on nav.
-- teacher_dashboard, teacher_schedule, teacher_profile, parent_dashboard, parent_schedule: lang dropdowns have NO `backdrop-filter` at all — they lack the frosted glass effect that faq/terms have.
-- Pattern per REDESIGN_SLEEK.md: `backdrop-filter: blur(20px)` + navy background + layered box-shadow on `.lang-dropdown`.
+### 2. admin_dashboard.html — Missing CSS variables in :root
+Used but undefined: --teal-light, --gold-light, --gray-300, --gray-400, --gray-600, --green, --red, --purple.
 
-**🔶 High — Button Radius Inconsistency**
-- teacher_login, parent_login, teacher_dashboard, parent_dashboard: `50px` pill radius on inputs/buttons
-- teacher_profile, faq: `8-16px` radius — significantly different
-- Standardize on one value across all pages.
+---
 
-**🔷 Medium — Hamburger Color Mismatch**
-- `parent_dashboard.html` nav: teal (`background: var(--teal)`)
-- `parent_login.html` nav: navy (`background: var(--navy)`)
-- These should be consistent across parent-side pages.
+## 🔶 HIGH
 
-**🔷 Medium — Language Selector JS on terms.html**
-- Verify `initI18n` and click handlers fire correctly on terms.html.
+### 3. Body background — 7 different values across 20 pages
+var(--white)         → teacher_login, privacy, terms, faq, parent_login, parent_registration, teacher_registration (7)
+var(--gray-100)      → teacher_profile, progress (2)
+#f8fafc              → teacher_dashboard, teacher_schedule, parent_dashboard, parent_schedule, teachers, earnings, messages, student_dashboard (8)
+rgba(0,0,0,0.25)     → admin_dashboard ← BROKEN
+var(--gray-50)       → login (1)
+var(--navy)          → admin_login (1)
+linear-gradient(...)  → reviews (1)
+Standard should be #f8fafc.
 
-#### Handoff
-- Branch: `fix/i18n-syntax-and-nav` (current working branch — audit only, no file changes made by Muses in this session)
-- Status: needs main agent (Poseidon) review and implementation
-- Testing: 
-  1. `grep -c "@keyframes" faq.html terms.html` — should return 1+ per file (currently 0)
-  2. Check faq.html and terms.html nav: does it stay fixed at top or slide?
-  3. Check teacher_dashboard.html lang dropdown: is there frosted glass blur effect?
-  4. Check button radius consistency across login pages vs dashboard pages
+### 4. Padding-top — 3 values
+60px  → teacher_dashboard/schedule/profile, parent_dashboard/schedule, teachers, reviews, earnings, messages, student_dashboard (10)
+64px  → teacher_login, login, progress, privacy, terms, faq, parent_login, parent_registration, teacher_registration (9)
+none  → admin_dashboard ← MISSING
+60px appears newer standard. admin_dashboard has neither.
 
-#### Notes
-- No files were modified in this audit session — all findings are observational
-- Protocol note: Poseidon session not found via sessions_list. Handoff logged here and message attempted via sessions_send. If Poseidon is unreachable, Muses can implement fixes on a new feature branch upon request.
+### 5. Border-radius — no consistent scale
+admin_dashboard:   4px, 6px, 8px, 12px, 16px, 50%, 50px
+parent_schedule:  4px, 6px, 8px, 12px, 16px, 50%, 8px 8px 0 0
+parent_dashboard:  4px, 6px, 8px, 10px, 16px, 50%, 50px
+teacher_schedule:  6px, 8px, 10px, 16px, 20px, 50%
+reviews:          10px, 14px, 18px, 20px, 24px, 50%
+login:            0, 8px, 10px, 12px, 24px
+Recommended: 8px inputs, 12-16px cards, 50px pills.
 
-## 2026-04-27 — Muses — sub-agent (teacher-facing formatting audit)
-### Timestamp: 03:26 HKT
-### Status: ready for review
+---
 
-#### Changes Made
-- Audit of all teacher-facing pages for formatting inconsistencies (no files modified — handoff note)
+## 🔷 MEDIUM
 
-#### Pages Audited
-teacher_login.html, teacher_dashboard.html, teacher_schedule.html, teacher_profile.html, teachers.html, reviews.html, earnings.html, messages.html
+### 6. Font stack inconsistency
+teachers.html, progress.html: 'Inter', sans-serif ← missing -apple-system, BlinkMacSystemFont
+All others: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif
 
-#### Current Branch State
-- Branch: `fix/i18n-syntax-and-nav` (local)
-- Behind origin/main by significant changes (origin/main has newer Poseidon work on parent pages and earnings)
-- Local commits since origin/main: 7d16b10 (earnings gold text fix) through 980d680 — all earnings page fixes
-- `earnings.html` local version has `background: var(--teal)` on `.hero-earnings` — appears to be a regression from a fix that should be `var(--navy-mid)` per commit 7d16b10
-- `AGENTS.md` was deleted in local branch (226-line diff removing it vs origin/main) — confirm this is intentional before merging
+### 7. CSS variable fragmentation
+:root blocks vary 12-16 variables. Many pages use --gray-300 or --teal-light without defining it.
 
-#### Formatting Issues Found
+### 8. Inline styles (maintainability debt)
+teacher_profile: 22 | parent_schedule: 22 | reviews: 9 | admin_dashboard: 8
+teacher_dashboard: 6 | teacher_schedule: 5 | earnings: 5
 
-**🚨 Critical — Missing `:root` CSS Variables + Frosted Glass on Most Teacher Pages**
-- teacher_login, teacher_dashboard, teacher_schedule, teacher_profile, teachers, messages — all lack `:root` CSS variable block and `backdrop-filter: blur()` on nav elements
-- ONLY reviews.html and earnings.html have the full modern design system
-- teacher_profile and messages have 22 and 18 inline `style=` attributes respectively — all other pages are clean (0-2)
+---
 
-**🔶 High — Body Background Inconsistency (5 different values across 8 pages)**
-```
-teacher_login:     var(--white)
-teacher_dashboard: #f8fafc
-teacher_schedule:  #f8fafc
-teacher_profile:  var(--gray-100)
-teachers:          rgba(0,0,0,0.25) ← broken/almost invisible
-reviews:           linear-gradient(135deg, #f0f4ff...#fff8f0)
-earnings:          var(--gray-50)
-messages:          #f8fafc
-```
+## ✅ CONSISTENT
+Nav position:fixed ✅ | Nav background:var(--navy) ✅ | Google Fonts Inter ✅ | @keyframes rowReveal ✅ | Logo SVG ✅
 
-**🔶 High — Padding-Top Conflict**
-- teacher_login: `padding-top: 64px`
-- All other teacher pages: `padding-top: 60px`
-- 4px difference is visible on fixed nav
+---
 
-**🔶 High — Border-Radius Wildly Inconsistent**
-- teacher_login: 50px (pill), 50% (circle), 20px, 12px, 10px — 5 different values
-- teacher_schedule: 8px, 16px, 20px — 3 values
-- teacher_profile: 8px, 16px, 20px — leans smaller (8px)
-- teacher_dashboard: 12px, 16px, 20px — consistent 12-20px band
+## RECOMMENDED STANDARDS
+Body bg: #f8fafc | padding-top: 60px | card radius: 12px | pill radius: 50px | input radius: 8px
 
-**🔶 High — Nav not `position: fixed` on teachers.html**
-- teachers.html nav missing `position: fixed` — unlike all other teacher-facing pages
+---
 
-**🔷 Medium — Box-Shadow Color Inconsistency**
-- teacher_dashboard/schedule: `rgba(0,0,0,0.15)` shadow color
-- teacher_profile: `rgba(30,58,95,0.1)` shadow color — navy-tinted, different approach
-
-**🔷 Medium — teachers.html body background broken**
-- `background: rgba(0,0,0,0.25)` on body is nearly transparent — visually wrong
-
-**🔷 Medium — Font Weight Hardcoded**
-- All pages use bare numbers instead of CSS variable tokens (--font-semibold etc.)
-
-#### Handoff
-- Branch: `fix/i18n-syntax-and-nav`
-- Status: needs main agent review — several issues to fix, all are cross-page consistency work
+## HANDOFF
+- Branch: feat/formatting-audit — pushed to origin, ready for Poseidon
+- Status: needs implementation (Poseidon or route back to Muses)
 - Testing:
-  1. `git diff origin/main --stat` — confirm 21 files changed, AGENTS.md deletion intentional?
-  2. Check teachers.html nav — does it stay fixed at top?
-  3. Check teacher_dashboard lang dropdown — no frosted glass? (reviews.html has it as reference)
-  4. Verify earnings.html `.hero-earnings` background is correct (`var(--teal)` may be wrong — should be `var(--navy-mid)` per recent commits)
-
-#### Notes
-- No files were modified in this session — audit only, observational
-- Poseidon session not found via sessions_list; handoff logged here
-- Muses available to implement fixes on a new feature branch if routed back
-- audits done: teacher-facing formatting (this session) + parent/teacher consistency audit (prior session) — both logged
+  1. grep "rgba(0,0,0,0.25)" admin_dashboard.html
+  2. grep "padding-top" admin_dashboard.html
+  3. sed -n '/^body {/,/^}/p' admin_dashboard.html
