@@ -617,6 +617,15 @@ footer a:hover { text-decoration: underline; }
   var lp = params.get('lang');
   if (lp && typeof setLanguage === 'function') setLanguage(lp);
 
+  // Highlight active nav link in hamburger dropdown
+  var path = window.location.pathname.split('/').pop() || 'reviews.html';
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (href === path || (path === '' && href === 'reviews.html')) {
+      link.classList.add('active');
+    }
+  });
+
   // Filter functionality
   var filterBtns = document.querySelectorAll('.filter-btn');
   var reviewCards = document.querySelectorAll('.review-card');

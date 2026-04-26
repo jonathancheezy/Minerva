@@ -733,6 +733,15 @@ document.querySelectorAll('.student-avatar').forEach(function(el) {
   var params = new URLSearchParams(window.location.search);
   var lp = params.get('lang');
   if (lp && typeof setLanguage === 'function') setLanguage(lp);
+
+  // Highlight active nav link in hamburger dropdown
+  var path = window.location.pathname.split('/').pop() || 'student_dashboard.html';
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (href === path || (path === '' && href === 'teacher_dashboard.html')) {
+      link.classList.add('active');
+    }
+  });
 })();
 </script>
 

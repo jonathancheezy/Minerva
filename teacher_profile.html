@@ -994,6 +994,15 @@ footer a:hover { text-decoration: underline; }
   var params = new URLSearchParams(window.location.search);
   var lp = params.get('lang');
   if (lp && typeof setLanguage === 'function') setLanguage(lp);
+
+  // Highlight active nav link in hamburger dropdown
+  var path = window.location.pathname.split('/').pop() || 'teacher_profile.html';
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (href === path || (path === '' && href === 'teacher_profile.html')) {
+      link.classList.add('active');
+    }
+  });
 })();
 </script>
 </body>
