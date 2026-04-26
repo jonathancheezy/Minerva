@@ -55,9 +55,15 @@
  .nav-inner {
    max-width: 1100px;
    margin: 0 auto;
+ }
+
+ .nav-right {
    display: flex;
    align-items: center;
    justify-content: space-between;
+   width: 100%;
+   gap: 16px;
+   flex-wrap: nowrap;
  }
 
  .nav-start {
@@ -533,15 +539,14 @@
    .nav-links {
      display: none;
      position: absolute;
-     top: 64px;
+     top: 60px;
      left: 0;
      right: 0;
-     background: rgba(15, 31, 51, 0.97);
-     backdrop-filter: blur(24px);
+     background: var(--navy);
      flex-direction: column;
      padding: 20px 24px;
-     gap: 16px;
-     border-bottom: 1px solid rgba(255,255,255,0.08);
+     gap: 12px;
+     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
      z-index: 99;
    }
    .nav-links.active { display: flex; }
