@@ -401,6 +401,12 @@
       footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。"}
     },
 
+    // ── Shared teacher keys ──
+    my_reviews:{en:"My Reviews",zhTW:"我的評價",zhCN:"我的评价"},
+    search_conversations:{en:"Search conversations...",zhTW:"搜尋對話...",zhCN:"搜索对话..."},
+    no_conversations_yet:{en:"No conversations yet",zhTW:"尚無對話",zhCN:"尚无对话"},
+    start_chatting_teachers:{en:"Start chatting with your teachers",zhTW:"開始與導師對話",zhCN:"开始与导师对话"},
+
     // ── Teacher Dashboard ──
     teacher_dash:{
       welcome:{en:"Welcome back, Teacher! 👋🏻",zhTW:"歡迎回來，導師！ 👋🏻",zhCN:"欢迎回来，导师！ 👋🏻"},
@@ -419,7 +425,6 @@
       this_month:{en:"This Month",zhTW:"本月",zhCN:"本月"},
       this_month_title:{en:"This Month",zhTW:"本月",zhCN:"本月"},
       earnings_title:{en:"My Earnings",zhTW:"我的收入",zhCN:"我的收入"},
- my_reviews:{en:"My Reviews",zhTW:"我的評價",zhCN:"我的评价"},
       messages_title:{en:"Messages",zhTW:"訊息",zhCN:"讯息"},
       messages_parent_title:{en:"Messages",zhTW:"訊息",zhCN:"讯息"},
       pending:{en:"Pending",zhTW:"待處理",zhCN:"待处理"},
