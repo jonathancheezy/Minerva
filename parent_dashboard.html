@@ -458,7 +458,7 @@
  }
  .teacher-item:last-child { border-bottom: none; }
 
- .teacher-avatar {
+ .parent-avatar {
  width: 48px;
  height: 48px;
  border-radius: 50%;
@@ -649,13 +649,14 @@ footer a:hover { text-decoration: underline; }
  <a href="parent_dashboard.html?v=pd001" data-i18n="parent_dash.dashboard">Dashboard</a>
  <a href="parent_schedule.html?v=pd001" data-i18n="parent_dash.schedule">Schedule</a>
  <a href="messages.html?v=pd001" data-i18n="parent_dash.messages">Messages</a>
+ <a href="student_profile.html" data-i18n="parent_dash.children">Children</a>
  <a href="#" data-i18n="parent_dash.settings">Settings</a>
  <a href="faq.html" data-i18n="parent_dash.help">Help</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <a href="#" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">JN</div></a>
+ <a href="parent_profile.html" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">JN</div></a>
  </div>
   </div>
   <div class="lang-selector" id="langSelector">
@@ -801,7 +802,7 @@ footer a:hover { text-decoration: underline; }
  </div>
  <div class="card-body">
  <div class="teacher-item">
- <a href="teacher_profile.html?teacher=ss" style="text-decoration:none"><div class="teacher-avatar">SS</div></a>
+ <a href="parent_profile.html?parent=ss" style="text-decoration:none"><div class="parent-avatar">SS</div></a>
  <div class="teacher-info">
  <div class="name">Ms. Sarah Piano</div>
  <div class="subject">Piano</div>
@@ -812,7 +813,7 @@ footer a:hover { text-decoration: underline; }
  </div>
  </div>
  <div class="teacher-item">
- <a href="teacher_profile.html?teacher=cc" style="text-decoration:none"><div class="teacher-avatar">CC</div></a>
+ <a href="parent_profile.html?parent=cc" style="text-decoration:none"><div class="parent-avatar">CC</div></a>
  <div class="teacher-info">
  <div class="name">Mr. Chen Math</div>
  <div class="subject">Mathematics</div>
@@ -823,7 +824,7 @@ footer a:hover { text-decoration: underline; }
  </div>
  </div>
  <div class="teacher-item">
- <a href="teacher_profile.html?teacher=aa" style="text-decoration:none"><div class="teacher-avatar">AA</div></a>
+ <a href="parent_profile.html?parent=aa" style="text-decoration:none"><div class="parent-avatar">AA</div></a>
  <div class="teacher-info">
  <div class="name">Ms. Amy English</div>
  <div class="subject">English</div>
@@ -873,8 +874,8 @@ footer a:hover { text-decoration: underline; }
 
 <script src="i18n.js"></script>
 <script>
-// Teacher + Student avatar colours - hash based
-document.querySelectorAll('.teacher-avatar, .student-avatar').forEach(function(el) {
+// Parent + Student avatar colours - hash based
+document.querySelectorAll('.parent-avatar, .student-avatar').forEach(function(el) {
   var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
   var initials = el.textContent.trim();
   var hash = 0;

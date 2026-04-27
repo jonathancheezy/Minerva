@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>My Profile — Minerva</title>
+   <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --teal-light: #60a5fa;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-600: #475569;
+ --gray-700: #334155;
+ --green: #22c55e;
+ --red: #ef4444;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--gray-100);
+ padding-top: 60px;
+ color: var(--gray-700);
+ line-height: 1.6;
+ }
+
+ /* Nav */
+ nav {
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ z-index: 100;
+ background: var(--navy);
+ padding: 16px 24px;
+ }
+
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ width: 100%;
+ gap: 16px;
+ flex-wrap: nowrap;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 22px;
+ color: white;
+ text-decoration: none;
+ white-space: nowrap;
+ flex-shrink: 0;
+ }
+
+ .logo-icon { width: 36px; height: 36px; }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ align-items: center;
+ }
+
+ .nav-links a {
+ color: rgba(255,255,255,0.75);
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: color 0.2s;
+ }
+
+ .nav-links a:hover { color: var(--gold); }
+ .nav-links a.active { color: var(--gold) !important; }
+
+ .nav-end {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ }
+
+ .user-info { display: flex; align-items: center; gap: 12px; }
+ .avatar {
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 13px;
+ flex-shrink: 0;
+ }
+
+ /* Language Selector */
+ .lang-selector { position: relative; display: flex; align-items: center; }
+
+ .globe {
+ width: 18px;
+ height: 18px;
+ color: var(--gold);
+ cursor: pointer;
+ transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+ }
+
+ .lang-selector.open .globe { transform: rotate(180deg); color: var(--gold); stroke: var(--gold); }
+
+ .lang-dropdown {
+ position: absolute;
+ top: calc(100% + 8px);
+ right: 0;
+ background: var(--navy-dark);
+ border-radius: 10px;
+ padding: 6px;
+ min-width: 140px;
+ box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+ opacity: 0;
+ transform: translateY(-8px);
+ pointer-events: none;
+ transition: opacity 0.2s, transform 0.2s;
+ z-index: 200;
+ }
+
+ .lang-selector.open .lang-dropdown {
+ opacity: 1;
+ transform: translateY(0);
+ pointer-events: auto;
+ }
+
+ .lang-option {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 8px 12px;
+ border-radius: 6px;
+ cursor: pointer;
+ font-size: 13px;
+ font-weight: 600;
+ color: rgba(255,255,255,0.65);
+ transition: background 0.15s, color 0.15s, padding-left 0.15s;
+ }
+
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+
+ .lang-option .check { width: 14px; height: 14px; opacity: 0; transform: scale(0.5); transition: opacity 0.2s, transform 0.2s; }
+ .lang-option.selected .check { opacity: 1; transform: scale(1); }
+ .lang-option .check svg { width: 14px; height: 14px; stroke: var(--gold); stroke-width: 2.5; fill: none; }
+
+ /* Hamburger */
+ .mobile-menu-btn {
+ display: none;
+ font-size: 20px;
+ cursor: pointer;
+ padding: 4px;
+ color: var(--gold);
+ background: none;
+ border: none;
+ margin-right: 12px;
+ }
+
+ @media (max-width: 768px) {
+ .nav-links {
+ display: none;
+ flex-direction: column;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ right: 0;
+ background: var(--navy-dark);
+ padding: 16px 24px;
+ gap: 4px;
+ }
+ .nav-links.active { display: flex; }
+ .mobile-menu-btn { display: block; }
+ .nav-links a { margin-left: 0 !important; padding: 8px 0; font-size: 15px; }
+ }
+
+ /* Main */
+ .main {
+ max-width: 800px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ }
+
+ .page-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 32px;
+ flex-wrap: wrap;
+ gap: 16px;
+ padding-bottom: 20px;
+ border-bottom: 1px solid var(--gray-200);
+ }
+
+ .page-header h1 {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ padding-left: 16px;
+ border-left: 4px solid var(--gold);
+ }
+
+ /* Profile Header */
+ .profile-header {
+ background: white;
+ border-radius: 16px;
+ padding: 32px;
+ border: 1px solid var(--gray-200);
+ border-left: 4px solid var(--gold);
+ margin-bottom: 24px;
+ display: flex;
+ gap: 24px;
+ align-items: center;
+ box-shadow: 0 2px 12px rgba(30,58,95,0.08);
+ }
+
+ .profile-avatar {
+ width: 100px;
+ height: 100px;
+ border-radius: 50%;
+ background: var(--gold);
+ color: var(--navy-dark);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 36px;
+ font-weight: 700;
+ flex-shrink: 0;
+ }
+
+ .profile-info { flex: 1; }
+
+ .profile-info h2 {
+ font-size: 24px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 4px;
+ }
+
+ .profile-info p {
+ color: var(--gray-600);
+ font-size: 14px;
+ margin-bottom: 8px;
+ }
+
+ .profile-badge {
+ display: inline-block;
+ background: rgba(34, 197, 94, 0.12);
+ color: var(--green);
+ font-size: 12px;
+ font-weight: 600;
+ padding: 4px 10px;
+ border-radius: 20px;
+ }
+
+ /* Cards */
+ .card {
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ border: 1px solid var(--gray-200);
+ margin-bottom: 24px;
+ transition: box-shadow 0.2s, transform 0.2s;
+ }
+ .card:hover {
+ box-shadow: 0 4px 20px rgba(30,58,95,0.1);
+ transform: translateY(-1px);
+ }
+
+ .card-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+ flex-wrap: wrap;
+ gap: 4px 16px;
+ margin-bottom: 20px;
+ }
+
+ .card-header h2 {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ flex-basis: 100%;
+ }
+
+ .card-header p {
+ font-size: 13px;
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Form */
+ .form-grid {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 16px;
+ }
+
+ .form-group {
+ margin-bottom: 16px;
+ }
+
+ .form-group.full {
+ grid-column: span 2;
+ }
+
+ .form-group label {
+ display: block;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-700);
+ margin-bottom: 6px;
+ }
+
+ .form-group input,
+ .form-group select,
+ .form-group textarea {
+ width: 100%;
+ padding: 10px 12px;
+ border: 1px solid var(--gray-300);
+ border-radius: 8px;
+ font-size: 14px;
+ font-family: inherit;
+ transition: all 0.2s;
+ background: white;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus,
+ .form-group textarea:focus {
+ outline: none;
+ border-color: var(--teal);
+ box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+ }
+
+ .form-group textarea {
+ resize: vertical;
+ min-height: 80px;
+ }
+
+ .form-group select {
+ cursor: pointer;
+ }
+
+ .form-hint {
+ font-size: 12px;
+ color: var(--gray-500);
+ margin-top: 4px;
+ }
+
+ /* Tags Input */
+ .tags-input {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+ padding: 8px 12px;
+ border: 1px solid var(--gray-300);
+ border-radius: 8px;
+ background: white;
+ min-height: 42px;
+ align-items: center;
+ transition: border-color 0.2s, box-shadow 0.2s;
+ }
+
+ .tags-input:focus-within {
+ border-color: var(--teal);
+ box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+ }
+
+ .tag {
+ display: flex;
+ align-items: center;
+ gap: 4px;
+ background: var(--teal);
+ color: white;
+ padding: 4px 10px;
+ border-radius: 6px;
+ font-size: 13px;
+ font-weight: 600;
+ }
+
+ .tag-remove {
+ cursor: pointer;
+ opacity: 0.8;
+ font-size: 16px;
+ line-height: 1;
+ }
+ .tag-remove:hover { opacity: 1; }
+
+ .tags-input input {
+ border: none;
+ outline: none;
+ background: transparent;
+ font-size: 14px;
+ padding: 4px 0;
+ min-width: 120px;
+ flex: 1;
+ }
+
+ /* Child Card */
+ .child-card {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ padding: 16px;
+ background: var(--gray-100);
+ border-radius: 12px;
+ margin-bottom: 12px;
+ border: 1px solid var(--gray-200);
+ }
+
+ .child-avatar {
+ width: 48px;
+ height: 48px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 16px;
+ color: white;
+ flex-shrink: 0;
+ }
+
+ .child-info { flex: 1; }
+ .child-info h4 { font-size: 15px; font-weight: 700; color: var(--navy-dark); margin-bottom: 2px; }
+ .child-info p { font-size: 13px; color: var(--gray-600); }
+
+ .child-actions { display: flex; gap: 8px; }
+
+ .btn-small {
+ padding: 6px 14px;
+ border-radius: 8px;
+ font-size: 12px;
+ font-weight: 600;
+ border: none;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .btn-small.primary {
+ background: var(--teal);
+ color: white;
+ }
+
+ .btn-small.danger {
+ background: rgba(239, 68, 68, 0.1);
+ color: var(--red);
+ }
+
+ /* Toggle */
+ .toggle-label {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 14px 0;
+ border-bottom: 1px solid var(--gray-200);
+ flex-wrap: wrap;
+ gap: 8px;
+ }
+
+ .toggle-label:last-child { border-bottom: none; }
+ .toggle-label span { display: block; font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+
+ .toggle {
+ position: relative;
+ display: inline-block;
+ width: 48px;
+ height: 26px;
+ flex-shrink: 0;
+ }
+
+ .toggle input { opacity: 0; width: 0; height: 0; }
+
+ .toggle-slider {
+ position: absolute;
+ cursor: pointer;
+ inset: 0;
+ background: var(--gray-300);
+ border-radius: 26px;
+ transition: background 0.2s;
+ }
+
+ .toggle-slider::before {
+ content: "";
+ position: absolute;
+ height: 20px;
+ width: 20px;
+ left: 3px;
+ bottom: 3px;
+ background: white;
+ border-radius: 50%;
+ transition: transform 0.2s;
+ box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+ }
+
+ .toggle input:checked + .toggle-slider { background: var(--teal); }
+ .toggle input:checked + .toggle-slider::before { transform: translateX(22px); }
+
+ /* Actions */
+ .actions {
+ display: flex;
+ gap: 12px;
+ margin-top: 8px;
+ flex-wrap: wrap;
+ }
+
+ .btn {
+ padding: 12px 24px;
+ border-radius: 10px;
+ font-size: 14px;
+ font-weight: 700;
+ border: none;
+ cursor: pointer;
+ transition: all 0.2s;
+ font-family: inherit;
+ }
+
+ .btn-primary {
+ background: var(--navy);
+ color: white;
+ }
+ .btn-primary:hover { background: var(--navy-dark); transform: translateY(-1px); }
+
+ .btn-danger {
+ background: rgba(239, 68, 68, 0.1);
+ color: var(--red);
+ }
+ .btn-danger:hover { background: rgba(239, 68, 68, 0.2); }
+
+ .danger-zone {
+ background: rgba(239, 68, 68, 0.05);
+ border: 1px solid rgba(239, 68, 68, 0.2);
+ border-radius: 12px;
+ padding: 20px;
+ margin-top: 24px;
+ }
+
+ .danger-zone h3 { font-size: 15px; font-weight: 700; color: var(--red); margin-bottom: 8px; }
+
+ @media (max-width: 600px) {
+ .form-grid { grid-template-columns: 1fr; }
+ .form-group.full { grid-column: span 1; }
+ .profile-header { flex-direction: column; text-align: center; }
+ .page-header h1 { font-size: 22px; }
+ }
+   </style>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+ <div class="nav-inner">
+ <div class="nav-right">
+ <div class="nav-start">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="parent_dashboard.html">Dashboard</a>
+ <a href="parent_schedule.html">Schedule</a>
+ <a href="messages.html">Messages</a>
+ <a href="student_profile.html">Children</a>
+ <a href="parent_profile.html" class="active">Profile</a>
+ </div>
+ <div class="nav-end">
+ <div class="user-info">
+ <a href="parent_profile.html" style="text-decoration:none"><div class="avatar">JN</div></a>
+ </div>
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ </div>
+ </div>
+ </div>
+ </div>
+</nav>
+
+<main class="main">
+ <div class="page-header">
+ <h1>My Profile</h1>
+ <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+ </div>
+
+ <!-- Profile Header -->
+ <div class="profile-header">
+ <div class="profile-avatar" id="avatarPreview">JN</div>
+ <div class="profile-info">
+ <h2 id="namePreview">Jacky Ngan</h2>
+ <p>Parent Account</p>
+ <span class="profile-badge">Verified</span>
+ </div>
+ </div>
+
+ <!-- Basic Information -->
+ <div class="card">
+ <div class="card-header">
+ <h2>Basic Information</h2>
+ <p>Update your personal and contact details</p>
+ </div>
+ <div class="form-grid">
+ <div class="form-group">
+ <label>Full Name *</label>
+ <input type="text" id="fullName" value="Jacky Ngan" oninput="updatePreview()">
+ </div>
+ <div class="form-group">
+ <label>Email Address</label>
+ <input type="email" id="email" value="jacky.ngan@email.com">
+ </div>
+ <div class="form-group">
+ <label>Contact Number</label>
+ <input type="tel" id="phone" value="+852 9876 5432">
+ </div>
+ <div class="form-group">
+ <label>Preferred Language</label>
+ <select id="prefLang">
+ <option value="en" selected>English</option>
+ <option value="zh-TW">Cantonese</option>
+ <option value="zh-CN">Mandarin</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label>Relationship to Child</label>
+ <select id="relationship">
+ <option value="mother" selected>Mother</option>
+ <option value="father">Father</option>
+ <option value="guardian">Guardian</option>
+ <option value="other">Other</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label>Home District</label>
+ <select id="district">
+ <option value="hk">Hong Kong Island</option>
+ <option value="kl" selected>Kowloon</option>
+ <option value="nt">New Territories</option>
+ </select>
+ </div>
+ </div>
+ </div>
+
+ <!-- Children -->
+ <div class="card">
+ <div class="card-header">
+ <h2>My Children</h2>
+ <p>Manage your children's profiles</p>
+ </div>
+
+ <div class="child-card">
+ <div class="child-avatar" style="background: #8b5cf6;">JW</div>
+ <div class="child-info">
+ <h4>Jasper Ngan</h4>
+ <p>Primary 4 · Piano, Mathematics</p>
+ </div>
+ <div class="child-actions">
+ <a href="student_profile.html?student=jw"><button class="btn-small primary">Edit</button></a>
+ <button class="btn-small danger" onclick="removeChild('jw')">Remove</button>
+ </div>
+ </div>
+
+ <div class="child-card">
+ <div class="child-avatar" style="background: #06b6d4;">LW</div>
+ <div class="child-info">
+ <h4>Lily Ngan</h4>
+ <p>Primary 2 · English, Art &amp; Craft</p>
+ </div>
+ <div class="child-actions">
+ <a href="student_profile.html?student=lw"><button class="btn-small primary">Edit</button></a>
+ <button class="btn-small danger" onclick="removeChild('lw')">Remove</button>
+ </div>
+ </div>
+
+ <button class="btn" style="margin-top:12px; background: var(--gray-200); color: var(--navy-dark);" onclick="addChild()">+ Add Child</button>
+ </div>
+
+ <!-- Notification Preferences -->
+ <div class="card">
+ <div class="card-header">
+ <h2>Notification Preferences</h2>
+ <p>Control how Minerva communicates with you</p>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ Lesson Reminders
+ <span>Receive reminders before each lesson</span>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-label">
+ Booking Confirmations
+ <span>Get notified when bookings are confirmed</span>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-label">
+ Teacher Messages
+ <span>Notifications for new messages from teachers</span>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-label">
+ Progress Reports
+ <span>Monthly learning progress updates from teachers</span>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-label">
+ Promotions &amp; Offers
+ <span>Exclusive deals and learning tips</span>
+ <label class="toggle">
+ <input type="checkbox">
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ </div>
+ </div>
+
+ <!-- Payment & Billing -->
+ <div class="card">
+ <div class="card-header">
+ <h2>Payment &amp; Billing</h2>
+ <p>Manage your payment methods and billing preferences</p>
+ </div>
+ <div class="form-grid">
+ <div class="form-group full">
+ <label>Saved Payment Method</label>
+ <div style="padding: 12px 16px; background: var(--gray-100); border-radius: 8px; display: flex; align-items: center; gap: 12px;">
+ <span style="font-size: 24px;">💳</span>
+ <div>
+ <div style="font-weight: 600; font-size: 14px;">Visa ending in 4242</div>
+ <div style="font-size: 12px; color: var(--gray-600);">Expires 12/2027</div>
+ </div>
+ <a href="#" style="margin-left: auto; color: var(--teal); font-size: 13px; font-weight: 600;">Change</a>
+ </div>
+ </div>
+ <div class="form-group">
+ <label>Billing Email</label>
+ <input type="email" id="billingEmail" value="jacky.ngan@email.com">
+ </div>
+ <div class="form-group">
+ <label>Invoice Format</label>
+ <select id="invoiceFormat">
+ <option value="digital" selected>Digital PDF</option>
+ <option value="paper">Paper Invoice</option>
+ </select>
+ </div>
+ </div>
+ </div>
+
+ <!-- Account Settings -->
+ <div class="card">
+ <div class="card-header">
+ <h2>Account Settings</h2>
+ <p>Manage your account security and preferences</p>
+ </div>
+ <div class="form-grid">
+ <div class="form-group">
+ <label>Change Password</label>
+ <input type="password" placeholder="Enter new password">
+ </div>
+ <div class="form-group">
+ <label>Confirm Password</label>
+ <input type="password" placeholder="Confirm new password">
+ </div>
+ <div class="form-group full">
+ <label>Account Email (cannot be changed)</label>
+ <input type="email" value="jacky.ngan@email.com" disabled style="background: var(--gray-100);">
+ </div>
+ </div>
+ </div>
+
+ <div class="actions">
+ <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+ </div>
+
+ <div class="danger-zone" id="deleteSection" style="display:none;">
+ <h3>⚠️ Danger Zone</h3>
+ <p style="font-size:13px; color:var(--gray-600); margin-bottom:16px;">This will permanently delete your account and all associated data including your children's profiles and lesson history. This action cannot be undone.</p>
+ <button class="btn btn-danger" onclick="confirmDelete()">Delete Account Forever</button>
+ </div>
+</main>
+
+<script>
+// Parent + Child avatar colours - hash based
+document.querySelectorAll('.avatar, .profile-avatar, .child-avatar').forEach(function(el) {
+  var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+  var initials = el.textContent.trim();
+  var hash = 0;
+  for (var i = 0; i < initials.length; i++) {
+    hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  var idx = Math.abs(hash) % colours.length;
+  el.style.background = colours[idx];
+  el.style.color = '#fff';
+});
+
+function updatePreview() {
+  var name = document.getElementById('fullName').value || 'Parent';
+  var initials = name.split(' ').map(function(n) { return n[0]; }).join('').substring(0, 2).toUpperCase();
+  document.getElementById('avatarPreview').textContent = initials;
+  document.getElementById('namePreview').textContent = name;
+  // Update nav avatar
+  var navAvatar = document.querySelector('.user-info .avatar');
+  if (navAvatar) navAvatar.textContent = initials;
+}
+
+function saveProfile() {
+  var profile = {
+    fullName: document.getElementById('fullName').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    prefLang: document.getElementById('prefLang').value,
+    relationship: document.getElementById('relationship').value,
+    district: document.getElementById('district').value,
+    billingEmail: document.getElementById('billingEmail').value,
+    invoiceFormat: document.getElementById('invoiceFormat').value
+  };
+  localStorage.setItem('parentProfile', JSON.stringify(profile));
+  var btn = document.querySelector('.btn-primary');
+  var original = btn.textContent;
+  btn.textContent = 'Saved ✓';
+  btn.style.background = 'var(--green)';
+  setTimeout(function() {
+    btn.textContent = original;
+    btn.style.background = '';
+  }, 2000);
+}
+
+function addChild() {
+  alert('Add Child feature — would open a modal to register a new child profile.');
+}
+
+function removeChild(id) {
+  if (confirm('Remove this child profile? Their lesson history will be preserved.')) {
+    alert('Child ' + id + ' removed.');
+  }
+}
+
+function confirmDelete() {
+  var confirmed = confirm('Are you absolutely sure? This will delete your account and all your children\'s profiles permanently.');
+  if (confirmed) {
+    var doubleConfirm = confirm('Type "DELETE" in the next prompt to confirm forever.');
+    if (doubleConfirm) {
+      alert('Account deletion requires backend support. Please contact support@minerva.hk');
+    }
+  }
+}
+
+// Language selector
+(function(){
+  var sel = document.getElementById('langSelector');
+  var globe = document.getElementById('langGlobe');
+  var dropdown = document.getElementById('langDropdown');
+  if (!sel || !dropdown) return;
+  globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
+  document.addEventListener('click', function(){ sel.classList.remove('open'); });
+  dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+  dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+      opt.classList.add('selected');
+      sel.classList.remove('open');
+    });
+  });
+})();
+
+// Load saved profile
+(function(){
+  var saved = localStorage.getItem('parentProfile');
+  if (saved) {
+    try {
+      var p = JSON.parse(saved);
+      if (p.fullName) { document.getElementById('fullName').value = p.fullName; updatePreview(); }
+    } catch(e) {}
+  }
+})();
+</script>
+</body>
+</html>

@@ -448,7 +448,7 @@
  .teacher-card:hover { background: var(--gray-200); }
  .teacher-card.selected { border-color: var(--teal); background: rgba(59, 130, 246, 0.05); }
 
- .teacher-avatar {
+ .parent-avatar {
  width: 56px;
  height: 56px;
  border-radius: 50%;
@@ -697,13 +697,14 @@
  <a href="parent_dashboard.html?v=ps001" data-i18n="parent_dash.dashboard">Dashboard</a>
  <a href="parent_schedule.html?v=ps001" data-i18n="parent_dash.schedule">Schedule</a>
  <a href="messages.html?v=ps001" data-i18n="parent_dash.messages">Messages</a>
+ <a href="student_profile.html" data-i18n="parent_dash.children">Children</a>
  <a href="#" data-i18n="parent_dash.settings">Settings</a>
  <a href="faq.html" data-i18n="parent_dash.help">Help</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <a href="#" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">JN</div></a>
+ <a href="parent_profile.html" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">JN</div></a>
  </div>
   </div>
   <div class="lang-selector" id="langSelector">
@@ -741,7 +742,7 @@
  <h2 data-i18n="schedule.select_teacher"><span data-i18n="schedule.step1_select_teacher"> data-i18n="schedule.select_teacher"</span></h2>
  </div>
  <div class="teacher-card selected" onclick="selectTeacher(this, 'Teacher Chan', 350)">
- <a href="teacher_profile.html?teacher=tc" style="text-decoration:none"><div class="teacher-avatar">TC</div></a>
+ <a href="parent_profile.html?parent=tc" style="text-decoration:none"><div class="parent-avatar">TC</div></a>
  <div class="teacher-info">
  <div class="teacher-name">Teacher Chan</div>
  <div class="teacher-subject">HKDSE Maths • 5 years exp. • Tuen Mun</div>
@@ -752,7 +753,7 @@
  </div>
  </div>
  <div class="teacher-card" onclick="selectTeacher(this, 'Miss Lily', 400)">
- <a href="teacher_profile.html?teacher=ml" style="text-decoration:none"><div class="teacher-avatar">ML</div></a>
+ <a href="parent_profile.html?parent=ml" style="text-decoration:none"><div class="parent-avatar">ML</div></a>
  <div class="teacher-info">
  <div class="teacher-name">Miss Lily</div>
  <div class="teacher-subject">IB Maths • 7 years exp. • Sha Tin</div>
@@ -763,7 +764,7 @@
  </div>
  </div>
  <div class="teacher-card" onclick="selectTeacher(this, 'Mr. Kevin', 300)">
- <a href="teacher_profile.html?teacher=kw" style="text-decoration:none"><div class="teacher-avatar">KW</div></a>
+ <a href="parent_profile.html?parent=kw" style="text-decoration:none"><div class="parent-avatar">KW</div></a>
  <div class="teacher-info">
  <div class="teacher-name">Mr. Kevin</div>
  <div class="teacher-subject">GCSE Maths • 3 years exp. • Central</div>
@@ -1202,7 +1203,7 @@
 
 <script>
 // Teacher + Student avatar colours - hash based
-document.querySelectorAll('.teacher-avatar, .student-avatar').forEach(function(el) {
+document.querySelectorAll('.parent-avatar, .student-avatar').forEach(function(el) {
   var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
   var initials = el.textContent.trim();
   var hash = 0;
