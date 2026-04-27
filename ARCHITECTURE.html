@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minerva Architecture Diagram</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1f33; color: #f8fafc; padding: 40px 20px; }
+    h1 { text-align: center; color: #fbbf24; margin-bottom: 8px; font-size: 1.5rem; }
+    h2 { text-align: center; color: #94a3b8; margin-bottom: 32px; font-size: 0.85rem; font-weight: 400; }
+    .mermaid { display: flex; justify-content: center; }
+    .mermaid svg { max-width: 100%; height: auto; }
+    h1 ~ div:not(.mermaid) { display: none; }
+  </style>
+</head>
+<body>
+
+<h1>Minerva Architecture</h1>
+<h2>Multi-Agent Workflow + File Structure</h2>
+
+<div class="mermaid">
+flowchart TB
+    subgraph Human["👤 You (Human)"]
+    end
+
+    subgraph Agents["👥 Multi-Agent System"]
+        P([Poseidon<br/>main session<br/>workspace/])
+        M([Muses<br/>sub-agent<br/>workspace-muses/])
+        H([Hercules<br/>sub-agent<br/>workspace/])
+    end
+
+    subgraph GitHub["📦 GitHub — Minerva Repo"]
+        master["master<br/>(protected)"]
+        main["main<br/>(mirrored)"]
+    end
+
+    Human -->|"instruct"| P
+    M -->|"SESSION_CHANGE_LOG"| P
+    P -->|"push"| master
+    P -->|"push"| main
+    M -->|"push"| master
+    H -->|"push"| master
+
+    master <-->|"mirror"| main
+
+    style Human fill:#1e3a5f,stroke:#fbbf24,stroke-width:2px,color:#f8fafc
+    style P fill:#1a3a2a,stroke:#22c55e,stroke-width:2px,color:#f8fafc
+    style M fill:#2a1a3a,stroke:#a855f7,stroke-width:2px,color:#f8fafc
+    style H fill:#3a2a1a,stroke:#f97316,stroke-width:2px,color:#f8fafc
+    style master fill:#1e3a5f,stroke:#3b82f6,stroke-width:2px,color:#f8fafc
+    style main fill:#1e3a5f,stroke:#3b82f6,stroke-width:2px,color:#f8fafc
+</div>
+
+<h2 style="margin-top:48px;">🌐 File Map — 24 Live HTML Pages</h2>
+
+<div class="mermaid">
+flowchart LR
+    subgraph Pages["📁 All HTML Pages (24 live)"]
+        direction TB
+        Auth["🔐 Auth<br/>5 pages"]
+        Teacher["👩‍🏫 Teacher<br/>6 pages"]
+        Student["👨‍🎓 Student/Parent<br/>3 pages"]
+        Info["ℹ️ Info<br/>3 pages"]
+        Admin["🛡️ Admin<br/>2 pages"]
+        Other["📄 Other<br/>3 pages"]
+    end
+
+    subgraph i18n["🌐 i18n System"]
+        i18nJS["i18n.js<br/>(global engine)"]
+        ti18n["teacher_i18n.js<br/>(overrides)"]
+        JSON["i18n/{lang}.json<br/>(translations)"]
+    end
+
+    Auth --> i18nJS
+    Teacher --> i18nJS
+    Student --> i18nJS
+    Info --> i18nJS
+    Admin --> i18nJS
+    Other --> i18nJS
+    Teacher --> ti18n
+    i18nJS --> JSON
+
+    style Auth fill:#1e3a5f,stroke:#3b82f6
+    style Teacher fill:#1e3a5f,stroke:#22c55e
+    style Student fill:#1e3a5f,stroke:#a855f7
+    style Info fill:#1e3a5f,stroke:#fbbf24
+    style Admin fill:#1e3a5f,stroke:#ef4444
+    style Other fill:#1e3a5f,stroke:#94a3b8
+    style i18nJS fill:#2a1a3a,stroke:#a855f7
+    style ti18n fill:#2a1a3a,stroke:#a855f7
+    style JSON fill:#2a1a3a,stroke:#a855f7
+</div>
+
+<h2 style="margin-top:48px;">🔄 i18n Translation Flow</h2>
+
+<div class="mermaid">
+flowchart TD
+    start["Page Loads<br/>document.documentElement.lang"] --> fetch["i18n.js fetches<br/>i18n/{lang}.json"]
+    fetch --> lookup["Elements with<br/>data-i18n=\"key\""]
+    lookup --> replace["Replace<br/>textContent"]
+    replace --> done["✅ Localized<br/>Page Ready"]
+
+    style start fill:#1e3a5f,stroke:#3b82f6
+    style fetch fill:#2a1a3a,stroke:#a855f7
+    style lookup fill:#1e3a5f,stroke:#fbbf24
+    style replace fill:#2a1a3a,stroke:#a855f7
+    style done fill:#1a3a2a,stroke:#22c55e
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'dark',
+    themeVariables: {
+      background: '#0f1f33',
+      primaryColor: '#1e3a5f',
+      primaryTextColor: '#f8fafc',
+      primaryBorderColor: '#3b82f6',
+      lineColor: '#94a3b8',
+      secondaryColor: '#2a1a3a',
+      tertiaryColor: '#1a3a2a'
+    }
+  });
+</script>
+</body>
+</html>
