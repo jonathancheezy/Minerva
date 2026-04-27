@@ -85,6 +85,8 @@
 
     footer_copyright:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
     footer_terms:{en:"Terms & Conditions",zhTW:"條款及細則",zhCN:"条款及细则"},
+    footer_privacy:{en:"Privacy Policy",zhTW:"隱私政策",zhCN:"隱私政策"},
+    teacher_nav_dashboard:{en:"Dashboard",zhTW:"儀表板",zhCN:"儀表板"},
     // ── Admin ──
     admin:{
       title:{en:"Admin Portal",zhTW:"管理員門戶",zhCN:"管理员门户"},
@@ -513,6 +515,8 @@
       piano_g1:{en:"Piano (Grade 1)",zhTW:"鋼琴（一級）",zhCN:"钢琴（一级）"},
       science_f2:{en:"Science (Form 2)",zhTW:"科學（中二）",zhCN:"科学（初二）"},
       profile:{en:"Profile",zhTW:"個人資料",zhCN:"个人资料"},
+      lessons_label:{en:"lessons",zhTW:"堂課",zhCN:"堂課"},
+      my_reviews:{en:"My Reviews",zhTW:"我的評價",zhCN:"我的評價"}
     },
 
     // ── Teacher Profile ──
@@ -801,11 +805,12 @@
       p29:{en:"Minerva may modify these terms at any time with 30 days notice. Users will be notified via email or platform notice. Continued use after changes constitutes acceptance of new terms.",zhTW:"Minerva可隨時修改這些條款，並提前30天通知用戶。用戶將通過電郵或平台公告收到通知。修改後繼續使用即表示接受新條款。",zhCN:"Minerva可随时修改这些条款，并提前30天通知用户。用户将通过电邮或平台公告收到通知。修改后继续使用即表示接受新条款。"},
       p30:{en:"These Terms & Conditions are governed by the laws of the Hong Kong Special Administrative Region. Any disputes shall be subject to the exclusive jurisdiction of Hong Kong courts.",zhTW:"這些條款及細則受香港特別行政區法律管轄。任何爭議均受香港法院的專屬管轄權約束。",zhCN:"这些条款及细则受香港特别行政区法律管辖。任何争议均受香港法院的专属管辖权约束。"},
       collect_for:{en:"We collect personal data for:",zhTW:"收集信息用于",zhCN:"收集信息用于"},
-      data_used_for:{en:"Your data is used for:",zhTW:"資料用於",zhCN:"資料用於"},      lessons_conducted:{en:"Lessons may be conducted:",zhTW:"課堂可按以下方式進行",zhCN:"课堂可按以下方式进行"},
+      data_used_for:{en:"Your data is used for:",zhTW:"資料用於",zhCN:"資料用於"},
       pdpo_rights:{en:"Under the PDPO, you have the right to:",zhTW:"您的《個人資料（私隱）條例》權利",zhCN:"您的《個人資料（私隱）條例》權利"},
       questions:{en:"For questions about these Terms & Conditions:",zhTW:"有問題？",zhCN:"有問題？"},
-      sec1:{en:"1. Acceptance of Terms",zhTW:"1. 接受條款",zhCN:"1. 接受条款"},
-      sec10_heading:{en:"10. Limitation of Liability",zhTW:"10. 責任限制",zhCN:"10. 责任限制"},
+      lessons_conducted:{en:"Lessons may be conducted:",zhTW:"課堂可按以下方式進行",zhCN:"課堂可按以下方式进行"},
+      sec1:{en:"1. Acceptance of Terms",zhTW:"1. 接受條款",zhCN:"1. 接受條款"},
+      sec10_heading:{en:"10. Limitation of Liability",zhTW:"10. 責任限制",zhCN:"10. 責任限制"},
       sec11:{en:"11. Force Majeure",zhTW:"11. 不可抗力",zhCN:"11. 不可抗力"},
       sec12:{en:"12. Platform Availability",zhTW:"12. 平台可用性",zhCN:"12. 平台可用性"},
       sec13:{en:"13. Insurance Coverage",zhTW:"13. 保險保障",zhCN:"13. 保险保障"},
