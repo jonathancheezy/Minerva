@@ -452,14 +452,13 @@
  width: 56px;
  height: 56px;
  border-radius: 50%;
- background: var(--navy);
- color: white;
  display: flex;
  align-items: center;
  justify-content: center;
  font-weight: 700;
  font-size: 18px;
  flex-shrink: 0;
+ /* JS sets background + color */
  }
 
  .teacher-info { flex: 1; }
@@ -730,7 +729,7 @@
  <h2 data-i18n="schedule.select_teacher"><span data-i18n="schedule.step1_select_teacher"> data-i18n="schedule.select_teacher"</span></h2>
  </div>
  <div class="teacher-card selected" onclick="selectTeacher(this, 'Teacher Chan', 350)">
- <div class="teacher-avatar">TC</div>
+ <a href="teacher_profile.html?teacher=tc" style="text-decoration:none"><div class="teacher-avatar">TC</div></a>
  <div class="teacher-info">
  <div class="teacher-name">Teacher Chan</div>
  <div class="teacher-subject">HKDSE Maths • 5 years exp. • Tuen Mun</div>
@@ -741,7 +740,7 @@
  </div>
  </div>
  <div class="teacher-card" onclick="selectTeacher(this, 'Miss Lily', 400)">
- <div class="teacher-avatar">ML</div>
+ <a href="teacher_profile.html?teacher=ml" style="text-decoration:none"><div class="teacher-avatar">ML</div></a>
  <div class="teacher-info">
  <div class="teacher-name">Miss Lily</div>
  <div class="teacher-subject">IB Maths • 7 years exp. • Sha Tin</div>
@@ -752,7 +751,7 @@
  </div>
  </div>
  <div class="teacher-card" onclick="selectTeacher(this, 'Mr. Kevin', 300)">
- <div class="teacher-avatar">KW</div>
+ <a href="teacher_profile.html?teacher=kw" style="text-decoration:none"><div class="teacher-avatar">KW</div></a>
  <div class="teacher-info">
  <div class="teacher-name">Mr. Kevin</div>
  <div class="teacher-subject">GCSE Maths • 3 years exp. • Central</div>

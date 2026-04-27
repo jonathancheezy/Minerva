@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>My Profile — Minerva</title>
+   <style>
+ :root {
+ --navy: #1e3a5f;
+ --navy-dark: #0f1f33;
+ --teal: #3b82f6;
+ --teal-light: #60a5fa;
+ --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --white: #ffffff;
+ --gray-100: #f8fafc;
+ --gray-200: #e2e8f0;
+ --gray-300: #cbd5e1;
+ --gray-600: #475569;
+ --gray-700: #334155;
+ --green: #22c55e;
+ --red: #ef4444;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: var(--gray-100);
+ padding-top: 60px;
+ color: var(--gray-700);
+ line-height: 1.6;
+ }
+
+ /* Nav */
+ nav {
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ z-index: 100;
+ background: var(--navy);
+ padding: 16px 24px;
+ }
+
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+
+ .nav-right {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ width: 100%;
+ gap: 16px;
+ flex-wrap: nowrap;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 800;
+ font-size: 22px;
+ color: white;
+ text-decoration: none;
+ white-space: nowrap;
+ flex-shrink: 0;
+ }
+
+ .logo-icon { width: 36px; height: 36px; }
+
+/* Language Selector */
+ .lang-selector { position: relative; display: flex; align-items: center; }
+
+ .globe {
+ width: 18px;
+ height: 18px;
+ color: var(--gold);
+ cursor: pointer;
+ transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+ flex-shrink: 0;
+ }
+
+ .lang-selector.open .globe { transform: rotate(180deg); color: var(--gold); stroke: var(--gold); }
+
+ .lang-dropdown {
+ display: none;
+ position: absolute;
+ top: calc(100% + 8px);
+ right: 0;
+ background: var(--navy-dark);
+ border-radius: 10px;
+ padding: 8px 0;
+ min-width: 140px;
+ box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+ z-index: 200;
+ }
+
+ .lang-selector.open .lang-dropdown { display: block; }
+
+ .lang-option {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 10px 16px;
+ font-size: 14px;
+ color: rgba(255,255,255,0.75);
+ cursor: pointer;
+ transition: background 0.15s, color 0.15s, padding-left 0.15s;
+ }
+
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+
+ .lang-option .check { opacity: 0; }
+ .lang-option.selected .check { opacity: 1; }
+
+ .nav-links { display: flex; gap: 24px; align-items: center; }
+ .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+ .nav-links a:hover { color: var(--gold); }
+ .nav-links a.active { color: var(--gold) !important; }
+
+ .user-info { display: flex; align-items: center; gap: 12px; }
+
+ .avatar {
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 14px;
+ cursor: pointer;
+ flex-shrink: 0;
+ }
+
+ @media (max-width: 768px) {
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; align-items: flex-start; padding: 20px 24px; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 99; }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: var(--navy-dark); text-decoration: none; font-size: 14px; font-weight: 500; }
+ .mobile-menu-btn { display: flex; }
+ .nav-right { justify-content: space-between; }
+ .nav-start { display: flex; align-items: center; }
+ .mobile-menu-btn { display: flex; }
+ .nav-end { margin-left: auto; }
+ }
+
+ @media (min-width: 769px) {
+ .mobile-menu-btn { display: none; }
+ .nav-right { justify-content: space-between; }
+ .nav-start { display: flex; align-items: center; }
+ .nav-end { margin-left: auto; }
+ }
+
+ .mobile-menu-btn {
+ background: none;
+ border: none;
+ color: white;
+ font-size: 24px;
+ cursor: pointer;
+ padding: 4px;
+ }
+
+ /* Main */
+ .main {
+ max-width: 800px;
+ margin: 0 auto;
+ padding: 32px 24px;
+ }
+
+ .page-header {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ margin-bottom: 32px;
+ }
+
+ .page-header h1 {
+ font-size: 28px;
+ font-weight: 800;
+ color: var(--navy-dark);
+ }
+
+ /* Profile Header */
+ .profile-header {
+ display: flex;
+ align-items: center;
+ gap: 24px;
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ margin-bottom: 24px;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+ }
+
+ .profile-avatar {
+ width: 100px;
+ height: 100px;
+ border-radius: 50%;
+ background: var(--navy);
+ color: var(--gold);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 36px;
+ font-weight: 700;
+ flex-shrink: 0;
+ }
+
+ .profile-info { flex: 1; }
+
+ .profile-info h2 {
+ font-size: 24px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 4px;
+ }
+
+ .profile-info p {
+ font-size: 14px;
+ color: var(--gray-600);
+ margin-bottom: 8px;
+ }
+
+ .profile-badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 4px;
+ background: rgba(34,197,94,0.1);
+ color: var(--green);
+ padding: 4px 12px;
+ border-radius: 20px;
+ font-size: 13px;
+ font-weight: 600;
+ }
+
+ .change-photo-btn {
+ background: var(--gray-200);
+ border: none;
+ padding: 8px 16px;
+ border-radius: 8px;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-700);
+ cursor: pointer;
+ transition: background 0.2s;
+ }
+
+ .change-photo-btn:hover { background: var(--gray-300); }
+
+ /* Card */
+ .card {
+ background: white;
+ border-radius: 16px;
+ padding: 24px;
+ margin-bottom: 24px;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+ }
+
+ .card-header {
+ margin-bottom: 20px;
+ }
+
+ .card-header h2 {
+ font-size: 18px;
+ font-weight: 700;
+ color: var(--navy-dark);
+ margin-bottom: 4px;
+ }
+
+ .card-header p {
+ font-size: 13px;
+ color: var(--gray-600);
+ }
+
+ /* Form */
+ .form-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 16px;
+ }
+
+ .form-group { display: flex; flex-direction: column; gap: 6px; }
+ .form-group.full { grid-column: span 2; }
+
+ .form-group label {
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--gray-700);
+ }
+
+ .form-group input,
+ .form-group select,
+ .form-group textarea {
+ padding: 10px 14px;
+ border: 1.5px solid var(--gray-200);
+ border-radius: 8px;
+ font-size: 14px;
+ font-family: inherit;
+ color: var(--gray-700);
+ transition: border-color 0.2s;
+ background: white;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus,
+ .form-group textarea:focus {
+ outline: none;
+ border-color: var(--teal);
+ }
+
+ .form-group textarea { resize: vertical; min-height: 80px; }
+
+ /* Tags Input */
+ .tags-input {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 6px;
+ padding: 8px;
+ border: 1.5px solid var(--gray-200);
+ border-radius: 8px;
+ min-height: 44px;
+ align-items: center;
+ cursor: text;
+ }
+
+ .tags-input:focus-within { border-color: var(--teal); }
+
+ .tag {
+ display: inline-flex;
+ align-items: center;
+ gap: 4px;
+ background: var(--navy);
+ color: white;
+ padding: 4px 10px;
+ border-radius: 6px;
+ font-size: 13px;
+ font-weight: 500;
+ }
+
+ .tag-remove {
+ cursor: pointer;
+ font-size: 16px;
+ line-height: 1;
+ opacity: 0.7;
+ }
+ .tag-remove:hover { opacity: 1; color: var(--red); }
+
+ .tags-input input {
+ border: none;
+ outline: none;
+ padding: 4px;
+ font-size: 13px;
+ font-family: inherit;
+ color: var(--gray-700);
+ background: transparent;
+ min-width: 120px;
+ flex: 1;
+ }
+
+ /* Toggle */
+ .toggle-group {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 12px 0;
+ border-bottom: 1px solid var(--gray-200);
+ }
+
+ .toggle-group:last-child { border-bottom: none; }
+
+ .toggle-label {
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--navy-dark);
+ }
+
+ .toggle-label span {
+ display: block;
+ font-size: 12px;
+ font-weight: 400;
+ color: var(--gray-600);
+ margin-top: 2px;
+ }
+
+ .toggle {
+ position: relative;
+ width: 48px;
+ height: 26px;
+ flex-shrink: 0;
+ }
+
+ .toggle input { opacity: 0; width: 0; height: 0; }
+
+ .toggle-slider {
+ position: absolute;
+ inset: 0;
+ background: var(--gray-300);
+ border-radius: 26px;
+ cursor: pointer;
+ transition: background 0.2s;
+ }
+
+ .toggle-slider::before {
+ content: '';
+ position: absolute;
+ width: 20px;
+ height: 20px;
+ left: 3px;
+ bottom: 3px;
+ background: white;
+ border-radius: 50%;
+ transition: transform 0.2s;
+ }
+
+ .toggle input:checked + .toggle-slider { background: var(--teal); }
+ .toggle input:checked + .toggle-slider::before { transform: translateX(22px); }
+
+ /* Buttons */
+ .actions {
+ display: flex;
+ gap: 12px;
+ margin-top: 24px;
+ }
+
+ .btn {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ padding: 12px 24px;
+ border: none;
+ border-radius: 10px;
+ font-size: 14px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ font-family: inherit;
+ text-decoration: none;
+ }
+
+ .btn-primary { background: var(--navy); color: white; }
+ .btn-primary:hover { background: var(--navy-dark); }
+
+ .btn-danger { background: rgba(239,68,68,0.1); color: var(--red); }
+ .btn-danger:hover { background: rgba(239,68,68,0.2); }
+
+ .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
+ .btn-secondary:hover { background: var(--gray-300); }
+
+ /* Success Message */
+ .success-message {
+ display: none;
+ position: fixed;
+ top: 80px;
+ left: 50%;
+ transform: translateX(-50%);
+ background: var(--green);
+ color: white;
+ padding: 12px 24px;
+ border-radius: 10px;
+ font-weight: 600;
+ font-size: 14px;
+ z-index: 300;
+ box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+ }
+
+ /* Danger Zone */
+ .danger-zone {
+ border: 2px solid rgba(239,68,68,0.2);
+ border-radius: 12px;
+ padding: 20px;
+ background: rgba(239,68,68,0.03);
+ }
+
+ .danger-zone h3 {
+ font-size: 14px;
+ font-weight: 700;
+ color: var(--red);
+ margin-bottom: 8px;
+ }
+
+ @media (max-width: 600px) {
+ .profile-header { flex-direction: column; text-align: center; }
+ .form-grid { grid-template-columns: 1fr; }
+ .form-group.full { grid-column: span 1; }
+ .page-header { flex-direction: column; align-items: flex-start; }
+ .actions { flex-direction: column; }
+ .actions .btn { width: 100%; justify-content: center; }
+ }
+ </style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+ <div class="success-message" id="successMessage">
+ ✓ Profile saved successfully!
+ </div>
+
+ <nav>
+ <div class="nav-inner">
+ <div class="nav-right">
+ <div class="nav-start">
+  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="parent_dashboard.html">Dashboard</a>
+ <a href="parent_schedule.html">My Schedule</a>
+ <a href="messages.html">Messages</a>
+ <a href="student_profile.html">Profile</a>
+ </div>
+ <div class="nav-end">
+ <div class="user-info">
+ <a href="student_profile.html" style="text-decoration:none"><div class="avatar" id="navAvatar">JN</div></a>
+ </div>
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </nav>
+
+ <main class="main">
+ <div class="page-header">
+ <h1>My Profile</h1>
+ </div>
+
+ <div class="profile-header">
+ <div class="profile-avatar" id="avatarPreview">JN</div>
+ <div class="profile-info">
+ <h2 id="namePreview">Jessica Ng</h2>
+ <p id="subjectPreview">Piano · Mathematics · English</p>
+ <span class="profile-badge">✓ Active Learner</span>
+ </div>
+ <button class="change-photo-btn" onclick="alert('Photo upload would open here')">Change Photo</button>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>Basic Information</h2>
+ <p>Update your personal details</p>
+ </div>
+ <div class="form-grid">
+ <div class="form-group">
+ <label>Full Name *</label>
+ <input type="text" id="fullName" value="Jessica Ng" oninput="updatePreview()">
+ </div>
+ <div class="form-group">
+ <label>Date of Birth</label>
+ <input type="date" id="dob" value="2012-03-15">
+ </div>
+ <div class="form-group">
+ <label>Parent / Guardian Name</label>
+ <input type="text" id="parentName" value="Mrs. Ng">
+ </div>
+ <div class="form-group">
+ <label>Parent / Guardian Email</label>
+ <input type="email" id="parentEmail" value="ng.mom@email.com">
+ </div>
+ <div class="form-group">
+ <label>Contact Number</label>
+ <input type="tel" id="phone" value="+852 6123 4567">
+ </div>
+ <div class="form-group">
+ <label>Preferred Language</label>
+ <select id="prefLang">
+ <option value="en" selected>English</option>
+ <option value="zh-TW">Cantonese</option>
+ <option value="zh-CN">Mandarin</option>
+ </select>
+ </div>
+ </div>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>Learning Details</h2>
+ <p>Tell us about your learning goals</p>
+ </div>
+ <div class="form-grid">
+ <div class="form-group full">
+ <label>Current Subjects</label>
+ <div class="tags-input" id="subjectsTags">
+ <span class="tag">Piano <span class="tag-remove" onclick="removeTag(this, 'subjectsTags')">×</span></span>
+ <span class="tag">Mathematics <span class="tag-remove" onclick="removeTag(this, 'subjectsTags')">×</span></span>
+ <span class="tag">English <span class="tag-remove" onclick="removeTag(this, 'subjectsTags')">×</span></span>
+ <input type="text" placeholder="Add subject..." onkeydown="addTag(event, 'subjectsTags')">
+ </div>
+ </div>
+ <div class="form-group full">
+ <label>Current Level / Grade</label>
+ <select id="level">
+ <option value="p1">Primary 1</option>
+ <option value="p2">Primary 2</option>
+ <option value="p3">Primary 3</option>
+ <option value="p4" selected>Primary 4</option>
+ <option value="p5">Primary 5</option>
+ <option value="p6">Primary 6</option>
+ <option value="s1">Secondary 1</option>
+ <option value="s2">Secondary 2</option>
+ <option value="s3">Secondary 3</option>
+ </select>
+ </div>
+ <div class="form-group full">
+ <label>Learning Goals</label>
+ <textarea id="goals" placeholder="What do you want to achieve?">Pass HKDSE exams with flying colours. Improve piano to Grade 5 within a year.</textarea>
+ </div>
+ <div class="form-group">
+ <label>Preferred Days</label>
+ <select id="prefDays">
+ <option value="weekdays">Weekdays</option>
+ <option value="weekends">Weekends</option>
+ <option value="any" selected>Any</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label>Preferred Time</label>
+ <select id="prefTime">
+ <option value="morning">Morning (9am–12pm)</option>
+ <option value="afternoon">Afternoon (12pm–5pm)</option>
+ <option value="evening" selected>Evening (5pm–8pm)</option>
+ </select>
+ </div>
+ </div>
+ </div>
+
+ <div class="card">
+ <div class="card-header">
+ <h2>Profile Settings</h2>
+ <p>Control your profile visibility and notifications</p>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ Profile Visibility
+ <span>Allow teachers to see your profile when booking</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ Email Notifications
+ <span>Receive reminders about upcoming lessons</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ SMS Notifications
+ <span>Receive text messages for urgent updates</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox">
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ <div class="toggle-group">
+ <div class="toggle-label">
+ Learning Progress Reports
+ <span>Receive monthly progress updates from teachers</span>
+ </div>
+ <label class="toggle">
+ <input type="checkbox" checked>
+ <span class="toggle-slider"></span>
+ </label>
+ </div>
+ </div>
+
+ <div class="actions">
+ <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+ <button class="btn btn-danger" onclick="confirmDelete()">Delete Account</button>
+ </div>
+
+ <div class="danger-zone" id="deleteSection" style="display:none; margin-top:24px;">
+ <h3>⚠️ Danger Zone</h3>
+ <p style="font-size:13px; color:var(--gray-600); margin-bottom:16px;">This action cannot be undone. All your profile data, lesson history, and progress records will be permanently removed.</p>
+ <button onclick="confirmDelete()" class="btn btn-danger">Delete Forever</button>
+ </div>
+
+ <script>
+ // Student avatar colours - hash based
+ document.querySelectorAll('.avatar, .profile-avatar').forEach(function(el) {
+   var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+   var initials = el.textContent.trim();
+   var hash = 0;
+   for (var i = 0; i < initials.length; i++) {
+     hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+   }
+   var idx = Math.abs(hash) % colours.length;
+   el.style.background = colours[idx];
+   el.style.color = '#fff';
+ });
+
+ function updatePreview() {
+   const name = document.getElementById('fullName').value || 'Student';
+   const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+   document.getElementById('avatarPreview').textContent = initials;
+   document.getElementById('namePreview').textContent = name;
+
+   // Sync nav avatar
+   const navAvatar = document.getElementById('navAvatar');
+   if (navAvatar) {
+     navAvatar.textContent = initials;
+     // Re-hash colour for nav avatar
+     var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+     var hash = 0;
+     for (var i = 0; i < initials.length; i++) {
+       hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+     }
+     navAvatar.style.background = colours[Math.abs(hash) % colours.length];
+   }
+ }
+
+ function saveProfile() {
+   const profile = {
+     fullName: document.getElementById('fullName').value,
+     dob: document.getElementById('dob').value,
+     parentName: document.getElementById('parentName').value,
+     parentEmail: document.getElementById('parentEmail').value,
+     phone: document.getElementById('phone').value,
+     prefLang: document.getElementById('prefLang').value,
+     level: document.getElementById('level').value,
+     goals: document.getElementById('goals').value,
+     prefDays: document.getElementById('prefDays').value,
+     prefTime: document.getElementById('prefTime').value
+   };
+   localStorage.setItem('studentProfile', JSON.stringify(profile));
+
+   const msg = document.getElementById('successMessage');
+   msg.style.display = 'block';
+   setTimeout(() => { msg.style.display = 'none'; }, 3000);
+ }
+
+ function confirmDelete() {
+   if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
+     alert('Account deletion would be processed by the backend.');
+   }
+ }
+
+ function addTag(e, containerId) {
+   if (e.key === 'Enter' && e.target.value.trim()) {
+     e.preventDefault();
+     const container = document.getElementById(containerId);
+     const value = e.target.value.trim();
+     const tag = document.createElement('span');
+     tag.className = 'tag';
+     tag.innerHTML = value + ' <span class="tag-remove" onclick="removeTag(this, \'' + containerId + '\')">×</span>';
+     container.insertBefore(tag, e.target);
+     e.target.value = '';
+   }
+ }
+
+ function removeTag(el, containerId) {
+   el.parentElement.remove();
+ }
+
+ // Language selector
+ (function(){
+   var sel = document.getElementById('langSelector');
+   var globe = document.getElementById('langGlobe');
+   var dropdown = document.getElementById('langDropdown');
+   if (sel && globe && dropdown) {
+     globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
+     document.addEventListener('click', function(){ sel.classList.remove('open'); });
+     dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+     dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+       opt.addEventListener('click', function(){
+         dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+         opt.classList.add('selected');
+         sel.classList.remove('open');
+       });
+     });
+   }
+
+   var path = window.location.pathname.split('/').pop() || 'student_profile.html';
+   document.querySelectorAll('.nav-links a').forEach(function(link) {
+     var href = link.getAttribute('href');
+     if (href === path || (path === '' && href === 'student_profile.html')) {
+       link.classList.add('active');
+     }
+   });
+ })();
+ </script>
+</body>
+</html>
