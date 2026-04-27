@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Performance Appraisal — Banking &amp; Finance Sales</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 12px;
+    color: #1a1a2e;
+    background: #fff;
+    line-height: 1.5;
+    padding: 40px 48px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 3px solid #0f3460;
+    padding-bottom: 16px;
+    margin-bottom: 28px;
+  }
+  .header-left h1 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f3460;
+    letter-spacing: -0.5px;
+  }
+  .header-left .subtitle {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .header-right {
+    text-align: right;
+  }
+  .header-right .company-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f3460;
+  }
+  .header-right .form-ref {
+    font-size: 10px;
+    color: #9ca3af;
+    margin-top: 2px;
+  }
+
+  /* SECTION HEADERS */
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-title {
+    background: #0f3460;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 0;
+  }
+  .section-body {
+    border: 1px solid #d1d5db;
+    border-top: none;
+    padding: 14px 16px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 4px;
+    font-size: 11px;
+  }
+  td {
+    padding: 5px 8px;
+    vertical-align: top;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .field-label {
+    font-weight: 600;
+    color: #374151;
+    width: 30%;
+    background: #f9fafb;
+  }
+  .field-value {
+    color: #6b7280;
+  }
+  .field-value span {
+    display: block;
+    border-bottom: 1px solid #d1d5db;
+    min-height: 18px;
+    color: #1a1a2e;
+  }
+
+  /* QUESTION BLOCKS */
+  .question {
+    margin-bottom: 12px;
+  }
+  .question-label {
+    font-weight: 600;
+    font-size: 11px;
+    color: #374151;
+    margin-bottom: 4px;
+  }
+  .question-hint {
+    font-size: 10px;
+    color: #9ca3af;
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .answer-line {
+    border-bottom: 1px solid #d1d5db;
+    min-height: 22px;
+    margin-bottom: 3px;
+  }
+  .answer-block {
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    min-height: 52px;
+    padding: 6px 8px;
+    color: #6b7280;
+    font-size: 10.5px;
+  }
+  .answer-block.tall {
+    min-height: 80px;
+  }
+
+  /* CHECKBOXES */
+  .checkbox-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: #374151;
+  }
+  .checkbox-box {
+    width: 13px;
+    height: 13px;
+    border: 1.5px solid #0f3460;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  /* RATING TABLE */
+  .rating-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+    margin-bottom: 4px;
+  }
+  .rating-table th {
+    background: #f1f5f9;
+    color: #0f3460;
+    font-weight: 700;
+    padding: 6px 8px;
+    text-align: left;
+    border: 1px solid #d1d5db;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .rating-table td {
+    padding: 5px 8px;
+    border: 1px solid #e5e7eb;
+    vertical-align: middle;
+  }
+  .comp-name {
+    font-weight: 600;
+    color: #374151;
+    font-size: 10.5px;
+  }
+  .comp-desc {
+    font-size: 9.5px;
+    color: #9ca3af;
+    margin-top: 1px;
+  }
+  .rating-cell {
+    text-align: center;
+    font-weight: 700;
+    color: #0f3460;
+    font-size: 11px;
+  }
+  .comment-cell {
+    color: #9ca3af;
+    font-size: 10px;
+  }
+
+  /* SCALE REFERENCE */
+  .scale-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 10px;
+    font-size: 9.5px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .scale-item {
+    flex: 1;
+    padding: 5px 8px;
+    text-align: center;
+    border-right: 1px solid #e5e7eb;
+    background: #f9fafb;
+  }
+  .scale-item:last-child { border-right: none; }
+  .scale-item.highlight { background: #0f3460; color: #fff; font-weight: 700; }
+
+  /* OVERALL RATING */
+  .overall-rating-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .rating-card {
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .rating-card .label {
+    font-size: 9.5px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .rating-card .score {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f3460;
+  }
+  .rating-card .sub {
+    font-size: 9px;
+    color: #9ca3af;
+    margin-top: 2px;
+  }
+  .rating-card.highlighted {
+    border-color: #0f3460;
+    background: #f0f4ff;
+  }
+
+  /* WEIGHTED TOTAL */
+  .weighted-box {
+    background: #0f3460;
+    color: #fff;
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .weighted-box .label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .weighted-box .score {
+    font-size: 28px;
+    font-weight: 800;
+  }
+  .weighted-box .sub {
+    font-size: 10px;
+    opacity: 0.7;
+  }
+
+  /* FINAL DECISION */
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .decision-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 10.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .decision-item.selected {
+    background: #f0f4ff;
+    border-color: #0f3460;
+  }
+  .decision-item .d-label {
+    font-weight: 700;
+    color: #0f3460;
+    white-space: nowrap;
+  }
+  .decision-item .d-desc {
+    font-size: 9.5px;
+    color: #6b7280;
+  }
+
+  /* GOALS TABLE */
+  .goals-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+    margin-bottom: 8px;
+  }
+  .goals-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #0f3460;
+    padding: 5px 8px;
+    border: 1px solid #d1d5db;
+    text-align: left;
+  }
+  .goals-table td {
+    padding: 7px 8px;
+    border: 1px solid #e5e7eb;
+    vertical-align: top;
+    color: #6b7280;
+    font-size: 10px;
+  }
+
+  /* SIGN-OFF */
+  .signoff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+    margin-top: 4px;
+  }
+  .signoff-table th {
+    background: #f1f5f9;
+    font-weight: 700;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #0f3460;
+    padding: 6px 10px;
+    border: 1px solid #d1d5db;
+    text-align: left;
+  }
+  .signoff-table td {
+    padding: 10px 10px 6px;
+    border: 1px solid #e5e7eb;
+    vertical-align: bottom;
+  }
+  .sign-line {
+    border-bottom: 1px solid #1a1a2e;
+    height: 24px;
+    margin-bottom: 3px;
+  }
+  .sign-label {
+    font-size: 9px;
+    color: #9ca3af;
+    margin-top: 2px;
+  }
+
+  /* FOOTER */
+  .page-footer {
+    margin-top: 32px;
+    padding-top: 10px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: #9ca3af;
+  }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* PAGE BREAK */
+  .page-break { page-break-before: always; }
+
+  @media print {
+    body { padding: 30px 40px; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<div class="header">
+  <div class="header-left">
+    <h1>Employee Performance Appraisal</h1>
+    <div class="subtitle">Banking &amp; Financial Services — Sales Division</div>
+  </div>
+  <div class="header-right">
+    <div class="company-name">Minerva Financial Group</div>
+    <div class="form-ref">Form HR-007 | v1.0 | Confidential</div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 1: EMPLOYEE DETAILS ==================== -->
+<div class="section">
+  <div class="section-title">Section 1 — Employee Details</div>
+  <div class="section-body">
+    <table>
+      <tr>
+        <td class="field-label">Full Name</td>
+        <td class="field-value"><span>&nbsp;</span></td>
+        <td class="field-label">Employee ID</td>
+        <td class="field-value"><span>&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="field-label">Job Title</td>
+        <td class="field-value"><span>&nbsp;</span></td>
+        <td class="field-label">Department / Division</td>
+        <td class="field-value"><span>Sales</span></td>
+      </tr>
+      <tr>
+        <td class="field-label">Reporting Manager</td>
+        <td class="field-value"><span>&nbsp;</span></td>
+        <td class="field-label">Location / Branch</td>
+        <td class="field-value"><span>&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="field-label">Appraisal Period</td>
+        <td class="field-value"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        <td class="field-label">Date of Review</td>
+        <td class="field-value"><span>&nbsp;</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== SECTION 2: SELF-ASSESSMENT ==================== -->
+<div class="section">
+  <div class="section-title">Section 2 — Self-Assessment <span style="font-weight:400;text-transform:none;letter-spacing:0">(to be completed by the employee)</span></div>
+  <div class="section-body">
+
+    <div class="question">
+      <div class="question-label">1. What are your most significant accomplishments this appraisal period?</div>
+      <div class="question-hint">Consider sales targets hit, client relationships built, deals closed, revenue generated.</div>
+      <div class="answer-block tall">&nbsp;</div>
+    </div>
+
+    <div class="two-col">
+      <div class="question">
+        <div class="question-label">2. In which areas have you seen the most growth or skill development?</div>
+        <div class="answer-block">&nbsp;</div>
+      </div>
+      <div class="question">
+        <div class="question-label">3. What challenges did you face, and how did you address them?</div>
+        <div class="answer-block">&nbsp;</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="question-label">4. How do you rate your overall contribution this period?</div>
+      <div class="checkbox-group" style="margin-top:6px;">
+        <div class="checkbox-item"><div class="checkbox-box"></div> Exceeds Expectations</div>
+        <div class="checkbox-item"><div class="checkbox-box"></div> Meets Expectations</div>
+        <div class="checkbox-item"><div class="checkbox-box"></div> Below Expectations</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="question">
+        <div class="question-label">5. What are your development goals for the next period?</div>
+        <div class="answer-block tall">&nbsp;</div>
+      </div>
+      <div class="question">
+        <div class="question-label">6. What support or resources do you need from your manager?</div>
+        <div class="answer-block tall">&nbsp;</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== SECTION 3: 360° FEEDBACK ==================== -->
+<div class="section">
+  <div class="section-title">Section 3 — 360° Peer Feedback <span style="font-weight:400;text-transform:none;letter-spacing:0">(to be completed by peers, cross-functional colleagues &amp; direct reports)</span></div>
+  <div class="section-body">
+
+    <div class="scale-row">
+      <div class="scale-item">1–3 &nbsp; Needs significant improvement</div>
+      <div class="scale-item">4–6 &nbsp; Meets expectations — room to grow</div>
+      <div class="scale-item">7–9 &nbsp; Strong performer — consistently delivers</div>
+      <div class="scale-item highlight">10 &nbsp;&nbsp; Exceptional — role-model standard</div>
+    </div>
+
+    <table class="rating-table">
+      <thead>
+        <tr>
+          <th style="width:46%">Competency</th>
+          <th style="width:8%;text-align:center">Rating<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">(1–10)</span></th>
+          <th style="width:46%">Comments / Specific Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="comp-name">Client Relationship Management</div><div class="comp-desc">Builds and maintains strong client trust and long-term relationships</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Sales Performance &amp; Revenue Achievement</div><div class="comp-desc">Meets or exceeds assigned sales targets and revenue goals</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Product &amp; Market Knowledge</div><div class="comp-desc">Deep understanding of banking products, financial markets, and regulatory environment</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Business Development &amp; Prospecting</div><div class="comp-desc">Actively identifies and converts new business opportunities</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Communication &amp; Presentation Skills</div><div class="comp-desc">Communicates clearly, persuasively, and professionally at all levels</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Team Collaboration &amp; Cross-selling</div><div class="comp-desc">Works effectively across teams to deliver integrated client solutions</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Compliance, Risk &amp; Ethics</div><div class="comp-desc">Adheres to regulatory requirements, internal policies, and ethical standards at all times</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Time Management &amp; Productivity</div><div class="comp-desc">Manages time and priorities to maximise output and client responsiveness</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Coaching, Mentorship &amp; Leadership</div><div class="comp-desc">Supports and develops peers and junior team members</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Adaptability &amp; Resilience</div><div class="comp-desc">Handles market changes, setbacks, and high-pressure situations constructively</div></td>
+          <td class="rating-cell">&nbsp;</td>
+          <td class="comment-cell">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:12px;">
+      <div class="question">
+        <div class="question-label">Strengths observed:</div>
+        <div class="answer-block tall">&nbsp;</div>
+      </div>
+      <div class="question">
+        <div class="question-label">Areas for development:</div>
+        <div class="answer-block tall">&nbsp;</div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;font-size:10px;color:#9ca3af;">
+      Reviewer name (optional): _______________________________ &nbsp;&nbsp; Role: _______________________________ &nbsp;&nbsp; Date: _______________
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== SECTION 4: MANAGER'S ASSESSMENT ==================== -->
+<div class="section page-break">
+  <div class="section-title">Section 4 — Manager's Assessment <span style="font-weight:400;text-transform:none;letter-spacing:0">(to be completed by the reporting manager)</span></div>
+  <div class="section-body">
+
+    <div class="question">
+      <div class="question-label">Performance Summary — key achievements, contribution to targets, and notable projects:</div>
+      <div class="answer-block tall">&nbsp;</div>
+    </div>
+
+    <div class="two-col">
+      <div class="question">
+        <div class="question-label">Strengths:</div>
+        <div class="answer-block tall">&nbsp;</div>
+      </div>
+      <div class="question">
+        <div class="question-label">Areas for Development:</div>
+        <div class="answer-block tall">&nbsp;</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Behavioural Notes — alignment with company values, culture, and professional conduct:</div>
+      <div class="answer-block">&nbsp;</div>
+    </div>
+
+    <table class="rating-table" style="margin-top:8px;">
+      <thead>
+        <tr>
+          <th style="width:46%">Competency</th>
+          <th style="width:8%;text-align:center">Rating<br><span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:9px">(1–10)</span></th>
+          <th style="width:46%">Manager Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="comp-name">Client Relationship Management</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Sales Performance &amp; Revenue Achievement</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Product &amp; Market Knowledge</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Business Development &amp; Prospecting</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Communication &amp; Presentation Skills</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Team Collaboration &amp; Cross-selling</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Compliance, Risk &amp; Ethics</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Time Management &amp; Productivity</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Coaching, Mentorship &amp; Leadership</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+        <tr><td><div class="comp-name">Adaptability &amp; Resilience</div></td><td class="rating-cell">&nbsp;</td><td class="comment-cell">&nbsp;</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- ==================== SECTION 5: SUMMARY & FINAL DECISION ==================== -->
+<div class="section">
+  <div class="section-title">Section 5 — Summary &amp; Final Rating</div>
+  <div class="section-body">
+
+    <div class="overall-rating-grid">
+      <div class="rating-card">
+        <div class="label">Self-Assessment Avg</div>
+        <div class="score">/10</div>
+        <div class="sub">20% weight</div>
+      </div>
+      <div class="rating-card">
+        <div class="label">360° Feedback Avg</div>
+        <div class="score">/10</div>
+        <div class="sub">30% weight</div>
+      </div>
+      <div class="rating-card">
+        <div class="label">Manager Rating Avg</div>
+        <div class="score">/10</div>
+        <div class="sub">50% weight</div>
+      </div>
+    </div>
+
+    <div class="weighted-box">
+      <div>
+        <div class="label">Weighted Total Score</div>
+        <div class="sub">Self 20% &nbsp;·&nbsp; 360° 30% &nbsp;·&nbsp; Manager 50%</div>
+      </div>
+      <div class="score">/10</div>
+    </div>
+
+    <div class="question-label" style="margin-bottom:8px;">Final Rating Decision:</div>
+    <div class="decision-grid">
+      <div class="decision-item">
+        <div class="checkbox-box"></div>
+        <div>
+          <div class="d-label">1–3 &nbsp; Needs Improvement</div>
+          <div class="d-desc">Performance Improvement Plan (PIP) required</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="checkbox-box"></div>
+        <div>
+          <div class="d-label">4–6 &nbsp; Meets Expectations</div>
+          <div class="d-desc">Development Plan recommended</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="checkbox-box"></div>
+        <div>
+          <div class="d-label">7–9 &nbsp; Exceeds Expectations</div>
+          <div class="d-desc">Confirm &amp; set new goals; eligible for bonus review</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="checkbox-box"></div>
+        <div>
+          <div class="d-label">10 &nbsp;&nbsp; Exceptional</div>
+          <div class="d-desc">Promotion review &amp; special recognition</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== SECTION 6: DEVELOPMENT PLAN ==================== -->
+<div class="section">
+  <div class="section-title">Section 6 — Development Plan &amp; Goals</div>
+  <div class="section-body">
+
+    <div class="question-label" style="margin-bottom:8px;">Key Development Goals for Next Appraisal Period:</div>
+    <table class="goals-table">
+      <thead>
+        <tr>
+          <th style="width:6%">#</th>
+          <th style="width:44%">Development Goal</th>
+          <th style="width:20%">Target Date</th>
+          <th style="width:30%">Success Measure</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="text-align:center;font-weight:700;color:#0f3460;">1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td style="text-align:center;font-weight:700;color:#0f3460;">2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td style="text-align:center;font-weight:700;color:#0f3460;">3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:12px;">
+      <div class="question">
+        <div class="question-label">Training / Support Agreed with Manager:</div>
+        <div class="answer-block">&nbsp;</div>
+      </div>
+      <div class="question">
+        <div class="question-label">Promotion Readiness:</div>
+        <div class="checkbox-group" style="flex-direction:column;gap:6px;margin-top:4px;">
+          <div class="checkbox-item"><div class="checkbox-box"></div> Ready now</div>
+          <div class="checkbox-item"><div class="checkbox-box"></div> In 6 months</div>
+          <div class="checkbox-item"><div class="checkbox-box"></div> In 12 months</div>
+          <div class="checkbox-item"><div class="checkbox-box"></div> Not currently on track</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== SECTION 7: SIGN-OFF ==================== -->
+<div class="section">
+  <div class="section-title">Section 7 — Sign-Off</div>
+  <div class="section-body">
+    <div style="font-size:10px;color:#9ca3af;margin-bottom:10px; font-style:italic;">
+      By signing, both parties confirm this appraisal has been discussed in full and the employee has been given the opportunity to provide feedback on their review.
+    </div>
+    <table class="signoff-table">
+      <thead>
+        <tr>
+          <th style="width:35%">Role</th>
+          <th style="width:30%">Name</th>
+          <th style="width:25%">Signature</th>
+          <th style="width:10%">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600;color:#374151;font-size:11px;">Employee</td>
+          <td><div class="sign-line"></div><div class="sign-label">Print name</div></td>
+          <td><div class="sign-line"></div><div class="sign-label">Employee signature</div></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;color:#374151;font-size:11px;">Reporting Manager</td>
+          <td><div class="sign-line"></div><div class="sign-label">Print name</div></td>
+          <td><div class="sign-line"></div><div class="sign-label">Manager signature</div></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;color:#374151;font-size:11px;">HR Representative</td>
+          <td><div class="sign-line"></div><div class="sign-label">Print name</div></td>
+          <td><div class="sign-line"></div><div class="sign-label">HR signature</div></td>
+          <td>&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="page-footer">
+  <span>CONFIDENTIAL — This document contains sensitive HR information and should be handled accordingly.</span>
+  <span>Form HR-007 v1.0 &nbsp;|&nbsp; HR Department &nbsp;|&nbsp; Minerva Financial Group</span>
+</div>
+
+</body>
+</html>
