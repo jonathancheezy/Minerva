@@ -69,7 +69,7 @@
  .mobile-menu-btn { display: flex; order: -1; font-size: 20px; cursor: pointer; padding: 4px; color: var(--gold); background: none; border: none; }
 
  .lang-selector { position: relative; display: flex; align-items: center; }
- .globe { width: 18px; height: 18px; color: white; cursor: pointer; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); flex-shrink: 0; }
+ .globe { width: 18px; height: 18px; color: var(--gold); cursor: pointer; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); flex-shrink: 0; }
  .globe:hover { transform: rotate(20deg); }
  .lang-selector.open .globe { transform: rotate(180deg); }
  .lang-dropdown {
@@ -343,7 +343,7 @@
  <input type="password" id="password" name="password" required placeholder="Enter your password">
  </div>
 
-<button data-i18n="login.login_btn">Login</button>
+<button type="submit" data-i18n="login.login_btn">Login</button>
  </form>
 
  <div class="form-footer">
