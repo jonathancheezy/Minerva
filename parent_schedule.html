@@ -119,32 +119,106 @@
  color: var(--navy-dark);
  font-size: 14px;
  }
- .lang-selector {
-  display: flex;
-  gap: 2px;
-  background: #f8fafc;
-  padding: 3px;
-  border-radius: 6px;
- }
- .lang-btn {
-  padding: 4px 8px;
-  border: none;
-  background: transparent;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
+ .lang-selector { position: relative; display: flex; align-items: center; }
+
+ .globe {
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
   cursor: pointer;
-  color: white;
-  text-decoration: none;
-  transition: all 0.2s;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+  flex-shrink: 0;
  }
- .lang-btn:hover { color: white; }
- .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+ .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
+ .lang-selector.open .globe { transform: rotate(180deg); }
+
+ .lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 55px;
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  z-index: 200;
+ }
+ .lang-selector.open .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+ }
+
+ .lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.15s, color 0.15s, padding-left 0.15s;
+  position: relative;
+  overflow: hidden;
+ }
+ .lang-option:last-child { border-bottom: none; }
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 0ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 50ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(3) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 100ms both; }
+
+ @keyframes rowReveal {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+ }
+
+ .lang-option .check {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+ }
+ .lang-option.selected .check { opacity: 1; transform: scale(1); }
+ .lang-option .check svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+ }
+ .lang-option.selected .check svg {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+ }
+ .lang-option.selected::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(249,168,40,0.08), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.4s;
+ }
+ .lang-option.selected:hover::before { transform: translateX(100%); }
+
  @media (max-width: 768px) {
-  .lang-btn { padding: 4px 8px; font-size: 12px; }
-  .lang-selector { padding: 2px; gap: 1px; }
-  .lang-btn:hover { color: white; }
-  .lang-btn.active { background: rgba(255,255,255,0.15); color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .lang-selector { background: transparent; padding: 0; gap: 0; border-radius: 0; }
  }
 
  .user-name {
@@ -610,19 +684,28 @@
  </div>
  <div class="nav-links">
  <a href="parent_dashboard.html?v=ps001" data-i18n="parent_dash.dashboard">Dashboard</a>
- <a href="parent_schedule.html?v=ps001" class="active" data-i18n="parent_dash.schedule" style="color: #F9A828 !important;">Schedule</a>
- <a href="#" data-i18n="parent_dash.payments">Payments</a>
+ <a href="parent_schedule.html?v=ps001" data-i18n="parent_dash.schedule">Schedule</a>
+ <a href="messages.html?v=ps001" data-i18n="parent_dash.messages">Messages</a>
+ <a href="#" data-i18n="parent_dash.settings">Settings</a>
+ <a href="faq.html" data-i18n="parent_dash.help">Help</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
  <div class="user-info">
- <a href="teacher_profile.html?v=ps001" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
+ <a href="#" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">TC</div></a>
  </div>
   </div>
-  <div class="lang-selector">
- <a href="messages.html?lang=en&v=ps001" class="lang-btn">EN</a>
- <a href="messages.html?lang=zh-TW&v=ps001" class="lang-btn">繁</a>
- <a href="messages.html?lang=zh-CN&v=ps001" class="lang-btn">简</a>
+  <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="12" cy="12" r="10"/>
+ <line x1="2" y1="12" x2="22" y2="12"/>
+ <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+ </svg>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ </div>
  </div>
  </div>
  </nav>
@@ -1084,5 +1167,37 @@
 
 
 <script src="i18n.js"></script>
+<script>
+(function(){
+  var sel = document.getElementById('langSelector');
+  var globe = document.getElementById('langGlobe');
+  var dropdown = document.getElementById('langDropdown');
+  if (sel && globe && dropdown) {
+    globe.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); });
+    document.addEventListener('click', function(){ sel.classList.remove('open'); });
+    dropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+    dropdown.querySelectorAll('.lang-option').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        dropdown.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        sel.classList.remove('open');
+        var lang = opt.dataset.lang;
+        if (typeof setLanguage === 'function') setLanguage(lang);
+      });
+    });
+  }
+  var params = new URLSearchParams(window.location.search);
+  var lp = params.get('lang');
+  if (lp && typeof setLanguage === 'function') setLanguage(lp);
+
+  var path = window.location.pathname.split('/').pop() || 'parent_schedule.html';
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (href === path || (path === '' && href === 'parent_schedule.html')) {
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
 </body>
 </html>
