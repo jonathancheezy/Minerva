@@ -216,6 +216,8 @@ a { color: #3b82f6; text-decoration: none; }
  .stat-card .value { font-size: 24px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
  .stat-card .value.green { color: #22c55e; }
  .stat-card .value.gold { color: #F9A828; }
+ .stat-card .value.teal { color: var(--teal); }
+ .stat-card .value.red { color: var(--red); }
  .stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
  .stat-card .sub a { color: #3b82f6; }
  .content-grid { display: flex; flex-direction: row; gap: 20px; width: 100%; }
@@ -314,22 +316,22 @@ a { color: #3b82f6; text-decoration: none; }
   <div class="stats-grid">
    <div class="stat-card">
     <div class="label">This Week</div>
-    <div class="value" style="color:#22c55e;">HK$ 1,100</div>
+    <div class="value teal">HK$ 1,100</div>
     <div class="sub">3 lessons</div>
    </div>
    <div class="stat-card">
     <div class="label">April 2026</div>
-    <div class="value" style="color:#22c55e;">HK$ 4,250</div>
+    <div class="value green">HK$ 4,250</div>
     <div class="sub">8 lessons completed</div>
    </div>
    <div class="stat-card">
     <div class="label">Pending Payout</div>
-    <div class="value" style="color:#F9A828;">HK$ 1,450</div>
+    <div class="value red">HK$ 1,450</div>
     <div class="sub">Due by Apr 30</div>
    </div>
    <div class="stat-card">
     <div class="label">Total Earned</div>
-    <div class="value green">HK$ 26,800</div>
+    <div class="value gold">HK$ 26,800</div>
     <div class="sub">Since Jan 2026</div>
    </div>
   </div>
