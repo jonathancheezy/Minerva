@@ -339,8 +339,12 @@
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
       teachers:{en:"Teachers",zhTW:"導師",zhCN:"导师"},
       messages:{en:"Messages",zhTW:"訊息",zhCN:"讯息"},
+      payments:{en:"Payments",zhTW:"付款",zhCN:"付款"},
+      settings:{en:"Settings",zhTW:"設定",zhCN:"设置"},
+      help:{en:"Help",zhTW:"幫助",zhCN:"帮助"},
       learning_progress:{en:"Learning Progress",zhTW:"學習進度",zhCN:"学习进度"},
       view_all:{en:"View All",zhTW:"查看全部",zhCN:"查看全部"},
+      refer_a_friend:{en:"Refer a friend and both get one free lesson!",zhTW:"推薦朋友，雙方各享一堂免費課堂！",zhCN:"推荐朋友，双方各享一堂免费课堂！"},
       footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
       heading_signup_bonus:{en:"Signup Bonus",zhTW:"報名獎勵",zhCN:"报名奖励"},
       heading_upcoming_lessons:{en:"Upcoming Lessons",zhTW:"即將到來的課堂",zhCN:"即将到来的课堂"},
@@ -351,7 +355,9 @@
     // ── Parent Schedule ──
     schedule:{
       book_lesson:{en:"Book Lesson",zhTW:"預訂課堂",zhCN:"预约课堂"},
+      book_new_title:{en:"Book a Lesson — Minerva",zhTW:"預訂課堂 — Minerva",zhCN:"预约课堂 — Minerva"},
       book_new:{en:"Book New Lesson",zhTW:"預訂新課堂",zhCN:"预订新课堂"},
+      find_available:{en:"Find available times and book your session",zhTW:"尋找可用時間並預訂課堂",zhCN:"寻找可用时间并预约课堂"},
       booking_summary:{en:"Booking Summary",zhTW:"預訂摘要",zhCN:"预订摘要"},
       confirm_booking:{en:"Confirm Booking",zhTW:"確認預訂",zhCN:"确认预订"},
       select_date:{en:"Select Date",zhTW:"選擇日期",zhCN:"选择日期"},
