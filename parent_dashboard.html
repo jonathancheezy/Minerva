@@ -323,15 +323,16 @@
 
  .stat-card {
  background: white;
- border-radius: 16px;
- padding: 24px;
- border: 1px solid var(--gray-200);
+ border-radius: 12px;
+ padding: 20px;
+ border: 1px solid #e2e8f0;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.06);
  }
 
  .stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
 
  .stat-card .value {
- font-size: 32px;
+ font-size: 28px;
  font-weight: 800;
  color: #0f1f33;
  }
@@ -340,9 +341,7 @@
  .stat-card .value.gold { color: var(--gold); }
  .stat-card .value.teal { color: var(--teal); }
 
- .stat-card .sub {
- font-size: 12px;
- color: white;
+ .stat-card .sub { font-size: 12px; color: #475569;
  margin-top: 4px;
  }
 
@@ -686,23 +685,23 @@ footer a:hover { text-decoration: underline; }
  <div class="stats-grid">
  <div class="stat-card">
  <div class="label">Active Teachers</div>
- <div class="value teal">3</div>
+ <div class="value" style="color:#3b82f6;">3</div>
  <div class="sub">Piano, Math, English</div>
  </div>
  <div class="stat-card">
- <div class="label">Lessons This Month</div>
- <div class="value">12</div>
- <div class="sub">+4 vs last month</div>
+ <div class="label">Children Enrolled</div>
+ <div class="value" style="color:#F9A828;">2</div>
+ <div class="sub">Jasper, Lily</div>
  </div>
  <div class="stat-card">
- <div class="label">Hours Learning</div>
- <div class="value green">24</div>
- <div class="sub">+6 this month</div>
+ <div class="label">Lessons Completed</div>
+ <div class="value" style="color:#22c55e;">12</div>
+ <div class="sub">this month</div>
  </div>
  <div class="stat-card">
- <div class="label">Overall Progress</div>
- <div class="value gold">78%</div>
- <div class="sub">Across all subjects</div>
+ <div class="label">Pending Notes</div>
+ <div class="value" style="color:#F9A828;">1</div>
+ <div class="sub"><a href="#">Review now</a></div>
  </div>
  </div>
 
