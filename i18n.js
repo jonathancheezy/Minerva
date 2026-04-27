@@ -333,7 +333,7 @@
 
     // ── Parent Dashboard ──
     parent_dash:{
-      welcome:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
+      welcome:{en:"My Dashboard",zhTW:"我的主頁",zhCN:"我的主页"},
       dashboard:{en:"Dashboard",zhTW:"主頁",zhCN:"主页"},
       book_lesson:{en:"Book Lesson",zhTW:"預訂課堂",zhCN:"预约课堂"},
       schedule:{en:"Schedule",zhTW:"時間表",zhCN:"时间表"},
