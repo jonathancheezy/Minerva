@@ -460,6 +460,18 @@
  flex-shrink: 0;
  /* JS sets background + color */
  }
+ .student-avatar {
+ width: 56px;
+ height: 56px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 700;
+ font-size: 18px;
+ flex-shrink: 0;
+ text-decoration: none;
+ }
 
  .teacher-info { flex: 1; }
  .teacher-name { font-weight: 600; color: var(--navy-dark); font-size: 16px; }
@@ -1107,6 +1119,29 @@
  </p>
  </div>
  </div>
+
+ <!-- My Children / Recent Students -->
+ <div class="card" style="margin-bottom: 24px;">
+ <div class="card-header">
+ <h2>My Children</h2>
+ <a href="student_profile.html">View All</a>
+ </div>
+ <div class="card-body">
+ <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+ <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+ <a href="student_profile.html?student=jw" style="text-decoration: none;"><div class="student-avatar">JW</div></a>
+ <span style="font-size: 13px; font-weight: 600; color: var(--navy-dark);">Jasper</span>
+ <span style="font-size: 12px; color: #64748b;">Piano, Math</span>
+ </div>
+ <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+ <a href="student_profile.html?student=lw" style="text-decoration: none;"><div class="student-avatar">LW</div></a>
+ <span style="font-size: 13px; font-weight: 600; color: var(--navy-dark);">Lily</span>
+ <span style="font-size: 12px; color: #64748b;">English, Art</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
  </main>
 
  <footer>
@@ -1166,8 +1201,8 @@
 
 
 <script>
-// Teacher avatar colours - hash based
-document.querySelectorAll('.teacher-avatar').forEach(function(el) {
+// Teacher + Student avatar colours - hash based
+document.querySelectorAll('.teacher-avatar, .student-avatar').forEach(function(el) {
   var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
   var initials = el.textContent.trim();
   var hash = 0;
