@@ -385,23 +385,19 @@
  text-decoration: none;
  }
 
- .card-body {
- padding: 20px 24px;
- display: flex;
- flex-direction: column;
- }
+ .card-body { padding: 20px 24px; }
 
  /* Upcoming Lessons */
  .lesson-item {
  display: grid;
  grid-template-columns: 110px 1fr auto;
- gap: 20px;
+ gap: 0;
  box-sizing: border-box;
- border-top: 1px solid var(--gray-200);
- padding: 18px 0;
+ border-bottom: 1px solid var(--gray-200);
+ padding: 16px 0;
  align-items: center;
  }
- .lesson-item:last-child { border-bottom: 1px solid var(--gray-200); }
+ .lesson-item:last-child { border-bottom: none; }
 
  .lesson-time {
  text-align: center;
