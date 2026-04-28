@@ -442,6 +442,27 @@
  .lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
  .lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
  .lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
+ /* Day Schedule */
+ .day-schedule {
+ background: white;
+ border-radius: 16px;
+ border: 1px solid #e2e8f0;
+ overflow: hidden;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ }
+
+ .day-header {
+ padding: 16px 24px;
+ background: #f8fafc;
+ font-size: 15px;
+ font-weight: 700;
+ color: #0f1f33;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .schedule-list {
+ padding: 0;
+ }
 
  /* Teachers */
  .teacher-item {
@@ -705,17 +726,14 @@ footer a:hover { text-decoration: underline; }
 
  <div class="content-grid">
  <div>
- <div class="card" style="margin-bottom: 24px;">
- <div class="card-header">
- <h2 data-i18n="parent_dash.heading_upcoming_lessons">Upcoming Lessons</h2>
- <a href="#" data-i18n="parent_dash.view_all">View All</a>
- </div>
- <div class="card-body">
+ <div class="day-schedule">
+ <div class="day-header">Upcoming Lessons</div>
+ <div class="schedule-list">
  <div class="lesson-item">
  <div class="lesson-time">
- <div class="time">Apr 29</div>
+ <span class="time">Apr 29</span>
  <span class="dash">—</span>
- <div class="time">4:00–5:00 PM</div>
+ <span class="time">4:00–5:00 PM</span>
  </div>
  <div class="lesson-details">
  <div class="teacher">Ms. Sarah</div>
@@ -725,9 +743,9 @@ footer a:hover { text-decoration: underline; }
  </div>
  <div class="lesson-item">
  <div class="lesson-time">
- <div class="time">Apr 30</div>
+ <span class="time">Apr 30</span>
  <span class="dash">—</span>
- <div class="time">5:30–7:00 PM</div>
+ <span class="time">5:30–7:00 PM</span>
  </div>
  <div class="lesson-details">
  <div class="teacher">Mr. Chen</div>
@@ -737,9 +755,9 @@ footer a:hover { text-decoration: underline; }
  </div>
  <div class="lesson-item">
  <div class="lesson-time">
- <div class="time">Jan 16</div>
+ <span class="time">Jan 16</span>
  <span class="dash">—</span>
- <div class="time">10:00–11:00 AM</div>
+ <span class="time">10:00–11:00 AM</span>
  </div>
  <div class="lesson-details">
  <div class="teacher">Ms. Amy</div>
