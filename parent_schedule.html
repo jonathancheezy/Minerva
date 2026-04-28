@@ -484,36 +484,42 @@
  .time-slots {
  display: grid;
  grid-template-columns: repeat(4, 1fr);
- gap: 8px;
+ gap: 10px;
  margin-top: 16px;
  }
 
  .time-slot {
- padding: 12px;
- border: 1px solid var(--gray-200);
- border-radius: 8px;
+ padding: 14px 8px;
+ border: 1.5px solid var(--gray-200);
+ border-radius: 10px;
  text-align: center;
  font-size: 14px;
- font-weight: 500;
+ font-weight: 600;
  cursor: pointer;
  transition: all 0.2s;
+ color: var(--navy-dark);
+ background: white;
+ letter-spacing: 0.01em;
  }
 
  .time-slot:hover:not(.disabled) {
  border-color: var(--teal);
  color: var(--teal);
+ background: rgba(59, 130, 246, 0.04);
  }
 
  .time-slot.selected {
  background: var(--teal);
  color: white;
  border-color: var(--teal);
+ box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
  }
 
  .time-slot.disabled {
  background: #f8fafc;
  color: var(--gray-300);
  cursor: not-allowed;
+ border-color: var(--gray-200);
  }
 
  /* Upcoming Bookings */
@@ -1010,14 +1016,14 @@
  <h2 data-i18n="schedule.select_time"><span data-i18n="schedule.step3_select_time"> data-i18n="schedule.select_time"</span></h2>
  </div>
  <div class="time-slots">
- <div class="time-slot" onclick="selectTime(this, '9:00 AM', '10:00 AM')">9:00 AM</div>
- <div class="time-slot" onclick="selectTime(this, '10:00 AM', '11:00 AM')">10:00 AM</div>
- <div class="time-slot disabled">11:00 AM</div>
- <div class="time-slot disabled">12:00 PM</div>
- <div class="time-slot" onclick="selectTime(this, '2:00 PM', '3:00 PM')">2:00 PM</div>
- <div class="time-slot" onclick="selectTime(this, '3:00 PM', '4:00 PM')">3:00 PM</div>
- <div class="time-slot disabled">4:00 PM</div>
- <div class="time-slot disabled">5:00 PM</div>
+ <div class="time-slot" onclick="selectTime(this, '9:00 AM', '10:00 AM')">9:00–10:00 AM</div>
+ <div class="time-slot" onclick="selectTime(this, '10:00 AM', '11:00 AM')">10:00–11:00 AM</div>
+ <div class="time-slot disabled">11:00 AM–12:00 PM</div>
+ <div class="time-slot disabled">12:00–1:00 PM</div>
+ <div class="time-slot" onclick="selectTime(this, '2:00 PM', '3:00 PM')">2:00–3:00 PM</div>
+ <div class="time-slot" onclick="selectTime(this, '3:00 PM', '4:00 PM')">3:00–4:00 PM</div>
+ <div class="time-slot disabled">4:00–5:00 PM</div>
+ <div class="time-slot disabled">5:00–6:00 PM</div>
  </div>
  </div>
 
@@ -1058,7 +1064,7 @@
  </div>
  <div class="booking-item">
  <div class="date-badge"><div class="day">15</div><div class="month">Apr</div></div>
- <div class="time-badge">2:00 PM</div>
+ <div class="time-badge">2:00–3:30 PM</div>
  <div class="details">
  <div class="teacher">Teacher Chan</div>
  <div class="subject">HKDSE Maths • 90 min</div>
@@ -1068,7 +1074,7 @@
  </div>
  <div class="booking-item">
  <div class="date-badge"><div class="day">18</div><div class="month">Apr</div></div>
- <div class="time-badge">10:00 AM</div>
+ <div class="time-badge">10:00–11:00 AM</div>
  <div class="details">
  <div class="teacher">Teacher Chan</div>
  <div class="subject">HKDSE Maths • 60 min</div>
@@ -1078,7 +1084,7 @@
  </div>
  <div class="booking-item">
  <div class="date-badge"><div class="day">22</div><div class="month">Apr</div></div>
- <div class="time-badge">3:00 PM</div>
+ <div class="time-badge">3:00–4:30 PM</div>
  <div class="details">
  <div class="teacher">Miss Lily</div>
  <div class="subject">IB Maths • 90 min</div>
@@ -1098,21 +1104,21 @@
  <div class="date-badge" style="background: var(--gray-500);"><div class="day">11</div><div class="month">Apr</div></div>
  <div class="details" style="margin-left: 0;">
  <div class="teacher">Teacher Chan</div>
- <div class="subject">HKDSE Maths • Completed</div>
+ <div class="subject">HKDSE Maths • 2:00–3:30 PM</div>
  </div>
  </div>
  <div class="booking-item" style="opacity: 0.7;">
  <div class="date-badge" style="background: var(--gray-500);"><div class="day">8</div><div class="month">Apr</div></div>
  <div class="details" style="margin-left: 0;">
  <div class="teacher">Teacher Chan</div>
- <div class="subject">HKDSE Maths • Completed</div>
+ <div class="subject">HKDSE Maths • 10:00–11:00 AM</div>
  </div>
  </div>
  <div class="booking-item" style="opacity: 0.7;">
  <div class="date-badge" style="background: var(--gray-500);"><div class="day">4</div><div class="month">Apr</div></div>
  <div class="details" style="margin-left: 0;">
  <div class="teacher">Miss Lily</div>
- <div class="subject">IB Maths • Completed</div>
+ <div class="subject">IB Maths • 3:00–4:30 PM</div>
  </div>
  </div>
  <p style="text-align: center; color: white; margin-top: 24px;">

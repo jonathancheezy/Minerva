@@ -389,54 +389,53 @@
 
  /* Upcoming Lessons */
  .lesson-item {
- display: flex;
- gap: 16px;
- padding: 16px 0;
+ display: grid;
+ grid-template-columns: 100px 1fr auto;
+ gap: 20px;
+ padding: 20px 0;
  border-bottom: 1px solid var(--gray-200);
+ align-items: center;
  }
  .lesson-item:last-child { border-bottom: none; }
 
  .lesson-time {
- width: 80px;
  text-align: center;
  flex-shrink: 0;
+ }
+
+ .lesson-time .day {
+ font-weight: 600;
+ font-size: 11px;
+ color: #64748b;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ margin-bottom: 2px;
  }
 
  .lesson-time .date {
  font-weight: 700;
  color: #0f1f33;
- font-size: 13px;
+ font-size: 15px;
  }
 
- .lesson-time .day {
- font-size: 11px;
- color: #64748b;
- margin-bottom: 2px;
- }
-
- .lesson-time .time {
+ .lesson-time .time-range {
  font-weight: 700;
  color: #3b82f6;
- font-size: 15px;
- margin-top: 4px;
+ font-size: 14px;
+ margin-top: 6px;
  }
 
- .lesson-time .duration {
- font-size: 11px;
- color: #64748b;
- margin-top: 2px;
- }
-
- .lesson-details { flex: 1; }
+ .lesson-details { padding: 0; }
 
  .lesson-details .teacher {
  font-weight: 600;
  color: #0f1f33;
- font-size: 14px;
+ font-size: 15px;
+ margin-bottom: 2px;
  }
 
  .lesson-details .subject {
- font-size: 13px;
+ font-size: 14px;
  color: #64748b;
  }
 
@@ -444,7 +443,7 @@
  font-size: 12px;
  color: #F9A828;
  font-weight: 600;
- margin-top: 2px;
+ margin-top: 4px;
  }
 
  .lesson-status {
@@ -738,8 +737,7 @@ footer a:hover { text-decoration: underline; }
  <div class="lesson-time">
  <div class="day">Today</div>
  <div class="date">Apr 29</div>
- <div class="time">4:00 PM</div>
- <div class="duration">60 min</div>
+ <div class="time-range">4:00–5:00 PM</div>
  </div>
  <div class="lesson-details">
  <div class="teacher">Ms. Sarah Piano</div>
@@ -752,8 +750,7 @@ footer a:hover { text-decoration: underline; }
  <div class="lesson-time">
  <div class="day">Tomorrow</div>
  <div class="date">Apr 30</div>
- <div class="time">5:30 PM</div>
- <div class="duration">90 min</div>
+ <div class="time-range">5:30–7:00 PM</div>
  </div>
  <div class="lesson-details">
  <div class="teacher">Mr. Chen Math</div>
@@ -766,8 +763,7 @@ footer a:hover { text-decoration: underline; }
  <div class="lesson-time">
  <div class="day">Fri, Jan 16</div>
  <div class="date">Jan 16</div>
- <div class="time">10:00 AM</div>
- <div class="duration">60 min</div>
+ <div class="time-range">10:00–11:00 AM</div>
  </div>
  <div class="lesson-details">
  <div class="teacher">Ms. Amy English</div>
