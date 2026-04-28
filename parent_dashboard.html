@@ -392,7 +392,7 @@
  display: flex;
  align-items: center;
  gap: 16px;
- padding: 14px 0;
+ padding: 14px 24px;
  border-bottom: 1px solid #e2e8f0;
  }
  .lesson-item:last-child { border-bottom: none; }
@@ -406,7 +406,7 @@
  .lesson-time .time {
  font-size: 13px;
  font-weight: 700;
- color: #3b82f6;
+ color: #0f1f33;
  }
  .lesson-time .dash {
  font-size: 13px;
@@ -419,16 +419,16 @@
  flex-direction: column;
  }
 
- .lesson-details .teacher {
+ .lesson-details .lesson-subject {
+ font-size: 13px;
  font-weight: 600;
  color: #0f1f33;
- font-size: 14px;
+ margin-bottom: 2px;
  }
 
- .lesson-details .child-name {
+ .lesson-details .student {
  font-size: 12px;
- color: #F9A828;
- font-weight: 600;
+ color: #64748b;
  }
 
  .lesson-status {
@@ -446,23 +446,34 @@
  .day-schedule {
  background: white;
  border-radius: 16px;
- border: 1px solid #e2e8f0;
- overflow: hidden;
- box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ padding: 20px;
  }
+
+ .day-schedule .day-header {
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--gray-500);
+ margin-bottom: 16px;
+ padding-bottom: 12px;
+ border-bottom: 1px solid var(--gray-200);
+ }
+
+ .schedule-list { }
+
+ .schedule-list { padding: 0; }
 
  .day-header {
- padding: 16px 24px;
+ padding: 10px 24px;
  background: #f8fafc;
- font-size: 15px;
+ font-size: 11px;
  font-weight: 700;
- color: #0f1f33;
- border-bottom: 1px solid #e2e8f0;
+ color: #3b82f6;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
  }
 
- .schedule-list {
- padding: 0;
- }
+ .schedule-day { border-bottom: 1px solid #e2e8f0; }
+ .schedule-day:last-child { border-bottom: none; }
 
  /* Teachers */
  .teacher-item {
@@ -729,41 +740,31 @@ footer a:hover { text-decoration: underline; }
  <div class="day-schedule">
  <div class="day-header">Upcoming Lessons</div>
  <div class="schedule-list">
+ <div id="schedule-lessons">
  <div class="lesson-item">
- <div class="lesson-time">
- <span class="time">Apr 29</span>
- <span class="dash">—</span>
- <span class="time">4:00–5:00 PM</span>
- </div>
+ <div class="lesson-time"><span class="time">Apr 29</span><span class="dash"> — </span><span class="time">4:00–5:00 PM</span></div>
  <div class="lesson-details">
- <div class="teacher">Ms. Sarah</div>
- <div class="child-name">Jasper</div>
+ <div class="lesson-subject">Ms. Sarah</div>
+ <div class="student">Jasper</div>
  </div>
  <div class="lesson-status confirmed">Confirmed</div>
  </div>
  <div class="lesson-item">
- <div class="lesson-time">
- <span class="time">Apr 30</span>
- <span class="dash">—</span>
- <span class="time">5:30–7:00 PM</span>
- </div>
+ <div class="lesson-time"><span class="time">Apr 30</span><span class="dash"> — </span><span class="time">5:30–7:00 PM</span></div>
  <div class="lesson-details">
- <div class="teacher">Mr. Chen</div>
- <div class="child-name">Jasper</div>
+ <div class="lesson-subject">Mr. Chen</div>
+ <div class="student">Jasper</div>
  </div>
  <div class="lesson-status pending">Pending</div>
  </div>
  <div class="lesson-item">
- <div class="lesson-time">
- <span class="time">Jan 16</span>
- <span class="dash">—</span>
- <span class="time">10:00–11:00 AM</span>
- </div>
+ <div class="lesson-time"><span class="time">Jan 16</span><span class="dash"> — </span><span class="time">10:00–11:00 AM</span></div>
  <div class="lesson-details">
- <div class="teacher">Ms. Amy</div>
- <div class="child-name">Lily</div>
+ <div class="lesson-subject">Ms. Amy</div>
+ <div class="student">Lily</div>
  </div>
  <div class="lesson-status confirmed">Confirmed</div>
+ </div>
  </div>
  </div>
  </div>
