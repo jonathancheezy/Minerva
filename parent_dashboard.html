@@ -869,37 +869,52 @@ document.querySelectorAll('.parent-avatar, .student-avatar').forEach(function(el
   });
 })();
 </script>
-
 <script>
-// Upcoming Lessons data
+// Upcoming Lessons - exact teacher_schedule rendering
 const upcomingLessons = [
-  {date:'Apr 29', time:'4:00-5:00 PM', teacher:'Ms. Sarah', child:'Jasper', status:'confirmed'},
-  {date:'Apr 30', time:'5:30-7:00 PM', teacher:'Mr. Chen', child:'Jasper', status:'pending'},
-  {date:'May 2', time:'10:00-11:00 AM', teacher:'Ms. Amy', child:'Lily', status:'confirmed'},
-  {date:'May 7', time:'3:00-4:30 PM', teacher:'Mr. Lee', child:'Jasper', status:'confirmed'},
-  {date:'May 9', time:'11:00-12:00 PM', teacher:'Ms. Sarah', child:'Lily', status:'pending'}
+  {time:'Apr 29 — 4:00-5:00 PM', subject:'Ms. Sarah', student:'Jasper', status:'confirmed'},
+  {time:'Apr 30 — 5:30-7:00 PM', subject:'Mr. Chen', student:'Jasper', status:'pending'},
+  {time:'May 2 — 10:00-11:00 AM', subject:'Ms. Amy', student:'Lily', status:'confirmed'},
+  {time:'May 7 — 3:00-4:30 PM', subject:'Mr. Lee', student:'Jasper', status:'confirmed'},
+  {time:'May 9 — 11:00-12:00 PM', subject:'Ms. Sarah', student:'Lily', status:'pending'}
 ];
 
 function renderUpcomingLessons() {
   var container = document.getElementById('schedule-lessons');
   if (!container) return;
-  var html = '';
+  var lessonsHtml = '';
   upcomingLessons.forEach(function(l) {
-    var statusClass = l.status;
-    var statusLabel = l.status.charAt(0).toUpperCase() + l.status.slice(1);
-    html += '<div class="lesson-item">' +
-      '<div class="lesson-time"><span class="time">' + l.date + '</span><span class="dash"> — </span><span class="time">' + l.time + '</span></div>' +
+    lessonsHtml += '<div class="lesson-item">' +
+      '<div class="lesson-time"><span class="time">' + l.time.split(' — ')[0] + '</span><span class="dash"> — </span><span class="time">' + l.time.split(' — ')[1] + '</span></div>' +
       '<div class="lesson-details">' +
-        '<div class="lesson-subject">' + l.teacher + '</div>' +
-        '<div class="student">' + l.child + '</div>' +
-      '</div>' +
-      '<div class="lesson-status ' + statusClass + '">' + statusLabel + '</div>' +
-    '</div>';
+        '<div class="lesson-subject">' + l.subject + '</div>' +
+        '<div class="student">' + l.student + '</div>' +
+      '</div>';
+    if (l.status === 'pending') {
+      lessonsHtml += '<div class="lesson-actions"><button class="btn-accept" onclick="acceptLesson('' + l.subject + '')">✓</button><button class="btn-reject" onclick="rejectLesson('' + l.subject + '')">✗</button></div>';
+    } else {
+      lessonsHtml += '<button class="btn-cancel" onclick="cancelLesson('' + l.subject + '')">Cancel</button>';
+    }
+    lessonsHtml += '</div>';
   });
-  container.innerHTML = html;
+  container.innerHTML = lessonsHtml;
 }
 
-document.addEventListener('DOMContentLoaded', renderUpcomingLessons);
+function acceptLesson(subject) {
+  if (confirm('Accept this lesson request for ' + subject + '?')) { alert('Lesson accepted!'); }
+}
+
+function cancelLesson(subject) {
+  if (confirm('Cancel this confirmed lesson for ' + subject + '? This cannot be undone.')) { alert('Lesson cancelled.'); }
+}
+
+function rejectLesson(subject) {
+  if (confirm('Reject this lesson request for ' + subject + '? This cannot be undone.')) { alert('Lesson rejected.'); }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderUpcomingLessons();
+});
 </script>
 
 </body>
