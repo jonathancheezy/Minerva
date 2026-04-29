@@ -595,7 +595,10 @@ const lessons = {
   '2026-04-22': [{time:'16:30-17:30',subject:'Piano (Grade 5)',student:'Jasper',teacher:'Ms. Sarah',status:'confirmed'}],
   '2026-04-25': [{time:'09:00-10:00',subject:'Math (Form 3)',student:'Jasper',teacher:'Mr. Chen',status:'pending'}],
   '2026-04-27': [{time:'17:00-18:00',subject:'Math (Form 2)',student:'Lily',teacher:'Mr. Chen',status:'pending'}],
-  '2026-04-29': [{time:'15:00-16:30',subject:'English (Grade 2)',student:'Lily',teacher:'Ms. Amy',status:'pending'}]
+  '2026-04-29': [
+    {time:'15:00-16:30',subject:'English (Grade 2)',student:'Lily',teacher:'Ms. Amy',status:'pending'},
+    {time:'17:30-18:30',subject:'Piano (Grade 3)',student:'Jasper',teacher:'Ms. Sarah',status:'cancelled'}
+]
 };
 
 // Availability slots: { 'YYYY-MM-DD': [{start:'HH:MM', duration:60|90|120}, ...] }
@@ -654,8 +657,12 @@ function renderCalendar() {
     dayEl.innerHTML = '<span class="day-num">' + d + '</span>';
     if (hasLesson) {
       var dotColor = 'gold';
-      if (lessons[dateStr][0].status === 'confirmed') dotColor = 'green';
-      else if (lessons[dateStr][0].status === 'cancelled') dotColor = 'red';
+      // Show red if any lesson is cancelled, green if all confirmed, gold if any pending
+      var hasCancelled = lessons[dateStr].some(function(l) { return l.status === 'cancelled'; });
+      var hasPending = lessons[dateStr].some(function(l) { return l.status === 'pending'; });
+      if (hasCancelled) dotColor = 'red';
+      else if (hasPending) dotColor = 'gold';
+      else dotColor = 'green';
       dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot ' + dotColor + '</div>');
     }
     if (hasAvail) {
