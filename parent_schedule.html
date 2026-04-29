@@ -653,7 +653,10 @@ function renderCalendar() {
 
     dayEl.innerHTML = '<span class="day-num">' + d + '</span>';
     if (hasLesson) {
-      dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot ' + (lessons[dateStr][0].status === 'confirmed' ? 'green' : 'gold') + '"></div>');
+      var dotColor = 'gold';
+      if (lessons[dateStr][0].status === 'confirmed') dotColor = 'green';
+      else if (lessons[dateStr][0].status === 'cancelled') dotColor = 'red';
+      dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot ' + dotColor + '</div>');
     }
     if (hasAvail) {
       dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot blue"></div>');
