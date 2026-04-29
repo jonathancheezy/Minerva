@@ -770,7 +770,105 @@
  }
 
  // Language selector
- (function(){
+ 
+const STUDENTS = {
+  'jw': {
+    id: 'jw',
+    name: 'Jasper Wu',
+    initials: 'JW',
+    color: '#3b82f6',
+    dob: '2010-08-22',
+    grade: 'Form 2',
+    parentName: 'Jessica Ng',
+    parentEmail: 'jessica.ng@email.com',
+    phone: '+852 6123 4567',
+    subjects: ['Piano', 'Mathematics'],
+    level: 'Intermediate',
+    goals: 'Master algebra and reach Piano Grade 5 within a year.',
+    prefDays: ['Mon', 'Wed', 'Fri'],
+    prefTime: '16:00'
+  },
+  'lw': {
+    id: 'lw',
+    name: 'Lily Wu',
+    initials: 'LW',
+    color: '#ec4899',
+    dob: '2013-05-14',
+    grade: 'Grade 1',
+    parentName: 'Jessica Ng',
+    parentEmail: 'jessica.ng@email.com',
+    phone: '+852 6123 4567',
+    subjects: ['English', 'Art'],
+    level: 'Beginner',
+    goals: 'Build strong reading skills and express creativity through art.',
+    prefDays: ['Tue', 'Thu'],
+    prefTime: '15:00'
+  }
+};
+
+function loadStudentProfile() {
+  var params = new URLSearchParams(window.location.search);
+  var studentId = params.get('student');
+  
+  if (studentId && STUDENTS[studentId]) {
+    var s = STUDENTS[studentId];
+    
+    // Update preview section
+    var avatar = document.getElementById('avatarPreview');
+    if (avatar) {
+      avatar.textContent = s.initials;
+      avatar.style.background = s.color;
+    }
+    
+    var nameEl = document.getElementById('namePreview');
+    if (nameEl) nameEl.textContent = s.name;
+    
+    var subjectEl = document.getElementById('subjectPreview');
+    if (subjectEl) subjectEl.textContent = s.subjects.join(' · ');
+    
+    // Update form fields
+    var fullName = document.getElementById('fullName');
+    if (fullName) fullName.value = s.name;
+    
+    var dob = document.getElementById('dob');
+    if (dob) dob.value = s.dob;
+    
+    var parentName = document.getElementById('parentName');
+    if (parentName) parentName.value = s.parentName;
+    
+    var parentEmail = document.getElementById('parentEmail');
+    if (parentEmail) parentEmail.value = s.parentEmail;
+    
+    var phone = document.getElementById('phone');
+    if (phone) phone.value = s.phone;
+    
+    // Update subjects tags
+    var subjectsTags = document.getElementById('subjectsTags');
+    if (subjectsTags) {
+      // Remove existing tags (keep input)
+      var existingTags = subjectsTags.querySelectorAll('.tag');
+      existingTags.forEach(function(t) { t.remove(); });
+      // Add new subject tags
+      s.subjects.forEach(function(subj) {
+        var tag = document.createElement('span');
+        tag.className = 'tag';
+        tag.innerHTML = subj + ' <span class="tag-remove" onclick="removeTag(this, \'subjectsTags\')">×</span>';
+        subjectsTags.insertBefore(tag, subjectsTags.lastElementChild);
+      });
+    }
+    
+    var level = document.getElementById('level');
+    if (level) level.value = s.level;
+    
+    var goals = document.getElementById('goals');
+    if (goals) goals.value = s.goals;
+  }
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', loadStudentProfile);
+
+(function(){
    var sel = document.getElementById('langSelector');
    var globe = document.getElementById('langGlobe');
    var dropdown = document.getElementById('langDropdown');
@@ -789,7 +887,7 @@
 
    var path = window.location.pathname.split('/').pop() || 'student_profile.html';
    document.querySelectorAll('.nav-links a').forEach(function(link) {
-     var href = link.getAttribute('href');
+     var href = (link.getAttribute('href') || '').split('?')[0];
      if (href === path || (path === '' && href === 'student_profile.html')) {
        link.classList.add('active');
      }
