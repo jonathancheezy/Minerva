@@ -646,7 +646,6 @@ function selectDay(dateStr, dayEl) {
   var dayHeader = document.getElementById('schedule-day-header');
   var dayLessons = document.getElementById('schedule-lessons');
   var lessons_data = lessons[dateStr] || [];
-  var avail_data = availability[dateStr] || [];
   var dayDate = new Date(dateStr);
   var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -656,24 +655,7 @@ function selectDay(dateStr, dayEl) {
 
   var lessonsHtml = '';
 
-  // Build availability section (always shown)
-  if (avail_data.length > 0) {
-    lessonsHtml += '<div class="avail-header"><span>Availability</span><button class="btn-add-avail-sm" onclick="showAddAvailability(\'' + dateStr + '\')">+</button></div>';
-    avail_data.forEach(function(a, idx) {
-      var endH = parseInt(a.start.split(':')[0]) + Math.floor(a.duration/60);
-      var endM = a.duration % 60;
-      var endTime = String(endH).padStart(2,'0') + ':' + String(endM).padStart(2,'0');
-      lessonsHtml += '<div class="avail-item">' +
-        '<span class="avail-time">' + a.start + ' - ' + endTime + '</span>' +
-        '<span class="avail-dur">' + a.duration + ' min</span>' +
-        '<button class="btn-edit-avail" onclick="editAvailability(\'' + dateStr + '\', ' + idx + ')">Modify</button>' +
-        '<button class="btn-del-avail" onclick="deleteAvailability(\'' + dateStr + '\', ' + idx + ')">Delete</button>' +
-        '</div>';
-    });
-  }
-  lessonsHtml += '<button class="btn-add-avail-sm-inline" onclick="showAddAvailability(\'' + dateStr + '\')">+ Add time</button>';
-
-  if (lessons_data.length === 0 && avail_data.length === 0) {
+  if (lessons_data.length === 0) {
     lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' + lessonsHtml;
   } else {
     lessons_data.forEach(function(l) {
