@@ -37,21 +37,16 @@ body {
 a { color: #3b82f6; text-decoration: none; }
 /* Nav */
  nav {
- display: flex;
- justify-content: space-between;
- align-items: center;
  position: fixed;
  top: 0; left: 0; right: 0;
  z-index: 100;
  background: var(--navy);
- padding: 0 24px;
- height: 60px;
+ padding: 16px 24px;
  }
 
- .nav-left {
- display: flex;
- align-items: center;
- gap: 12px;
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
  }
 
  .nav-right { display: flex; align-items: center; gap: 16px; }
@@ -360,7 +355,8 @@ a { color: #3b82f6; text-decoration: none; }
  <a href="parent_dashboard.html">Dashboard</a>
  <a href="parent_schedule.html">My Schedule</a>
  <a href="parent_messages.html">Messages</a>
- 
+ <a href="student_profile.html">Profile</a>
+ <a href="#">Settings</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
@@ -559,7 +555,7 @@ document.addEventListener("DOMContentLoaded",function(){renderConvList();toggleS
   // Highlight active nav link in hamburger dropdown
   var path = window.location.pathname.split('/').pop() || 'parent_messages.html';
   document.querySelectorAll('.nav-links a').forEach(function(link) {
-    var href = (link.getAttribute('href') || '').split('?')[0];
+    var href = link.getAttribute('href');
     if (href === path || (path === '' && href === 'parent_messages.html')) {
       link.classList.add('active');
     }
