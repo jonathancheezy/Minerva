@@ -903,7 +903,7 @@ document.querySelectorAll('.student-avatar').forEach(function(el) {
   // Highlight active nav link in hamburger dropdown
   var path = window.location.pathname.split('/').pop() || 'parent_schedule.html';
   document.querySelectorAll('.nav-links a').forEach(function(link) {
-    var href = link.getAttribute('href');
+    var href = (link.getAttribute('href') || '').split('?')[0];
     if (href === path || (path === '' && href === 'parent_schedule.html')) {
       link.classList.add('active');
     }
