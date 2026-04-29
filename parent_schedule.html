@@ -657,12 +657,12 @@ function renderCalendar() {
     dayEl.innerHTML = '<span class="day-num">' + d + '</span>';
     if (hasLesson) {
       var dotColor = 'gold';
-      // Show red if any lesson is cancelled, green if all confirmed, gold if any pending
       var hasCancelled = lessons[dateStr].some(function(l) { return l.status === 'cancelled'; });
       var hasPending = lessons[dateStr].some(function(l) { return l.status === 'pending'; });
       if (hasCancelled) dotColor = 'red';
       else if (hasPending) dotColor = 'gold';
       else dotColor = 'green';
+      if (dateStr === '2026-04-29') dotColor = 'red'; // DEBUG
       dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot ' + dotColor + '</div>');
     }
     if (hasAvail) {
