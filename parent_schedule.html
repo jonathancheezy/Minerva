@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title data-i18n="schedule.book_new_title">Book a Lesson — Minerva</title>
-   <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Schedule — Minerva</title>
+<style>
+/* v=clean001 - rebuilt from scratch */
+
  :root {
  --navy: #1e3a5f;
- --navy-dark: #0f1f33;
  --teal: #3b82f6;
+ --teal-light: #60a5fa;
  --gold: #F9A828;
- --gold-light: #FBB81C;
  --white: #ffffff;
  --gray-100: #f8fafc;
  --gray-200: #e2e8f0;
  --gray-300: #cbd5e1;
+ --gray-400: #94a3b8;
  --gray-500: #64748b;
+ --gray-600: #475569;
+ --gray-700: #334155;
  --green: #22c55e;
  --red: #ef4444;
- }
+ --purple: #8b5cf6;
+ --navy-dark: #0f1f33;
+}
 
- * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
- body {
+body {
  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
  background: #f8fafc;
- color: var(--gray-700);
+ color: #334155;
  line-height: 1.6;
  padding-top: 60px;
- }
+ min-height: 100vh;
+}
 
- /* Nav */
+a { color: #3b82f6; text-decoration: none; }
+/* Nav */
  nav {
- background: var(--navy);
- color: white;
- padding: 16px 24px;
- display: flex;
- justify-content: space-between;
- align-items: center;
  position: fixed;
- top: 0;
- left: 0;
- right: 0;
- height: 60px;
+ top: 0; left: 0; right: 0;
  z-index: 100;
+ background: var(--navy);
+ padding: 16px 24px;
  }
 
- .nav-left {
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+
+ .nav-right {
  display: flex;
  align-items: center;
+ justify-content: space-between;
+ width: 100%;
  gap: 16px;
+ flex-wrap: nowrap;
  }
 
  .logo {
@@ -57,56 +66,116 @@
  align-items: center;
  gap: 10px;
  font-weight: 800;
- font-size: 20px;
+ font-size: 22px;
  color: white;
  text-decoration: none;
+ white-space: nowrap;
+ flex-shrink: 0;
  }
 
- .logo-icon { width: 32px; height: 32px; }
+ .logo-icon { width: 36px; height: 36px; }
 
- .nav-right {
+/* Language Selector */
+ .lang-selector { position: relative; display: flex; align-items: center; }
+
+ .globe {
+ width: 18px;
+ height: 18px;
+ color: var(--gold);
+ cursor: pointer;
+ transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+ flex-shrink: 0;
+ }
+ .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
+ .lang-selector.open .globe { transform: rotate(180deg); color: var(--gold); stroke: var(--gold); }
+
+ .lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 64px;
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  z-index: 200;
+}
+ .lang-selector.open .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+ .lang-option {
  display: flex;
  align-items: center;
- gap: 16px;
- flex-wrap: wrap;
- justify-content: flex-end;
+ justify-content: space-between;
+ gap: 6px;
+ padding: 10px 14px;
+ cursor: pointer;
+ font-size: 13px;
+ font-weight: 600;
+ color: rgba(255,255,255,0.65);
+ background: transparent;
+ border-bottom: 1px solid rgba(255,255,255,0.06);
+ transition: background 0.15s, color 0.15s, padding-left 0.15s;
+ position: relative;
+ overflow: hidden;
  }
+ .lang-option:last-child { border-bottom: none; }
+ .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
+ .lang-option.selected { color: var(--gold); }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s 0ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s 50ms both; }
+ .lang-selector.open .lang-dropdown .lang-option:nth-child(3) { animation: rowReveal 0.25s 100ms both; }
+ @keyframes rowReveal { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+ .lang-option .check { width: 14px; height: 14px; flex-shrink: 0; opacity: 0; transform: scale(0.5); transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+ .lang-option.selected .check { opacity: 1; transform: scale(1); }
+ .lang-option .check svg { width: 14px; height: 14px; stroke: var(--gold); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; stroke-dashoffset: 20; }
+ .lang-option.selected .check svg { stroke-dashoffset: 0; transition: stroke-dashoffset 0.3s; }
+ .lang-option.selected::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(249,168,40,0.08), transparent); transform: translateX(-100%); transition: transform 0.4s; }
+ .lang-option.selected:hover::before { transform: translateX(100%); }
 
- .nav-links {
+ /* Nav Links */
+ .nav-links { display: flex; gap: 24px; align-items: center; }
+ .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+ .nav-links a:hover { color: var(--gold); }
+ .nav-links a.active { color: var(--gold) !important; }
+
+ .nav-start {
  display: flex;
- gap: 24px;
- justify-content: center;
- flex: 1;
+ align-items: center;
+ gap: 0;
  }
 
  .mobile-menu-btn {
  display: none;
- font-size: 24px;
+ font-size: 20px;
  cursor: pointer;
- padding: 8px;
- color: white;
+ padding: 4px;
+ color: var(--gold);
  background: none;
  border: none;
+ margin-right: 12px;
  }
 
- .nav-links a {
- color: rgba(255,255,255,0.7);
- text-decoration: none;
- font-size: 14px;
- font-weight: 500;
- transition: color 0.2s;
+ /* User Info */
+ .nav-end {
+ display: flex;
+ align-items: center;
+ gap: 16px;
  }
- .nav-links a:hover { color: white; }
- .nav-links a.active { color: #F9A828 !important; }
-
- 
 
  .user-info {
  display: flex;
  align-items: center;
  gap: 12px;
  }
-
  .avatar {
  width: 36px;
  height: 36px;
@@ -119,488 +188,271 @@
  color: var(--navy-dark);
  font-size: 14px;
  }
- .lang-selector { position: relative; display: flex; align-items: center; }
-
- .globe {
-  width: 18px;
-  height: 18px;
-  color: var(--gold);
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
-  flex-shrink: 0;
- }
- .globe:hover { transform: rotate(20deg); color: var(--gold-light); }
- .lang-selector.open .globe { transform: rotate(180deg); }
-
- .lang-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  width: 55px;
-  background: var(--navy);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-  z-index: 200;
- }
- .lang-selector.open .lang-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
- }
-
- .lang-option {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  padding: 10px 14px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.65);
-  background: transparent;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.15s, color 0.15s, padding-left 0.15s;
-  position: relative;
-  overflow: hidden;
- }
- .lang-option:last-child { border-bottom: none; }
- .lang-option:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 18px; }
- .lang-option.selected { color: var(--gold); }
-
- .lang-selector.open .lang-dropdown .lang-option:nth-child(1) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 0ms both; }
- .lang-selector.open .lang-dropdown .lang-option:nth-child(2) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 50ms both; }
- .lang-selector.open .lang-dropdown .lang-option:nth-child(3) { animation: rowReveal 0.25s cubic-bezier(0.34, 1.20, 0.64, 1) 100ms both; }
-
- @keyframes rowReveal {
-  from { opacity: 0; transform: translateX(-8px); }
-  to   { opacity: 1; transform: translateX(0); }
- }
-
- .lang-option .check {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-  opacity: 0;
-  transform: scale(0.5);
-  transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
- }
- .lang-option.selected .check { opacity: 1; transform: scale(1); }
- .lang-option .check svg {
-  width: 14px;
-  height: 14px;
-  stroke: var(--gold);
-  stroke-width: 2.5;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 20;
-  stroke-dashoffset: 20;
- }
- .lang-option.selected .check svg {
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
- }
- .lang-option.selected::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(249,168,40,0.08), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.4s;
- }
- .lang-option.selected:hover::before { transform: translateX(100%); }
 
  @media (max-width: 768px) {
-  .lang-selector { background: transparent; padding: 0; gap: 0; border-radius: 0; }
+ .nav-start { display: flex; align-items: center; }
+ .mobile-menu-btn { display: flex; }
+ .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; align-items: flex-start; padding: 20px 24px; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 99; }
+ .nav-links.active { display: flex; }
+ .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+ .user-info { display: flex; align-items: center; }
+ .lang-selector { background: transparent; padding: 0; }
+ }
+ @media (min-width: 769px) {
+ .mobile-menu-btn { display: none; }
+ .nav-start { display: flex; align-items: center; }
+ .nav-end { margin-left: auto; }
  }
 
- .user-name {
- font-size: 14px;
- font-weight: 600;
- }
-
- /* Main */
- .main {
- max-width: 1100px;
+ /* Main Content */
+.main {
+ max-width: 1200px;
  margin: 0 auto;
  padding: 32px 24px;
- }
+ min-height: calc(100vh - 60px);
+}
 
- .page-header {
+ .page-header { margin-bottom: 32px; }
+ .page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
+ .page-header p { color: #64748b; font-size: 14px; }
+ .dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
+
+/* Stats Grid */
+.stats-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 12px;
+ margin-bottom: 16px;
+}
+
+.stat-card {
+ background: white;
+ border-radius: 10px;
+ border: 1px solid #e2e8f0;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ padding: 12px 8px;
  display: flex;
- justify-content: space-between;
+ flex-direction: column;
+ justify-content: flex-start;
  align-items: center;
- margin-bottom: 32px;
- flex-wrap: wrap;
- gap: 16px;
- }
+ text-align: center;
+ height: 140px;
+}
+.stat-card .label { font-size: 10px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: auto; }
+.stat-card .value { font-size: 22px; font-weight: 800; color: #0f1f33; line-height: 1.1; margin: auto 0; }
+.stat-card .value.green { color: #22c55e; }
+.stat-card .value.gold { color: #F9A828; }
+ .stat-card .value.teal { color: var(--teal); }
+.stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: auto; }
+.stat-card .sub a { color: #3b82f6; }
 
- .page-header h1 {
- font-size: 28px;
- font-weight: 800;
- color: var(--navy-dark);
- }
-
- .page-header p { color: white; margin-top: 4px; }
-
- /* Tabs */
- .tabs {
+/* Content Grid - Flexbox side by side */
+.content-grid {
  display: flex;
- gap: 8px;
- margin-bottom: 24px;
- border-bottom: 1px solid var(--gray-200);
- padding-bottom: 16px;
- }
+ flex-direction: row;
+ gap: 20px;
+ width: 100%;
+}
 
- .tab {
- padding: 10px 20px;
- border: none;
- background: transparent;
- border-radius: 8px;
- font-size: 14px;
- font-weight: 600;
- cursor: pointer;
- color: white;
- transition: all 0.2s;
- }
-
- .tab:hover { background: var(--gray-200); color: var(--navy); }
- .tab.active { background: var(--navy); color: white; }
-
- /* Cards */
- .card {
+.card {
  background: white;
  border-radius: 16px;
- padding: 24px;
- border: 1px solid var(--gray-200);
- margin-bottom: 24px;
- }
+ border: 1px solid #e2e8f0;
+ overflow: hidden;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ min-width: 0;
+}
 
- .card-header {
+.card-header {
+ padding: 16px 24px;
+ border-bottom: 1px solid #e2e8f0;
  display: flex;
  justify-content: space-between;
  align-items: center;
- margin-bottom: 20px;
- }
+}
+.card-header h2 { font-size: 15px; font-weight: 700; color: #0f1f33; }
+.card-header a { color: #3b82f6; font-size: 13px; font-weight: 600; }
 
- .card-header h2 {
- font-size: 18px;
- font-weight: 700;
- color: var(--navy-dark);
- }
+.card-body { padding: 20px 24px; }
 
- /* Monthly Calendar */
- .month-nav {
+/* Schedule Card */
+.schedule-card { flex: 1.6; min-width: 0; }
+
+/* Filter Tabs */
+.filter-tabs {
  display: flex;
- justify-content: space-between;
- align-items: center;
- margin-bottom: 20px;
- }
-
- .month-nav h2 {
- font-size: 20px;
- font-weight: 700;
- color: var(--navy-dark);
- }
-
- .calendar-grid {
- display: grid;
- grid-template-columns: repeat(7, 1fr);
  gap: 8px;
- }
+ padding: 14px 24px;
+ border-bottom: 1px solid #e2e8f0;
+ background: #f8fafc;
+}
 
- .two-months-container {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 24px;
- }
-
- .month-calendar {
- flex: 1;
- }
-
- .month-label {
- font-size: 14px;
- font-weight: 600;
- color: var(--navy-dark);
- margin-bottom: 12px;
- text-align: center;
- }
-
- .calendar-header {
- text-align: center;
+.filter-tab {
+ padding: 5px 14px;
+ border-radius: 20px;
  font-size: 12px;
  font-weight: 600;
- color: white;
- padding: 8px;
- }
-
- .calendar-day {
- background: #f8fafc;
- border-radius: 8px;
- min-height: 80px;
- padding: 8px;
  cursor: pointer;
+ color: #64748b;
+ border: none;
+ background: white;
  transition: all 0.2s;
- }
+}
+.filter-tab.active { background: #1e3a5f; color: white; }
+.filter-tab:not(.active):hover { background: #e2e8f0; color: #0f1f33; }
 
- .calendar-day:hover:not(.disabled) {
- background: var(--gray-200);
- }
+/* Schedule Sections - JS controls visibility */
+.schedule-section { display: none; }
 
- .calendar-day.disabled {
- background: transparent;
- cursor: default;
- }
+/* Count Badge */
+.count-badge { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
 
- .calendar-day.other-month {
- background: transparent;
- }
+/* Calendar */
+.calendar-wrap { display: flex; flex-direction: column; gap: 20px; }
+.calendar { background: white; border-radius: 16px; padding: 20px; }
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.cal-header h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); }
+.cal-nav { background: var(--gray-100); border: none; border-radius: 8px; width: 36px; height: 36px; font-size: 16px; cursor: pointer; color: var(--gray-600); }
+.cal-nav:hover { background: var(--gray-200); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-day-name { text-align: center; font-size: 11px; font-weight: 600; color: var(--gray-500); padding: 8px 0; }
+.cal-day { text-align: center; padding: 8px 4px; border-radius: 8px; min-height: 44px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+.cal-day.empty { }
+.cal-day:not(.empty):hover { background: var(--gray-100); cursor: pointer; }
+.cal-day.today { background: rgba(59,130,246,0.1); }
+.cal-day.today .day-num { color: var(--teal); font-weight: 700; }
+.cal-day.selected { outline: 2px solid #dc2626; outline-offset: -2px; }
+.cal-day.selected .day-num { color: #dc2626 !important; font-weight: 700; }
+.cal-day.has-event { cursor: pointer; }
+.day-num { display: block !important; font-size: 15px !important; font-weight: 600 !important; color: #0f1f33 !important; text-align: center !important; line-height: 1 !important; }
+.cal-dot { width: 6px; height: 6px; border-radius: 50%; margin: 2px auto 0; }
+.cal-dot.green { background: var(--green); }
+.cal-dot.gold { background: #F9A828; }
+.cal-dot.red { background: var(--red); }
+.cal-legend { display: flex; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gray-200); }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-500); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-dot.green { background: var(--green); }
+.legend-dot.gold { background: #F9A828; }
+.legend-dot.red { background: var(--red); }
 
- .calendar-day.header {
- background: var(--navy);
- color: white;
- border-radius: 8px 8px 0 0;
- padding: 12px 8px;
- text-align: center;
- font-weight: 600;
- font-size: 14px;
- min-height: auto;
- cursor: default;
- }
+/* Day Schedule */
+.day-schedule { background: white; border-radius: 16px; padding: 20px; }
+.no-lessons { padding: 24px; text-align: center; color: var(--gray-500); font-size: 14px; }
+.day-schedule .day-header { font-size: 14px; font-weight: 600; color: var(--gray-500); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--gray-200); }
 
- .calendar-day.header .date {
+.count-badge.blue { background: rgba(59,130,246,0.1); color: #3b82f6; }
+.count-badge.gold { background: rgba(249,168,40,0.1); color: #F9A828; }
+.count-badge.red { background: rgba(239,68,68,0.1); color: #ef4444; }
+
+/* Schedule List */
+.schedule-list { }
+
+.schedule-section.active { display: block; }
+
+/* Schedule List */
+.schedule-list { padding: 0; }
+
+.day-header {
+ padding: 10px 24px;
+ background: #f8fafc;
  font-size: 11px;
- opacity: 0.8;
- margin-top: 2px;
- }
+ font-weight: 700;
+ color: #3b82f6;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+}
 
- .calendar-day .day-num {
- font-weight: 600;
- font-size: 14px;
- color: var(--navy-dark);
- margin-bottom: 4px;
- }
+.schedule-day { border-bottom: 1px solid #e2e8f0; }
+.schedule-day:last-child { border-bottom: none; }
 
- .calendar-day.other-month .day-num {
- color: var(--gray-300);
- }
-
- .calendar-day.today .day-num {
- background: var(--teal);
- color: white;
- width: 24px;
- height: 24px;
- border-radius: 50%;
+.lesson-item {
  display: flex;
  align-items: center;
- justify-content: center;
- }
-
- .calendar-day.available {
- background: rgba(34, 197, 94, 0.1);
- border: 1px solid var(--green);
- }
-
- .calendar-day.available:hover {
- background: rgba(34, 197, 94, 0.2);
- }
-
- .calendar-day.selected {
- background: var(--teal);
- }
-
- .calendar-day.selected .day-num {
- background: white;
- color: var(--teal);
- }
-
- .calendar-day .slots {
- font-size: 11px;
- color: var(--green);
- font-weight: 500;
- }
-
- .calendar-day.selected .slots {
- color: rgba(255,255,255,0.9);
- }
-
- /* Teacher Card */
- .teacher-card {
- display: flex;
  gap: 16px;
- padding: 16px;
- background: #f8fafc;
- border-radius: 12px;
- margin-bottom: 16px;
- cursor: pointer;
- transition: all 0.2s;
- border: 2px solid transparent;
- }
+ padding: 14px 24px;
+ border-bottom: 1px solid #e2e8f0;
+}
+.lesson-item:last-child { border-bottom: none; }
 
- .teacher-card:hover { background: var(--gray-200); }
- .teacher-card.selected { border-color: var(--teal); background: rgba(59, 130, 246, 0.05); }
+.lesson-time { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.lesson-time .time { font-size: 13px; font-weight: 700; color: #0f1f33; }
+.lesson-time .dash { font-size: 13px; color: #94a3b8; }
 
- .parent-avatar {
- width: 56px;
- height: 56px;
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-weight: 700;
- font-size: 18px;
- flex-shrink: 0;
- /* JS sets background + color */
- }
- .student-avatar {
- width: 56px;
- height: 56px;
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-weight: 700;
- font-size: 18px;
- flex-shrink: 0;
- text-decoration: none;
- }
+.lesson-details { flex: 1; }
+.lesson-subject { font-size: 13px; font-weight: 600; color: #0f1f33; margin-bottom: 2px; }
+.student { font-size: 12px; color: #64748b; }
 
- .teacher-info { flex: 1; }
- .teacher-name { font-weight: 600; color: var(--navy-dark); font-size: 16px; }
- .teacher-subject { font-size: 13px; color: white; margin-top: 2px; }
- .teacher-meta { text-align: right; }
- .teacher-rate { font-weight: 700; color: var(--navy); font-size: 16px; }
- .teacher-rating { font-size: 13px; color: var(--gold); margin-top: 4px; }
-
- /* Time Slots */
- .time-slots {
- display: grid;
- grid-template-columns: repeat(4, 1fr);
- gap: 10px;
- margin-top: 16px;
- }
-
- .time-slot {
- padding: 14px 8px;
- border: 1.5px solid var(--gray-200);
- border-radius: 10px;
- text-align: center;
- font-size: 14px;
+.lesson-status {
+ font-size: 11px;
  font-weight: 600;
- cursor: pointer;
- transition: all 0.2s;
- color: var(--navy-dark);
- background: white;
- letter-spacing: 0.01em;
- }
+ padding: 3px 10px;
+ border-radius: 20px;
+ flex-shrink: 0;
+}
+.lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
+.lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
+.lesson-actions { display: flex; gap: 6px; }
+.btn-accept, .btn-reject { width: 28px; height: 28px; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; font-weight: 600; }
+.btn-accept { background: #22c55e; color: white; }
+.btn-accept:hover { background: #16a34a; }
+.btn-reject { background: #ef4444; color: white; }
+.btn-reject:hover { background: #dc2626; }
+.btn-cancel { padding: 4px 12px; background: var(--gray-200); color: var(--gray-600); border: none; border-radius: 6px; font-size: 12px; cursor: pointer; }
+.btn-cancel:hover { background: var(--gray-300); }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center; }
+.modal-overlay.show { display: flex; }
+.modal-box { background: white; border-radius: 16px; padding: 24px; max-width: 360px; width: 90%; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.modal-title { font-size: 16px; font-weight: 700; color: var(--navy-dark); }
+.modal-close { background: none; border: none; font-size: 18px; cursor: pointer; color: var(--gray-500); }
+.modal-close:hover { color: var(--navy-dark); }
+.avail-form-group { margin-bottom: 12px; }
+.avail-form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--gray-500); margin-bottom: 4px; }
+.avail-form-group input, .avail-form-group select { width: 100%; padding: 8px 10px; border: 1px solid var(--gray-300); border-radius: 8px; font-size: 14px; }
+.avail-form-group:last-child { display: flex; gap: 8px; margin-top: 16px; }
+.lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
 
- .time-slot:hover:not(.disabled) {
- border-color: var(--teal);
- color: var(--teal);
- background: rgba(59, 130, 246, 0.04);
- }
+/* Messages Card */
+.messages-card { flex: 0.9; min-width: 0; }
 
- .time-slot.selected {
- background: var(--teal);
+.conv-legend { display: flex; gap: 16px; padding: 0 24px 12px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #64748b; }
+
+.message-item { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid #e2e8f0; }
+.message-item:last-child { border-bottom: none; }
+
+.message-avatar {
+ width: 40px;
+ height: 40px;
+ border-radius: 10px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 12px;
+ font-weight: 700;
  color: white;
- border-color: var(--teal);
- box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
- }
+ flex-shrink: 0;
+}
 
- .time-slot.disabled {
- background: #f8fafc;
- color: var(--gray-300);
- cursor: not-allowed;
- border-color: var(--gray-200);
- }
+.message-info { flex: 1; min-width: 0; }
+.message-sender { font-size: 13px; font-weight: 600; color: #0f1f33; }
+.message-preview { font-size: 12px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.message-time { font-size: 11px; color: #94a3b8; flex-shrink: 0; }
 
 
- /* Filter Tabs */
- .filter-tabs {
-  display: flex;
-  gap: 8px;
-  padding: 14px 24px;
-  border-bottom: 1px solid #e2e8f0;
-  background: #f8fafc;
- }
- .filter-tab {
-  padding: 5px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #64748b;
-  border: none;
-  background: white;
-  transition: all 0.2s;
- }
- .filter-tab.active { background: #1e3a5f; color: white; }
- .filter-tab:not(.active):hover { background: #e2e8f0; color: #0f1f33; }
-
- /* Schedule Sections */
- .schedule-section { display: none; }
- .schedule-section.active { display: block; }
-
- /* Schedule List */
- .schedule-list { padding: 0; }
- .day-header {
-  padding: 10px 24px;
-  background: #f8fafc;
-  font-size: 11px;
-  font-weight: 700;
-  color: #3b82f6;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
- }
- .schedule-day { border-bottom: 1px solid #e2e8f0; }
- .schedule-day:last-child { border-bottom: none; }
-
- /* Lesson Item */
- .lesson-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 24px;
-  border-bottom: 1px solid #e2e8f0;
- }
- .lesson-item:last-child { border-bottom: none; }
- .lesson-time { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
- .lesson-time .time { font-size: 13px; font-weight: 700; color: #0f1f33; }
- .lesson-time .dash { font-size: 13px; color: #94a3b8; }
- .lesson-details { flex: 1; }
- .lesson-details .lesson-teacher { font-size: 13px; font-weight: 600; color: #0f1f33; margin-bottom: 2px; }
- .lesson-details .lesson-subject { font-size: 12px; color: #64748b; }
- .lesson-status {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
-  flex-shrink: 0;
- }
- .lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
- .lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
- .lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
- .lang-btn { padding: 6px 12px; font-size: 13px; }
- .lang-selector { padding: 2px; gap: 1px; }
- }
- </style>
+</style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- 
+
 </head>
 <body>
- <nav>
- <div class="nav-left">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
- <a href="minerva_landing.html?v=ps001" class="logo">
+<nav>
+ <div class="nav-inner">
+ <div class="nav-right">
+ <div class="nav-start">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
  <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -610,21 +462,18 @@
  </a>
  </div>
  <div class="nav-links">
- <a href="parent_dashboard.html?v=ps001" data-i18n="parent_dash.dashboard">Dashboard</a>
- <a href="parent_schedule.html?v=ps001" data-i18n="parent_dash.schedule">Schedule</a>
- <a href="messages.html?v=ps001" data-i18n="parent_dash.messages">Messages</a>
- <a href="student_profile.html" data-i18n="parent_dash.children">Children</a>
- <a href="#" data-i18n="parent_dash.settings">Settings</a>
- <a href="faq.html" data-i18n="parent_dash.help">Help</a>
- </div>
- <div class="nav-right">
- <div class="nav-meta">
+ <a href="parent_dashboard.html" data-i18n="parent_dash.dashboard">Dashboard</a>
+ <a href="student_profile.html" data-i18n="parent_dash.children">Students</a>
+ <a href="parent_schedule.html" data-i18n="parent_dash.schedule">Schedule</a>
+ <a href="messages.html" data-i18n="parent_dash.messages">Chats</a>
+ <a href="reviews.html" data-i18n="reviews.title">Reviews</a>
+ <a </div>
+ <div class="nav-end">
  <div class="user-info">
- <a href="parent_profile.html" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">JN</div></a>
+ <a href="parent_schedule.html" style="text-decoration:none"><div class="avatar">JP</div></a>
  </div>
-  </div>
-  <div class="lang-selector" id="langSelector">
- <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
  <circle cx="12" cy="12" r="10"/>
  <line x1="2" y1="12" x2="22" y2="12"/>
  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -637,528 +486,62 @@
  </div>
  </div>
  </nav>
-
- <main class="main">
+<main class="main">
  <div class="page-header">
- <div>
- <h1 data-i18n="schedule.book_lesson"><span data-i18n="schedule.book_lesson"> data-i18n="schedule.book_lesson"</span></h1>
- <p data-i18n="schedule.find_available">Find available times and book your session</p>
- </div>
+  <h1 data-i18n="parent_dash.my_schedule">My Schedule</h1>
+ <p class="dashboard-quote">"Every lesson is a step toward your child's future."</p>
  </div>
 
- <div class="tabs">
- <button class="tab active" data-i18n="schedule.book_new" onclick="showTab('book')"><span data-i18n="schedule.btn_book_new">Book New</span></button>
- <button class="tab" data-i18n="schedule.upcoming_tab" onclick="showTab('upcoming')"><span data-i18n="schedule.tab_upcoming">Upcoming</span></button>
- <button class="tab" data-i18n="schedule.upcoming_tab" onclick="showTab('history')"><span data-i18n="schedule.tab_history">History</span></button>
- </div>
-
- <div id="bookTab">
- <div class="card">
- <div class="card-header">
- <h2 data-i18n="schedule.select_teacher"><span data-i18n="schedule.step1_select_teacher"> data-i18n="schedule.select_teacher"</span></h2>
- </div>
- <div class="teacher-card selected" onclick="selectTeacher(this, 'Teacher Chan', 350)">
- <a href="parent_profile.html?parent=tc" style="text-decoration:none"><div class="parent-avatar">TC</div></a>
- <div class="teacher-info">
- <div class="teacher-name">Teacher Chan</div>
- <div class="teacher-subject">HKDSE Maths • 5 years exp. • Tuen Mun</div>
- </div>
- <div class="teacher-meta">
- <div class="teacher-rate">$350/hr</div>
- <div class="teacher-rating">⭐ 4.9 (127)</div>
- </div>
- </div>
- <div class="teacher-card" onclick="selectTeacher(this, 'Miss Lily', 400)">
- <a href="parent_profile.html?parent=ml" style="text-decoration:none"><div class="parent-avatar">ML</div></a>
- <div class="teacher-info">
- <div class="teacher-name">Miss Lily</div>
- <div class="teacher-subject">IB Maths • 7 years exp. • Sha Tin</div>
- </div>
- <div class="teacher-meta">
- <div class="teacher-rate">$400/hr</div>
- <div class="teacher-rating">⭐ 4.8 (89)</div>
- </div>
- </div>
- <div class="teacher-card" onclick="selectTeacher(this, 'Mr. Kevin', 300)">
- <a href="parent_profile.html?parent=kw" style="text-decoration:none"><div class="parent-avatar">KW</div></a>
- <div class="teacher-info">
- <div class="teacher-name">Mr. Kevin</div>
- <div class="teacher-subject">GCSE Maths • 3 years exp. • Central</div>
- </div>
- <div class="teacher-meta">
- <div class="teacher-rate">$300/hr</div>
- <div class="teacher-rating">⭐ 4.7 (56)</div>
- </div>
- </div>
- <p style="margin-top: 12px; color: white; font-size: 14px;">
- <a href="teachers.html?v=2" style="color: var(--teal);">Browse all teachers →</a>
- </p>
- </div>
-
- <div class="card">
- <div class="card-header">
- <h2 data-i18n="schedule.select_date"><span data-i18n="schedule.step2_select_date"> data-i18n="schedule.select_date"</span></h2>
- </div>
- <div class="month-nav" style="margin-bottom: 16px;">
- <button class="btn btn-secondary btn-small" onclick="changeMonth(-1)"><span data-i18n="schedule.nav_prev">← Prev</span></button>
- <h2 style="font-size: 18px;">April - May 2025</h2>
- <button class="btn btn-secondary btn-small" onclick="changeMonth(1)"><span data-i18n="schedule.nav_next">Next →</span></button>
- </div>
- <div class="two-months-container">
- <div class="month-calendar">
- <div class="month-label">April 2025</div>
- <div class="calendar-grid">
- <div class="calendar-day header">Mon</div>
- <div class="calendar-day header">Tue</div>
- <div class="calendar-day header">Wed</div>
- <div class="calendar-day header">Thu</div>
- <div class="calendar-day header">Fri</div>
- <div class="calendar-day header">Sat</div>
- <div class="calendar-day header">Sun</div>
- 
- <div class="calendar-day other-month disabled"><div class="day-num">31</div></div>
- <div class="calendar-day disabled"><div class="day-num">1</div></div>
- <div class="calendar-day disabled"><div class="day-num">2</div></div>
- <div class="calendar-day disabled"><div class="day-num">3</div></div>
- <div class="calendar-day disabled"><div class="day-num">4</div></div>
- <div class="calendar-day disabled"><div class="day-num">5</div></div>
- <div class="calendar-day disabled"><div class="day-num">6</div></div>
- 
- <div class="calendar-day disabled"><div class="day-num">7</div></div>
- <div class="calendar-day disabled"><div class="day-num">8</div></div>
- <div class="calendar-day disabled"><div class="day-num">9</div></div>
- <div class="calendar-day disabled"><div class="day-num">10</div></div>
- <div class="calendar-day disabled"><div class="day-num">11</div></div>
- <div class="calendar-day disabled"><div class="day-num">12</div></div>
- <div class="calendar-day disabled"><div class="day-num">13</div></div>
- 
- <div class="calendar-day available" onclick="selectDate(this, '14')">
- <div class="day-num">14</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available selected" onclick="selectDate(this, '15')">
- <div class="day-num">15</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '16')">
- <div class="day-num">16</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '17')">
- <div class="day-num">17</div>
- <div class="slots">4 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '18')">
- <div class="day-num">18</div>
- <div class="slots">1 slot</div>
- </div>
- <div class="calendar-day disabled"><div class="day-num">19</div></div>
- <div class="calendar-day disabled"><div class="day-num">20</div></div>
- 
- <div class="calendar-day available" onclick="selectDate(this, '21')">
- <div class="day-num">21</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '22')">
- <div class="day-num">22</div>
- <div class="slots">4 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '23')">
- <div class="day-num">23</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '24')">
- <div class="day-num">24</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '25')">
- <div class="day-num">25</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day disabled"><div class="day-num">26</div></div>
- <div class="calendar-day disabled"><div class="day-num">27</div></div>
- 
- <div class="calendar-day available" onclick="selectDate(this, '28')">
- <div class="day-num">28</div>
- <div class="slots">4 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '29')">
- <div class="day-num">29</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '30')">
- <div class="day-num">30</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day other-month disabled"><div class="day-num">1</div></div>
- <div class="calendar-day other-month disabled"><div class="day-num">2</div></div>
- <div class="calendar-day other-month disabled"><div class="day-num">3</div></div>
- <div class="calendar-day other-month disabled"><div class="day-num">4</div></div>
- </div>
- </div>
- 
- <div class="month-calendar">
- <div class="month-label">May 2025</div>
- <div class="calendar-grid">
- <div class="calendar-day header">Mon</div>
- <div class="calendar-day header">Tue</div>
- <div class="calendar-day header">Wed</div>
- <div class="calendar-day header">Thu</div>
- <div class="calendar-day header">Fri</div>
- <div class="calendar-day header">Sat</div>
- <div class="calendar-day header">Sun</div>
- 
- <div class="calendar-day other-month disabled"><div class="day-num">28</div></div>
- <div class="calendar-day other-month disabled"><div class="day-num">29</div></div>
- <div class="calendar-day other-month disabled"><div class="day-num">30</div></div>
- <div class="calendar-day available" onclick="selectDate(this, '1')">
- <div class="day-num">1</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '2')">
- <div class="day-num">2</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day disabled"><div class="day-num">3</div></div>
- <div class="calendar-day disabled"><div class="day-num">4</div></div>
- 
- <div class="calendar-day available" onclick="selectDate(this, '5')">
- <div class="day-num">5</div>
- <div class="slots">4 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '6')">
- <div class="day-num">6</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '7')">
- <div class="day-num">7</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '8')">
- <div class="day-num">8</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '9')">
- <div class="day-num">9</div>
- <div class="slots">1 slot</div>
- </div>
- <div class="calendar-day disabled"><div class="day-num">10</div></div>
- <div class="calendar-day disabled"><div class="day-num">11</div></div>
- 
- <div class="calendar-day available" onclick="selectDate(this, '12')">
- <div class="day-num">12</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '13')">
- <div class="day-num">13</div>
- <div class="slots">4 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '14')">
- <div class="day-num">14</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '15')">
- <div class="day-num">15</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '16')">
- <div class="day-num">16</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day disabled"><div class="day-num">17</div></div>
- <div class="calendar-day disabled"><div class="day-num">18</div></div>
- 
- <div class="calendar-day available" onclick="selectDate(this, '19')">
- <div class="day-num">19</div>
- <div class="slots">4 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '20')">
- <div class="day-num">20</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '21')">
- <div class="day-num">21</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '22')">
- <div class="day-num">22</div>
- <div class="slots">1 slot</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '23')">
- <div class="day-num">23</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day disabled"><div class="day-num">24</div></div>
- <div class="calendar-day disabled"><div class="day-num">25</div></div>
- 
- <div class="calendar-day available" onclick="selectDate(this, '26')">
- <div class="day-num">26</div>
- <div class="slots">4 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '27')">
- <div class="day-num">27</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '28')">
- <div class="day-num">28</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '29')">
- <div class="day-num">29</div>
- <div class="slots">2 slots</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '30')">
- <div class="day-num">30</div>
- <div class="slots">1 slot</div>
- </div>
- <div class="calendar-day available" onclick="selectDate(this, '31')">
- <div class="day-num">31</div>
- <div class="slots">3 slots</div>
- </div>
- <div class="calendar-day other-month disabled"><div class="day-num">1</div></div>
- </div>
- </div>
- </div>
- </div>
-
- <div class="card">
- <div class="card-header">
- <h2 data-i18n="schedule.select_time"><span data-i18n="schedule.step3_select_time"> data-i18n="schedule.select_time"</span></h2>
- </div>
- <div class="time-slots">
- <div class="time-slot" onclick="selectTime(this, '9:00 AM', '10:00 AM')">9:00–10:00 AM</div>
- <div class="time-slot" onclick="selectTime(this, '10:00 AM', '11:00 AM')">10:00–11:00 AM</div>
- <div class="time-slot disabled">11:00 AM–12:00 PM</div>
- <div class="time-slot disabled">12:00–1:00 PM</div>
- <div class="time-slot" onclick="selectTime(this, '2:00 PM', '3:00 PM')">2:00–3:00 PM</div>
- <div class="time-slot" onclick="selectTime(this, '3:00 PM', '4:00 PM')">3:00–4:00 PM</div>
- <div class="time-slot disabled">4:00–5:00 PM</div>
- <div class="time-slot disabled">5:00–6:00 PM</div>
- </div>
- </div>
-
- <div class="booking-summary">
- <h3 data-i18n="schedule.booking_summary"><span data-i18n="schedule.booking_summary"> data-i18n="schedule.booking_summary"</span></h3>
- <div class="summary-row">
- <span>Teacher</span>
- <span id="summaryTeacher">Teacher Chan</span>
- </div>
- <div class="summary-row">
- <span>Date</span>
- <span id="summaryDate">Apr 15, 2025</span>
- </div>
- <div class="summary-row">
- <span>Time</span>
- <span id="summaryTime">9:00 - 10:00 AM</span>
- </div>
- <div class="summary-row">
- <span>Rate</span>
- <span id="summaryRate">$350/hr</span>
- </div>
- <div class="summary-row">
- <span>Total</span>
- <span id="summaryTotal">$350</span>
- </div>
- </div>
-
- <div style="margin-top: 24px; display: flex; gap: 12px;">
- <button class="btn btn-secondary" style="flex: 1; padding: 14px;"><span data-i18n="schedule.btn_cancel">Cancel</span></button>
- <button class="btn btn-primary" style="flex: 2; padding: 14px;" onclick="confirmBooking()" data-i18n="schedule.confirm_booking"><span data-i18n="schedule.btn_confirm_booking">Confirm Booking</span></button>
- </div>
- </div>
-
- <div id="upcomingTab" style="display: none;">
- <div class="card schedule-card">
-  <div class="filter-tabs">
-   <button class="filter-tab active" onclick="switchSection(this, 'upcoming-confirmed')">Confirmed</button>
-   <button class="filter-tab" onclick="switchSection(this, 'upcoming-pending')">Pending</button>
-   <button class="filter-tab" onclick="switchSection(this, 'upcoming-cancelled')">Cancelled</button>
+ <div class="stats-grid">
+  <div class="stat-card">
+   <div class="label">Today</div>
+   <div class="value teal">2</div>
+   <div class="sub">lessons total</div>
   </div>
-
-  <div class="schedule-section active" id="upcoming-confirmed">
-   <div class="day-header">April 2026</div>
-   <div class="schedule-list">
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">14:00</span><span class="dash">–</span><span class="time">15:30</span></div>
-     <div class="lesson-details">
-      <div class="lesson-teacher">Teacher Chan</div>
-      <div class="lesson-subject">HKDSE Maths · 90 min</div>
-     </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-    </div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">10:00</span><span class="dash">–</span><span class="time">11:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-teacher">Teacher Chan</div>
-      <div class="lesson-subject">HKDSE Maths · 60 min</div>
-     </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-    </div>
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">15:00</span><span class="dash">–</span><span class="time">16:30</span></div>
-     <div class="lesson-details">
-      <div class="lesson-teacher">Miss Lily</div>
-      <div class="lesson-subject">IB Maths · 90 min</div>
-     </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-    </div>
-   </div>
+  <div class="stat-card">
+   <div class="label">This Week</div>
+   <div class="value green">8</div>
+   <div class="sub">lessons total</div>
   </div>
-
-  <div class="schedule-section" id="upcoming-pending">
-   <div class="day-header">April 2026</div>
-   <div class="schedule-list">
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">16:00</span><span class="dash">–</span><span class="time">17:30</span></div>
-     <div class="lesson-details">
-      <div class="lesson-teacher">Mr. Chen</div>
-      <div class="lesson-subject">Maths · 90 min</div>
-     </div>
-     <div class="lesson-status pending">Pending</div>
-    </div>
-   </div>
-  </div>
-
-  <div class="schedule-section" id="upcoming-cancelled">
-   <div class="day-header">April 2026</div>
-   <div class="schedule-list">
-    <div class="lesson-item">
-     <div class="lesson-time"><span class="time">09:00</span><span class="dash">–</span><span class="time">10:00</span></div>
-     <div class="lesson-details">
-      <div class="lesson-teacher">Ms. Amy</div>
-      <div class="lesson-subject">English · 60 min</div>
-     </div>
-     <div class="lesson-status cancelled">Cancelled</div>
-    </div>
-   </div>
+  <div class="stat-card">
+   <div class="label">Pending</div>
+   <div class="value gold">3</div>
+   <div class="sub">awaiting confirmation</div>
   </div>
  </div>
- </div>
 
- <div id="historyTab" style="display: none;">
- <div class="card">
- <div class="card-header">
- <h2 data-i18n="schedule.past_lessons_title">Past Lessons</h2>
- </div>
- <div class="booking-item" style="opacity: 0.7;">
- <div class="date-badge" style="background: var(--gray-500);"><div class="day">11</div><div class="month">Apr</div></div>
- <div class="details" style="margin-left: 0;">
- <div class="teacher">Teacher Chan</div>
- <div class="subject">HKDSE Maths • 2:00–3:30 PM</div>
- </div>
- </div>
- <div class="booking-item" style="opacity: 0.7;">
- <div class="date-badge" style="background: var(--gray-500);"><div class="day">8</div><div class="month">Apr</div></div>
- <div class="details" style="margin-left: 0;">
- <div class="teacher">Teacher Chan</div>
- <div class="subject">HKDSE Maths • 10:00–11:00 AM</div>
- </div>
- </div>
- <div class="booking-item" style="opacity: 0.7;">
- <div class="date-badge" style="background: var(--gray-500);"><div class="day">4</div><div class="month">Apr</div></div>
- <div class="details" style="margin-left: 0;">
- <div class="teacher">Miss Lily</div>
- <div class="subject">IB Maths • 3:00–4:30 PM</div>
- </div>
- </div>
- <p style="text-align: center; color: white; margin-top: 24px;">
- <a href="#" style="color: var(--teal);">View all history →</a>
- </p>
- </div>
- </div>
+  <div class="calendar-wrap">
+  <div class="calendar">
+    <div class="cal-header">
+      <button class="cal-nav" onclick="changeMonth(-1)">←</button>
+      <h3 id="cal-month">April 2026</h3>
+      <button class="cal-nav" onclick="changeMonth(1)">→</button>
+    </div>
+    <div class="cal-grid" id="cal-grid">
+      <div class="cal-day-name">S</div>
+      <div class="cal-day-name">M</div>
+      <div class="cal-day-name">T</div>
+      <div class="cal-day-name">W</div>
+      <div class="cal-day-name">T</div>
+      <div class="cal-day-name">F</div>
+      <div class="cal-day-name">S</div>
+    </div>
+    <div class="cal-legend">
+      <span class="legend-item"><span class="legend-dot green"></span> Confirmed</span>
+      <span class="legend-item"><span class="legend-dot gold"></span> Pending</span>
+          </div>
+  </div>
 
- <!-- My Children / Recent Students -->
- <div class="card" style="margin-bottom: 24px;">
- <div class="card-header">
- <h2>My Children</h2>
- <a href="student_profile.html">View All</a>
- </div>
- <div class="card-body">
- <div style="display: flex; gap: 24px; flex-wrap: wrap;">
- <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
- <a href="student_profile.html?student=jw" style="text-decoration: none;"><div class="student-avatar">JW</div></a>
- <span style="font-size: 13px; font-weight: 600; color: var(--navy-dark);">Jasper</span>
- <span style="font-size: 12px; color: #64748b;">Piano, Math</span>
- </div>
- <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
- <a href="student_profile.html?student=lw" style="text-decoration: none;"><div class="student-avatar">LW</div></a>
- <span style="font-size: 13px; font-weight: 600; color: var(--navy-dark);">Lily</span>
- <span style="font-size: 12px; color: #64748b;">English, Art</span>
- </div>
- </div>
- </div>
- </div>
+  <div class="day-schedule" id="day-schedule">
+    <div class="day-header" id="schedule-day-header">Select a day</div>
+    <div id="schedule-lessons"></div>
+  </div>
+</div>
+</main>
 
- </main>
-
- <footer>
- <p>© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved. <a href="terms.html">Terms & Conditions</a></p>
- </footer>
-
- <script>
- let selectedTeacher = 'Teacher Chan';
- let selectedDate = 'Apr 15, 2025';
- let selectedTime = '9:00 AM - 10:00 AM';
- let selectedRate = 350;
-
- function selectTeacher(el, name, rate) {
- document.querySelectorAll('.teacher-card').forEach(c => c.classList.remove('selected'));
- el.classList.add('selected');
- selectedTeacher = name;
- selectedRate = rate;
- document.getElementById('summaryTeacher').textContent = name;
- document.getElementById('summaryRate').textContent = '$' + rate + '/hr';
- document.getElementById('summaryTotal').textContent = '$' + rate;
- }
-
- function selectDate(el, day) {
- document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
- el.classList.add('selected');
- selectedDate = 'Apr ' + day + ', 2025';
- document.getElementById('summaryDate').textContent = selectedDate;
- }
-
- function selectTime(el, time, endTime) {
- document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
- el.classList.add('selected');
- selectedTime = time + ' - ' + endTime;
- document.getElementById('summaryTime').textContent = selectedTime;
- }
-
- function confirmBooking() {
- alert('Booking confirmed!\n\n' + selectedTeacher + '\n' + selectedDate + '\n' + selectedTime + '\n\nTotal: $' + selectedRate);
- }
-
- function switchSection(btn, sectionId) {
- // Update active filter tab
- document.querySelectorAll('#upcomingTab .filter-tab').forEach(t => t.classList.remove('active'));
- btn.classList.add('active');
- // Show correct schedule section
- document.querySelectorAll('#upcomingTab .schedule-section').forEach(s => s.classList.remove('active'));
- document.getElementById(sectionId).classList.add('active');
- }
-
- function showTab(tab) {
- document.getElementById('bookTab').style.display = tab === 'book' ? 'block' : 'none';
- document.getElementById('upcomingTab').style.display = tab === 'upcoming' ? 'block' : 'none';
- document.getElementById('historyTab').style.display = tab === 'history' ? 'block' : 'none';
- document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
- event.target.classList.add('active');
- }
-
- function changeMonth(dir) {
- alert('Month navigation - would load different calendar data');
- }
- </script>
- 
- 
-
-
-
-
-<script>
-// Teacher + Student avatar colours - hash based
-document.querySelectorAll('.parent-avatar, .student-avatar').forEach(function(el) {
+<script src="i18n.js">
+// Student avatar colors - hash based
+document.querySelectorAll('.student-avatar').forEach(function(el) {
   var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
   var initials = el.textContent.trim();
   var hash = 0;
@@ -1171,6 +554,315 @@ document.querySelectorAll('.parent-avatar, .student-avatar').forEach(function(el
 });
 </script>
 
+<script>
+// Calendar interaction
+
+// Calendar data
+const lessons = {
+  '2026-04-20': [{time:'10:00-11:00',subject:'Piano (Grade 3)',student:'Emma Wong',status:'confirmed'}],
+  '2026-04-21': [
+    {time:'10:00-11:00',subject:'Piano (Grade 3)',student:'Emma Wong',status:'confirmed'},
+    {time:'14:00-15:00',subject:'Violin (Beginner)',student:'Lucas Lee',status:'pending'}
+  ],
+  '2026-04-22': [{time:'16:30-17:30',subject:'Piano (Grade 5)',student:'Sophie Chen',status:'confirmed'}],
+  '2026-04-25': [{time:'09:00-10:00',subject:'Math (Form 3)',student:'Ryan Lam',status:'pending'}],
+  '2026-04-27': [{time:'17:00-18:00',subject:'Science (Form 2)',student:'Nathan Wu',status:'pending'}],
+  '2026-04-29': [{time:'15:00-16:30',subject:'Piano (Grade 5)',student:'Sophie Chen',status:'pending'}]
+};
+
+// Availability slots: { 'YYYY-MM-DD': [{start:'HH:MM', duration:60|90|120}, ...] }
+const availability = {
+  '2026-04-23': [{start:'14:00', duration:60},{start:'16:00', duration:90}],
+  '2026-04-24': [{start:'10:00', duration:60}],
+  '2026-04-25': [{start:'09:00', duration:90}],
+  '2026-04-28': [{start:'15:00', duration:60},{start:'17:00', duration:60}],
+  '2026-05-02': [{start:'11:00', duration:90}]
+};
+
+let currentMonth = 3; // April (0-indexed)
+let currentYear = 2026;
+
+function renderCalendar() {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('cal-month').textContent = months[currentMonth] + ' ' + currentYear;
+
+  const grid = document.getElementById('cal-grid');
+  // Save day name headers before clearing
+  grid.innerHTML = '';
+  // Re-add day name headers
+  const dayNamesShort = ['S','M','T','W','T','F','S'];
+  dayNamesShort.forEach(function(d) {
+    var h = document.createElement('div');
+    h.className = 'cal-day-name';
+    h.textContent = d;
+    grid.appendChild(h);
+  });
+
+  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const today = new Date();
+
+  // Empty cells before first day
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'cal-day empty';
+    grid.appendChild(empty);
+  }
+
+  // Day cells
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = currentYear + '-' + String(currentMonth + 1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    const dayEl = document.createElement('div');
+    dayEl.className = 'cal-day';
+
+    const isToday = today.getDate() === d && today.getMonth() === currentMonth && today.getFullYear() === currentYear;
+    const hasLesson = lessons[dateStr];
+    const hasAvail = availability[dateStr];
+
+    if (isToday) dayEl.classList.add('today');
+    if (hasLesson) dayEl.classList.add('has-event');
+    if (hasAvail) dayEl.classList.add('has-avail');
+
+    dayEl.innerHTML = '<span class="day-num">' + d + '</span>';
+    if (hasLesson) {
+      dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot ' + (lessons[dateStr][0].status === 'confirmed' ? 'green' : 'gold') + '"></div>');
+    }
+    if (hasAvail) {
+      dayEl.insertAdjacentHTML('beforeend', '<div class="cal-dot blue"></div>');
+    }
+
+    dayEl.onclick = function() { selectDay(dateStr, dayEl); };
+    grid.appendChild(dayEl);
+  }
+}
+
+function selectDay(dateStr, dayEl) {
+  // Remove previous selection
+  document.querySelectorAll('.cal-day.selected').forEach(function(el) { el.classList.remove('selected'); });
+  // Add selection
+  dayEl.classList.add('selected');
+
+  // Update lessons below
+  var dayHeader = document.getElementById('schedule-day-header');
+  var dayLessons = document.getElementById('schedule-lessons');
+  var lessons_data = lessons[dateStr] || [];
+  var avail_data = availability[dateStr] || [];
+  var dayDate = new Date(dateStr);
+  var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var dayName = dayNames[dayDate.getDay()];
+  var dateStrDisplay = dayName + ' - ' + months[dayDate.getMonth()] + ' ' + dayDate.getDate();
+  dayHeader.textContent = dateStrDisplay;
+
+  var lessonsHtml = '';
+
+  // Build availability section (always shown)
+  if (avail_data.length > 0) {
+    lessonsHtml += '<div class="avail-header"><span>Availability</span><button class="btn-add-avail-sm" onclick="showAddAvailability(\'' + dateStr + '\')">+</button></div>';
+    avail_data.forEach(function(a, idx) {
+      var endH = parseInt(a.start.split(':')[0]) + Math.floor(a.duration/60);
+      var endM = a.duration % 60;
+      var endTime = String(endH).padStart(2,'0') + ':' + String(endM).padStart(2,'0');
+      lessonsHtml += '<div class="avail-item">' +
+        '<span class="avail-time">' + a.start + ' - ' + endTime + '</span>' +
+        '<span class="avail-dur">' + a.duration + ' min</span>' +
+        '<button class="btn-edit-avail" onclick="editAvailability(\'' + dateStr + '\', ' + idx + ')">Modify</button>' +
+        '<button class="btn-del-avail" onclick="deleteAvailability(\'' + dateStr + '\', ' + idx + ')">Delete</button>' +
+        '</div>';
+    });
+  }
+  lessonsHtml += '<button class="btn-add-avail-sm-inline" onclick="showAddAvailability(\'' + dateStr + '\')">+ Add time</button>';
+
+  if (lessons_data.length === 0 && avail_data.length === 0) {
+    lessonsHtml = '<div class="no-lessons">No lessons scheduled</div>' + lessonsHtml;
+  } else {
+    lessons_data.forEach(function(l) {
+      lessonsHtml += '<div class="lesson-item">' +
+        '<div class="lesson-time"><span class="time">' + l.time.split('-')[0] + '</span><span class="dash">-</span><span class="time">' + l.time.split('-')[1] + '</span></div>' +
+        '<div class="lesson-details">' +
+         '<div class="lesson-teacher">' + l.teacher + '</div>' +
+         '<div class="student">' + l.subject + ' · ' + l.student + '</div>' +
+        '</div>' +
+        '<div class="lesson-status ' + l.status + '">' + l.status.charAt(0).toUpperCase() + l.status.slice(1) + '</div>' +
+       '</div>';
+    });
+  }
+
+  dayLessons.innerHTML = lessonsHtml;
+}
+
+function acceptLesson(subject) {
+  if (confirm('Accept this lesson request for ' + subject + '?')) {
+    alert('Lesson accepted!');
+  }
+}
+
+function cancelLesson(subject) {
+  if (confirm('Cancel this confirmed lesson for ' + subject + '? This cannot be undone.')) {
+    alert('Lesson cancelled.');
+  }
+}
+
+function rejectLesson(subject) {
+  if (confirm('Reject this lesson request for ' + subject + '? This cannot be undone.')) {
+    alert('Lesson rejected.');
+  }
+}
+
+function changeMonth(delta) {
+  currentMonth += delta;
+  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+  if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+  renderCalendar();
+}
+
+var pendingAvailDate = null;
+var pendingAvailIdx = null;
+
+function showAddAvailability(dateStr) {
+  pendingAvailDate = dateStr;
+  pendingAvailIdx = null;
+  document.getElementById('avail-modal-title').textContent = 'Add Availability - ' + dateStr;
+  document.getElementById('avail-start').value = '09:00';
+  document.getElementById('avail-dur').value = '60';
+  document.getElementById('avail-modal').classList.add('show');
+}
+
+function editAvailability(dateStr, idx) {
+  pendingAvailDate = dateStr;
+  pendingAvailIdx = idx;
+  var slot = availability[dateStr][idx];
+  document.getElementById('avail-modal-title').textContent = 'Edit Availability - ' + dateStr;
+  document.getElementById('avail-start').value = slot.start;
+  document.getElementById('avail-dur').value = String(slot.duration);
+  document.getElementById('avail-modal').classList.add('show');
+}
+
+function deleteAvailability(dateStr, idx) {
+  if (!confirm('Remove this availability slot?')) return;
+  availability[dateStr].splice(idx, 1);
+  if (availability[dateStr].length === 0) delete availability[dateStr];
+  var dayEl = document.querySelector('.cal-day.selected');
+  if (dayEl) selectDay(dateStr, dayEl);
+  renderCalendar();
+}
+
+function closeAvailModal() {
+  document.getElementById('avail-modal').classList.remove('show');
+  pendingAvailDate = null;
+  pendingAvailIdx = null;
+}
+
+function submitAvailability() {
+  var start = document.getElementById('avail-start').value;
+  var dur = parseInt(document.getElementById('avail-dur').value);
+  if (!start) { alert('Please select a time'); return; }
+  if (!availability[pendingAvailDate]) availability[pendingAvailDate] = [];
+  if (pendingAvailIdx !== null) {
+    availability[pendingAvailDate][pendingAvailIdx] = {start: start, duration: dur};
+  } else {
+    availability[pendingAvailDate].push({start: start, duration: dur});
+  }
+  closeAvailModal();
+  var dayEl = document.querySelector('.cal-day.selected');
+  if (dayEl) selectDay(pendingAvailDate, dayEl);
+  renderCalendar();
+}
+
+// Initialize
+renderCalendar();
+
+// Modal functions
+function showAddAvailability() {
+  document.getElementById('modal-title').textContent = 'Add Availability';
+  document.getElementById('modal-body').innerHTML = `
+    <label>Date</label>
+    <input type="date" id="avail-date">
+    <label>Time</label>
+    <input type="time" id="avail-time" value="09:00">
+    <label>Duration</label>
+    <select id="avail-duration">
+     <option value="60">60 min</option>
+     <option value="90">90 min</option>
+     <option value="120">120 min</option>
+    </select>
+  `;
+  document.getElementById('modal-overlay').classList.add('show');
+}
+
+function showRequestCancellation() {
+  document.getElementById('modal-title').textContent = 'Request Cancellation';
+  document.getElementById('modal-body').innerHTML = `
+    <label>Select Lesson</label>
+    <select id="cancel-lesson">
+     <option value="">Choose a lesson...</option>
+     <option value="1">Piano (Grade 3) - Emma Wong - Today 10:00</option>
+     <option value="2">Violin (Beginner) - Lucas Lee - Today 14:00</option>
+     <option value="3">Piano (Grade 5) - Sophie Chen - Tomorrow 16:30</option>
+    </select>
+    <label>Reason for cancellation</label>
+    <textarea id="cancel-reason" placeholder="Please provide a reason..."></textarea>
+  `;
+  document.getElementById('modal-overlay').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('show');
+}
+
+function submitAvailability() {
+  const date = document.getElementById('avail-date').value;
+  const time = document.getElementById('avail-time').value;
+  const duration = document.getElementById('avail-duration').value;
+  if (date) {
+    alert('Availability added: ' + date + ' at ' + time + ' (' + duration + ' min)');
+    closeModal();
+  } else {
+    alert('Please select a date');
+  }
+}
+
+// Student avatar colors - hash based
+document.querySelectorAll('.student-avatar').forEach(function(el) {
+  var colours = ['#3b82f6','#22c55e','#F9A828','#8b5cf6','#ef4444','#06b6d4','#ec4899'];
+  var initials = el.textContent.trim();
+  var hash = 0;
+  for (var i = 0; i < initials.length; i++) {
+    hash = initials.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  var idx = Math.abs(hash) % colours.length;
+  el.style.background = colours[idx];
+  el.style.color = '#fff';
+});
+</script>
+
+<!-- Availability Modal -->
+<div id="avail-modal" class="modal-overlay">
+<div class="modal-box">
+<div class="modal-header">
+<div id="avail-modal-title" class="modal-title">Add Availability</div>
+<button class="modal-close" onclick="closeAvailModal()">✗</button>
+</div>
+<div class="modal-body">
+<div class="avail-form-group">
+<label>Time</label>
+<input type="time" id="avail-start" value="09:00">
+</div>
+<div class="avail-form-group">
+<label>Duration</label>
+<select id="avail-dur">
+<option value="60">60 min</option>
+<option value="90">90 min</option>
+<option value="120">120 min</option>
+</select>
+</div>
+<div class="avail-form-group">
+<button class="btn btn-primary" onclick="submitAvailability()">Save</button>
+<button class="btn btn-secondary" onclick="closeAvailModal()">Cancel</button>
+</div>
+</div>
+</div>
+</div>
 <script src="i18n.js"></script>
 <script>
 (function(){
@@ -1195,14 +887,17 @@ document.querySelectorAll('.parent-avatar, .student-avatar').forEach(function(el
   var lp = params.get('lang');
   if (lp && typeof setLang === 'function') setLang(lp);
 
-  var path = window.location.pathname.split('/').pop().split('?')[0] || 'parent_schedule.html';
+  // Highlight active nav link in hamburger dropdown
+  var path = window.location.pathname.split('/').pop() || 'teacher_schedule.html';
   document.querySelectorAll('.nav-links a').forEach(function(link) {
-    var href = (link.getAttribute('href') || '').split('?')[0];
-    if (href === path || (path === '' && href === 'parent_schedule.html')) {
+    var href = link.getAttribute('href');
+    if (href === path || (path === '' && href === 'teacher_schedule.html')) {
       link.classList.add('active');
     }
   });
 })();
 </script>
+
+
 </body>
 </html>
