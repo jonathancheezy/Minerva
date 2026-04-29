@@ -465,78 +465,42 @@
 
 /* Day Schedule */
  /* Teachers */
- .teacher-item {
- display: flex;
- gap: 16px;
- padding: 16px 0;
- border-bottom: 1px solid var(--gray-200);
- align-items: center;
+ .teacher-list { display: flex; flex-direction: column; gap: 12px; }
+ .teacher-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--gray-100);
+  border-radius: 12px;
  }
- .teacher-item:last-child { border-bottom: none; }
-
- .parent-avatar {
- width: 48px;
- height: 48px;
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-weight: 700;
- font-size: 16px;
- flex-shrink: 0;
- /* JS sets background + color */
+ .teacher-card .teacher-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
  }
- .student-avatar {
- width: 48px;
- height: 48px;
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-weight: 700;
- font-size: 16px;
- flex-shrink: 0;
- text-decoration: none;
- }
-
  .teacher-info { flex: 1; }
-
- .teacher-info .name {
- font-weight: 600;
- color: #0f1f33;
- font-size: 14px;
- }
-
- .teacher-info .subject {
- font-size: 13px;
- color: white;
- }
-
- .teacher-info .rating {
- font-size: 13px;
- color: var(--gold);
- }
-
- .teacher-actions {
- display: flex;
- gap: 8px;
- }
-
+ .teacher-info .name { font-weight: 600; color: #0f1f33; font-size: 15px; }
+ .teacher-info .subject { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
+ .teacher-info .rating { font-size: 13px; color: var(--gold); margin-top: 2px; }
+ .teacher-actions { margin-left: auto; }
  .action-btn {
- padding: 8px 16px;
- border-radius: 50px;
- font-size: 12px;
- font-weight: 600;
- text-decoration: none;
- transition: all 0.2s;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
  }
-
- .action-btn.primary {
- background: var(--teal);
- color: white;
- }
-
- .action-btn.secondary {
+ .action-btn.primary { background: var(--navy); color: white; }
+ .action-btn.primary:hover { background: var(--navy-dark); }
  background: #f8fafc;
  color: #0f1f33;
  }
@@ -832,38 +796,40 @@ footer a:hover { text-decoration: underline; }
  <h2 data-i18n="parent_dash.heading_your_teachers">Your Teachers</h2>
  </div>
  <div class="card-body">
- <div class="teacher-item">
- <a href="parent_profile.html?parent=ss" style="text-decoration:none"><div class="parent-avatar">SS</div></a>
- <div class="teacher-info">
- <div class="name">Ms. Sarah Piano</div>
- <div class="subject">Piano</div>
- <div class="rating">⭐ 4.9 (32 reviews)</div>
- </div>
- <div class="teacher-actions">
- <a href="#" class="action-btn primary">Book</a>
- </div>
- </div>
- <div class="teacher-item">
- <a href="parent_profile.html?parent=cc" style="text-decoration:none"><div class="parent-avatar">CC</div></a>
- <div class="teacher-info">
- <div class="name">Mr. Chen Math</div>
- <div class="subject">Mathematics</div>
- <div class="rating">⭐ 4.8 (18 reviews)</div>
- </div>
- <div class="teacher-actions">
- <a href="#" class="action-btn primary">Book</a>
- </div>
- </div>
- <div class="teacher-item">
- <a href="parent_profile.html?parent=aa" style="text-decoration:none"><div class="parent-avatar">AA</div></a>
- <div class="teacher-info">
- <div class="name">Ms. Amy English</div>
- <div class="subject">English</div>
- <div class="rating">⭐ 5.0 (24 reviews)</div>
- </div>
- <div class="teacher-actions">
- <a href="#" class="action-btn primary">Book</a>
- </div>
+ <div class="teacher-list">
+  <div class="teacher-card">
+   <div class="teacher-avatar">SS</div>
+   <div class="teacher-info">
+    <div class="name">Ms. Sarah Piano</div>
+    <div class="subject">Piano · 32 reviews</div>
+    <div class="rating">⭐ 4.9</div>
+   </div>
+   <div class="teacher-actions">
+    <a href="parent_schedule.html" class="action-btn primary">Book</a>
+   </div>
+  </div>
+  <div class="teacher-card">
+   <div class="teacher-avatar">CC</div>
+   <div class="teacher-info">
+    <div class="name">Mr. Chen Math</div>
+    <div class="subject">Mathematics · 18 reviews</div>
+    <div class="rating">⭐ 4.8</div>
+   </div>
+   <div class="teacher-actions">
+    <a href="parent_schedule.html" class="action-btn primary">Book</a>
+   </div>
+  </div>
+  <div class="teacher-card">
+   <div class="teacher-avatar">AA</div>
+   <div class="teacher-info">
+    <div class="name">Ms. Amy English</div>
+    <div class="subject">English · 24 reviews</div>
+    <div class="rating">⭐ 5.0</div>
+   </div>
+   <div class="teacher-actions">
+    <a href="parent_schedule.html" class="action-btn primary">Book</a>
+   </div>
+  </div>
  </div>
  </div>
  </div>
