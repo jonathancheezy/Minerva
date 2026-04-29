@@ -368,6 +368,13 @@ a { color: #3b82f6; text-decoration: none; }
  <a href="parent_profile.html" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">JN</div></a>
  </div>
  </div>
+ <div class="nav-end" style="display:flex;align-items:center;gap:12px;">
+ <button id="leftBackBtn" onclick="showConvList()" style="display:none;background:none;border:none;font-size:26px;color:var(--gold);cursor:pointer;padding:4px;">&#8249;</button>
+ <div id="chatNavInfo" style="display:none;align-items:center;gap:8px;">
+ <div class="avatar" id="chatAvatar" style="background:#3b82f6;color:white;font-size:13px;font-weight:700;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;"></div>
+ <span id="chatName" style="font-size:14px;font-weight:600;color:white;"></span>
+ </div>
+ </div>
  <div class="lang-selector" id="langSelector">
  <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
  <circle cx="12" cy="12" r="10"/>
@@ -520,7 +527,7 @@ function deleteConv(id){if(!confirm('Delete this conversation?'))return;CONVERSA
 function filterConvs(){renderConvList();}
 function clearConvSearch(){document.getElementById("convSearchInput").value="";renderConvList();}
 var activeConv=null;
-function openChat(id){activeConv=CONVERSATIONS.find(function(c){return c.id===id;});if(!activeConv)return;sessionStorage.setItem("minerva_conv",id);document.getElementById("leftBackBtn").style.display="block";document.querySelector(".mobile-menu-btn").style.display="none";document.querySelector(".nav-end").style.display="none";document.getElementById("chatNavInfo").style.display="none";renderMessages();document.getElementById("chatListScreen").style.display="none";document.getElementById("chatScreen").style.display="flex";document.querySelector(".nav-links").classList.remove("active");}
+function openChat(id){activeConv=CONVERSATIONS.find(function(c){return c.id===id;});if(!activeConv)return;sessionStorage.setItem("minerva_conv",id);document.getElementById("leftBackBtn").style.display="block";document.querySelector(".mobile-menu-btn").style.display="none";document.querySelector(".nav-end").style.display="none";document.getElementById("chatNavInfo").style.display="none";document.getElementById("chatAvatar").textContent=activeConv.initials;document.getElementById("chatAvatar").style.background=activeConv.color;document.getElementById("chatName").textContent=activeConv.name;renderMessages();document.getElementById("chatListScreen").style.display="none";document.getElementById("chatScreen").style.display="flex";document.querySelector(".nav-links").classList.remove("active");}
 function renderMessages(){if(!activeConv)return;var c=document.getElementById("chatMsgs"),html="",lastDate="";activeConv.msgs.forEach(function(m){var ds=formatDateSep(m.timestamp);if(ds!==lastDate){html+='<div class="date-sep"><span>'+ds+"</span></div>";lastDate=ds;}var sent=m.senderId===CURRENT_USER;html+='<div class="bubble-row'+(sent?" sent":" received")+'"><div class="bubble'+(sent?" sent":" received")+'">'+m.content+'<div class="bubble-meta"><span class="bubble-time">'+formatMsgTime(m.timestamp)+"</span>"+(sent?getReceiptIcon(m.status):"")+"</div></div></div>";});c.innerHTML=html;requestAnimationFrame(function(){c.scrollTop=c.scrollHeight-c.getBoundingClientRect().height;});}
 function sendMsg(){var i=document.getElementById("msgInput"),t=i.value.trim();if(!t||!activeConv)return;var m={id:"m"+Date.now(),content:t,senderId:CURRENT_USER,timestamp:new Date(),status:"sending"};activeConv.msgs.push(m);activeConv.lastMessage=t;activeConv.timestamp=new Date();renderMessages();setTimeout(function(){m.status="sent";renderMessages();},500);setTimeout(function(){m.status="delivered";renderMessages();},1200);setTimeout(function(){m.status="read";renderMessages();},2500);i.value="";autoResize(i);toggleSendBtn();document.getElementById("msgInput").focus();}
 function autoResize(e){e.style.height="auto";e.style.height=Math.min(e.scrollHeight,120)+"px";}
