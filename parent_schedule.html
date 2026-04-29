@@ -537,15 +537,15 @@ document.querySelectorAll('.student-avatar').forEach(function(el) {
 
 // Calendar data
 const lessons = {
-  '2026-04-20': [{time:'10:00-11:00',subject:'Piano (Grade 3)',student:'Emma Wong',status:'confirmed'}],
+  '2026-04-20': [{time:'10:00-11:00',subject:'Piano (Grade 3)',student:'Emma Wong',teacher:'Ms. Sarah',status:'confirmed'}],
   '2026-04-21': [
-    {time:'10:00-11:00',subject:'Piano (Grade 3)',student:'Emma Wong',status:'confirmed'},
-    {time:'14:00-15:00',subject:'Violin (Beginner)',student:'Lucas Lee',status:'pending'}
+    {time:'10:00-11:00',subject:'Piano (Grade 3)',student:'Emma Wong',teacher:'Ms. Sarah',status:'confirmed'},
+    {time:'14:00-15:00',subject:'Violin (Beginner)',student:'Lucas Lee',teacher:'Ms. Sarah',status:'pending'}
   ],
-  '2026-04-22': [{time:'16:30-17:30',subject:'Piano (Grade 5)',student:'Sophie Chen',status:'confirmed'}],
-  '2026-04-25': [{time:'09:00-10:00',subject:'Math (Form 3)',student:'Ryan Lam',status:'pending'}],
-  '2026-04-27': [{time:'17:00-18:00',subject:'Science (Form 2)',student:'Nathan Wu',status:'pending'}],
-  '2026-04-29': [{time:'15:00-16:30',subject:'Piano (Grade 5)',student:'Sophie Chen',status:'pending'}]
+  '2026-04-22': [{time:'16:30-17:30',subject:'Piano (Grade 5)',student:'Sophie Chen',teacher:'Ms. Sarah',status:'confirmed'}],
+  '2026-04-25': [{time:'09:00-10:00',subject:'Math (Form 3)',student:'Ryan Lam',teacher:'Mr. Lee',status:'pending'}],
+  '2026-04-27': [{time:'17:00-18:00',subject:'Science (Form 2)',student:'Nathan Wu',teacher:'Mr. Lee',status:'pending'}],
+  '2026-04-29': [{time:'15:00-16:30',subject:'Piano (Grade 5)',student:'Sophie Chen',teacher:'Ms. Sarah',status:'pending'}]
 };
 
 // Availability slots: { 'YYYY-MM-DD': [{start:'HH:MM', duration:60|90|120}, ...] }
