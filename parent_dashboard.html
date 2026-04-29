@@ -672,7 +672,7 @@ footer a:hover { text-decoration: underline; }
  <p class="dashboard-quote">"An investment in knowledge pays the best interest." — Benjamin Franklin</p>
  </div>
  <div class="actions">
- <a href="parent_schedule.html" class="btn btn-primary" data-i18n="parent_dash.book_lesson">Book Lesson</a>
+ 
  </div>
  </div>
 
@@ -816,7 +816,7 @@ footer a:hover { text-decoration: underline; }
     <div class="rating">⭐ 4.9</div>
    </div>
    <div class="teacher-actions">
-    <a href="parent_schedule.html" class="action-btn primary">Book</a>
+    <button class="action-btn primary" onclick="showTeacherModal('Ms. Sarah Piano', 'Piano')">Book</button>
    </div>
   </div>
   <div class="teacher-card">
@@ -827,7 +827,7 @@ footer a:hover { text-decoration: underline; }
     <div class="rating">⭐ 4.8</div>
    </div>
    <div class="teacher-actions">
-    <a href="parent_schedule.html" class="action-btn primary">Book</a>
+    <button class="action-btn primary" onclick="showTeacherModal('Mr. Chen Math', 'Mathematics')">Book</button>
    </div>
   </div>
   <div class="teacher-card">
@@ -838,7 +838,7 @@ footer a:hover { text-decoration: underline; }
     <div class="rating">⭐ 5.0</div>
    </div>
    <div class="teacher-actions">
-    <a href="parent_schedule.html" class="action-btn primary">Book</a>
+    <button class="action-btn primary" onclick="showTeacherModal('Ms. Amy English', 'English')">Book</button>
    </div>
   </div>
  </div>
@@ -874,6 +874,21 @@ footer a:hover { text-decoration: underline; }
  </div>
  </div>
  </div>
+ 
+ <!-- Teacher Availability Modal -->
+ <div id="teacherModal" class="modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+  <div class="modal-content" style="background:white; border-radius:16px; padding:32px; max-width:560px; width:90%; max-height:90vh; overflow-y:auto; position:relative;">
+   <button onclick="closeTeacherModal()" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:24px; cursor:pointer; color:#64748b;">&times;</button>
+   <h2 id="modalTeacherName" style="font-size:18px; font-weight:700; color:#0f1f33; margin-bottom:4px;">Ms. Sarah Piano</h2>
+   <p id="modalTeacherSubject" style="font-size:13px; color:#64748b; margin-bottom:24px;">Piano</p>
+   <div id="modalCalendar" style="border:1px solid #e2e8f0; border-radius:12px; overflow:hidden;"></div>
+  </div>
+ </div>
+
+ <style>
+ .modal { display:flex !important; }
+ </style>
+
  </main>
  
  
@@ -951,6 +966,113 @@ function cancelLesson(subject) {
 function rejectLesson(subject) {
   if (confirm('Reject this lesson request for ' + subject + '? This cannot be undone.')) { alert('Lesson rejected.'); }
 }
+
+ function showTeacherModal(teacherName, subject) {
+  document.getElementById('modalTeacherName').textContent = teacherName;
+  document.getElementById('modalTeacherSubject').textContent = subject;
+  renderTeacherCalendar();
+  document.getElementById('teacherModal').style.display = 'flex';
+ }
+
+ function closeTeacherModal() {
+  document.getElementById('teacherModal').style.display = 'none';
+ }
+
+ // Teacher availability data
+ const teacherAvailability = {
+  'Ms. Sarah Piano': {
+   'Piano': {
+    '2026-04-23': [{start:'14:00', duration:60},{start:'16:00', duration:90}],
+    '2026-04-24': [{start:'10:00', duration:60}],
+    '2026-04-28': [{start:'15:00', duration:60},{start:'17:00', duration:60}],
+    '2026-05-02': [{start:'11:00', duration:90}]
+   }
+  },
+  'Mr. Chen Math': {
+   'Mathematics': {
+    '2026-04-25': [{start:'09:00', duration:90}],
+    '2026-04-29': [{start:'14:00', duration:60},{start:'16:00', duration:90}],
+    '2026-05-03': [{start:'10:00', duration:60}]
+   }
+  },
+  'Ms. Amy English': {
+   'English': {
+    '2026-04-26': [{start:'10:00', duration:60}],
+    '2026-04-30': [{start:'15:00', duration:90}],
+    '2026-05-01': [{start:'09:00', duration:60},{start:'13:00', duration:60}]
+   }
+  }
+ };
+
+ function renderTeacherCalendar() {
+  var cal = document.getElementById('modalCalendar');
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var today = new Date();
+  var currentMonth = today.getMonth();
+  var currentYear = today.getFullYear();
+
+  var html = '<div style="padding:16px;">';
+  html += '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">';
+  html += '<span style="font-size:16px; font-weight:700; color:#0f1f33;">' + months[currentMonth] + ' ' + currentYear + '</span>';
+  html += '</div>';
+  html += '<div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; text-align:center;">';
+  html += '<div style="font-size:11px; font-weight:600; color:#64748b; padding:8px 0;">S</div>';
+  html += '<div style="font-size:11px; font-weight:600; color:#64748b; padding:8px 0;">M</div>';
+  html += '<div style="font-size:11px; font-weight:600; color:#64748b; padding:8px 0;">T</div>';
+  html += '<div style="font-size:11px; font-weight:600; color:#64748b; padding:8px 0;">W</div>';
+  html += '<div style="font-size:11px; font-weight:600; color:#64748b; padding:8px 0;">T</div>';
+  html += '<div style="font-size:11px; font-weight:600; color:#64748b; padding:8px 0;">F</div>';
+  html += '<div style="font-size:11px; font-weight:600; color:#64748b; padding:8px 0;">S</div>';
+
+  var firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+  for (var i = 0; i < firstDay; i++) {
+   html += '<div></div>';
+  }
+  for (var d = 1; d <= daysInMonth; d++) {
+   var dateStr = currentYear + '-' + String(currentMonth + 1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+   var teacherName = document.getElementById('modalTeacherName').textContent;
+   var subject = document.getElementById('modalTeacherSubject').textContent;
+   var availSlots = teacherAvailability[teacherName] && teacherAvailability[teacherName][subject] && teacherAvailability[teacherName][subject][dateStr];
+   var hasAvail = availSlots && availSlots.length > 0;
+   var isPast = new Date(currentYear, currentMonth, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+   var bgColor = '#f8fafc';
+   var textColor = '#0f1f33';
+   if (hasAvail && !isPast) {
+    bgColor = 'rgba(249,168,40,0.1)';
+    textColor = '#F9A828';
+   } else if (isPast) {
+    textColor = '#cbd5e1';
+   }
+   html += '<div style="padding:10px 4px; border-radius:8px; min-height:44px; background:' + bgColor + '; cursor:' + (hasAvail && !isPast ? 'pointer' : 'default') + ';"';
+   if (hasAvail && !isPast) {
+    html += ' onclick="selectTeacherSlot(\'' + dateStr + '\', ' + availSlots.length + ')"';
+   }
+   html += '>';
+   html += '<div style="font-size:15px; font-weight:600; color:' + textColor + '; line-height:1;">' + d + '</div>';
+   if (hasAvail && !isPast) {
+    html += '<div style="width:6px; height:6px; border-radius:50%; background:#F9A828; margin:3px auto 0;"></div>';
+   }
+   html += '</div>';
+  }
+  html += '</div></div>';
+  cal.innerHTML = html;
+ }
+
+ function selectTeacherSlot(dateStr, slotCount) {
+  var teacherName = document.getElementById('modalTeacherName').textContent;
+  var subject = document.getElementById('modalTeacherSubject').textContent;
+  var availSlots = teacherAvailability[teacherName][subject][dateStr];
+  var slotsText = availSlots.map(function(s) {
+   var endH = parseInt(s.start.split(':')[0]) + Math.floor(s.duration / 60);
+   var endM = s.duration % 60;
+   return s.start + '–' + String(endH).padStart(2,'0') + ':' + (endM ? String(endM).padStart(2,'0') : '00');
+  }).join(', ');
+  alert('Selected: ' + dateStr + '\nAvailable slots: ' + slotsText + '\n\nTo confirm, please go to the Schedule page.');
+  closeTeacherModal();
+ }
+
 </script>
 
 </body>
