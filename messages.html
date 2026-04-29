@@ -197,6 +197,7 @@ a { color: #3b82f6; text-decoration: none; }
  }
  @media (min-width: 769px) {
  .mobile-menu-btn { display: none; }
+ .nav-right { margin-left: auto; }
  .nav-start { display: flex; align-items: center; }
  .nav-end { margin-left: auto; }
  }
@@ -346,51 +347,44 @@ a { color: #3b82f6; text-decoration: none; }
 <body>
 
 <nav>
-<div class="nav-inner">
-<div class="nav-right">
-<div class="nav-start">
-<button class="back-btn" id="leftBackBtn" onclick="showConvList()" style="display:none;background:none;border:none;color:var(--gold);font-size:26px;cursor:pointer;padding:4px 6px;">&#8249;</button>
-<button class="mobile-menu-btn" onclick="toggleChatNav()">☰</button>
-<a href="minerva_landing.html" class="logo">
-<svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="40" height="40" rx="12" fill="#1e3a5f"/>
-<path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
-</svg>
-Minerva
-</a>
-</div>
-<div class="nav-links">
-<a href="teacher_dashboard.html">Dashboard</a>
-<a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
-<a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
-<a href="messages.html" data-i18n="teacher_dash.nav_messages">Chats</a>
-<a href="reviews.html" data-i18n="reviews.title">Reviews</a>
-<a href="earnings.html" data-i18n="earnings.title">Earnings</a>
-</div>
-<div class="nav-end">
-<div class="user-info">
-<a href="teacher_profile.html" style="text-decoration:none"><div class="avatar">TC</div></a>
-</div>
-<div class="lang-selector" id="langSelector">
-<svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
+ <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <a href="minerva_landing.html" class="logo">
+ <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
+ <path d="M10 28V12L20 20L30 12V28" stroke="#F9A828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M20 20V32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ Minerva
+ </a>
+ </div>
+ <div class="nav-links">
+ <a href="parent_dashboard.html">Dashboard</a>
+ <a href="parent_schedule.html">My Schedule</a>
+ <a href="messages.html">Messages</a>
+ <a href="student_profile.html">Profile</a>
+ <a href="#">Settings</a>
+ </div>
+ <div class="nav-right">
+ <div class="nav-meta">
+ <div class="user-info">
+ <a href="parent_profile.html" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">JN</div></a>
+ </div>
+ </div>
+ <div class="lang-selector" id="langSelector">
+ <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
  <circle cx="12" cy="12" r="10"/>
  <line x1="2" y1="12" x2="22" y2="12"/>
  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
  </svg>
-<div class="lang-dropdown" id="langDropdown">
-<div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
-<div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
-<div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
-</div>
-</div>
-</div>
-<div id="chatNavInfo" style="display:none;align-items:center;margin-left:8px;">
-<button onclick="showConvList()" style="background:none;border:none;color:var(--gold);font-size:26px;cursor:pointer;padding:4px 8px;">&#8249;</button>
-</div>
-</div>
-</div>
-</nav>
+ <div class="lang-dropdown" id="langDropdown">
+ <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+ </div>
+ </div>
+ </div>
+ </nav>
 <main class="main">
 <div id="chatListScreen">
  <div class="page-header">

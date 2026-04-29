@@ -135,7 +135,7 @@ a { color: #3b82f6; text-decoration: none; }
  .nav-links { display: flex; gap: 24px; align-items: center; }
  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
  .nav-links a:hover { color: white; }
- .nav-links a.active { color: #F9A828 !important; }
+ .nav-links a.active { color: var(--gold) !important; }
 
  .mobile-menu-btn {
   display: none;
@@ -443,7 +443,6 @@ a { color: #3b82f6; text-decoration: none; }
  <a href="messages.html?v=ps001" data-i18n="parent_dash.messages">Messages</a>
  <a href="student_profile.html" data-i18n="parent_dash.children">Children</a>
  <a href="#" data-i18n="parent_dash.settings">Settings</a>
- <a href="faq.html" data-i18n="parent_dash.help">Help</a>
  </div>
  <div class="nav-right">
  <div class="nav-meta">
@@ -849,7 +848,7 @@ document.querySelectorAll('.student-avatar').forEach(function(el) {
   if (lp && typeof setLang === 'function') setLang(lp);
 
   // Highlight active nav link in hamburger dropdown
-  var path = window.location.pathname.split('/').pop() || 'teacher_schedule.html';
+  var path = window.location.pathname.split('/').pop() || 'parent_schedule.html';
   document.querySelectorAll('.nav-links a').forEach(function(link) {
     var href = link.getAttribute('href');
     if (href === path || (path === '' && href === 'teacher_schedule.html')) {

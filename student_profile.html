@@ -148,7 +148,7 @@
 
  @media (min-width: 769px) {
  .mobile-menu-btn { display: none; }
- .nav-right { justify-content: space-between; }
+ .nav-right { margin-left: auto; }
  .nav-start { display: flex; align-items: center; }
  .nav-end { margin-left: auto; }
  }
@@ -499,10 +499,8 @@
  </div>
 
  <nav>
- <div class="nav-inner">
- <div class="nav-right">
- <div class="nav-start">
-  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+ <div class="nav-left">
+ <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
@@ -517,10 +515,13 @@
  <a href="parent_schedule.html">My Schedule</a>
  <a href="messages.html">Messages</a>
  <a href="student_profile.html">Profile</a>
+ <a href="#">Settings</a>
  </div>
- <div class="nav-end">
+ <div class="nav-right">
+ <div class="nav-meta">
  <div class="user-info">
- <a href="student_profile.html" style="text-decoration:none"><div class="avatar" id="navAvatar">JN</div></a>
+ <a href="parent_profile.html" style="text-decoration:none"><div class="avatar" style="color:#0f1f33;">JN</div></a>
+ </div>
  </div>
  <div class="lang-selector" id="langSelector">
  <svg class="globe" id="langGlobe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -532,7 +533,6 @@
  <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
  <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
  <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
- </div>
  </div>
  </div>
  </div>
