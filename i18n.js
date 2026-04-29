@@ -348,7 +348,11 @@
       footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},
       heading_signup_bonus:{en:"Signup Bonus",zhTW:"報名獎勵",zhCN:"报名奖励"},
       heading_upcoming_lessons:{en:"Upcoming Lessons",zhTW:"即將到來的課堂",zhCN:"即将到来的课堂"},
-      heading_your_teachers:{en:"Your Teachers",zhTW:"您的導師",zhCN:"您的导师"}
+      heading_your_teachers:{en:"Your Teachers",zhTW:"您的導師",zhCN:"您的导师"},
+      upcoming_lessons:{en:"Upcoming Lessons",zhTW:"即將到來的課堂",zhCN:"即将到来的课堂"},
+      confirmed:{en:"Confirmed",zhTW:"已確認",zhCN:"已确认"},
+      pending:{en:"Pending",zhTW:"待處理",zhCN:"待处理"},
+      cancelled:{en:"Cancelled",zhTW:"已取消",zhCN:"已取消"}
     },
 
       footer_text:{en:"© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.",zhTW:"© 2026 Minerva Learning Ltd. 香港。保留所有權利。",zhCN:"© 2026 Minerva Learning Ltd. 香港。保留所有权利。"},

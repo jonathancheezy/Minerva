@@ -507,6 +507,10 @@
 
 .schedule-table tr:hover td { background: rgba(30,58,95,0.03); }
 
+/* Schedule Sections — JS controls visibility */
+.schedule-section { display: none; }
+.schedule-section.active { display: table-row-group; }
+
 /* Day Schedule */
  .day-schedule {
  background: white;
@@ -838,12 +842,77 @@ footer a:hover { text-decoration: underline; }
 
  <div class="content-grid">
  <div>
- <div class="day-schedule">
- <div class="day-header" id="schedule-day-header">Upcoming Lessons</div>
- <div id="schedule-lessons"></div>
+ <div class="card">
+ <div class="card-header" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 24px 0;">
+  <h2 data-i18n="parent_dash.upcoming_lessons">Upcoming Lessons</h2>
+  <div class="filter-tabs" style="padding: 0;">
+   <button class="filter-tab active" data-tab="confirmed" data-i18n="parent_dash.confirmed">Confirmed</button>
+   <button class="filter-tab" data-tab="pending" data-i18n="parent_dash.pending">Pending</button>
+   <button class="filter-tab" data-tab="cancelled" data-i18n="parent_dash.cancelled">Cancelled</button>
+  </div>
  </div>
-
- 
+ <div class="card-body" style="padding: 0;">
+ <table class="schedule-table">
+ <thead>
+ <tr>
+  <th>Date</th>
+  <th>Time</th>
+  <th>Teacher</th>
+  <th>Student</th>
+  <th>Status</th>
+  <th></th>
+ </tr>
+ </thead>
+ <tbody class="schedule-section active" data-section="confirmed">
+ <tr>
+  <td class="col-date">Apr 29</td>
+  <td class="col-time"><div class="time-range"><span>4:00 PM</span><span class="dash">–</span><span>5:00 PM</span></div></td>
+  <td class="col-subject">Ms. Sarah</td>
+  <td class="col-student">Jasper</td>
+  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Ms. Sarah')">Cancel</button></td>
+ </tr>
+ <tr>
+  <td class="col-date">May 2</td>
+  <td class="col-time"><div class="time-range"><span>10:00 AM</span><span class="dash">–</span><span>11:00 AM</span></div></td>
+  <td class="col-subject">Ms. Amy</td>
+  <td class="col-student">Lily</td>
+  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Ms. Amy')">Cancel</button></td>
+ </tr>
+ <tr>
+  <td class="col-date">May 7</td>
+  <td class="col-time"><div class="time-range"><span>3:00 PM</span><span class="dash">–</span><span>4:30 PM</span></div></td>
+  <td class="col-subject">Mr. Lee</td>
+  <td class="col-student">Jasper</td>
+  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Mr. Lee')">Cancel</button></td>
+ </tr>
+ </tbody>
+ <tbody class="schedule-section" data-section="pending">
+ <tr>
+  <td class="col-date">Apr 30</td>
+  <td class="col-time"><div class="time-range"><span>5:30 PM</span><span class="dash">–</span><span>7:00 PM</span></div></td>
+  <td class="col-subject">Mr. Chen</td>
+  <td class="col-student">Jasper</td>
+  <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+  <td class="col-actions"><button class="btn-accept" onclick="acceptLesson('Mr. Chen')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson('Mr. Chen')">✗ Reject</button></td>
+ </tr>
+ <tr>
+  <td class="col-date">May 9</td>
+  <td class="col-time"><div class="time-range"><span>11:00 AM</span><span class="dash">–</span><span>12:00 PM</span></div></td>
+  <td class="col-subject">Ms. Sarah</td>
+  <td class="col-student">Lily</td>
+  <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+  <td class="col-actions"><button class="btn-accept" onclick="acceptLesson('Ms. Sarah')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson('Ms. Sarah')">✗ Reject</button></td>
+ </tr>
+ </tbody>
+ <tbody class="schedule-section" data-section="cancelled">
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
 
  <div>
  <div class="card" style="margin-bottom: 24px;">
@@ -968,62 +1037,21 @@ document.querySelectorAll('.parent-avatar, .student-avatar').forEach(function(el
       link.classList.add('active');
     }
   });
+
+  // Filter tabs for schedule table (mirrors teacher_dashboard)
+  document.querySelectorAll('.filter-tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var tab = btn.dataset.tab;
+      document.querySelectorAll('.filter-tab').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.schedule-section').forEach(function(sec) {
+        if (sec.dataset.section === tab) { sec.classList.add('active'); }
+        else { sec.classList.remove('active'); }
+      });
+    });
+  });
 })();
 </script>
-<table class="schedule-table">
-<thead>
-<tr>
-  <th>Date</th>
-  <th>Time</th>
-  <th>Teacher</th>
-  <th>Student</th>
-  <th>Status</th>
-  <th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td class="col-date">Apr 29</td>
-  <td class="col-time"><div class="time-range"><span>4:00 PM</span><span class="dash">–</span><span>5:00 PM</span></div></td>
-  <td class="col-subject">Ms. Sarah</td>
-  <td class="col-student">Jasper</td>
-  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
-  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Ms. Sarah')">Cancel</button></td>
-</tr>
-<tr>
-  <td class="col-date">Apr 30</td>
-  <td class="col-time"><div class="time-range"><span>5:30 PM</span><span class="dash">–</span><span>7:00 PM</span></div></td>
-  <td class="col-subject">Mr. Chen</td>
-  <td class="col-student">Jasper</td>
-  <td class="col-status"><span class="lesson-status pending">Pending</span></td>
-  <td class="col-actions"><button class="btn-accept" onclick="acceptLesson('Mr. Chen')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson('Mr. Chen')">✗ Reject</button></td>
-</tr>
-<tr>
-  <td class="col-date">May 2</td>
-  <td class="col-time"><div class="time-range"><span>10:00 AM</span><span class="dash">–</span><span>11:00 AM</span></div></td>
-  <td class="col-subject">Ms. Amy</td>
-  <td class="col-student">Lily</td>
-  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
-  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Ms. Amy')">Cancel</button></td>
-</tr>
-<tr>
-  <td class="col-date">May 7</td>
-  <td class="col-time"><div class="time-range"><span>3:00 PM</span><span class="dash">–</span><span>4:30 PM</span></div></td>
-  <td class="col-subject">Mr. Lee</td>
-  <td class="col-student">Jasper</td>
-  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
-  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Mr. Lee')">Cancel</button></td>
-</tr>
-<tr>
-  <td class="col-date">May 9</td>
-  <td class="col-time"><div class="time-range"><span>11:00 AM</span><span class="dash">–</span><span>12:00 PM</span></div></td>
-  <td class="col-subject">Ms. Sarah</td>
-  <td class="col-student">Lily</td>
-  <td class="col-status"><span class="lesson-status pending">Pending</span></td>
-  <td class="col-actions"><button class="btn-accept" onclick="acceptLesson('Ms. Sarah')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson('Ms. Sarah')">✗ Reject</button></td>
-</tr>
-</tbody>
-</table>
 <script>
 function acceptLesson(subject) {
   if (confirm('Accept this lesson request for ' + subject + '?')) { alert('Lesson accepted!'); }
