@@ -970,56 +970,70 @@ document.querySelectorAll('.parent-avatar, .student-avatar').forEach(function(el
   });
 })();
 </script>
+<table class="schedule-table">
+<thead>
+<tr>
+  <th>Date</th>
+  <th>Time</th>
+  <th>Teacher</th>
+  <th>Student</th>
+  <th>Status</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="col-date">Apr 29</td>
+  <td class="col-time"><div class="time-range"><span>4:00 PM</span><span class="dash">–</span><span>5:00 PM</span></div></td>
+  <td class="col-subject">Ms. Sarah</td>
+  <td class="col-student">Jasper</td>
+  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Ms. Sarah')">Cancel</button></td>
+</tr>
+<tr>
+  <td class="col-date">Apr 30</td>
+  <td class="col-time"><div class="time-range"><span>5:30 PM</span><span class="dash">–</span><span>7:00 PM</span></div></td>
+  <td class="col-subject">Mr. Chen</td>
+  <td class="col-student">Jasper</td>
+  <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+  <td class="col-actions"><button class="btn-accept" onclick="acceptLesson('Mr. Chen')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson('Mr. Chen')">✗ Reject</button></td>
+</tr>
+<tr>
+  <td class="col-date">May 2</td>
+  <td class="col-time"><div class="time-range"><span>10:00 AM</span><span class="dash">–</span><span>11:00 AM</span></div></td>
+  <td class="col-subject">Ms. Amy</td>
+  <td class="col-student">Lily</td>
+  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Ms. Amy')">Cancel</button></td>
+</tr>
+<tr>
+  <td class="col-date">May 7</td>
+  <td class="col-time"><div class="time-range"><span>3:00 PM</span><span class="dash">–</span><span>4:30 PM</span></div></td>
+  <td class="col-subject">Mr. Lee</td>
+  <td class="col-student">Jasper</td>
+  <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+  <td class="col-actions"><button class="btn-cancel" onclick="cancelLesson('Mr. Lee')">Cancel</button></td>
+</tr>
+<tr>
+  <td class="col-date">May 9</td>
+  <td class="col-time"><div class="time-range"><span>11:00 AM</span><span class="dash">–</span><span>12:00 PM</span></div></td>
+  <td class="col-subject">Ms. Sarah</td>
+  <td class="col-student">Lily</td>
+  <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+  <td class="col-actions"><button class="btn-accept" onclick="acceptLesson('Ms. Sarah')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson('Ms. Sarah')">✗ Reject</button></td>
+</tr>
+</tbody>
+</table>
 <script>
-// Upcoming Lessons - exact teacher_schedule rendering
-const upcomingLessons = [
-  {time:'Apr 29 — 4:00-5:00 PM', subject:'Ms. Sarah', student:'Jasper', status:'confirmed'},
-  {time:'Apr 30 — 5:30-7:00 PM', subject:'Mr. Chen', student:'Jasper', status:'pending'},
-  {time:'May 2 — 10:00-11:00 AM', subject:'Ms. Amy', student:'Lily', status:'confirmed'},
-  {time:'May 7 — 3:00-4:30 PM', subject:'Mr. Lee', student:'Jasper', status:'confirmed'},
-  {time:'May 9 — 11:00-12:00 PM', subject:'Ms. Sarah', student:'Lily', status:'pending'}
-];
-
-function renderUpcomingLessons() {
-  var container = document.getElementById('schedule-lessons');
-  if (!container) return;
-  var html = '<table class="schedule-table"><thead><tr><th>Date</th><th>Time</th><th>Teacher</th><th>Student</th><th>Status</th><th></th></tr></thead><tbody>';
-  upcomingLessons.forEach(function(l) {
-    var date = l.time.split(' — ')[0];
-    var time = l.time.split(' — ')[1];
-    var statusHtml = '<span class="lesson-status ' + l.status + '">' + l.status.charAt(0).toUpperCase() + l.status.slice(1) + '</span>';
-    var actionsHtml = '';
-    if (l.status === 'pending') {
-      actionsHtml = '<button class="btn-accept" onclick="acceptLesson(\'' + l.subject + '\')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson(\'' + l.subject + '\')">✗ Reject</button>';
-    } else {
-      actionsHtml = '<button class="btn-cancel" onclick="cancelLesson(\'' + l.subject + '\')">Cancel</button>';
-    }
-    html += '<tr>' +
-      '<td class="col-date">' + date + '</td>' +
-      '<td class="col-time"><div class="time-range">' + time.split('-')[0] + '<span class="dash">–</span>' + time.split('-')[1] + '</div></td>' +
-      '<td class="col-subject">' + l.subject + '</td>' +
-      '<td class="col-student">' + l.student + '</td>' +
-      '<td class="col-status">' + statusHtml + '</td>' +
-      '<td class="col-actions">' + actionsHtml + '</td>' +
-      '</tr>';
-  });
-  html += '</tbody></table>';
-  container.innerHTML = html;
-}
-
 function acceptLesson(subject) {
   if (confirm('Accept this lesson request for ' + subject + '?')) { alert('Lesson accepted!'); }
 }
-
 function cancelLesson(subject) {
   if (confirm('Cancel this confirmed lesson for ' + subject + '? This cannot be undone.')) { alert('Lesson cancelled.'); }
 }
-
 function rejectLesson(subject) {
   if (confirm('Reject this lesson request for ' + subject + '? This cannot be undone.')) { alert('Lesson rejected.'); }
 }
-
-renderUpcomingLessons();
 </script>
 
 </body>
