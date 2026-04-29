@@ -33,17 +33,27 @@
  }
 
  /* Nav */
- nav {
+ .nav-inner {
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+
+nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
  position: fixed;
  top: 0; left: 0; right: 0;
  z-index: 100;
  background: var(--navy);
- padding: 16px 24px;
+ padding: 0 24px;
+ height: 60px;
  }
 
- .nav-inner {
- max-width: 1100px;
- margin: 0 auto;
+ .nav-left {
+ display: flex;
+ align-items: center;
+ gap: 12px;
  }
 
  .nav-right { display: flex; align-items: center; gap: 16px; }
@@ -60,6 +70,16 @@
  flex-shrink: 0;
  }
 
+
+ .back-btn {
+ background: none;
+ border: none;
+ font-size: 28px;
+ color: var(--gold);
+ cursor: pointer;
+ padding: 4px 8px;
+ line-height: 1;
+ }
  .logo-icon { width: 36px; height: 36px; }
 
 /* Language Selector */
@@ -493,7 +513,7 @@
 
  <nav>
  <div class="nav-left">
- <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active');">☰</button>
+ <button class="back-btn" onclick="window.location.href='parent_dashboard.html'">&#8249;</button>
  <a href="minerva_landing.html" class="logo">
  <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect width="40" height="40" rx="12" fill="#1e3a5f"/>
