@@ -459,15 +459,7 @@
 .lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
 .lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
 
-.lesson-actions { flex-shrink: 0; margin-left: auto; }
 
-.btn-accept, .btn-reject { width: 28px; height: 28px; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; font-weight: 600; }
-.btn-accept { background: #22c55e; color: white; }
-.btn-accept:hover { background: #16a34a; }
-.btn-reject { background: #ef4444; color: white; margin-left: 4px; }
-.btn-reject:hover { background: #dc2626; }
-.btn-cancel { padding: 4px 12px; background: var(--gray-200); color: var(--gray-600); border: none; border-radius: 6px; font-size: 12px; cursor: pointer; }
-.btn-cancel:hover { background: var(--gray-300); }
 
 /* Day Schedule */
  /* Teachers */
@@ -734,7 +726,7 @@ footer a:hover { text-decoration: underline; }
  <div>
  <div class="card">
  <div class="card-header">
-  <h2 data-i18n="parent_dash.upcoming_lessons">Upcoming Lessons</h2>
+  <h2 data-i18n="parent_dash.schedule">Schedule</h2>
   <a href="parent_schedule.html" data-i18n="parent_dash.view_all">View All</a>
  </div>
  <div class="filter-tabs">
@@ -747,64 +739,54 @@ footer a:hover { text-decoration: underline; }
    <div class="day-header">Apr 29</div>
    <div class="schedule-day">
     <div class="lesson-item">
-     <div class="lesson-time"><span class="time">4:00 PM</span><span class="dash">&ndash;</span><span class="time">5:00 PM</span></div>
+     <div class="lesson-time"><span class="time">16:00</span><span class="dash">&ndash;</span><span class="time">17:00</span></div>
      <div class="lesson-details">
       <div class="lesson-subject">Ms. Sarah</div>
       <div class="student">Jasper</div>
      </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-     <div class="lesson-actions"><button class="btn-cancel" onclick="cancelLesson('Ms. Sarah')">Cancel</button></div>
-    </div>
+     <div class="lesson-status confirmed">Confirmed</div></div>
    </div>
    <div class="day-header">May 2</div>
    <div class="schedule-day">
     <div class="lesson-item">
-     <div class="lesson-time"><span class="time">10:00 AM</span><span class="dash">&ndash;</span><span class="time">11:00 AM</span></div>
+     <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
      <div class="lesson-details">
       <div class="lesson-subject">Ms. Amy</div>
       <div class="student">Lily</div>
      </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-     <div class="lesson-actions"><button class="btn-cancel" onclick="cancelLesson('Ms. Amy')">Cancel</button></div>
-    </div>
+     <div class="lesson-status confirmed">Confirmed</div></div>
    </div>
    <div class="day-header">May 7</div>
    <div class="schedule-day">
     <div class="lesson-item">
-     <div class="lesson-time"><span class="time">3:00 PM</span><span class="dash">&ndash;</span><span class="time">4:30 PM</span></div>
+     <div class="lesson-time"><span class="time">15:00</span><span class="dash">&ndash;</span><span class="time">16:30</span></div>
      <div class="lesson-details">
       <div class="lesson-subject">Mr. Lee</div>
       <div class="student">Jasper</div>
      </div>
-     <div class="lesson-status confirmed">Confirmed</div>
-     <div class="lesson-actions"><button class="btn-cancel" onclick="cancelLesson('Mr. Lee')">Cancel</button></div>
-    </div>
+     <div class="lesson-status confirmed">Confirmed</div></div>
    </div>
   </div>
   <div class="schedule-section" data-section="pending">
    <div class="day-header">Apr 30</div>
    <div class="schedule-day">
     <div class="lesson-item">
-     <div class="lesson-time"><span class="time">5:30 PM</span><span class="dash">&ndash;</span><span class="time">7:00 PM</span></div>
+     <div class="lesson-time"><span class="time">17:30</span><span class="dash">&ndash;</span><span class="time">19:00</span></div>
      <div class="lesson-details">
       <div class="lesson-subject">Mr. Chen</div>
       <div class="student">Jasper</div>
      </div>
-     <div class="lesson-status pending">Pending</div>
-     <div class="lesson-actions"><button class="btn-accept" onclick="acceptLesson('Mr. Chen')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson('Mr. Chen')">✗ Reject</button></div>
-    </div>
+     <div class="lesson-status pending">Pending</div></div>
    </div>
    <div class="day-header">May 9</div>
    <div class="schedule-day">
     <div class="lesson-item">
-     <div class="lesson-time"><span class="time">11:00 AM</span><span class="dash">&ndash;</span><span class="time">12:00 PM</span></div>
+     <div class="lesson-time"><span class="time">11:00</span><span class="dash">&ndash;</span><span class="time">12:00</span></div>
      <div class="lesson-details">
       <div class="lesson-subject">Ms. Sarah</div>
       <div class="student">Lily</div>
      </div>
-     <div class="lesson-status pending">Pending</div>
-     <div class="lesson-actions"><button class="btn-accept" onclick="acceptLesson('Ms. Sarah')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson('Ms. Sarah')">✗ Reject</button></div>
-    </div>
+     <div class="lesson-status pending">Pending</div></div>
    </div>
   </div>
   <div class="schedule-section" data-section="cancelled">
