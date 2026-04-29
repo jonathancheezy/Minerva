@@ -577,7 +577,7 @@ nav {
  </div>
  <div class="form-group">
  <label>Date of Birth</label>
- <input type="date" id="dob" value="2012-03-15">
+ <input type="text" id="dob" value="03/2012" placeholder="MM/YYYY" maxlength="7" oninput="maskDOB(this)" style="text-align:left;">
  </div>
  <div class="form-group">
  <label>Parent / Guardian Name</label>
@@ -726,7 +726,13 @@ nav {
    el.style.color = '#fff';
  });
 
- function updatePreview() {
+ function maskDOB(el) {
+  var v = el.value.replace(/[^0-9]/g, '');
+  if (v.length > 2) v = v.slice(0,2) + '/' + v.slice(2,6);
+  el.value = v;
+}
+
+function updatePreview() {
    const name = document.getElementById('fullName').value || 'Student';
    const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
    document.getElementById('avatarPreview').textContent = initials;
@@ -797,7 +803,7 @@ const STUDENTS = {
     name: 'Jasper Wu',
     initials: 'JW',
     color: '#3b82f6',
-    dob: '2010-08-22',
+    dob: '08/2010',
     grade: 'Form 2',
     parentName: 'Jessica Ng',
     parentEmail: 'jessica.ng@email.com',
@@ -813,7 +819,7 @@ const STUDENTS = {
     name: 'Lily Wu',
     initials: 'LW',
     color: '#ec4899',
-    dob: '2013-05-14',
+    dob: '05/2013',
     grade: 'Grade 1',
     parentName: 'Jessica Ng',
     parentEmail: 'jessica.ng@email.com',
