@@ -442,7 +442,72 @@
  .lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
  .lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
  .lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
- /* Day Schedule */
+
+/* Schedule Table */
+.schedule-table {
+ width: 100%;
+ border-collapse: collapse;
+}
+
+.schedule-table th {
+ background: var(--navy);
+ font-weight: 600;
+ color: white;
+ font-size: 11px;
+ text-transform: uppercase;
+ letter-spacing: 0.5px;
+ padding: 11px 16px;
+ text-align: left;
+}
+
+.schedule-table td {
+ padding: 13px 16px;
+ text-align: left;
+ border-bottom: 1px solid var(--gray-200);
+ font-size: 13px;
+ color: var(--gray-700);
+ vertical-align: middle;
+}
+
+.schedule-table tr:last-child td { border-bottom: none; }
+
+.schedule-table .col-date {
+ color: var(--gray-500);
+ font-size: 12px;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.03em;
+}
+
+.schedule-table .col-time {
+ font-size: 13px;
+ font-weight: 700;
+ color: var(--navy-dark);
+}
+
+.schedule-table .col-time .time-range { display: flex; align-items: center; gap: 4px; }
+.schedule-table .col-time .dash { color: var(--gray-400); }
+
+.schedule-table .col-subject { font-weight: 600; color: var(--navy-dark); }
+.schedule-table .col-student { color: var(--gray-600); }
+
+.schedule-table .col-actions { text-align: right; white-space: nowrap; }
+.schedule-table .col-status { text-align: center; }
+
+.lesson-status {
+ display: inline-block;
+ font-size: 11px;
+ font-weight: 600;
+ padding: 3px 10px;
+ border-radius: 20px;
+}
+.lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
+.lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
+.lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
+
+.schedule-table tr:hover td { background: rgba(30,58,95,0.03); }
+
+/* Day Schedule */
  .day-schedule {
  background: white;
  border-radius: 16px;
@@ -918,22 +983,28 @@ const upcomingLessons = [
 function renderUpcomingLessons() {
   var container = document.getElementById('schedule-lessons');
   if (!container) return;
-  var lessonsHtml = '';
+  var html = '<table class="schedule-table"><thead><tr><th>Date</th><th>Time</th><th>Teacher</th><th>Student</th><th>Status</th><th></th></tr></thead><tbody>';
   upcomingLessons.forEach(function(l) {
-    lessonsHtml += '<div class="lesson-item">' +
-      '<div class="lesson-time"><span class="time">' + l.time.split(' — ')[0] + '</span><span class="dash"> — </span><span class="time">' + l.time.split(' — ')[1] + '</span></div>' +
-      '<div class="lesson-details">' +
-        '<div class="lesson-subject">' + l.subject + '</div>' +
-        '<div class="student">' + l.student + '</div>' +
-      '</div>';
+    var date = l.time.split(' — ')[0];
+    var time = l.time.split(' — ')[1];
+    var statusHtml = '<span class="lesson-status ' + l.status + '">' + l.status.charAt(0).toUpperCase() + l.status.slice(1) + '</span>';
+    var actionsHtml = '';
     if (l.status === 'pending') {
-      lessonsHtml += '<div class="lesson-actions"><button class="btn-accept" onclick="acceptLesson('' + l.subject + '')">✓</button><button class="btn-reject" onclick="rejectLesson('' + l.subject + '')">✗</button></div>';
+      actionsHtml = '<button class="btn-accept" onclick="acceptLesson(\'' + l.subject + '\')">✓ Accept</button> <button class="btn-reject" onclick="rejectLesson(\'' + l.subject + '\')">✗ Reject</button>';
     } else {
-      lessonsHtml += '<button class="btn-cancel" onclick="cancelLesson('' + l.subject + '')">Cancel</button>';
+      actionsHtml = '<button class="btn-cancel" onclick="cancelLesson(\'' + l.subject + '\')">Cancel</button>';
     }
-    lessonsHtml += '</div>';
+    html += '<tr>' +
+      '<td class="col-date">' + date + '</td>' +
+      '<td class="col-time"><div class="time-range">' + time.split('-')[0] + '<span class="dash">–</span>' + time.split('-')[1] + '</div></td>' +
+      '<td class="col-subject">' + l.subject + '</td>' +
+      '<td class="col-student">' + l.student + '</td>' +
+      '<td class="col-status">' + statusHtml + '</td>' +
+      '<td class="col-actions">' + actionsHtml + '</td>' +
+      '</tr>';
   });
-  container.innerHTML = lessonsHtml;
+  html += '</tbody></table>';
+  container.innerHTML = html;
 }
 
 function acceptLesson(subject) {

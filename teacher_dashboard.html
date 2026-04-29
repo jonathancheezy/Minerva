@@ -272,12 +272,68 @@ a { color: #3b82f6; text-decoration: none; }
 /* Schedule Card */
 .schedule-card { flex: 1.6; min-width: 0; }
 
+/* Schedule Table */
+.schedule-table {
+ width: 100%;
+ border-collapse: collapse;
+}
+
+.schedule-table th {
+ background: var(--navy);
+ font-weight: 600;
+ color: white;
+ font-size: 11px;
+ text-transform: uppercase;
+ letter-spacing: 0.5px;
+ padding: 11px 16px;
+ text-align: left;
+}
+
+.schedule-table td {
+ padding: 13px 16px;
+ text-align: left;
+ border-bottom: 1px solid var(--gray-200);
+ font-size: 13px;
+ color: var(--gray-700);
+ vertical-align: middle;
+}
+
+.schedule-table tr:last-child td { border-bottom: none; }
+
+.schedule-table .col-date {
+ width: 140px;
+ color: var(--gray-500);
+ font-size: 12px;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.03em;
+}
+
+.schedule-table .col-time {
+ width: 110px;
+ font-size: 13px;
+ font-weight: 700;
+ color: var(--navy-dark);
+}
+
+.schedule-table .col-time .time-range { display: flex; align-items: center; gap: 4px; }
+.schedule-table .col-time .dash { color: var(--gray-400); }
+
+.schedule-table .col-subject { font-weight: 600; color: var(--navy-dark); }
+.schedule-table .col-subject .sub { font-size: 11px; color: var(--gray-500); font-weight: 400; margin-top: 1px; }
+
+.schedule-table .col-student { color: var(--gray-600); }
+
+.schedule-table .col-status { text-align: center; }
+
+.schedule-table tr:hover td { background: rgba(30,58,95,0.03); }
+
 /* Filter Tabs */
 .filter-tabs {
  display: flex;
  gap: 8px;
  padding: 14px 24px;
- border-bottom: 1px solid #e2e8f0;
+ border-bottom: 1px solid var(--gray-200);
  background: #f8fafc;
 }
 
@@ -287,50 +343,21 @@ a { color: #3b82f6; text-decoration: none; }
  font-size: 12px;
  font-weight: 600;
  cursor: pointer;
- color: #64748b;
+ color: var(--gray-500);
  border: none;
  background: white;
  transition: all 0.2s;
 }
-.filter-tab.active { background: #1e3a5f; color: white; }
-.filter-tab:not(.active):hover { background: #e2e8f0; color: #0f1f33; }
+.filter-tab.active { background: var(--navy); color: white; }
+.filter-tab:not(.active):hover { background: var(--gray-200); color: var(--navy-dark); }
 
 /* Schedule Sections - JS controls visibility */
 .schedule-section { display: none; }
-.schedule-section.active { display: block; }
+.schedule-section.active { display: table-row-group; }
 
-/* Schedule List */
-.schedule-list { padding: 0; }
-
-.day-header {
- padding: 10px 24px;
- background: #f8fafc;
- font-size: 11px;
- font-weight: 700;
- color: #3b82f6;
- text-transform: uppercase;
- letter-spacing: 0.05em;
-}
-
-.schedule-day { border-bottom: 1px solid #e2e8f0; }
-.schedule-day:last-child { border-bottom: none; }
-
-.lesson-item {
- display: flex;
- align-items: center;
- gap: 16px;
- padding: 14px 24px;
- border-bottom: 1px solid #e2e8f0;
-}
-.lesson-item:last-child { border-bottom: none; }
-
-.lesson-time { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
-.lesson-time .time { font-size: 13px; font-weight: 700; color: #0f1f33; }
-.lesson-time .dash { font-size: 13px; color: #475569; }
-
-.lesson-details { flex: 1; }
-.lesson-subject { font-size: 13px; font-weight: 600; color: #0f1f33; margin-bottom: 2px; }
-.student { font-size: 12px; color: #64748b; }
+/* Standalone schedule card (full-page schedule page uses list view) */
+.schedule-list .schedule-section { display: none; }
+.schedule-list .schedule-section.active { display: block; }
 
 .lesson-status {
  font-size: 11px;
@@ -458,123 +485,100 @@ a { color: #3b82f6; text-decoration: none; }
     <button class="filter-tab" data-tab="pending" data-i18n="teacher_dash.pending">Pending</button>
     <button class="filter-tab" data-tab="cancelled" data-i18n="teacher_dash.cancelled">Cancelled</button>
    </div>
-   <div class="schedule-list">
-    <div class="schedule-section active" data-section="confirmed">
-     <div class="day-header" data-i18n="teacher_dash.today">Today &mdash; 18 Apr</div>
-     <div class="schedule-day">
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g3">Piano (Grade 3 Prep)</div>
-        <div class="student" data-i18n="teacher_dash.emma_wong">Emma Wong</div>
-       </div>
-       <div class="lesson-status confirmed">Confirmed</div>
-      </div>
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">14:00</span><span class="dash">&ndash;</span><span class="time">15:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject" data-i18n="teacher_dash.subj_violin_beg">Violin (Beginner)</div>
-        <div class="student" data-i18n="teacher_dash.lucas_lee">Lucas Lee</div>
-       </div>
-       <div class="lesson-status confirmed">Confirmed</div>
-      </div>
-     </div>
-     <div class="day-header" data-i18n="teacher_dash.tomorrow">Tomorrow &mdash; 19 Apr</div>
-     <div class="schedule-day">
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">16:30</span><span class="dash">&ndash;</span><span class="time">17:30</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject" data-i18n="teacher_dash.subj_piano_g5">Piano (Grade 5)</div>
-        <div class="student" data-i18n="teacher_dash.sophie_chen">Sophie Chen</div>
-       </div>
-       <div class="lesson-status confirmed">Confirmed</div>
-      </div>
-     </div>
-    </div>
-    <div class="schedule-section" data-section="pending">
-     <div class="day-header">Sat &mdash; 25 Apr</div>
-     <div class="schedule-day">
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">09:00</span><span class="dash">&ndash;</span><span class="time">10:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject">Math (Form 3)</div>
-        <div class="student" data-i18n="teacher_dash.ryan_lam">Ryan Lam</div>
-       </div>
-       <div class="lesson-status pending">Pending</div>
-      </div>
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">11:00</span><span class="dash">&ndash;</span><span class="time">12:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject">English (Form 4)</div>
-        <div class="student" data-i18n="teacher_dash.grace_ho">Grace Ho</div>
-       </div>
-       <div class="lesson-status pending">Pending</div>
-      </div>
-     </div>
-     <div class="day-header">Mon &mdash; 27 Apr</div>
-     <div class="schedule-day">
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject">Science (Form 2)</div>
-        <div class="student" data-i18n="teacher_dash.nathan_wu">Nathan Wu</div>
-       </div>
-       <div class="lesson-status pending">Pending</div>
-      </div>
-     </div>
-     <div class="day-header">Wed &mdash; 29 Apr</div>
-     <div class="schedule-day">
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">15:00</span><span class="dash">&ndash;</span><span class="time">16:30</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject">Piano (Grade 5)</div>
-        <div class="student" data-i18n="teacher_dash.sophie_chen">Sophie Chen</div>
-       </div>
-       <div class="lesson-status pending">Pending</div>
-      </div>
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">18:00</span><span class="dash">&ndash;</span><span class="time">19:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject">Violin (Beginner)</div>
-        <div class="student" data-i18n="teacher_dash.lucas_lee">Lucas Lee</div>
-       </div>
-       <div class="lesson-status pending">Pending</div>
-      </div>
-     </div>
-    </div>
-    <div class="schedule-section" data-section="cancelled">
-     <div class="day-header">Yesterday &mdash; 17 Apr</div>
-     <div class="schedule-day">
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">15:00</span><span class="dash">&ndash;</span><span class="time">16:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject">Science (Form 2)</div>
-        <div class="student" data-i18n="teacher_dash.nathan_wu">Nathan Wu</div>
-       </div>
-       <div class="lesson-status cancelled">Cancelled</div>
-      </div>
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">17:00</span><span class="dash">&ndash;</span><span class="time">18:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject">Piano (Grade 1)</div>
-        <div class="student" data-i18n="teacher_dash.lily_zhang">Lily Zhang</div>
-       </div>
-       <div class="lesson-status cancelled">Cancelled</div>
-      </div>
-     </div>
-     <div class="day-header">Thu &mdash; 16 Apr</div>
-     <div class="schedule-day">
-      <div class="lesson-item">
-       <div class="lesson-time"><span class="time">10:00</span><span class="dash">&ndash;</span><span class="time">11:00</span></div>
-       <div class="lesson-details">
-        <div class="lesson-subject">Math (Form 3)</div>
-        <div class="student" data-i18n="teacher_dash.emma_wong">Emma Wong</div>
-       </div>
-       <div class="lesson-status cancelled">Cancelled</div>
-      </div>
-     </div>
-    </div>
-   </div>
+   <table class="schedule-table">
+    <thead>
+     <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Subject</th>
+      <th>Student</th>
+      <th>Status</th>
+     </tr>
+    </thead>
+    <tbody class="schedule-section active" data-section="confirmed">
+     <tr>
+      <td class="col-date">Today — 18 Apr</td>
+      <td class="col-time"><div class="time-range"><span>10:00</span><span class="dash">–</span><span>11:00</span></div></td>
+      <td class="col-subject">Piano (Grade 3 Prep)</td>
+      <td class="col-student">Emma Wong</td>
+      <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+     </tr>
+     <tr>
+      <td class="col-date">Today — 18 Apr</td>
+      <td class="col-time"><div class="time-range"><span>14:00</span><span class="dash">–</span><span>15:00</span></div></td>
+      <td class="col-subject">Violin (Beginner)</td>
+      <td class="col-student">Lucas Lee</td>
+      <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+     </tr>
+     <tr>
+      <td class="col-date">Tomorrow — 19 Apr</td>
+      <td class="col-time"><div class="time-range"><span>16:30</span><span class="dash">–</span><span>17:30</span></div></td>
+      <td class="col-subject">Piano (Grade 5)</td>
+      <td class="col-student">Sophie Chen</td>
+      <td class="col-status"><span class="lesson-status confirmed">Confirmed</span></td>
+     </tr>
+    </tbody>
+    <tbody class="schedule-section" data-section="pending">
+     <tr>
+      <td class="col-date">Sat — 25 Apr</td>
+      <td class="col-time"><div class="time-range"><span>09:00</span><span class="dash">–</span><span>10:00</span></div></td>
+      <td class="col-subject">Math (Form 3)</td>
+      <td class="col-student">Ryan Lam</td>
+      <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+     </tr>
+     <tr>
+      <td class="col-date">Sat — 25 Apr</td>
+      <td class="col-time"><div class="time-range"><span>11:00</span><span class="dash">–</span><span>12:00</span></div></td>
+      <td class="col-subject">English (Form 4)</td>
+      <td class="col-student">Grace Ho</td>
+      <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+     </tr>
+     <tr>
+      <td class="col-date">Mon — 27 Apr</td>
+      <td class="col-time"><div class="time-range"><span>17:00</span><span class="dash">–</span><span>18:00</span></div></td>
+      <td class="col-subject">Science (Form 2)</td>
+      <td class="col-student">Nathan Wu</td>
+      <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+     </tr>
+     <tr>
+      <td class="col-date">Wed — 29 Apr</td>
+      <td class="col-time"><div class="time-range"><span>15:00</span><span class="dash">–</span><span>16:30</span></div></td>
+      <td class="col-subject">Piano (Grade 5)</td>
+      <td class="col-student">Sophie Chen</td>
+      <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+     </tr>
+     <tr>
+      <td class="col-date">Wed — 29 Apr</td>
+      <td class="col-time"><div class="time-range"><span>18:00</span><span class="dash">–</span><span>19:00</span></div></td>
+      <td class="col-subject">Violin (Beginner)</td>
+      <td class="col-student">Lucas Lee</td>
+      <td class="col-status"><span class="lesson-status pending">Pending</span></td>
+     </tr>
+    </tbody>
+    <tbody class="schedule-section" data-section="cancelled">
+     <tr>
+      <td class="col-date">Yesterday — 17 Apr</td>
+      <td class="col-time"><div class="time-range"><span>15:00</span><span class="dash">–</span><span>16:00</span></div></td>
+      <td class="col-subject">Science (Form 2)</td>
+      <td class="col-student">Nathan Wu</td>
+      <td class="col-status"><span class="lesson-status cancelled">Cancelled</span></td>
+     </tr>
+     <tr>
+      <td class="col-date">Yesterday — 17 Apr</td>
+      <td class="col-time"><div class="time-range"><span>17:00</span><span class="dash">–</span><span>18:00</span></div></td>
+      <td class="col-subject">Piano (Grade 1)</td>
+      <td class="col-student">Lily Zhang</td>
+      <td class="col-status"><span class="lesson-status cancelled">Cancelled</span></td>
+     </tr>
+     <tr>
+      <td class="col-date">Thu — 16 Apr</td>
+      <td class="col-time"><div class="time-range"><span>10:00</span><span class="dash">–</span><span>11:00</span></div></td>
+      <td class="col-subject">Math (Form 3)</td>
+      <td class="col-student">Emma Wong</td>
+      <td class="col-status"><span class="lesson-status cancelled">Cancelled</span></td>
+     </tr>
+    </tbody>
+   </table>
   </div>
 
   <div class="card messages-card">
