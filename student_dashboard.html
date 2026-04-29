@@ -271,65 +271,12 @@ a { color: #3b82f6; text-decoration: none; }
 /* Schedule Card */
 .schedule-card { flex: 1.6; min-width: 0; }
 
-/* Schedule Table */
-.schedule-table {
- width: 100%;
- border-collapse: collapse;
-}
-
-.schedule-table th {
- background: var(--navy);
- font-weight: 600;
- color: white;
- font-size: 11px;
- text-transform: uppercase;
- letter-spacing: 0.5px;
- padding: 11px 16px;
- text-align: left;
-}
-
-.schedule-table td {
- padding: 13px 16px;
- text-align: left;
- border-bottom: 1px solid var(--gray-200);
- font-size: 13px;
- color: var(--gray-700);
- vertical-align: middle;
-}
-
-.schedule-table tr:last-child td { border-bottom: none; }
-
-.schedule-table .col-date {
- width: 150px;
- color: var(--gray-500);
- font-size: 12px;
- font-weight: 600;
- text-transform: uppercase;
- letter-spacing: 0.03em;
-}
-
-.schedule-table .col-time {
- width: 110px;
- font-size: 13px;
- font-weight: 700;
- color: var(--navy-dark);
-}
-
-.schedule-table .col-time .time-range { display: flex; align-items: center; gap: 4px; }
-.schedule-table .col-time .dash { color: var(--gray-400); }
-
-.schedule-table .col-subject { font-weight: 600; color: var(--navy-dark); }
-.schedule-table .col-teacher { color: var(--gray-600); }
-.schedule-table .col-status { text-align: center; }
-
-.schedule-table tr:hover td { background: rgba(30,58,95,0.03); }
-
 /* Filter Tabs */
 .filter-tabs {
  display: flex;
  gap: 8px;
  padding: 14px 24px;
- border-bottom: 1px solid var(--gray-200);
+ border-bottom: 1px solid #e2e8f0;
  background: #f8fafc;
 }
 
@@ -339,29 +286,13 @@ a { color: #3b82f6; text-decoration: none; }
  font-size: 12px;
  font-weight: 600;
  cursor: pointer;
- color: var(--gray-500);
+ color: #64748b;
  border: none;
  background: white;
  transition: all 0.2s;
 }
-.filter-tab.active { background: var(--navy); color: white; }
-.filter-tab:not(.active):hover { background: var(--gray-200); color: var(--navy-dark); }
-
-/* Schedule Sections - JS controls visibility */
-.schedule-section { display: none; }
-.schedule-section.active { display: table-row-group; }
-
-.lesson-status {
- font-size: 11px;
- font-weight: 600;
- padding: 3px 10px;
- border-radius: 20px;
- flex-shrink: 0;
- display: inline-block;
-}
-.lesson-status.confirmed { background: rgba(34,197,94,0.1); color: #22c55e; }
-.lesson-status.pending { background: rgba(249,168,40,0.1); color: #F9A828; }
-.lesson-status.cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
+.filter-tab.active { background: #1e3a5f; color: white; }
+.filter-tab:not(.active):hover { background: #e2e8f0; color: #0f1f33; }
 
 /* Student List */
 .student-list { display: flex; flex-direction: column; gap: 12px; }
@@ -413,9 +344,12 @@ a { color: #3b82f6; text-decoration: none; }
 .note-status { font-size: 12px; font-weight: 600; color: var(--gray-500); white-space: nowrap; }
 .note-status.urgent { color: #dc2626; }
 
-/* Standalone schedule list (full-page view) */
-.schedule-list .schedule-section { display: none; }
-.schedule-list .schedule-section.active { display: block; }
+/* Schedule Sections - JS controls visibility */
+.schedule-section { display: none; }
+.schedule-section.active { display: block; }
+
+/* Schedule List */
+.schedule-list { padding: 0; }
 
 .day-header {
  padding: 10px 24px;
