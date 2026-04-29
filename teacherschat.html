@@ -55,6 +55,9 @@ a { color: #3b82f6; text-decoration: none; }
  width: 100%;
  }
 
+ .nav-start { display: flex; align-items: center; gap: 12px; }
+ .nav-end { display: flex; align-items: center; gap: 16px; margin-left: auto; }
+
  .nav-inner {
  max-width: 1100px;
  margin: 0 auto;
@@ -150,47 +153,7 @@ a { color: #3b82f6; text-decoration: none; }
  .nav-links a:hover { color: var(--gold); }
  .nav-links a.active { color: var(--gold) !important; }
 
- .nav-start {
- display: flex;
- align-items: center;
- gap: 0;
- }
 
- .mobile-menu-btn {
- display: none;
- font-size: 20px;
- cursor: pointer;
- padding: 4px;
- color: var(--gold);
- background: none;
- border: none;
- margin-right: 12px;
- }
-
- /* User Info */
- .nav-end {
- display: flex;
- align-items: center;
- gap: 16px;
- }
-
- .user-info {
- display: flex;
- align-items: center;
- gap: 12px;
- }
- .avatar {
- width: 36px;
- height: 36px;
- background: var(--gold);
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-weight: 700;
- color: var(--navy-dark);
- font-size: 14px;
- }
 
  @media (max-width: 768px) {
  .nav-start { display: flex; align-items: center; }
@@ -201,12 +164,7 @@ a { color: #3b82f6; text-decoration: none; }
  .user-info { display: flex; align-items: center; }
  .lang-selector { background: transparent; padding: 0; }
  }
- @media (min-width: 769px) {
- .mobile-menu-btn { display: none; }
- .nav-right { margin-left: auto; }
- .nav-start { display: flex; align-items: center; }
- .nav-end { margin-left: auto; }
- }
+ 
 
  
 #chatListScreen {
@@ -354,7 +312,6 @@ a { color: #3b82f6; text-decoration: none; }
 
 <nav>
  <div class="nav-inner">
- <div class="nav-right">
  <div class="nav-start">
  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
  <a href="minerva_landing.html" class="logo">
@@ -370,7 +327,7 @@ a { color: #3b82f6; text-decoration: none; }
  <a href="teacher_dashboard.html">Dashboard</a>
  <a href="student_dashboard.html">Students</a>
  <a href="teacher_schedule.html">Schedule</a>
- <a href="messages.html">Chats</a>
+ <a href="teacherschat.html">Chats</a>
  <a href="reviews.html">Reviews</a>
  <a href="earnings.html">Earnings</a>
  </div>
@@ -388,7 +345,6 @@ a { color: #3b82f6; text-decoration: none; }
  <div class="lang-option selected" data-lang="en">EN <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
  <div class="lang-option" data-lang="zh-TW">繁 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
  <div class="lang-option" data-lang="zh-CN">简 <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
- </div>
  </div>
  </div>
  </div>
