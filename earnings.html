@@ -10,9 +10,12 @@
 
  :root {
  --navy: #1e3a5f;
- --teal: #3b82f6;
- --teal-light: #60a5fa;
+ --navy-dark: #0f1f33;
+ --teal: #008C72;
+ --teal-light: #00b392;
  --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --gold-muted: #FEF3C7;
  --white: #ffffff;
  --gray-100: #f8fafc;
  --gray-200: #e2e8f0;
@@ -22,9 +25,13 @@
  --gray-600: #475569;
  --gray-700: #334155;
  --green: #22c55e;
+ --green-light: #dcfce7;
  --red: #ef4444;
+ --red-light: #fee2e2;
+ --yellow: #f59e0b;
+ --yellow-light: #fef3c7;
  --purple: #8b5cf6;
- --navy-dark: #0f1f33;
+ --purple-light: #ede9fe;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -256,6 +263,34 @@ a { color: #3b82f6; text-decoration: none; }
   .nav-links.active a.active { color: #F9A828 !important; }
   .nav-links.active a:hover { color: white; }
  }
+ .btn-primary {
+  width: 100%;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  margin-top: 16px;
+ }
+ .btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+ }
+ .btn-gold {
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+ }
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
@@ -352,7 +387,7 @@ footer a:hover { text-decoration: underline; }
      <span>Apr 30, 2026</span>
     </div>
    </div>
-   <button class="btn-payout">Request Payout</button>
+   <button class="btn-primary">Request Payout</button>
   </div>
    <div class="card">
     <div class="card-header">
