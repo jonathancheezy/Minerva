@@ -22,6 +22,17 @@ Do not manually reread startup files unless:
 2. The provided context is missing something you need
 3. You need a deeper follow-up read beyond the provided startup context
 
+### Sub-Agent Startup
+
+If you are a sub-agent spawned in `/home/jonat/.openclaw/workspace/`:
+
+1. Read `shared-memory.md` immediately on startup — it contains cross-agent context
+2. Read `MEMORY.md` if it exists (main agent's curated memory)
+3. Check `memory/` for recent daily notes
+4. Write your identity and task to `shared-memory.md` when you start work
+
+This ensures continuity even when agents are restarted.
+
 ## Memory
 
 You wake up fresh each session. These files are your continuity:
@@ -220,6 +231,21 @@ Periodically (every few days), use a heartbeat to:
 Think of it like a human reviewing their journal and updating their mental model. Daily files are raw notes; MEMORY.md is curated wisdom.
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
+
+## Git Protocol — Non-Negotiable
+
+**Before finishing any task or handing off to another agent:**
+1. `git status` — confirm what changed
+2. `git add` — stage changed files
+3. `git commit -m "description"` — meaningful commit message
+4. `git push origin <branch>` — push to the appropriate branch (usually `main`)
+
+- Commit and push **your own changes** — don't leave uncommitted work behind
+- If working on a feature branch, merge to `main` before declaring done
+- If remote has new work, `git pull --ff` first, then push
+- Never leave `UU` (unmerged) files — resolve conflicts before finishing
+
+**Why this matters:** Other agents and the live site depend on `main` being clean and current.
 
 ## Make It Yours
 
