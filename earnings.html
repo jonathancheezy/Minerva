@@ -10,9 +10,12 @@
 
  :root {
  --navy: #1e3a5f;
- --teal: #3b82f6;
- --teal-light: #60a5fa;
+ --navy-dark: #0f1f33;
+ --teal: #008C72;
+ --teal-light: #00b392;
  --gold: #F9A828;
+ --gold-light: #FBB81C;
+ --gold-muted: #FEF3C7;
  --white: #ffffff;
  --gray-100: #f8fafc;
  --gray-200: #e2e8f0;
@@ -22,9 +25,13 @@
  --gray-600: #475569;
  --gray-700: #334155;
  --green: #22c55e;
+ --green-light: #dcfce7;
  --red: #ef4444;
+ --red-light: #fee2e2;
+ --yellow: #f59e0b;
+ --yellow-light: #fef3c7;
  --purple: #8b5cf6;
- --navy-dark: #0f1f33;
+ --purple-light: #ede9fe;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,7 +52,6 @@ a { color: #3b82f6; text-decoration: none; }
  top: 0; left: 0; right: 0;
  z-index: 100;
  background: var(--navy);
- height: 60px;
  padding: 16px 24px;
  }
 
@@ -203,26 +209,25 @@ a { color: #3b82f6; text-decoration: none; }
  @media (min-width: 769px) {
  .mobile-menu-btn { display: none; }
  .nav-start { display: flex; align-items: center; }
- .nav-end { margin-left: auto; }
  }
 
  /* Main Content */
- .main { padding: 32px 24px; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 60px); }
+ body { background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; }
+ .main { padding: 32px; max-width: 1200px; margin: 0 auto; }
  .page-header { margin-bottom: 32px; }
  .page-header h1 { font-size: 28px; font-weight: 800; color: #0f1f33; margin-bottom: 4px; }
  .page-header p { color: #64748b; font-size: 14px; }
  .dashboard-quote { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px; }
  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
- .stat-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 20px; text-align: left; }
+ .stats-grid .stat-card { min-width: 0; }
+ .stat-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 20px; text-align: left; min-height: 90px; display: flex; flex-direction: column; justify-content: center; }
  .stat-card .label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
- .stat-card .value { font-size: 24px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
+ .stat-card .value { font-size: 20px; font-weight: 800; color: #0f1f33; line-height: 1.1; }
  .stat-card .value.green { color: #22c55e; }
  .stat-card .value.gold { color: #F9A828; }
- .stat-card .value.teal { color: var(--teal); }
- .stat-card .value.red { color: var(--red); }
  .stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
  .stat-card .sub a { color: #3b82f6; }
- .content-grid { display: flex; flex-direction: row; gap: 20px; width: 100%; }
+ .content-grid { display: flex; flex-direction: row; gap: 20px; width: 100%; margin-top: 20px; }
  .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); flex: 1; min-width: 0; }
  .card-header { padding: 16px 20px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
  .card-header h2 { font-size: 15px; font-weight: 700; color: #0f1f33; margin: 0; }
@@ -233,11 +238,6 @@ a { color: #3b82f6; text-decoration: none; }
  .earnings-desc { font-weight: 600; font-size: 14px; color: #0f1f33; }
  .earnings-date { font-size: 12px; color: #94a3b8; margin-top: 2px; }
  .earnings-amount { font-weight: 700; font-size: 15px; color: #22c55e; white-space: nowrap; margin-left: 16px; }
- .payout-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; color: #475569; }
- .payout-row:last-of-type { border-bottom: none; }
- .payout-row span:last-child { font-weight: 600; color: #0f1f33; }
- .btn-payout { display: block; width: 100%; margin-top: 16px; padding: 12px; background: var(--navy); color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
- .btn-payout:hover { background: var(--navy-dark); }
  @media (max-width: 900px) { .content-grid { flex-direction: column; } .content-grid .card { flex: none; width: 100%; } }
  @media (max-width: 400px) { .stats-grid { grid-template-columns: 1fr; } }
  @media (max-width: 500px) { .main { padding: 20px 16px; } }
@@ -263,9 +263,48 @@ a { color: #3b82f6; text-decoration: none; }
   .nav-links.active a.active { color: #F9A828 !important; }
   .nav-links.active a:hover { color: white; }
  }
+ .btn-primary {
+  width: 100%;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  margin-top: 16px;
+ }
+ .btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+ }
+ .btn-gold {
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+ }
  </style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+
+/* Footer */
+footer {
+ padding: 40px 24px;
+ text-align: center;
+ color: var(--gray-500);
+ font-size: 13px;
+ border-top: 1px solid var(--gray-200);
+}
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
 
 </head>
 <body>
@@ -287,7 +326,7 @@ a { color: #3b82f6; text-decoration: none; }
  <a href="teacher_dashboard.html">Dashboard</a>
  <a href="student_dashboard.html" data-i18n="teacher_dash.students">Students</a>
  <a href="teacher_schedule.html" data-i18n="teacher_dash.schedule">Schedule</a>
- <a href="teacherschat.html" data-i18n="teacher_dash.nav_messages">Chats</a>
+ <a href="messages.html" data-i18n="teacher_dash.nav_messages">Chats</a>
  <a href="reviews.html" data-i18n="reviews.title">Reviews</a>
  <a href="earnings.html" data-i18n="earnings.title">Earnings</a>
  </div>
@@ -317,33 +356,28 @@ a { color: #3b82f6; text-decoration: none; }
   </div>
   <div class="stats-grid">
    <div class="stat-card">
-    <div class="label">This Week</div>
-    <div class="value teal">HK$ 1,100</div>
-    <div class="sub">3 lessons</div>
-   </div>
-   <div class="stat-card">
-    <div class="label">April 2026</div>
+    <div class="label" data-i18n="earnings.april_2026">April 2026</div>
     <div class="value green">HK$ 4,250</div>
-    <div class="sub">8 lessons completed</div>
+    <div class="sub" data-i18n="earnings.lessons_completed">8 lessons completed</div>
    </div>
    <div class="stat-card">
-    <div class="label">Pending Payout</div>
+    <div class="label" data-i18n="earnings.pending_payout">Pending Payout</div>
     <div class="value gold">HK$ 1,450</div>
-    <div class="sub">Due by Apr 30</div>
+    <div class="sub" data-i18n="earnings.pending_sub">Due by Apr 30</div>
    </div>
    <div class="stat-card">
-    <div class="label">Total Earned</div>
-    <div class="value red">HK$ 26,800</div>
-    <div class="sub">Since Jan 2026</div>
+    <div class="label" data-i18n="earnings.total_earned">Total Earned</div>
+    <div class="value">HK$ 26,800</div>
+    <div class="sub" data-i18n="earnings.since_jan_2026">Since Jan 2026</div>
    </div>
   </div>
   <div class="content-grid">
-  <div class="card">
-   <div class="card-header">
-    <h2>Pending Payout</h2>
+  <div class="pending-payout-section">
+   <div class="pending-payout-header">
+    <span class="pending-payout-title">Pending Payout</span>
     <span class="pending-payout-amount">HK$ 1,450</span>
    </div>
-   <div class="card-body">
+   <div class="pending-payout-details">
     <div class="payout-row">
      <span>Lessons pending confirmation</span>
      <span>3 lessons</span>
@@ -352,8 +386,8 @@ a { color: #3b82f6; text-decoration: none; }
      <span>Estimated arrival</span>
      <span>Apr 30, 2026</span>
     </div>
-    <button class="btn-payout">Request Payout</button>
    </div>
+   <button class="btn-primary">Request Payout</button>
   </div>
    <div class="card">
     <div class="card-header">
@@ -385,6 +419,9 @@ a { color: #3b82f6; text-decoration: none; }
    </div>
   </div>
  </main>
+ <footer>
+ <p><span data-i18n="footer_copyright">© 2026 Minerva Learning Ltd. Hong Kong. All rights reserved.</span> <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a></p>
+</footer>
  <script src="i18n.js"></script>
  <script>if(typeof init=="function")init();</script>
 <script src="i18n.js"></script>
@@ -403,22 +440,13 @@ a { color: #3b82f6; text-decoration: none; }
         opt.classList.add('selected');
         sel.classList.remove('open');
         var lang = opt.dataset.lang;
-        if (typeof setLang === 'function') setLang(lang);
+        if (typeof setLanguage === 'function') setLanguage(lang);
       });
     });
   }
   var params = new URLSearchParams(window.location.search);
   var lp = params.get('lang');
-  if (lp && typeof setLang === 'function') setLang(lp);
-
-  // Highlight active nav link in hamburger dropdown
-  var path = window.location.pathname.split('/').pop() || 'earnings.html';
-  document.querySelectorAll('.nav-links a').forEach(function(link) {
-    var href = link.getAttribute('href');
-    if (href === path || (path === '' && href === 'earnings.html')) {
-      link.classList.add('active');
-    }
-  });
+  if (lp && typeof setLanguage === 'function') setLanguage(lp);
 })();
 </script>
 </body>
